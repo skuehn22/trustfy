@@ -6,4 +6,5 @@
  * Time: 14:12
  */
 
-Route::get('/', 'Frontend\IndexController@index') ;
+Route::auth();
+Route::get('/', 'HomeController@index') ;

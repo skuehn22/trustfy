@@ -7,9 +7,6 @@
 
 @section('content')
     Panzerschweine rollen!
-
-
-    {{ $test }}
 @stop
 @section("js")
 @stop
