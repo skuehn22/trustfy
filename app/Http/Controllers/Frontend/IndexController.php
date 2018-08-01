@@ -8,6 +8,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
+// Libraries
+use App;
+
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
@@ -15,9 +18,9 @@ class IndexController extends Controller
 
     public function index() {
 
-        $test = "teststring";
+        $blade["locale"] = App::getLocale();
 
-        return view('frontend.provider.login', compact('test'));
+        return view('backend.provider.dashboard', compact('blade'));
 
     }
 

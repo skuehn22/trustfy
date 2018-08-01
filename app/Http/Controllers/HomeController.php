@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// Libraries
+use App;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.provider.login');
+        $agent = new Agent();
+        $blade["locale"] = App::getLocale();
+
+        if(!$agent->is('Windows')){
+            return view('frontend.special_windows.home');
+        }else{
+            return view('backend.provider.dashboard', compact('blade'));
+        }
     }
 }

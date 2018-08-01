@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('backend.master')
 @section('seo')
 @stop
 @section('css')
@@ -33,7 +33,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="/en/contracts" class="btn btn-outline-grey btn-lg panel-btn" role="button">
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn" role="button" data-toggle="modal" data-target="#exampleModalCenter">
                                     <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Contract</p>
                                 </a>
                             </div>
@@ -83,7 +83,7 @@
                                 <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Comments</a>
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
         -->
@@ -91,6 +91,51 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 @section("js")
+
+    <script>
+
+        function getModalContent($url){
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/"+ $url, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+
+        }
+
+    </script>
+
 @stop

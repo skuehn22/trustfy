@@ -1,4 +1,4 @@
-@extends('frontend.master')
+@extends('backend.master')
 @section('seo')
 @stop
 @section('css')
