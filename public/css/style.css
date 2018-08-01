@@ -1,0 +1,127 @@
+body {
+
+}
+
+.dashboard .panel-body i {
+    font-size: 20px;
+    padding-bottom: 10px;
+    color: #FFB073;
+}
+
+.dashboard .panel-body i.fas {
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 2px #121212;
+    padding: 0.5em 0.6em;
+}
+
+.dashboard .panel-body a:hover {
+    color: #00665E;
+}
+
+.dashboard a.panel-btn {
+    padding: 35px 25px;
+    margin:auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dashboard .btn-outline-grey {
+    color: #a79f9f;
+    background-color: #fff;
+    border-color: #a79f9f;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.dashboard .btn-outline-orange {
+    color: #FF9340;
+    background-color: #fff;
+    border-color: #FF9340;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.dashboard .btn-group-lg>.btn, .btn-lg {
+    padding: 20px 16px;
+    font-size: 14px;
+    line-height: 1.3333333;
+    border-radius: 4px;
+}
+
+.dashboard .navbar-default {
+    background-color: #f8f8f8;
+    border-color: #a79f9f;
+}
+
+.dashboard .panel-primary {
+    border-color: #a79f9f;
+}
+
+.dashboard .panel-body .btn:not(.btn-block) {
+    width: 175px;
+    height: 140px;
+}
+
+.dashboard .panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #009D91;
+    border-color: #009D91;
+}
+
+.dashboard .shortcuts-boxes{
+    text-align: center;
+    padding: 25px 0px 25px 0px;
+}
+
+.green_darker{
+    color: #00665E;
+}
+
+.green_dark{
+    color: #1D766F;
+}
+
+.green{
+    color: #009D91;
+}
+
+.green_light{
+    color: #33CEC3;
+}
+
+.green_lighter{
+    color: #5DCEC6;
+}
+
+.orange_darker{
+    color: #A64800;
+}
+
+.orange_dark{
+    color: #BF6E30;
+}
+
+.orange{
+    color: #FF6F00;
+}
+
+.orange_light{
+    color: #FF9340;
+}
+
+.orange_lighter{
+    color: #FFB073;
+}
+
+
+/*-Small devices (landscape phones, 576px and up)*/
+@media (max-width: 575.98px) {
+
+    .panel-body .btn:not(.btn-block) {
+        width: 100%;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+
+}
