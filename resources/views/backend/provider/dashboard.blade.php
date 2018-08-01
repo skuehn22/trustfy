@@ -4,6 +4,9 @@
 @section('css')
 
 @stop
+@section('breadcrumb')
+Dashboard
+@stop
 
 @section('content')
 
