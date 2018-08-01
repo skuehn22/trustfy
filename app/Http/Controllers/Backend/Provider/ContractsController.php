@@ -6,7 +6,7 @@
  * Time: 14:08
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend\Provider;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -16,11 +16,9 @@ use App\Http\Controllers\Controller;
 class ContractsController extends Controller
 {
 
-    public function index() {
+    public function getTypes() {
 
-
-
-        return view('frontend.provider.contracts', compact('test'));
+        return view('backend.contracts.types', compact('test'));
 
     }
 

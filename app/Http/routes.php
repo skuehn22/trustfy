@@ -1,3 +1,4 @@
 <?php
 
-include('Routes/Frontend/provider.php');
+include('Routes/Frontend/index.php');
+include('Routes/Backend/provider.php');

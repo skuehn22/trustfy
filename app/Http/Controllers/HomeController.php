@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 // Libraries
-use App;
+use App, Auth, Redirect;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
@@ -26,13 +26,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $agent = new Agent();
-        $blade["locale"] = App::getLocale();
 
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        if($blade["user"]->role == 0 ) {
+            return Redirect::to($blade["locale"]."/provider/dashboard");
+        }
+
+
+        //$agent = new Agent();
+
+        /*
         if(!$agent->is('Windows')){
             return view('frontend.special_windows.home');
         }else{
-            return view('backend.provider.dashboard', compact('blade'));
+
         }
+        */
+
+
     }
 }
