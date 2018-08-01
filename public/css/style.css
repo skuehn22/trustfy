@@ -2,6 +2,14 @@ body {
 
 }
 
+.btn-orange {
+    color: #FFF;
+    background-color: #FF9340;
+    border-color: #FF9340;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
 .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -19,15 +27,42 @@ body {
     padding-bottom: 12px;
 }
 
-#exTab3 .nav-pills > li > a {
+/*Backend Provider Setting */
+
+.settings .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #009D91;
+}
+
+.settings  #exTab3 .nav-pills > li > a {
     border-radius: 4px 4px 0 0 ;
 }
 
-#exTab3 .tab-content {
+.settings #exTab3 .tab-content {
     color : white;
-    background-color: #428bca;
-    padding : 5px 15px;
+    background-color: #fff;
+    padding : 15px 15px;
+    border: 1px solid #009D91;
 }
+
+.settings #exTab3 .tab-pane {
+   padding-top: 20px;
+}
+
+
+.settings label {
+    color : #a79f9f;
+
+}
+
+.settings .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: #009D91;
+}
+
+/*END Backend Provider Setting */
 
 .dashboard .panel-body i {
     font-size: 20px;
