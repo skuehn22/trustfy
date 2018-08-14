@@ -60,12 +60,20 @@ body {
     border-radius: 4px 4px 0 0 ;
 }
 
-.settings #exTab3 .tab-content {
-    color : white;
+.settings #exTab3 .tab-content .table {
+    color : #535353;
     background-color: #fff;
     padding : 15px 15px;
+}
+
+.settings #exTab3 .tab-content .inner-panel {
+    padding : 25px;
+}
+
+.settings #exTab3 .tab-content {
     border: 1px solid #009D91;
 }
+
 
 .settings #exTab3 .tab-pane {
    padding-top: 20px;

@@ -19,20 +19,21 @@
                 <ul  class="nav nav-pills">
                     <li class="active"><a  href="#1b" data-toggle="tab">Company</a></li>
                     <li><a href="#2b" data-toggle="tab">Account</a></li>
-                    <li><a href="#3b" data-toggle="tab">Payments</a></li>
+                    <li><a href="#3b" data-toggle="tab">Team Members</a></li>
+                    <li><a href="#4b" data-toggle="tab">Banking</a></li>
                 </ul>
                 <div class="tab-content clearfix">
                     <div class="tab-pane active" id="1b">
                         @include('backend.settings.company')
                     </div>
                     <div class="tab-pane" id="2b">
-                        <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+                        @include('backend.settings.account')
                     </div>
                     <div class="tab-pane" id="3b">
-                        <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+                        @include('backend.settings.users')
                     </div>
                     <div class="tab-pane" id="4b">
-                        <h3>We use css to change the background color of the content to be equal to the tab</h3>
+                        @include('backend.settings.payments')
                     </div>
                 </div>
             </div>
@@ -42,4 +43,44 @@
 
 @stop
 @section("js")
+<script>
+
+    $( document ).ready(function() {
+        loadScrips();
+    });
+
+    function loadScrips(){
+
+        //loads content for shortcuts
+        $(".load-content").click(function() {
+            getContent($(this).attr('id'));
+        })
+
+    }
+
+    function getContent($url){
+
+    //alert($url);
+
+    if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+    } else {
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+    if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
+        document.getElementById("content-container").innerHTML = xmlhttp.responseText;
+        loadScrips();
+    }
+    };
+
+    xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/settings/"+ $url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+
+    }
+
+</script>
+
 @stop

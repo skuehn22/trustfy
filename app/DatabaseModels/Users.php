@@ -10,7 +10,7 @@ namespace App\DatabaseModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Provider extends Model
+class Users extends Model
 {
 
     /**
@@ -18,6 +18,6 @@ class Provider extends Model
      *
      * @var string
      */
-    protected $table = 'service_provider';
+    protected $table = 'users';
     protected $primaryKey = 'id';
 }

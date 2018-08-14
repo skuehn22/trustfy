@@ -144,7 +144,7 @@ Dashboard
 
         function getModalContent($url){
 
-            alert($url);
+            //alert($url);
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();

@@ -21,5 +21,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     /* Provider Settings */
     Route::any('/provider/settings', 'Backend\Provider\SettingsController@index') ;
     Route::any('/provider/settings/save-company', 'Backend\Provider\SettingsController@saveCompany') ;
+    Route::any('/provider/settings/save-account', 'Backend\Provider\SettingsController@saveAccount') ;
+    Route::any('/provider/settings/new-team-member', 'Backend\Provider\SettingsController@newTeamMember') ;
+    Route::any('/provider/settings/save-team-member', 'Backend\Provider\SettingsController@saveTeamMember') ;
+    Route::any('/provider/settings/cancel', 'Backend\Provider\SettingsController@cancel') ;
 
 });
