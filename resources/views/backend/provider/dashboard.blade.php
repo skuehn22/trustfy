@@ -58,8 +58,8 @@ Dashboard
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
-                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Contract</p>
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn" id="clients" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fas fa-address-book"></i> <br/><p style="padding-top: 11px;">View Clients</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
