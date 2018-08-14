@@ -18,7 +18,20 @@ class ContractsController extends Controller
 
     public function getTypes() {
 
-        return view('backend.contracts.types', compact('test'));
+        return view('backend.documents.types', compact('test'));
+
+    }
+
+    public function createProposal() {
+
+        return view('backend.documents.proposal.create-proposal', compact('test'));
+
+    }
+
+    public function createProposalBlank() {
+
+
+        return view('backend.documents.proposal.contractors-proposal', compact('test'));
 
     }
 

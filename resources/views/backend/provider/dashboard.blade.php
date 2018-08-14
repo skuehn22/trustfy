@@ -41,24 +41,24 @@ Dashboard
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn" role="button">
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
                                     <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">View Project</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn" role="button">
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
                                     <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">View Project</p>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn" role="button">
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
                                     <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Contract</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn" role="button">
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
                                     <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Contract</p>
                                 </a>
                             </div>
@@ -80,7 +80,7 @@ Dashboard
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
-                                <a href="/en/contracts" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Apps</a>
+                                <a href="/en/documents" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Apps</a>
                                 <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Bookmarks</a>
                                 <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Reports</a>
                                 <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Comments</a>
@@ -127,12 +127,24 @@ Dashboard
 
     <script>
 
-        //loads content for shortcuts
-        $(".modal-btn").click(function() {
-            getModalContent($(this).attr('id'));
-        })
+        $( document ).ready(function() {
+            loadScrips();
+        });
+
+        function loadScrips(){
+
+            //loads content for shortcuts
+            $(".modal-btn").click(function() {
+                getModalContent($(this).attr('id'));
+            })
+
+        }
+
+
 
         function getModalContent($url){
+
+            alert($url);
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -143,6 +155,7 @@ Dashboard
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
+                    loadScrips();
                 }
             }
             xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/"+ $url, true);
