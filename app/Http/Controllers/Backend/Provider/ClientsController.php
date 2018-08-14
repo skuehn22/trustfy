@@ -9,8 +9,9 @@
 namespace App\Http\Controllers\Backend\Provider;
 
 // Libraries
-use App;
-
+use App, Auth;
+use App\DatabaseModels\Clients;
+use App\DatabaseModels\Users;
 use App\Http\Controllers\Controller;
 
 class ClientsController extends Controller
@@ -19,8 +20,11 @@ class ClientsController extends Controller
     public function index() {
 
         $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            ->get();
 
-        return view('backend.clients.index', compact('blade'));
+        return view('backend.clients.index', compact('blade', 'clients'));
 
     }
 

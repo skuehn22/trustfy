@@ -26,7 +26,7 @@ class SettingsController extends Controller
 
         $user = Users::find($blade["user"]->id);
         $provider = $this->getCompany($blade["user"]);
-        $team = Users::where("service_provider_fk", "=", "1")
+        $team = Users::where("service_provider_fk", "=", $provider->id)
             ->get();
 
         return view('backend.settings.index', compact('blade', 'provider', 'user', 'team'));

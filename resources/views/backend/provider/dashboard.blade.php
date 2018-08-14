@@ -2,7 +2,7 @@
 @section('seo')
 @stop
 @section('css')
-
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
 @stop
 @section('breadcrumb')
 Dashboard

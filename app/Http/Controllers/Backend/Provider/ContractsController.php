@@ -18,6 +18,7 @@ class ContractsController extends Controller
 
     public function getTypes() {
 
+
         return view('backend.documents.types', compact('test'));
 
     }
