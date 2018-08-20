@@ -16,7 +16,7 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
-
+    @yield('seo')
     <style>
         @yield('css')
     </style>

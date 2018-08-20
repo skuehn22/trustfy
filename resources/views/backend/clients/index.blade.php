@@ -1,17 +1,15 @@
 
             <fieldset class="scheduler-border">
-                <legend class="scheduler-border">Übersicht</legend>
+                <legend class="scheduler-border">Clients</legend>
                 <table class="table table-bordered display" id="myTable">
                     <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th>Firma</th>
-                        <th>Adresse</th>
-                        <th>PLZ</th>
-                        <th>Stadt</th>
-                        <th>Land</th>
-                        <th>Typ</th>
-                        <th>Status</th>
+                        <th>Lastname</th>
+                        <th>Firstname</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Mail</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -20,17 +18,9 @@
                             <td style="width:30px"><input type="checkbox" class="radio" value="{{$client->id}}" name="check"></td>
                             <td>{{$client->lastname}}</td>
                             <td>{{$client->firstname}}</td>
-                            <td>{{$client->company}}</td>
                             <td>{{$client->address}}</td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td style="text-align: center">
-
-                            </td>
+                            <td>{{$client->city}}</td>
+                            <td>{{$client->mail}}</td>
                         </tr>
                     @endforeach
                     </tbody>

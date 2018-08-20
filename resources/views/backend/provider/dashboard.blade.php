@@ -1,8 +1,10 @@
 @extends('backend.master')
 @section('seo')
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
 @stop
 @section('css')
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+
 @stop
 @section('breadcrumb')
 Dashboard
@@ -123,7 +125,7 @@ Dashboard
 @stop
 @section("js")
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
     <script>
 
@@ -136,10 +138,126 @@ Dashboard
             //loads content for shortcuts
             $(".modal-btn").click(function() {
                 getModalContent($(this).attr('id'));
-            })
+            });
+
+            //loads content for shortcuts
+            $(".load-modul").click(function() {
+
+                url=$(this).attr('id');
+
+                data = {};
+
+                obj = {
+                    "client": $( "select#clients option:checked" ).val(),
+                    "expiresdate": $("#expires-date").val(),
+                    "dateproposal": $("#date-proposal").val()
+                };
+
+                data["proposal"] = JSON.stringify(obj);
+                action(url, data);
+
+            });
+
+            $( ".date_proposal" ).datepicker({
+                required: true,
+                minDate: +7,
+                numberOfMonths: 1,
+                clearText: 'delete', clearStatus: 'delete current date',
+                closeText: 'close', closeStatus: 'close without changes',
+                prevText: 'back', prevStatus: 'show last month',
+                nextText: 'forward', nextStatus: 'show next month',
+                currentText: 'today', currentStatus: '',
+                monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                monthStatus: 'show other month', yearStatus: 'show other year',
+                weekHeader: 'We', weekStatus: 'Week of the month',
+                dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+                dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+                dayStatus: 'Set DD as first Weekday', dateStatus: 'Choose D, M d',
+                dateFormat: 'dd.mm.yy', firstDay: 1,
+                initStatus: 'Select a date', isRTL: false,
+                onClose: function( selectedDate ) {
+                    if(selectedDate!=null && selectedDate!=""){
+                        var current_date = $.datepicker.parseDate('dd.mm.yy', selectedDate);
+                        current_date.setDate(current_date.getDate()+1);
+                        $( ".expires_date" ).datepicker( "show", "option", "minDate", current_date );
+                    }
+                }
+            });
+
+            $( ".expires_date" ).datepicker({
+                required: true,
+                numberOfMonths: 1,
+                clearText: 'delete', clearStatus: 'delete current date',
+                closeText: 'close', closeStatus: 'close without changes',
+                prevText: 'back', prevStatus: 'show last month',
+                nextText: 'forward', nextStatus: 'show next month',
+                currentText: 'today', currentStatus: '',
+                monthNames: ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'],
+                monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun',
+                    'Jul','Aug','Sep','Oct','Nov','Dec'],
+                monthStatus: 'show other month', yearStatus: 'show other year',
+                weekHeader: 'We', weekStatus: 'Week of the month',
+                dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                dayNamesShort: ['Su','Mo','Tu','Wed','Thu','Fri','Sat'],
+                dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+                dayStatus: 'Set DD as first Weekday', dateStatus: 'Wähle D, M d',
+                dateFormat: 'dd.mm.yy', firstDay: 1,
+                minDate: 0+1,
+                initStatus: 'Select a date', isRTL: false,
+                onClose: function( selectedDate ) {
+                    if(selectedDate!=null && selectedDate!=""){
+                        var current_date = $.datepicker.parseDate('dd.mm.yy', selectedDate);
+                        current_date.setDate(current_date.getDate()-1);
+                        $( ".expires_date" ).datepicker( "option", "minDate", current_date);
+                        $( ".expires_date" ).datepicker( "show");
+                    }
+                }
+            });
+
 
         }
 
+        function action(url, data){
+
+            //alert($url);
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
+                    loadScrips();
+                }
+            };
+
+
+            urlAddress = "{{env("MYHTTP")}}/{{$blade['locale']}}/provider/" + url;
+
+
+            if(data != null && Object.keys(data).length > 0) {
+
+                urlAddress += "?";
+
+                for (var k in data) {
+                    urlAddress += k + "=" + data[k] + "&";
+                }
+
+                urlAddress = urlAddress.slice(0, -1);
+
+            }
+
+            xmlhttp.open("GET", urlAddress, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+
+        }
 
 
         function getModalContent($url){
@@ -163,6 +281,8 @@ Dashboard
             xmlhttp.send();
 
         }
+
+
 
     </script>
 

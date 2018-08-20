@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-md-12" style="padding-left:25px;">
-                            @include('backend.documents.progress-bar-step1')
+                            @include('backend.documents.progress-bar-step2')
                         </div>
                     </div>
                     <div class="row">

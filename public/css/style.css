@@ -161,6 +161,15 @@ body {
     height: 140px;
 }
 
+.proposal-create .panel-body .btn:not(.btn-block) {
+    width: auto;
+    height: auto;
+}
+
+.proposal-create {
+    color: #a79f9f;
+}
+
 .dashboard .panel-primary>.panel-heading {
     color: #fff;
     background-color: #009D91;
@@ -261,6 +270,16 @@ body {
 .contract-types .shortcuts-boxes{
     text-align: center;
     padding: 20px 0px 20px 0px;
+}
+
+.proposal-create .btn-outline-orange {
+    color: #FF9340;
+    background-color: #fff;
+    border-color: #FF9340;
+    border-radius: 2px;
+    font-weight: 600;
+    width:100%;
+    heigth:100%;
 }
 
 .green_darker{

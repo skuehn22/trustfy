@@ -17,6 +17,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/provider/contract-types', 'Backend\Provider\ContractsController@getTypes') ;
     Route::any('/provider/create-proposal/', 'Backend\Provider\ContractsController@createProposal') ;
     Route::any('/provider/create-proposal-blank/', 'Backend\Provider\ContractsController@createProposalBlank') ;
+    Route::any('/provider/save-proposal-blank/', 'Backend\Provider\ContractsController@saveProposalBlank') ;
+    Route::any('/provider/load-proposal-blank-template/', 'Backend\Provider\ContractsController@loadProposalTemplate') ;
 
     /* Provider Clients */
     Route::any('/provider/clients', 'Backend\Provider\ClientsController@index') ;
