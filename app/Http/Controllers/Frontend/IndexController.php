@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function index() {
 
         $blade["locale"] = App::getLocale();
-
+        $session = Session::get('user_session');
         return view('backend.provider.dashboard', compact('blade'));
 
     }

@@ -14,7 +14,9 @@ use App\DatabaseModels\Clients;
 use App\DatabaseModels\Provider;
 use App\DatabaseModels\ContractsProposal;
 use App\Http\Controllers\Controller;
-use Auth, Form, Session;
+use Auth, Form, Session, Redirect;
+use Illuminate\Support\Str;
+use PhpParser\Node\Expr\Array_;
 
 class ContractsController extends Controller
 {
@@ -28,6 +30,7 @@ class ContractsController extends Controller
 
     public function createProposal() {
 
+        Session::set('session_create_doc', Str::random(64));
         return view('backend.documents.proposal.create-proposal', compact('test'));
 
     }
@@ -35,6 +38,18 @@ class ContractsController extends Controller
     public function createProposalBlank() {
 
         $blade["user"] = Auth::user();
+        $session = Session::get('session_create_doc');
+        $contract_data = ContractsProposal::where("session", "=", $session)
+                ->first();
+
+        if(empty($contract_data)){
+
+            $contract_data = array(
+                "date" => "",
+                "clients_fk" => "",
+                "expires"   => "",
+            );
+        }
 
         $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->get();
@@ -42,13 +57,13 @@ class ContractsController extends Controller
         $provider = Provider::where("id", "=", $blade["user"]->service_provider_fk)
             ->first();
 
-        return view('backend.documents.proposal.contractors-proposal', compact('clients', 'provider'));
+        return view('backend.documents.proposal.contractors-proposal', compact('clients', 'provider', 'contract_data'));
 
     }
 
+
     public function saveProposalBlank() {
 
-        $session = Session::get('user_session');
         $blade["user"] = Auth::user();
         $proposal_get = json_decode($_GET["proposal"]);
 
@@ -58,7 +73,8 @@ class ContractsController extends Controller
         $proposal->clients_fk = $proposal_get->client;
         $date = date('Y-m-d', strtotime($proposal_get->dateproposal));
         $proposal->date = $date;
-        $proposal->session = $session;
+
+        $proposal->session = Session::get('session_create_doc');
         $proposal->expires = date('Y-m-d', strtotime($proposal_get->expiresdate));
         $proposal->save();
 
@@ -69,6 +85,7 @@ class ContractsController extends Controller
     public function loadProposalTemplate() {
 
         $test="";
+        return Redirect::to(env("/en/provider/load-proposal-blank-template/"));
 
     }
 

@@ -13,13 +13,15 @@
                             @include('backend.documents.progress-bar-step3')
                         </div>
                     </div>
-                    <div class="row" style="padding-top: 25px; ">
-                        <div class="col-xs-12 col-md-4">
+                    <div class="row">
+                        <div class="col-md-12"><hr></div>
+                        <div class="col-md-offset-1  col-md-10"><h4>Enter Basis Information</h4></div>
+                        <div class="col-xs-12 col-md-offset-1 col-md-3">
                             <div class="form-group">
-                                <label for="name_provider" class="control-label">Your Company</label>
-                                <input style="border: none; box-shadow: none; padding:0px; line-height: normal;" type="text" id="name_provider" class="form-control" name="name_provider" required value="{{$provider->name}}"/>
-                                <input style="border: none; box-shadow: none; padding:0px; line-height: normal;" type="text" id="address_provider" class="form-control" name="address_provider" required value="{{$provider->address}}"/>
-                                <input style="border: none; box-shadow: none; padding:0px; line-height: normal;" type="text" id="city_provider" class="form-control" name="city_provider" required value="{{$provider->city}}"/>
+                                <label for="name_provider" class="control-label">Your Company</label><br/>
+                                <span>{{$provider->name}}</span><br/>
+                                <span>{{$provider->address}}</span><br/>
+                                <span>{{$provider->city}}</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-4">
@@ -27,13 +29,17 @@
                                 <label for="clients" class="control-label">For Client</label>
                                 <select class="form-control" name="clients" id="clients">
                                     @foreach($clients as $client)
-                                        <option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+                                        @if($client->id == $contract_data["clients_fk"])
+                                            <option value="{{$client->id}}" disabled selected>{{$client->lastname}}, {{$client->firstname}}</option>
+                                        @else
+                                            <option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
 
                         </div>
-                        <div class="col-xs-12 col-md-4">
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group">
                                 <label for="date_proposal">Offer Date</label>
                                 <input
@@ -48,7 +54,9 @@
                                         data-provide="datepicker"
                                         class="form-control"
                                         name="date-proposal"
-                                        id="date-proposal"/>
+                                        id="date-proposal"
+                                        value="{{$contract_data["date"]}}"
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="date_proposal">Expires Date</label>
@@ -64,13 +72,15 @@
                                         data-provide="datepicker"
                                         class="form-control"
                                         name="expires-date"
-                                        id="expires-date"/>
+                                        id="expires-date"
+                                        value="{{$contract_data["expires"]}}"
+                                />
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="text-align: right;">
-                            <button type="submit" class="btn btn-orange load-modul" id="save-proposal-blank">Next Step</button>
+                        <div class="col-md-11" style="text-align: right;">
+                              <button type="submit" class="btn btn-orange load-modul" id="save-proposal-blank">Next Step</button>
                         </div>
                     </div>
                 </div>

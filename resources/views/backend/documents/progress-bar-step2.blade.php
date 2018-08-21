@@ -1,7 +1,7 @@
 <div class="row bs-wizard" style="border-bottom:0;">
     <div class="col-xs-3 bs-wizard-step complete">
         <div class="progress"><div class="progress-bar"></div></div>
-        <a href="#" class="bs-wizard-dot"></a>
+        <a href="#" id="contract-types" class="bs-wizard-dot modal-btn"></a>
         <div class="text-center bs-wizard-stepnum">Document Typ</div>
     </div>
 
