@@ -282,6 +282,16 @@ body {
     heigth:100%;
 }
 
+.header-kpis{
+    float: right;
+    height: 50px;
+    padding: 15px 15px;
+    padding-right: 0px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #00665E;
+}
+
 .green_darker{
     color: #00665E;
 }

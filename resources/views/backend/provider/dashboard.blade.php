@@ -47,6 +47,19 @@ Dashboard
                         </div>
                     </div>
                 </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <i class="far fa-chart-bar"></i> KPIs</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-12">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-8">
                 <div class="panel panel-primary">
