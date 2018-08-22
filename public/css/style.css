@@ -208,6 +208,11 @@ body{background: #24C6DC;  /* fallback for old browsers */
     border-color: #FF6F00;
 }
 
+.settings #exTab3 .tab-content {
+    border: 1px solid #009D91;
+    background-color: aliceblue;
+}
+
 .panel {
     border: 1px solid #ddd;
     background-color: #fcfcfc;
