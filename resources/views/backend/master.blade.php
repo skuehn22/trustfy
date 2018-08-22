@@ -43,7 +43,9 @@
             </div>
         </div>
         <div class="col-md-8" style="float: right;">
-            @include('backend.kpis.index')
+            @if(Auth::user())
+                @include('backend.kpis.index')
+            @endif
         </div>
 <!--
         <div class="col-md-4">
