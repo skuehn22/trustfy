@@ -10,9 +10,6 @@
         <link rel="stylesheet" href="{{ asset('assets_marketplace/bootstrap/css/bootstrap.min.css') }} " type="text/css">
         <link rel="stylesheet" href="{{ asset('assets_marketplace/plugins/font-awesome/css/font-awesome.css') }}" type="text/css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <!-- Dlapak styles -->
-        <link id="theme_style" type="text/css" href="{{ asset('assets_marketplace/css/style1.css') }}" rel="stylesheet" media="screen">
-
 
         <!-- Favicon -->
         <link href="{{ asset('assets_marketplace/img/favicon.png') }}" rel="icon" type="image/png">
@@ -25,7 +22,12 @@
         <script src="{{ asset('assets_marketplace/js/jquery.js') }}"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
+        <!-- Dlapak styles -->
+        <link id="theme_style" type="text/css" href="{{ asset('assets_marketplace/css/style1.css') }}" rel="stylesheet" media="screen">
+
+
         <style>
             /* CSS used here will be applied after bootstrap.css */
 
@@ -44,6 +46,17 @@
             .ad { padding: 5px;background: #F5F5F5;color: #222;font-size: 80%;border: 1px solid #E5E5E5; }
             .ad a.title {color: #15C;text-decoration: none;font-weight: bold;font-size: 110%;}
             .ad a.url {color: #093;text-decoration: none;}
+            h2 {color: #000;}
+            .ui-dialog {
+                z-index:4000;
+            }
+
+            .ui-widget-header {
+                border: 1px solid #00e782;
+                background: #00e782;
+                color: #333333;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
@@ -422,33 +435,84 @@
             </div>
         </div>
 
+        <div id="dialog" title="Caution">
+            <p>Your description seems to be very short. Please describe exactly what your offer includes.</p><p> An exact description will prevent later misunderstandings. </p>
+        </div>
+
+        <div id="send-offer-dialog" title="Proposal sended">
+            <p>Your offer has been sent to the customer.</p>
+        </div>
+
         <!-- Essentials -->
         <script src="/assets_marketplace/bootstrap/js/bootstrap.min.js"></script>
         <script src="/assets_marketplace/plugins/owl-carousel/owl.carousel.js"></script>
         <script src="/assets_marketplace/plugins/counter/jquery.countTo.js"></script>
         <script src="/assets_marketplace/plugins/flexslider/jquery.flexslider.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript">
 
             $(document).ready(function () {
 
                 loadScrips();
-
-                // ===============Flexslider=====================
-                $('.flexslider').flexslider({
-                    animation: "slide",
-                    controlNav: "thumbnails",
-                    directionNav: false,
-                    start: function (slider) {
-                        $('body').removeClass('loading');
-                    }
-                });
-
+                $('#dialog').dialog();
+                $('#dialog').dialog('close');
+                $('#send-offer-dialog').dialog();
+                $('#send-offer-dialog').dialog('close');
                 // ==========tooltip initial=================
                 $('[data-toggle="tooltip"]').tooltip();
             });
 
 
             function loadScrips(){
+
+                $("#paymenttyp").on("change", function() {
+
+
+
+                    var id = $(this).val();
+
+                    if(id == 2){
+                        $(".milestonepay").show();
+                    }else{
+                        $(".milestonepay").hide();
+                    }
+                });
+
+                $(".add-row").click(function(){
+                    var name = $("#name").val();
+                    var percentages = $("#percentages").val();
+                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + percentages + " %</td></tr><tr><td colspan='3'><hr></td></tr>";
+                    $("table tbody").append(markup);
+                    $('.create-offer').removeAttr("disabled")
+                });
+
+                $(".create-offer").click(function(){
+                    $('.send-offer').removeAttr("disabled");
+                    $('.create-offer').addClass("disabled");
+                });
+
+                $(".send-offer").click(function(){
+                    $('#send-offer-dialog').dialog('open');
+                });
+
+
+                // Find and remove selected table rows
+                $(".delete-row").click(function(){
+                    $("table tbody").find('input[name="record"]').each(function(){
+                        if($(this).is(":checked")){
+                            $(this).parents("tr").remove();
+                        }
+                    });
+                });
+
+                $("#desc").focusout(function () {
+
+                    $('#dialog').dialog('open');
+
+                });
 
                 //loads content for shortcuts
                 $(".modal-btn").click(function() {
@@ -463,7 +527,7 @@
                     data = {};
 
                     obj = {
-                        "client": $( "select#clients option:checked" ).val(),
+                        "client": "1",
                         "expiresdate": $("#expires-date").val(),
                         "dateproposal": $("#date-proposal").val()
                     };
@@ -600,5 +664,6 @@
 
 
         </script>
+
     </body>
 </html> 

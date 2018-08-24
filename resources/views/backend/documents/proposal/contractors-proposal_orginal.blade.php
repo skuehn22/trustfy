@@ -15,14 +15,31 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12"><hr></div>
-                        <div class="col-md-10" style="padding-left:62px; padding-right:62px; padding-bottom:15px;"><h4> <strong>Basis Information</strong></h4></div>
-                        <div class="col-xs-12 col-md-12"  style="padding-left:62px;">
-                                <strong>Your Company: </strong>{{$provider->name}}, {{$provider->address}}, {{$provider->city}} <i class="fas fa-pen"></i>
+                        <div class="col-md-10" style="padding-left:62px;"><h4>Basis Information</h4></div>
+                        <div class="col-xs-12 col-md-3"  style="padding-left:62px;">
+                            <div class="form-group">
+                                <label for="name_provider" class="control-label">Your Company</label><br/>
+                                <span>{{$provider->name}}</span><br/>
+                                <span>{{$provider->address}}</span><br/>
+                                <span>{{$provider->city}}</span>
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-md-12"  style="padding-left:62px; padding-bottom:15px;">
-                           <input type="hidden" value="1" id="clients" name="clients"> <strong>Client: </strong>{{$provider->name}}, {{$provider->address}}, {{$provider->city}} <i class="fas fa-pen"></i>
+                        <div class="col-xs-12 col-md-4">
+                            <div class="form-group">
+                                <label for="clients" class="control-label">For Client</label>
+                                <select class="form-control" name="clients" id="clients">
+                                    @foreach($clients as $client)
+                                        @if($client->id == $contract_data["clients_fk"])
+                                            <option value="{{$client->id}}" disabled selected>{{$client->lastname}}, {{$client->firstname}}</option>
+                                        @else
+                                            <option value="{{$client->id}}">{{$client->lastname}}, {{$client->firstname}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="col-xs-12 col-md-6"  style="padding-left:62px; padding-right:62px; padding-bottom:15px;">
+                        <div class="col-xs-12 col-md-3">
                             <div class="form-group">
                                 <label for="date_proposal">Offer Date</label>
                                 <input
@@ -41,8 +58,6 @@
                                         value="{{$contract_data["date"]}}"
                                 />
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-md-6" style="padding-right:62px;">
                             <div class="form-group">
                                 <label for="date_proposal">Expires Date</label>
                                 <input
@@ -62,30 +77,9 @@
                                 />
                             </div>
                         </div>
-
-
-                        <div class="col-xs-12 col-md-12"  style="padding-left:62px; padding-right:62px; padding-bottom:15px;">
-                        <div class="form-group">
-                            <label for="comment">Description:</label>
-                            <textarea class="form-control" rows="5" id="desc"></textarea>
-                        </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6"  style="padding-left:62px; padding-bottom:15px; float:left;">
-
-                            <strong>Requested Price:</strong> <input type="text" class="form-control" value="1200,00 €" readonly/>
-
-                        </div>
-                        <div class="col-xs-12 col-md-6" style="padding-right:62px;">
-
-                            <strong>Your Offer:</strong>  <input type="text" class="form-control" value="1100,00 €"/>
-
-                        </div>
-
-
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="text-align: right;  padding-right:62px; padding-bottom: 25px;">
+                        <div class="col-md-11" style="text-align: right;">
                               <button type="submit" class="btn btn-orange load-modul" id="save-proposal-blank">Next Step</button>
                         </div>
                     </div>
