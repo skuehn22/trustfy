@@ -49,7 +49,21 @@ class HomeController extends Controller
 
         }
         */
-
-
     }
+
+    public function marketplace() {
+        $blade["locale"] = App::getLocale();
+        return view('marketplace.index', compact('blade'));
+    }
+
+    public function marketplaceCats() {
+        $blade["locale"] = App::getLocale();
+        return view('marketplace.category', compact('blade'));
+    }
+
+    public function marketplaceDetail() {
+        $blade["locale"] = App::getLocale();
+        return view('marketplace.detail', compact('blade'));
+    }
+
 }

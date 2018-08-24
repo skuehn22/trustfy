@@ -12,6 +12,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     Route::auth();
     Route::get('/', 'HomeController@index') ;
+    Route::get('/marketplace', 'HomeController@marketplace') ;
+    Route::get('/marketplace/categories', 'HomeController@marketplaceCats') ;
+    Route::get('/marketplace/detail', 'HomeController@marketplaceDetail') ;
+    Route::get('/marketplace', 'HomeController@marketplace') ;
 
 });
 

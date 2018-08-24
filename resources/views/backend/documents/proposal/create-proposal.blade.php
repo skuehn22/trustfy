@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-xs-12 col-md-4 shortcuts-boxes">
                             <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
-                                <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Performers, Artists</p>
+                                <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Performer</p>
                             </a>
                         </div>
                         <div class="col-xs-12 col-md-4 shortcuts-boxes">

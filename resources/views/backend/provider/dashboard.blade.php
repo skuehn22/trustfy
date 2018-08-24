@@ -1,4 +1,10 @@
-@extends('backend.master')
+@if (env('APP_ENV')=='local')
+    @extends('backend.master')
+@else
+    @extends('backend.master_marketplace')
+@endif
+
+
 @section('seo')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
@@ -37,7 +43,7 @@ Dashboard
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <i class="far fa-envelope"></i> Inbox</h3>
+                            <i class="far fa-envelope"></i> Inbox </h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
