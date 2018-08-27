@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-xs-12 col-md-6" style="padding-right:62px;">
                             <div class="form-group">
-                                <label for="date_proposal">Experation Date</label>
+                                <label for="date_proposal">Expiration Date</label>
                                 <input
                                         type="text"
                                         data-date-autoclose="true"

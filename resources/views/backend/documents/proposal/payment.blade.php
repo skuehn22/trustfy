@@ -46,7 +46,7 @@
                                         <th style="width:300px;">Percentage</th>
                                         <th style="width:150px; text-align: right;">Amount  </th>
                                     </tr>
-                                    <tr><td><input type='checkbox' name='record'></td><td>Project Start</td><td>50 %</td><td style="text-align: right;">2500.00 €</td></tr><tr><td colspan='3'><hr></td></tr>
+                                    <tr><td><input type='checkbox' name='record'></td><td>Project Start</td><td>50 %</td><td style="text-align: right;">550.00 €</td></tr>
                                     <tr>
                                         <td colspan="4" style="width:100%;"> <hr></td>
                                     </tr>

@@ -76,7 +76,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="new-ads"><a href="account_create_post.html" class="btn btn-ads btn-block">Advertise</a></li>
-                            <li><a href="signup.html">Signup</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown"><strong class="caret"></strong>&nbsp;Pages</a>
                                 <ul class="dropdown-menu">
@@ -484,7 +484,7 @@
                 $(".add-row").click(function(){
                     var name = $("#name").val();
                     var percentages = $("#percentages").val();
-                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + percentages + " %</td><td style='text-align:right;'>2500.00 €</td></tr><tr><td colspan='3'><hr></td></tr>";
+                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + percentages + " %</td><td style='text-align:right;'>550.00 €</td></tr><tr><td colspan='3'><hr></td></tr>";
                     $("table tbody").append(markup);
                     $('.create-offer').removeAttr("disabled")
                 });
