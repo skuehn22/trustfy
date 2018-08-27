@@ -42,11 +42,13 @@
                                     <thead>
                                     <tr>
                                         <th style="width:100px;">Select</th>
-                                        <th style="width:200px;">Name</th>
-                                        <th style="width:200px;">Percentages</th>
+                                        <th style="width:250px;">Name</th>
+                                        <th style="width:300px;">Percentages</th>
+                                        <th style="width:150px;">Amount  </th>
                                     </tr>
+                                    <tr><td><input type='checkbox' name='record'></td><td>Project Start</td><td>50 %</td><td style="text-align: rigth;">2500,00 €</td></tr><tr><td colspan='3'><hr></td></tr>
                                     <tr>
-                                        <td colspan="3" style="width:100%;"> <hr></td>
+                                        <td colspan="4" style="width:100%;"> <hr></td>
                                     </tr>
                                     </thead>
                                     <tbody>
