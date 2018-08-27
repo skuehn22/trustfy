@@ -439,8 +439,8 @@
             <p>Your description seems to be very short. Please describe exactly what your offer includes.</p><p> An exact description will prevent later misunderstandings. </p>
         </div>
 
-        <div id="send-offer-dialog" title="Proposal sended">
-            <p>Your offer has been sent to the customer.</p>
+        <div id="send-offer-dialog" title="Proposal sent!">
+            <p>Your offer has been sent to John Doe.</p>
         </div>
 
         <!-- Essentials -->
@@ -484,7 +484,7 @@
                 $(".add-row").click(function(){
                     var name = $("#name").val();
                     var percentages = $("#percentages").val();
-                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + percentages + " %</td><td style='text-align:right;'><strong>2500,00 €</strong></td></tr><tr><td colspan='3'><hr></td></tr>";
+                    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + percentages + " %</td><td style='text-align:right;'>2500.00 €</td></tr><tr><td colspan='3'><hr></td></tr>";
                     $("table tbody").append(markup);
                     $('.create-offer').removeAttr("disabled")
                 });

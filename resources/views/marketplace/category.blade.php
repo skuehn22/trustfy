@@ -181,7 +181,7 @@
                                         <select class="form-control">
                                             <option>All Type</option>
                                             <option>New</option>
-                                            <option selected="">Used</option>
+                                            <option selected="">Near me</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 text-right  cat-search-input">

@@ -2,7 +2,7 @@
     <div class="col-xs-3 bs-wizard-step active">
         <div class="progress"><div class="progress-bar"></div></div>
         <a href="#" class="bs-wizard-dot"></a>
-        <div class="text-center bs-wizard-stepnum">Document Typ</div>
+        <div class="text-center bs-wizard-stepnum">Document Type</div>
     </div>
 
     <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->

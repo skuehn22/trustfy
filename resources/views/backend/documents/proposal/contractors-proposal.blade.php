@@ -15,12 +15,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12"><hr></div>
-                        <div class="col-md-10" style="padding-left:62px; padding-right:62px; padding-bottom:15px;"><h4> <strong>Basis Information</strong></h4></div>
+                        <div class="col-md-10" style="padding-left:62px; padding-right:62px; padding-bottom:15px;"><h4> <strong>Basic Information</strong></h4></div>
                         <div class="col-xs-12 col-md-12"  style="padding-left:62px;">
                                 <strong>Your Company: </strong>{{$provider->name}}, {{$provider->address}}, {{$provider->city}} <i class="fas fa-pen"></i>
                         </div>
                         <div class="col-xs-12 col-md-12"  style="padding-left:62px; padding-bottom:15px;">
-                           <input type="hidden" value="1" id="clients" name="clients"> <strong>Client: </strong>{{$provider->name}}, {{$provider->address}}, {{$provider->city}} <i class="fas fa-pen"></i>
+                           <input type="hidden" value="1" id="clients" name="clients"> <strong>Client: </strong>John Doe, Columbus Street, Dublin <i class="fas fa-pen"></i>
                         </div>
                         <div class="col-xs-12 col-md-6"  style="padding-left:62px; padding-right:62px; padding-bottom:15px;">
                             <div class="form-group">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-xs-12 col-md-6" style="padding-right:62px;">
                             <div class="form-group">
-                                <label for="date_proposal">Expires Date</label>
+                                <label for="date_proposal">Experation Date</label>
                                 <input
                                         type="text"
                                         data-date-autoclose="true"
@@ -58,7 +58,7 @@
                                         class="form-control"
                                         name="expires-date"
                                         id="expires-date"
-                                        value="{{$contract_data["expires"]}}"
+                                        value="30.09.2018"
                                 />
                             </div>
                         </div>

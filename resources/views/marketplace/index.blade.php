@@ -42,7 +42,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="new-ads"><a href="account_create_post.html" class="btn btn-ads btn-block">Advertise</a></li>
-                            <li><a href="signup.html">Signup</a></li>
+                            <li><a href="signup.html">Sign up</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown"><strong class="caret"></strong>&nbsp;Pages</a>
                                 <ul class="dropdown-menu">
@@ -88,7 +88,7 @@
             <section class="hero">
                 <div class="container text-center">
                     <h2 class="hero-title">Find an Awesome Freelancer Here</h2>
-                    <p class="hero-description hidden-xs">Find all things you need on DLapak. We give you a simple way.</p>
+                    <p class="hero-description hidden-xs">Find everything you need on our Marketplace. We give you a simple way.</p>
                     <div class="row hero-search-box">
                         <form>
                             <div class="col-md-4 col-sm-4 search-input">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-md-4 col-sm-4 search-input">
                                         <select class="form-control input-lg search-second">
-                                            <option selected="">All Location</option>
+                                            <option selected="">All Locations</option>
                                             <option>Cork</option>
                                             <option>Dublin</option>
                                             <option>Wexford</option>
@@ -117,7 +117,7 @@
                                 <div class="col-xs-4 col-sm-3">
                                     <div class="shortcut">
                                         <a href="/marketplace/categories"><i class="fas fa-music shortcut-icon icon-blue"></i></a>
-                                        <a href="/marketplace/categories"><h3>Performer</h3></a>
+                                        <a href="/marketplace/categories"><h3>Performers</h3></a>
                                         <span class="total-items">234,567</span>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                                 <div class="col-xs-4 col-sm-3">
                                     <div class="shortcut">
                                         <a href="/marketplace/categories"><i class="fa fa-gears shortcut-icon icon-light-blue"></i></a>
-                                        <a href="/marketplace/categories"><h3>Repairman</h3></a>
+                                        <a href="/marketplace/categories"><h3>Repairmen</h3></a>
                                         <span class="total-items">15,546</span>
                                     </div>  
                                 </div>
@@ -350,7 +350,7 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="widget">
                                 <div class="widget-header">
-                                    <h3>Quick Signup</h3>
+                                    <h3>Quick Sign up</h3>
                                 </div>
                                 <div class="widget-body">
                                     <form >
@@ -367,7 +367,7 @@
                                             <div class="checkbox">
                                                 <label class="string optional" for="terms">
                                                     <input type="checkbox" id="terms" style="">
-                                                    <a href="#">I Agree with Term and Conditions</a>
+                                                    <a href="#">I Agree to Term and Conditions</a>
                                                 </label>
                                             </div>
                                         </div>
