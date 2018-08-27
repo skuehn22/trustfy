@@ -67,7 +67,7 @@
                         <div class="col-xs-12 col-md-12"  style="padding-left:62px; padding-right:62px; padding-bottom:15px;">
                         <div class="form-group">
                             <label for="comment">Description:</label>
-                            <textarea class="form-control" rows="5" id="desc"></textarea>
+                            <textarea class="form-control" rows="5" id="desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</textarea>
                         </div>
                         </div>
 
