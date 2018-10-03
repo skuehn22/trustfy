@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'mangopay' => [
+        'env'    => env('MANGOPAY_ENV', 'sandbox'),  // or "production"
+        'key'    => env('MANGOPAY_KEY'),             // your Mangopay client ID
+        'secret' => env('MANGOPAY_SECRET'),          // your Mangopay client password
+    ],
+
 ];

@@ -89,8 +89,8 @@ Dashboard
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
-                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Contract</p>
+                                <a href="/en/mangopay/sandbox" class="btn btn-outline-grey btn-lg panel-btn" role="button">
+                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Mangopay Sandbox</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
@@ -106,6 +106,7 @@ Dashboard
                         </div>
                         <!--<a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>-->
                     </div>
+
                 </div>
                 <!--
                 <div class="panel panel-primary">
