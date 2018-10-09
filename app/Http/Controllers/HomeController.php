@@ -32,11 +32,12 @@ class HomeController extends Controller
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        //Session::get('variableName');
-        //$test = Session::all();
-        $test = Session::all();
         if($blade["user"]->role == 0 ) {
             return Redirect::to($blade["locale"]."/provider/dashboard");
+        }
+
+        if($blade["user"]->role == 2 ) {
+            return Redirect::to($blade["locale"]."/applaud/admin/dashboard");
         }
 
 
@@ -64,6 +65,17 @@ class HomeController extends Controller
     public function marketplaceDetail() {
         $blade["locale"] = App::getLocale();
         return view('marketplace.detail', compact('blade'));
+    }
+
+    public function logout(Request $request){
+
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        Auth::logout();
+        Session::flash('success',"logout");
+        return Redirect::to($blade["locale"]."/login");
+
     }
 
 }
