@@ -241,6 +241,38 @@ class SandboxController extends Controller
 
     }
 
+    public function createLegalUser() {
+        try {
+
+            // create user for payment
+            $user = new MangoPay\UserLegal();
+
+            $user->LegalPersonType = \MangoPay\LegalPersonType::Business;
+            $user->Name = "Company Name";
+            $user->Email = "test@legal.de";
+            $user->LegalRepresentativeFirstName = "Firstname";
+            $user->LegalRepresentativeLastName = "Lastname";
+            $user->LegalRepresentativeBirthday = time();
+            $user->LegalRepresentativeNationality = "FR";
+            $user->LegalRepresentativeCountryOfResidence = "FR";
+            $createdPerformer = $this->mangopay->Users->Create($user);
+
+            return Redirect::to("/mangopay/sandbox")->withInput()->with('success', 'User erfolgreich angelegt');
+
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
     public function getAllUser() {
         try {
 

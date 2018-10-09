@@ -168,7 +168,7 @@
 
             $( "#create-button" ).click(function() {
                 $( ".button-area" ).show();
-                hash = setEscrow();
+                hash = setEscrow( $('#performers').val(),  $('#clients_').val());
                 btn = "<a class='btn btn-success' href='' role='button'>Link</a>"
                 $( "#pay-button-area" ).val(btn);
             });
@@ -340,7 +340,7 @@
 
         }
 
-        function setEscrow(){
+        function setEscrow(performer_mail, client_mail){
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -351,11 +351,10 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     //document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
-                    loadScrips();
                 }
             };
 
-            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/admin/set-escrow", true);
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/admin/set-escrow?performer="+performer_mail+"&client="+client_mail, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
 

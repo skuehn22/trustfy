@@ -40,7 +40,8 @@
 
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#offer" aria-controls="offer" role="tab" data-toggle="tab">Create Offer</a></li>
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Create User</a></li>
+                    <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Create Natural User</a></li>
+                    <li role="presentation"><a href="#legaluser" aria-controls="home" role="tab" data-toggle="tab">Create Legal User</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Create Wallet</a></li>
                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Make a PayIn</a></li>
                     <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Create Bank Account</a></li>
@@ -82,6 +83,29 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <form action="/mangopay/sandbox/create-user" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Firstname</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Lastname</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Lastname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">E-Mail</label>
+                                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter E-Mail" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Create User</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="legaluser">
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form action="/mangopay/sandbox/create-legal-user" method="post">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Firstname</label>

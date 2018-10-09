@@ -1,13 +1,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Performer</label>
-                    <select class="form-control">
-                        <option>Joe Doe</option>
-                    </select>
-                </div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Performer</label>
+                <select class="form-control" id="performers">
+                    <option value="performer@applaud.com">performer@applaud.com</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Client</label>
+                <select class="form-control" id="clients_" name="clients_">
+                    <option value="client@applaud.com">client@applaud.com</option>
+                </select>
+            </div>
                 <!--
                 <div class="form-group">
                     <label for="exampleInputEmail1">Firstname</label>
