@@ -16,7 +16,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/marketplace/categories', 'HomeController@marketplaceCats') ;
     Route::get('/marketplace/detail', 'HomeController@marketplaceDetail') ;
     Route::get('/marketplace', 'HomeController@marketplace') ;
-
+    Route::get('/logout', 'HomeController@logout');
 });
 
 
