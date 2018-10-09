@@ -9,10 +9,12 @@
 namespace App\Http\Controllers\Backend\PilotApplaud;
 
 // Libraries
-use App, Auth, DB;
+use App, Auth, DB, Hash;
 use MangoPay, Redirect, Request;
 use App\DatabaseModels\ApplaudPerformers;
 use App\DatabaseModels\ApplaudClients;
+use App\DatabaseModels\ApplaudWalletsMango;
+use App\DatabaseModels\ApplaudPayIn;
 use App\Http\Controllers\Controller;
 
 class EscrowController extends Controller
@@ -71,13 +73,110 @@ class EscrowController extends Controller
                 ->update(['mango_id_fk' => $mango_client->Id]);
         }
 
-        $test = "";
+        //get wallet for performer and client
+        $performer_wallet_id = $this->getMangoWallets($mango_performer->Id);
+        $client_wallet_id = $this->getMangoWallets($mango_client->Id);
 
-        //return view('backend.pilot_applaud.dashboard', compact('blade'));
+        //if there is no wallet create one
+        if(!$performer_wallet_id){
+            $performer_wallet = $this->createWallet($mango_performer->Id);
+            $performer_wallet_id = $performer_wallet->Id;
+            $wallet = new ApplaudWalletsMango();
+            $wallet->id = $performer_wallet->Id;
+            $wallet->performer_id_fk = $performer->id;
+            $wallet->save();
+        }
+
+        //if there is no wallet create one
+        if(!$client_wallet_id){
+            $client_wallet = $this->createWallet($mango_client->Id);
+            $client_wallet_id = $client_wallet->Id;
+            $wallet = new ApplaudWalletsMango();
+            $wallet->id = $client_wallet->Id;
+            $wallet->client_id_fk = $client->id;
+            $wallet->save();
+        }
+
+        $hash = $this->prepPayInCardWeb($mango_client->Id, $performer_wallet_id, $input['amount']);
+
+        return $hash;
 
     }
 
+    public function prepPayInCardWeb($author, $credited_wallet, $amount) {
 
+        try {
+
+            $hash = Hash::make($author.$credited_wallet);
+
+            $payin = new ApplaudPayIn();
+            $payin->hash = $hash;
+            $payin->author_id = $author;
+            $payin->credited_wallet = $credited_wallet;
+            $payin->amount = $amount;
+            $payin->payment_type = "CARD";
+            $payin->execution_type = "WEB";
+            $payin->save();
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+        return $hash;
+
+    }
+
+    public function createPayInCardWeb($hash) {
+
+        try {
+
+
+            $prepedPayIn = ApplaudPayIn::where("hash", "=", $hash)
+                ->first();
+
+            // create pay-in CARD DIRECT
+            $payIn = new \MangoPay\PayIn();
+            $payIn->CreditedWalletId = $prepedPayIn->credited_wallet;
+            $payIn->AuthorId = $prepedPayIn->author;
+            $payIn->PaymentType = "CARD";
+            $payIn->PaymentDetails = new \MangoPay\PayInPaymentDetailsCard();
+            $payIn->PaymentDetails->CardType = "CB_VISA_MASTERCARD";
+            $payIn->DebitedFunds = new \MangoPay\Money();
+            $payIn->DebitedFunds->Amount = $prepedPayIn->amount;
+            $payIn->DebitedFunds->Currency ="EUR";
+            $payIn->Fees = new \MangoPay\Money();
+            $payIn->Fees->Amount = 300;
+            $payIn->Fees->Currency = "EUR";
+            $payIn->ExecutionType = "WEB";
+            $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
+            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/mangopay/sandbox";
+            $payIn->ExecutionDetails->Culture = "EN";
+
+            $result = $this->mangopay->PayIns->Create($payIn);
+
+            $test = $result->ExecutionDetails;
+            //return Redirect::to( $test->RedirectURL );
+
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
 
     public function createMangoLegalUser($performer) {
         try {
@@ -109,7 +208,6 @@ class EscrowController extends Controller
         return $createdPerformer;
     }
 
-
     public function createMangoNaturalUser($client) {
         try {
 
@@ -138,6 +236,30 @@ class EscrowController extends Controller
         return $result;
     }
 
+    public function createWallet($user) {
+        try {
+
+            // create temporary wallet for user
+            $wallet = new \MangoPay\Wallet();
+            $wallet->Owners = array( $user );
+            $wallet->Currency = 'EUR';
+            $wallet->Description = "MVP Description";
+            $createdWallet = $this->mangopay->Wallets->Create($wallet);
+
+            return $createdWallet;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+    }
+
     public function getMangoUser($performer) {
         try {
 
@@ -157,6 +279,28 @@ class EscrowController extends Controller
         }
     }
 
+    public function getMangoWallets($id) {
+        try {
+
+            $wallets =$this->mangopay->Users->GetWallets($id);
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+        if(isset($wallets[0]->Id)){
+            return $wallets[0]->Id;
+        }else{
+            return false;
+        }
+    }
 
     public function getPerformerInfo($email) {
 
@@ -173,6 +317,18 @@ class EscrowController extends Controller
             ->first();
 
         return  $user;
+
+    }
+
+    public function getCardTypes() {
+
+        $card_types[] = "CB_VISA_MASTERCARD";
+        $card_types[] = "DINERS";
+        $card_types[] = "MASTERPASS";
+        $card_types[] = "MAESTRO";
+        $card_types[] = "P24";
+
+        return $card_types;
 
     }
 

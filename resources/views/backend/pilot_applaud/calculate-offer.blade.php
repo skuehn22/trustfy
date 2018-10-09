@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
+            <input type="hidden" id="_hash" value="{{ csrf_token() }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="exampleInputEmail1">Performer</label>
@@ -106,7 +107,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="pay-buttom">Pay Button:</label><br>
-                        <p><a class="btn btn-success" href="#" role="button">Secure Escrow</a></p>
+                        <p><a class="btn btn-success payin-btn" href="" role="button">Secure Escrow</a></p>
                         <p><textarea rows="2" cols="48" id="pay-button-area"></textarea></p>
                     </div>
                 </div>
