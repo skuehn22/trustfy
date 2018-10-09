@@ -39,6 +39,7 @@
                 @endif
 
                 <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#offer" aria-controls="offer" role="tab" data-toggle="tab">Create Offer</a></li>
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Create User</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Create Wallet</a></li>
                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Make a PayIn</a></li>
@@ -48,7 +49,35 @@
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
+                    <div role="tabpanel" class="tab-pane active" id="offer">
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form action="/mangopay/sandbox/create-offer" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Firstname</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Lastname</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Amount</label>
+                                        <input type="text" class="form-control" id="offer_amount" name="offer_amount" aria-describedby="emailHelp" placeholder="Enter Amount" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <!--<label for="exampleInputPassword1">Service Fee (%)</label>-->
+                                        <input type="hidden" class="form-control" id="service_fee_performer" name="service_fee_performer" value="5" required>
+                                        <input type="hidden" class="form-control" id="service_fee_client" name="service_fee_client" value="8" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Send Offer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="home">
                         <br><br>
                         <div class="row">
                             <div class="col-md-4">
@@ -208,6 +237,7 @@
             xmlhttp.send();
 
         }
+
 
     </script>
 @stop
