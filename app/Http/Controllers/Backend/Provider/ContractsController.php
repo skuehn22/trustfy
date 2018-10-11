@@ -70,7 +70,7 @@ class ContractsController extends Controller
 
         $proposal = new ContractsProposal();
         $proposal->service_provider_fk = $blade["user"]->service_provider_fk;
-        $proposal->clients_fk = $proposal_get->client;
+        //$proposal->clients_fk = $proposal_get->client;
         $date = date('Y-m-d', strtotime($proposal_get->dateproposal));
         $proposal->date = $date;
 

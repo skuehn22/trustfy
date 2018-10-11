@@ -38,9 +38,11 @@ class OnlineTradesmenController extends Controller
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
+        if(isset($_GET['transactionId'])){
+            $id = $_GET['transactionId'];
+        }
 
-
-        return view('backend.samples.sandbox_onlinetradesmen', compact('blade'));
+        return view('backend.samples.onlinetradesmen.sandbox_onlinetradesmen', compact('blade', 'id'));
 
     }
 
@@ -166,7 +168,7 @@ class OnlineTradesmenController extends Controller
 
         try {
 
-            $hash = Hash::make($author.$credited_wallet);
+            $hash = time();
 
             $payin = new ApplaudPayIn();
             $payin->hash = $hash;

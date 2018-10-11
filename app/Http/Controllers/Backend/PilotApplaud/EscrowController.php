@@ -99,8 +99,8 @@ class EscrowController extends Controller
         }
 
         $hash = $this->prepPayInCardWeb($mango_client->Id, $performer_wallet_id, $input['amount']);
-
-        return $hash;
+        $url = $this->openTransaction($hash);
+        return $url;
 
     }
 
@@ -117,7 +117,7 @@ class EscrowController extends Controller
         $tracking->action=1;
         $tracking->save();
 
-        return Redirect::to($payIn->RedirectURL);
+        return $payIn->RedirectURL;
 
     }
 
@@ -127,7 +127,7 @@ class EscrowController extends Controller
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        //$payIn = $this->createPayInCardWeb($hash);
+        $payIn = $this->createPayInCardWeb($hash);
 
         //track user action
         $tracking = new ApplaudTracking();
@@ -142,7 +142,7 @@ class EscrowController extends Controller
 
         try {
 
-            $hash = Hash::make($author.$credited_wallet);
+            $hash = time();
 
             $payin = new ApplaudPayIn();
             $payin->hash = $hash;
@@ -191,7 +191,7 @@ class EscrowController extends Controller
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
-            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/applaud/secure/escrow/confirm";
+            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/onlinetradesmen";
             $payIn->ExecutionDetails->Culture = "EN";
 
             $result = $this->mangopay->PayIns->Create($payIn);

@@ -12,19 +12,6 @@
                     </div>
                     <button type="submit" class="btn btn-success mb-2 find-project">Find</button>
                 </form>
-
-
-
-                <!--
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Firstname</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Lastname</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname" required>
-                </div>
-                -->
                 <br><br>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Your Offer</label>
@@ -39,7 +26,58 @@
                 </div>
             </div>
             <div class="step2" style="display:none;">
-                paymentplan
+                <div class="row">
+                    <div class="col-md-12"><h4>Select Payment Plan</h4></div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <select class="form-control" name="paymenttyp" id="paymenttyp">
+                                <option value="0">select</option>
+                                <option value="1">Single Deposit</option>
+                                <option value="2">Milestone Plan</option>
+                                <option value="3">Invoiced</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 milestonepay" style="display:none;"><h4>Set up Milestone Plan</h4></div>
+                    <div class="col-md-12 milestonepay" style="display:none;">
+
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4"> <input type="text" id="name" placeholder="Milestone" class="form-control"></div>
+                                <div class="col-md-4"> <input type="text" id="percentages" placeholder="Percentage" class="form-control"></div>
+                                <div class="col-md-2"> <input type="button" class="add-row btn btn-orange" value="+"></div>
+                                <div class="col-md-2"> <button type="button" class="delete-row btn btn-orange">-</button></div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-12" style="padding-top:25px;">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th style="width:100px;">Select</th>
+                                        <th style="width:250px;">Name</th>
+                                        <th style="width:300px;">Percentage</th>
+                                        <th style="width:150px; text-align: right;">Amount  </th>
+                                    </tr>
+                                    <tr><td><input type='checkbox' name='record'></td><td>Project Start</td><td>50 %</td><td style="text-align: right;">550.00 €</td></tr>
+                                    <tr>
+                                        <td colspan="4" style="width:100%;"> <hr></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 send-offer" style="float:right; display: none;">
+                        <button type="submit" class="btn btn-orange send-offer"id="save-proposal-blank">Send your offer</button>
+                    </div>
+                </div>
             </div>
 
         </div>

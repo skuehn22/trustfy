@@ -4,6 +4,7 @@
 @section('seo')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @stop
 @section('css')
 
@@ -25,6 +26,17 @@
         .ad { padding: 5px;background: #F5F5F5;color: #222;font-size: 80%;border: 1px solid #E5E5E5; }
         .ad a.title {color: #15C;text-decoration: none;font-weight: bold;font-size: 110%;}
         .ad a.url {color: #093;text-decoration: none;}
+        h2 {color: #000;}
+        .ui-dialog {
+            z-index:4000;
+        }
+
+        .ui-widget-header {
+            border: 1px solid #00e782;
+            background: #00e782;
+            color: #333333;
+            font-weight: bold;
+        }
     </style>
 @stop
 @section('breadcrumb')
@@ -151,28 +163,95 @@
 
     </div>
 
+    <div id="send-offer-dialog" title="Proposal sent!">
+        <p>Your offer has been sent to John Doe.</p>
+    </div>
+
 
 
 @stop
 @section("js")
 
+    <!-- Essentials -->
+
+    <script src="/assets_marketplace/plugins/owl-carousel/owl.carousel.js"></script>
+    <script src="/assets_marketplace/plugins/counter/jquery.countTo.js"></script>
+    <script src="/assets_marketplace/plugins/flexslider/jquery.flexslider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
 
         $( document ).ready(function() {
             loadScrips();
+            $('#dialog').dialog();
+            $('#dialog').dialog('close');
+            $('#send-offer-dialog').dialog();
+            $('#send-offer-dialog').dialog('close');
+
+            // ==========tooltip initial=================
+            $('[data-toggle="tooltip"]').tooltip();
         });
 
         function loadScrips(){
 
+            $("#paymenttyp").on("change", function() {
+
+                var id = $(this).val();
+
+                if(id == 2){
+                    $(".milestonepay").show();
+                }else{
+                    $(".milestonepay").hide();
+                }
+            });
+
+            $(".add-row").click(function(){
+                var name = $("#name").val();
+                var percentages = $("#percentages").val();
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + percentages + " %</td><td style='text-align:right;'>550.00 €</td></tr><tr><td colspan='3'><hr></td></tr>";
+                $("table tbody").append(markup);
+                $('.create-offer').removeAttr("disabled")
+                $('.send-offer').show();
+            });
+
+            $(".create-offer").click(function(){
+                $('.send-offer').removeAttr("disabled");
+                $('.create-offer').addClass("disabled");
+            });
+
+            $(".send-offer").click(function(){
+                $('#send-offer-dialog').dialog('open');
+            });
+
+
+            // Find and remove selected table rows
+            $(".delete-row").click(function(){
+                $("table tbody").find('input[name="record"]').each(function(){
+                    if($(this).is(":checked")){
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+
+            $("#desc").focusout(function () {
+
+                $('#dialog').dialog('open');
+
+            });
+
+
             $( "#create-button" ).click(function() {
+                alert("test");
                 setEscrow( $('#performers').val(),  $('#clients_').val(), $('#offer_amount').val());
             });
 
             $( ".setup-payment" ).click(function() {
                 $('.step1').hide();
                 $('.step2').show();
+                $('.project').show();
             });
 
             $( ".find-project" ).click(function() {

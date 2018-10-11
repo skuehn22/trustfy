@@ -37,7 +37,7 @@
                     <h1>Booked Items</h1>
                     <div class="row">
                         <div class="col-md-6">Project:</div>
-                        <div class="col-md-4" style="text-align:right;">Natalie Turner</div>
+                        <div class="col-md-4" style="text-align:right;">930918</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">Date:</div>
@@ -52,17 +52,22 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
+                            <br><strong>Milestone Plan</strong>
+                            <p>Milestone 1: Project Start 50% <br>Milestone 2: Project End 50%</p>
+                        </div>
+                    </div>
+                    @if(!isset($id))
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p style="color:#1e8033; text-align: justify;">
+                                    <br><br>
+                                    The amount is held in a secure account. The performer has no access to it. You simply release the money from this account at the push of a button when the performer has done his job.
+                                </p>
+                            </div>
+                        </div>
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p style="color:#1e8033; text-align: justify;">
-                                <br><br>
-                                The amount is held in a secure account. The performer has no access to it. You simply release the money from this account at the push of a button when the performer has done his job.
-                            </p>
-                        </div>
-                    </div>
+
+
                     <div class="row">
                         <div class="col-md-12">
                             <h3>Pay with debit or credit card</h3>
@@ -72,17 +77,49 @@
                                     <option value="CB_VISA_MASTERCARD">Visa Mastercard</option>
                                 </select>
                                 <br>
-                                <button type="button" class="btn btn-success"> <i class="fas fa-lock"></i> Make Secure Payment</button>
+                                <a class="btn btn-success escrowbutton" href="#" role="button"> <i class="fas fa-lock"></i> Make Secure Payment</a>
                             </p>
                         </div>
                     </div>
+                    @else
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 style="color: green;">Thank you for paying!</h2>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-md-6">
-                    <img src="https://static1.squarespace.com/static/5a3c0f4f29f1877828aabc1b/5aafe185f950b79ea5110c51/5adbb2c5562fa78e4b199b3f/1524347590799/Photo%2B1.jpg?format=2500w">
+                    <h1>Contractor Details</h1>
+                    <div class="row">
+                        <div class="col-md-6">Name:</div>
+                        <div class="col-md-4" style="text-align:right;">John Doe</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br><br>
+                            Address
+                        </div>
+                        <div class="col-md-4" style="text-align:right;">
+                            <br><br>
+                            Pearse Stret 42
+                            Dublin 2<br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">Phone:</div>
+                        <div class="col-md-5" style="text-align:right;">+353 082 32321</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">E-Mail:</div>
+                        <div class="col-md-4" style="text-align:right;">john@doe.de</div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" id="_hash" value="{{ csrf_token() }}">
 
 </div>
 
@@ -90,5 +127,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 @yield('js')
+
+<script>
+
+    $( document ).ready(function() {
+        setEscrow( "performer@applaud.com",  "client@applaud.com", "500");
+    });
+
+    $( "#create-button" ).click(function() {
+
+    });
+
+    function setEscrow(performer_mail, client_mail, amount){
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                hash = xmlhttp.responseText;
+
+                hash = xmlhttp.responseText;
+
+                $(".escrowbutton").prop("href", hash)
+                //loadBtn();
+            }
+        };
+
+        xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/admin/set-escrow?performer="+performer_mail+"&client="+client_mail+"&amount="+amount, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+
+    }
+
+</script>
+
 </body>
 </html>
