@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: kuehn_000
- * Date: 08.10.2018
- * Time: 16:42
+ * Date: 11.10.2018
+ * Time: 09:37
  */
 
-namespace App\Http\Controllers\Backend\PilotApplaud;
+namespace App\Http\Controllers\Backend\Samples;
 
 // Libraries
 use App, Auth, DB, Hash;
@@ -18,7 +18,7 @@ use App\DatabaseModels\ApplaudPayIn;
 use App\DatabaseModels\ApplaudTracking;
 use App\Http\Controllers\Controller;
 
-class EscrowController extends Controller
+class OnlineTradesmenController extends Controller
 {
 
     /**
@@ -38,7 +38,31 @@ class EscrowController extends Controller
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        //return view('backend.pilot_applaud.dashboard', compact('blade'));
+
+
+        return view('backend.samples.sandbox_onlinetradesmen', compact('blade'));
+
+    }
+
+    public function builderDashboard() {
+
+
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        return view('backend.samples.onlinetradesmen.builder_dashboard', compact('blade'));
+
+    }
+
+    public function createOffer() {
+
+
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        $hash = Hash::make("test");
+
+        return view('backend.samples.onlinetradesmen.create-offer', compact('blade', 'hash'));
 
     }
 

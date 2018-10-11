@@ -41,6 +41,15 @@ class HomeController extends Controller
         }
 
 
+        if($blade["user"]->role == 3 ) {
+            return Redirect::to($blade["locale"]."/applaud/performer/dashboard");
+        }
+
+        if($blade["user"]->role == 4 ) {
+            return Redirect::to($blade["locale"]."/samples/onlinetradesmen/builder-dashboard");
+        }
+
+
         //$agent = new Agent();
 
         /*

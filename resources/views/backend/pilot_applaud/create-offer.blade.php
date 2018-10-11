@@ -15,28 +15,28 @@
                     <option value="client@applaud.com">client@applaud.com</option>
                 </select>
             </div>
-                <!--
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Firstname</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Lastname</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname" required>
-                </div>
-                -->
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Amount</label>
-                    <input type="number" class="form-control" id="offer_amount" name="offer_amount" placeholder="Enter Amount" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Performer Fee (%)</label>
-                    <input type="text" class="form-control" id="service_fee_performer" name="service_fee_performer" value="5" required>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Client Fee (%)</label>
-                    <input type="text" class="form-control" id="service_fee_client" name="service_fee_client" value="8" required>
-                </div>
+            <!--
+            <div class="form-group">
+                <label for="exampleInputEmail1">Firstname</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Lastname</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname" required>
+            </div>
+            -->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Amount</label>
+                <input type="number" class="form-control" id="offer_amount" name="offer_amount" placeholder="Enter Amount" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Performer Fee (%)</label>
+                <input type="text" class="form-control" id="service_fee_performer" name="service_fee_performer" value="5" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Client Fee (%)</label>
+                <input type="text" class="form-control" id="service_fee_client" name="service_fee_client" value="8" required>
+            </div>
 
         </div>
         <div class="col-md-4">
@@ -75,7 +75,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                   Client Offer
+                    Client Offer
                 </div>
                 <div class="col-md-6 calculation">
                     <span class="calculation-client-offer">0.00 €</span>
@@ -112,7 +112,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

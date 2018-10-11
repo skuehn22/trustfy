@@ -1,6 +1,22 @@
 body {
 
+    font-family: Quattrocento, serif;
+    font-weight: 400;
+    font-style: normal;
+
 }
+
+h1{
+    font-size: 18px;
+    color:#FF9340 ;
+}
+
+h3{
+    font-size: 16px;
+    color:#FF9340 ;
+}
+
+
 
 .btn-orange {
     color: #FFF;
@@ -53,7 +69,7 @@ body {
 
 .settings .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #fff;
-    background-color: #009D91;
+    background-color: #ff6600;
 }
 
 .settings  #exTab3 .nav-pills > li > a {
@@ -71,12 +87,12 @@ body {
 }
 
 .settings #exTab3 .tab-content {
-    border: 1px solid #009D91;
+    border: 1px solid #ff6600;
 }
 
 
 .settings #exTab3 .tab-pane {
-   padding-top: 20px;
+    padding-top: 20px;
 }
 
 
@@ -89,7 +105,7 @@ body {
     position: relative;
     display: block;
     padding: 10px 15px;
-    color: #009D91;
+    color: #ff6600;
 }
 
 /*END Backend Provider Setting */
@@ -172,8 +188,8 @@ body {
 
 .dashboard .panel-primary>.panel-heading {
     color: #fff;
-    background-color: #009D91;
-    border-color: #009D91;
+    background-color: #ff6600;
+    border-color: #ff6600;
 }
 
 h2{float:left; width:100%; color:#fff; margin-bottom:40px; font-size: 14px; position:relartive; z-index:3; margin-top:30px}
@@ -207,12 +223,12 @@ body{background: #24C6DC;
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #FF6F00;
-    border-color: #FF6F00;
+    background-color: #FFB073;
+    border-color: #FFB073;
 }
 
 .settings #exTab3 .tab-content {
-    border: 1px solid #009D91;
+    border: 1px solid #ff6600;
     background-color: aliceblue;
 }
 
@@ -341,8 +357,9 @@ body{background: #24C6DC;
 
 .dashboard .modal-header{
     color: #fff;
-    background-color: #009D91;
-    border-color: #009D91;
+    background-color: #ff6600;
+    border-color: #ff6600;
+    border-bottom: 2px solid #f0ad4e;
 }
 
 .dashboard .modal-dialog {
@@ -421,8 +438,8 @@ body{background: #24C6DC;
 
 .contract-types .panel-primary>.panel-heading {
     color: #fff;
-    background-color: #009D91;
-    border-color: #009D91;
+    background-color: #ff6600;
+    border-color: #ff6600;
 }
 
 .contract-types .shortcuts-boxes{
@@ -467,7 +484,7 @@ element.style {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    background-color: #FF6F00;
+    background-color: #FFB073;
     border-radius: 10px;
 }
 
@@ -480,7 +497,7 @@ element.style {
 }
 
 .green{
-    color: #009D91;
+    color: #ff6600;
 }
 
 .green_light{
@@ -500,7 +517,7 @@ element.style {
 }
 
 .orange{
-    color: #FF6F00;
+    color: #FFB073;
 }
 
 .orange_light{
@@ -512,7 +529,31 @@ element.style {
 }
 
 
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 8px 0px;
+    font-size: 18px;
+    line-height: 20px;
+}
 
+.calculation{
+    text-align: right;
+}
+
+.client-checkout-logo{
+    padding: 20px;
+    text-align: center;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 780px;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    overflow-y: visible;
+    outline: none;
+}
 
 /*-Small devices (landscape phones, 576px and up)*/
 @media (max-width: 575.98px) {

@@ -28,4 +28,18 @@ class OfferController extends Controller
 
     }
 
+
+    public function create() {
+
+
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        $hash = Hash::make("test");
+
+        return view('backend.pilot_applaud.create-offer', compact('blade', 'hash'));
+
+    }
+
+
 }

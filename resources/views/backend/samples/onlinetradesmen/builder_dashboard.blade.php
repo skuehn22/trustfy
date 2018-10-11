@@ -1,5 +1,5 @@
 
-@extends('backend.pilot_applaud.master')
+@extends('backend.samples.onlinetradesmen.master')
 
 @section('seo')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
@@ -68,8 +68,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn" id="calculate-offer" role="button" data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Calculate Offer</p>
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn" id="create-offer" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Offer</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
@@ -168,6 +168,15 @@
 
             $( "#create-button" ).click(function() {
                 setEscrow( $('#performers').val(),  $('#clients_').val(), $('#offer_amount').val());
+            });
+
+            $( ".setup-payment" ).click(function() {
+                $('.step1').hide();
+                $('.step2').show();
+            });
+
+            $( ".find-project" ).click(function() {
+                $('.project').show();
             });
 
             $( "#offer_amount" ).keyup(function() {
@@ -313,7 +322,7 @@
                     loadScrips();
                 }
             }
-            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/admin/"+ $url, true);
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/samples/onlinetradesmen/"+ $url, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
 

@@ -18,11 +18,23 @@ class DashboardController extends Controller
 
     public function index() {
 
-
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        return view('backend.pilot_applaud.dashboard', compact('blade'));
+        if($blade["user"]->role == 0 ) {
+            return Redirect::to($blade["locale"]."/provider/dashboard");
+        }
+
+        if($blade["user"]->role == 2 ) {
+            return view('backend.pilot_applaud.dashboard', compact('blade'));
+        }
+
+
+        if($blade["user"]->role == 3 ) {
+            return view('backend.pilot_applaud.dashboard_performer', compact('blade'));
+        }
+
+
 
     }
 

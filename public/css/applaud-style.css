@@ -1,5 +1,13 @@
 body {
 
+    font-family: Quattrocento, serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+h1{
+    font-size: 26px;
 }
 
 .btn-orange {
@@ -523,6 +531,20 @@ element.style {
 
 .calculation{
     text-align: right;
+}
+
+.client-checkout-logo{
+    padding: 20px;
+    text-align: center;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 780px;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    overflow-y: visible;
+    outline: none;
 }
 
 /*-Small devices (landscape phones, 576px and up)*/

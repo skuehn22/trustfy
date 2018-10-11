@@ -68,8 +68,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn" id="calculate-offer" role="button" data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Calculate Offer</p>
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn" id="create-offer" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Create Offer</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
@@ -313,7 +313,7 @@
                     loadScrips();
                 }
             }
-            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/admin/"+ $url, true);
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/performer/"+ $url, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
 
