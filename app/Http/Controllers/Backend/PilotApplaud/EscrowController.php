@@ -100,7 +100,7 @@ class EscrowController extends Controller
 
         $hash = $this->prepPayInCardWeb($mango_client->Id, $performer_wallet_id, $input['amount']);
         $url = $this->openTransaction($hash);
-        return $url;
+        return $hash;
 
     }
 
@@ -117,7 +117,7 @@ class EscrowController extends Controller
         $tracking->action=1;
         $tracking->save();
 
-        return $payIn->RedirectURL;
+        return view('backend.pilot_applaud.client-checkout', compact('blade', 'payIn'));
 
     }
 
@@ -142,7 +142,7 @@ class EscrowController extends Controller
 
         try {
 
-            $hash = time();
+            $hash =  base64_encode(Hash::make(time()));
 
             $payin = new ApplaudPayIn();
             $payin->hash = $hash;

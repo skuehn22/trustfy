@@ -12,6 +12,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/applaud/admin/dashboard', 'Backend\PilotApplaud\DashboardController@index') ;
     Route::any('/applaud/performer/calculate-offer', 'Backend\PilotApplaud\OfferController@index') ;
     Route::any('/applaud/performer/create-offer', 'Backend\PilotApplaud\OfferController@create') ;
+    Route::any('/applaud/admin/calculate-offer', 'Backend\PilotApplaud\OfferController@index') ;
     Route::any('/applaud/admin/set-escrow', 'Backend\PilotApplaud\EscrowController@createTransaction') ;
     Route::any('/applaud/secure/escrow/{hash}', 'Backend\PilotApplaud\EscrowController@openTransaction') ;
     //Route::any('/applaud/secure/escrow/client/checkout/{hash}', 'Backend\PilotApplaud\EscrowController@clientCheckout') ;

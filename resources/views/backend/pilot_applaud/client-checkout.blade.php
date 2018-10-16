@@ -64,13 +64,13 @@
                                     <option value="CB_VISA_MASTERCARD">Visa Mastercard</option>
                                 </select>
                                 <br>
-                                <button type="button" class="btn btn-success"> <i class="fas fa-lock"></i> Make Secure Payment</button>
+                                <a class="btn btn-success escrowbutton" href="{{ $payIn->RedirectURL }}" role="button"> <i class="fas fa-lock"></i> Make Secure Payment</a>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="https://static1.squarespace.com/static/5a3c0f4f29f1877828aabc1b/5aafe185f950b79ea5110c51/5adbb2c5562fa78e4b199b3f/1524347590799/Photo%2B1.jpg?format=2500w">
+                <div class="col-md-6" style="overflow: hidden;">
+                    <img src="https://static1.squarespace.com/static/5a3c0f4f29f1877828aabc1b/5aafe185f950b79ea5110c51/5adbb2c5562fa78e4b199b3f/1524347590799/Photo%2B1.jpg">
                 </div>
             </div>
         </div>
