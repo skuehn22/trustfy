@@ -164,7 +164,7 @@ class SandboxController extends Controller
 
             $wallet = "55895227";
             $user = "55894537";
-            $amount = "45";
+            $amount = "600";
 
             // create pay-in CARD DIRECT
             $payIn = new \MangoPay\PayIn();
