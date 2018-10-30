@@ -49,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
@@ -58,6 +59,7 @@
                         @include('backend.bookmarks')
                     </div>
                 </div>
+                -->
             </div>
             <div class="col-md-8">
                 <div class="panel panel-primary">
@@ -85,12 +87,12 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="/en/mangopay/sandbox" class="btn btn-outline-grey btn-lg panel-btn" role="button">
-                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Mangopay Sandbox</p>
+                                <a href="/en/mangopay/sandbox" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
+                                    <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Sandbox</p>
                                 </a>
                             </div>
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn" id="clients" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+                                <a href="#" class="btn btn-outline-grey btn-lg panel-btn modal-btn disabled" id="clients" role="button" data-toggle="modal" data-target="#exampleModalCenter">
                                     <i class="fas fa-address-book"></i> <br/><p style="padding-top: 11px;">View Clients</p>
                                 </a>
                             </div>

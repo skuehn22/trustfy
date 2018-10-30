@@ -6,13 +6,22 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Performer</label>
                 <select class="form-control" id="performers">
-                    <option value="performer@applaud.com">performer@applaud.com</option>
+                    <option value="">select</option>
+                    <option value="performer@applaud.com">Emma Langford</option>
+                    <option value="performer@applaud.com">Eamonn Moran</option>
+                    <option value="performer@applaud.com">Philip Dunne</option>
+                    <option value="performer@applaud.com">David Kiernan</option>
+                    <option value="performer@applaud.com">Natalie Turner</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Client</label>
                 <select class="form-control" id="clients_" name="clients_">
-                    <option value="client@applaud.com">client@applaud.com</option>
+                    <option value="">select</option>
+                    <option value="client@applaud.com">Client 1</option>
+                    <option value="client@applaud.com">Client 2</option>
+                    <option value="client@applaud.com">Client 3</option>
+                    <option value="client@applaud.com">Client 4</option>
                 </select>
             </div>
             <!--

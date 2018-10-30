@@ -28,8 +28,8 @@
                                 </label>
                             </div>
                             <span class="glyphicon glyphicon-star-empty"></span><span class="name" style="min-width: 120px;
-                                        display: inline-block;">Jason Markus</span> <span class="">Appointment</span><br>
-                            <span class="text-muted" style="font-size: 11px;">Monday at 12?</span> <span class="badge">17:09 AM</span> <span class="pull-right"><span class="glyphicon glyphicon-paperclip">
+                                        display: inline-block;">Jason Markus</span> <span class="">Payment received</span><br>
+                            <span class="text-muted" style="font-size: 11px;">See Details</span> <span class="badge">17:09 AM</span> <span class="pull-right"><span class="glyphicon glyphicon-paperclip">
                                         </span></span></a><a href="#" class="list-group-item read">
                             <div class="checkbox">
                                 <label>

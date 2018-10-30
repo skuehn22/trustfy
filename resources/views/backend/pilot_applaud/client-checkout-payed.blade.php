@@ -57,27 +57,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-
-                            @if(!isset($id))
-
-                                <h3>Pay with debit or credit card</h3>
-                                <p>We don’t share your financial details with the merchant.</p>
-                                <p>
-                                    <select class="form-control">
-                                        <option value="">select</option>
-                                        <option value="CB_VISA_MASTERCARD">Visa Mastercard</option>
-                                    </select>
-                                    <br>
-                                    <a class="btn btn-success escrowbutton" href="{{ $payIn->RedirectURL }}" role="button"> <i class="fas fa-lock"></i> Make Secure Payment</a>
-                                </p>
-
-                            @else
-
-                                <h2 style="color: green;">Thank you for paying!</h2>
-
-                            @endif
-
-
+                            <h3>Pay with debit or credit card</h3>
+                            <p>We don’t share your financial details with the merchant.</p>
+                            <p>
+                                <select class="form-control">
+                                    <option value="">select</option>
+                                    <option value="CB_VISA_MASTERCARD">Visa Mastercard</option>
+                                </select>
+                                <br>
+                                <a class="btn btn-success escrowbutton" href="{{ $payIn->RedirectURL }}" role="button"> <i class="fas fa-lock"></i> Make Secure Payment</a>
+                            </p>
                         </div>
                     </div>
                 </div>

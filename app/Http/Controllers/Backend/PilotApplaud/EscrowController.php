@@ -191,7 +191,7 @@ class EscrowController extends Controller
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
-            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/onlinetradesmen";
+            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/applaud/payed/escrow";
             $payIn->ExecutionDetails->Culture = "EN";
 
             $result = $this->mangopay->PayIns->Create($payIn);
@@ -366,6 +366,20 @@ class EscrowController extends Controller
         $card_types[] = "P24";
 
         return $card_types;
+
+    }
+
+    public function payedTransaction() {
+
+
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        if(isset($_GET['transactionId'])){
+            $id = $_GET['transactionId'];
+        }
+
+        return view('backend.pilot_applaud.client-checkout-payed', compact('blade', 'id'));
 
     }
 
