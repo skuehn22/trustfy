@@ -162,9 +162,9 @@ class SandboxController extends Controller
 
         try {
 
-            $wallet = $_POST['users_wallets'];
-            $user = $_POST['users_payin_out'];
-            $amount = $_POST['amount_payin'];
+            $wallet = "55895227";
+            $user = "55894537";
+            $amount = "45";
 
             // create pay-in CARD DIRECT
             $payIn = new \MangoPay\PayIn();

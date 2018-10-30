@@ -87,7 +87,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-4 shortcuts-boxes">
-                                <a href="/en/mangopay/sandbox" class="btn btn-outline-grey btn-lg panel-btn disabled" role="button">
+                                <a href="/en/mangopay/sandbox" class="btn btn-outline-grey btn-lg panel-btn" role="button">
                                     <i class="fas fa-file-alt"></i> <br/><p style="padding-top: 11px;">Sandbox</p>
                                 </a>
                             </div>
@@ -169,7 +169,7 @@
         function loadScrips(){
 
             $( "#create-button" ).click(function() {
-                setEscrow( $('#performers').val(),  $('#clients_').val(), $('#offer_amount').val());
+                setEscrow( "performer@applaud.com",  "client@applaud.com", $('#offer_amount').val());
             });
 
             $( "#offer_amount" ).keyup(function() {

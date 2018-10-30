@@ -134,7 +134,7 @@ class EscrowController extends Controller
         $tracking->action=1;
         $tracking->save();
 
-        return view('backend.pilot_applaud.client-checkout', compact('blade'));
+        return view('backend.pilot_applaud.client-checkout', compact('blade', 'payIn'));
 
     }
 
