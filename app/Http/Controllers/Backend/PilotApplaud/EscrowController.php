@@ -184,7 +184,7 @@ class EscrowController extends Controller
             $payIn->PaymentDetails = new \MangoPay\PayInPaymentDetailsCard();
             $payIn->PaymentDetails->CardType = "CB_VISA_MASTERCARD";
             $payIn->DebitedFunds = new \MangoPay\Money();
-            $payIn->DebitedFunds->Amount = $prepedPayIn->amount;
+            $payIn->DebitedFunds->Amount = $prepedPayIn->amount*100;
             $payIn->DebitedFunds->Currency ="EUR";
             $payIn->Fees = new \MangoPay\Money();
             $payIn->Fees->Amount = 300;

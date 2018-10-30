@@ -45,7 +45,7 @@
                         <div class="col-md-6">Date:</div> <div class="col-md-4" style="text-align:right;">31.10.2018</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">Price:</div> <div class="col-md-4" style="text-align:right;">645.00 €</div>
+                        <div class="col-md-6">Price:</div> <div class="col-md-4" style="text-align:right;">648.00 €</div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
