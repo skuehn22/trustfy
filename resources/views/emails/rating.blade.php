@@ -22,7 +22,10 @@
             Hallo, <br>
             You're getting this e-mail from: {{ $rating->name  }}
             <br><br>
-            <a href="http://www.ws.mvp/open-rating?hash={{$rating->session}}">Link zum bewerten</a>
+            <p>
+                He would be happy if you would leave him a short evaluation of his last work with you.
+            </p>
+            <a href="http://mvp.dev-basti.de/open-rating?hash={{$rating->session}}">Link to rate</a>
 
         </td>
     </tr>
