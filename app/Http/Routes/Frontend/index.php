@@ -17,6 +17,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/marketplace/detail', 'HomeController@marketplaceDetail') ;
     Route::get('/marketplace', 'HomeController@marketplace') ;
     Route::get('/logout', 'HomeController@logout');
+
+    Route::get('/open-rating', 'Frontend\RatingController@open');
+    Route::post('/store-rating', 'Frontend\RatingController@store');
+    Route::get('/create-rating', 'Frontend\RatingController@create');
+    Route::any('/save-rating-template', 'Frontend\RatingController@save');
+    Route::post('/additionally-infos', 'Frontend\RatingController@add');
+    Route::any('/invite-rating', 'Frontend\RatingController@invite');
+
 });
 
 

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4">
             <input type="hidden" id="_hash" value="{{ csrf_token() }}">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
             <div class="form-group">
                 <label for="exampleInputEmail1">Performer</label>
                 <select class="form-control" id="performers">
