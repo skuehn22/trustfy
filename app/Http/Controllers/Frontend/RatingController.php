@@ -76,6 +76,9 @@ class RatingController extends Controller
         $itemId = "123445";
         $userID = 1234567;
 
+        $rating = Rating::where("session", "=", $_POST['session'])
+            ->first();
+
         if(!empty($_POST['rating']) && !empty($itemId)){
 
 
@@ -90,6 +93,12 @@ class RatingController extends Controller
             $user->save();
 
             $msg= "Thank you for your review.";
+
+            Mail::send('emails.rating-received', compact('rating', 'user'), function ($message) use ($rating) {
+                $message->from('kuehn.sebastian@gmail.com', 'trustfy.com');
+                $message->to($rating->email_freelancer, "Klaus" . " " . "Rummler")->
+                subject('trustfy.com - Rating received');
+            });
 
             return view('frontend.rating.closed', compact('blade', 'msg'));
         }
