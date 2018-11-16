@@ -147,14 +147,14 @@
                             <div class="feature-item">
                                 <i class="icon-screen-smartphone text-primary"></i>
                                 <h3>Independent Reviews</h3>
-                                <p class="text-muted">Your ratings no longer belong to the marketplaces!</p>
+                                <p class="text-muted">Your ratings no longer belong to marketplaces</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="feature-item">
                                 <i class="icon-camera text-primary"></i>
                                 <h3>Flexible Use</h3>
-                                <p class="text-muted">You decide where and how your reviews will be published!</p>
+                                <p class="text-muted">Showcase your reviews on your website or send clients to our directory</p>
                             </div>
                         </div>
                     </div>
@@ -163,14 +163,14 @@
                             <div class="feature-item">
                                 <i class="icon-present text-primary"></i>
                                 <h3>Build up Reputation</h3>
-                                <p class="text-muted">Send your potential customers your reviews and convince them!</p>
+                                <p class="text-muted">Let customers leave reviews and showcase your hard-earned praise</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="feature-item">
                                 <i class="icon-lock-open text-primary"></i>
                                 <h3>More customers</h3>
-                                <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                                <p class="text-muted">create your personal brand and stand out from the crowd</p>
                             </div>
                         </div>
                     </div>
