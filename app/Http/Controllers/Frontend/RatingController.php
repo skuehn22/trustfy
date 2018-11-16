@@ -49,12 +49,17 @@ class RatingController extends Controller
 
         $blade["locale"] = App::getLocale();
 
+        $pwd = Hash::make($_POST['pwd']);
+
         $rating = new Rating();
         $rating->name = $_POST['name'];
         $rating->description = $_POST['description'];
         $rating->email_freelancer = $_POST['freelancer-mail'];
         $rating->email_client = $_POST['client-mail'];
+        $rating->name_client = $_POST['name-client'];
+        $rating->project_name = $_POST['project-name'];
         $rating->session = Hash::make(time());
+        $rating->pwd = $pwd;
         $rating->save();
         $msg= "Thank you for your creating this review link.";
 
@@ -102,6 +107,14 @@ class RatingController extends Controller
 
             return view('frontend.rating.closed', compact('blade', 'msg'));
         }
+    }
+
+    public function getOverview() {
+
+        $blade["locale"] = App::getLocale();
+
+        return view('frontend.rating.freelancer-overview', compact('blade', 'msg'));
+
     }
 
 }

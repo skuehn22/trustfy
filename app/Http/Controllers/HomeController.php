@@ -16,49 +16,20 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
 
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        if($blade["user"]->role == 0 ) {
-            return Redirect::to($blade["locale"]."/provider/dashboard");
-        }
+        return view('frontend.master-trustfy-homepage', compact('blade'));
 
-        if($blade["user"]->role == 2 ) {
-            return Redirect::to($blade["locale"]."/applaud/admin/dashboard");
-        }
-
-
-        if($blade["user"]->role == 3 ) {
-            return Redirect::to($blade["locale"]."/applaud/performer/dashboard");
-        }
-
-        if($blade["user"]->role == 4 ) {
-            return Redirect::to($blade["locale"]."/samples/onlinetradesmen/builder-dashboard");
-        }
-
-
-        //$agent = new Agent();
-
-        /*
-        if(!$agent->is('Windows')){
-            return view('frontend.special_windows.home');
-        }else{
-
-        }
-        */
     }
 
     public function marketplace() {
@@ -83,7 +54,7 @@ class HomeController extends Controller
 
         Auth::logout();
         Session::flash('success',"logout");
-        return Redirect::to($blade["locale"]."/login");
+        return Redirect::to($blade["locale"]."/");
 
     }
 

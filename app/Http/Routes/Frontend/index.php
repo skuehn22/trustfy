@@ -20,10 +20,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::get('/open-rating', 'Frontend\RatingController@open');
     Route::post('/store-rating', 'Frontend\RatingController@store');
-    Route::get('/create-rating', 'Frontend\RatingController@create');
+    Route::any('/create-rating', 'Frontend\RatingController@create');
     Route::any('/save-rating-template', 'Frontend\RatingController@save');
     Route::post('/additionally-infos', 'Frontend\RatingController@add');
     Route::any('/invite-rating', 'Frontend\RatingController@invite');
+    Route::any('/overview', 'Frontend\RatingController@getOverview');
 
 });
 
