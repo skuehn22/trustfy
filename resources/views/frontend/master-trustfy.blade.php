@@ -38,7 +38,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand-trustfy" href="{{ url('/') }}">
-                    trustfy.com
+                    trustfy.io
                 </a>
             </div>
         </div>

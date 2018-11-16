@@ -44,24 +44,6 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="client-mail">E-Mail of your Client</label>
-                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="marc@client.com">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="freelancer-mail">Name of your Client</label>
-                            <input type="text" class="form-control" id="name-client" name="name-client" placeholder="Marc">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <div class="form-group">
-                                <label for="name">Project Name</label>
-                                <input type="text" class="form-control" id="project-name" name="project-name" placeholder="Website created" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md-12">
                             <div class="form-group">
                                 <label for="description">Short Description</label>
@@ -77,12 +59,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="freelancer-mail">Your E-Mail</label>
-                            <input type="email" class="form-control" id="freelancer-mail" name="freelancer-mail" placeholder="john@doe.com">
+                            <label for="client-mail">E-Mail Client</label>
+                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="marc@client.com">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="client-mail">Password</label>
-                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Password">
+                            <label for="freelancer-mail">Your E-Mail</label>
+                            <input type="email" class="form-control" id="freelancer-mail" name="freelancer-mail" placeholder="john@doe.com">
                         </div>
                     </div>
                     <div class="form-row">
