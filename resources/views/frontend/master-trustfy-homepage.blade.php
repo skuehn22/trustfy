@@ -91,8 +91,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">Try it directly and start building your reputation</h2>
-                <p>Our service is in the test phase and will be fully released soon.</p>
+                <h2 class="section-heading">Start building your reputation</h2>
+                <p>Be the first to test it out, we’ll be launching soon</p>
 
             </div>
         </div>
