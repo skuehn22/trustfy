@@ -194,7 +194,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h2>Get the news!</h2>
+                <h2>Be the first to test new features, stay up to date on our progress and help us build the product you want!</h2>
                 <div class="badges">
 
                     <form class="form-inline" action="http://review.trustfy.io">
