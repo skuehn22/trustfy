@@ -14,8 +14,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
@@ -91,32 +90,26 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">Start building your reputation</h2>
-                <p>Be the first to test it out, we’ll be launching soon</p>
+                <h2 class="section-heading">You can start now and collect your first reviews</h2>
+                <!--<p>Be the first to test it out, we’ll be fully launching soon</p>-->
 
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 mx-auto">
-
+            <div class="col-md-6 mx-auto">
                 <div class="badges">
-
                     <form class="form-inline" method="POST" action="en/create-rating">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-group mx-sm-3 mb-2">
-
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <div class="input-group" style="width: 100%;">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Enter email" required>
+                            <button class="btn btn-info btn-lg" type="submit">Go!</button>
                         </div>
-                        <button type="submit" class="btn btn-info">Go!</button>
                     </form>
-
-
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <section class="features" id="features">
     <div class="container">
         <div class="section-heading text-center">
@@ -145,14 +138,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="feature-item">
-                                <i class="icon-screen-smartphone text-primary"></i>
+                                <i class="fas fa-fist-raised text-primary"></i>
                                 <h3>Independent Reviews</h3>
                                 <p class="text-muted">Your ratings no longer belong to marketplaces</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="feature-item">
-                                <i class="icon-camera text-primary"></i>
+                                <i class="fas fa-desktop text-primary"></i>
                                 <h3>Flexible Use</h3>
                                 <p class="text-muted">Showcase your reviews on your website or send clients to our directory</p>
                             </div>
@@ -161,14 +154,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="feature-item">
-                                <i class="icon-present text-primary"></i>
+                                <i class="fas fa-star text-primary"></i>
                                 <h3>Build up Reputation</h3>
                                 <p class="text-muted">Let customers leave reviews and showcase your hard-earned praise</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="feature-item">
-                                <i class="icon-lock-open text-primary"></i>
+                                <i class="fas fa-rocket text-primary"></i>
                                 <h3>More customers</h3>
                                 <p class="text-muted">create your personal brand and stand out from the crowd</p>
                             </div>
@@ -193,16 +186,16 @@
 <section class="contact bg-primary" id="contact">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mx-auto">
-                <h2>Be the first to test new features, stay up to date on our progress and help us build the product you want!</h2>
+            <div class="col-md-8 mx-auto" style="text-align: center; ">
+                <h4>Be the first to test new features, stay up to date on our progress and help us build the product you want!</h4>
                 <div class="badges">
 
-                    <form class="form-inline" action="http://review.trustfy.io">
-                        <div class="form-group mx-sm-3 mb-2">
-
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <form class="form-inline" method="POST" action="en/newsletter">
+                        <div class="input-group" style="width: 100%;">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Enter email" required>
+                            <button class="btn btn-info btn-lg" type="submit">Sign Up</button>
                         </div>
-                        <button type="button" class="btn btn-info">Go!</button>
                     </form>
 
 

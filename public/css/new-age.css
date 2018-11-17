@@ -144,7 +144,7 @@ section h2 {
   }
   #mainNav.navbar-shrink {
     border-color: rgba(34, 34, 34, 0.1);
-    background-color: white;
+    background-color: #536753;
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #222222;
@@ -154,7 +154,7 @@ section h2 {
   }
   #mainNav.navbar-shrink .navbar-nav > li > a,
   #mainNav.navbar-shrink .navbar-nav > li > a:focus {
-    color: #222222;
+    color: #fff;
   }
   #mainNav.navbar-shrink .navbar-nav > li > a:hover,
   #mainNav.navbar-shrink .navbar-nav > li > a:focus:hover {
@@ -448,4 +448,25 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .btn-xl {
   font-size: 11px;
   padding: 15px 45px;
+}
+
+
+
+.input-group {
+  margin: 20px auto;
+  width: 100%;
+}
+input.btn.btn-lg,
+input.btn.btn-lg:focus {
+  outline: none;
+  width: 60%;
+  height: 60px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+button.btn {
+  width: 40%;
+  height: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
