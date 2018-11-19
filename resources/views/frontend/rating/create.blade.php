@@ -19,24 +19,24 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <h3>Create a rating</h3>
+                            <h3>Set up a Review</h3>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="client-mail">E-Mail of your Client*</label>
-                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="marc@client.com" required>
+                            <label for="client-mail">Client Email*</label>
+                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="mark@client.com" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="freelancer-mail">Name of your Client</label>
-                            <input type="text" class="form-control" id="name-client" name="name-client" placeholder="Marc">
+                            <label for="freelancer-mail">Client Name</label>
+                            <input type="text" class="form-control" id="name-client" name="name-client" placeholder="Mark">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <div class="form-group">
                                 <label for="name">Your Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="John Doe">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Julie Smith">
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-12 rating-form">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <h3>Tell us something about the project</h3>
+                            <h3>Tell us something a bit the project</h3>
                         </div>
                     </div>
                     <div class="form-row">

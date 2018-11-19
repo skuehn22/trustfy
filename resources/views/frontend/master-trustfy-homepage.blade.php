@@ -69,7 +69,7 @@
             @endif
             <div class="col-lg-7 my-auto">
                 <div class="header-content mx-auto">
-                    <h1 class="mb-5">We build trust between freelancers and their clients</h1>
+                    <h1 class="mb-5">We build trust </r> between freelancers and their clients</h1>
                     <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
                 </div>
             </div>
@@ -97,7 +97,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">You can start now and collect your first reviews</h2>
+                <h2 class="section-heading">Click GO to start collecting your first reviews</h2>
                 <!--<p>Be the first to test it out, we’ll be fully launching soon</p>-->
 
             </div>
@@ -162,15 +162,15 @@
                         <div class="col-lg-6">
                             <div class="feature-item">
                                 <i class="fas fa-star text-primary"></i>
-                                <h3>Build up Reputation</h3>
+                                <h3>Build your Reputation</h3>
                                 <p class="text-muted">Let customers leave reviews and showcase your hard-earned praise</p>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="feature-item">
                                 <i class="fas fa-rocket text-primary"></i>
-                                <h3>More customers</h3>
-                                <p class="text-muted">create your personal brand and stand out from the crowd</p>
+                                <h3>More Customers</h3>
+                                <p class="text-muted">Create your personal brand and stand out from the crowd</p>
                             </div>
                         </div>
                     </div>
@@ -194,14 +194,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto" style="text-align: center; ">
-                <h4>Be the first to test new features, stay up to date on our progress and help us build the product you want!</h4>
+                <h4>Be the first to test new features, stay up to date and help us build the product you want!</h4>
                 <div class="badges">
 
                     <form class="form-inline" method="POST" action="/newsletter-sign-up">
                         <div class="input-group" style="width: 100%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input class="btn btn-lg" name="email-newsletter" id="email-newsletter" type="email" placeholder="Enter email" required>
-                            <button class="btn btn-info btn-lg" type="submit">Sign Up</button>
+                            <input class="btn btn-lg" name="email-newsletter" id="email-newsletter" type="email" placeholder="Your Email" required>
+                            <button class="btn btn-info btn-lg" type="submit">Sign Me Up!</button>
                         </div>
                     </form>
 
@@ -222,30 +222,31 @@
             <div class="offset-md-3 col-md-5">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h3>Contact</h3>
+                        <h3>Get in Contact</h3>
+                        <h5>Give us a shout! We'd love to hear from you.</h5>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Your E-Mail">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="E-Mail">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <div class="form-group">
-                            <textarea class="form-control" rows="4" id="message" name="message" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" rows="4" id="message" name="message" placeholder="Message" required></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <div class="form-group">
-                            <input class="btn btn-info" type="submit" value="Submit">
+                            <input class="btn btn-info" type="submit" value="Send">
                         </div>
                     </div>
                 </div>
