@@ -7,6 +7,8 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
+use App\DatabaseModels\Newsletter;
+
 
 
 class HomeController extends Controller
@@ -56,6 +58,16 @@ class HomeController extends Controller
         Session::flash('success',"logout");
         return Redirect::to($blade["locale"]."/");
 
+    }
+
+    public function newsletter() {
+        $blade["locale"] = App::getLocale();
+
+        $user = new Newsletter();
+        $user->email = $_POST['email-newsletter'];
+        $user->save();
+
+        return redirect()->back()->with('message', 'Thank you very much for your registration!');
     }
 
 }

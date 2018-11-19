@@ -162,6 +162,39 @@ section h2 {
   }
 }
 
+.bg-pattern{
+  position: relative;
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  color: white;
+  background: url("../img/bg-pattern.png"), #7b4397;
+  background: url("../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#336633), to(#ff9046));
+  background: url("../img/bg-pattern.png"), linear-gradient(to left, #336633, #536753);
+}
+
+.bg-pattern .header-content {
+  max-width: 500px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.bg-pattern .header-content h1 {
+  font-size: 30px;
+}
+
+.bg-pattern .device-container {
+  max-width: 325px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bg-pattern .device-container .screen img {
+  border-radius: 3px;
+}
+
+
+
 header.masthead {
   position: relative;
   width: 100%;

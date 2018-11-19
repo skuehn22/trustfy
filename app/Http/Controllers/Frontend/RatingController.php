@@ -13,6 +13,7 @@ use App, Session, Mail, Hash;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\ItemRating;
 use App\DatabaseModels\Rating;
+use App\DatabaseModels\MVPUser;
 
 class RatingController extends Controller
 {
@@ -21,8 +22,18 @@ class RatingController extends Controller
     public function create() {
 
         $blade["locale"] = App::getLocale();
-        $session = Session::get('user_session');
-        return view('frontend.rating.create', compact('blade'));
+
+        if(isset($_POST['email'])){
+            $email= $_POST['email'];
+            $user = new MVPUser();
+            $user->mail = $_POST['email'];
+            $user->save();
+        }
+
+
+
+
+        return view('frontend.rating.create', compact('blade', 'email'));
 
     }
 
@@ -49,26 +60,33 @@ class RatingController extends Controller
 
         $blade["locale"] = App::getLocale();
 
-        $pwd = Hash::make($_POST['pwd']);
+        if(isset($_POST['pwd'])){
+            $pwd = Hash::make($_POST['pwd']);
+        }else{
+            $pwd="";
+        }
 
-        $rating = new Rating();
-        $rating->name = $_POST['name'];
-        $rating->description = $_POST['description'];
-        $rating->email_freelancer = $_POST['freelancer-mail'];
-        $rating->email_client = $_POST['client-mail'];
-        $rating->name_client = $_POST['name-client'];
-        $rating->project_name = $_POST['project-name'];
-        $rating->session = Hash::make(time());
-        $rating->pwd = $pwd;
-        $rating->save();
-        $msg= "Thank you for your creating this review link.";
+        if(isset($_POST['client-mail'])){
 
-        Mail::send('emails.rating', compact('rating'), function ($message) use ($rating) {
-            $message->from('kuehn.sebastian@gmail.com', 'trustfy.com');
-            $message->to($rating->email_client, "Klaus" . " " . "Rummler")->
-            subject('trustfy.com - Review');
-        });
+            $rating = new Rating();
+            $rating->name = $_POST['name'];
+            $rating->description = $_POST['description'];
+            $rating->email_freelancer = $_POST['freelancer-mail'];
+            $rating->email_client = $_POST['client-mail'];
+            $rating->name_client = $_POST['name-client'];
+            $rating->project_name = $_POST['project-name'];
+            $rating->session = Hash::make(time());
+            $rating->pwd = $pwd;
+            $rating->save();
+            $msg= "Thank you for your creating this review link.";
 
+            Mail::send('emails.rating', compact('rating'), function ($message) use ($rating) {
+                $message->from('review@trustfy.io', 'trustfy.io');
+                $message->to($rating->email_client, $rating->name_client)->
+                subject('trustfy.io - Review');
+            });
+
+        }
 
         return view('frontend.rating.add', compact('blade', 'msg', 'rating'));
 
