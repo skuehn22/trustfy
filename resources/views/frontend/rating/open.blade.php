@@ -82,7 +82,7 @@
                                 <input type="text" class="form-control" id="title" name="title" required>
                             </div>
                             <div class="form-group">
-                                <label for="comment">Comment*</label>
+                                <label for="comment">Review*</label>
                                 <textarea class="form-control" rows="5" id="comment" name="comment" required></textarea>
                             </div>
                             <div class="form-group">
