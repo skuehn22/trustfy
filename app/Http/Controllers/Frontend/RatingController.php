@@ -82,6 +82,7 @@ class RatingController extends Controller
 
             Mail::send('emails.rating', compact('rating'), function ($message) use ($rating) {
                 $message->from('review@trustfy.io', 'trustfy.io');
+                $message->bcc('sebastian@work-smarter.io', 'Sebastian');
                 $message->to($rating->email_client, $rating->name_client)->
                 subject('trustfy.io - Review');
             });
@@ -118,8 +119,9 @@ class RatingController extends Controller
             $msg= "Thank you for your review.";
 
             Mail::send('emails.rating-received', compact('rating', 'user'), function ($message) use ($rating) {
-                $message->from('kuehn.sebastian@gmail.com', 'trustfy.com');
-                $message->to($rating->email_freelancer, "Klaus" . " " . "Rummler")->
+                $message->from('review@trustfy.io', 'trustfy.com');
+                $message->bcc('sebastian@work-smarter.io', 'Sebastian');
+                $message->to($rating->email_freelancer, $rating->)->
                 subject('trustfy.com - Rating received');
             });
 

@@ -63,9 +63,15 @@ class HomeController extends Controller
     public function newsletter() {
         $blade["locale"] = App::getLocale();
 
-        $user = new Newsletter();
-        $user->email = $_POST['email-newsletter'];
-        $user->save();
+        $data = new Newsletter();
+        $data->email = $_POST['email-newsletter'];
+        $data->save();
+
+        Mail::send('emails.contact', compact('data'), function ($message) use ($data) {
+            $message->from($data->email, "NL");
+            $message->to("review@trustfy.io", "trustfy.io")->
+            subject('trustfy.io - Newsletter Subscription');
+        });
 
         return redirect()->back()->with('message', 'Thank you very much for your registration!');
     }
@@ -80,8 +86,8 @@ class HomeController extends Controller
         $data['desc'] = $_POST['message'];
 
         Mail::send('emails.contact', compact('data'), function ($message) use ($data) {
-            $message->from('review@trustfy.io', 'trustfy.io');
-            $message->to("sebastian@work-smarter.io", "Sebastian Kühn")->
+            $message->from($_POST['email'], $_POST['name']);
+            $message->to("review@trustfy.io", "trustfy.io")->
             subject('trustfy.io - Contact Form');
         });
 
