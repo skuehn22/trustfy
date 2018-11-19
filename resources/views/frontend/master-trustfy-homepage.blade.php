@@ -197,7 +197,7 @@
                 <h4>Be the first to test new features, stay up to date on our progress and help us build the product you want!</h4>
                 <div class="badges">
 
-                    <form class="form-inline" method="POST" action="/newsletter">
+                    <form class="form-inline" method="POST" action="/newsletter-sign-up">
                         <div class="input-group" style="width: 100%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Enter email" required>
