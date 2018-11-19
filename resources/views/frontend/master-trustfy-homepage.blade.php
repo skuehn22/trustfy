@@ -97,7 +97,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">Click GO to start collecting your first reviews</h2>
+                <h2 class="section-heading">You can start now and collect your first reviews</h2>
                 <!--<p>Be the first to test it out, we’ll be fully launching soon</p>-->
 
             </div>
