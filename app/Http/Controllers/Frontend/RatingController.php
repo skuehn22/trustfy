@@ -78,7 +78,7 @@ class RatingController extends Controller
             $rating->session = Hash::make(time());
             $rating->pwd = $pwd;
             $rating->save();
-            $msg= "Thank you for your creating this review link.";
+            $msg= "Success! A review link has been sent to your client.";
 
             Mail::send('emails.rating', compact('rating'), function ($message) use ($rating) {
                 $message->from('review@trustfy.io', 'trustfy.io');
