@@ -58,7 +58,8 @@
                     <div class="col-md-12">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
-                        <h1>How satisfied are you with the service provided? </h1>
+                        <h2>Create a review </h2>
+                        <h4>How satisfied are you with the service provided? </h4>
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5" required /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                             <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
