@@ -60,6 +60,13 @@
 <header class="masthead">
     <div class="container h-100">
         <div class="row h-100">
+            @if(session()->has('message'))
+                <div class="col-sm-12">
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                </div>
+            @endif
             <div class="col-lg-7 my-auto">
                 <div class="header-content mx-auto">
                     <h1 class="mb-5">We build trust between freelancers and their clients</h1>
@@ -205,20 +212,51 @@
     </div>
 </section>
 
-<footer>
+
+
+<footer id="contact">
     <div class="container">
-        <p>&copy; trustfy.io 2018. All Rights Reserved.</p>
-        <ul class="list-inline">
-            <li class="list-inline-item">
-                <a href="#">Privacy</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">Terms</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">FAQ</a>
-            </li>
-        </ul>
+        <form id="ratingForm" method="POST" action="/send-message">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="row">
+            <div class="offset-md-3 col-md-5">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <h3>Contact</h3>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Your E-Mail">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="4" id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-group">
+                            <input class="btn btn-info" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12">
+            <p>&copy; trustfy.io 2018. All Rights Reserved.</p>
+            </div>
+        </div>
     </div>
 </footer>
 

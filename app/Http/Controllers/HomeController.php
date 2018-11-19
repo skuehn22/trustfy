@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 // Libraries
-use App, Auth, Redirect, Session;
+use App, Auth, Redirect, Session, Mail;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
@@ -68,6 +68,25 @@ class HomeController extends Controller
         $user->save();
 
         return redirect()->back()->with('message', 'Thank you very much for your registration!');
+    }
+
+    public function contact() {
+
+        $blade["locale"] = App::getLocale();
+
+
+        $data['name'] = $_POST['name'];
+        $data['mail'] = $_POST['email'];
+        $data['desc'] = $_POST['message'];
+
+        Mail::send('emails.contact', compact('data'), function ($message) use ($data) {
+            $message->from('review@trustfy.io', 'trustfy.io');
+            $message->to("sebastian@work-smarter.io", "Sebastian Kühn")->
+            subject('trustfy.io - Contact Form');
+        });
+
+
+        return redirect()->back()->with('message', 'Thank you very much for your message!');
     }
 
 }
