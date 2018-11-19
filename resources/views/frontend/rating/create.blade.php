@@ -105,28 +105,23 @@
             </form>
             </div>
             <div class="col-md-6">
-                <p>
-                <div class="col-sm-12">
-                    <div class="alert alert-info" role="alert">
-                        <h4>Hi There!</h4>
-
-                        <p>
-
-                            Welcome to the trustfy review system.
-                        </p>
-                        <p>
-                            Just fill out the fields below. By clicking “Send,” the person you’re inviting will receive a message asking them to leave a review. They can award 1 to 5 stars and leave a comment.
-                        <p>
-                            Your rating will not be published.
-                        </p>
-                        <p>
-                            We are beta testing this service and won’t be publishing any information provided- but please let us know what you think!
-                            You will receive your customer's feedback as soon as they fill out the form.
-                        </p>
-                    </div>
+                <div class="alert alert-info" role="alert" style="margin-top: 15px;">
+                    <h4>Hi There!</h4>
+                    <p>
+                        Welcome to the trustfy review system.
+                    </p>
+                    <p>
+                        Just fill out the fields below. By clicking “Send,” the person you’re inviting will receive a message asking them to leave a review. They can award 1 to 5 stars and leave a comment.
+                    <p>
+                        Your rating will not be published.
+                    </p>
+                    <p>
+                        We are beta testing this service and won’t be publishing any information provided- but please let us know what you think!
+                        You will receive your customer's feedback as soon as they fill out the form.
+                    </p>
                 </div>
             </div>
-            </p>
+
         </div>
     </div>
 
