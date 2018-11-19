@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/new-age.css" rel="stylesheet">
+    <link href="/css/new-age.css" rel="stylesheet">
 
 </head>
 
@@ -98,7 +98,7 @@
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="badges">
-                    <form class="form-inline" method="POST" action="en/create-rating">
+                    <form class="form-inline" method="POST" action="{{ asset('en/create-rating') }}">
                         <div class="input-group" style="width: 100%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Enter email" required>
@@ -190,7 +190,7 @@
                 <h4>Be the first to test new features, stay up to date on our progress and help us build the product you want!</h4>
                 <div class="badges">
 
-                    <form class="form-inline" method="POST" action="en/newsletter">
+                    <form class="form-inline" method="POST" action="/newsletter">
                         <div class="input-group" style="width: 100%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Enter email" required>

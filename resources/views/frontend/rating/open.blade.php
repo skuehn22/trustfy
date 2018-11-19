@@ -6,7 +6,7 @@
     @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
     fieldset, label { margin: 0; padding: 0; }
-    body{ margin: 20px; }
+
     h1 { font-size: 1.5em; }
 
     /****** Style Star Rating Widget *****/
@@ -51,14 +51,16 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="padding-top:40px; padding-bottom:30px;">
             <div class="col-sm-6">
-                <form id="ratingForm" method="POST" action="/store-rating">
+                <form id="ratingForm" method="POST" action="/store-rating" class="rating-form">
+                    <div class="row">
+                    <div class="col-md-12">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <h1>How satisfied are you with the service provided? </h1>
                         <fieldset class="rating">
-                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star5" name="rating" value="5" required /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                             <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                             <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
                             <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
@@ -69,6 +71,8 @@
                             <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
                             <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
+                    </div>
+                    </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -81,7 +85,7 @@
                                 <textarea class="form-control" rows="5" id="comment" name="comment" required></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-info" id="saveReview">Save Review</button> <button type="button" class="btn btn-info" id="cancelReview">Cancel</button>
+                                <button type="submit" class="btn btn-info" id="saveReview">Save Review</button>
                                 <div id="msg" class="form-group"></div>
                             </div>
                         </div>

@@ -6,7 +6,6 @@
         @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
         fieldset, label { margin: 0; padding: 0; }
-        body{ margin: 20px; }
         h1 { font-size: 1.5em; margin: 10px; }
 
         /****** Style Star Rating Widget *****/
@@ -51,7 +50,7 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="padding-bottom: 25px; padding-top: 35px;">
             @if(isset($msg))
                 <div class="col-sm-12">
                 <div class="alert alert-success">

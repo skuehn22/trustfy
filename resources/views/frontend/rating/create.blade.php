@@ -7,50 +7,46 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="padding-top:25px; padding-bottom: 25px;">
         <div class="row">
             <div class="col-md-6">
-                <div class="alert alert-info" role="alert">
-                    <h4>Hi There!</h4>
 
-                    <p>
-                        You’ve received this message because we heard you do freelance work.
-                    </p>
-                    <p>
-                        At Trustfy.com, we believe freelancers should own their own reputation- your reviews shouldn’t be tied to third-party websites or marketplaces. That’s why we’re developing an independent rating and review system that lets you showcase all that customer praise you’ve worked so hard for.
-                    </p>
-                    <p>
-                        We’re building this for you, so tell us what you think!<br>
-                        Send a short survey to a customer and help us test this out, you would make our day. Really.
-
-                    </p>
-                </div>
 
                 <form id="ratingForm" method="POST" action="/save-rating-template">
+                    <p>
+
+                <div class="col-md-12 rating-form">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <h3>Create a rating</h3>
                         </div>
                     </div>
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="client-mail">E-Mail of your Client</label>
-                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="marc@client.com">
+                            <label for="client-mail">E-Mail of your Client*</label>
+                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="marc@client.com" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="freelancer-mail">Name of your Client</label>
                             <input type="text" class="form-control" id="name-client" name="name-client" placeholder="Marc">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="John Doe">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </p>
+                    <p>
+                <div class="col-md-12 rating-form">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <h3>Tell us something about the project</h3>
                         </div>
                     </div>
                     <div class="form-row">
@@ -69,20 +65,31 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+                    </p>
+                <div class="col-md-12 rating-form">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-
+                            <h3>Secure your account</h3>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="freelancer-mail">Your E-Mail</label>
-                            <input type="email" class="form-control" id="freelancer-mail" name="freelancer-mail" placeholder="john@doe.com">
+                            @if(isset($email))
+                                <input type="email" class="form-control" id="freelancer-mail" name="freelancer-mail" value="{{$email}}" required>
+                            @else
+                                <input type="email" class="form-control" id="freelancer-mail" name="freelancer-mail" placeholder="john@doe.com" required>
+                            @endif
                         </div>
                         <div class="form-group col-md-6">
                             <label for="client-mail">Password</label>
                             <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                         *With this data you can access your collected reviews
                         </div>
                     </div>
                     <div class="form-row">
@@ -93,34 +100,37 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
+                </div>
 
-                        </div>
-                    </div>
-
-                </form>
+            </form>
             </div>
             <div class="col-md-6">
+                <p>
                 <div class="col-sm-12">
-                    <div class="alert alert-success">
-                        <h4>Heads Up!</h4>
-                        <p><strong>Your rating will not be published.</strong></p>
+                    <div class="alert alert-info" role="alert">
+                        <h4>Hi There!</h4>
+
                         <p>
-                            By clicking “Send,” the person you’re inviting will receive a message asking them to leave a review. They can award 1 to 5 stars and leave a comment.
+
+                            Welcome to the trustfy review system.
+                        </p>
+                        <p>
+                            Just fill out the fields below. By clicking “Send,” the person you’re inviting will receive a message asking them to leave a review. They can award 1 to 5 stars and leave a comment.
+                        <p>
+                            Your rating will not be published.
                         </p>
                         <p>
                             We are beta testing this service and won’t be publishing any information provided- but please let us know what you think!
-                        </p>
-                        <p>
                             You will receive your customer's feedback as soon as they fill out the form.
                         </p>
                     </div>
                 </div>
             </div>
+            </p>
         </div>
     </div>
 
 @stop
 @section("js")
+
 @stop

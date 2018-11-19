@@ -20,7 +20,7 @@
         <td style="text-align: center;">
             <br><br>
             <a href="http://www.trustfy.io" style="text-decoration:none;" target="_blank">
-                <span style="color:#1e8033; font-size:34px; font-weight: 800; ">trustfy.io</span>
+                <span style="color:#1e8033; font-size:36px; font-weight: 800; ">trustfy.io</span>
             </a>
         </td>
     </tr>
@@ -39,14 +39,28 @@
                 {{ $rating->description  }}
             </p>
                 <br>
-            <a style="color: #1e8033;"  href="http://mvp.dev-basti.de/open-rating?hash={{$rating->session}}">Link to rate</a>
+                <p>
+                     <a style="color: #1e8033;"  href="http://mvp.dev-basti.de/open-rating?hash={{$rating->session}}">Link to rate</a>
+                </p>
+
             </span>
         </td>
     </tr>
     <tr>
         <td style="text-align: left;">
             <span style="color: #535353;font-family: Arial, Helvetica, sans-serif;font-size: 14px;">
-            <p><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <p>
+                We’re Trustfy, an independent review platform for freelancers and their clients.
+            </p>
+            <p>
+                We already trust review sites to make decisions about what shops to frequent or restaurants to eat at- but how does this work when hiring a freelancer?
+            </p>
+            <p>
+                You shouldn’t have to rely a mix of third-party job sites and marketplaces, many of which have paywalls, to access a freelancer’s reputation. That’s why we’re creating an open-access review system that lets clients rate their freelancers and freelancers rate their clients, be they companies or individuals.
+            </p>
+            <p>
+                Freelancing is the future of work, and we want that future to be fair, transparent and honest.
+            </p>
             </span>
         </td>
     </tr>
