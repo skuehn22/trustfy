@@ -16,6 +16,9 @@
                     <p>
 
                 <div class="col-md-12 rating-form">
+                        <div class="form-group">
+                            <h3>Set up a Review</h3>
+                        </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -26,9 +29,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                    <div class="form-group col-md-12">
-                            <h3>Set up a Review</h3>
-                        </div>
+
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
