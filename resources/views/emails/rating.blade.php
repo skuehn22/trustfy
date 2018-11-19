@@ -40,7 +40,7 @@
             </p>
                 <br>
                 <p>
-                     <a style="color: #1e8033;"  href="http://mvp.dev-basti.de/open-rating?hash={{$rating->session}}">Link to rate</a>
+                     <a style="color: #1e8033;"  href="https://www.trustfy.io/open-rating?hash={{$rating->session}}">Link to rate</a>
                 </p>
 
             </span>
