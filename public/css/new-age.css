@@ -70,7 +70,8 @@ section h2 {
 
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
-  background-color: #3b6036;
+  background-color: #1f1b1b;
+  opacity: 0.8;
   -webkit-transition: all .35s;
   transition: all .35s;
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
@@ -127,7 +128,7 @@ section h2 {
   #mainNav {
     border-color: transparent;
     background-color: transparent;
-    padding-top:25px;
+    
   }
   #mainNav .navbar-brand {
     color: fade(white, 70%);

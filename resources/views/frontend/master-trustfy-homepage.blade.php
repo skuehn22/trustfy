@@ -201,7 +201,7 @@
                         <div class="input-group" style="width: 100%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input class="btn btn-lg" name="email-newsletter" id="email-newsletter" type="email" placeholder="Your Email" required>
-                            <button class="btn btn-info btn-lg" type="submit">Sign Me Up!</button>
+                            <button class="btn btn-info btn-lg" type="submit">Sign Up!</button>
                         </div>
                     </form>
 
