@@ -127,6 +127,7 @@ section h2 {
   #mainNav {
     border-color: transparent;
     background-color: transparent;
+    padding-top:25px;
   }
   #mainNav .navbar-brand {
     color: fade(white, 70%);
@@ -137,6 +138,7 @@ section h2 {
   #mainNav .navbar-nav > li > a,
   #mainNav .navbar-nav > li > a:focus {
     color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
   }
   #mainNav .navbar-nav > li > a:hover,
   #mainNav .navbar-nav > li > a:focus:hover {
@@ -144,7 +146,8 @@ section h2 {
   }
   #mainNav.navbar-shrink {
     border-color: rgba(34, 34, 34, 0.1);
-    background-color: #536753;
+    background-color: #1f1b1b;
+    opacity: 0.8;
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #222222;
@@ -169,7 +172,7 @@ section h2 {
   padding-bottom: 100px;
   color: white;
   background: url("../img/bg-pattern.png"), #7b4397;
-  background: url("../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#336633), to(#ff9046));
+  background: url("../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#336633), to(#536753));
   background: url("../img/bg-pattern.png"), linear-gradient(to left, #336633, #536753);
 }
 
@@ -326,8 +329,8 @@ section.features .feature-item i {
   font-size: 80px;
   display: block;
   margin-bottom: 15px;
-  background: -webkit-gradient(linear, right top, left top, from(#009900), to(#009900));
-  background: linear-gradient(to left, #009900, #009900);
+  background: -webkit-gradient(linear, right top, left top, from(#535353), to(#535353));
+  background: linear-gradient(to left, #535353, #535353);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

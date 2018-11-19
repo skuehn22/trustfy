@@ -19,27 +19,28 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-row">
                         <div class="form-group col-md-12">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Joe Bloggs">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group col-md-12">
                             <h3>Set up a Review</h3>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="client-mail">Client Email*</label>
-                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="mark@client.com" required>
+                            <label for="freelancer-mail">Client Name</label>
+                            <input type="text" class="form-control" id="name-client" name="name-client" placeholder="Penny Tool">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="freelancer-mail">Client Name</label>
-                            <input type="text" class="form-control" id="name-client" name="name-client" placeholder="Mark">
+                            <label for="client-mail">Client Email*</label>
+                            <input type="email" class="form-control" name="client-mail"  id="client-mail" placeholder="penny@client.com" required>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Julie Smith">
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                     </p>
                     <p>
@@ -53,15 +54,15 @@
                         <div class="form-group col-md-12">
                             <div class="form-group">
                                 <label for="name">Project Name</label>
-                                <input type="text" class="form-control" id="project-name" name="project-name" placeholder="Website created" required>
+                                <input type="text" class="form-control" id="project-name" name="project-name" placeholder="Roof Repair" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <div class="form-group">
-                                <label for="description">Short Description</label>
-                                <textarea class="form-control" rows="4" id="description" name="description" placeholder="Example: Hello, Marc, here's John, your roofer. I repaired your roof last week and I would be happy if you could leave me a short evaluation here." required></textarea>
+                                <label for="description">Message to Client</label>
+                                <textarea class="form-control" rows="4" id="description" name="description" placeholder="Example: Hello Penny, Joe here. I repaired your roof last week and would really appreciate a quick review. Thanks a million, Joe." required></textarea>
                             </div>
                         </div>
                     </div>
@@ -111,13 +112,12 @@
                         Welcome to the trustfy review system.
                     </p>
                     <p>
-                        Just fill out the fields below. By clicking “Send,” the person you’re inviting will receive a message asking them to leave a review. They can award 1 to 5 stars and leave a comment.
+                        By clicking “Send,” the person you’re inviting will receive a message asking them to leave a review. They can award 1 to 5 stars and leave a comment.
                     <p>
                         Your rating will not be published.
                     </p>
                     <p>
-                        We are beta testing this service and won’t be publishing any information provided- but please let us know what you think!
-                        You will receive your customer's feedback as soon as they fill out the form.
+                        We are beta testing the service and won’t be publishing anything yet. As soon as your customer leaves a review, we'll send it over to you.
                     </p>
                 </div>
             </div>
