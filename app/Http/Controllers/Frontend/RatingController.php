@@ -121,7 +121,7 @@ class RatingController extends Controller
             Mail::send('emails.rating-received', compact('rating', 'user'), function ($message) use ($rating) {
                 $message->from('review@trustfy.io', 'trustfy.com');
                 $message->bcc('sebastian@work-smarter.io', 'Sebastian');
-                $message->to($rating->email_freelancer, $rating->)->
+                $message->to($rating->email_freelancer, $rating->name)->
                 subject('trustfy.com - Rating received');
             });
 
