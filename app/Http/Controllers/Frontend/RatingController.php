@@ -119,10 +119,10 @@ class RatingController extends Controller
             $msg= "Thank you for your review.";
 
             Mail::send('emails.rating-received', compact('rating', 'user'), function ($message) use ($rating) {
-                $message->from('review@trustfy.io', 'trustfy.com');
+                $message->from('review@trustfy.io', 'trustfy.io');
                 $message->bcc('sebastian@work-smarter.io', 'Sebastian');
                 $message->to($rating->email_freelancer, $rating->name)->
-                subject('trustfy.com - Rating received');
+                subject('trustfy.io - Rating received');
             });
 
             return view('frontend.rating.closed', compact('blade', 'msg'));

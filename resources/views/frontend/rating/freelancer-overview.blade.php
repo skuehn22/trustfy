@@ -17,7 +17,7 @@
                         You’ve received this message because we heard you do freelance work.
                     </p>
                     <p>
-                        At Trustfy.com, we believe freelancers should own their own reputation- your reviews shouldn’t be tied to third-party websites or marketplaces. That’s why we’re developing an independent rating and review system that lets you showcase all that customer praise you’ve worked so hard for.
+                        At trustfy.io, we believe freelancers should own their own reputation- your reviews shouldn’t be tied to third-party websites or marketplaces. That’s why we’re developing an independent rating and review system that lets you showcase all that customer praise you’ve worked so hard for.
                     </p>
                     <p>
                         We’re building this for you, so tell us what you think!<br>

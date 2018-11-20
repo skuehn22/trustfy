@@ -16,7 +16,7 @@
 
                     <p>
                         You got this message because you work freelance.
-                        We at trustfy.com are working on an independent rating system where your ratings are no longer just on marketplaces.
+                        We at trustfy.io are working on an independent rating system where your ratings are no longer just on marketplaces.
                     </p>
                     <p>
                         It would help us a lot if you took 3 minutes to create a short review that we can send to your customer.
@@ -90,7 +90,7 @@
                             With the sending of the form, the person whose e-mail address has to be deposited receives a message with the information you have given. The customer can then award 1 to 5 stars and make a comment.
                         </p>
                         <p>
-                            This data is only used for internal analysis by trustfy.com and will not be published under any circumstances.
+                            This data is only used for internal analysis by trustfy.io and will not be published under any circumstances.
                         </p>
                         <p>
                             You will get your customer's feedback directly as soon as he fills it out.

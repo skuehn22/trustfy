@@ -68,16 +68,14 @@
 <header class="masthead">
     <div class="container h-100">
         <div class="row h-100">
-            @if(session()->has('message'))
-                <div class="col-sm-12">
-                    <div class="alert alert-success">
-                        {{ session()->get('message') }}
-                    </div>
-                </div>
-            @endif
             <div class="col-lg-7 my-auto">
                 <div class="header-content mx-auto">
-                    <h1 class="mb-5">We build trust </r> between freelancers and their clients</h1>
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    <h1 class="mb-5">We build trust between freelancers and their clients</h1>
                     <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
                 </div>
             </div>
