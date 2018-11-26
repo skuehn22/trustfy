@@ -56,7 +56,7 @@
                 We already trust review sites to make decisions about what shops to frequent or restaurants to eat at- but how does this work when hiring a freelancer?
             </p>
             <p>
-                You shouldn’t have to rely a mix of third-party job sites and marketplaces, many of which have paywalls, to access a freelancer’s reputation. That’s why we’re creating an open-access review system that lets clients rate their freelancers and freelancers rate their clients, be they companies or individuals.
+                You shouldn’t have to rely on a mix of third-party job sites and marketplaces, many of which have paywalls, to access a freelancer’s reputation. That’s why we’re creating an open-access review system that lets clients rate their freelancers and freelancers rate their clients, be they companies or individuals.
             </p>
             <p>
                 Freelancing is the future of work, and we want that future to be fair, transparent and honest.
