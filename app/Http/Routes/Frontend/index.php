@@ -12,6 +12,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     Route::auth();
     Route::get('/', 'HomeController@index') ;
+    Route::get('/reviews', 'HomeController@reviews') ;
+    Route::post('/login-review', 'LoginController@login') ;
     Route::get('/marketplace', 'HomeController@marketplace') ;
     Route::get('/marketplace/categories', 'HomeController@marketplaceCats') ;
     Route::get('/marketplace/detail', 'HomeController@marketplaceDetail') ;
@@ -27,6 +29,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/overview', 'Frontend\RatingController@getOverview');
     Route::any('/newsletter-sign-up', 'HomeController@newsletter');
     Route::any('/send-message', 'HomeController@contact');
+    Route::any('/freelancer/backend', 'Backend\Freelancer\FreelancerController@index');
 
 });
 

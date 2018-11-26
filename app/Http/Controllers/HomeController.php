@@ -30,9 +30,28 @@ class HomeController extends Controller
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        return view('frontend.master-trustfy-homepage', compact('blade'));
+        if(isset($blade["user"]->role)  && $blade["user"]->role == 0) {
+
+            return view('backend.provider.dashboard', compact('blade'));
+
+        }else{
+            return view('frontend.master-trustfy-homepage', compact('blade'));
+        }
+
+
 
     }
+
+    public function reviews()
+    {
+
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+
+        return view('auth.login', compact('blade'));
+
+    }
+
 
     public function marketplace() {
         $blade["locale"] = App::getLocale();
@@ -56,7 +75,7 @@ class HomeController extends Controller
 
         Auth::logout();
         Session::flash('success',"logout");
-        return Redirect::to($blade["locale"]."/");
+        return Redirect::to($blade["locale"]."/reviews");
 
     }
 
