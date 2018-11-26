@@ -37,7 +37,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="landing-page landing-page1">
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -51,15 +51,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
-                </li>
                 <!--<li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#features">Features</a>
+                    <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
                 </li>-->
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
+                <!--<li class="nav-item">
+                 <a class="nav-link js-scroll-trigger" href="/reviews">Login</a>
+               </li>-->
             </ul>
         </div>
     </div>
@@ -76,7 +76,7 @@
                         </div>
                     @endif
                     <h1 class="mb-5">We build trust between freelancers and their clients</h1>
-                    <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
+                    <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Sign up for the news!</a>
                 </div>
             </div>
             <div class="col-lg-5 my-auto">
@@ -99,35 +99,60 @@
     </div>
 </header>
 
-<section class="download bg-primary text-center" id="download">
+<div class="section section-demo" style="padding-top:45px;">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">You can start now and collect your first reviews</h2>
-                <!--<p>Be the first to test it out, we’ll be fully launching soon</p>-->
-
+            <div class="col-md-12">
+                <h2>What we do</h2>
+                <p class="homepage-txt" style="margin-top:0px; padding-top: 14px;">
+                    Freelancing is undoubtedly the future of work, and trusfty.io exists to ensure that future is characterized by high levels of trust, security and transparency for both freelancers and their clients.
+                </p>
+            </div>
+            <div class="col-md-12">
+                <div class="demo-image">
+                    <img src="/img/solution.png" alt="">
+                </div>
             </div>
         </div>
+    </div>
+</div>
+
+<section class="section section-demo freelancer" id="features" style="padding-top:45px;">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Freelancer Protection</h2>
+            <p class="text-muted">Check out what our system can do for you!</p>
+            <hr>
+        </div>
         <div class="row">
-            <div class="col-md-6 mx-auto">
-                <div class="badges">
-                    <form class="form-inline" method="POST" action="{{ asset('en/create-rating') }}">
-                        <div class="input-group" style="width: 100%;">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Enter email" required>
-                            <button class="btn btn-info btn-lg" type="submit">Go!</button>
+            <div class="col-md-6">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-lg-12">
+<br><br>
+                            <p class="check-container"> <i class="fas fa-check"></i> Late payment protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Payment in-full protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Payment in-full protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Cancelled milestone protection</p>
                         </div>
-                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="demo-image">
+                    <img src="/img/solution1.png" alt="">
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
 <section class="features" id="features">
     <div class="container">
         <div class="section-heading text-center">
-            <h2>Endless new Opportunities</h2>
-            <p class="text-muted">Check out what our review system can do for you!</p>
+            <h2>Client Protection</h2>
+            <p class="text-muted">Check out what our system can do for you!</p>
             <hr>
         </div>
         <div class="row">
@@ -136,11 +161,9 @@
                     <div class="device-mockup iphone6_plus portrait black">
                         <div class="device">
                             <div class="screen">
-                                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                <img src="img/demo-screen-2.png" class="img-fluid" alt="">
+                                <img src="img/trustyfy-screenshot.png" class="img-fluid" alt="">
                             </div>
                             <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
                   </div>
                         </div>
                     </div>
@@ -149,35 +172,11 @@
             <div class="col-lg-8 my-auto">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="fas fa-fist-raised text-primary"></i>
-                                <h3>Independent Reviews</h3>
-                                <p class="text-muted">Your ratings no longer belong to marketplaces</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="fas fa-desktop text-primary"></i>
-                                <h3>Flexible Use</h3>
-                                <p class="text-muted">Showcase your reviews on your website or send clients to our directory</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="fas fa-star text-primary"></i>
-                                <h3>Build your Reputation</h3>
-                                <p class="text-muted">Let customers leave reviews and showcase your hard-earned praise</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="fas fa-rocket text-primary"></i>
-                                <h3>More Customers</h3>
-                                <p class="text-muted">Create your personal brand and stand out from the crowd</p>
-                            </div>
+                        <div class="col-lg-12">
+                            <p class="check-container"> <i class="fas fa-check"></i> Late work compensation</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Quality of work protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Freelancer no-show protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> No more deposits in blind faith</p>
                         </div>
                     </div>
                 </div>
@@ -186,16 +185,25 @@
     </div>
 </section>
 
-<section class="cta">
-    <div class="cta-content">
-        <div class="container">
-            <h2>Stop waiting.<br>Start building trust.</h2>
-            <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Let's Get Started!</a>
-        </div>
-    </div>
-    <div class="overlay"></div>
-</section>
+<section class="section why section-gray">
+    <div class="container">
 
+        <div class="col-md-12">
+            <h2 class="header-text">Why we care</h2>
+            <p class="homepage-txt">Trustfy exists because we know how difficult it can be to go at it alone: We're freelancers and so are many of our friends and family. That's why we’re here to support freelancers and their clients throughout a project’s duration. Just because you need freelance work done, doesn’t mean you’re a professional manager. And on the flip side, being a talented freelancer doesn’t mean you’re a talented business administrator.  </p>
+        </div>
+        <div class="col-md-12">
+            <div class="demo-image">
+                <br><br><img src="/img/why-we-care.png" class="img-responsive" alt="Freelancing Economy">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <p class="homepage-txt" style="margin-top:0px;"><br><br>A lack of legal knowledge, industry skills or a knack for administration should not be barriers to achieving our mission: good work for fair pay. Bringing freelancers and their clients to eye level is key to accomplishing that.<br><br></p>
+        </div>
+
+
+    </div>
+</section>
 <section class="contact bg-primary" id="contact">
     <div class="container">
         <div class="row">
