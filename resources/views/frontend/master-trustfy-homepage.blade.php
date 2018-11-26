@@ -194,7 +194,7 @@
         </div>
         <div class="col-md-12">
             <div class="demo-image">
-                <br><br><img src="/img/why-we-care.png" class="img-responsive" alt="Freelancing Economy">
+                <br><br><img src="/img/why-we-care.png" style="width:100%;" class="img-responsive" alt="Freelancing Economy">
             </div>
         </div>
         <div class="col-md-12">
