@@ -85,7 +85,7 @@
                         <div class="device">
                             <div class="screen">
                                 <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                <img src="img/trustyfy-screenshot.png" class="img-fluid logo-desktop" alt="">
+                                <img src="img/trustyfy-screenshot20.png" class="img-fluid logo-desktop" alt="">
 
                             </div>
                             <div class="button">
@@ -128,8 +128,8 @@
             <div class="col-md-6">
                 <div class="container-fluid ">
                     <div class="row">
-                        <div class="col-lg-12">
-<br><br>
+                        <div class="offset-md-2 col-md-10">
+                            <br><br>
                             <p class="check-container"> <i class="fas fa-check"></i> Late payment protection</p>
                             <p class="check-container"> <i class="fas fa-check"></i> Payment in-full protection</p>
                             <p class="check-container"> <i class="fas fa-check"></i> Payment in-full protection</p>
