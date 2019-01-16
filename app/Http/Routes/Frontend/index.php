@@ -29,7 +29,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/overview', 'Frontend\RatingController@getOverview');
     Route::any('/newsletter-sign-up', 'HomeController@newsletter');
     Route::any('/send-message', 'HomeController@contact');
-    Route::any('/freelancer/backend', 'Backend\Freelancer\FreelancerController@index');
+
+
 
 });
 

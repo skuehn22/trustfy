@@ -47,9 +47,10 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
+                <!--
                 <li class="nav-item">
                     <a class="nav-link" href="/#download">Create a Review</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="/#contact">Contact</a>
                 </li>
@@ -59,8 +60,6 @@
                     @else
                         <a class="nav-link" href="/login">Login</a>
                     @endif
-
-
                 </li>
             </ul>
         </div>
@@ -75,7 +74,7 @@
 
 <footer>
     <div class="container">
-        <p>&copy; trustfy.io 2018. All Rights Reserved.</p>
+        <p>&copy; trustfy.io 2019. All Rights Reserved.</p>
         <!--
         <ul class="list-inline">
             <li class="list-inline-item">

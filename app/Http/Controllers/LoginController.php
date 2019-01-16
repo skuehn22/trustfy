@@ -50,7 +50,7 @@ class LoginController extends Controller
 
                         if($user->role == 0 || $user->role ==200 ) {
 
-                            return Redirect::to("$ll/freelancer/backend")->withInput()->with('error', 'Konto ist inaktiv!');
+                            return Redirect::to("$ll/freelancer/dashboard")->with('ll', $ll);
 
                         }
 

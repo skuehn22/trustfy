@@ -13,14 +13,14 @@ use App, Auth;
 
 use App\Http\Controllers\Controller;
 
-class FreelancerController extends Controller
+class PlanController extends Controller
 {
 
-    public function index() {
+    public function create() {
 
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
-        return view('backend.freelancer.dashboard', compact('blade'));
+        return view('backend.freelancer.plan', compact('blade'));
 
     }
 

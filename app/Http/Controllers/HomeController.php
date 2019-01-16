@@ -44,12 +44,9 @@ class HomeController extends Controller
 
     public function reviews()
     {
-
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
-
         return view('auth.login', compact('blade'));
-
     }
 
 

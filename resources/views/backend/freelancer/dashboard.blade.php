@@ -46,6 +46,12 @@
                                 @include('backend.inbox.index')
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-12">
+                               <a class="btn btn-primary" href="/freelancer/plan/create">Create Payment Plan</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                <!--
@@ -271,7 +277,7 @@
             };
 
 
-            urlAddress = "{{env("MYHTTP")}}/{{$blade['locale']}}/provider/" + url;
+            urlAddress = "{{env("MYHTTP")}}/{{$blade['ll']}}/provider/" + url;
 
 
             if(data != null && Object.keys(data).length > 0) {
@@ -309,7 +315,7 @@
                     loadScrips();
                 }
             }
-            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/"+ $url, true);
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['ll']}}/provider/"+ $url, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
 

@@ -10,8 +10,8 @@ body {
 
 .content-bg{
     background: url("../img/bg-pattern.png"), #7b4397;
-    background: url("../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#28a745), to(#28a745));
-    background: url("../img/bg-pattern.png"), linear-gradient(to left, #28a745, #28a745);
+    background: url("../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#336633), to(#536753));
+    background: url("../img/bg-pattern.png"), linear-gradient(to left, #336633, #536753);
 }
 
 .navbar{

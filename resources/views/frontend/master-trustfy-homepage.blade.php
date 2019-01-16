@@ -57,9 +57,9 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
-                <!--<li class="nav-item">
+                <li class="nav-item">
                  <a class="nav-link js-scroll-trigger" href="/reviews">Login</a>
-               </li>-->
+               </li>
             </ul>
         </div>
     </div>
@@ -269,7 +269,7 @@
         </form>
         <div class="row">
             <div class="col-md-12">
-            <p>&copy; trustfy.io 2018. All Rights Reserved.</p>
+            <p>&copy; trustfy.io 2019. All Rights Reserved.</p>
             </div>
         </div>
     </div>
