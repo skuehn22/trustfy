@@ -103,9 +103,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>What we do</h2>
+                <h2>How we Build Trust</h2>
                 <p class="homepage-txt" style="margin-top:0px; padding-top: 14px;">
-                    Freelancing is undoubtedly the future of work, and trusfty.io exists to ensure that future is characterized by high levels of trust, security and transparency for both freelancers and their clients.
+                    Our mission is to ensure that good work is rewarded with fair pay.
                 </p>
             </div>
             <div class="col-md-12">
@@ -121,7 +121,7 @@
     <div class="container">
         <div class="section-heading text-center">
             <h2>Freelancer Protection</h2>
-            <p class="text-muted">Check out what our system can do for you!</p>
+            <p class="text-muted">A professional payment system that gets you paid on time.</p>
             <hr>
         </div>
         <div class="row">
@@ -152,7 +152,7 @@
     <div class="container">
         <div class="section-heading text-center">
             <h2>Client Protection</h2>
-            <p class="text-muted">Check out what our system can do for you!</p>
+            <p class="text-muted">A secure payment system that puts you in control.</p>
             <hr>
         </div>
         <div class="row">
@@ -190,7 +190,9 @@
 
         <div class="col-md-12">
             <h2 class="header-text">Why we care</h2>
-            <p class="homepage-txt">Trustfy exists because we know how difficult it can be to go at it alone: We're freelancers and so are many of our friends and family. That's why we’re here to support freelancers and their clients throughout a project’s duration. Just because you need freelance work done, doesn’t mean you’re a professional manager. And on the flip side, being a talented freelancer doesn’t mean you’re a talented business administrator.  </p>
+            <p class="homepage-txt"> Freelancing is the future of work and more and more people are working as or hiring freelancers.
+                To make sure this shift benefits everyone involved, this future must be built on security, transparency and fairness for both freelancers and their clients.
+                We’re dedicated to making that happen.</p>
         </div>
         <div class="col-md-12">
             <div class="demo-image">
@@ -198,7 +200,9 @@
             </div>
         </div>
         <div class="col-md-12">
-            <p class="homepage-txt" style="margin-top:0px;"><br><br>A lack of legal knowledge, industry skills or a knack for administration should not be barriers to achieving our mission: good work for fair pay. Bringing freelancers and their clients to eye level is key to accomplishing that.<br><br></p>
+            <p class="homepage-txt" style="margin-top:0px;"><br><br> We founded Trustfy because we know how difficult it is to go at it alone: We've worked with and as freelancers, and so have many of our friends and family.
+                Whether you’re a client or a freelancer, you should be able to focus on what matters most: the project at hand. You shouldn’t be worrying about deposits or payments.
+                That’s why we’re here. To provide payment security that brings clients and freelancers to eye level and makes sure both sides get a fair deal.<br><br></p>
         </div>
 
 
