@@ -9,9 +9,11 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect;
+use App, Auth, Request, Redirect, Form;
 
 use App\Http\Controllers\Controller;
+use App\DatabaseModels\Projects;
+use App\DatabaseModels\ProjectsAddress;
 use App\DatabaseModels\Clients;
 
 class ProjectManagementController extends Controller
@@ -22,11 +24,12 @@ class ProjectManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+
+        $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
             ->get();
 
-        return view('backend.freelancer.projects', compact('blade', 'clients'));
+        return view('backend.freelancer.projects', compact('blade', 'projects'));
 
     }
 
@@ -34,6 +37,10 @@ class ProjectManagementController extends Controller
 
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
+
+        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            ->where("delete", "=", "0")
+            ->get();
 
         return view('backend.freelancer.projects-new', compact('blade', 'clients'));
 
@@ -45,10 +52,19 @@ class ProjectManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        $client = Clients::where("id", "=", $id)
+        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            ->where("delete", "=", "0")
+            ->get();
+
+        $project = Projects::where("id", "=", $id)
+            ->where("delete", "=", "0")
             ->first();
 
-        return view('backend.freelancer.projects-edit', compact('blade', 'client'));
+        $projectaddress  = ProjectsAddress::where("project_id_fk", "=", $id)
+            ->where("delete", "=", "0")
+            ->first();
+
+        return view('backend.freelancer.projects-edit', compact('blade', 'clients', 'project', 'projectaddress'));
 
     }
 
@@ -59,20 +75,30 @@ class ProjectManagementController extends Controller
         $input = Request::all();
 
         if($id == 0){
-            $client = new Clients();
+            $project = new Projects();
+            $projectaddress = new ProjectsAddress();
         }else{
-            $client = Clients::where("id", "=", $id)
+            $project = Projects::where("id", "=", $id)
+                ->first();
+
+            $projectaddress = ProjectsAddress::where("project_id_fk", "=", $id)
                 ->first();
         }
 
-        $client->firstname = $input["firstname"];
-        $client->lastname = $input["lastname"];
-        $client->mail = $input["mail"];
-        $client->address = $input["address"];
-        $client->city = $input["city"];
-        $client->country = $input["country"];
-        $client->service_provider_fk = $blade["user"]->service_provider_fk;
-        $client->save();
+        $project->name = $input["name"];
+        $project->desc = $input["description"];
+        $project->client_id_fk = $input["clients"];
+        $project->service_provider_fk = $blade["user"]->service_provider_fk;
+        $project->save();
+
+        if(!empty($input["street"])){
+            $projectaddress->street = $input["street"];
+            $projectaddress->city = $input["city"];
+            $projectaddress->country = $input["country"];
+            $projectaddress->project_id_fk = $project->id;
+            $projectaddress->save();
+        }
+
 
         return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
 
@@ -83,11 +109,11 @@ class ProjectManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        $client = Clients::where("id", "=", $id)
+        $project = Projects::where("id", "=", $id)
             ->first();
 
-        $client->delete = 1;
-        $client->save();
+        $project->delete = 1;
+        $project->save();
 
         return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
 

@@ -18,6 +18,6 @@ class ProjectsAddress extends Model
      *
      * @var string
      */
-    protected $table = 'project-address';
+    protected $table = 'projects_address';
     protected $primaryKey = 'id';
 }

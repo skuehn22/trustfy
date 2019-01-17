@@ -16,7 +16,7 @@
     <div class="clients">
         <div class="row section-heading">
             <div class="col-md-6">
-                <h1>New Clients</h1>
+                <h1>New Client</h1>
             </div>
         </div>
         <div class="row">

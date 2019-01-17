@@ -16,27 +16,44 @@
     <div class="clients">
         <div class="row section-heading">
             <div class="col-md-6">
-                <h1>New Clients</h1>
+                <h1>New Project</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <form action="/{{$blade["ll"]}}/freelancer/clients/save/0">
+                <form action="/{{$blade["ll"]}}/freelancer/projects/save/0">
                     <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label" for="firstname">Firstname</label>
-                        <input type="text" class="form-control col-md-10" id="firstname" name="firstname">
+                        <h5>General Informations</h5>
                     </div>
                     <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label"  for="lastname">Lastname</label>
-                        <input type="text" class="form-control col-md-10" id="lastname" name="lastname">
+                        <label class="col-md-2 col-form-label" for="clients">Client</label>
+                        @if(count($clients)>0)
+                        <select name="clients" id="clients" class="col-md-10">
+                            @foreach($clients as $client)
+                                <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
+                            @endforeach
+                        </select>
+                        @else
+                            <div class="pt-2">
+                                No clients created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Client</a>
+                            </div>
+
+                        @endif
                     </div>
                     <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label"  for="mail">Email address</label>
-                        <input type="email" class="form-control col-md-10" id="mail" name="mail" aria-describedby="emailHelp">
+                        <label class="col-md-2 col-form-label" for="name">Name</label>
+                        <input type="text" class="form-control col-md-10" id="name" name="name">
                     </div>
                     <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label"  for="address">Address</label>
-                        <input type="text" class="form-control col-md-10" id="address" name="address">
+                        <label class="col-md-2 col-form-label"  for="description">Description</label>
+                        <textarea class="form-control col-md-10" rows="5" id="description" name="description"></textarea>
+                    </div>
+                    <div class="form-row py-2">
+                       <h5>Address optional</h5>
+                    </div>
+                    <div class="form-row py-2">
+                        <label class="col-md-2 col-form-label"  for="address">Street</label>
+                        <input type="text" class="form-control col-md-10" id="street" name="street">
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label"  for="city">City</label>
@@ -46,7 +63,7 @@
                         <label class="col-md-2 col-form-label"  for="country">Country</label>
                         <input type="text" class="form-control col-md-10" id="country" name="country">
                     </div>
-                    <button type="submit" class="btn btn-default float-right text-right">Save Client</button>
+                    <button type="submit" class="btn btn-default float-right text-right">Save Project</button>
                 </form>
             </div>
         </div>

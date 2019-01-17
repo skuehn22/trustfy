@@ -26,32 +26,26 @@
             <h1>Projects</h1>
         </div>
         <div class="col-md-6 pr-0 float-right text-right">
-            <a href="/{{$blade["ll"]}}/freelancer/clients/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Add Project</a>
+            <a href="/{{$blade["ll"]}}/freelancer/projects/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Add Project</a>
         </div>
     </div>
 
-    @if(count($clients)>0)
+    @if(count($projects)>0)
         <div class="row table-heading">
-            <div class="col-md-2 pl-0"><h5>Lastname</h5></div>
-            <div class="col-md-2"><h5>Firstname</h5></div>
-            <div class="col-md-2"><h5>Address</h5></div>
-            <div class="col-md-2"><h5>City</h5></div>
-            <div class="col-md-2"><h5>E-Mail</h5></div>
+            <div class="col-md-2 pl-0"><h5>Name</h5></div>
+            <div class="col-md-8"><h5>Description</h5></div>
             <div class="col-md-2 pr-0 float-right text-right">
                 <h5>Actions</h5>
             </div>
         </div>
 
-        @foreach($clients as $client)
+        @foreach($projects as $project)
             <div class="row">
-                <div class="col-md-2 pl-0">{{$client->lastname}}</div>
-                <div class="col-md-2">{{$client->firstname}}</div>
-                <div class="col-md-2">{{$client->address}}</div>
-                <div class="col-md-2">{{$client->city}}</div>
-                <div class="col-md-2">{{$client->mail}}</div>
+                <div class="col-md-2 pl-0">{{$project->name}}</div>
+                <div class="col-md-8">{{$project->desc}}</div>
                 <div class="col-md-2 pr-0 float-right text-right">
-                    <a href="/{{$blade["ll"]}}/freelancer/clients/edit/{{$client->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
-                    <a href="#" data-id="{{$client->id}}" data-toggle="modal" data-target="#exampleModal"  title="Delete" class="delete-client">
+                    <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$project->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
+                    <a href="#" data-id="{{$project->id}}" data-toggle="modal" data-target="#exampleModal"  title="Delete" class="delete-client">
                         <i class="fas fa-trash green"></i>
                     </a>
                 </div>
@@ -75,7 +69,7 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <form action="/{{$blade["ll"]}}/freelancer/clients/delete/" id="deleteform" method="post">
+                <form action="/{{$blade["ll"]}}/freelancer/projects/delete/" id="deleteform" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">Yes</button>
@@ -92,7 +86,7 @@
 
         $(document).on("click", ".delete-client", function () {
             var myBookId = $(this).data('id');
-            var url = "/en/freelancer/clients/delete/"+myBookId;
+            var url = "/en/freelancer/projects/delete/"+myBookId;
             $('#deleteform').attr('action', url);
         });
 
