@@ -31,6 +31,7 @@
 
 @section('content')
 
+    <!--
     <div class="container dashboard">
         <div class="row">
             <div class="col-md-4">
@@ -43,7 +44,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6 col-md-12">
-                                @include('backend.inbox.index')
+
                             </div>
                         </div>
                         <div class="row">
@@ -54,6 +55,9 @@
 
                     </div>
                 </div>
+
+                -->
+
                <!--
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -65,6 +69,7 @@
                     </div>
                 </div>
                 -->
+    <!--
             </div>
             <div class="col-md-8">
                 <div class="panel panel-primary">
@@ -108,7 +113,7 @@
                                 </a>
                             </div>
                         </div>
-                        <!--<a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>-->
+                        <a href="http://www.jquery2dotnet.com/" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span> Website</a>
                     </div>
 
                 </div>
@@ -130,9 +135,9 @@
 
                     </div>
                 </div>
-        -->
+
             </div>
-        </div>
+        </div>   -->
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
