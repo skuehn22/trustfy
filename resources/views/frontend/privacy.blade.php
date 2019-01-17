@@ -92,7 +92,7 @@
                     When depositing funds through a payment plan, you can choose between various payment options offered by our payments partner MangoPay.For more information regarding MangoPay's processes, please refer to MangoPay's terms of service here.
                     In particular, we have entrusted the following service provider to process these payments:
                     <br>
-                    <span class="strong">MangoPay S.&agrave; r.l. et Cie, S.C.A,2 Avenue Amélie, L-1125 Luxembourg </span>
+                    <span class="strong">MangoPay,2 Avenue Amélie, L-1125 Luxembourg </span>
                     <br>
                     <span class="strong"></span>
                     <br>
@@ -120,19 +120,13 @@
 
                 </p>
                 <p class="strong">
-                    3.8. Google Maps
-                </p>
-                <p>
-
-                </p>
-                <p class="strong">
-                    3.9. Cookies usage
+                    3.8. Cookies usage
                 </p>
                 <p>
                     Some of our services necessitate the use of so-called cookies. A cookie is a small text file that is stored by the browser on your device. Cookies are not used to run programs or to download viruses onto your computer. The main purpose of our cookies is to provide you with a customized offer and to make the use of our services as time-saving as possible. Most browsers are set to accept cookies by default. You can however change your browser settings to refuse cookies or to only save them with prior consent. If you disable cookies, this will mean that some of our services will not work properly for you. We use cookies, in particular, for log in authentication, for load distribution, to save your language settings and to note that you have seen certain information placed on our website &ndash; so that it will not be displayed again the next time you visit the website. Through this, we want to enable a more comfortable and individualized use of our website. These services are based on our afore mentioned legitimate interests, legal basis is Art. 6 para. 1 lit. f of the GDPR. Additionally, we use cookies and similar technologies (such as web beacons) from partners for analysis and marketing purposes. This will be described in more detail in the following sections.
                 </p>
                 <p class="strong">
-                    3.10. Use of cookies and similar technologies for analysis
+                    3.9. Use of cookies and similar technologies for analysis
                 </p>
                 <p>
                     To improve our website, we make use of cookies and similar technologies (such as web beacons) to statistically collect and analyze general usage patterns based on access data. We also use analysis services to evaluate the use of our various marketing channels. The legal basis for the data processing described in the following section is Art. 6 para. 1 lit. f of the GDPR, based on our legitimate interest in the needs-based design and continuous optimization of our website.
@@ -142,7 +136,7 @@
 
                 </p>
                 <p class="strong">
-                    3.11. Google Tag Manager
+                    3.10. Google Tag Manager
                 </p>
                 <p>
                     Our website uses the Google Tag Manager, a service of Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (&ldquo;Google&rdquo;). The Tag Manager is used to manage tracking tools and other services, so-called website tags. A tag is an element that is stored in the source code of our website in order to record, for example, predefined usage data. The Google Tag Manager does not require the use of cookies. The Google Tag Manager ensures that the usage data needed by our partners (see data processing procedures described above) are forwarded to them. Some of the data are processed on a Google server in the US. In the event that personal data are transferred to the US, Google has submitted to the EU-US Privacy Shield. The legal basis is Art. 6 para. 1 lit. f of the GDPR, based on our legitimate interest in integrating and managing several tags on our website in an uncomplicated manner. For more information, see Google&rsquo;s information about the Tag Manager.
@@ -158,11 +152,13 @@
                 </p>
                 <p>
                     The data collected by us will only be passed on if:
+                <ul>
                 <li>you have given your explicit consent in accordance with Art. 6 para. 1. lit. a of the GDPR, especially in context with 3.5. of this statement (see above)</li>
                 <li>the disclosure in accordance with Art. 6 para. 1 lit. f of the GDPR is necessary in order to assert, exercise or defend legal claims and there is no reason to assume that you have an overriding interest worthy of protection in not disclosing your data, </li>
                 <li>we are legally obliged in accordance with Art. 6 para. 1 lit. c of the GDPR to disclosure or </li>
                 <li>this is permitted by law and, in accordance with Art. 6 para. 1 lit. b of the GDPR, is required for the execution of contractual relationships with you or for the execution of precontractual measures, which will be carried out upon your request. </li>
-                <br>
+                </ul>
+                    <br>
                 Part of the data processing can be carried out by our service providers. In addition to the service providers mentioned in this privacy policy, these may include data centers that store our website and our databases, IT service providers that maintain our systems as well as consulting firms. If we pass on data to our service providers, they may use the data exclusively for the fulfillment of their tasks. The service providers have been carefully selected and commissioned by us. The providers are contractually bound by our instructions, they have appropriate technical and organizational measures in effect in order to protect the rights of the persons concerned and are regularly monitored by us. In addition, the data may be passed on in connection with official inquires, court orders and legal proceedings if they are necessary for legal prosecution or enforcement.
                 </p>
                 <p class="strong">
