@@ -398,13 +398,14 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-s
 }
 
 a {
-  color: #fdcc52;
+  color: #535353;
   -webkit-transition: all .35s;
   transition: all .35s;
+    font-size: 16px;
 }
 
 a:hover, a:focus {
-  color: #fcbd20;
+  color: #000;
 }
 
 hr {
@@ -873,8 +874,9 @@ footer {
 }
 
 footer p {
-  font-size: 12px;
+  font-size: 16px;
   margin: 0;
+  color: #fff;
 }
 
 footer ul {
@@ -882,8 +884,8 @@ footer ul {
 }
 
 footer ul li a {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 16px;
+  color: #fff;
 }
 
 footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li a.active {
@@ -948,4 +950,28 @@ button.btn {
   height: 60px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+
+.terms-container{
+    padding-top:25px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.terms-container a{
+    color: #006600;
+    text-align: left;
+}
+
+.privacy-container{
+    padding-top:25px;
+    background-color: #fff;
+    text-align: left;
+}
+
+
+.strong{
+    font-weight: 600;
+    text-align: left;
 }

@@ -38,8 +38,6 @@ class HomeController extends Controller
             return view('frontend.master-trustfy-homepage', compact('blade'));
         }
 
-
-
     }
 
     public function reviews()
@@ -109,6 +107,16 @@ class HomeController extends Controller
 
 
         return redirect()->back()->with('message', 'Thank you very much for your message!');
+    }
+
+    public function privacy() {
+        $blade["locale"] = App::getLocale();
+        return view('frontend.privacy', compact('blade'));
+    }
+
+    public function terms() {
+        $blade["locale"] = App::getLocale();
+        return view('frontend.terms', compact('blade'));
     }
 
 }

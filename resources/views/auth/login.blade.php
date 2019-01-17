@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default login-blade">
-                <div class="panel-heading"><h1>Log in to read your reviews or set up a project</h1></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login-review') }}">
                         {{ csrf_field() }}
@@ -59,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a id="signup">Don’t have an account? Sign up</a>
+                                <!--<a id="signup">Don’t have an account? Sign up</a>-->
                             </div>
                         </div>
                     </form>

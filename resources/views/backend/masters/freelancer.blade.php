@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Blank Page</title>
+    <title>trustfy.io</title>
 
     <!-- Bootstrap core CSS-->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -145,7 +145,7 @@
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright © Your Website 2018</span>
+                    <span>Copyright © trustfy.io 2019</span>
                 </div>
             </div>
         </footer>

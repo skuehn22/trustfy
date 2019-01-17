@@ -21,8 +21,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link href="{{ asset('css/style-trustfy.css') }}" rel="stylesheet" type="text/css" >
-    <link rel="icon" type="image/png" href="/favicon-tf.ico">
+    <link href="/css/new-age.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     @yield('seo')
     <style>
         @yield('css')
@@ -35,7 +36,7 @@
 <nav class="navbar navbar-expand-lg static-top">
     <div class="container">
         <a class="navbar-brand" href="{{ asset('/') }}">
-            <img src="/img/trustfy20181119.png" width="200px">
+            <img src="/img/trustfy-green.png" width="200px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -66,7 +67,7 @@
     </div>
 </nav>
 
-<div  class="content-bg" style="min-height: 100vh;">
+<div  class="content-bg" style="min-height: 70vh;">
 
     @yield('content')
 
@@ -74,20 +75,22 @@
 
 <footer>
     <div class="container">
-        <p>&copy; trustfy.io 2019. All Rights Reserved.</p>
-        <!--
-        <ul class="list-inline">
-            <li class="list-inline-item">
-                <a href="#">Privacy</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">Terms</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="#">FAQ</a>
-            </li>
-        </ul>
-        -->
+        <div class="row" style="padding-top:25px;">
+            <div class="col-md-3">
+                <img src="/img/trustfy-new-mixed.png" style="max-width: 200px;" class="img-fluid logo-desktop">
+                <p>
+                    We build trust between<br> freelancers and their clients
+                </p>
+            </div>
+            <div class="col-md-2">
+                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;">Terms</a></p>
+                <p><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
+            </div>
+            <div class="col-md-7">
+                <img src="/img/powered-by-mangopay.png" alt="mangopay" style="max-width: 600px;" class="img-fluid">
+
+            </div>
+        </div>
     </div>
 </footer>
 

@@ -20,14 +20,14 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/favicon-tf.ico">
-
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
@@ -232,7 +232,7 @@
     <div class="container">
         <form id="ratingForm" method="POST" action="/send-message">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="row">
+        <div class="row" style="padding-bottom:25px;">
             <div class="offset-md-3 col-md-5">
                 <div class="form-row">
                     <div class="form-group col-md-12">
@@ -267,9 +267,25 @@
             </div>
         </div>
         </form>
-        <div class="row">
+        <div class="row" style="border-top: 1px solid #fff; padding-top:25px;">
+            <div class="col-md-3">
+                <img src="img/trustfy-new-mixed.png" style="max-width: 200px;" class="img-fluid logo-desktop">
+                <p>
+                    We build trust between<br> freelancers and their clients
+                </p>
+            </div>
+            <div class="col-md-2">
+                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;">Terms</a></p>
+                <p><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
+            </div>
+            <div class="col-md-7">
+                <img src="img/powered-by-mangopay.png" alt="mangopay" style="max-width: 600px;" class="img-fluid">
+
+            </div>
+        </div>
+        <div class="row" style="padding-top:25px;">
             <div class="col-md-12">
-            <p>&copy; trustfy.io 2019. All Rights Reserved.</p>
+
             </div>
         </div>
     </div>
