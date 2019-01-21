@@ -33,7 +33,8 @@
     @if(count($projects)>0)
         <div class="row table-heading">
             <div class="col-md-2 pl-0"><h5>Name</h5></div>
-            <div class="col-md-8"><h5>Description</h5></div>
+            <div class="col-md-6"><h5>Description</h5></div>
+            <div class="col-md-2"><h5>Client</h5></div>
             <div class="col-md-2 pr-0 float-right text-right">
                 <h5>Actions</h5>
             </div>
@@ -42,7 +43,8 @@
         @foreach($projects as $project)
             <div class="row">
                 <div class="col-md-2 pl-0">{{$project->name}}</div>
-                <div class="col-md-8">{{$project->desc}}</div>
+                <div class="col-md-6">{{$project->desc}}</div>
+                <div class="col-md-2"></div>
                 <div class="col-md-2 pr-0 float-right text-right">
                     <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$project->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                     <a href="#" data-id="{{$project->id}}" data-toggle="modal" data-target="#exampleModal"  title="Delete" class="delete-client">

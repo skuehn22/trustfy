@@ -16,7 +16,7 @@ use App\DatabaseModels\Projects;
 use App\DatabaseModels\ProjectsAddress;
 use App\DatabaseModels\Clients;
 
-class ProjectManagementController extends Controller
+class ProjectPlanManagementController extends Controller
 {
 
     public function index() {
@@ -31,7 +31,7 @@ class ProjectManagementController extends Controller
 
 
 
-        return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
+        return view('backend.freelancer.projects.plan', compact('blade', 'projects'));
 
     }
 
@@ -44,7 +44,7 @@ class ProjectManagementController extends Controller
             ->where("delete", "=", "0")
             ->get();
 
-        return view('backend.freelancer.projects.projects-new', compact('blade', 'clients'));
+        return view('backend.freelancer.plan-new', compact('blade', 'clients'));
 
     }
 
@@ -66,7 +66,7 @@ class ProjectManagementController extends Controller
             ->where("delete", "=", "0")
             ->first();
 
-        return view('backend.freelancer.projects.projects-edit', compact('blade', 'clients', 'project', 'projectaddress'));
+        return view('backend.freelancer.plan-edit', compact('blade', 'clients', 'project', 'projectaddress'));
 
     }
 
@@ -102,7 +102,7 @@ class ProjectManagementController extends Controller
         }
 
 
-        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/plan/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
 
     }
 
@@ -117,7 +117,7 @@ class ProjectManagementController extends Controller
         $project->delete = 1;
         $project->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/plan/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
 
     }
 

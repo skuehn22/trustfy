@@ -30,7 +30,11 @@
                         @if(count($clients)>0)
                             <select name="clients" id="clients" class="col-md-10">
                                 @foreach($clients as $client)
-                                    <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
+                                    @if($project->client_id_fk == $client->id)
+                                        <option value="{{$client->id}}" selected>{{$client->firstname}} {{$client->lastname}}</option>
+                                    @else
+                                        <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         @else

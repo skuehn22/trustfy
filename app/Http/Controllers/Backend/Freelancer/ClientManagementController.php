@@ -26,7 +26,7 @@ class ClientManagementController extends Controller
             ->where("delete", "=", "0")
             ->get();
 
-        return view('backend.freelancer.clients', compact('blade', 'clients'));
+        return view('backend.freelancer.clients.overview', compact('blade', 'clients'));
 
     }
 
@@ -35,7 +35,7 @@ class ClientManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        return view('backend.freelancer.clients-new', compact('blade', 'clients'));
+        return view('backend.freelancer.clients.clients-new', compact('blade', 'clients'));
 
     }
 
@@ -48,7 +48,7 @@ class ClientManagementController extends Controller
         $client = Clients::where("id", "=", $id)
             ->first();
 
-        return view('backend.freelancer.clients-edit', compact('blade', 'client'));
+        return view('backend.freelancer.clients.clients-edit', compact('blade', 'client'));
 
     }
 
