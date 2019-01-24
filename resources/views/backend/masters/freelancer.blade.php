@@ -16,14 +16,22 @@
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <!-- Page level plugin CSS-->
     <!--<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin.css" rel="stylesheet">
-    <link href="/css/freelancer/backend/style.css" rel="stylesheet">
 
+    <link href="/css/freelancer/backend/smart_wizard.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Optional SmartWizard theme -->
+    <link href="/css/freelancer/backend/smart_wizard_theme_circles.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/freelancer/backend/smart_wizard_theme_arrows.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/freelancer/backend/smart_wizard_theme_dots.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/css/freelancer/backend/style.css" rel="stylesheet">
 
 
 </head>
@@ -183,16 +191,57 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Include jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- Include SmartWizard JavaScript source -->
+<script src="/js/freelancer/jquery.smartWizard.min.js"></script>
+<script type="text/javascript">
 
-<!-- Core plugin JavaScript-->
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    //Close Bootstrap Alert Box
+    $().alert('close');
 
-<!-- Custom scripts for all pages-->
-<!--<script src="/js/sb-admin.min.js"></script>-->
+    $(document).ready(function(){
+        // Smart Wizard
+        $('#smartwizard').smartWizard({
+            selected: 0,
+            theme: 'default',
+            transitionEffect:'slide',
+            autoAdjustHeight: false,
+            toolbarSettings: {toolbarPosition: 'none',
+                toolbarExtraButtons: [
+                    {label: 'Finish', css: 'btn-success', onClick: function(){ alert('Finish Clicked'); }},
+                    {label: 'Cancel', css: 'btn-warning', onClick: function(){ $('#smartwizard').smartWizard("reset"); }}
+                ]
+            }
+        });
 
+
+
+        // External Button Events
+        $("#reset-btn").on("click", function() {
+            // Reset wizard
+            $('#smartwizard').smartWizard("reset");
+            return true;
+        });
+
+        $(".prev-btn").on("click", function() {
+            // Navigate previous
+            $('#smartwizard').smartWizard("prev");
+            return true;
+        });
+
+        $(".next-btn").on("click", function() {
+            // Navigate next
+            $('#smartwizard').smartWizard("next");
+            return true;
+        });
+
+        $('#smartwizard').smartWizard("theme", "arrows");
+        $("#smartwizard").smartWizard("fixHeight");
+
+    });
+</script>
 @yield('js')
 </body>
 

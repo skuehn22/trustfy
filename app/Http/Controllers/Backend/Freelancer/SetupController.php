@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request;
+use App, Auth, Request, Form;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
@@ -35,6 +35,8 @@ class SetupController extends Controller
 
         $company = new Companies();
 
+        $company->firstname = $data->firstname;
+        $company->lastname = $data->lastname;
         $company->name = $data->company;
         $company->city = $data->address;
         $company->address = $data->city;

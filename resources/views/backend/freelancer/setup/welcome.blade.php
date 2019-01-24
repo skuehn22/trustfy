@@ -5,80 +5,121 @@
 @stop
 @section('css')
 
-    <style>
-        /* CSS used here will be applied after bootstrap.css */
-
-        body{ margin-top:50px;}
-        .nav-tabs .glyphicon:not(.no-margin) { margin-right:10px; }
-        .tab-pane .list-group-item:first-child {border-top-right-radius: 0px;border-top-left-radius: 0px;}
-        .tab-pane .list-group-item:last-child {border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
-        .tab-pane .list-group .checkbox { display: inline-block;margin: 0px; }
-        .tab-pane .list-group input[type="checkbox"]{ margin-top: 2px; }
-        .tab-pane .list-group .glyphicon { margin-right:5px; }
-        .tab-pane .list-group .glyphicon:hover { color:#FFBC00; }
-        a.list-group-item.read { color: #222;background-color: #F3F3F3; }
-        hr { margin-top: 5px;margin-bottom: 10px; }
-        .nav-pills>li>a {padding: 5px 10px;}
-
-        .ad { padding: 5px;background: #F5F5F5;color: #222;font-size: 80%;border: 1px solid #E5E5E5; }
-        .ad a.title {color: #15C;text-decoration: none;font-weight: bold;font-size: 110%;}
-        .ad a.url {color: #093;text-decoration: none;}
-    </style>
 @stop
 @section('breadcrumb')
     Dashboard
 @stop
 
-@section('js')
+@section('content')
+
+    <div class="row">
+        <div class="col-md-12 pl-0 pt-0 pr-0">
+            <div class="alert alert-success error_message">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <h3>Welcome to trustfy.io</h3>
+                <p>First set up your basic account.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 pl-0 pt-0 pr-0 border-content">
+
+            <!-- SmartWizard html -->
+            <div id="smartwizard">
+                <ul>
+                    <li><a href="#step-1">Step 1<br /><small>Step 1 description</small></a></li>
+                    <li><a href="#step-2">Step 2<br /><small>Step 2 description</small></a></li>
+                    <li><a href="#step-3">Step 3<br /><small>Step 3 description</small></a></li>
+                    <li><a href="#step-4">Step 4<br /><small>Step 4 description</small></a></li>
+                </ul>
+
+                <div class="">
+                    <div id="step-1" class="">
+                        @include('backend.freelancer.setup.company')
+                    </div>
+                    <div id="step-2" class="">
+                        @include('backend.freelancer.setup.clients')
+                    </div>
+                    <div id="step-3" class="">
+                        @include('backend.freelancer.setup.company')
+                    </div>
+                    <div id="step-4" class="">
+                        @include('backend.freelancer.setup.clients')
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!--
+    <form class="form-inline">
+        <label>External Buttons:</label>
+        <div class="btn-group navbar-btn" role="group">
+            <button class="btn btn-success" id="prev-btn" type="button">Back</button>
+            <button class="btn btn-success" id="next-btn" type="button">Next</button>
+            <button class="btn btn-primary" id="reset-btn" type="button">Reset</button>
+        </div>
+    </form>
+
+
+    <br /><br /><br />
+-->
+
+@stop
+@section("js")
 
     <script>
-    $( document ).ready(function() {
 
-    });
+        $(document).on("click", ".save-company", function () {
 
+            $("#company-data").validate();
+            $("#myForm").validate();
 
-    $(document).on("click", ".save-company", function () {
+            data = {};
+            obj = {
+                "firstname" : $("#firstname").val(),
+                "lastname" : $("#lastname").val(),
+                "company" : $("#company").val(),
+                "address" : $("#address").val(),
+                "country" : $("#country").val(),
+                "city" : $("#city").val(),
+            }
 
-        data = {};
-        obj = {
-        "company" : $("#company").val(),
-        "address" : $("#address").val(),
-        "country" : $("#country").val(),
-        "city" : $("#city").val(),
-        }
+            data["company"] = JSON.stringify(obj);
+            save("save-company", data);
 
-        data["company"] = JSON.stringify(obj);
-        save("save-company", data);
+        });
 
-    });
+        $(document).on("click", ".progress-step1", function () {
 
-    $(document).on("click", ".progress-step1", function () {
+            $(".step-1").removeClass( "d-none" )
+            $(".step-2").addClass( "d-none" )
 
-        $(".step-1").removeClass( "d-none" )
-        $(".step-2").addClass( "d-none" )
+        });
 
-    });
+        $(document).on("click", ".progress-step2", function () {
 
-    $(document).on("click", ".progress-step2", function () {
+            $(".step-2").removeClass( "d-none" )
+            $(".step-1").addClass( "d-none" )
 
-        $(".step-2").removeClass( "d-none" )
-        $(".step-1").addClass( "d-none" )
-
-    });
-
-
-
+        });
 
 
-    function save(url, data) {
 
-        urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
+
+
+        function save(url, data) {
+
+            urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
 
             if(data != null && Object.keys(data).length > 0) {
 
                 urlAddress += "?";
                 for (var k in data) {
-                urlAddress += k + "=" + data[k] + "&";
+                    urlAddress += k + "=" + data[k] + "&";
                 }
                 urlAddress = urlAddress.slice(0, -1);
 
@@ -94,36 +135,12 @@
                     var items = data["project"];
                     $(".step-1").addClass( "d-none" )
                     $(".step-2").removeClass( "d-none" )
-            }
-        });
+                }
+            });
 
-    }
+        }
 
     </script>
-@stop
-
-@section('content')
-
-    <div class="row section-heading">
-        <div class="col-md-6 pl-0">
-            <h3>Welcome to trustfy.io</h3>
-            <p>first set up your account</p>
-        </div>
-        <div class="col-md-6 pr-0 float-right text-right">
-        </div>
-    </div>
-
-    <div class="row setup-steps">
-        <div class="col-md-12 step-1">
-            @include('backend.freelancer.setup.company')
-        </div>
-        <div class="col-md-12 step-2 d-none">
-            @include('backend.freelancer.setup.clients')
-        </div>
-    </div>
-
-@stop
-@section("js")
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
@@ -282,8 +299,5 @@
 
         }
 
-
-
     </script>
-
 @stop
