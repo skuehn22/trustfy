@@ -30,6 +30,36 @@ class ClientManagementController extends Controller
 
     }
 
+    public function getByUser() {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $projects = Clients::where("id", "=", $input['id'])
+            ->where("delete", "=", "0")
+            ->get();
+
+        return view('backend.freelancer.clients.dropdown', compact('blade', 'projects'));
+
+    }
+
+    public function getById() {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $project = Clients::where("id", "=", $input['id'])
+            ->where("delete", "=", "0")
+            ->first();
+
+        //$html = view('layouts.partials.cities')->with(compact('cities'))->render();
+        return response()->json(['success' => true, 'data' => $project]);
+
+    }
+
+
     public function create() {
 
         $blade["ll"] = App::getLocale();

@@ -35,6 +35,40 @@ class ProjectManagementController extends Controller
 
     }
 
+       public function getByClients() {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $projects = Projects::where("client_id_fk", "=", $input['id'])
+            ->where("delete", "=", "0")
+            ->get();
+
+
+
+        return view('backend.freelancer.projects.dropdown', compact('blade', 'projects'));
+
+    }
+
+    public function getById($id) {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $projects = Projects::where("id", "=", $id)
+            ->where("delete", "=", "0")
+            ->first();
+
+
+        return response()->json(['success' => true, 'data' => $projects]);
+
+    }
+
+
+
+
     public function create() {
 
         $blade["ll"] = App::getLocale();

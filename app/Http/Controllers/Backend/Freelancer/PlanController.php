@@ -20,6 +20,7 @@ class PlanController extends Controller
 
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
+
         return view('backend.freelancer.plan', compact('blade'));
 
     }

@@ -1,0 +1,58 @@
+h1{
+
+}
+
+.plan-preview{
+    border: 1px solid #535353;
+    min-height: 650px;
+}
+
+.menu-icons {
+
+}
+
+.menu-icons i{
+     font-size: 15px;
+     color: #535353;
+     padding: 5px;
+}
+
+.menu-icons .cancel-plan i{
+    color: #dd331a;
+}
+
+.menu-icons .save-plan i{
+    color: #fff;
+}
+
+.menu-icons .save-close i{
+    color: #6c757d;
+}
+
+.menu-icons button{
+    width: 200px;
+}
+
+.container-fluid {
+    padding-left: 50px;
+    padding-right: 75px;
+    padding-top: 25px;
+}
+
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 12px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 20px; height: 20px; display: block; background: #fbe8aa; top: 25px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 6px; height: 6px; background: #fbbd19; border-radius: 50px; position: absolute; top: 7px; left: 7px; }
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 4px; box-shadow: none; margin: 18px 0; background: #bebebe;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #fbe8aa;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #d4d4d4;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }

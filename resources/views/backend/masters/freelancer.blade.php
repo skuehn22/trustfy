@@ -18,10 +18,11 @@
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
-    <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!--<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin.css" rel="stylesheet">
+    <link href="/css/freelancer/backend/style.css" rel="stylesheet">
 
 
 
@@ -34,6 +35,8 @@
     <a class="navbar-brand mr-1" href="index.html">
         <img src="/images/trustfy.png" class="img-responsive logo">
     </a>
+
+
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -103,7 +106,7 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/payment-plans') }}">
+            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Payment Plans</span>
             </a>
@@ -188,7 +191,7 @@
 <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="/js/sb-admin.min.js"></script>
+<!--<script src="/js/sb-admin.min.js"></script>-->
 
 @yield('js')
 </body>

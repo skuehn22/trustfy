@@ -1,7 +1,6 @@
 @extends('backend.masters.freelancer')
 @section('seo')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
 @stop
 @section('css')
 
@@ -14,72 +13,104 @@
 @stop
 
 @section('content')
+    <div class="clients">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-               test
+        @if(Session::has('success'))
+            <div class="alert alert-success error_message">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ Session::get('success') }}
+            </div>
+        @endif
+        <div class="row section-heading">
+            <div class="col-md-6 pl-0">
+                <h1>Payment Plans</h1>
+            </div>
+            <div class="col-md-6 pr-0 float-right text-right">
+                <a href="/{{$blade["ll"]}}/freelancer/plans/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Create Plan</a>
             </div>
         </div>
 
+        @if(count($plans)>0)
+            <div class="row table-heading">
+                <div class="col-md-2 pl-0"><h5>Project</h5></div>
+                <div class="col-md-6"><h5>Client</h5></div>
+                <div class="col-md-2"><h5>Saved at</h5></div>
+                <div class="col-md-2 pr-0 float-right text-right">
+                    <h5>Actions</h5>
+                </div>
+            </div>
+
+            @foreach($plans as $plan)
+                <div class="row">
+                    <div class="col-md-2 pl-0">{{{ $plan->name or 'not set' }}}</div>
+                    <div class="col-md-6">{{$plan->firstname}} {{$plan->lastname}}</div>
+                    <div class="col-md-2">{{$plan->updated_at}}</div>
+                    <div class="col-md-2 pr-0 float-right text-right">
+                        <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
+                        <a href="#" data-id="{{$plan->id}}" data-toggle="modal" data-target="#exampleModal"  title="Delete" class="delete-client">
+                            <i class="fas fa-trash green"></i>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        @else
+
+            You have no payment plans yet...
+
+        @endif
     </div>
 
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <form action="/{{$blade["ll"]}}/freelancer/projects/delete/" id="deleteform" method="post">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @stop
 @section("js")
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-
     <script>
 
-        $( document ).ready(function() {
-            loadScrips();
+        $(document).on("click", ".delete-client", function () {
+            var myBookId = $(this).data('id');
+            var url = "/en//freelancer/projects/plans/delete/"+myBookId;
+            $('#deleteform').attr('action', url);
         });
 
-        function loadScrips(){
 
-        }
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
 
-        function action(url, data){
+        $('#modal-from-dom').on('show', function() {
+            var id = $(this).data('id'),
+                removeBtn = $(this).find('.danger');
 
-            //alert($url);
+            removeBtn.attr('href', removeBtn.attr('href').replace(/(&|\?)ref=\d*/, '$1ref=' + id));
 
-            if (window.XMLHttpRequest) {
-                xmlhttp = new XMLHttpRequest();
-            } else {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
+            $('#debug-url').html('Delete URL: <strong>' + removeBtn.attr('href') + '</strong>');
+        });
 
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
-                    loadScrips();
-                }
-            };
+        $('.confirm-delete').on('click', function(e) {
+            e.preventDefault();
 
-
-            urlAddress = "{{env("MYHTTP")}}/{{$blade['locale']}}/provider/" + url;
-
-
-            if(data != null && Object.keys(data).length > 0) {
-
-                urlAddress += "?";
-
-                for (var k in data) {
-                    urlAddress += k + "=" + data[k] + "&";
-                }
-
-                urlAddress = urlAddress.slice(0, -1);
-
-            }
-
-            xmlhttp.open("GET", urlAddress, true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send();
-
-        }
-
+            var id = $(this).data('id');
+            $('#modal-from-dom').data('id', id).modal('show');
+        });
     </script>
-
 @stop
