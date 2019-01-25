@@ -20,6 +20,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::any('/freelancer/setup/welcome', 'Backend\Freelancer\SetupController@index');
     Route::any('/freelancer/setup/save/save-company', 'Backend\Freelancer\SetupController@company');
+    Route::any('/freelancer/setup/save/save-client', 'Backend\Freelancer\SetupController@client');
 
     Route::any('/freelancer/clients', 'Backend\Freelancer\ClientManagementController@index');
     Route::any('/freelancer/clients/new', 'Backend\Freelancer\ClientManagementController@create');

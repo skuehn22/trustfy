@@ -13,6 +13,7 @@ use App, Auth, Request, Form;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
+use App\DatabaseModels\Clients;
 
 class SetupController extends Controller
 {
@@ -44,9 +45,33 @@ class SetupController extends Controller
         $company->users_fk = $blade["user"]->id;
         $company->save();
 
-        return response()->json(['success' => true, 'data' => $company]);
+        return response()->json(['prosuccess' => true, 'data' => $company]);
 
     }
+
+    public function client() {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $data = json_decode($input['clients']);
+
+        $client = new Clients();
+
+        $client->firstname = $data->firstname;
+        $client->lastname = $data->lastname;
+        $client->mail = $data->mail;
+        $client->address = $data->address;
+        $client->city = $data->city;
+        $client->country = $data->country;
+        $client->service_provider_fk = $blade["user"]->id;
+        $client->save();
+
+        return response()->json(['success' => 'Client successfully created', 'data' => $client]);
+
+    }
+
 
 
 }

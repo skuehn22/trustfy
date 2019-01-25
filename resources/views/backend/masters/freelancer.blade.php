@@ -206,6 +206,17 @@
     //Close Bootstrap Alert Box
     $().alert('close');
 
+    function loadScrips(){
+
+        // External Button Events
+        $(".force-next").on("click", function() {
+            // Reset wizard
+            $('#smartwizard').smartWizard("next");
+            return true;
+        });
+
+    };
+
     $(document).ready(function(){
 
         // Smart Wizard
@@ -254,6 +265,7 @@
                 save("save-company", data);
 
                 //opens next tab
+                $('.alert-welcome').hide();
                 $('#smartwizard').smartWizard("next");
                 return true;
 
@@ -263,10 +275,44 @@
 
         });
 
+        $(".save-client").on("click", function() {
+
+            if ($("#client-data").valid()) {
+
+                //if valid save company in DB
+                data = {};
+                obj = {
+                    "firstname" : $("#client-firstname").val(),
+                    "lastname" : $("#client-lastname").val(),
+                    "mail" : $("#client-mail").val(),
+                    "address" : $("#client-address").val(),
+                    "city" : $("#client-city").val(),
+                    "country" : $("#country").val(),
+                };
+
+                data["clients"] = JSON.stringify(obj);
+                var msg = save("save-client", data);
+
+            }else{
+
+            }
+
+        });
+
+        function clearClientForm() {
+            $("#client-firstname").val('');
+            $("#client-lastname").val('');
+            $("#client-mail").val('');
+            $("#client-address").val('');
+            $("#client-city").val('');
+        }
+
+
+
         $('#smartwizard').smartWizard("theme", "arrows");
 
-        function save(url, data) {
 
+        function save(url, data) {
 
             urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
 
@@ -287,9 +333,15 @@
                 data: { variable: 'value' },
                 dataType: 'json',
                 success: function(data) {
-                    var items = data["project"];
-                    $(".step-1").addClass( "d-none" )
-                    $(".step-2").removeClass( "d-none" )
+                    var items = data["success"];
+
+                    if(items == "Client successfully created"){
+                        $("#msg").text(items);
+                        clearClientForm();
+                        $(".client-next").text("Next Step").addClass( "btn-success force-next" ).removeClass( "btn-secondary" );
+                        loadScrips();
+                    }
+
                 }
             });
 

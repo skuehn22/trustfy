@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="col-md-12 pl-0 pt-0 pr-0">
-            <div class="alert alert-success error_message">
+            <div class="alert alert-success error_message alert-welcome">
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
                 <h3>Welcome to trustfy.io</h3>
                 <p>First set up your basic account.</p>
@@ -27,10 +27,10 @@
             <!-- SmartWizard html -->
             <div id="smartwizard">
                 <ul>
-                    <li><a href="#step-1">Step 1<br /><small>Step 1 description</small></a></li>
-                    <li><a href="#step-2">Step 2<br /><small>Step 2 description</small></a></li>
-                    <li><a href="#step-3">Step 3<br /><small>Step 3 description</small></a></li>
-                    <li><a href="#step-4">Step 4<br /><small>Step 4 description</small></a></li>
+                    <li><a href="#step-1">Step 1<br /><small>Your company details</small></a></li>
+                    <li><a href="#step-2">Step 2<br /><small>Your client details</small></a></li>
+                    <li><a href="#step-3">Step 3<br /><small>Create a project</small></a></li>
+                    <li><a href="#step-4">Step 4<br /><small>Your bank details</small></a></li>
                 </ul>
 
                 <div class="">
@@ -41,7 +41,7 @@
                         @include('backend.freelancer.setup.clients')
                     </div>
                     <div id="step-3" class="">
-                        @include('backend.freelancer.setup.company')
+                        @include('backend.freelancer.setup.projects')
                     </div>
                     <div id="step-4" class="">
                         @include('backend.freelancer.setup.clients')
@@ -78,13 +78,6 @@
         $( document ).ready(function() {
             loadScrips();
         });
-
-
-
-
-
-
-
 
         function loadScrips(){
 

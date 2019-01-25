@@ -93,7 +93,31 @@ h1{
     padding:40px;
 }
 
+.clients{
+    padding:40px;
+}
+
+
 .logo-hint{
     font-size: 10px;
     color: #1f1b1b;
+}
+
+.error{
+    color: #bd2130;
+    padding-left: 5px;
+    padding-top:5px;
+}
+
+.prev-btn{
+    width: 120px;
+
+}
+
+.next-btn{
+    width: 120px;
+}
+
+.skip-btn{
+    width: 120px;
 }
