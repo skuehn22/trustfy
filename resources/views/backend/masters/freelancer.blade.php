@@ -11,12 +11,16 @@
 
     <title>trustfy.io</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- Bootstrap core CSS-->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
     <!-- Page level plugin CSS-->
     <!--<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
@@ -196,12 +200,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <!-- Include SmartWizard JavaScript source -->
 <script src="/js/freelancer/jquery.smartWizard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
 <script type="text/javascript">
 
     //Close Bootstrap Alert Box
     $().alert('close');
 
     $(document).ready(function(){
+
         // Smart Wizard
         $('#smartwizard').smartWizard({
             selected: 0,
@@ -216,8 +222,6 @@
             }
         });
 
-
-
         // External Button Events
         $("#reset-btn").on("click", function() {
             // Reset wizard
@@ -231,14 +235,65 @@
             return true;
         });
 
-        $(".next-btn").on("click", function() {
-            // Navigate next
-            $('#smartwizard').smartWizard("next");
-            return true;
+        $(".save-company").on("click", function() {
+
+            if ($("#company-data").valid()) {
+
+                //if valid save company in DB
+                data = {};
+                obj = {
+                    "firstname" : $("#firstname").val(),
+                    "lastname" : $("#lastname").val(),
+                    "company" : $("#company").val(),
+                    "address" : $("#address").val(),
+                    "country" : $("#country").val(),
+                    "city" : $("#city").val(),
+                };
+
+                data["company"] = JSON.stringify(obj);
+                save("save-company", data);
+
+                //opens next tab
+                $('#smartwizard').smartWizard("next");
+                return true;
+
+            }else{
+
+            }
+
         });
 
         $('#smartwizard').smartWizard("theme", "arrows");
-        $("#smartwizard").smartWizard("fixHeight");
+
+        function save(url, data) {
+
+
+            urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
+
+            if(data != null && Object.keys(data).length > 0) {
+
+                urlAddress += "?";
+                for (var k in data) {
+                    urlAddress += k + "=" + data[k] + "&";
+                }
+                urlAddress = urlAddress.slice(0, -1);
+
+            }
+
+            $.ajax({
+
+                type: 'GET',
+                url: urlAddress,
+                data: { variable: 'value' },
+                dataType: 'json',
+                success: function(data) {
+                    var items = data["project"];
+                    $(".step-1").addClass( "d-none" )
+                    $(".step-2").removeClass( "d-none" )
+                }
+            });
+
+        }
 
     });
 </script>

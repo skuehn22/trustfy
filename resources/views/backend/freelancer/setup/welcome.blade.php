@@ -71,77 +71,6 @@
 @stop
 @section("js")
 
-    <script>
-
-        $(document).on("click", ".save-company", function () {
-
-            $("#company-data").validate();
-            $("#myForm").validate();
-
-            data = {};
-            obj = {
-                "firstname" : $("#firstname").val(),
-                "lastname" : $("#lastname").val(),
-                "company" : $("#company").val(),
-                "address" : $("#address").val(),
-                "country" : $("#country").val(),
-                "city" : $("#city").val(),
-            }
-
-            data["company"] = JSON.stringify(obj);
-            save("save-company", data);
-
-        });
-
-        $(document).on("click", ".progress-step1", function () {
-
-            $(".step-1").removeClass( "d-none" )
-            $(".step-2").addClass( "d-none" )
-
-        });
-
-        $(document).on("click", ".progress-step2", function () {
-
-            $(".step-2").removeClass( "d-none" )
-            $(".step-1").addClass( "d-none" )
-
-        });
-
-
-
-
-
-        function save(url, data) {
-
-            urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
-
-            if(data != null && Object.keys(data).length > 0) {
-
-                urlAddress += "?";
-                for (var k in data) {
-                    urlAddress += k + "=" + data[k] + "&";
-                }
-                urlAddress = urlAddress.slice(0, -1);
-
-            }
-
-            $.ajax({
-
-                type: 'GET',
-                url: urlAddress,
-                data: { variable: 'value' },
-                dataType: 'json',
-                success: function(data) {
-                    var items = data["project"];
-                    $(".step-1").addClass( "d-none" )
-                    $(".step-2").removeClass( "d-none" )
-                }
-            });
-
-        }
-
-    </script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
     <script>
@@ -149,6 +78,13 @@
         $( document ).ready(function() {
             loadScrips();
         });
+
+
+
+
+
+
+
 
         function loadScrips(){
 

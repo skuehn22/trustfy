@@ -89,3 +89,11 @@ h1{
     font-weight: 600;
 }
 
+.company{
+    padding:40px;
+}
+
+.logo-hint{
+    font-size: 10px;
+    color: #1f1b1b;
+}
