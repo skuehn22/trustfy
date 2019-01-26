@@ -1,4 +1,4 @@
-@extends('frontend.master-trustfy')
+@extends('frontend.masters.master-trustfy')
 
 @section('content')
     <div class="container">

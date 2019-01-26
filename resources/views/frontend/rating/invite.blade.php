@@ -1,4 +1,4 @@
-@extends('frontend.master-trustfy')
+@extends('frontend.masters.master-trustfy')
 @section('seo')
 @stop
 @section('css')

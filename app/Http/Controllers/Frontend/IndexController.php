@@ -20,7 +20,7 @@ class IndexController extends Controller
 
         $blade["locale"] = App::getLocale();
         $session = Session::get('user_session');
-        return view('backend.frontend.master-trustfy-homepage', compact('blade'));
+        return view('backend.frontend.masters.master-trustfy-homepage', compact('blade'));
 
     }
 

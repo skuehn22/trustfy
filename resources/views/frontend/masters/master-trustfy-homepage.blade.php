@@ -2,21 +2,8 @@
 <html lang="en">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129354427-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'UA-129354427-1');
-    </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Trustfy - Reviews for Freelancers</title>
+    @include('frobtend.masters.elements.meta')
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +21,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/new-age.css" rel="stylesheet">
+
+    @include('frobtend.masters.elements.tracking')
 
 </head>
 
@@ -58,8 +47,11 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                 <a class="nav-link js-scroll-trigger" href="/reviews">Login</a>
+                    <a class="nav-link js-scroll-trigger" href="/reviews">Sign in</a>
                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/reviews">Sign up for free</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -35,7 +35,7 @@ class HomeController extends Controller
             return view('backend.provider.dashboard', compact('blade'));
 
         }else{
-            return view('frontend.master-trustfy-homepage', compact('blade'));
+            return view('frontend.masters.master-trustfy-homepage', compact('blade'));
         }
 
     }
@@ -47,6 +47,12 @@ class HomeController extends Controller
         return view('auth.login', compact('blade'));
     }
 
+    public function login()
+    {
+        $blade["locale"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        return view('auth.login', compact('blade'));
+    }
 
     public function marketplace() {
         $blade["locale"] = App::getLocale();
