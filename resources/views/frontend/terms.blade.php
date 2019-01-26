@@ -1,5 +1,10 @@
 @extends('frontend.masters.master-trustfy')
 
+@section('seo')
+<title>Trustfy Terms and Conditions</title>
+<meta name="description" content="Here you find trustfy.io terms and conditions">
+@endsection
+
 @section('content')
     <div class="container">
         <br><br>

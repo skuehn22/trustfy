@@ -1,4 +1,8 @@
-@extends('frontend.masters.master-trustfy')
+@extends('frontend.masters.sign')
+
+@section('seo')
+<title>Trustfy Login</title>
+@endsection
 
 @section('content')
 <div class="container">
@@ -20,6 +24,7 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+
                             </div>
                         </div>
 

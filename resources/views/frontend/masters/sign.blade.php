@@ -2,21 +2,17 @@
 <html lang="en">
 <head>
 
-    @include('frontend.masters.elements.meta')
+@yield('seo')
+@include('frontend.masters.elements.meta')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+<link href="{{ asset('css/frontend/homepage.css') }}" rel="stylesheet">
+<link href="{{ asset('css/device-mockups/device-mockups.min.css') }}" rel="stylesheet" >
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link href="/css/new-age.css" rel="stylesheet">
+@yield('css')
 
-    @yield('seo')
-    <style>
-        @yield('css')
-    </style>
-
-    @include('frobtend.masters.elements.tracking')
+@include('frontend.masters.elements.tracking')
 
 </head>
 
@@ -62,26 +58,7 @@
 
 </div>
 
-<footer>
-    <div class="container">
-        <div class="row" style="padding-top:25px;">
-            <div class="col-md-3">
-                <img src="/img/trustfy-new-mixed.png" style="max-width: 200px;" class="img-fluid logo-desktop">
-                <p>
-                    We build trust between<br> freelancers and their clients
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;">Terms</a></p>
-                <p><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
-            </div>
-            <div class="col-md-7">
-                <img src="/img/powered-by-mangopay.png" alt="mangopay" style="max-width: 600px;" class="img-fluid">
 
-            </div>
-        </div>
-    </div>
-</footer>
 
 <!-- JavaScripts -->
 

@@ -2,27 +2,17 @@
 <html lang="en">
 
 <head>
+<title>Trustfy - Freelancer get paid on time without payment reminder</title>
+<meta name="description" content="Create easy payment plans for freelancer and your clients pay at a press of a button during the ongoing project. No more payment delays in the future.">
+<meta name="keywords" content="Trustfy, Freelancer, Payment, Escrow, Reminder, Milestone">
+@include('frontend.masters.elements.meta')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+<link href="{{ asset('css/frontend/homepage.css') }}" rel="stylesheet">
+<link href="{{ asset('css/device-mockups/device-mockups.min.css') }}" rel="stylesheet" >
 
-    @include('frobtend.masters.elements.meta')
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
-
-    <!-- Custom styles for this template -->
-    <link href="/css/new-age.css" rel="stylesheet">
-
-    @include('frobtend.masters.elements.tracking')
+@include('frontend.masters.elements.tracking')
 
 </head>
 
@@ -32,7 +22,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <img src="img/trustfy-new-mixed.png" style="max-width: 200px;" class="img-fluid logo-desktop">
+            <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
@@ -47,10 +37,10 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/reviews">Sign in</a>
+                    <a class="nav-link js-scroll-trigger" href="/login">Sign in</a>
                </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/reviews">Sign up for free</a>
+                    <a class="nav-link js-scroll-trigger" href="/register">Sign up for free</a>
                 </li>
             </ul>
         </div>
@@ -77,8 +67,7 @@
                         <div class="device">
                             <div class="screen">
                                 <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                <img src="img/trustyfy-screenshot20.png" class="img-fluid logo-desktop" alt="">
-
+                                <img src="{{ asset('img/trustyfy-screenshot20.png') }}" class="img-fluid logo-desktop" alt="Get paid on time">
                             </div>
                             <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -102,7 +91,7 @@
             </div>
             <div class="col-md-12">
                 <div class="demo-image">
-                    <img src="/img/solution.png" alt="">
+                    <img src="{{ asset('img/solution.png') }}" alt="Freelance Escrow System">
                 </div>
             </div>
         </div>
@@ -132,7 +121,7 @@
             </div>
             <div class="col-md-6">
                 <div class="demo-image">
-                    <img src="/img/solution1.png" alt="">
+                    <img src="{{ asset('img/solution1.png') }}" alt="Late Payment Protection">
                 </div>
             </div>
         </div>
@@ -153,7 +142,7 @@
                     <div class="device-mockup iphone6_plus portrait black">
                         <div class="device">
                             <div class="screen">
-                                <img src="img/trustyfy-screenshot.png" class="img-fluid" alt="">
+                                <img src="{{ asset('img/trustyfy-screenshot.png') }}" class="img-fluid" alt="No more deposits in blind faith">
                             </div>
                             <div class="button">
                   </div>
@@ -188,10 +177,10 @@
         </div>
         <div class="col-md-12">
             <div class="demo-image">
-                <br><br><img src="/img/why-we-care.png" style="width:100%;" class="img-responsive" alt="Freelancing Economy">
+                <br><br><img src="{{ asset('img/why-we-care.png') }}" style="width:100%;" class="img-responsive" alt="Freelancing Economy">
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 pb-5">
             <p class="homepage-txt" style="margin-top:0px;"><br><br> We founded Trustfy because we know how difficult it is to go at it alone: We've worked with and as freelancers, and so have many of our friends and family.
                 Whether you’re a client or a freelancer, you should be able to focus on what matters most: the project at hand. You shouldn’t be worrying about deposits or payments.
                 That’s why we’re here. To provide payment security that brings clients and freelancers to eye level and makes sure both sides get a fair deal.<br><br></p>
@@ -225,7 +214,7 @@
 
 
 <footer id="contact">
-    <div class="container">
+    <div class="container pt-3">
         <form id="ratingForm" method="POST" action="/send-message">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row" style="padding-bottom:25px;">
@@ -265,7 +254,7 @@
         </form>
         <div class="row" style="border-top: 1px solid #fff; padding-top:25px;">
             <div class="col-md-3">
-                <img src="img/trustfy-new-mixed.png" style="max-width: 200px;" class="img-fluid logo-desktop">
+                <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
                 <p>
                     We build trust between<br> freelancers and their clients
                 </p>
@@ -275,7 +264,7 @@
                 <p><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
             </div>
             <div class="col-md-7">
-                <img src="img/powered-by-mangopay.png" alt="mangopay" style="max-width: 600px;" class="img-fluid">
+                <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" style="max-width: 600px;" class="img-fluid">
 
             </div>
         </div>
@@ -287,15 +276,9 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for this template -->
-<script src="js/new-age.min.js"></script>
+<script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/homepage.min.js') }}"></script>
 
 </body>
 
