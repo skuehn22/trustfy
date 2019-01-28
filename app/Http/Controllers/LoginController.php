@@ -215,4 +215,10 @@ class LoginController extends Controller
 
     }
 
+    public function reset() {
+
+        return view('auth.passwords.reset', compact('blade'));
+
+    }
+
 }

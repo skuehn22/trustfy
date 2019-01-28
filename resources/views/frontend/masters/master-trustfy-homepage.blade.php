@@ -37,11 +37,13 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/login">Sign in</a>
+                    <a class="nav-link" href="/login">Sign in</a>
                </li>
+                <!--
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/register">Sign up for free</a>
+                    <a class="nav-link" href="/registerd">Sign up for free</a>
                 </li>
+                -->
             </ul>
         </div>
     </div>

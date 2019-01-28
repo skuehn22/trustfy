@@ -15,6 +15,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/reviews', 'HomeController@reviews') ;
     Route::get('/login', 'HomeController@login') ;
     Route::post('/login-review', 'LoginController@login') ;
+    Route::post('/password/reset', 'LoginController@reset') ;
+    Route::post('/beta-register', 'LoginController@betaRegister') ;
+
+
     Route::get('/marketplace', 'HomeController@marketplace') ;
     Route::get('/marketplace/categories', 'HomeController@marketplaceCats') ;
     Route::get('/marketplace/detail', 'HomeController@marketplaceDetail') ;

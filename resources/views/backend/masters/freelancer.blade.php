@@ -10,33 +10,16 @@
     <meta name="author" content="">
 
     <title>trustfy.io</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap core CSS-->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
-    <!-- Page level plugin CSS-->
-    <!--<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">-->
+    <link href="{{ asset('css/backend/freelancer/sb-admin.css') }}/" rel="stylesheet">
+    <link href="{{ asset('css/backend/freelancer/smart_wizard.min.css') }}/" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css') }}/" rel="stylesheet" type="text/css" />
 
-    <!-- Custom styles for this template-->
-    <link href="/css/sb-admin.css" rel="stylesheet">
-
-    <link href="/css/freelancer/backend/smart_wizard.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Optional SmartWizard theme -->
-    <link href="/css/freelancer/backend/smart_wizard_theme_circles.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/freelancer/backend/smart_wizard_theme_arrows.min.css" rel="stylesheet" type="text/css" />
-    <link href="/css/freelancer/backend/smart_wizard_theme_dots.min.css" rel="stylesheet" type="text/css" />
-
-    <link href="/css/freelancer/backend/style.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 

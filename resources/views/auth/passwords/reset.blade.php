@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.masters.sign')
 
 @section('content')
 <div class="container">
