@@ -247,4 +247,4 @@
 'South Africa' => 'South Africa',
 'Zambia' => 'Zambia',
 'Zimbabwe' => 'Zimbabwe'
-), $default, ['class' => 'form-control col-md-6', 'id' => 'country']) !!}
+), $default, ['class' => 'form-control col-md-7', 'id' => 'country']) !!}

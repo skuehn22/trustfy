@@ -20,7 +20,12 @@ class DashboardController extends Controller
 
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
-        return view('backend.freelancer.dashboard', compact('blade'));
+
+        if(isset($_GET['setup'])){
+            $setup = $_GET['setup'];
+        }
+
+        return view('backend.freelancer.dashboard', compact('blade', 'setup'));
 
     }
 

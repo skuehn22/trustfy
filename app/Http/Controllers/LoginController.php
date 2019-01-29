@@ -51,7 +51,7 @@ class LoginController extends Controller
                         if($user->role == 0 || $user->role ==200 ) {
 
                             if($user->setup == 0) {
-                                return Redirect::to("$ll/freelancer/setup/welcome")->with('ll', $ll);
+                                return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
                             }else{
                                 return Redirect::to("$ll/freelancer/dashboard")->with('ll', $ll);
                             }

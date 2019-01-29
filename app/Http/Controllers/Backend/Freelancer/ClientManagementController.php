@@ -95,12 +95,19 @@ class ClientManagementController extends Controller
                 ->first();
         }
 
+
         $client->firstname = $input["firstname"];
         $client->lastname = $input["lastname"];
+        $client->phone = $input["phone"];
+        $client->mobile = $input["mobile"];
         $client->mail = $input["mail"];
-        $client->address = $input["address"];
+
+        $client->currency = $input["currency"];
+        $client->address1 = $input["address1"];
+        $client->address2 = $input["address2"];
         $client->city = $input["city"];
         $client->country = $input["country"];
+
         $client->service_provider_fk = $blade["user"]->service_provider_fk;
         $client->save();
 
@@ -120,6 +127,21 @@ class ClientManagementController extends Controller
         $client->save();
 
         return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+
+    }
+
+
+    public function getDropdownById() {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            ->where("delete", "=", "0")
+            ->get();
+
+        return view('backend.freelancer.setup.client-list', compact('blade', 'clients'));
 
     }
 

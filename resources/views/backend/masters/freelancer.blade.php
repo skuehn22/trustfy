@@ -14,9 +14,12 @@
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
+
     <link href="{{ asset('css/backend/freelancer/sb-admin.css') }}/" rel="stylesheet">
     <link href="{{ asset('css/backend/freelancer/smart_wizard.min.css') }}/" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css') }}/" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/backend/freelancer/style.css') }}/" rel="stylesheet">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -178,27 +181,29 @@
     </div>
 </div>
 
+
+</body>
+
 <!-- Include jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <!-- Include SmartWizard JavaScript source -->
 <script src="/js/freelancer/jquery.smartWizard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+
+
 <script type="text/javascript">
 
-    //Close Bootstrap Alert Box
     $().alert('close');
 
     function loadScrips(){
-
         // External Button Events
         $(".force-next").on("click", function() {
-            // Reset wizard
-            $('#smartwizard').smartWizard("next");
-            return true;
+        // Reset wizard
+        $('#smartwizard').smartWizard("next");
+        return true;
         });
-
-    };
+    }
 
     $(document).ready(function(){
 
@@ -267,14 +272,20 @@
                 obj = {
                     "firstname" : $("#client-firstname").val(),
                     "lastname" : $("#client-lastname").val(),
+                    "phone" : $("#client-phone").val(),
+                    "mobile" : $("#client-mobile").val(),
                     "mail" : $("#client-mail").val(),
-                    "address" : $("#client-address").val(),
+
+                    "currency" : $("#currency").val(),
+                    "address1" : $("#client-address1").val(),
+                    "address2" : $("#client-address2").val(),
                     "city" : $("#client-city").val(),
                     "country" : $("#country").val(),
                 };
 
                 data["clients"] = JSON.stringify(obj);
                 var msg = save("save-client", data);
+                getClients();
 
             }else{
 
@@ -283,16 +294,39 @@
         });
 
         function clearClientForm() {
+
             $("#client-firstname").val('');
             $("#client-lastname").val('');
+            $("#client-phone").val('');
+            $("#client-mobile").val('');
             $("#client-mail").val('');
-            $("#client-address").val('');
+            $("#currency").val('');
+            $("#client-address1").val('');
+            $("#client-address2").val('');
             $("#client-city").val('');
+            $("country").val('');
         }
 
+        function getClients() {
 
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
 
-        $('#smartwizard').smartWizard("theme", "arrows");
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    document.getElementById("client-list").innerHTML = xmlhttp.responseText;
+                }
+            }
+
+            xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/clients/get-by-id", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+
+        }
 
 
         function save(url, data) {
@@ -330,9 +364,15 @@
 
         }
 
+        $('#smartwizard').smartWizard("theme", "arrows");
+
+        var setup = $('#setup').val();
+        if( setup == "yes" ) {
+            $('#setup-modal').modal('show');
+        }
+
     });
+
 </script>
 @yield('js')
-</body>
-
 </html>

@@ -158,7 +158,6 @@
 
         function insertdata(url, id) {
 
-            alert(id);
 
 
             $.ajax({
@@ -209,9 +208,6 @@
                             break;
                         case 'clients/get-by-id':
                             var client = JSON.parse(xmlhttp.responseText);
-
-
-
                             break;
                         default:
                         // code block

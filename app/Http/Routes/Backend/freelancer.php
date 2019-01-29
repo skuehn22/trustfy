@@ -27,7 +27,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/clients/edit/{id}', 'Backend\Freelancer\ClientManagementController@edit');
     Route::any('/freelancer/clients/save/{id}', 'Backend\Freelancer\ClientManagementController@save');
     Route::any('/freelancer/clients/delete/{id}', 'Backend\Freelancer\ClientManagementController@delete');
-    Route::any('/freelancer/clients/get-by-id', 'Backend\Freelancer\ClientManagementController@getById');
+    Route::any('/freelancer/clients/get-by-id', 'Backend\Freelancer\ClientManagementController@getDropdownById');
 
     Route::any('/freelancer/projects', 'Backend\Freelancer\ProjectManagementController@index');
     Route::any('/freelancer/projects/new', 'Backend\Freelancer\ProjectManagementController@create');

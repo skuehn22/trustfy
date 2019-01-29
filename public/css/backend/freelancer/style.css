@@ -67,7 +67,7 @@ h1{
 }
 
 .sw-theme-arrows>ul.step-anchor>li>a {
-    width: 200px;
+    width: 209px;
 }
 
 .border-content{
@@ -90,11 +90,15 @@ h1{
 }
 
 .company{
-    padding:40px;
+    padding-top:20px;
+}
+
+.green h5{
+    color: #006600;
 }
 
 .clients{
-    padding:40px;
+    padding-top:20px;
 }
 
 
@@ -120,4 +124,8 @@ h1{
 
 .skip-btn{
     width: 120px;
+}
+
+.modal-dialog{
+    max-width: 900px;
 }
