@@ -203,6 +203,35 @@
         $('#smartwizard').smartWizard("next");
         return true;
         });
+
+        $(".save-project").on("click", function() {
+
+
+            if ($("#project-data").valid()) {
+
+                //if valid save company in DB
+                data = {};
+                obj = {
+                    "name" : $("#project-name").val(),
+                    "desc" : $("#project-description").val(),
+                    "notes" : $("#project-notes").val(),
+                    "client" : $("#project-clients").val(),
+
+                    "address1" : $("#project-address1").val(),
+                    "address2" : $("#project-address2").val(),
+                    "city"     : $("#project-city").val(),
+                    "country"  : $("#project-data #country").val(),
+                };
+
+                data["project"] = JSON.stringify(obj);
+                var msg = save("save-project", data);
+
+            }else{
+
+            }
+
+        });
+
     }
 
     $(document).ready(function(){
@@ -245,7 +274,7 @@
                     "lastname" : $("#lastname").val(),
                     "company" : $("#company").val(),
                     "address" : $("#address").val(),
-                    "country" : $("#country").val(),
+                    "country" :  $("#company-data #country").val(),
                     "city" : $("#city").val(),
                 };
 
@@ -280,7 +309,7 @@
                     "address1" : $("#client-address1").val(),
                     "address2" : $("#client-address2").val(),
                     "city" : $("#client-city").val(),
-                    "country" : $("#country").val(),
+                    "country" :  $("#client-data #country").val(),
                 };
 
                 data["clients"] = JSON.stringify(obj);
@@ -293,21 +322,13 @@
 
         });
 
-        function clearClientForm() {
 
-            $("#client-firstname").val('');
-            $("#client-lastname").val('');
-            $("#client-phone").val('');
-            $("#client-mobile").val('');
-            $("#client-mail").val('');
-            $("#currency").val('');
-            $("#client-address1").val('');
-            $("#client-address2").val('');
-            $("#client-city").val('');
-            $("country").val('');
-        }
+
+
 
         function getClients() {
+
+
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -329,40 +350,7 @@
         }
 
 
-        function save(url, data) {
 
-            urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
-
-            if(data != null && Object.keys(data).length > 0) {
-
-                urlAddress += "?";
-                for (var k in data) {
-                    urlAddress += k + "=" + data[k] + "&";
-                }
-                urlAddress = urlAddress.slice(0, -1);
-
-            }
-
-            $.ajax({
-
-                type: 'GET',
-                url: urlAddress,
-                data: { variable: 'value' },
-                dataType: 'json',
-                success: function(data) {
-                    var items = data["success"];
-
-                    if(items == "Client successfully created"){
-                        $("#msg").text(items);
-                        clearClientForm();
-                        $(".client-next").text("Next Step").addClass( "btn-success force-next" ).removeClass( "btn-secondary" );
-                        loadScrips();
-                    }
-
-                }
-            });
-
-        }
 
         $('#smartwizard').smartWizard("theme", "arrows");
 
@@ -372,6 +360,79 @@
         }
 
     });
+
+
+    function save(url, data) {
+
+        urlAddress = "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/setup/save/" + url;
+
+        if(data != null && Object.keys(data).length > 0) {
+
+            urlAddress += "?";
+            for (var k in data) {
+                urlAddress += k + "=" + data[k] + "&";
+            }
+            urlAddress = urlAddress.slice(0, -1);
+
+        }
+
+        $.ajax({
+
+            type: 'GET',
+            url: urlAddress,
+            data: { variable: 'value' },
+            dataType: 'json',
+            success: function(data) {
+                var items = data["success"];
+
+                if(items == "Client successfully created"){
+                    $("#msg").text(items);
+                    clearClientForm();
+                    $(".client-next").text("Next Step").addClass( "btn-success force-next" ).removeClass( "btn-secondary" );
+                    loadScrips();
+                }
+
+                if(items == "Project successfully created"){
+                    $("#msg-project").text(items);
+                    clearProjectForm();
+                    $(".project-next").text("Next Step").addClass( "btn-success force-next" ).removeClass( "btn-secondary" );
+                    loadScrips();
+                }
+
+
+
+            }
+        });
+
+    }
+
+    function clearClientForm() {
+
+        $("#client-firstname").val('');
+        $("#client-lastname").val('');
+        $("#client-phone").val('');
+        $("#client-mobile").val('');
+        $("#client-mail").val('');
+        $("#currency").val('');
+        $("#client-address1").val('');
+        $("#client-address2").val('');
+        $("#client-city").val('');
+        $("#client-data #country").val('');
+    }
+
+
+    function clearProjectForm() {
+
+        $("#project-name").val('');
+        $("#project-description").val('');
+        $("#project-notes").val('');
+        $("#project-address1").val('');
+        $("#project-address2").val('');
+        $("#project-city").val('');
+        $("#project-data #country").val('');
+
+    }
+
 
 </script>
 @yield('js')

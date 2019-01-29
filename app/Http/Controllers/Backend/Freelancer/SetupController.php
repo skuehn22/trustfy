@@ -14,6 +14,8 @@ use App, Auth, Request, Form;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\Clients;
+use App\DatabaseModels\Projects;
+use App\DatabaseModels\ProjectsAddress;
 
 class SetupController extends Controller
 {
@@ -61,14 +63,55 @@ class SetupController extends Controller
 
         $client->firstname = $data->firstname;
         $client->lastname = $data->lastname;
+        $client->phone = $data->phone;
+        $client->mobile = $data->mobile;
         $client->mail = $data->mail;
-        $client->address = $data->address;
+
+        $client->currency = $data->currency;
+        $client->address1 = $data->address1;
+        $client->address2 = $data->address2;
         $client->city = $data->city;
         $client->country = $data->country;
-        $client->service_provider_fk = $blade["user"]->id;
+        $client->service_provider_fk = $blade["user"]->service_provider_fk;
         $client->save();
 
         return response()->json(['success' => 'Client successfully created', 'data' => $client]);
+
+    }
+
+
+    public function project() {
+
+        $blade["ll"] = App::getLocale();
+        $blade["user"] = Auth::user();
+        $input = Request::all();
+
+        $data = json_decode($input['project']);
+
+        $project = new Projects();
+
+        $project->name = $data->name;
+        $project->desc = $data->desc;
+        $project->notes = $data->notes;
+
+        if(isset($data->client)){
+            $project->client_id_fk = $data->client;
+        }
+
+        $project->service_provider_fk = $blade["user"]->service_provider_fk;
+        $project->save();
+
+        $projectaddress = new ProjectsAddress();
+
+        $projectaddress->address1 = $data->address1;
+        $projectaddress->address2 = $data->address2;
+        $projectaddress->city = $data->city;
+        $projectaddress->country = $data->country;
+        $projectaddress->project_id_fk = $project->id;
+
+        $projectaddress->save();
+
+        return response()->json(['success' => 'Project successfully created', 'data' => $project]);
 
     }
 

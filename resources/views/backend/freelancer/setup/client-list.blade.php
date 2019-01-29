@@ -1,7 +1,7 @@
-<label class="col-md-3 col-form-label" for="clients">Client</label>
+<label class="col-md-4 col-form-label" for="clients">Client</label>
 
 @if(isset($clients) && count($clients)>0)
-    <select name="clients" id="clients" class="col-md-9">
+    <select name="project-clients" id="project-clients" class="col-md-7">
         @foreach($clients as $client)
             <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
         @endforeach

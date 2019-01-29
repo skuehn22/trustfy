@@ -18,7 +18,8 @@
                     <li><a href="#step-1">Step 1<br /><small>Your company details</small></a></li>
                     <li><a href="#step-2">Step 2<br /><small>Your client details</small></a></li>
                     <li><a href="#step-3">Step 3<br /><small>Create a project</small></a></li>
-                    <li><a href="#step-4">Step 4<br /><small>Your bank details</small></a></li>
+                    <li><a href="#step-4">Step 3<br /><small>Create a project</small></a></li>
+
                 </ul>
 
                 <div class="">
@@ -32,8 +33,10 @@
                         @include('backend.freelancer.setup.projects')
                     </div>
                     <div id="step-4" class="">
-                        @include('backend.freelancer.setup.clients')
+                        @include('backend.freelancer.setup.end')
                     </div>
+
+
                 </div>
             </div>
 
