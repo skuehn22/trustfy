@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
 
-    <link href="{{ asset('css/backend/freelancer/sb-admin.css') }}/" rel="stylesheet">
-    <link href="{{ asset('css/backend/freelancer/smart_wizard.min.css') }}/" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css') }}/" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/backend/freelancer/style.css') }}/" rel="stylesheet">
+    <link href="{{ asset('css/backend/freelancer/sb-admin.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/backend/freelancer/smart_wizard.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/backend/freelancer/style.css')}}" rel="stylesheet">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
