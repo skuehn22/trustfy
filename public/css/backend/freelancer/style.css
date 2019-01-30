@@ -2,10 +2,7 @@ h1{
 
 }
 
-.plan-preview{
-    border: 1px solid #535353;
-    min-height: 650px;
-}
+
 
 .menu-icons {
 
@@ -320,4 +317,22 @@ h1{
     display: block;
     padding: 10px 15px;
     color: #006600;
+}
+
+.preview-modal{
+
+}
+
+.preview-modal{
+    max-width: 1000px;
+    min-height: 1300px;
+}
+
+.plan-preview{
+    border: 1px solid #535353;
+    min-height: 1250px;
+}
+
+.modal-content{
+    min-height: 1300px;
 }

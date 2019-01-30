@@ -19,11 +19,13 @@
     <link href="{{ asset('css/backend/freelancer/smart_wizard.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+
 
     <script>
         $(function () {
@@ -107,7 +109,7 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-        <a class="navbar-brand mr-1 pb-5" href="index.html">
+        <a class="navbar-brand mr-1 pb-5" href="/freelancer/dashboard">
             <img src="/img/trustfy-new-mixed.png" class="img-responsive logo">
         </a>
         <li class="nav-item">
@@ -204,6 +206,7 @@
 
 <!-- Include jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <!-- Include SmartWizard JavaScript source -->
 <script src="/js/freelancer/jquery.smartWizard.min.js"></script>

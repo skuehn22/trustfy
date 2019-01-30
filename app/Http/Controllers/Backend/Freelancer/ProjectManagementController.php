@@ -51,13 +51,13 @@ class ProjectManagementController extends Controller
 
     }
 
-    public function getById($id) {
+    public function getById() {
 
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
         $input = Request::all();
 
-        $projects = Projects::where("id", "=", $id)
+        $projects = Projects::where("id", "=", $input['id'])
             ->where("delete", "=", "0")
             ->first();
 

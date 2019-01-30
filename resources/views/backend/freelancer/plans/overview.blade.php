@@ -191,10 +191,10 @@
                     @foreach($plans as $plan)
                         <tr>
                             <td>{{$plan->id}}</td>
-                            <td><a href="#">{{{ $plan->name or 'not set' }}}</a></td>
+                            <td><a href="#">{{ $plan->name or 'not set' }}</a></td>
                             <td>{{$plan->updated_at}}</td>
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
-                            <td><span class="status text-success">&bull;</span> Active</td>
+                            <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}</td>
                             <td>
                                 <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                                 <span data-toggle="modal" data-target="#exampleModal" class="delete-client">

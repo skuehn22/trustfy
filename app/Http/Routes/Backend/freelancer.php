@@ -44,6 +44,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/plans/save/{id}', 'Backend\Freelancer\PlansManagementController@save');
     Route::any('/freelancer/plans/sclose/{id}', 'Backend\Freelancer\PlansManagementController@saveAndClose');
     Route::any('/freelancer/plans/delete/{id}', 'Backend\Freelancer\PlansManagementController@delete');
+    Route::any('/freelancer/plans/get-plan-typ', 'Backend\Freelancer\PlansManagementController@getPlanByTyp');
 
     Route::any('/freelancer/settings', 'Backend\Freelancer\SettingsController@index') ;
     Route::any('/freelancer/settings/save-company', 'Backend\Freelancer\SettingsController@saveCompany') ;

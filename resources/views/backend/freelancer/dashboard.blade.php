@@ -252,7 +252,7 @@
         </div>
 
     </div>
-    <input id="setup" type="hidden" value="{{$setup}}">
+    <input id="setup" type="hidden" value="{{ $setup->firstname or ""}} ">
 
 
 @stop
