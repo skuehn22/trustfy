@@ -1,64 +1,232 @@
 @extends('backend.masters.freelancer')
 @section('seo')
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+
 @stop
 @section('css')
 
-    <style>
+    <style type="text/css">
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 13px;
+        }
+        .table-wrapper {
+            background: #fff;
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .table-title {
+            padding-bottom: 15px;
+            background: #fff;
+            color: #006600;
+            padding: 16px 30px;
+            margin: -20px -25px 10px;
+            border: 1px solid #999;
+            border-radius: 3px 3px 0 0;
+        }
+        .table-title h2 {
+            margin: 5px 0 0;
+            font-size: 24px;
+        }
 
+        .table-title .btn:hover, .table-title .btn:focus {
+            color: #566787;
+            background: #f2f2f2;
+        }
+        .table-title .btn i {
+            float: left;
+            font-size: 21px;
+            margin-right: 5px;
+        }
+        .table-title .btn span {
+            float: left;
+            margin-top: 2px;
+        }
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+        table.table tr th:first-child {
+            width: 60px;
+        }
+        table.table tr th:last-child {
+            width: 100px;
+        }
+        table.table-striped tbody tr:nth-of-type(odd) {
+            background-color: #fcfcfc;
+        }
+        table.table-striped.table-hover tbody tr:hover {
+            background: #f5f5f5;
+        }
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        table.table td:last-child i {
+            opacity: 0.9;
+            font-size: 17px;
+            margin: 0 5px;
+        }
+        table.table td a {
+            font-weight: bold;
+            color: #566787;
+            display: inline-block;
+            text-decoration: none;
+        }
+        table.table td a:hover {
+            color: #2196F3;
+        }
+        table.table td a.settings {
+            color: #2196F3;
+        }
+        table.table td a.delete {
+            color: #F44336;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+        table.table .avatar {
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .status {
+            font-size: 30px;
+            margin: 2px 2px 0 0;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 10px;
+        }
+        .text-success {
+            color: #10c469;
+        }
+        .text-info {
+            color: #62c9e8;
+        }
+        .text-warning {
+            color: #FFC107;
+        }
+        .text-danger {
+            color: #ff5b5b;
+        }
+        .pagination {
+            float: right;
+            margin: 0 0 5px;
+        }
+        .pagination li a {
+            border: none;
+            font-size: 13px;
+            min-width: 30px;
+            min-height: 30px;
+            color: #999;
+            margin: 0 2px;
+            line-height: 30px;
+            border-radius: 2px !important;
+            text-align: center;
+            padding: 0 6px;
+        }
+        .pagination li a:hover {
+            color: #666;
+        }
+        .pagination li.active a, .pagination li.active a.page-link {
+            background: #03A9F4;
+        }
+        .pagination li.active a:hover {
+            background: #0397d6;
+        }
+        .pagination li.disabled i {
+            color: #ccc;
+        }
+        .pagination li i {
+            font-size: 16px;
+            padding-top: 6px
+        }
+        .hint-text {
+            float: left;
+            margin-top: 10px;
+            font-size: 13px;
+        }
     </style>
-@stop
-@section('breadcrumb')
-    Dashboard
+
 @stop
 
 @section('content')
-    <div class="clients">
-
         @if(Session::has('success'))
             <div class="alert alert-success error_message">
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
                 {{ Session::get('success') }}
             </div>
         @endif
-        <div class="row section-heading">
-            <div class="col-md-6 pl-0">
-                <h1>Payment Plans</h1>
-            </div>
-            <div class="col-md-6 pr-0 float-right text-right">
-                <a href="/{{$blade["ll"]}}/freelancer/plans/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Create Plan</a>
-            </div>
-        </div>
 
-        @if(count($plans)>0)
-            <div class="row table-heading">
-                <div class="col-md-2 pl-0"><h5>Project</h5></div>
-                <div class="col-md-6"><h5>Client</h5></div>
-                <div class="col-md-2"><h5>Saved at</h5></div>
-                <div class="col-md-2 pr-0 float-right text-right">
-                    <h5>Actions</h5>
-                </div>
-            </div>
-
-            @foreach($plans as $plan)
+        <div class="table-wrapper">
+            <div class="table-title">
                 <div class="row">
-                    <div class="col-md-2 pl-0">{{{ $plan->name or 'not set' }}}</div>
-                    <div class="col-md-6">{{$plan->firstname}} {{$plan->lastname}}</div>
-                    <div class="col-md-2">{{$plan->updated_at}}</div>
-                    <div class="col-md-2 pr-0 float-right text-right">
-                        <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
-                        <a href="#" data-id="{{$plan->id}}" data-toggle="modal" data-target="#exampleModal"  title="Delete" class="delete-client">
-                            <i class="fas fa-trash green"></i>
-                        </a>
+                    <div class="col-sm-5">
+                        <h2>Payment Plans</h2>
+                    </div>
+                    <div class="col-sm-7 float-right text-right">
+                        <a href="/{{$blade["ll"]}}/freelancer/plans/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Create Plan</a>
                     </div>
                 </div>
-            @endforeach
-        @else
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Date Created</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            You have no payment plans yet...
+                @if(isset($plans))
+                    @foreach($plans as $plan)
+                        <tr>
+                            <td>{{$plan->id}}</td>
+                            <td><a href="#">{{{ $plan->name or 'not set' }}}</a></td>
+                            <td>{{$plan->updated_at}}</td>
+                            <td>{{$plan->firstname}} {{$plan->lastname}}</td>
+                            <td><span class="status text-success">&bull;</span> Active</td>
+                            <td>
+                                <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
+                                <span data-toggle="modal" data-target="#exampleModal" class="delete-client">
+                                    <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete">
+                                        <i class="fas fa-trash green"></i>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    You have no payment plans yet...
+                @endif
+                </tbody>
+            </table>
+            <!--
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+            -->
+        </div>
 
-        @endif
-    </div>
+
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

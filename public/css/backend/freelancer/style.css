@@ -34,9 +34,9 @@ h1{
 }
 
 .container-fluid {
-    padding-left: 40px;
-    padding-right: 75px;
-    padding-top: 0px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 1px;
 }
 
 .section-heading {
@@ -133,6 +133,16 @@ h1{
     background-color: #9d959a;
     border-color: #9d959a;
     width: 200px;
+}
+
+.btn-default {
+    background-color: #006600;
+    border-color: #006600;
+}
+
+.btn-default.active, .btn-default:active {
+    background-color: #006600;
+    border-color: #006600;
 }
 
 .prev-btn{

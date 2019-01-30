@@ -12,7 +12,7 @@
 @section('content')
     <div class="plans">
         <div class="row section-heading">
-            <div class="col-md-6 p-0 menu-icons">
+            <div class="col-md-5 p-0 menu-icons">
                 <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-edit"></i> Save</button>
                 <button class="btn btn-outline-secondary save-close button-menu" id="sclose"><i class="fas fa-check"></i> Save & Close</button>
                 <button class="btn btn-outline-secondary cancel-plan button-menu" id="cancel><i class="fas fa-ban"></i> Cancel</button>
@@ -76,7 +76,7 @@
 
             </div>
             <!-- right side - PREVIEW -->
-            <div class="col-md-5 plan-preview">
+            <div class="col-md-6 plan-preview">
                 <div class="col-md-12 p-0 pt-5 text-md-center">
                     <h5 class="font-italic">-Preview-</h5>
                     <h5>Payment Plan</h5>
@@ -102,7 +102,7 @@
         <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
     </div>
 @stop
-@section("js")
+@section("javascript")
 
     <script>
 
@@ -127,7 +127,7 @@
         $("#clients").on('change', function() {
             document.getElementById("projects").innerHTML = "";
             action('projects/by-client',  $(this).val());
-            insertdata('clients/get-by-id',  $(this).val());
+            insertdata('clients/get-by-id-client',  $(this).val());
         });
 
 
@@ -170,7 +170,8 @@
                     var items = data["data"];
 
                     switch(url) {
-                        case 'clients/get-by-id':
+                        case 'clients/get-by-id-client':
+                            alert("switchcase");
                             $("#marker-client").text(items["firstname"] + " " + items["lastname"] + " - Contractor");
                             $(".red").css('color', 'red');
                             loadScript();
