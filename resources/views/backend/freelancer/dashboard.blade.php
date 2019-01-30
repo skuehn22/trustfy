@@ -7,6 +7,7 @@
     <style>
 
         body{ margin-top:50px;}
+
         .nav-tabs .glyphicon:not(.no-margin) { margin-right:10px; }
         .tab-pane .list-group-item:first-child {border-top-right-radius: 0px;border-top-left-radius: 0px;}
         .tab-pane .list-group-item:last-child {border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
@@ -21,11 +22,111 @@
         .ad { padding: 5px;background: #F5F5F5;color: #222;font-size: 80%;border: 1px solid #E5E5E5; }
         .ad a.title {color: #15C;text-decoration: none;font-weight: bold;font-size: 110%;}
         .ad a.url {color: #093;text-decoration: none;}
+
+        @keyframes open-plans-left{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate({{$openLeft}}deg);
+                transform: rotate({{$openLeft}}deg);
+            }
+        }
+
+        @keyframes open-plans-right{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate({{$openRight}}deg);
+                transform: rotate({{$openRight}}deg);
+            }
+        }
+
+
+        @keyframes loading-2{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate(10deg);
+                transform: rotate(10deg);
+            }
+        }
+        @keyframes loading-3{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
+        }
+        @keyframes loading-4{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate(36deg);
+                transform: rotate(36deg);
+            }
+        }
+        @keyframes loading-5{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate(126deg);
+                transform: rotate(126deg);
+            }
+        }
     </style>
 
 @stop
 
 @section('content')
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="progress blue">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                    <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                    <div class="progress-value">20%</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="progress yellow">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                    <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                    <div class="progress-value">75%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6 col-md-12">
+                    @include('backend.freelancer.inbox.index')
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--
     <div class="container dashboard">
@@ -139,15 +240,14 @@
         <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
+<!--
                     <div class="modal-header">
-                        <h4 class="green">Welcome to trustfy.io</h4>
-
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    -->
                     <div class="modal-body" id="modal-body">
-
                         @include('backend.freelancer.setup.welcome')
                     </div>
                 </div>

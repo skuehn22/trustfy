@@ -24,6 +24,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    @yield('css')
+
 </head>
 
 <body id="page-top">
@@ -328,8 +330,6 @@
 
         function getClients() {
 
-
-
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
             } else {
@@ -350,10 +350,10 @@
         }
 
 
-
-
+        //initalize the arrow bar on the top of the modal
         $('#smartwizard').smartWizard("theme", "arrows");
 
+        //checks if a new setup is required for the freelancer
         var setup = $('#setup').val();
         if( setup == "yes" ) {
             $('#setup-modal').modal('show');
@@ -432,6 +432,27 @@
         $("#project-data #country").val('');
 
     }
+
+    // Expand the modal width for setup creation through freelancer
+    $("#start-setup").on("click", function() {
+        $(".modal-dialog").addClass('modal-expand');
+        $('#arrows').removeClass("d-none");
+        $('#smartwizard').smartWizard("next");
+    });
+
+    // Expand the modal width for setup creation through freelancer
+    $("#prev-btn-step1").on("click", function() {
+        $('#arrows').addClass("d-none");
+        $(".modal-dialog").removeClass('modal-expand');
+    });
+
+    // Expand the modal width for setup creation through freelancer
+    $(".project-next").on("click", function() {
+        $('#arrows').addClass("d-none");
+    });
+
+
+
 
 
 </script>

@@ -48,7 +48,10 @@
         <div class="col-md-6">
             @include('ajax_upload')
         </div>
-        <div class="col-md-12 pl-0 pt-3" style="float: right; text-align: right;">
+        <div class="col-md-2 pt-3" style="float: left; text-align: left;">
+            <a id="prev-btn-step1" class="prev-btn" style="text-decoration: underline;">back</a>
+        </div>
+        <div class="col-md-10 pl-0 pt-3" style="float: right; text-align: right;">
             <div class="btn-group navbar-btn" role="group">
                 <button class="btn btn-success next-btn save-company" id="next-btn" type="button">Next Step</button>
             </div>
