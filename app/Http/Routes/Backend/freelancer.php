@@ -14,7 +14,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/ajax_upload', 'AjaxUploadController@index');
     Route::post('/ajax_upload/action', 'AjaxUploadController@action')->name('ajaxupload.action');
 
-
     Route::any('/freelancer/dashboard', 'Backend\Freelancer\DashboardController@index');
     Route::any('/freelancer/plan/create', 'Backend\Freelancer\PlanController@create');
 
@@ -46,6 +45,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/plans/sclose/{id}', 'Backend\Freelancer\PlansManagementController@saveAndClose');
     Route::any('/freelancer/plans/delete/{id}', 'Backend\Freelancer\PlansManagementController@delete');
 
+    Route::any('/freelancer/settings', 'Backend\Freelancer\SettingsController@index') ;
+    Route::any('/freelancer/settings/save-company', 'Backend\Freelancer\SettingsController@saveCompany') ;
+    Route::any('/freelancer/settings/save-account', 'Backend\Freelancer\SettingsController@saveAccount') ;
+    Route::any('/freelancer/settings/new-team-member', 'Backend\Freelancer\SettingsController@newTeamMember') ;
+    Route::any('/freelancer/settings/save-team-member', 'Backend\Freelancer\SettingsController@saveTeamMember') ;
+    Route::any('/freelancer/settings/cancel', 'Backend\Freelancer\SettingsController@cancel') ;
 
 
 

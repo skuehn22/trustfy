@@ -359,16 +359,16 @@
 
         // Smart Wizard
     $('#smartwizard').smartWizard({
-    selected: 0,
-    theme: 'default',
-    transitionEffect:'slide',
-    autoAdjustHeight: false,
-    toolbarSettings: {toolbarPosition: 'none',
-    toolbarExtraButtons: [
-    {label: 'Finish', css: 'btn-success', onClick: function(){ alert('Finish Clicked'); }},
-    {label: 'Cancel', css: 'btn-warning', onClick: function(){ $('#smartwizard').smartWizard("reset"); }}
-    ]
-    }
+        selected: 0,
+        theme: 'default',
+        transitionEffect:'slide',
+        autoAdjustHeight: false,
+        toolbarSettings: {toolbarPosition: 'none',
+        toolbarExtraButtons: [
+            {label: 'Finish', css: 'btn-success', onClick: function(){ alert('Finish Clicked'); }},
+            {label: 'Cancel', css: 'btn-warning', onClick: function(){ $('#smartwizard').smartWizard("reset"); }}
+            ]
+        }
     });
 
     // External Button Events

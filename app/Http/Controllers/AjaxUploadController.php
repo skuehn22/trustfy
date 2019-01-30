@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator, Auth;
+use App\DatabaseModels\Users;
 
 class AjaxUploadController extends Controller
 {
@@ -24,6 +25,11 @@ class AjaxUploadController extends Controller
         {
             $image = $request->file('select_file');
             $new_name = $user->id . '.' . $image->getClientOriginalExtension();
+
+            $user = Users::find($user->id);
+            $user->logo = $new_name;
+            $user->save();
+
             $image->move(public_path('uploads/companies/logo'), $new_name);
             return response()->json([
                 'message'   => 'Image Upload Successfully',

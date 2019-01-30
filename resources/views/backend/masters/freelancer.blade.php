@@ -118,7 +118,7 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
-                <i class="fas fa-fw fa-folder"></i>
+                <i class="fas fa-file-invoice"></i>
                 <span>Payment Plans</span>
             </a>
             <!--
@@ -136,13 +136,18 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-users"></i>
                 <span>Clients</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/projects') }}">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-project-diagram"></i>
                 <span>Projects</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span></a>
         </li>
     </ul>
 

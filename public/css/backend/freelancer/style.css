@@ -261,7 +261,7 @@ h1{
     animation: loading-4 0.4s linear forwards 1.8s;
 }
 .progress.green .progress-bar{
-    border-color: #1abc9c;
+    border-color: #006600;
 }
 .progress.green .progress-left .progress-bar{
     animation: loading-5 1.2s linear forwards 1.8s;
@@ -276,4 +276,48 @@ h1{
     color: #006600;
     font-size: 160px;
     opacity: 0.5;
+}
+.settings{
+    padding-top: 50px;
+}
+
+.settings .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #006600;
+}
+
+.settings  #exTab3 .nav-pills > li > a {
+    border-radius: 4px 4px 0 0 ;
+}
+
+.settings #exTab3 .tab-content .table {
+    color : #535353;
+    background-color: #fff;
+    padding : 15px 15px;
+}
+
+.settings #exTab3 .tab-content .inner-panel {
+    padding : 25px;
+}
+
+.settings #exTab3 .tab-content {
+    border: 1px solid #006600;
+}
+
+
+.settings #exTab3 .tab-pane {
+    padding: 45px;
+}
+
+
+.settings label {
+    color : #a79f9f;
+
+}
+
+.settings .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: #006600;
 }
