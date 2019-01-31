@@ -5,12 +5,16 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading"><h3>Register</h3></div>
+                @if(Session::has('error'))
+                    <div class="alert alert-danger error_message">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/beta-register-save') }}">
                         {{ csrf_field() }}
-
-
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-12 control-label">E-Mail Address</label>

@@ -211,9 +211,12 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   overflow: hidden;
 }
 
-.sidebar .fas{
+.sidebar .fas .far{
   font-size: 30px;
+  width: 40px;
+  text-align: right;
 }
+
 
 
 @media (min-width: 768px) {

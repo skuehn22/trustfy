@@ -11,6 +11,8 @@
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
 
+    Route::get('/freelancer/demo/install', 'Backend\Freelancer\DemoController@index');
+
     Route::get('/ajax_upload', 'AjaxUploadController@index');
     Route::post('/ajax_upload/action', 'AjaxUploadController@action')->name('ajaxupload.action');
 

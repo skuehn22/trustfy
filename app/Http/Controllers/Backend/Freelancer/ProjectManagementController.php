@@ -21,6 +21,8 @@ class ProjectManagementController extends Controller
 
     public function index() {
 
+        if (Auth::check()) {
+
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
@@ -33,6 +35,10 @@ class ProjectManagementController extends Controller
 
         return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
 
+    } else {
+
+            return Redirect::to(env("MYHTTP"));
+        }
     }
 
        public function getByClients() {

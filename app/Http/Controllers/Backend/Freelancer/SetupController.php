@@ -22,10 +22,16 @@ class SetupController extends Controller
 
     public function index() {
 
+        if (Auth::check()) {
+
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
         return view('backend.freelancer.setup.welcome', compact('blade'));
 
+        } else {
+
+            return Redirect::to(env("MYHTTP"));
+        }
     }
 
     public function company() {

@@ -18,11 +18,17 @@ class PlanController extends Controller
 
     public function create() {
 
+        if (Auth::check()) {
+
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
         return view('backend.freelancer.plan', compact('blade'));
 
+        } else {
+
+            return Redirect::to(env("MYHTTP"));
+        }
     }
 
 }

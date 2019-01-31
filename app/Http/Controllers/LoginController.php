@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
 use App\DatabaseModels\Newsletter;
+use App\Classes\UsersClass;
 
 
 
@@ -48,16 +49,16 @@ class LoginController extends Controller
                     $user = Auth::user();
                     if($user->active == "1") {
 
-                        if($user->role == 0 || $user->role ==200 ) {
+                        if($user->role == 0 || $user->role ==200 || $user->role ==3) {
 
                             if($user->setup == 0) {
                                 return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
                             }else{
                                 return Redirect::to("$ll/freelancer/dashboard")->with('ll', $ll);
                             }
-
+                        }else{
+                            return Redirect::to("$ll")->withInput()->with('error', 'Unknown Role');
                         }
-
                     } else {
                         return Redirect::to("$ll")->withInput()->with('error', 'Konto ist inaktiv!');
                     }
@@ -219,6 +220,47 @@ class LoginController extends Controller
 
         return view('auth.passwords.reset', compact('blade'));
 
+    }
+
+
+    public function betaRegister() {
+
+        return view('auth.register', compact('blade'));
+
+    }
+
+
+    public function betaRegisterSave() {
+
+        $ll = App::getLocale();
+
+        $usersObj = new UsersClass();
+        $response = $usersObj->saveUser($_POST);
+
+        if(self::pwCheck($_POST)== false){
+            return back()->withInput()->with('error', 'Passwords do not match.');
+        }
+
+        if($response == false){
+            return back()->withInput()->with('error', 'E-Mail already taken.');
+
+        }else{
+
+            $response = self::login();
+            return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
+        }
+
+
+    }
+
+    public function pwCheck($data) {
+        if($data['password'] != $data['password_confirmation']) {
+
+            return false;
+
+        }else{
+            return true;
+        }
     }
 
 }

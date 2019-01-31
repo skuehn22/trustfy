@@ -22,6 +22,8 @@ class PlansManagementController extends Controller
 
     public function index() {
 
+        if (Auth::check()) {
+
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
@@ -38,9 +40,13 @@ class PlansManagementController extends Controller
         }
 
 
-
         return view('backend.freelancer.plans.overview', compact('blade', 'plans'));
 
+    }
+     else {
+
+            return Redirect::to(env("MYHTTP"));
+        }
     }
 
     public function create() {

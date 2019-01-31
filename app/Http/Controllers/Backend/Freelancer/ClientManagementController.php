@@ -19,6 +19,8 @@ class ClientManagementController extends Controller
 
     public function index() {
 
+        if (Auth::check()) {
+
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
@@ -28,7 +30,14 @@ class ClientManagementController extends Controller
 
         return view('backend.freelancer.clients.overview', compact('blade', 'clients'));
 
+        } else {
+
+            return Redirect::to(env("MYHTTP"));
+        }
+
     }
+
+
 
     public function getByUser() {
 

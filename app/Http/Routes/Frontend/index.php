@@ -16,7 +16,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/login', 'HomeController@login') ;
     Route::post('/login-review', 'LoginController@login') ;
     Route::post('/password/reset', 'LoginController@reset') ;
-    Route::post('/beta-register', 'LoginController@betaRegister') ;
+    Route::any('/beta-register', 'LoginController@betaRegister') ;
+    Route::any('/beta-register-save', 'LoginController@betaRegisterSave') ;
 
     Route::get('login', 'HomeController@login') ;
 

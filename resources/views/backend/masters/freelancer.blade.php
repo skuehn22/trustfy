@@ -115,12 +115,12 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span class="nav-text">Dashboard</span>
+                <span>Dashboard</span>
             </a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
-                <i class="fas fa-file-invoice"></i>
+                <i class="far fa-money-bill-alt"></i>
                 <span>Payment Plans</span>
             </a>
             <!--
@@ -151,6 +151,10 @@
                 <i class="fas fa-cog"></i>
                 <span>Settings</span></a>
         </li>
+        <li class="nav-item">
+           {{$blade["user"]->service_provider_fk}}
+        </li>
+
     </ul>
 
     <div id="content-wrapper">

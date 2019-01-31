@@ -21,6 +21,8 @@ class SettingsController extends Controller
 
     public function index() {
 
+        if (Auth::check()) {
+
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
@@ -31,7 +33,13 @@ class SettingsController extends Controller
 
         return view('backend.freelancer.settings.index', compact('blade', 'provider', 'user', 'team'));
 
+    } else {
+
+        return Redirect::to(env("MYHTTP"));
     }
+}
+
+
 
     public function getCompany($user) {
 

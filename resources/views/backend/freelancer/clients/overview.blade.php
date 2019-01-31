@@ -188,7 +188,7 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>Name</th>
+                <th style="width: 25%;">Name</th>
                 <th>E-Mail</th>
                 <th>Actions</th>
             </tr>

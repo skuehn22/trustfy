@@ -10,7 +10,7 @@
             <p>How would you like to start?</p>
             <form data-toggle="validator" role="form" id="company-data" name="company-data">
                 <p><button type="button" class="btn btn-classic" id="start-setup">Create Account</button></p>
-                <P><button type="button" class="btn btn-alternative" id="load-data">Load Example Data</button></p>
+                <P><button type="button" class="btn btn-alternative" id="install-demo">Install Demo</button></p>
             </form>
 
         </div>
