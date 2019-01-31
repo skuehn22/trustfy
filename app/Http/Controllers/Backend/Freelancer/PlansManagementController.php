@@ -30,6 +30,7 @@ class PlansManagementController extends Controller
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
+        $query->where('projects_plans.service_provider_fk', '=', $blade["user"]->service_provider_fk );
         $query->groupBy('projects_plans.updated_at');
         $plans = $query->get();
 

@@ -13,7 +13,7 @@ namespace App\Http\Controllers\Backend\Freelancer;
 use App, Request, Auth, Redirect, Hash;
 
 use App\Http\Controllers\Controller;
-use App\DatabaseModels\Provider;
+use App\DatabaseModels\Companies;
 use App\DatabaseModels\Users;
 
 class SettingsController extends Controller
@@ -45,7 +45,7 @@ class SettingsController extends Controller
 
         $blade["user"] = Auth::user();
 
-        $provider = Provider::where("id", "=", $user->service_provider_fk)
+        $provider = Companies::where("id", "=", $user->service_provider_fk)
             ->first();
 
         return $provider;

@@ -80,9 +80,11 @@ class DemoController extends Controller
 
     }
 
-    public function loadProjects($company) {
+    public function loadProjects() {
 
         $user = Auth::user();
+        $user = Users::where("id", "=", $user->id)
+            ->first();
 
         $clients = Clients::where("service_provider_fk", "=", $user->service_provider_fk)
             ->get();
@@ -114,6 +116,8 @@ class DemoController extends Controller
     public function loadPlans() {
 
         $user = Auth::user();
+        $user = Users::where("id", "=", $user->id)
+            ->first();
 
         $projects = Projects::where("service_provider_fk", "=", $user->service_provider_fk)
             ->get();
