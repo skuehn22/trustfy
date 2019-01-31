@@ -151,10 +151,6 @@
                 <i class="fas fa-cog"></i>
                 <span>Settings</span></a>
         </li>
-        <li class="nav-item">
-           {{$blade["user"]->service_provider_fk}}
-        </li>
-
     </ul>
 
     <div id="content-wrapper">

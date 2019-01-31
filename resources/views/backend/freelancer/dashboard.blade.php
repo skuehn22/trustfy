@@ -84,6 +84,12 @@
                 transform: rotate(126deg);
             }
         }
+
+        .modal-content {
+            min-height: 200px;
+        }
+
+
     </style>
 
 @stop
@@ -237,13 +243,6 @@
         <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-<!--
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    -->
                     <div class="modal-body" id="modal-body">
                         @include('backend.freelancer.setup.welcome')
                     </div>
@@ -251,8 +250,20 @@
             </div>
         </div>
 
+
+        <!-- DEMO Installation Modal -->
+        <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" id="modal-body">
+                        @include('backend.freelancer.setup.demo')
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <input id="setup" type="hidden" value="{{ $setup->firstname or ""}} ">
+    <input id="setup" type="hidden" value="{{$setup or ''}}">
 
 
 @stop
@@ -449,6 +460,7 @@
 
     //checks if a new setup is required for the freelancer
     var setup = $('#setup').val();
+
     if( setup == "yes" ) {
     $('#setup-modal').modal('show');
 
@@ -489,6 +501,64 @@
         $('#arrows').removeClass("d-none");
         $('#smartwizard').smartWizard("next");
     });
+
+    $("#install-demo").on("click", function() {
+
+        installDemo();
+
+        $('#setup-modal').modal('hide');
+        $('#demo-modal').modal('show');
+
+        $(".demo-company-loading").addClass("").delay(1000).queue(function(next){
+            $(".demo-company-loading").addClass("d-none")
+            $(".demo-company-done").removeClass("d-none")
+            next();
+        });
+
+        $(".demo-clients-loading").addClass("").delay(2000).queue(function(next){
+            $(".demo-clients-loading").addClass("d-none")
+            $(".demo-clients-done").removeClass("d-none")
+            next();
+        });
+
+        $(".demo-projects-loading").addClass("").delay(3000).queue(function(next){
+            $(".demo-projects-loading").addClass("d-none")
+            $(".demo-projects-done").removeClass("d-none")
+            next();
+        });
+
+        $(".demo-plans-loading").addClass("").delay(4000).queue(function(next){
+            $(".demo-plans-loading").addClass("d-none")
+            $(".demo-plans-done").removeClass("d-none")
+            $("#get-started").removeClass("btn-disable").addClass("btn-classic")
+            next();
+        });
+
+
+    });
+
+    function installDemo() {
+
+
+        $.ajax({
+            type: 'GET',
+            url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/demo/install',
+            data: { variable: 'value' },
+            dataType: 'json',
+
+            success: function(data) {
+                var items = data["data"];
+                $("#marker-client").text(items["firstname"] + " " + items["lastname"] + " - Contractor");
+            }
+        });
+    }
+
+        $("#get-started").on("click", function() {
+            $("#demo-modal").modal('hide');
+        });
+
+
+
 
     // Expand the modal width for setup creation through freelancer
     $("#prev-btn-step1").on("click", function() {
