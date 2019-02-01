@@ -16,6 +16,7 @@ use App\DatabaseModels\Projects;
 use App\DatabaseModels\PlansTypes;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
+use App\Classes\StateClass;
 
 class PlansManagementController extends Controller
 {
@@ -35,8 +36,10 @@ class PlansManagementController extends Controller
         $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.firstname', 'projects_plans.*');
         $plans = $query->get();
 
+        $statusObj = new StateClass();
+
         foreach($plans as $plan) {
-            $response = self::getStatus($plan->state);
+            $response =$statusObj->plans($plan->state);
             $plan->color =  $response['color'];
             $plan->state =  $response['state'];
         }
@@ -183,26 +186,5 @@ class PlansManagementController extends Controller
         }
 
     }
-
-    public function getStatus($id){
-
-        switch ($id) {
-            case 0:
-                $state['color'] = "text-success";
-                $state['state'] = "active";
-                break;
-            case 1:
-                $state['color'] = "text-warning";
-                $state['state'] = "not send";
-                break;
-            default:
-                $state['color'] = "text-secondary";
-                $state['state'] = "open";
-        }
-
-        return $state;
-
-    }
-
 
 }

@@ -129,26 +129,17 @@ class DemoController extends Controller
 
         foreach ($projects as $project) {
 
-            $projects_tmp[$i] = $project;
-            $i = $i+1;
+             foreach ($demos as $demo) {
+
+                $plan = $demo->replicate();
+                $plan->service_provider_fk =$project->service_provider_fk;
+                $plan->clients_id_fk = $project->client_id_fk;
+                $plan->projects_id_fk = $project->id;
+                $plan->demo = 0;
+                $plan->save();
+                $i = $i+1;
+
+            }
         }
-
-        $i=0;
-
-        foreach ($demos as $demo) {
-
-            $plan = $demo->replicate();
-            $plan->service_provider_fk =$projects_tmp[$i]->service_provider_fk;
-            $plan->clients_id_fk = $projects_tmp[$i]->client_id_fk;
-            $plan->projects_id_fk = $projects_tmp[$i]->id;
-            $plan->demo = 0;
-            $plan->save();
-            $i = $i+1;
-
-        }
-
-
-
     }
-
 }

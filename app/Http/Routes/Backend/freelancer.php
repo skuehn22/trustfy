@@ -18,6 +18,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::any('/freelancer/dashboard', 'Backend\Freelancer\DashboardController@index');
     Route::any('/freelancer/dashboard/load-project', 'Backend\Freelancer\DashboardController@loadProject');
+    Route::any('/freelancer/dashboard/load-plan', 'Backend\Freelancer\DashboardController@loadPlan');
     Route::any('/freelancer/plan/create', 'Backend\Freelancer\PlanController@create');
 
     Route::any('/freelancer/setup/welcome', 'Backend\Freelancer\SetupController@index');

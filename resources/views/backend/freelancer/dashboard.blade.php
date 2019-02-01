@@ -88,10 +88,21 @@
         .modal-content {
             min-height: 200px;
         }
+body{
+    color: #566787;
+    background: #f5f5f5;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+}
 
 
     </style>
 
+    <script>
+
+
+
+    </script>
 @stop
 
 @section('content')
@@ -151,11 +162,7 @@
 @section("javascript")
     <script type="text/javascript">
 
-        //loads project on dashboard
-        getProject({{$last_project->id}});
-
-
-        function loadScrips(){
+     function loadScrips(){
             // External Button Events
             $(".force-next").on("click", function() {
                 // Reset wizard
@@ -191,7 +198,12 @@
 
             });
 
-        }
+         $("#plan-details").on('change', function() {
+             getPlan($(this).val());
+         });
+
+
+     }
 
         function save(url, data) {
 
@@ -422,34 +434,7 @@
     });
 
 
-    //loads projects for selected client
-    $("#projects-modul").on('change', function() {
-        getProject($(this).val());
-    });
-
-    function getProject(id) {
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-                document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
-                $("#projects-modul").val(id);
-            }
-        }
-
-        xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-project?id="+id, true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send();
-        
-    }
-
     function installDemo() {
-
 
         $.ajax({
             type: 'GET',
@@ -479,6 +464,66 @@
     $(".project-next").on("click", function() {
         $('#arrows').addClass("d-none");
     });
+
+
+
+    //loads projects for selected client
+    $("#projects-modul").on('change', function() {
+        getProject($(this).val());
+    });
+
+
+
+     function getProject(id) {
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
+                $("#projects-modul").val(id);
+                loadScrips();
+                getPlan($("#plan-details").val());
+            }
+        }
+
+        xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-project?id="+id, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+
+    }
+
+
+    function getPlan(id) {
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                document.getElementById("dashboard-plan").innerHTML = xmlhttp.responseText;
+                $("#plan").val(id);
+            }
+        }
+
+        xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-plan?id="+id, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+
+    }
+
+    //loads project on dashboard
+    getProject({{$last_project->id or ''}});
+
 
     </script>
 @stop

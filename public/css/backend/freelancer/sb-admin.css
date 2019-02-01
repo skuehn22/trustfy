@@ -221,7 +221,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 @media (min-width: 768px) {
   .sidebar {
-    width: 280px !important;
+    width: 250px !important;
     padding:25px;
   }
   .sidebar .nav-item .nav-link {
@@ -231,7 +231,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     width: 280px;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 20px;
+    font-size: 16px;
     display: inline;
     padding-left: 10px;
   }

@@ -95,29 +95,8 @@
             vertical-align: middle;
             margin-right: 10px;
         }
-        .status {
-            font-size: 30px;
-            margin: 2px 2px 0 0;
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 10px;
-        }
-        .text-success {
-            color: #10c469;
-        }
-        .text-info {
-            color: #62c9e8;
-        }
-        .text-warning {
-            color: #FFC107;
-        }
-        .text-danger {
-            color: #ff5b5b;
-        }
-        .pagination {
-            float: right;
-            margin: 0 0 5px;
-        }
+
+
         .pagination li a {
             border: none;
             font-size: 13px;

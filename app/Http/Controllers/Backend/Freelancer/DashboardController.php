@@ -16,6 +16,7 @@ use App\DatabaseModels\Projects;
 use App\DatabaseModels\PlansTypes;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
+use App\Classes\StateClass;
 
 class DashboardController extends Controller
 {
@@ -80,11 +81,16 @@ class DashboardController extends Controller
             $viewed->last_viewed = 1;
             $viewed->save();
 
+            $statusObj = new StateClass();
+            $response =$statusObj->projects($project->state);
 
+            $project->color =  $response['color'];
+            $project->state =  $response['state'];
 
-            $plans = Plans::where("id", "=", $_GET['id'])
+            $plans = Plans::where("projects_id_fk", "=", $project->id)
                 ->where("delete", "=", "0")
-                ->get();
+                ->lists('name', 'id');
+
 
             return view('backend.freelancer.dashboard.projects-details', compact('blade', 'setup', 'plans', 'project'));
         } else {
@@ -92,6 +98,30 @@ class DashboardController extends Controller
             return Redirect::to(env("MYHTTP"));
         }
 
+    }
+
+    public function loadPlan()
+    {
+
+        if (Auth::check()) {
+
+            $blade["ll"] = App::getLocale();
+            $blade["user"] = Auth::user();
+
+            $plan = Plans::where("id", "=", $_GET['id'])
+                ->first();
+
+
+            $statusObj = new StateClass();
+            $response =$statusObj->plans($plan->state);
+
+            $plan->color =  $response['color'];
+            $plan->state =  $response['state'];
+
+
+            return view('backend.freelancer.dashboard.plan-details', compact('blade','plan'));
+
+        }
     }
 
 }
