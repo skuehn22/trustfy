@@ -3,7 +3,7 @@
 
 @stop
 @section('css')
-
+    <link href="https://fonts.googleapis.com/css?family=Anton|Fjalla+One" rel="stylesheet">
     <style>
 
         .nav-tabs .glyphicon:not(.no-margin) { margin-right:10px; }
@@ -102,11 +102,11 @@
                 @include('backend.freelancer.dashboard.upcoming')
             </div>
             <div class="col-md-8">
-                @include('backend.freelancer.dashboard.upcoming')
+                @include('backend.freelancer.dashboard.projects')
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 @include('backend.freelancer.dashboard.funds')
             </div>
         </div>
@@ -150,6 +150,10 @@
 @stop
 @section("javascript")
     <script type="text/javascript">
+
+        //loads project on dashboard
+        getProject({{$last_project->id}});
+
 
         function loadScrips(){
             // External Button Events
@@ -415,8 +419,34 @@
             next();
         });
 
-
     });
+
+
+    //loads projects for selected client
+    $("#projects-modul").on('change', function() {
+        getProject($(this).val());
+    });
+
+    function getProject(id) {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
+                $("#projects-modul").val(id);
+            }
+        }
+
+        xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-project?id="+id, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+        
+    }
 
     function installDemo() {
 
@@ -437,8 +467,6 @@
         $("#get-started").on("click", function() {
             $("#demo-modal").modal('hide');
         });
-
-
 
 
     // Expand the modal width for setup creation through freelancer

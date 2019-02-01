@@ -27,12 +27,12 @@ class PlansManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-
-
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
+        $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.service_provider_fk', '=', $blade["user"]->service_provider_fk );
         $query->where('projects_plans.state', '>', 0 );
+        $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.firstname', 'projects_plans.*');
         $plans = $query->get();
 
         foreach($plans as $plan) {
@@ -83,11 +83,11 @@ class PlansManagementController extends Controller
 
         $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
-            ->get();
+            ->lists("firstname","id");
 
         $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
-            ->get();
+            ->lists("name","id");
 
         $types = PlansTypes::lists("name","id");
 

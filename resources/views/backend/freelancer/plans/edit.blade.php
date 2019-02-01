@@ -36,15 +36,7 @@
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label" for="clients">Client</label>
                         @if(count($clients)>0)
-                            <select name="clients" id="clients" class="col-md-10">
-                                @foreach($clients as $client)
-                                    @if($project->client_id_fk == $client->id)
-                                        <option value="{{$client->id}}" selected>{{$client->firstname}} {{$client->lastname}}</option>
-                                    @else
-                                        <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            {!! Form::select('clients', $clients, $plan->client_id_fk , ['class' => 'form-control col-md-8', 'id' => 'clients']) !!}
                         @else
                             <div class="pt-2">
                                 No clients created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Client</a>
@@ -54,15 +46,7 @@
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label" for="clients">Project</label>
                         @if(count($projects)>0)
-                            <select name="clients" id="clients" class="col-md-10">
-                                @foreach($projects as $project)
-                                    @if($plan->projects_id_fk == $project->id)
-                                        <option value="{{$project->id}}" selected>{{$project->name}}</option>
-                                    @else
-                                        <option value="{{$project->id}}">{{$project->name}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            {!! Form::select('projects', $projects, $plan->projects_id_fk , ['class' => 'form-control col-md-8', 'id' => 'projects']) !!}
                         @else
                             <div class="pt-2">
                                 No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/projects/new">Create Project</a>
