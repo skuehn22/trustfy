@@ -4,6 +4,7 @@
 @stop
 @section('css')
     <link href="https://fonts.googleapis.com/css?family=Anton|Fjalla+One" rel="stylesheet">
+
     <style>
 
         .nav-tabs .glyphicon:not(.no-margin) { margin-right:10px; }
@@ -106,7 +107,7 @@ body{
 @stop
 
 @section('content')
-<div class="row">
+<div class="row live-mode">
     <div class="col-md-9">
         <div class="row">
             <div class="col-md-4">
@@ -130,6 +131,8 @@ body{
         </div>
     </div>
 </div>
+
+
 
         <!-- Setup Modal -->
         <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -161,6 +164,24 @@ body{
 @stop
 @section("javascript")
     <script type="text/javascript">
+
+        //checks if a new setup is required for the freelancer
+        var setup = $('#setup').val();
+
+        if( setup == "yes" ) {
+
+            $('#setup-modal').modal('show');
+
+        }else{
+            
+            $('.dashboard').removeClass('d-none');
+        }
+
+        $(document).ready(function (e) {
+            $('.active-inbox').click();
+            $('#inbox-start').click();
+
+        });
 
      function loadScrips(){
             // External Button Events
@@ -355,15 +376,7 @@ body{
     //initalize the arrow bar on the top of the modal
     $('#smartwizard').smartWizard("theme", "arrows");
 
-    //checks if a new setup is required for the freelancer
-    var setup = $('#setup').val();
 
-    if( setup == "yes" ) {
-    $('#setup-modal').modal('show');
-
-    }else{
-        $('.dashboard').removeClass('d-none');
-    }
 
     function clearClientForm() {
 

@@ -1,16 +1,18 @@
-
+<div class="inbox-content p-3">
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
+    <li class="active-inbox"><a href="#home" data-toggle="tab" id="inbox-start"><span class="glyphicon glyphicon-inbox">
                 </span>All</a></li>
     <li><a href="#profile" data-toggle="tab" style="color: #535353;"><span class="glyphicon glyphicon-tags"></span>
             Payments</a></li>
     <li><a href="#messages" data-toggle="tab" style="color: #535353;"><span class="glyphicon glyphicon-user"></span>
             Clients</a></li>
 </ul>
+
+
 <!-- Tab panes -->
 <div class="tab-content">
-    <div class="tab-pane fade in active" id="home">
+    <div class="tab-pane" id="home">
         <div class="list-group">
             <a href="#" class="list-group-item">
                 <div class="checkbox">
@@ -52,4 +54,5 @@
         ...</div>
     <div class="tab-pane fade in" id="settings">
         This tab is empty.</div>
+</div>
 </div>
