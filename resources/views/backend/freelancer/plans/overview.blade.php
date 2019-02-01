@@ -201,7 +201,7 @@
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
                             <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}</td>
                             <td>
-                                <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
+                                <a href="/{{$blade["ll"]}}/freelancer/plans/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                                 <span data-toggle="modal" data-target="#exampleModal" class="delete-client">
                                     <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete">
                                         <i class="fas fa-trash green"></i>
@@ -230,7 +230,7 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-                    <form action="/{{$blade["ll"]}}/freelancer/projects/delete/" id="deleteform" method="post">
+                    <form action="/{{$blade["ll"]}}/freelancer/plans/delete/" id="deleteform" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-danger">Yes</button>

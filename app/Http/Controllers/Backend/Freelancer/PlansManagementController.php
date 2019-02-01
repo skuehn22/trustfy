@@ -13,7 +13,7 @@ use App, Auth, Request, Redirect, Form, DB;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
-use App\DatabaseModels\ProjectsAddress;
+use App\DatabaseModels\PlansTypes;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
 
@@ -27,11 +27,12 @@ class PlansManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
+
+
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
-        $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.service_provider_fk', '=', $blade["user"]->service_provider_fk );
-        $query->groupBy('projects_plans.updated_at');
+        $query->where('projects_plans.state', '>', 0 );
         $plans = $query->get();
 
         foreach($plans as $plan) {
@@ -59,12 +60,14 @@ class PlansManagementController extends Controller
             ->where("delete", "=", "0")
             ->get();
 
+        $types = PlansTypes::lists("name","id");
+
         $plan = new Plans();
         $plan->service_provider_fk = $blade["user"]->service_provider_fk;
         $plan->hidden = 1;
         $plan->save();
 
-        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan'));
+        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types'));
 
     }
 
@@ -82,8 +85,13 @@ class PlansManagementController extends Controller
             ->where("delete", "=", "0")
             ->get();
 
+        $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            ->where("delete", "=", "0")
+            ->get();
 
-        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan'));
+        $types = PlansTypes::lists("name","id");
+
+        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types'));
 
     }
 

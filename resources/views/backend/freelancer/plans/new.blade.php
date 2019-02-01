@@ -63,12 +63,8 @@
                     <h5>Payment Plan</h5>
                 </div>
                 <div class="form-row py-2">
-                    <label class="col-md-2 col-form-label" for="typ">Client</label>
-                    <select class="form-control col-md-6" name="typ" id="typ">
-                        <option value="0">select</option>
-                        <option value="1">Single Depostit/Payment</option>
-                        <option value="2">Milestone Plan</option>
-                    </select>
+                    <label class="col-md-2 col-form-label" for="typ">Typ</label>
+                    {!! Form::select('typ', $types, 1 , ['class' => 'form-control col-md-6', 'id' => 'typ']) !!}
                 </div>
                 <div id="plan-typ-response"></div>
             </div>
