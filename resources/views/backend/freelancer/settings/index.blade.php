@@ -144,6 +144,12 @@
         }
 
 
+        $("#get-started").on("click", function() {
+            $("#demo-modal").modal('hide');
+            location.reload();
+        });
+
+
     </script>
 
 @stop
