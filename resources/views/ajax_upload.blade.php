@@ -15,7 +15,7 @@
         </form>
         <br />
         <span id="uploaded_image">
-
+            <img src="/uploads/companies/logo/{{$company->logo or ''}}" class="img-thumbnail" width="300">
         </span>
     </div>
 </div>
@@ -27,6 +27,9 @@
     $(document).ready(function(){
 
         $('#upload_form').on('submit', function(event){
+
+
+
             event.preventDefault();
             $.ajax({
                 url:"{{ route('ajaxupload.action') }}",
@@ -38,12 +41,12 @@
                 processData: false,
                 success:function(data)
                 {
+                    $('#uploaded_image').html('');
                     $('#message').css('display', 'block');
                     $('#message').html(data.message);
                     $('#message').addClass(data.class_name);
                     $('.old_image').remove();
                     $('#uploaded_image').html(data.uploaded_image);
-
                 }
             })
         });

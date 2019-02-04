@@ -24,21 +24,20 @@
                 </ul>
                 <div class="tab-content clearfix">
                     <div class="tab-pane active" id="1b">
-                        @include('backend.settings.company')
+                        @include('backend.freelancer.settings.company')
                     </div>
                     <div class="tab-pane" id="2b">
-                        @include('backend.settings.account')
+                        @include('backend.freelancer.settings.account')
                     </div>
                     <div class="tab-pane" id="3b">
-                        @include('backend.settings.users')
+                        @include('backend.freelancer.settings.users')
                     </div>
                     <div class="tab-pane" id="4b">
-                        @include('backend.settings.payments')
+                        @include('backend.freelancer.settings.payments')
                     </div>
                 </div>
             </div>
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
 </div>
 

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator, Auth;
+use Validator, Auth, DateTime;
 use App\DatabaseModels\Users;
+use App\DatabaseModels\Companies;
+use Carbon\Carbon;
 
 class AjaxUploadController extends Controller
 {
@@ -16,6 +18,11 @@ class AjaxUploadController extends Controller
     function action(Request $request)
     {
 
+        //create unique timestamp for images
+        //without the image from the cache is loading in the preview
+        $date = new DateTime();
+        $filename = $date->getTimestamp();
+
         $user = Auth::user();
 
         $validation = Validator::make($request->all(), [
@@ -24,11 +31,13 @@ class AjaxUploadController extends Controller
         if($validation->passes())
         {
             $image = $request->file('select_file');
-            $new_name = $user->id . '.' . $image->getClientOriginalExtension();
+            $new_name = $user->id. $filename . '.' . $image->getClientOriginalExtension();
 
-            $user = Users::find($user->id);
-            $user->logo = $new_name;
-            $user->save();
+            $company = Companies::where('id', '=', $user->service_provider_fk )
+            ->first();
+
+            $company->logo = $new_name;
+            $company->save();
 
             $image->move(public_path('uploads/companies/logo'), $new_name);
             return response()->json([

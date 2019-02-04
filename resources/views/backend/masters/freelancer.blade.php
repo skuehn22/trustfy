@@ -113,28 +113,16 @@
             <img src="/img/trustfy-new-mixed.png" class="img-responsive logo">
         </a>
         <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
+            <a class="nav-link  active" href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
                 <i class="far fa-money-bill-alt"></i>
                 <span>Payment Plans</span>
             </a>
-            <!--
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Login Screens:</h6>
-                <a class="dropdown-item" href="login.html">Login</a>
-                <a class="dropdown-item" href="register.html">Register</a>
-                <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Other Pages:</h6>
-                <a class="dropdown-item" href="404.html">404 Page</a>
-                <a class="dropdown-item active" href="blank.html">Blank Page</a>
-            </div>
-            -->
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
@@ -215,12 +203,27 @@
 @yield('javascript')
 <script type="text/javascript">
 
-    $(document).ready(function(){
+    $(document).ready(function () {
 
+        var url = "{{env("APP_SSL")}}://" + window.location.hostname + window.location.pathname;
+        alert(url);
+
+        $('ul.navbar-nav li a').each(function () {
+
+            if (this.href == url) {
+
+                $("ul.navbar-nav li").each(function () {
+                    if ($(this).hasClass("active")) {
+                        $(this).removeClass("active");
+                    }
+                });
+                $(this).parents().addClass('active');
+            }
+        });
     });
 
 
-    $().alert('close');
+        $().alert('close');
 
 
 

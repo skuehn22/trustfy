@@ -27,11 +27,11 @@ class SettingsController extends Controller
         $blade["user"] = Auth::user();
 
         $user = Users::find($blade["user"]->id);
-        $provider = $this->getCompany($blade["user"]);
-        $team = Users::where("service_provider_fk", "=", $provider->id)
+        $company = $this->getCompany($blade["user"]);
+        $team = Users::where("service_provider_fk", "=", $company->id)
             ->get();
 
-        return view('backend.freelancer.settings.index', compact('blade', 'provider', 'user', 'team'));
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team'));
 
     } else {
 

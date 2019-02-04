@@ -173,7 +173,7 @@ body{
             $('#setup-modal').modal('show');
 
         }else{
-            
+
             $('.dashboard').removeClass('d-none');
         }
 

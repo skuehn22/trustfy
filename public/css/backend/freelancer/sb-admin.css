@@ -120,7 +120,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .navbar-nav .nav-item.active .nav-link {
-  color: #fff;
+  color: #9d959a;
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
@@ -203,7 +203,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(221, 51, 26, 0.75);
 }
 
 .sidebar.toggled {

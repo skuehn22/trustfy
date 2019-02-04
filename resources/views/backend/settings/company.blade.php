@@ -4,25 +4,25 @@
     <div class="form-group">
         <label for="company" class="col-md-3 control-label">Company</label>
         <div class="col-md-6">
-            <input id="company" type="text" class="form-control" name="company" value="{{$provider->name}}">
+            <input id="company" type="text" class="form-control" name="company" value="{{$company->name}}">
         </div>
     </div>
     <div class="form-group">
         <label for="address" class="col-md-3 control-label">Address</label>
         <div class="col-md-6">
-            <input id="address" type="text" class="form-control" name="address" value="{{$provider->address}}">
+            <input id="address" type="text" class="form-control" name="address" value="{{$company->address}}">
         </div>
     </div>
     <div class="form-group">
         <label for="country" class="col-md-3 control-label">Country</label>
         <div class="col-md-6">
-            <input id="country" type="text" class="form-control" name="country" value="{{$provider->country}}">
+            <input id="country" type="text" class="form-control" name="country" value="{{$company->country}}">
         </div>
     </div>
     <div class="form-group">
         <label for="city" class="col-md-3 control-label">City</label>
         <div class="col-md-6">
-            <input id="city" type="text" class="form-control" name="city" value="{{$provider->city}}">
+            <input id="city" type="text" class="form-control" name="city" value="{{$company->city}}">
         </div>
     </div>
     <div class="form-group">
