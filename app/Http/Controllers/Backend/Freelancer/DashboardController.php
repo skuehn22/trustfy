@@ -27,10 +27,8 @@ class DashboardController extends Controller
 
             $blade["ll"] = App::getLocale();
             $blade["user"] = Auth::user();
+            $setup = $blade["user"]->setup;
 
-            if (isset($_GET['setup'])) {
-                $setup = $_GET['setup'];
-            }
 
             $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
@@ -75,15 +73,19 @@ class DashboardController extends Controller
                 ->where("last_viewed", "=", "1")
                 ->first();
 
-            $viewed->last_viewed = 0;
-            $viewed->save();
+            if(isset($viewed)){
 
-            //set new viewed project to 1
-            $viewed = Projects::where("id", "=", $project->id)
-                ->first();
+                $viewed->last_viewed = 0;
+                $viewed->save();
 
-            $viewed->last_viewed = 1;
-            $viewed->save();
+                //set new viewed project to 1
+                $viewed = Projects::where("id", "=", $project->id)
+                    ->first();
+
+                $viewed->last_viewed = 1;
+                $viewed->save();
+            }
+
 
             $statusObj = new StateClass();
             $response =$statusObj->projects($project->state);
@@ -115,13 +117,13 @@ class DashboardController extends Controller
             $plan = Plans::where("id", "=", $_GET['id'])
                 ->first();
 
+            if(isset($plan)){
+                $statusObj = new StateClass();
+                $response =$statusObj->plans($plan->state);
 
-            $statusObj = new StateClass();
-            $response =$statusObj->plans($plan->state);
-
-            $plan->color =  $response['color'];
-            $plan->state =  $response['state'];
-
+                $plan->color =  $response['color'];
+                $plan->state =  $response['state'];
+            }
 
             return view('backend.freelancer.dashboard.plan-details', compact('blade','plan'));
 

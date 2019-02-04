@@ -53,7 +53,7 @@ class SettingsController extends Controller
         $blade["user"] = Auth::user();
 
         $provider = Companies::where("id", "=", $user->service_provider_fk)
-            ->where("delete", "!=", "1")
+            ->where("delete", "=", "0")
             ->first();
 
         return $provider;

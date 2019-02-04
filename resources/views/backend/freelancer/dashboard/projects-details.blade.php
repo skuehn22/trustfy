@@ -24,10 +24,17 @@
         {{ $project->firstname }} {{ $project->lastname }}
     </div>
 </div>
+
+
+
 <div class="row pt-3">
     <div class="col-md-6">
         <label class="col-md-12 p-0 pb-2 col-form-label" for="plan">Payment Plan:</label>
+        @if(count($plans)>0)
         {!! Form::select('plan-details', $plans, null, ['class' => 'form-control col-md-12', 'id' => 'plan-details']) !!}
+        @else
+            No Payment Plans yet.
+        @endif
     </div>
 </div>
 <div class="row pt-3">

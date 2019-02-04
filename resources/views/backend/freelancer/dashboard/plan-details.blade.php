@@ -1,3 +1,4 @@
+@if(isset($plan->due_date))
 <div class="row">
     <div class="col-md-12">
         <hr>
@@ -31,3 +32,4 @@
         <span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}
     </div>
 </div>
+@endif

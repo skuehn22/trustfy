@@ -1,6 +1,6 @@
 
 <div class="form-row py-2">
-    <label class="col-md-2 col-form-label" for="clients">Projects</label>
+    <label class="col-md-3 col-form-label" for="clients">Projects</label>
 
     @if(count($projects)>0)
         <select name="projects-dropdown" id="projects-dropwdowm" class="col-md-8">

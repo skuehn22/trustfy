@@ -16,6 +16,7 @@ use App\DatabaseModels\Companies;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\ProjectsAddress;
+use App\DatabaseModels\Users;
 
 class SetupController extends Controller
 {
@@ -51,7 +52,16 @@ class SetupController extends Controller
         $company->address = $data->city;
         $company->country = $data->country;
         $company->users_fk = $blade["user"]->id;
+
+        //get logo which was temp in user saved
+        $user = Users::where('id', '=',  $blade["user"]->id )
+            ->first();
+
+        $company->logo = $user->logo;
         $company->save();
+
+        $user->service_provider_fk = $company->id;
+        $user->save();
 
         return response()->json(['prosuccess' => true, 'data' => $company]);
 
@@ -118,6 +128,23 @@ class SetupController extends Controller
         $projectaddress->save();
 
         return response()->json(['success' => 'Project successfully created', 'data' => $project]);
+
+    }
+
+    public function done() {
+
+        $blade["ll"] = App::getLocale();
+        $user = Auth::user();
+
+
+        $response = Users::where("id", "=", $user->id)
+            ->where("delete", "=",  "0")
+            ->first();
+
+        $response->setup=1;
+        $response->save();
+
+        return response()->json(['success' => 'Project successfully created', 'data' => $response]);
 
     }
 

@@ -34,6 +34,13 @@ class DemoController extends Controller
             $projects   = self::loadProjects($blade["user"], $clients, $company);
             $plans   = self::loadPlans();
 
+            $response = Users::where("id", "=",  $blade["user"]->id)
+                ->where("delete", "=",  "0")
+                ->first();
+
+            $response->setup=1;
+            $response->save();
+
 
         } else {
             return Redirect::to(env("MYHTTP"));

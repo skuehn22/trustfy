@@ -10,7 +10,7 @@
 @stop
 
 @section('content')
-    <div class="plans">
+    <div class="plans pl-4">
         <div class="row">
             <div class="col-md-6 p-0 ">
                 <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-edit"></i> Save</button>
@@ -30,11 +30,11 @@
                         <h5>General Informations</h5>
                     </div>
                     <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label" for="creation-date">Date</label>
+                        <label class="col-md-3 col-form-label" for="creation-date">Date</label>
                         <input type="text" id="creation-date" name="creation-date" class="form-control col-md-8">
                     </div>
                     <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label" for="clients">Client</label>
+                        <label class="col-md-3 col-form-label" for="clients">Client</label>
 
                         @if(count($clients)>0)
                             <select name="clients" id="clients" class="col-md-8">

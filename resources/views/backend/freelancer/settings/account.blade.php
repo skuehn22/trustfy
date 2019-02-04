@@ -16,7 +16,7 @@
                 </div>
             </div>
             -->
-            <h3 class="pb-3">Edit Account</h3>
+            <h4 class="pb-3">Edit Account</h4>
             <div class="form-group">
                 <label for="email" class="col-md-3 control-label  pl-0">E-Mail</label>
                 <div class="col-md-4 pl-0">
@@ -45,7 +45,7 @@
         </form>
     </div>
 </div>
-<h3  class="pt-3">Manage Database</h3>
+<h4  class="pt-3">Manage Database</h4>
 <div class="row">
     <div class="col-md-6 pt-0">
         <form class="form-horizontal" role="form" method="POST" action="/freelancer/settings/reset">

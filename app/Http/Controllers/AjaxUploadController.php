@@ -36,8 +36,18 @@ class AjaxUploadController extends Controller
             $company = Companies::where('id', '=', $user->service_provider_fk )
             ->first();
 
-            $company->logo = $new_name;
-            $company->save();
+            if(isset($company)){
+                $company->logo = $new_name;
+                $company->save();
+            }else{
+
+                $user = Users::where('id', '=', $user->id )
+                    ->first();
+
+                $user->logo = $new_name;
+                $user->save();
+            }
+
 
             $image->move(public_path('uploads/companies/logo'), $new_name);
             return response()->json([

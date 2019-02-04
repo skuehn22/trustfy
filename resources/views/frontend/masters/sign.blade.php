@@ -19,7 +19,7 @@
 <!-- Navigation -->
 
 <div class="row">
-    <div class="col-3 mx-auto pt-3">
+    <div class="col-4 mx-auto pt-3">
         <div class="text-center">
             <a class="" href="{{ asset('/') }}">
                 <img src="{{ asset('img/trustfy-green.png') }}" width="200px" alt="Trustfy Freelancer Payment">
@@ -29,7 +29,7 @@
 </div>
 
 <div class="row">
-    <div class="col-2 mx-auto pt-3 login-form">
+    <div class="col-3 mx-auto pt-3 login-form">
         <div class="text-center">
             @yield('content')
         </div>

@@ -16,7 +16,7 @@
     <div class="clients">
         <div class="row section-heading">
             <div class="col-md-6">
-                <h1>New Project</h1>
+                <h3>Create new Project</h3>
             </div>
         </div>
         <div class="row">
@@ -63,7 +63,7 @@
                         <label class="col-md-2 col-form-label"  for="country">Country</label>
                         <input type="text" class="form-control col-md-10" id="country" name="country">
                     </div>
-                    <button type="submit" class="btn btn-default float-right text-right">Save Project</button>
+                    <button type="submit" class="btn btn-classic">Save Project</button>
                 </form>
             </div>
         </div>

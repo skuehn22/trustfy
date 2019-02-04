@@ -30,8 +30,11 @@
         <div class="col-md-12 pl-5 pt-2 pb-2">
             <p class="green "><strong>Create a payment plan</strong></p>
             @if(count($projects)>0)
+                <form class="form-horizontal" role="form" method="POST" action="/freelancer/plans/new">
                 {!! Form::select('projects', $projects, null, ['class' => 'form-control col-md-10', 'id' => 'projects','placeholder' => 'select']) !!}
-                <p class="pt-3"><button type="button" class="btn btn-success col-md-10" id="start-setup">Create Payment Plan</button></p>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <p class="pt-3"><button type="submit" class="btn btn-success col-md-10">Create Payment Plan</button></p>
+                </form>
             @else
                 <div class="pt-2">
                     No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/projects/new">Create Project</a>
@@ -42,3 +45,4 @@
         </div>
     </div>
 </div>
+
