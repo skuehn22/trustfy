@@ -206,7 +206,7 @@
     $(document).ready(function () {
 
         var url = "{{env("APP_SSL")}}://" + window.location.hostname + window.location.pathname;
-        alert(url);
+        //alert(url);
 
         $('ul.navbar-nav li a').each(function () {
 

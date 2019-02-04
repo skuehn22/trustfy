@@ -17,8 +17,12 @@
             </div>
             <div class="card-footer text-center">
                 <div class="text">
-                   Project: Name<br>
-                   Address: Any Street, 123456 Dublin
+                    @if(count($plans)>0)
+                       Project: Name<br>
+                       Address: Any Street, 123456 Dublin
+                    @else
+                        No Payment Plans yet.
+                    @endif
                 </div>
             </div>
         </div>
@@ -27,12 +31,13 @@
             <p class="green "><strong>Create a payment plan</strong></p>
             @if(count($projects)>0)
                 {!! Form::select('projects', $projects, null, ['class' => 'form-control col-md-10', 'id' => 'projects','placeholder' => 'select']) !!}
+                <p class="pt-3"><button type="button" class="btn btn-success col-md-10" id="start-setup">Create Payment Plan</button></p>
             @else
                 <div class="pt-2">
                     No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/projects/new">Create Project</a>
                 </div>
             @endif
-            <p class="pt-3"><button type="button" class="btn btn-success col-md-10" id="start-setup">Create Payment Plan</button></p>
+
         </div>
         </div>
     </div>

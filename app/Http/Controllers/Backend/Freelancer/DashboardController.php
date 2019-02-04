@@ -41,10 +41,14 @@ class DashboardController extends Controller
                 ->where("last_viewed", "=", "1")
                 ->first();
 
+            $plans = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->get();
+
             $openRight = "180";
             $openLeft = "45";
 
-            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project'));
+            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans'));
         } else {
 
             return Redirect::to(env("MYHTTP"));

@@ -120,8 +120,13 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .navbar-nav .nav-item.active .nav-link {
-  color: #9d959a;
+  color: #ec8031;
 }
+
+.navbar-nav .nav-item:hover {
+  color: #d4d4d4;
+}
+
 
 .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
   width: 1rem;
@@ -203,7 +208,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {
-  color: rgba(221, 51, 26, 0.75);
+  color: rgba(204, 204, 204, 0.75);
 }
 
 .sidebar.toggled {

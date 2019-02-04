@@ -2,6 +2,7 @@
     <div class="row inbox">
         <div class="col-md-12">
             <div class="panel panel-primary">
+                @if(count($projects)>0)
                 <div class="panel-heading">
                     <span class="panel-title">
                         <i class="far fa-envelope"></i> Inbox </span>
@@ -13,6 +14,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
 
         </div>

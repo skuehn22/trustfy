@@ -14,7 +14,7 @@
                     <ul  class="nav nav-pills">
                         <li class="active"><a  href="#1b" data-toggle="tab">Company</a></li>
                         <li><a href="#2b" data-toggle="tab">Account</a></li>
-                        <li><a href="#3b" data-toggle="tab">Team Members</a></li>
+                        <!--<li><a href="#3b" data-toggle="tab">Team Members</a></li>-->
                         <li><a href="#4b" data-toggle="tab">Banking</a></li>
                     </ul>
                     <div class="tab-content clearfix">

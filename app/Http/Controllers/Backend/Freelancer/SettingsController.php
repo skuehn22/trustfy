@@ -15,6 +15,9 @@ use App, Request, Auth, Redirect, Hash;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\Users;
+use App\DatabaseModels\Projects;
+use App\DatabaseModels\Clients;
+use App\DatabaseModels\Plans;
 
 class SettingsController extends Controller
 {
@@ -136,6 +139,61 @@ class SettingsController extends Controller
         $button = '<button type="button" class="btn btn-outline-dark load-content" id="new-team-member">New Team Member</button>';
 
         return $button;
+    }
+
+    public function reset(){
+
+        $user = Auth::user();
+        $ll = App::getLocale();
+
+        //delete company
+        $data = Companies::where("users_fk", "=", $user->id)
+            ->where("delete", "=",  "0")
+            ->first();
+
+        $data->delete = 1;
+        $data->save();
+
+        //delete clients
+        $data = Clients::where("service_provider_fk", "=",  $user->service_provider_fk)
+            ->where("delete", "=",  "0")
+            ->get();
+
+        foreach ($data as $client) {
+            $client->delete = 1;
+            $client->save();
+        }
+
+        //delete projects
+        $data = Projects::where("service_provider_fk", "=",  $user->service_provider_fk)
+            ->where("delete", "=",  "0")
+            ->get();
+
+        foreach ($data as $project) {
+            $project->delete = 1;
+            $project->save();
+        }
+
+        //delete projects
+        $data = Plans::where("service_provider_fk", "=",  $user->service_provider_fk)
+            ->where("delete", "=",  "0")
+            ->get();
+
+        foreach ($data as $plan) {
+            $plan->delete = 1;
+            $plan->save();
+        }
+
+
+        //delete company in users
+        $data = Users::where("service_provider_fk", "=",  $user->service_provider_fk)
+            ->where("delete", "=",  "0")
+            ->first();
+
+        $data->service_provider_fk = 0;
+
+        return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
+
     }
 
 
