@@ -52,7 +52,7 @@ class SettingsController extends Controller
 
         $blade["user"] = Auth::user();
 
-        $provider = Companies::where("id", "=", $user->service_provider_fk)
+        $provider = Companies::where("users_fk", "=", $user->id)
             ->where("delete", "=", "0")
             ->first();
 
@@ -205,7 +205,7 @@ class SettingsController extends Controller
             ->where("delete", "=",  "0")
             ->first();
 
-        $data->service_provider_fk = 0;
+        $data->service_provider_fk = -1;
         $data->save();
 
         return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
@@ -242,9 +242,6 @@ class SettingsController extends Controller
             return back()->withInput()->with('success', 'Data changed successful.');
 
         }
-
-
-
 
 
         if($response == false){

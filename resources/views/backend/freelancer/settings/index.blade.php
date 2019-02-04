@@ -53,6 +53,26 @@
         </div>
     </div>
 
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <form class="form-horizontal" role="form" method="POST" action="/freelancer/settings/reset">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 @section("javascript")
     <script>
@@ -149,6 +169,9 @@
             location.reload();
         });
 
+        $(".reset-account").on("click", function() {
+            $("#delete-modal").modal('show');
+        });
 
     </script>
 

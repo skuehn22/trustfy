@@ -462,6 +462,7 @@ h1{
 }
 
 .materialbox-projects .input-lg {
+    -webkit-appearance: none;
     height: 56px;
     padding: 10px 16px;
     font-size: 18px;
@@ -470,7 +471,12 @@ h1{
     border-radius: 3px;
     background-color: rgba(30, 128, 51, 0.6);
     color: #fff;
+    background: url(/img/select-arrow-down.png) no-repeat right #1E8033;
 }
+
+
+
+
 
 .materialbox-projects .input-md {
     height: 56px;
@@ -554,7 +560,3 @@ h1{
 .navbar-brand, .navbar-nav>li>a {
     text-shadow: none;
 }
-
-
-
-

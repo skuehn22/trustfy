@@ -16,7 +16,7 @@
     <div class="clients">
         <div class="row section-heading">
             <div class="col-md-6">
-                <h1>New Client</h1>
+                <h3>New Client</h3>
             </div>
         </div>
         <form action="/{{$blade["ll"]}}/freelancer/clients/save/0">

@@ -34,18 +34,17 @@
         <h4  class="pt-3">Manage Database</h4>
         <div class="row">
             <div class="col-md-6 pt-0">
-                <form class="form-horizontal" role="form" method="POST" action="/freelancer/settings/reset">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <h5 class="pt-5">Reset Account</h5>
                     <p>Deletes all clients and project data.</p>
                     <div class="form-group">
                         <div class="col-md-10 pl-0">
-                            <button type="submit" class="btn btn-alternative">
+                            <button type="button" class="btn btn-alternative reset-account">
                                 <i class="fas fa-trash-alt"></i> Reset Account
                             </button>
                         </div>
                     </div>
-                </form>
+
             </div>
         </div>
         <div class="row">

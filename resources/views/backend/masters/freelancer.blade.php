@@ -118,13 +118,7 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
-                <i class="far fa-money-bill-alt"></i>
-                <span>Payment Plans</span>
-            </a>
-        </li>
-        <li class="nav-item">
+               <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
                 <i class="fas fa-users"></i>
                 <span>Clients</span></a>
@@ -133,6 +127,12 @@
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/projects') }}">
                 <i class="fas fa-project-diagram"></i>
                 <span>Projects</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
+                <i class="far fa-money-bill-alt"></i>
+                <span>Payment Plans</span>
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">

@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
             $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
-                ->lists("name","id");
+                ->get();
 
             $last_project = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")

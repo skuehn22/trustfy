@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-2 col-form-label" for="typ">Typ</label>
-                    {!! Form::select('typ', $types, 1 , ['class' => 'form-control col-md-6', 'id' => 'typ']) !!}
+                    {!! Form::select('typ', $types, null , ['class' => 'form-control col-md-6', 'id' => 'typ', 'placeholder' => 'select']) !!}
                 </div>
                 <div id="plan-typ-response"></div>
             </div>
