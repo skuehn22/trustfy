@@ -139,6 +139,11 @@
                 <i class="fas fa-cog"></i>
                 <span>Settings</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ URL::to($blade["ll"].'/logout') }}">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span></a>
+        </li>
     </ul>
 
     <div id="content-wrapper">
