@@ -89,12 +89,12 @@
         .modal-content {
             min-height: 200px;
         }
-body{
-    color: #566787;
-    background: #f5f5f5;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 13px;
-}
+        body{
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 13px;
+        }
 
 
     </style>
@@ -107,55 +107,55 @@ body{
 @stop
 
 @section('content')
-<div class="row live-mode">
-    <div class="col-md-9">
-        <div class="row">
-            <div class="col-md-4">
-                @include('backend.freelancer.dashboard.upcoming')
+    <div class="row live-mode">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    @include('backend.freelancer.dashboard.upcoming')
+                </div>
+                <div class="col-md-8">
+                    @include('backend.freelancer.dashboard.projects')
+                </div>
             </div>
-            <div class="col-md-8">
-                @include('backend.freelancer.dashboard.projects')
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                @include('backend.freelancer.dashboard.funds')
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col-md-12">
-                @include('backend.freelancer.dashboard.inbox')
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-        <!-- Setup Modal -->
-        <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body" id="modal-body">
-                        @include('backend.freelancer.setup.welcome')
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @include('backend.freelancer.dashboard.funds')
                 </div>
             </div>
         </div>
-
-
-        <!-- DEMO Installation Modal -->
-        <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body" id="modal-body">
-                        @include('backend.freelancer.setup.demo')
-                    </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    @include('backend.freelancer.dashboard.inbox')
                 </div>
             </div>
         </div>
+    </div>
+
+
+
+    <!-- Setup Modal -->
+    <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body" id="modal-body">
+                    @include('backend.freelancer.setup.welcome')
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- DEMO Installation Modal -->
+    <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body" id="modal-body">
+                    @include('backend.freelancer.setup.demo')
+                </div>
+            </div>
+        </div>
+    </div>
 
     </div>
     <input id="setup" type="hidden" value="{{$setup or ''}}">
@@ -168,13 +168,21 @@ body{
         //checks if a new setup is required for the freelancer
         var setup = $('#setup').val();
 
-        if( setup == "yes" ) {
+        if( setup == 0 ) {
 
             $('#setup-modal').modal('show');
 
         }else{
+            //loads project on dashboard
 
-            $('.dashboard').removeClass('d-none');
+            var last = {{$last_project->id or 'false'}};
+
+            if(last){
+                getProject(last);
+            }else{
+                getProject( $('#projects-modul').val());
+            }
+
         }
 
         $(document).ready(function (e) {
@@ -183,7 +191,7 @@ body{
 
         });
 
-     function loadScrips(){
+        function loadScrips(){
             // External Button Events
             $(".force-next").on("click", function() {
                 // Reset wizard
@@ -219,12 +227,12 @@ body{
 
             });
 
-         $("#plan-details").on('change', function() {
-             getPlan($(this).val());
-         });
+            $("#plan-details").on('change', function() {
+                getPlan($(this).val());
+            });
 
 
-     }
+        }
 
         function save(url, data) {
 
@@ -287,255 +295,279 @@ body{
 
 
         // Smart Wizard
-    $('#smartwizard').smartWizard({
-        selected: 0,
-        theme: 'default',
-        transitionEffect:'slide',
-        autoAdjustHeight: false,
-        toolbarSettings: {toolbarPosition: 'none',
-        toolbarExtraButtons: [
-            {label: 'Finish', css: 'btn-success', onClick: function(){ alert('Finish Clicked'); }},
-            {label: 'Cancel', css: 'btn-warning', onClick: function(){ $('#smartwizard').smartWizard("reset"); }}
-            ]
-        }
-    });
-
-    // External Button Events
-    $("#reset-btn").on("click", function() {
-    // Reset wizard
-    $('#smartwizard').smartWizard("reset");
-    return true;
-    });
-
-    $(".prev-btn").on("click", function() {
-    // Navigate previous
-    $('#smartwizard').smartWizard("prev");
-    return true;
-    });
-
-    $(".save-company").on("click", function() {
-
-    if ($("#company-data").valid()) {
-
-    //if valid save company in DB
-    data = {};
-    obj = {
-    "firstname" : $("#firstname").val(),
-    "lastname" : $("#lastname").val(),
-    "company" : $("#company").val(),
-    "address" : $("#address").val(),
-    "country" :  $("#company-data #country").val(),
-    "city" : $("#city").val(),
-    };
-
-    data["company"] = JSON.stringify(obj);
-    save("save-company", data);
-
-    //opens next tab
-    $('.alert-welcome').hide();
-    $('#smartwizard').smartWizard("next");
-    return true;
-
-    }else{
-
-    }
-
-    });
-
-    $(".save-client").on("click", function() {
-
-    if ($("#client-data").valid()) {
-
-    //if valid save company in DB
-    data = {};
-    obj = {
-    "firstname" : $("#client-firstname").val(),
-    "lastname" : $("#client-lastname").val(),
-    "phone" : $("#client-phone").val(),
-    "mobile" : $("#client-mobile").val(),
-    "mail" : $("#client-mail").val(),
-
-    "currency" : $("#currency").val(),
-    "address1" : $("#client-address1").val(),
-    "address2" : $("#client-address2").val(),
-    "city" : $("#client-city").val(),
-    "country" :  $("#client-data #country").val(),
-    };
-
-    data["clients"] = JSON.stringify(obj);
-    var msg = save("save-client", data);
-    getClients();
-
-    }else{
-
-    }
-
-    });
-
-
-    //initalize the arrow bar on the top of the modal
-    $('#smartwizard').smartWizard("theme", "arrows");
-
-
-
-    function clearClientForm() {
-
-        $("#client-firstname").val('');
-        $("#client-lastname").val('');
-        $("#client-phone").val('');
-        $("#client-mobile").val('');
-        $("#client-mail").val('');
-        $("#currency").val('');
-        $("#client-address1").val('');
-        $("#client-address2").val('');
-        $("#client-city").val('');
-        $("#client-data #country").val('');
-    }
-
-
-    function clearProjectForm() {
-
-        $("#project-name").val('');
-        $("#project-description").val('');
-        $("#project-notes").val('');
-        $("#project-address1").val('');
-        $("#project-address2").val('');
-        $("#project-city").val('');
-        $("#project-data #country").val('');
-
-    }
-
-    // Expand the modal width for setup creation through freelancer
-    $("#start-setup").on("click", function() {
-        $(".modal-dialog").addClass('modal-expand');
-        $('#arrows').removeClass("d-none");
-        $('#smartwizard').smartWizard("next");
-    });
-
-    $("#install-demo").on("click", function() {
-
-        installDemo();
-
-        $('#setup-modal').modal('hide');
-        $('#demo-modal').modal('show');
-
-        $(".demo-company-loading").addClass("").delay(1000).queue(function(next){
-            $(".demo-company-loading").addClass("d-none")
-            $(".demo-company-done").removeClass("d-none")
-            next();
-        });
-
-        $(".demo-clients-loading").addClass("").delay(2000).queue(function(next){
-            $(".demo-clients-loading").addClass("d-none")
-            $(".demo-clients-done").removeClass("d-none")
-            next();
-        });
-
-        $(".demo-projects-loading").addClass("").delay(3000).queue(function(next){
-            $(".demo-projects-loading").addClass("d-none")
-            $(".demo-projects-done").removeClass("d-none")
-            next();
-        });
-
-        $(".demo-plans-loading").addClass("").delay(4000).queue(function(next){
-            $(".demo-plans-loading").addClass("d-none")
-            $(".demo-plans-done").removeClass("d-none")
-            $("#get-started").removeClass("btn-disable").addClass("btn-classic")
-            next();
-        });
-
-    });
-
-
-    function installDemo() {
-
-        $.ajax({
-            type: 'GET',
-            url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/demo/install',
-            data: { variable: 'value' },
-            dataType: 'json',
-
-            success: function(data) {
-                var items = data["data"];
-                $("#marker-client").text(items["firstname"] + " " + items["lastname"] + " - Contractor");
+        $('#smartwizard').smartWizard({
+            selected: 0,
+            theme: 'default',
+            transitionEffect:'slide',
+            autoAdjustHeight: false,
+            toolbarSettings: {toolbarPosition: 'none',
+                toolbarExtraButtons: [
+                    {label: 'Finish', css: 'btn-success', onClick: function(){ alert('Finish Clicked'); }},
+                    {label: 'Cancel', css: 'btn-warning', onClick: function(){ $('#smartwizard').smartWizard("reset"); }}
+                ]
             }
         });
-    }
+
+        // External Button Events
+        $("#reset-btn").on("click", function() {
+            // Reset wizard
+            $('#smartwizard').smartWizard("reset");
+            return true;
+        });
+
+        $(".prev-btn").on("click", function() {
+            // Navigate previous
+            $('#smartwizard').smartWizard("prev");
+            return true;
+        });
+
+        $(".save-company").on("click", function() {
+
+            if ($("#company-data").valid()) {
+
+                //if valid save company in DB
+                data = {};
+                obj = {
+                    "firstname" : $("#firstname").val(),
+                    "lastname" : $("#lastname").val(),
+                    "company" : $("#company").val(),
+                    "address" : $("#address").val(),
+                    "country" :  $("#company-data #country").val(),
+                    "city" : $("#city").val(),
+                };
+
+                data["company"] = JSON.stringify(obj);
+                save("save-company", data);
+
+                //opens next tab
+                $('.alert-welcome').hide();
+                $('#smartwizard').smartWizard("next");
+                return true;
+
+            }else{
+
+            }
+
+        });
+
+        $(".save-client").on("click", function() {
+
+            if ($("#client-data").valid()) {
+
+                //if valid save company in DB
+                data = {};
+                obj = {
+                    "firstname" : $("#client-firstname").val(),
+                    "lastname" : $("#client-lastname").val(),
+                    "phone" : $("#client-phone").val(),
+                    "mobile" : $("#client-mobile").val(),
+                    "mail" : $("#client-mail").val(),
+
+                    "currency" : $("#currency").val(),
+                    "address1" : $("#client-address1").val(),
+                    "address2" : $("#client-address2").val(),
+                    "city" : $("#client-city").val(),
+                    "country" :  $("#client-data #country").val(),
+                };
+
+                data["clients"] = JSON.stringify(obj);
+                var msg = save("save-client", data);
+                getClients();
+
+            }else{
+
+            }
+
+        });
+
+
+        //initalize the arrow bar on the top of the modal
+        $('#smartwizard').smartWizard("theme", "arrows");
+
+
+
+        function clearClientForm() {
+
+            $("#client-firstname").val('');
+            $("#client-lastname").val('');
+            $("#client-phone").val('');
+            $("#client-mobile").val('');
+            $("#client-mail").val('');
+            $("#currency").val('');
+            $("#client-address1").val('');
+            $("#client-address2").val('');
+            $("#client-city").val('');
+            $("#client-data #country").val('');
+        }
+
+
+        function clearProjectForm() {
+
+            $("#project-name").val('');
+            $("#project-description").val('');
+            $("#project-notes").val('');
+            $("#project-address1").val('');
+            $("#project-address2").val('');
+            $("#project-city").val('');
+            $("#project-data #country").val('');
+
+        }
+
+        // Expand the modal width for setup creation through freelancer
+        $("#start-setup").on("click", function() {
+            $(".modal-dialog").addClass('modal-expand');
+            $('#arrows').removeClass("d-none");
+            $('#smartwizard').smartWizard("next");
+        });
+
+        $("#install-demo").on("click", function() {
+
+            installDemo();
+
+            $('#setup-modal').modal('hide');
+            $('#demo-modal').modal('show');
+
+            $(".demo-company-loading").addClass("").delay(1000).queue(function(next){
+                $(".demo-company-loading").addClass("d-none")
+                $(".demo-company-done").removeClass("d-none")
+                next();
+            });
+
+            $(".demo-clients-loading").addClass("").delay(2000).queue(function(next){
+                $(".demo-clients-loading").addClass("d-none")
+                $(".demo-clients-done").removeClass("d-none")
+                next();
+            });
+
+            $(".demo-projects-loading").addClass("").delay(3000).queue(function(next){
+                $(".demo-projects-loading").addClass("d-none")
+                $(".demo-projects-done").removeClass("d-none")
+                next();
+            });
+
+            $(".demo-plans-loading").addClass("").delay(4000).queue(function(next){
+                $(".demo-plans-loading").addClass("d-none")
+                $(".demo-plans-done").removeClass("d-none")
+                $("#get-started").removeClass("btn-disable").addClass("btn-classic")
+                next();
+            });
+
+        });
+
+
+        function installDemo() {
+
+            $.ajax({
+                type: 'GET',
+                url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/demo/install',
+                data: { variable: 'value' },
+                dataType: 'json',
+
+                success: function(data) {
+                    var items = data["data"];
+                    $("#marker-client").text(items["firstname"] + " " + items["lastname"] + " - Contractor");
+                }
+            });
+        }
 
         $("#get-started").on("click", function() {
             $("#demo-modal").modal('hide');
+            location.reload();
         });
 
 
-    // Expand the modal width for setup creation through freelancer
-    $("#prev-btn-step1").on("click", function() {
-        $('#arrows').addClass("d-none");
-        $(".modal-dialog").removeClass('modal-expand');
-    });
+        // Expand the modal width for setup creation through freelancer
+        $("#prev-btn-step1").on("click", function() {
+            $('#arrows').addClass("d-none");
+            $(".modal-dialog").removeClass('modal-expand');
+        });
 
-    // Expand the modal width for setup creation through freelancer
-    $(".project-next").on("click", function() {
-        $('#arrows').addClass("d-none");
-    });
-
-
-
-    //loads projects for selected client
-    $("#projects-modul").on('change', function() {
-        getProject($(this).val());
-    });
+        // Expand the modal width for setup creation through freelancer
+        $(".project-next").on("click", function() {
+            $('#arrows').addClass("d-none");
+        });
 
 
 
-     function getProject(id) {
+        //loads projects for selected client
+        $("#projects-modul").on('change', function() {
+            getProject($(this).val());
+        });
 
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
 
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-                document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
-                $("#projects-modul").val(id);
-                loadScrips();
-                getPlan($("#plan-details").val());
+        function getProject(id) {
+
+
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
-        }
 
-        xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-project?id="+id, true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-    }
-
-
-    function getPlan(id) {
-
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-                document.getElementById("dashboard-plan").innerHTML = xmlhttp.responseText;
-                $("#plan").val(id);
+                    document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
+                    $("#projects-modul").val(id);
+                    loadScrips();
+                    getPlan($("#plan-details").val());
+                }
             }
+
+            xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-project?id="+id, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+
         }
 
-        xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-plan?id="+id, true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send();
 
-    }
+        function getPlan(id) {
 
-    //loads project on dashboard
-    getProject({{$last_project->id or ''}});
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    document.getElementById("dashboard-plan").innerHTML = xmlhttp.responseText;
+                    $("#plan").val(id);
+                }
+            }
+
+            xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-plan?id="+id, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+
+        }
+
+
+        $('#load-dashboard').click(function() {
+            $('#setup-modal').modal('hide');
+            setSetupState();
+            location.reload();
+        });
+
+
+        function setSetupState() {
+
+            $.ajax({
+                type: 'GET',
+                url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/setup/save/done',
+                data: { variable: 'value' },
+                dataType: 'json',
+
+                success: function(data) {
+                    var items = data["data"];
+                    //$("#marker-client").text(items["firstname"] + " " + items["lastname"] + " - Contractor");
+                }
+            });
+        }
+
 
 
     </script>
