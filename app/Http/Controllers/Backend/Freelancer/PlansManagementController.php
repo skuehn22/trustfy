@@ -33,6 +33,7 @@ class PlansManagementController extends Controller
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.service_provider_fk', '=', $blade["user"]->service_provider_fk );
         $query->where('projects_plans.state', '>', 0 );
+        $query->where('projects_plans.delete', '=', 0 );
         $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.firstname', 'projects_plans.*');
         $plans = $query->get();
 

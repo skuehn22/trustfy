@@ -30,9 +30,13 @@ class SettingsController extends Controller
         $blade["user"] = Auth::user();
 
         $user = Users::find($blade["user"]->id);
+
         $company = $this->getCompany($blade["user"]);
-        $team = Users::where("service_provider_fk", "=", $company->id)
-            ->get();
+
+        if(isset($company)){
+            $team = Users::where("service_provider_fk", "=", $company->id)
+                ->get();
+        }
 
         return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team'));
 
@@ -49,6 +53,7 @@ class SettingsController extends Controller
         $blade["user"] = Auth::user();
 
         $provider = Companies::where("id", "=", $user->service_provider_fk)
+            ->where("delete", "!=", "1")
             ->first();
 
         return $provider;
@@ -65,18 +70,28 @@ class SettingsController extends Controller
         $input = Request::all();
         $user = Users::find($blade["user"]->id);
 
-        $provider = Provider::find($blade["user"]->service_provider_fk);
-        $provider->name = $input["company"];
-        $provider->city = $input["city"];
-        $provider->address = $input["address"];
-        $provider->country = $input["country"];
-        $provider->contact_users_fk = $input["contact"];
-        $provider->save();
+        $company = Companies::where("id", "=", $blade["user"]->service_provider_fk)
+        ->where("delete", "=", "0")
+        ->first();
 
-        $team = Users::where("service_provider_fk", "=", "1")
-            ->get();
+        if(!isset($company)){
+            $company = new Companies();
+        }
 
-        return view('backend.settings.index', compact('blade', 'provider', 'user', 'team'));
+        $company->firstname = $input["firstname"];
+        $company->lastname = $input["lastname"];
+        $company->name = $input["company"];
+        $company->city = $input["city"];
+        $company->address = $input["address"];
+        $company->country = $input["country"];
+        $company->users_fk =  $blade["user"]->id;
+        $company->save();
+
+        $user = Users::find($blade["user"]->id);
+        $user->service_provider_fk = $company->id;
+        $user->save();
+
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user'));
 
     }
 
@@ -191,13 +206,69 @@ class SettingsController extends Controller
             ->first();
 
         $data->service_provider_fk = 0;
+        $data->save();
 
         return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
 
     }
 
 
+    public function resetPw() {
 
+        $ll = App::getLocale();
+        $user = Auth::user();
+
+        if(self::pwCheck($_POST)== false){
+            return back()->withInput()->with('error', 'Passwords do not match.');
+        }
+
+        $response = Users::where("email", "=",  $_POST['email'])
+            ->where("id", "!=",  $user->id)
+            ->first();
+
+        if(isset($response)){
+            return back()->withInput()->with('error', 'E-Mail already taken.');
+
+        }else{
+
+            $data = Users::where("id", "=", $user->id)
+                ->where("delete", "=",  "0")
+                ->first();
+
+            $data->email = $_POST['email'];
+            $data->password =  bcrypt(  $_POST["password"]);
+            $data->save();
+
+            return back()->withInput()->with('success', 'Data changed successful.');
+
+        }
+
+
+
+
+
+        if($response == false){
+            return back()->withInput()->with('error', 'E-Mail already taken.');
+
+        }else{
+
+            $response = self::login();
+            return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
+        }
+
+
+    }
+
+
+    public function pwCheck($data) {
+        if($data['password'] != $data['password_confirmation']) {
+
+            return false;
+
+        }else{
+            return true;
+        }
+    }
 
 
 }

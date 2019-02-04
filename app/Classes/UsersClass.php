@@ -23,7 +23,7 @@ class UsersClass
         if(empty($checkUser)) {
 
             $users = new Users();
-            $users->email = $data["email"];
+           $users->email = $data["email"];
             $users->password =  bcrypt(  $data["password"]);
             $users->active = "1";
             $users->role = 3;

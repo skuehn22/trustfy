@@ -2,14 +2,20 @@
 @section('seo')
 @stop
 @section('css')
+    <style>
 
+    .modal-content {
+        min-height: 200px;
+    }
+
+
+    </style>
 @stop
 
 @section('content')
     <div class="settings">
         <div class="row">
-            <div class="col-md-8">
-                <h3 class="pb-5">Settings</h3>
+            <div class="col-md-12">
                 <div id="exTab3">
                     <ul  class="nav nav-pills">
                         <li class="active"><a  href="#1b" data-toggle="tab">Company</a></li>
@@ -36,8 +42,19 @@
         </div>
     </div>
 
+    <!-- DEMO Installation Modal -->
+    <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body" id="modal-body">
+                    @include('backend.freelancer.setup.demo')
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
-@section("js")
+@section("javascript")
     <script>
 
         $( document ).ready(function() {
@@ -75,6 +92,57 @@
             xmlhttp.send();
 
         }
+
+        $("#install-demo").on("click", function() {
+
+            installDemo();
+
+            $('#setup-modal').modal('hide');
+            $('#demo-modal').modal('show');
+
+            $(".demo-company-loading").addClass("").delay(1000).queue(function(next){
+                $(".demo-company-loading").addClass("d-none")
+                $(".demo-company-done").removeClass("d-none")
+                next();
+            });
+
+            $(".demo-clients-loading").addClass("").delay(2000).queue(function(next){
+                $(".demo-clients-loading").addClass("d-none")
+                $(".demo-clients-done").removeClass("d-none")
+                next();
+            });
+
+            $(".demo-projects-loading").addClass("").delay(3000).queue(function(next){
+                $(".demo-projects-loading").addClass("d-none")
+                $(".demo-projects-done").removeClass("d-none")
+                next();
+            });
+
+            $(".demo-plans-loading").addClass("").delay(4000).queue(function(next){
+                $(".demo-plans-loading").addClass("d-none")
+                $(".demo-plans-done").removeClass("d-none")
+                $("#get-started").removeClass("btn-disable").addClass("btn-classic")
+                next();
+            });
+
+        });
+
+
+        function installDemo() {
+
+            $.ajax({
+                type: 'GET',
+                url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/demo/install',
+                data: { variable: 'value' },
+                dataType: 'json',
+
+                success: function(data) {
+                    var items = data["data"];
+                    $("#marker-client").text(items["firstname"] + " " + items["lastname"] + " - Contractor");
+                }
+            });
+        }
+
 
     </script>
 

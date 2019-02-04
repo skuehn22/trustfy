@@ -15,7 +15,9 @@
         </form>
         <br />
         <span id="uploaded_image">
-            <img src="/uploads/companies/logo/{{$company->logo or ''}}" class="img-thumbnail" width="300">
+            @if(isset($company->logo))
+                <img src="/uploads/companies/logo/{{$company->logo or ''}}" class="img-thumbnail" width="300">
+            @endif
         </span>
     </div>
 </div>

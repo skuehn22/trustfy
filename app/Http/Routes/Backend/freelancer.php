@@ -57,6 +57,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/settings/save-team-member', 'Backend\Freelancer\SettingsController@saveTeamMember') ;
     Route::any('/freelancer/settings/cancel', 'Backend\Freelancer\SettingsController@cancel') ;
     Route::any('/freelancer/settings/reset', 'Backend\Freelancer\SettingsController@reset') ;
+    Route::any('/freelancer/settings/change-password', 'Backend\Freelancer\SettingsController@resetPw') ;
+
 
 
 

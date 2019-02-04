@@ -1,6 +1,20 @@
 <div class="row">
     <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="col-md-10">
+        @if(Session::has('error'))
+            <div class="alert alert-danger error_message">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ Session::get('error') }}
+            </div>
+        @endif
+        @if(Session::has('success'))
+            <div class="alert alert-success success_message">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ Session::get('success') }}
+            </div>
+        @endif
+        </div>
         <div class="col-md-12">
             <div class="form-row py-2">
                 <label class="col-md-3 col-form-label" for="firstname">Firstname</label>

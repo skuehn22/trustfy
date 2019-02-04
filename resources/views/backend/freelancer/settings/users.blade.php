@@ -15,6 +15,7 @@
     </thead>
     <tbody>
 
+    @if(isset($team))
     @foreach($team as $member)
 
         <tr>
@@ -24,7 +25,7 @@
         </tr>
 
     @endforeach
-
+    @endif
 
 
     </tbody>
