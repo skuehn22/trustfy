@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use Mail;
+use Redirect;
+use Response;
+use Action;
+
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -71,12 +77,9 @@ class Handler extends ExceptionHandler
                         });
 
 
-                        $content="<br><br><br><h2>Ooooops!</h2>";
-                        $content.= Lang::get('frontend.handler_error_occured');
-                        $content.="<br><br>Gerne kannst du deine Anfrage an uns per E-Mail senden und <br>wir schicken dir das passende Angebot zu: ";
-                        $content.="<a style='color:red;' href='mailto:info@herden-tt.com'>info@herden-tt.com</a><br><br><br><br>";
+                        $content="An error has occurred. The administrator of the page has been informed.";
+                        return Response::view('errors.404',compact('content', 'blade'));
 
-                        return Response::view('errors.404',compact('content'));
                         break;
                     // internal error
                     case '500':
@@ -93,20 +96,16 @@ class Handler extends ExceptionHandler
 
 
                         $content="<br><br><br><h2>Ooooops!</h2>";
-                        $content.= Lang::get('frontend.handler_error_occured');
-                        $content.="<br><br>Gerne kannst du deine Anfrage an uns per E-Mail senden und <br>wir schicken dir das passende Angebot zu: ";
-                        $content.="<a style='color:red;' href='mailto:info@herden-tt.com'>info@herden-tt.com</a><br><br><br><br>";
+                        $content.= "Fehler";
+                        $content.="Fehler";
+                        $content.="Fehler";
+                        return Response::view('errors.404',compact('content', 'blade'));
 
-
-                        return Response::view('errors.404',compact('content'));
                         break;
 
                     default:
-                        $content="<br><br><br><h2>Ooooops!</h2>";
-                        $content.= Lang::get('frontend.handler_error_occured');
-                        $content.="<br><br>Gerne kannst du deine Anfrage an uns per E-Mail senden und <br>wir schicken dir das passende Angebot zu: ";
-                        $content.="<a style='color:red;' href='mailto:info@herden-tt.com'>info@herden-tt.com</a><br><br><br><br>";
-                        return Response::view('errors.404',compact('content'));
+                        $content="An error has occurred. The administrator of the page has been informed.";
+                        return Response::view('errors.404',compact('content', 'blade'));
                         break;
                 }
             }
@@ -128,15 +127,9 @@ class Handler extends ExceptionHandler
                 });
 
 
-                $cities = Cities::where("hidden", "=", "0")
-                    ->orderBy('name', 'asc')
-                    ->lists("name","id");
 
-                $content="<br><br><br><h2>Ooooops!</h2>";
-                $content.= Lang::get('frontend.handler_error_occured');
-                $content.="<br><br>Gerne kannst du deine Anfrage an uns per E-Mail senden und <br>wir schicken dir das passende Angebot zu: ";
-                $content.="<a style='color:red;' href='mailto:info@herden-tt.com'>info@herden-tt.com</a><br><br><br><br>";
-                return Response::view('errors.404',compact('content', 'cities', 'blade'));
+                $content="An error has occurred. The administrator of the page has been informed.";
+                return Response::view('errors.404',compact('content', 'blade'));
 
             }
         }
