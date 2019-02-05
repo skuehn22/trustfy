@@ -13,6 +13,11 @@
                         <div class="pt-2">
                             No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Project</a>
                         </div>
+                        <div class="row pt-3">
+                            <div class="col-md-12">
+                                <div id="dashboard-plan"></div>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>

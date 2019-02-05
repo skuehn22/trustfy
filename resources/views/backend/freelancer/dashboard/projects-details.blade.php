@@ -1,4 +1,4 @@
-
+@if(isset($project->state))
 <div class="row">
     <div class="col-md-3 text-left">
         <strong>Project Status:</strong>
@@ -42,3 +42,4 @@
         <div id="dashboard-plan"></div>
     </div>
 </div>
+@endif

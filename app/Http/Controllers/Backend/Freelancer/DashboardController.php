@@ -61,41 +61,44 @@ class DashboardController extends Controller
             $blade["ll"] = App::getLocale();
             $blade["user"] = Auth::user();
 
-            $query = DB::table('projects');
-            $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
-            $query->where('projects.id', '=', $_GET["id"]);
-            $query->select('projects.*', 'clients.firstname', 'clients.lastname');
-            $project = $query->first();
+            if($_GET['id']!="undefined"){
 
-            //set last viewed to load relevant project when the user returns
-            //set past viewed project to 0
-            $viewed = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-                ->where("last_viewed", "=", "1")
-                ->first();
+                $query = DB::table('projects');
+                $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
+                $query->where('projects.id', '=', $_GET["id"]);
+                $query->select('projects.*', 'clients.firstname', 'clients.lastname');
+                $project = $query->first();
 
-            if(isset($viewed)){
-
-                $viewed->last_viewed = 0;
-                $viewed->save();
-
-                //set new viewed project to 1
-                $viewed = Projects::where("id", "=", $project->id)
+                //set last viewed to load relevant project when the user returns
+                //set past viewed project to 0
+                $viewed = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                    ->where("last_viewed", "=", "1")
                     ->first();
 
-                $viewed->last_viewed = 1;
-                $viewed->save();
+                if(isset($viewed)){
+
+                    $viewed->last_viewed = 0;
+                    $viewed->save();
+
+                    //set new viewed project to 1
+                    $viewed = Projects::where("id", "=", $project->id)
+                        ->first();
+
+                    $viewed->last_viewed = 1;
+                    $viewed->save();
+                }
+
+
+                $statusObj = new StateClass();
+                $response =$statusObj->projects($project->state);
+
+                $project->color =  $response['color'];
+                $project->state =  $response['state'];
+
+                $plans = Plans::where("projects_id_fk", "=", $project->id)
+                    ->where("delete", "=", "0")
+                    ->lists('name', 'id');
             }
-
-
-            $statusObj = new StateClass();
-            $response =$statusObj->projects($project->state);
-
-            $project->color =  $response['color'];
-            $project->state =  $response['state'];
-
-            $plans = Plans::where("projects_id_fk", "=", $project->id)
-                ->where("delete", "=", "0")
-                ->lists('name', 'id');
 
 
             return view('backend.freelancer.dashboard.projects-details', compact('blade', 'setup', 'plans', 'project'));

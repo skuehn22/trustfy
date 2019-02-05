@@ -205,7 +205,7 @@ class SettingsController extends Controller
             ->where("delete", "=",  "0")
             ->first();
 
-        $data->service_provider_fk = -1;
+        $data->service_provider_fk = 0;
         $data->save();
 
         return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
