@@ -11,7 +11,7 @@ body {
   background-color: #fff;
   position: relative;
   margin: 0;
-  padding-bottom: 6rem;
+  padding-bottom: 38rem;
   min-height: 100%;
 }
 
@@ -1023,6 +1023,7 @@ section.contact ul.list-social li.social-google-plus a:hover {
   margin: 20px auto;
   width: 100%;
 }
+
 input.btn.btn-lg,
 input.btn.btn-lg:focus {
   outline: none;
@@ -1030,6 +1031,8 @@ input.btn.btn-lg:focus {
   height: 60px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border: 1px solid #9d959a;
+
 }
 button.btn {
   width: 40%;

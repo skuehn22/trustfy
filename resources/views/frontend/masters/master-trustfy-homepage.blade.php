@@ -39,9 +39,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Sign in</a>
                </li>
+                <!--
                 <li class="nav-item">
                     <a class="nav-link" href="/beta-register">Sign up for free</a>
                 </li>
+                -->
             </ul>
         </div>
     </div>
@@ -264,7 +266,7 @@
                 <p><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
             </div>
             <div class="col-md-7">
-                <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" style="max-width: 600px;" class="img-fluid">
+                <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">
 
             </div>
         </div>
