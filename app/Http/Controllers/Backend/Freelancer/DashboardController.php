@@ -34,6 +34,10 @@ class DashboardController extends Controller
                 ->where("delete", "=", "0")
                 ->get();
 
+            $projectList= Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->lists('name', 'id');
+
             $last_project = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->where("last_viewed", "=", "1")
@@ -46,7 +50,7 @@ class DashboardController extends Controller
             $openRight = "180";
             $openLeft = "45";
 
-            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans'));
+            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList'));
         } else {
 
             return Redirect::to(env("MYHTTP"));

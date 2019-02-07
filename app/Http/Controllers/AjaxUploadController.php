@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DatabaseModels\PlanDocs;
 use Illuminate\Http\Request;
 use Validator, Auth, DateTime;
 use App\DatabaseModels\Users;
@@ -13,6 +14,11 @@ class AjaxUploadController extends Controller
     function index()
     {
         return view('ajax_upload');
+    }
+
+    function indexFile()
+    {
+        return view('ajax_file_upload');
     }
 
     function action(Request $request)
@@ -53,6 +59,61 @@ class AjaxUploadController extends Controller
             return response()->json([
                 'message'   => 'Image Upload Successfully',
                 'uploaded_image' => '<img src="/uploads/companies/logo/'.$new_name.'" class="img-thumbnail" width="300" />',
+                'class_name'  => 'alert-success'
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'message'   => $validation->errors()->all(),
+                'uploaded_image' => '',
+                'class_name'  => 'alert-danger'
+            ]);
+        }
+    }
+
+    function contractUpload(Request $request)
+    {
+
+        //create unique timestamp for images
+        //without the image from the cache is loading in the preview
+        $date = new DateTime();
+        $filename = $date->getTimestamp();
+
+        $user = Auth::user();
+
+        $allowed_mimes = [
+            "image/gif,
+            image/png,
+            image/jpeg,
+            image/bmp,
+            image/webp,
+            application/octet-stream, application/pkcs12,
+            application/vnd.mspowerpoint,
+            application/xhtml+xml,
+            application/xml,
+            application/pdf"
+        ];
+
+        $validation = Validator::make($request->all(), [
+            'image' => $allowed_mimes,
+        ]);
+
+        if($validation->passes())
+        {
+            $image = $request->file('select_file');
+            $new_name = $user->id. $filename . '.' . $image->getClientOriginalExtension();
+
+            $doc = new PlanDocs();
+            $doc->name = $new_name;
+            $doc->plan_id_fk = $_POST['plan'];
+            $doc->save();
+
+            $image->move(public_path('uploads/companies/contracts'), $new_name);
+
+            return response()->json([
+                'message'   => 'File Upload Successfully',
+                'uploaded_image' => '<a target="_blank" href="/uploads/companies/contracts/'.$new_name.'">'.$new_name.'</a>',
                 'class_name'  => 'alert-success'
             ]);
         }

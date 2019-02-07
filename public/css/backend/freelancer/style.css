@@ -112,10 +112,16 @@ h1{
 
 
 .btn-classic{
+     color: #fff;
+     background-color: #006600;
+     border-color: #006600;
+     width: 200px;
+ }
+
+.btn-classic-no-width{
     color: #fff;
     background-color: #006600;
     border-color: #006600;
-    width: 200px;
 }
 
 .btn-alternative{
@@ -344,9 +350,14 @@ h1{
     min-height: 1250px;
 }
 
-.modal-content{
+.plans .modal-content .preview-modal {
     min-height: 1300px;
 }
+
+.plans .modal-dialog .create-client-modal {
+    max-width: 600px;
+}
+
 
 .sidebar .fas .far{
     width: 40px;

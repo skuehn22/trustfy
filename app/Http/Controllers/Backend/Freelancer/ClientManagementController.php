@@ -146,11 +146,18 @@ class ClientManagementController extends Controller
         $blade["user"] = Auth::user();
         $input = Request::all();
 
+        if(isset($_GET['width'])){
+            $para['width'] = $_GET['width'];
+            $para['name'] = $_GET['name'];
+            $para['id'] = $_GET['id'];
+        }
+
+
         $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
             ->get();
 
-        return view('backend.freelancer.setup.client-list', compact('blade', 'clients'));
+        return view('backend.freelancer.setup.client-list', compact('blade', 'clients', 'para'));
 
     }
 

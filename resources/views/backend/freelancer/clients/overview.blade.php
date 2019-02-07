@@ -4,7 +4,6 @@
 @stop
 @section('css')
 
-    <style>
         <style type="text/css">
                               body {
                                   color: #566787;
@@ -202,7 +201,7 @@
                         <td>{{$client->mail}}</td>
                         <td>
                             <a href="/{{$blade["ll"]}}/freelancer/clients/edit/{{$client->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
-                            <span data-toggle="modal" data-target="#exampleModal" class="delete-client">
+                            <span data-toggle="modal" data-target="#exampleModal">
                                  <a href="#" data-id="{{$client->id}}" data-toggle="tooltip"  data-placement="top" title="Delete" class="delete-client">
                                     <i class="fas fa-trash green"></i>
                                 </a>
@@ -240,11 +239,11 @@
 </div>
 
 @stop
-@section("js")
+@section("javascript")
 
     <script>
 
-        $(document).on("click", ".delete-client", function () {
+        $(".delete-client").on("click", function() {
             var myBookId = $(this).data('id');
             var url = "/en/freelancer/clients/delete/"+myBookId;
             $('#deleteform').attr('action', url);

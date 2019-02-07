@@ -1,7 +1,6 @@
-<label class="col-md-4 col-form-label" for="clients">Client</label>
-
 @if(isset($clients) && count($clients)>0)
-    <select name="project-clients" id="project-clients" class="col-md-7">
+    <select name="{{$para['name'] or ''}}" id="{{$para['id'] or ''}}" class="form-control col-md-{{$para['width'] or ''}}">
+            <option value="0">select</option>
         @foreach($clients as $client)
             <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
         @endforeach

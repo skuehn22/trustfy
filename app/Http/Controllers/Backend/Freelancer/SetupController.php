@@ -83,11 +83,14 @@ class SetupController extends Controller
         $client->mobile = $data->mobile;
         $client->mail = $data->mail;
 
-        $client->currency = $data->currency;
-        $client->address1 = $data->address1;
-        $client->address2 = $data->address2;
-        $client->city = $data->city;
-        $client->country = $data->country;
+        if(isset($data->currency)){
+            $client->currency = $data->currency;
+            $client->address1 = $data->address1;
+            $client->address2 = $data->address2;
+            $client->city = $data->city;
+            $client->country = $data->country;
+        }
+
         $client->service_provider_fk = $blade["user"]->service_provider_fk;
         $client->save();
 

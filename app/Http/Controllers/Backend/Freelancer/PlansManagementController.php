@@ -67,7 +67,13 @@ class PlansManagementController extends Controller
         $types = PlansTypes::lists("name","id");
 
         $plan = new Plans();
-        $plan->service_provider_fk = $blade["user"]->service_provider_fk;
+
+        if($blade["user"]->service_provider_fk == 0){
+            $plan->service_provider_fk = -1;
+        }else{
+            $plan->service_provider_fk = $blade["user"]->service_provider_fk;
+        }
+
         $plan->hidden = 1;
         $plan->save();
 

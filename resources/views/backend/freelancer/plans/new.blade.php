@@ -22,7 +22,7 @@
                 <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
             </div>
         </div>
-        <form action="/{{$blade["ll"]}}/freelancer/plan/save/{{$plan->id}}" id="plan-settings">
+        <form action="/{{$blade["ll"]}}/freelancer/plan/save/{{$plan->id}}" id="plan-settings"><input type="text" id="creation-date" name="creation-date" class="form-control col-md-8">
         <div class="row">
             <div class="col-md-3 p-0 menu-icons">
 
@@ -44,14 +44,16 @@
                                 @endforeach
                             </select>
                         @else
+                            <span id="client-list"></span>
+
                             <div class="pt-2">
-                                No clients created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Client</a>
+                                <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly">Create Client</a></div>
                             </div>
+
                         @endif
                     </div>
+
                     <div id="projects"></div>
-
-
             </div>
 
             <div class="col-md-1">
@@ -67,9 +69,11 @@
                     {!! Form::select('typ', $types, null , ['class' => 'form-control col-md-6', 'id' => 'typ', 'placeholder' => 'select']) !!}
                 </div>
                 <div id="plan-typ-response"></div>
+
             </div>
         </div>
         </form>
+        @include('ajax_file_upload')
     </div>
         <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
     </div>
@@ -124,10 +128,24 @@
         </div>
     </div>
 
+    @include('backend.freelancer.modals.create-client')
+
+
+
 @stop
 @section("javascript")
 
     <script>
+
+        $( document ).ready(function() {
+            loadScript();
+        });
+
+        // External Button Events
+        $("#create-client-fly").on("click", function() {
+            $('#create-client-modal').modal('show');
+        });
+
 
         //topmenu
         $(document).on("click", ".button-menu", function () {
@@ -158,12 +176,7 @@
             document.getElementById("marker-creation-date").innerHTML = "Date: " + $(this).val();
         });
 
-        //loads projects for selected client
-        $("#clients").on('change', function() {
-            document.getElementById("projects").innerHTML = "";
-            action('projects/by-client',  $(this).val());
-            insertdata('clients/get-by-id-client',  $(this).val());
-        });
+
 
 
         //loads projects for selected client
@@ -176,6 +189,13 @@
 
         //load scripts after a ajax call
         function loadScript(){
+
+            //loads projects for selected client
+            $("#clients").on('change', function() {
+                document.getElementById("projects").innerHTML = "";
+                action('projects/by-client',  $(this).val());
+                insertdata('clients/get-by-id-client',  $(this).val());
+            });
 
             $("#projects-dropwdowm").on('change', function() {
                 //action('projects/by-client',  $(this).val());
@@ -197,6 +217,59 @@
                     $(".amount").removeClass( "d-none" )
                 }
             });
+
+            $(document).ready(function () {
+                var counter = 0;
+
+                $("#addrow").on("click", function () {
+                    var newRow = $("<tr>");
+                    var cols = "";
+
+                    cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
+                    cols += '<td><input type="text" class="form-control" name="amount' + counter + '"/></td>';
+                    cols += '<td><input type="text" class="form-control" id="due_date' + counter + '" name="due_date' + counter + '"/></td>';
+                    cols += '<td><textarea class="form-control" rows="3" name="description' + counter + '"></textarea></td>';
+
+                    cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+                    newRow.append(cols);
+                    $("table.order-list").append(newRow);
+                    $( "#due_date" + counter).datepicker();
+                    counter++;
+
+
+                });
+
+
+
+                $("table.order-list").on("click", ".ibtnDel", function (event) {
+                    $(this).closest("tr").remove();
+                    counter -= 1
+                });
+
+
+            });
+
+
+
+            function calculateRow(row) {
+                var price = +row.find('input[name^="price"]').val();
+
+            }
+
+            function calculateGrandTotal() {
+                var grandTotal = 0;
+                $("table.order-list").find('input[name^="price"]').each(function () {
+                    grandTotal += +$(this).val();
+                });
+                $("#grandtotal").text(grandTotal.toFixed(2));
+            }
+
+            //initalize datepicker
+            $( function() {
+                $( "#due_date" ).datepicker();
+            } );
+
+
 
         }
 
