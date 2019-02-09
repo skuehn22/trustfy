@@ -229,8 +229,12 @@
         });
     });
 
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
-        $().alert('close');
+
+    $().alert('close');
 
 
 

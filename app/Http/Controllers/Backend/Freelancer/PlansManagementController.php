@@ -18,6 +18,7 @@ use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
 use App\Classes\StateClass;
 use App\DatabaseModels\PlanDocs;
+use App\DatabaseModels\PlansMilestone;
 
 use App\Classes\MangoClass;
 use Faker\Provider\Company;
@@ -132,6 +133,9 @@ class PlansManagementController extends Controller
         if(isset($input['clients']))
             $plan->clients_id_fk = $input['clients'];
 
+        if(isset($input['title']))
+            $plan->name = $input['title'];
+
         if(isset($input['projects-dropdown']))
             $plan->projects_id_fk = $input['projects-dropdown'];
 
@@ -148,9 +152,35 @@ class PlansManagementController extends Controller
         $plan->hidden = 0;
         $plan->save();
 
+        //1 = Single Deposit
+        if($input['typ'] == 1){
+
+            $milestone = new PlansMilestone();
+            $milestone->projects_plans_id_fk = $plan->id;
+            $milestone->name = $input['title-milestone'];
+            //$milestone->desc = $input['milestoneDesc'];
+            $milestone->amount = $input['single-amount'];
+
+            if($input['pay-due'] == 2){
+                $milestone->due_at = "end";
+            }elseif($input['pay-due'] == 1){
+                $milestone->due_at = "start";
+            }else{
+                $milestone->due_at = $input['due-date'];
+            }
+
+            $milestone->save();
+
+        }else{
+
+        }
+
         return Redirect::to($blade["ll"]."/freelancer/plans/edit/".$id)->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
 
     }
+
+
+
 
     public function saveAndClose($id) {
 
@@ -203,7 +233,7 @@ class PlansManagementController extends Controller
         $project->delete = 1;
         $project->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/plans/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/plans/")->withInput()->with('success', 'Payment plan successfully deleted');
 
     }
 

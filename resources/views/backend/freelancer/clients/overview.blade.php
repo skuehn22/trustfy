@@ -250,9 +250,7 @@
         });
 
 
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+
 
         $('#modal-from-dom').on('show', function() {
             var id = $(this).data('id'),
