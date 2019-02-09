@@ -5,78 +5,60 @@
 @section('css')
 
     <style>
-
+        .sw-theme-arrows .sw-container {
+            min-height: 40px;
+        }
     </style>
 @stop
 
 @section('content')
     <div class="plans pl-4">
         <div class="row">
-            <div class="col-md-6 p-0 ">
-                <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-edit"></i> Save</button>
-                <button class="btn btn-outline-secondary save-close button-menu" id="sclose"><i class="fas fa-check"></i> Save & Close</button>
-                <button class="btn btn-outline-secondary cancel-plan button-menu" id="cancel"><i class="fas fa-ban"></i> Cancel</button>
-                <hr>
-            </div>
-            <div class="col-md-6 p-0 float-right text-right">
-                <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
-            </div>
+
         </div>
-        <form action="/{{$blade["ll"]}}/freelancer/plan/save/{{$plan->id}}" id="plan-settings"><input type="text" id="creation-date" name="creation-date" class="form-control col-md-8">
+
         <div class="row">
-            <div class="col-md-3 p-0 menu-icons">
+            <div class="col-md-12 p-0 menu-icons">
 
-                    <div class="form-row py-2 pt-3 pl-0 ml-0">
-                        <h5>General Informations</h5>
-                    </div>
-                    <div class="form-row py-2">
-                        <label class="col-md-3 col-form-label" for="creation-date">Date</label>
-                        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-8">
-                    </div>
-                    <div class="form-row py-2">
-                        <label class="col-md-3 col-form-label" for="clients">Client</label>
 
-                        @if(count($clients)>0)
-                            <select name="clients" id="clients" class="col-md-8">
-                                <option value="0">select</option>
-                                @foreach($clients as $client)
-                                    <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
-                                @endforeach
-                            </select>
-                        @else
-                            <span id="client-list"></span>
+                    <div id="smartwizard">
+                        <ul id="arrows">
+                            <li><a href="#step-1">Step 1<br /><small>Your company details</small></a></li>
+                            <li><a href="#step-3">Step 3<br /><small>Create a project</small></a></li>
+                            <li><a href="#step-4">Step 4<br /><small>Create a project</small></a></li>
+                        </ul>
 
-                            <div class="pt-2">
-                                <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly">Create Client</a></div>
+                        <div class="col-md-12 p-0 ">
+                            <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-edit"></i> Save</button>
+                            <button class="btn btn-outline-secondary save-close button-menu" id="sclose"><i class="fas fa-check"></i> Save & Close</button>
+                            <button class="btn btn-outline-secondary cancel-plan button-menu" id="cancel"><i class="fas fa-ban"></i> Cancel</button>
+                            <button class="btn btn-info send-plan button-menu" id="send"><i class="fas fa-ban"></i>E-Mail Plan</button>
+                            <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
+                        </div>
+
+                        <div class="">
+                            <form action="/{{$blade["ll"]}}/freelancer/plan/save/{{$plan->id}}" id="plan-settings">
+                            <div id="step-1" class="">
+                                @include('backend.freelancer.plans.general-infos')
                             </div>
-
-                        @endif
+                            </form>
+                            <div id="step-3" class="">
+                                @include('backend.freelancer.plans.payment-infos')
+                            </div>
+                            <div id="step-4" class="">
+                                @include('ajax_file_upload')
+                            </div>
+                        </div>
                     </div>
-
-                    <div id="projects"></div>
-            </div>
-
-            <div class="col-md-1">
-
-            </div>
-            <div class="col-md-8">
-
-                <div class="form-row py-2 pt-3 pl-0 ml-0">
-                    <h5>Payment Plan</h5>
-                </div>
-                <div class="form-row py-2">
-                    <label class="col-md-2 col-form-label" for="typ">Typ</label>
-                    {!! Form::select('typ', $types, null , ['class' => 'form-control col-md-6', 'id' => 'typ', 'placeholder' => 'select']) !!}
-                </div>
-                <div id="plan-typ-response"></div>
 
             </div>
         </div>
-        </form>
-        @include('ajax_file_upload')
-    </div>
+
+
         <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
     </div>
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="preview-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -136,6 +118,37 @@
 @section("javascript")
 
     <script>
+
+        // Smart Wizard
+        $('#smartwizard').smartWizard({
+            selected: 0,
+            theme: 'default',
+            transitionEffect:'slide',
+            autoAdjustHeight: false,
+            toolbarSettings: {toolbarPosition: 'none',
+                toolbarExtraButtons: [
+                    {label: 'Finish', css: 'btn-success', onClick: function(){ alert('Finish Clicked'); }},
+                    {label: 'Cancel', css: 'btn-warning', onClick: function(){ $('#smartwizard').smartWizard("reset"); }}
+                ]
+            }
+        });
+
+        //initalize the arrow bar on the top of the modal
+        $('#smartwizard').smartWizard("theme", "arrows");
+
+        // External Button Events
+        $(".next-btn").on("click", function() {
+            // Reset wizard
+            $('#smartwizard').smartWizard("next");
+            return true;
+        });
+
+        $(".prev-btn").on("click", function() {
+            // Navigate previous
+            $('#smartwizard').smartWizard("prev");
+            return true;
+        });
+
 
         $( document ).ready(function() {
             loadScript();
