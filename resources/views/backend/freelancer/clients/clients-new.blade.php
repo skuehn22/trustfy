@@ -16,13 +16,12 @@
     <div class="clients">
         <div class="row section-heading">
             <div class="col-md-6">
-                <h3>New Client</h3>
             </div>
         </div>
         <form action="/{{$blade["ll"]}}/freelancer/clients/save/0">
         <div class="row">
             <div class="col-md-6">
-                <h5>Contact</h5>
+                <h5>New Client</h5>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label" for="firstname">Firstname</label>
                     <input type="text" class="form-control col-md-7" id="client-firstname" name="client-firstname" required>
@@ -37,11 +36,11 @@
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label"  for="client-phone">Phone</label>
-                    <input type="text" class="form-control col-md-7" id="client-phone" name="client-phone" required>
+                    <input type="text" class="form-control col-md-7" id="client-phone" name="client-phone">
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label"  for="client-mobile">Mobile</label>
-                    <input type="text" class="form-control col-md-7" id="client-mobile" name="client-mobile" required>
+                    <input type="text" class="form-control col-md-7" id="client-mobile" name="client-mobile">
                 </div>
 
 
@@ -49,9 +48,8 @@
             <div class="col-md-6">
                 <h5>Billing</h5>
                 <div class="form-row py-2">
-                    <label class="col-md-4 col-form-label" for="currency">Curreny</label>
-                    <select id="currency" name="currency">
-                        <option>select</option>
+                    <label class="col-md-4 col-form-label" for="currency">Currency</label>
+                    <select id="currency" name="currency" class="col-md-7 col-form-label">
                         <option value="eur">EUR</option>
                         <option value="gbp">GBP</option>
                     </select>
@@ -62,7 +60,7 @@
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label"  for="client-address2">Address 2</label>
-                    <input type="text" class="form-control col-md-7" id="client-address2" name="client-address2" required>
+                    <input type="text" class="form-control col-md-7" id="client-address2" name="client-address2">
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label"  for="city">City</label>
@@ -72,6 +70,10 @@
                     <label class="col-md-4 col-form-label" for="country">Country</label>
                     @include('backend.settings.countries', ['default' => $blade['user']->country])
                 </div>
+                <div class="form-row pt-3 py-2">
+                    <button type="submit" class="btn btn-classic">Save Client</button>
+                </div>
+
             </div>
         </div>
         </form>

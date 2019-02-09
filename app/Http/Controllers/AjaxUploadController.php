@@ -105,15 +105,18 @@ class AjaxUploadController extends Controller
             $new_name = $user->id. $filename . '.' . $image->getClientOriginalExtension();
 
             $doc = new PlanDocs();
-            $doc->name = $new_name;
+            $doc->name = $_POST['doc-name'];
+            $doc->filename = $new_name;
             $doc->plan_id_fk = $_POST['plan'];
             $doc->save();
 
             $image->move(public_path('uploads/companies/contracts'), $new_name);
 
+
+
             return response()->json([
                 'message'   => 'File Upload Successfully',
-                'uploaded_image' => '<a target="_blank" href="/uploads/companies/contracts/'.$new_name.'">'.$new_name.'</a>',
+                'uploaded_image' => $_POST['plan'],
                 'class_name'  => 'alert-success'
             ]);
         }

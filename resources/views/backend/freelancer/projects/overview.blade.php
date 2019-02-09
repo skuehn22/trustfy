@@ -203,7 +203,7 @@
                         <td>
                             <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$project->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                             <span data-toggle="modal" data-target="#exampleModal">
-                                <a href="#" data-id="{{$project->id}}"  data-toggle="tooltip"  data-placement="top" title="Delete" class="delete-client">
+                                <a href="#" data-id="{{$project->id}}"  data-toggle="tooltip"  data-placement="top" title="Delete" class="delete-project">
                                     <i class="fas fa-trash green"></i>
                                 </a>
                             </span>
@@ -239,11 +239,11 @@
 </div>
 
 @stop
-@section("js")
+@section("javascript")
 
     <script>
 
-        $(document).on("click", ".delete-client", function () {
+        $(document).on("click", ".delete-project", function () {
             var myBookId = $(this).data('id');
             var url = "/en/freelancer/projects/delete/"+myBookId;
             $('#deleteform').attr('action', url);

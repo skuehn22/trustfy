@@ -105,22 +105,22 @@ class ClientManagementController extends Controller
         }
 
 
-        $client->firstname = $input["firstname"];
-        $client->lastname = $input["lastname"];
-        $client->phone = $input["phone"];
-        $client->mobile = $input["mobile"];
-        $client->mail = $input["mail"];
+        $client->firstname = $input["client-firstname"];
+        $client->lastname = $input["client-lastname"];
+        $client->phone = $input["client-phone"];
+        $client->mobile = $input["client-mobile"];
+        $client->mail = $input["client-mail"];
 
         $client->currency = $input["currency"];
-        $client->address1 = $input["address1"];
-        $client->address2 = $input["address2"];
-        $client->city = $input["city"];
+        $client->address1 = $input["client-address1"];
+        $client->address2 = $input["client-address2"];
+        $client->city = $input["client-city"];
         $client->country = $input["country"];
 
         $client->service_provider_fk = $blade["user"]->service_provider_fk;
         $client->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'The client has been created.');
 
     }
 

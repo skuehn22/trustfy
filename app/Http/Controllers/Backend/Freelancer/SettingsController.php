@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Backend\Freelancer;
 
 
 // Libraries
-use App, Request, Auth, Redirect, Hash;
+use App, Request, Auth, Redirect, Hash, MangoPay;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
@@ -18,9 +18,22 @@ use App\DatabaseModels\Users;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
+use App\Classes\MangoClass;
 
 class SettingsController extends Controller
 {
+
+    /**
+     * @var \MangoPay\MangoPayApi
+     */
+    private $mangopay;
+
+    public function __construct(\MangoPay\MangoPayApi $mangopay) {
+
+        $this->mangopay = $mangopay;
+
+    }
+
 
     public function index() {
 
@@ -85,6 +98,15 @@ class SettingsController extends Controller
         $company->address = $input["address"];
         $company->country = $input["country"];
         $company->users_fk =  $blade["user"]->id;
+        $user = Users::find($blade["user"]->id);
+
+        if($company->mango_id == null){
+
+            $mango_obj = new MangoClass($this->mangopay);
+            $mango_user=   $mango_obj->createLegalUser($company, $user);
+        }
+
+        $company->mango_id = $mango_user->Id;
         $company->save();
 
         $user = Users::find($blade["user"]->id);
@@ -266,6 +288,38 @@ class SettingsController extends Controller
             return true;
         }
     }
+
+
+    public function createMangoLegalUser($company, $freelancer) {
+        try {
+
+            // create user for payment
+            $user = new MangoPay\UserLegal();
+
+            $user->LegalPersonType = \MangoPay\LegalPersonType::Business;
+            $user->Name = "Company Name";
+            $user->Email = $freelancer->email;
+            $user->LegalRepresentativeFirstName = $company->firstname;
+            $user->LegalRepresentativeLastName = $company->lastname;
+            $user->LegalRepresentativeBirthday = time();
+            $user->LegalRepresentativeNationality = "FR";
+            $user->LegalRepresentativeCountryOfResidence = "FR";
+            $createdPerformer = $this->mangopay->Users->Create($user);
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+        return $createdPerformer;
+    }
+
 
 
 }

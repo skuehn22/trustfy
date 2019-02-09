@@ -181,8 +181,8 @@
                             <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}</td>
                             <td>
                                 <a href="/{{$blade["ll"]}}/freelancer/plans/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
-                                <span data-toggle="modal" data-target="#exampleModal" class="delete-client">
-                                    <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete">
+                                <span data-toggle="modal" data-target="#exampleModal">
+                                    <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete" class="delete-client">
                                         <i class="fas fa-trash green"></i>
                                     </a>
                                 </span>
@@ -220,13 +220,13 @@
     </div>
 
 @stop
-@section("js")
+@section("javascript")
 
     <script>
 
         $(document).on("click", ".delete-client", function () {
             var myBookId = $(this).data('id');
-            var url = "/en//freelancer/projects/plans/delete/"+myBookId;
+            var url = "/en/freelancer/plans/delete/"+myBookId;
             $('#deleteform').attr('action', url);
         });
 

@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect, Form, DB;
+use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
@@ -17,9 +17,24 @@ use App\DatabaseModels\PlansTypes;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
 use App\Classes\StateClass;
+use App\DatabaseModels\PlanDocs;
+
+use App\Classes\MangoClass;
+use Faker\Provider\Company;
 
 class PlansManagementController extends Controller
 {
+
+    /**
+     * @var \MangoPay\MangoPayApi
+     */
+    private $mangopay;
+
+    public function __construct(\MangoPay\MangoPayApi $mangopay) {
+
+        $this->mangopay = $mangopay;
+
+    }
 
     public function index() {
 
@@ -117,9 +132,19 @@ class PlansManagementController extends Controller
         if(isset($input['clients']))
             $plan->clients_id_fk = $input['clients'];
 
-        if(isset($input['projects']))
-            $plan->projects_id_fk = $input['projects'];
+        if(isset($input['projects-dropdown']))
+            $plan->projects_id_fk = $input['projects-dropdown'];
 
+        if(isset($input['creation-date'])){
+            $creation = date("Y-m-d", strtotime($input['creation-date']) );
+            $plan->date = $creation;
+        }
+
+        if(isset($input['typ']))
+            $plan->typ = $input['typ'];
+
+
+        $plan->state = 1;
         $plan->hidden = 0;
         $plan->save();
 
@@ -172,13 +197,13 @@ class PlansManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        $project = Projects::where("id", "=", $id)
+        $project = Plans::where("id", "=", $id)
             ->first();
 
         $project->delete = 1;
         $project->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/plan/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/plans/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
 
     }
 
@@ -193,5 +218,48 @@ class PlansManagementController extends Controller
         }
 
     }
+
+
+    public function send($id) {
+
+        $blade["ll"] = App::getLocale();
+        $user = Auth::user();
+        $input = Request::all();
+
+        $client = Clients::where("id", "=", $_GET['clients'])
+            ->first();
+
+        $company = App\DatabaseModels\Companies::where("id", "=", $user->service_provider_fk)
+            ->first();
+
+
+        $mango_obj = new MangoClass($this->mangopay);
+        $url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
+
+        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'url'), function ($message) use ($client) {
+            $message->from('info@trustfy.io', 'Trustfy.io');
+            $message->to($client->mail);
+            $message->subject("Pay Me Nutte!");
+            $message->bcc("kuehn.sebastian@gmail.com");
+        });
+
+
+        $this->saveAndClose($id);
+
+        return Redirect::to($blade["ll"]."/freelancer/plans")->withInput()->with('success', 'The payment plan has been sent to your client.');
+
+    }
+
+
+    function getDocs(){
+
+        $docs = PlanDocs::where('plan_id_fk', '=', $_GET['typ'] )
+            ->get();
+
+        return view('backend.freelancer.plans.docs', compact('blade', 'docs'));
+
+    }
+
+
 
 }
