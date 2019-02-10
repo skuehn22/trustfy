@@ -42,7 +42,7 @@
 
     </div>
     <div class="col-md-5">
-        <div id="uploaded_image">
+        <div id="uploaded_image" class="d-none">
             <span style="font-weight: 500;">Attached Documents</span>
         </div>
     </div>
@@ -71,7 +71,7 @@
                 processData: false,
                 success:function(data)
                 {
-                    $('#uploaded_image').html('');
+
                     $('#message').css('display', 'block');
                     $('#message').html(data.message);
                     $('#message').addClass(data.class_name);
@@ -95,7 +95,7 @@
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                 document.getElementById("uploaded_image").innerHTML = xmlhttp.responseText;
-
+                $('#uploaded_image').removeClass("d-none");
             }
         }
 
