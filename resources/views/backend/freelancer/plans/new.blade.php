@@ -137,6 +137,10 @@
         .slider.round:before {
             border-radius: 50%;}
 
+        .cancel-plan{
+            width: 115px;
+        }
+
     </style>
 @stop
 
@@ -164,7 +168,7 @@
                         <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;">
 
                             <div class="btn-group mr-2 sw-btn-group" role="group" >
-                                <button class="btn btn-secondary cancel-plan button-menu" id="cancel"><i class="fas fa-ban"></i> Close</button>
+                                <a class="btn btn-secondary cancel-plan" id="cancel" href="/freelancer/plans/"><i class="fas fa-ban"></i> Close</a>
                                 <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-save"></i> Save</button>
                             </div>
 
@@ -362,10 +366,7 @@
         });
 
 
-        //adds tolltips
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        });
+
 
         //initalize datepicker
         $( function() {
@@ -390,6 +391,11 @@
 
         //load scripts after a ajax call
         function loadScript(){
+
+            //adds tolltips
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
 
             //loads projects for selected client
             $("#clients").on('change', function() {
