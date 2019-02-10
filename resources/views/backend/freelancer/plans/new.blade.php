@@ -8,6 +8,50 @@
         .sw-theme-arrows .sw-container {
             min-height: 40px;
         }
+
+        .sw-theme-default > ul.step-anchor > li {
+            position: relative;
+            margin-right: 2px;
+            padding: 9px;
+        }
+
+        .sw-theme-default .sw-container {
+            min-height: auto;
+        }
+
+        .sw-theme-default .sw-toolbar {
+            background: #f9f9f9;
+            border-radius: 0 !important;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding: 10px;
+            margin-bottom: 0 !important;
+        }
+
+        .sw-theme-default ul {
+            -webkit-columns: 2;
+            -moz-columns: 2;
+            columns: 2;
+        }
+
+        .menu-icons button{
+            width: 115px;
+        }
+
+        .menu-icons i {
+            font-size: 15px;
+            color: #fff;
+            padding: 5px;
+        }
+
+        .sw-theme-default > ul.step-anchor > li.active > a {
+            border: none !important;
+            color: #006600 !important;
+            background: transparent !important;
+            cursor: pointer;
+        }
+
+
     </style>
 @stop
 
@@ -21,31 +65,38 @@
             <div class="col-md-12 p-0 menu-icons">
 
 
-                    <div id="smartwizard">
-                        <ul id="arrows">
+                    <div id="smartwizard" class="sw-main sw-theme-default">
+                        <ul id="arrows" class="nav nav-tabs step-anchor">
                             <li><a href="#step-1">Step 1<br /><small>Your company details</small></a></li>
                             <li><a href="#step-3">Step 3<br /><small>Create a project</small></a></li>
                             <li><a href="#step-4">Step 4<br /><small>Create a project</small></a></li>
+                            <li class="right;"></li>
                         </ul>
 
-                        <div class="col-md-12 p-0 ">
-                            <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-edit"></i> Save</button>
-                            <button class="btn btn-outline-secondary save-close button-menu" id="sclose"><i class="fas fa-check"></i> Save & Close</button>
-                            <button class="btn btn-outline-secondary cancel-plan button-menu" id="cancel"><i class="fas fa-ban"></i> Cancel</button>
-                            <button class="btn btn-info send-plan button-menu" id="send"><i class="fas fa-ban"></i>E-Mail Plan</button>
-                            <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
+                        <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end" style="text-align: right;">
+
+                            <div class="btn-group mr-2 sw-btn-group" role="group" >
+                                <button class="btn btn-secondary cancel-plan button-menu" id="cancel"><i class="fas fa-ban"></i> Close</button>
+                                <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-save"></i> Save</button>
+                            </div>
+
+                            <div class="btn-group mr-2 sw-btn-group" role="group" >
+                                <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
+                            </div>
+
                         </div>
 
-                        <div class="">
+                        <div class="sw-container tab-content">
                             <form action="/{{$blade["ll"]}}/freelancer/plan/save/{{$plan->id}}" id="plan-settings">
-                            <div id="step-1" class="">
+                            <div id="step-1" class="tab-pane step-content">
                                 @include('backend.freelancer.plans.general-infos')
                             </div>
-                            </form>
-                            <div id="step-3" class="">
+
+                            <div id="step-3" class="tab-pane step-content">
                                 @include('backend.freelancer.plans.payment-infos')
                             </div>
-                            <div id="step-4" class="">
+                            </form>
+                            <div id="step-4" class="tab-pane step-content">
                                 @include('ajax_file_upload')
                             </div>
                         </div>
@@ -134,7 +185,7 @@
         });
 
         //initalize the arrow bar on the top of the modal
-        $('#smartwizard').smartWizard("theme", "arrows");
+        $('#smartwizard').smartWizard("theme", "default");
 
         // External Button Events
         $(".next-btn").on("click", function() {
@@ -152,6 +203,9 @@
 
         $( document ).ready(function() {
             loadScript();
+            $('.btn-group').removeClass("step-content");
+
+
         });
 
         // External Button Events
@@ -397,6 +451,8 @@
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
         }
+
+
 
 
     </script>

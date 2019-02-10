@@ -16,7 +16,7 @@
 
 
     <link href="{{ asset('css/backend/freelancer/sb-admin.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/backend/freelancer/smart_wizard.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/backend/freelancer/smart_wizard.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
