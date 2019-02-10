@@ -1,6 +1,6 @@
-<div class="inbox-content p-3">
+<div class="inbox-content">
 <!-- Nav tabs -->
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs p-1">
     <li class="active-inbox"><a href="#home" data-toggle="tab" id="inbox-start"><span class="glyphicon glyphicon-inbox">
                 </span>All</a></li>
     <li><a href="#profile" data-toggle="tab" style="color: #535353;"><span class="glyphicon glyphicon-tags"></span>

@@ -188,6 +188,10 @@
         $(document).ready(function (e) {
             $('.active-inbox').click();
             $('#inbox-start').click();
+            getProject($("#projects-modul").val());
+
+
+
 
         });
 

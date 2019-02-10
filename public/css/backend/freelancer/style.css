@@ -514,7 +514,7 @@ h1{
 }
 
 .funded .fas {
-    font-size: 40px;
+    font-size: 25px;
     color: #28a745;
 }
 
@@ -525,7 +525,7 @@ h1{
 
 
 .released .fas {
-    font-size: 40px;
+    font-size: 25px;
     color: #049dff;
 }
 
@@ -536,7 +536,7 @@ h1{
 
 
 .pending .fas {
-    font-size: 40px;
+    font-size: 25px;
     color: #fdba04;
 }
 
