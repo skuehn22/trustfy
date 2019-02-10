@@ -1,5 +1,5 @@
 <div class="form-row py-2 pt-3 pl-0 ml-0">
-    <h5>Attached Documents</h5>
+     <span style="font-weight: 500;">Attached Documents</span>
 </div>
 
 @if(isset($docs))

@@ -76,9 +76,28 @@ class PlansManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
+
+        if(isset($_POST['projects'])){
+
+            $selected_project = Projects::where("id", "=", $_POST['projects'])
+                ->where("delete", "=", "0")
+                ->first();
+
+            $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->lists("name", "id");
+
+        }else{
+
+
+
+        }
+
         $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
             ->get();
+
+
 
         $types = PlansTypes::lists("name","id");
 
@@ -93,7 +112,7 @@ class PlansManagementController extends Controller
         $plan->hidden = 1;
         $plan->save();
 
-        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types'));
+        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects'));
 
     }
 
@@ -179,7 +198,9 @@ class PlansManagementController extends Controller
 
     }
 
+    public function finishing($id) {
 
+    }
 
 
     public function saveAndClose($id) {

@@ -51,6 +51,91 @@
             cursor: pointer;
         }
 
+        hr{
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 90px;
+            height: 34px;
+        }
+
+        .switch input {display:none;}
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ca2222;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2ab934;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(55px);
+            -ms-transform: translateX(55px);
+            transform: translateX(55px);
+        }
+
+        /*------ ADDED CSS ---------*/
+        .on
+        {
+            display: none;
+        }
+
+        .on, .off
+        {
+            color: white;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            font-size: 10px;
+            font-family: Verdana, sans-serif;
+        }
+
+        input:checked+ .slider .on
+        {display: block;}
+
+        input:checked + .slider .off
+        {display: none;}
+
+        /*--------- END --------*/
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;}
 
     </style>
 @stop
@@ -62,18 +147,19 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12 p-0 menu-icons">
+            <div class="col-md-12 p-0">
 
 
                     <div id="smartwizard" class="sw-main sw-theme-default">
                         <ul id="arrows" class="nav nav-tabs step-anchor">
-                            <li><a href="#step-1">Step 1<br /><small>Your company details</small></a></li>
-                            <li><a href="#step-3">Step 3<br /><small>Create a project</small></a></li>
-                            <li><a href="#step-4">Step 4<br /><small>Create a project</small></a></li>
+                            <li><a href="#step-1">Step 1<br /><small>General Informations</small></a></li>
+                            <li><a href="#step-2">Step 2<br /><small>Configuration Payment Plan</small></a></li>
+                            <li><a href="#step-3">Step 3<br /><small>Upload Documents</small></a></li>
+                            <li><a href="#step-4">Step 4<br /><small>Completion of creation</small></a></li>
                             <li class="right;"></li>
                         </ul>
 
-                        <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end" style="text-align: right;">
+                        <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;">
 
                             <div class="btn-group mr-2 sw-btn-group" role="group" >
                                 <button class="btn btn-secondary cancel-plan button-menu" id="cancel"><i class="fas fa-ban"></i> Close</button>
@@ -87,18 +173,22 @@
                         </div>
 
                         <div class="sw-container tab-content">
-                            <form action="/{{$blade["ll"]}}/freelancer/plan/save/{{$plan->id}}" id="plan-settings">
-                            <div id="step-1" class="tab-pane step-content">
-                                @include('backend.freelancer.plans.general-infos')
+
+                                <div id="step-1" class="tab-pane step-content">
+                                    @include('backend.freelancer.plans.general-infos')
+                                </div>
+
+                            <div id="step-2" class="tab-pane step-content">
+                                @include('backend.freelancer.plans.payment-infos')
                             </div>
 
                             <div id="step-3" class="tab-pane step-content">
-                                @include('backend.freelancer.plans.payment-infos')
-                            </div>
-                            </form>
-                            <div id="step-4" class="tab-pane step-content">
                                 @include('ajax_file_upload')
                             </div>
+                            <div id="step-4" class="tab-pane step-content">
+                                @include('backend.freelancer.plans.finishing')
+                            </div>
+
                         </div>
                     </div>
 
