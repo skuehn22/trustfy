@@ -26,8 +26,8 @@ h1{
 #wrapper #content-wrapper {
   overflow-x: hidden;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 80px;
+  /*padding-top: 1rem;
+  padding-bottom: 80px;*/
 }
 
 .container-fluid{

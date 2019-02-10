@@ -185,9 +185,9 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Date Created</th>
+                <th style="width: 15%;">Date Created</th>
+                <th style="width: 15%;">Client</th>
                 <th>Description</th>
-                <th>Client</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -197,9 +197,9 @@
                 @foreach($projects as $project)
                     <tr>
                         <td style="width:20%;">{{$project->name}}</td>
-                        <td>{{$project->created_at}}</td>
+                        <td>{{ \Carbon\Carbon::parse($project->created_at)->format('d/m/Y')}} </td>
+                        <td>{{$project->firstname}} {{$project->lastname}}</td>
                         <td>{{$project->desc}}</td>
-                        <td></td>
                         <td>
                             <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$project->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                             <span data-toggle="modal" data-target="#exampleModal">

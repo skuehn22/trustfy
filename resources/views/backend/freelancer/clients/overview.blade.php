@@ -13,7 +13,7 @@
                               }
         .table-wrapper {
             background: #fff;
-            padding: 20px 25px;
+            padding: 0px 0px;
             margin: 30px 0;
             border-radius: 3px;
             box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -189,6 +189,8 @@
             <tr>
                 <th style="width: 25%;">Name</th>
                 <th>E-Mail</th>
+                <th>Address</th>
+                <th>City</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -199,6 +201,8 @@
                     <tr>
                         <td>{{ $client->firstname}} {{ $client->lastname}}</td>
                         <td>{{$client->mail}}</td>
+                        <td>{{$client->address1}}</td>
+                        <td>{{$client->city}}</td>
                         <td>
                             <a href="/{{$blade["ll"]}}/freelancer/clients/edit/{{$client->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                             <span data-toggle="modal" data-target="#exampleModal">

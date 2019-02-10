@@ -176,7 +176,7 @@
                         <tr>
                             <td>{{$plan->id}}</td>
                             <td><a href="#">{{ $plan->name or 'not set' }}</a></td>
-                            <td>{{$plan->updated_at}}</td>
+                            <td>{{ \Carbon\Carbon::parse($plan->updated_at)->format('d/m/Y')}} </td>
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
                             <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}</td>
                             <td>

@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect, Form;
+use App, Auth, Request, Redirect, Form, DB;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
@@ -27,13 +27,19 @@ class ProjectManagementController extends Controller
         $blade["user"] = Auth::user();
 
 
-        $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-            ->where("delete", "=", "0")
-            ->get();
+
+
+            $query = DB::table('projects');
+            $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
+            $query->where('projects.service_provider_fk', '=', $blade["user"]->service_provider_fk );
+            $projects = $query->get();
 
 
 
-        return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
+
+
+
+            return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
 
     } else {
 
