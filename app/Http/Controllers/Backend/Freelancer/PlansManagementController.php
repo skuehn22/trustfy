@@ -99,7 +99,8 @@ class PlansManagementController extends Controller
 
 
 
-        $types = PlansTypes::lists("name","id");
+        $types = PlansTypes::where("delete", "=", "0")
+        ->lists("name","id");
 
         $plan = new Plans();
 
@@ -140,13 +141,13 @@ class PlansManagementController extends Controller
 
     }
 
-    public function save($id) {
+    public function save(Request $request) {
 
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
         $input = Request::all();
 
-        $plan = Plans::where("id", "=", $id)
+        $plan = Plans::where("id", "=", $input['plan'])
             ->first();
 
         if(isset($input['clients']))
@@ -194,7 +195,10 @@ class PlansManagementController extends Controller
 
         }
 
-        return Redirect::to($blade["ll"]."/freelancer/plans/edit/".$id)->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return response()->json([
+            'message'   => 'Successfully saved'
+
+        ]);
 
     }
 

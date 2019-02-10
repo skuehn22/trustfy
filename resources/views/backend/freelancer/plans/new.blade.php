@@ -159,6 +159,8 @@
                             <li class="right;"></li>
                         </ul>
 
+
+
                         <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;">
 
                             <div class="btn-group mr-2 sw-btn-group" role="group" >
@@ -174,9 +176,10 @@
 
                         <div class="sw-container tab-content">
 
-                                <div id="step-1" class="tab-pane step-content">
-                                    @include('backend.freelancer.plans.general-infos')
-                                </div>
+                            <form method="post" id="upload_form" enctype="multipart/form-data">
+                            <div id="step-1" class="tab-pane step-content">
+                                @include('backend.freelancer.plans.general-infos')
+                            </div>
 
                             <div id="step-2" class="tab-pane step-content">
                                 @include('backend.freelancer.plans.payment-infos')
@@ -188,15 +191,34 @@
                             <div id="step-4" class="tab-pane step-content">
                                 @include('backend.freelancer.plans.finishing')
                             </div>
-
+                                <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
+                            </form>
                         </div>
                     </div>
-
             </div>
         </div>
 
 
-        <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="saved-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog preview-modal" role="document"  style="width: 200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body preview-body">
+                    <div class="col-md-12">
+                        <div id="msg">Saved!</div>    <button type="submit" class="btn btn-success close-saved">Cool</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -303,12 +325,34 @@
             $('#create-client-modal').modal('show');
         });
 
+        // External Button Events
+        $(".close-saved").on("click", function() {
+            $('#saved-modal').modal('hide');
+        });
+
+
 
         //topmenu
         $(document).on("click", ".button-menu", function () {
 
-            var url = "/en/freelancer/plans/" + $(this).attr("id") + "/" + $("#plan").val();
-            $('#plan-settings').attr('action', url).submit();
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('freelancer.plans.save') }}",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+                    $('#msg').html(data.message);
+                    $('#saved-modal').modal('show');
+                }
+            })
+
+            //var url = "/en/freelancer/plans/" + $(this).attr("id") + "/" + $("#plan").val();
+            //$('#plan-settings').attr('action', url).submit();
 
         });
 
