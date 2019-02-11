@@ -11,8 +11,6 @@
 
     </style>
 @stop
-
-@section('content')
     <div class="settings">
         <div class="row">
             <div class="col-md-12">

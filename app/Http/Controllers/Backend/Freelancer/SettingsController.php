@@ -49,9 +49,14 @@ class SettingsController extends Controller
         if(isset($company)){
             $team = Users::where("service_provider_fk", "=", $company->id)
                 ->get();
+
+            $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $company->id)
+                ->first();
         }
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team'));
+
+
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank'));
 
     } else {
 
@@ -318,6 +323,35 @@ class SettingsController extends Controller
         }
 
         return $createdPerformer;
+    }
+
+
+    public function saveBank() {
+
+        $user = Auth::user();
+        $blade["user"] = Auth::user();
+        $blade["ll"] = App::getLocale();
+
+        $input = Request::all();
+
+
+        $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            ->first();
+
+        if(!isset($bank)){
+            $bank = new App\DatabaseModels\CompaniesBank();
+        }
+
+        $bank->name = $input['name'];
+        $bank->iban = $input['iban'];
+        $bank->service_provider_fk = $blade["user"]->service_provider_fk;
+        $bank->bic = $input['bic'];
+        $bank->save();
+
+
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+
+
     }
 
 
