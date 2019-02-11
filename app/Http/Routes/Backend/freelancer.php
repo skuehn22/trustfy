@@ -68,7 +68,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/settings/change-password', 'Backend\Freelancer\SettingsController@resetPw') ;
     Route::any('/freelancer/settings/save-bank', 'Backend\Freelancer\SettingsController@saveBank') ;
 
-
+    Route::any('/payment-plan', 'Frontend\PaymentPlanController@index') ;
 
 
 });
