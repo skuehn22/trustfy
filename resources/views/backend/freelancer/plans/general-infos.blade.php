@@ -6,14 +6,25 @@
         Title <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Only for your internal usage"></i>
     </label>
 
-    <input type="text" id="title" name="title" class="form-control col-md-3">
+    @if($plan->name)
+        <input type="text" id="title" name="title" class="form-control col-md-3" value="{{$plan->name}}">
+    @else
+        <input type="text" id="title" name="title" class="form-control col-md-3">
+    @endif
+
 </div>
 <div class="form-row py-2">
     <label class="col-md-2 col-form-label" for="creation-date">
         Date
         <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This date is on the payment plan as the creation date of the plan"></i>
     </label>
-    <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3">
+
+    @if($plan->date)
+        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3" value="{{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}}">
+    @else
+        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3">
+    @endif
+
 </div>
 <div class="form-row py-2">
     <label class="col-md-2 col-form-label" for="clients">Client</label>
@@ -58,8 +69,8 @@
 
 </div>
 <div class="form-row py-2">
-    <div class="col-md-6 pt-5">
-        <button class="btn btn-success next-btn" id="next-btn" type="button">Next Step</button>
+    <div class="col-md-5 pt-1 text-right float-right">
+        <button class="btn btn-success next-btn" id="next-btn" type="button">Next</button>
     </div>
 </div>
 

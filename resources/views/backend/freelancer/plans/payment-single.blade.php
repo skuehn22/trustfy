@@ -3,7 +3,15 @@
         Title <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="For example Deposit / Down payment"></i>
     </label>
 
-    <input type="text" id="title-milestone" name="title-milestone" class="form-control col-md-3">
+    @foreach($milestones as $milestone)
+        @if($milestone->name)
+            <input type="text" id="title-milestone" name="title-milestone" class="form-control col-md-3" value="{{$milestone->name}}">
+        @else
+            <input type="text" id="title-milestone" name="title-milestone" class="form-control col-md-3">
+        @endif
+    @endforeach
+
+
 </div>
 <div class="form-row py-2">
     <label class="col-md-2 col-form-label" for="pay-due">To Pay At</label>

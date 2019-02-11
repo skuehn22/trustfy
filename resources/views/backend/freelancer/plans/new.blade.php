@@ -141,11 +141,27 @@
             width: 115px;
         }
 
+        .nav-tabs{
+            padding-left: 40px;
+        }
+
+        .sw-container{
+            padding-left: 40px;
+        }
+
+        .next-btn {
+            width: 70px;
+        }
+
+        .prev-btn {
+            width: 70px;
+        }
+
     </style>
 @stop
 
 @section('content')
-    <div class="plans pl-4">
+    <div class="plans">
         <div class="row">
 
         </div>
@@ -178,7 +194,7 @@
 
                         </div>
 
-                        <div class="sw-container tab-content">
+                        <div class="sw-container tab-content" style=" padding-left: 40px;">
 
                             <form method="post" id="upload_form" enctype="multipart/form-data">
                             <div id="step-1" class="tab-pane step-content">

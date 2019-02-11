@@ -50,11 +50,14 @@
     </div>
     <div class="form-group">
         <label for="comment">Comment:</label>
-        <textarea class="form-control col-md-12" rows="4"  id="comment"></textarea>
+        <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment"></textarea>
     </div>
     <div class="form-row py-2">
         <div class="col-md-12 pt-2 float-right text-right">
-            <button class="btn btn-success next-btn" style="width: 230px;" id="next-btn" disabled type="button">Send Payment Plan to Client</button>
+            <div class="btn-group mr-2 sw-btn-group" role="group" >
+                <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
+                <button class="btn btn-success next-btn" style="width: 230px;" id="next-btn" disabled type="button">Send Payment Plan to Client</button>
+            </div>
         </div>
     </div>
 </div>

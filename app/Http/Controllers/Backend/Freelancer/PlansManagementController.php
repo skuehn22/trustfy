@@ -129,15 +129,21 @@ class PlansManagementController extends Controller
 
         $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
-            ->lists("firstname","id");
+            ->get();
 
         $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
+            ->lists("name", "id");
+
+        $selected_project = Projects::where("id", "=", $plan->projects_id_fk)
+            ->where("delete", "=", "0")
+            ->first();
+
+        $types = PlansTypes::where("delete", "=", "0")
             ->lists("name","id");
 
-        $types = PlansTypes::lists("name","id");
 
-        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types'));
+        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types', 'selected_project'));
 
     }
 
@@ -167,6 +173,15 @@ class PlansManagementController extends Controller
         if(isset($input['typ']))
             $plan->typ = $input['typ'];
 
+        if(isset($input['cc']) && $input['cc']=="on")
+            $plan->credit_card = 1;
+
+        if(isset($input['bt']) && $input['bt']=="on")
+            $plan->bank_transfer = 1;
+
+        if(isset($input['comment']))
+            $plan->comment = $input['comment'];
+
 
         $plan->state = 1;
         $plan->hidden = 0;
@@ -178,7 +193,7 @@ class PlansManagementController extends Controller
             $milestone = new PlansMilestone();
             $milestone->projects_plans_id_fk = $plan->id;
             $milestone->name = $input['title-milestone'];
-            //$milestone->desc = $input['milestoneDesc'];
+            $milestone->typ = $input['typ'];
             $milestone->amount = $input['single-amount'];
 
             if($input['pay-due'] == 2){
@@ -266,10 +281,25 @@ class PlansManagementController extends Controller
 
         $input = Request::all();
 
-        if(isset($input['typ']) && $input['typ'] == 1){
-            return view('backend.freelancer.plans.payment-single', compact('blade', 'clients', 'plan'));
+        if(isset($input['typedit'])){
+
+            $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $input['typedit'])
+                ->first();
+
+            if(isset($milestone->typ) && $milestone->typ == 1){
+                return view('backend.freelancer.plans.payment-single', compact('blade', 'clients', 'plan', 'milestones'));
+            }else{
+                return view('backend.freelancer.plans.payment-milestones', compact('blade', 'clients', 'plan', 'milestones'));
+            }
+
         }else{
-            return view('backend.freelancer.plans.payment-milestones', compact('blade', 'clients', 'plan'));
+
+            if(isset($input['typ']) && $input['typ'] == 1){
+                return view('backend.freelancer.plans.payment-single', compact('blade', 'clients', 'plan'));
+            }else{
+                return view('backend.freelancer.plans.payment-milestones', compact('blade', 'clients', 'plan'));
+            }
+
         }
 
     }

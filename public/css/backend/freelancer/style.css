@@ -28,8 +28,8 @@ h1{
 }
 
 .container-fluid {
-    padding-left: 25px;
-    padding-right: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 1px;
 }
 
@@ -63,6 +63,8 @@ h1{
 .sw-theme-arrows>ul.step-anchor>li>a {
     width: 278px;
 }
+
+
 
 .border-content{
     background-color: #ffffff;
