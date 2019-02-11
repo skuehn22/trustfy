@@ -5,7 +5,14 @@
 @if(isset($docs))
     @foreach($docs as $doc)
 
-        <p><a target="_blank" href="/uploads/companies/contracts/{{$doc->filename}}">{{$doc->name}}</a></p>
+        <p class="{{$doc->id}}">
+            <a target="_blank" href="/uploads/companies/contracts/{{$doc->filename}}">{{$doc->name}}</a>
+            <a href="#" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
+                <i class="fas fa-trash green"></i>
+            </a>
+        </p>
 
     @endforeach
 @endif
+
+

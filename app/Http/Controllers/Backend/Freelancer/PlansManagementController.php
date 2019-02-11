@@ -142,8 +142,11 @@ class PlansManagementController extends Controller
         $types = PlansTypes::where("delete", "=", "0")
             ->lists("name","id");
 
+        $milestones_edit = PlansMilestone::where("projects_plans_id_fk", "=", $id)
+            ->first();
 
-        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types', 'selected_project'));
+
+        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types', 'selected_project', 'milestones_edit'));
 
     }
 
@@ -173,10 +176,10 @@ class PlansManagementController extends Controller
         if(isset($input['typ']))
             $plan->typ = $input['typ'];
 
-        if(isset($input['cc']) && $input['cc']=="on")
+        if(isset($input['cc']) && $input['cc']=="true")
             $plan->credit_card = 1;
 
-        if(isset($input['bt']) && $input['bt']=="on")
+        if(isset($input['bt']) && $input['bt']=="true")
             $plan->bank_transfer = 1;
 
         if(isset($input['comment']))
@@ -195,12 +198,9 @@ class PlansManagementController extends Controller
             $milestone->name = $input['title-milestone'];
             $milestone->typ = $input['typ'];
             $milestone->amount = $input['single-amount'];
+            $milestone->due_typ = $input['pay-due'];
 
-            if($input['pay-due'] == 2){
-                $milestone->due_at = "end";
-            }elseif($input['pay-due'] == 1){
-                $milestone->due_at = "start";
-            }else{
+            if($input['pay-due'] == 3){
                 $milestone->due_at = $input['due-date'];
             }
 
@@ -283,10 +283,10 @@ class PlansManagementController extends Controller
 
         if(isset($input['typedit'])){
 
-            $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $input['typedit'])
+            $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $input['typedit'])
                 ->first();
 
-            if(isset($milestone->typ) && $milestone->typ == 1){
+            if(isset($milestones->typ) && $milestones->typ == 1){
                 return view('backend.freelancer.plans.payment-single', compact('blade', 'clients', 'plan', 'milestones'));
             }else{
                 return view('backend.freelancer.plans.payment-milestones', compact('blade', 'clients', 'plan', 'milestones'));
@@ -339,11 +339,25 @@ class PlansManagementController extends Controller
     function getDocs(){
 
         $docs = PlanDocs::where('plan_id_fk', '=', $_GET['typ'] )
+            ->where('delete', '=', '0' )
             ->get();
 
         return view('backend.freelancer.plans.docs', compact('blade', 'docs'));
 
     }
+
+    function deleteDoc(){
+
+        $docs = PlanDocs::where('id', '=', $_GET['variable'] )
+            ->first();
+
+        $docs->delete = 1;
+        $docs->save();
+
+        return $docs;
+
+    }
+
 
 
 

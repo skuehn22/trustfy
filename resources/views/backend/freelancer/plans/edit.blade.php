@@ -212,6 +212,7 @@
                                 @include('backend.freelancer.plans.finishing')
                             </div>
                             <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
+                            <input type="hidden" id="due_typ_response" name="due_typ_response" value="{{$milestones->due_typ or ""}}">
                         </form>
                     </div>
                 </div>
@@ -338,6 +339,7 @@
             $('.btn-group').removeClass("step-content");
 
             $("#typ").val( {{$plan->typ}} );
+
             getPlanTyp({{$plan->id}});
 
         });
@@ -353,6 +355,31 @@
         });
 
 
+        @if($plan->credit_card == 1)
+            $("#togBtn").click();
+        @endif
+
+        @if($plan->bank_transfer == 1)
+            $("#togBtnBt").click();
+        @endif
+
+        $("#togBtn").on('change', function() {
+
+            if ( $(this).val() == "true") {
+                $(this).val('false');
+            }
+            else {
+                $(this).val('true');
+            }});
+
+        $("#togBtnBt").on('change', function() {
+
+            if ( $(this).val() == "true") {
+                $(this).val('false');
+            }
+            else {
+                $(this).val('true');
+            }});
 
         //topmenu
         $(document).on("click", ".button-menu", function () {
@@ -399,13 +426,36 @@
 
 
 
+
+
         //loads projects for selected client
         $("#typ").on('change', function() {
             getPlanTyp($(this).val());
         });
 
 
+        function getDocs(id) {
 
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    document.getElementById("uploaded_image").innerHTML = xmlhttp.responseText;
+                    $('#uploaded_image').removeClass("d-none");
+                    loadScript();
+                }
+            }
+
+
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/docs?typ="+id, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+        }
 
         //load scripts after a ajax call
         function loadScript(){
@@ -472,6 +522,8 @@
                 });
 
 
+
+
             });
 
 
@@ -495,6 +547,26 @@
             } );
 
 
+            //loads projects for selected client
+            $(".delete-doc").on('click', function() {
+
+                var doc = $(this).data('id');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/delete-doc',
+                    data: { variable: doc },
+                    dataType: 'json',
+
+                    success: function(data) {
+
+                        $("."+doc).hide();
+
+                    }
+                });
+
+
+            });
 
         }
 
@@ -511,6 +583,10 @@
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                     document.getElementById("plan-typ-response").innerHTML = xmlhttp.responseText;
+
+                    $("#pay-due").val({{$milestones_edit->due_typ}});
+                    $(".amount").removeClass("d-none");
+                    getDocs({{$plan->id}});
                     loadScript();
                 }
             }
@@ -520,8 +596,6 @@
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
         }
-
-
 
 
         //inserts data in the preview

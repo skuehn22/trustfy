@@ -48,7 +48,7 @@
     </div>
 </div>
 <div class="form-row py-2">
-    <div class="col-md-5 pt-1 text-right">
+    <div class="col-md-12 pt-1 text-right">
         <div class="btn-group sw-btn-group" role="group" >
             <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
             <button class="btn btn-success next-btn" id="next-btn" type="button">Next</button>
@@ -99,6 +99,7 @@
 
                 document.getElementById("uploaded_image").innerHTML = xmlhttp.responseText;
                 $('#uploaded_image').removeClass("d-none");
+                loadScrips();
             }
         }
 

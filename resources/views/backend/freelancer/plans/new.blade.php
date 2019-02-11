@@ -340,6 +340,25 @@
 
         });
 
+        $("#togBtn").on('change', function() {
+
+            if ( $(this).val() == "true") {
+                $(this).val('false');
+            }
+            else {
+                $(this).val('true');
+            }});
+
+        $("#togBtnBt").on('change', function() {
+
+            if ( $(this).val() == "true") {
+                $(this).val('false');
+            }
+            else {
+                $(this).val('true');
+            }});
+
+
         // External Button Events
         $("#create-client-fly").on("click", function() {
             $('#create-client-modal').modal('show');
@@ -493,6 +512,26 @@
             } );
 
 
+            //loads projects for selected client
+            $(".delete-doc").on('click', function() {
+
+                var doc = $(this).data('id');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/delete-doc',
+                    data: { variable: doc },
+                    dataType: 'json',
+
+                    success: function(data) {
+
+                        $("."+doc).hide();
+
+                    }
+                });
+
+
+            });
 
         }
 
