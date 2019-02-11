@@ -3,7 +3,7 @@
         Title <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="For example Deposit / Down payment"></i>
     </label>
 
-    @if($milestones->name)
+    @if(isset($milestones) && $milestones->name)
         <input type="text" id="title-milestone" name="title-milestone" class="form-control col-md-3" value="{{$milestones->name}}">
     @else
         <input type="text" id="title-milestone" name="title-milestone" class="form-control col-md-3">
@@ -27,7 +27,7 @@
 <div class="form-row py-2 due d-none">
     <label class="col-md-2 col-form-label" for="due-date">Due Date</label>
 
-    @if($milestones->due_at)
+    @if(isset($milestones) && $milestones->due_at)
         <input type="text" id="due-date" name="due-date" class="form-control col-md-3" value="{{$milestones->due_at}}">
     @else
         <input type="text" id="due-date" name="due-date" class="form-control col-md-3">
@@ -39,7 +39,7 @@
 <div class="form-row py-2 amount d-none">
     <label class="col-md-2 col-form-label" for="single-amount">Amount</label>
 
-    @if($milestones->amount)
+    @if(isset($milestones) && $milestones->amount)
         <input type="text" id="single-amount" name="single-amount" class="form-control col-md-3" value="{{$milestones->amount}}">
     @else
         <input type="text" id="single-amount" name="single-amount" class="form-control col-md-3">
