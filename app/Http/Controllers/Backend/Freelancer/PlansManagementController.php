@@ -188,7 +188,8 @@ class PlansManagementController extends Controller
 
         $plan->state = 1;
         $plan->hidden = 0;
-        $plan->hash = Hash::make(time());
+        //$plan->hash = Hash::make(time());
+        $plan->hash = time();
         $plan->save();
 
         //1 = Single Deposit
@@ -323,7 +324,7 @@ class PlansManagementController extends Controller
         $input = Request::all();
         //$plan = $this->save($input);
 
-        $plan = Clients::where("id", "=", $_GET['plan'])
+        $plan = Plans::where("id", "=", $_GET['plan'])
             ->first();
 
         $client = Clients::where("id", "=", $_GET['clients'])

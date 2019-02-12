@@ -37,11 +37,27 @@ class PaymentPlanController extends Controller
 
     }
 
-    public function index() {
+    public function index($hash) {
 
         $blade["locale"] = App::getLocale();
-        return view('frontend.clients.payment-plan', compact('blade'));
 
+        $user = Auth::user();
+
+        $query = DB::table('projects_plans');
+        $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
+        $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
+        $query->where('projects_plans.hash', '=', $hash );
+        $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $plan = $query->first();
+
+        $company = Companies::where("id", "=", $user->service_provider_fk)
+            ->first();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+
+        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone'));
     }
 
     public function loadPreview($id) {
