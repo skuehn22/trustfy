@@ -50,7 +50,7 @@ class PaymentPlanController extends Controller
         $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
-        $company = Companies::where("id", "=", $user->service_provider_fk)
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
