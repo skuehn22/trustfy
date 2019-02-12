@@ -31,6 +31,7 @@ class ProjectManagementController extends Controller
         $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
         $query->where('projects.service_provider_fk', '=', $blade["user"]->service_provider_fk );
         $query->where('projects.delete', '=', 0);
+        $query->select('projects.*', 'clients.firstname', 'clients.lastname');
         $projects = $query->get();
 
 

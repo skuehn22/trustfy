@@ -109,9 +109,10 @@ class SettingsController extends Controller
 
             $mango_obj = new MangoClass($this->mangopay);
             $mango_user=   $mango_obj->createLegalUser($company, $user);
+            $company->mango_id = $mango_user->Id;
         }
 
-        $company->mango_id = $mango_user->Id;
+
         $company->save();
 
         $user = Users::find($blade["user"]->id);

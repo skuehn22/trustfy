@@ -16,7 +16,7 @@ class MangoClass extends Controller
      * @var \MangoPay\MangoPayApi
      */
 
-    private $mangopay_live;
+    private $mangopay;
 
     public function __construct(\MangoPay\MangoPayApi $mangopay) {
 
@@ -151,9 +151,9 @@ class MangoClass extends Controller
             $mangouser->Email = $user->email;
             $mangouser->LegalRepresentativeFirstName =  $company->firstname;
             $mangouser->LegalRepresentativeLastName =  $company->lastname;
-            $mangouser->LegalRepresentativeBirthday = time();
-            $mangouser->LegalRepresentativeNationality = "IE";
-            $mangouser->LegalRepresentativeCountryOfResidence = "IE";
+            $mangouser->LegalRepresentativeBirthday = 509482307;
+            $mangouser->LegalRepresentativeNationality = "DE";
+            $mangouser->LegalRepresentativeCountryOfResidence = "DE";
             $createdUser = $this->mangopay->Users->Create($mangouser);
 
             return $createdUser;

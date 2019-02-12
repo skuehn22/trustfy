@@ -256,7 +256,7 @@
                     <div id="page1">
                         <div class="col-md-12 plan-preview align-middle">
                             <div class="col-md-12 p-0 pt-5 text-md-center">
-                                @include('frontend.clients.payment-plan')
+
                             </div>
                         </div>
                     </div>
@@ -377,11 +377,29 @@
 
         });
 
-        //load preview
         $("#preview-btn").on("click", function() {
-            $('#preview-modal').modal('show');
-        });
 
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('freelancer.plans.save') }}",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+                    var plan = $("#plan").val();
+
+                    mywindow = window.open("/payment-plan/load-preview/"+plan , "mywindow", "location=1,status=1,scrollbars=1,  width=1050,height=800");
+
+
+                }
+            })
+
+
+        });
 
 
 
