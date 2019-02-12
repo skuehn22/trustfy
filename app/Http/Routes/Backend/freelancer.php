@@ -53,10 +53,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/plans/finishing/{id}', 'Backend\Freelancer\PlansManagementController@finishing');
     Route::any('/freelancer/plans/sclose/{id}', 'Backend\Freelancer\PlansManagementController@saveAndClose');
     Route::any('/freelancer/plans/delete/{id}', 'Backend\Freelancer\PlansManagementController@delete');
-    Route::any('/freelancer/plans/send/{id}', 'Backend\Freelancer\PlansManagementController@send');
+    Route::any('/freelancer/plans/send', 'Backend\Freelancer\PlansManagementController@send')->name('freelancer.plan.send');
     Route::any('/freelancer/plans/get-plan-typ', 'Backend\Freelancer\PlansManagementController@getPlanByTyp');
     Route::any('/freelancer/plans/docs', 'Backend\Freelancer\PlansManagementController@getDocs');
     Route::any('/freelancer/plans/delete-doc', 'Backend\Freelancer\PlansManagementController@deleteDoc');
+
 
     Route::any('/freelancer/settings', 'Backend\Freelancer\SettingsController@index') ;
     Route::any('/freelancer/settings/save-company', 'Backend\Freelancer\SettingsController@saveCompany') ;

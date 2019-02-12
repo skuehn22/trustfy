@@ -62,7 +62,7 @@
         <div class="col-md-12 pt-2 float-right text-right">
             <div class="btn-group mr-2 sw-btn-group" role="group" >
                 <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
-                <button class="btn btn-success next-btn" style="width: 230px;" id="next-btn" disabled type="button">Send Payment Plan to Client</button>
+                <button class="btn btn-success send-plan" style="width: 230px;" id="send-plan" type="button">Send Payment Plan to Client</button>
             </div>
         </div>
     </div>

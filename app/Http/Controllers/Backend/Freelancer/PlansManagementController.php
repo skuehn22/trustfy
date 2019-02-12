@@ -316,12 +316,15 @@ class PlansManagementController extends Controller
     }
 
 
-    public function send($id) {
+    public function send() {
 
         $lang = App::getLocale();
         $user = Auth::user();
         $input = Request::all();
-        $plan = $this->save($input);
+        //$plan = $this->save($input);
+
+        $plan = Clients::where("id", "=", $_GET['plan'])
+            ->first();
 
         $client = Clients::where("id", "=", $_GET['clients'])
             ->first();
@@ -332,17 +335,16 @@ class PlansManagementController extends Controller
         //$mango_obj = new MangoClass($this->mangopay);
         //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
 
-        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client) {
+        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company) {
             $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($client->mail);
-            $message->subject("Pay Me Nutte!");
+            $message->subject($company->name." - Payment Plan");
             $message->bcc("kuehn.sebastian@gmail.com");
         });
 
 
-        $this->saveAndClose($id);
 
-        return Redirect::to($blade["ll"]."/freelancer/plans")->withInput()->with('success', 'The payment plan has been sent to your client.');
+        return Redirect::to($lang."/freelancer/plans")->withInput()->with('success', 'The payment plan has been sent to your client.');
 
     }
 

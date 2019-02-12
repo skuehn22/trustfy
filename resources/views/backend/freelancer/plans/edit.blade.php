@@ -428,6 +428,44 @@
         });
 
 
+        $("#send-plan").on("click", function() {
+
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('freelancer.plans.save') }}",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+
+                    var plan = $("#plan").val();
+                    event.preventDefault();
+                    $.ajax({
+                        url:"{{ route('freelancer.plan.send') }}",
+                        method:"GET",
+                        data: $('#upload_form').serialize(),
+                        dataType:'JSON',
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success:function(data)
+                        {
+                            alert("Plan was send!");
+
+                        }
+                    })
+                }
+            })
+
+
+
+        });
+
+
         //initalize datepicker
         $( function() {
             $( "#creation-date" ).datepicker();
