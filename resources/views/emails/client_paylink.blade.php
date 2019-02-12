@@ -37,7 +37,7 @@
             <p>
                 Message:<br><br>
                 You received a payment plan. Look at it here:
-                <a style="color: #1e8033;"  href="https://www.trustfy.io/{{$lang}}/payment-plan/{{$plan->hash}}" target="_blank">Payment Plan</a>
+                <a style="color: #1e8033;"   href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" target="_blank">Payment Plan</a>
             </p>
             </span>
         </td>
