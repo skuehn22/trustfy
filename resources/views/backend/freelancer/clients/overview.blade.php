@@ -14,7 +14,7 @@
         .table-wrapper {
             background: #fff;
             padding: 0px 0px;
-            margin: 30px 0;
+            margin: 15px 0;
             border-radius: 3px;
             box-shadow: 0 1px 1px rgba(0,0,0,.05);
         }

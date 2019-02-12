@@ -256,25 +256,7 @@
                     <div id="page1">
                         <div class="col-md-12 plan-preview align-middle">
                             <div class="col-md-12 p-0 pt-5 text-md-center">
-                                <br><br><br><br><h3 class="font-italic text-secondary">-Preview-</h3>
-                                <br><br><br><br><br> <br>
-                                @if(isset($blade["user"]->logo))
-                                    <img src="/uploads/companies/logo/{{$blade["user"]->logo}}" style="width:300px;">
-                                @endif
-                                <br><br><br><br><br><br>
-                                <h4>Payment Plan</h4>
-                                <br><br>
-                                <div id="marker-creation-date"><span class="font-italic">--please select date--</span></div>
-                                <br><br>
-                                <p>between</p>
-                                <p><strong>{{$blade["user"]->firstname}} {{$blade["user"]->lastname}} - Principal</strong></p>
-                                <p>and</p>
-                                <div><strong id="marker-client"><span class="font-italic">--please select client--</span></strong></div>
-                                <div class="preview-project">
-                                    <br><br><br><br>
-                                    <h3>Project</h3>
-                                    <div id="marker-project"><span class="font-italic">--please select project--</span></div>
-                                </div>
+                                @include('frontend.clients.payment-plan')
                             </div>
                         </div>
                     </div>

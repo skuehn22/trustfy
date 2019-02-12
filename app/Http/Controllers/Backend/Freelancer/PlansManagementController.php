@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail;
+use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
@@ -188,6 +188,7 @@ class PlansManagementController extends Controller
 
         $plan->state = 1;
         $plan->hidden = 0;
+        $plan->hash = Hash::make(time());
         $plan->save();
 
         //1 = Single Deposit
@@ -195,12 +196,22 @@ class PlansManagementController extends Controller
 
             $milestone = new PlansMilestone();
             $milestone->projects_plans_id_fk = $plan->id;
-            $milestone->name = $input['title-milestone'];
-            $milestone->typ = $input['typ'];
-            $milestone->amount = $input['single-amount'];
-            $milestone->due_typ = $input['pay-due'];
 
-            if($input['pay-due'] == 3){
+            if(isset($input['title-milestone'])){
+                $milestone->name = $input['title-milestone'];
+            }
+
+            if(isset($input['single-amount'])){
+                $milestone->amount = $input['single-amount'];
+            }
+
+            if(isset($input['pay-due'])){
+                $milestone->due_typ = $input['pay-due'];
+            }
+
+            $milestone->typ = $input['typ'];
+
+            if(isset($input['pay-due']) && $input['pay-due'] == 3){
                 $milestone->due_at = $input['due-date'];
             }
 
@@ -307,9 +318,10 @@ class PlansManagementController extends Controller
 
     public function send($id) {
 
-        $blade["ll"] = App::getLocale();
+        $lang = App::getLocale();
         $user = Auth::user();
         $input = Request::all();
+        $plan = $this->save($input);
 
         $client = Clients::where("id", "=", $_GET['clients'])
             ->first();
@@ -317,11 +329,10 @@ class PlansManagementController extends Controller
         $company = App\DatabaseModels\Companies::where("id", "=", $user->service_provider_fk)
             ->first();
 
+        //$mango_obj = new MangoClass($this->mangopay);
+        //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
 
-        $mango_obj = new MangoClass($this->mangopay);
-        $url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
-
-        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'url'), function ($message) use ($client) {
+        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client) {
             $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($client->mail);
             $message->subject("Pay Me Nutte!");

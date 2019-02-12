@@ -36,13 +36,9 @@
             </p>
             <p>
                 Message:<br><br>
-                Pay me, you little bitch.
+                You received a payment plan. Look at it here:
+                <a style="color: #1e8033;"  href="/{{$lang}}/payment-plan/{{$plan->hash}}" target="_blank">Payment Plan</a>
             </p>
-                <br>
-                <p>
-                     <a style="color: #1e8033;"  href="{{$url->RedirectURL}}">Link to pay</a>
-                </p>
-
             </span>
         </td>
     </tr>

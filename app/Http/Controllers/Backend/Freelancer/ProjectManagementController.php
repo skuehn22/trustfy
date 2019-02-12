@@ -27,19 +27,14 @@ class ProjectManagementController extends Controller
         $blade["user"] = Auth::user();
 
 
+        $query = DB::table('projects');
+        $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
+        $query->where('projects.service_provider_fk', '=', $blade["user"]->service_provider_fk );
+        $query->where('projects.delete', '=', 0);
+        $projects = $query->get();
 
 
-            $query = DB::table('projects');
-            $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
-            $query->where('projects.service_provider_fk', '=', $blade["user"]->service_provider_fk );
-            $projects = $query->get();
-
-
-
-
-
-
-            return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
+        return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
 
     } else {
 

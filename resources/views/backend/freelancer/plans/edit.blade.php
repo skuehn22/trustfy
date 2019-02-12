@@ -400,17 +400,32 @@
                 }
             })
 
-            //var url = "/en/freelancer/plans/" + $(this).attr("id") + "/" + $("#plan").val();
-            //$('#plan-settings').attr('action', url).submit();
 
         });
 
-        //load preview
         $("#preview-btn").on("click", function() {
-            $('#preview-modal').modal('show');
+
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('freelancer.plans.save') }}",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+                    var plan = $("#plan").val();
+
+                    mywindow = window.open("/payment-plan/load-preview/"+plan , "mywindow", "location=1,status=1,scrollbars=1,  width=1050,height=800");
+
+
+                }
+            })
+
+
         });
-
-
 
 
         //initalize datepicker
@@ -422,10 +437,6 @@
         $("#creation-date").on('change', function() {
             document.getElementById("marker-creation-date").innerHTML = "Date: " + $(this).val();
         });
-
-
-
-
 
 
         //loads projects for selected client

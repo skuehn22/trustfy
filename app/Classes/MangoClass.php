@@ -5,8 +5,9 @@ use App, Auth, DB, Hash;
 use MangoPay, Redirect, Request;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\CompaniesMangowallets;
+use App\DatabaseModels\Companies;
 use App\DatabaseModels\ClientsMangowallets;
-
+use App\DatabaseModels\Clients;
 
 class MangoClass extends Controller
 {
@@ -15,7 +16,7 @@ class MangoClass extends Controller
      * @var \MangoPay\MangoPayApi
      */
 
-    private $mangopay;
+    private $mangopay_live;
 
     public function __construct(\MangoPay\MangoPayApi $mangopay) {
 
@@ -36,7 +37,7 @@ class MangoClass extends Controller
 
     }
 
-    public function createTransaction($company, $client, $amount)
+    public function createTransaction($company, $client, $amount, $planHash)
     {
 
         $input = Request::all();
@@ -50,9 +51,14 @@ class MangoClass extends Controller
         } else {
             $mango_freelancer = $this->createLegalUser($company, $user);
 
-            DB::table('company')
-                ->where('email', $user->email)
-                ->update(['mango_id' => $mango_freelancer->Id]);
+            $company = Companies::where("users_fk", "=", $user->id)
+                ->first();
+
+            $company->mango_id = $mango_freelancer->Id;
+            $company->save();
+
+
+
         }
 
         //check if already an client with this email exists
@@ -61,9 +67,13 @@ class MangoClass extends Controller
         } else {
             $mango_client = $this->createNaturalUser($client);
 
-            DB::table('clients')
-                ->where('id', $client->id)
-                ->update(['mango_id' => $mango_client->Id]);
+            $client = Clients::where("id", "=", $client->id)
+                ->first();
+
+            $client->mango_id = $mango_client->Id;
+            $client->save();
+
+
         }
 
         //get wallet for performer and client
@@ -73,7 +83,7 @@ class MangoClass extends Controller
         //if there is no wallet create one
         if (!$freelancer_wallet_id) {
             $freelancer_wallet = $this->createWallet($mango_freelancer->Id);
-            $performer_wallet_id = $freelancer_wallet->Id;
+            $freelancer_wallet = $freelancer_wallet->Id;
             $wallet = new CompaniesMangowallets();
             $wallet->id = $freelancer_wallet->Id;
             $wallet->performer_id_fk = $company->id;
@@ -91,7 +101,7 @@ class MangoClass extends Controller
         }
 
         $hash = $this->prepPayInCardWeb($mango_client->Id, $freelancer_wallet_id, $amount);
-        $url = $this->openTransaction($hash);
+        $url = $this->openTransaction($hash, $planHash);
         return $url;
 
     }
@@ -379,13 +389,13 @@ class MangoClass extends Controller
 
     }
 
-    public function openTransaction($hash){
+    public function openTransaction($hash, $planHash){
 
         $input = Request::all();
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-        $payIn = $this->createPayInCardWeb($hash);
+        $payIn = $this->createPayInCardWeb($hash, $planHash);
 
         //track user action
         //$tracking = new ApplaudTracking();
@@ -396,7 +406,7 @@ class MangoClass extends Controller
 
     }
 
-    public function createPayInCardWeb($hash) {
+    public function createPayInCardWeb($hash, $planHash) {
 
         try {
 
@@ -419,7 +429,7 @@ class MangoClass extends Controller
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
-            $payIn->ExecutionDetails->ReturnURL = "http://mvp.dev-basti.de/en/applaud/payed/escrow";
+            $payIn->ExecutionDetails->ReturnURL = "https://www.trustfy.io/en/payment-plan/".$planHash;
             $payIn->ExecutionDetails->Culture = "EN";
 
             $result = $this->mangopay->PayIns->Create($payIn);
