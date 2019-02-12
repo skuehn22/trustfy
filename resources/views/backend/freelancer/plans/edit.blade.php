@@ -454,8 +454,8 @@
                         processData: false,
                         success:function(data)
                         {
-                            alert("Plan was send!");
-
+                            $('#msg').html(data.success);
+                            $('#saved-modal').modal('show');
                         }
                     })
                 }
