@@ -345,7 +345,10 @@ class PlansManagementController extends Controller
 
 
 
-        return Redirect::to($lang."/freelancer/plans")->withInput()->with('success', 'The payment plan has been sent to your client.');
+        return response()->json([
+            'message'   => 'Your Payment Plan was send to your client'
+
+        ]);
 
     }
 

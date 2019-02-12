@@ -46,6 +46,7 @@ class MangoClass extends Controller
         
         $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
             ->first();
+
         //check if already an performer with this email exists
         if ($company->mango_id != 0) {
             $mango_freelancer = $this->getUser($company);
