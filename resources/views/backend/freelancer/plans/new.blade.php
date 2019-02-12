@@ -242,6 +242,26 @@
     </div>
 
 
+    <div class="modal fade" id="send-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog preview-modal" role="document"  style="width: 200px;">
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <span class="modal-title" id="exampleModalLabel">Your Payment Plan was send to your client!</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body preview-body">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success close-saved" data-dismiss="modal" aria-label="Close">Cool Beans =)</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="preview-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -400,6 +420,44 @@
 
 
         });
+
+        $("#send-plan").on("click", function() {
+
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('freelancer.plans.save') }}",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+
+                    var plan = $("#plan").val();
+                    event.preventDefault();
+                    $.ajax({
+                        url:"{{ route('freelancer.plan.send') }}",
+                        method:"GET",
+                        data: $('#upload_form').serialize(),
+                        dataType:'JSON',
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success:function(data)
+                        {
+                            $('#msg').html(data.success);
+                            $('#send-modal').modal('show');
+                        }
+                    })
+                }
+            })
+
+
+
+        });
+
 
 
 
