@@ -41,7 +41,7 @@ class PaymentPlanController extends Controller
 
         $blade["locale"] = App::getLocale();
 
-        $user = Auth::user();
+
 
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
@@ -51,6 +51,9 @@ class PaymentPlanController extends Controller
         $plan = $query->first();
 
         $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
             ->first();
 
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
