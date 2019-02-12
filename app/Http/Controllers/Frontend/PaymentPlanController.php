@@ -101,12 +101,12 @@ class PaymentPlanController extends Controller
     public function payCC($hash) {
 
         $blade["locale"] = App::getLocale();
-        $user = Auth::user();
+      
 
         $plan = Plans::where("hash", "=", $hash)
             ->first();
 
-        $company = Companies::where("id", "=", $user->service_provider_fk)
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
