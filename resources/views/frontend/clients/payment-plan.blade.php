@@ -240,7 +240,7 @@
                         <th class="text-left">DESCRIPTION</th>
                         <th class="text-right">DUE AT</th>
                         <th class="text-right">TOTAL</th>
-                        <th class="text-right">PAY</th>
+                        <th class="text-right">PAY POSITION</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -248,12 +248,15 @@
                         <td class="no">01</td>
                         <td class="text-left">
                             {{$milestone->name}}
-                            @if(isset($milestone->desc) && $milestone->desc!=""):  {{$milestone->desc}} @endif
+                            @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
 
                         <td class="qty"> {{$milestone->due_at}}</td>
                         <td class="qty"> {{ number_format($milestone->amount, 2) }} €</td>
-                        <td style="text-align: right;"><a href="/payment-plan/pay-by-card/{{$plan->hash}}" class="btn btn-success">Pay Milestone by Card</a></td>
+                        <td style="text-align: right;">
+                            <a href="/payment-plan/pay-by-card/{{$plan->hash}}" target="_blank" class="btn btn-secondary">By Card ( +2% Fee)</a>
+                            <a href="/payment-plan/pay-by-bank/{{$plan->hash}}" target="_blank" class="btn btn-success">By Bank Transfer (free)</a>
+                        </td>
                     </tr>
 
 

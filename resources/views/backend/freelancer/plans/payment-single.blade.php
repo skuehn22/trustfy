@@ -26,7 +26,7 @@
 
 </div>
 
-<div class="form-row py-2">
+<div class="form-row py-2 d-none">
 
     <label class="col-md-2 col-form-label" for="pay-due">To Pay At</label>
 
@@ -34,12 +34,12 @@
         <option value="0">select</option>
         <option value="1">Project Start</option>
         <option value="2">Project End</option>
-        <option value="3">Specific Date</option>
+        <option value="3" selected>Specific Date</option>
     </select>
 
 </div>
 
-<div class="form-row py-2 due d-none">
+<div class="form-row py-2 due">
     <label class="col-md-2 col-form-label" for="due-date">Due Date</label>
 
     @if(isset($milestones) && $milestones->due_at)
@@ -51,7 +51,7 @@
 
 </div>
 
-<div class="form-row py-2 amount d-none">
+<div class="form-row py-2 amount">
     <label class="col-md-2 col-form-label" for="single-amount">Amount</label>
 
     @if(isset($milestones) && $milestones->amount)

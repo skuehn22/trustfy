@@ -125,4 +125,28 @@ class PaymentPlanController extends Controller
 
     }
 
+    public function payBank($hash) {
+
+        $blade["locale"] = App::getLocale();
+
+
+        $plan = Plans::where("hash", "=", $hash)
+            ->first();
+
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+        $client = Clients::where("id", "=", $plan->clients_id_fk)
+            ->first();
+
+
+
+        return view('frontend.clients.bank-transfer', compact('blade', 'plan', 'user', 'company', 'milestone'));
+
+
+    }
+
 }

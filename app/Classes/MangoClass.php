@@ -371,7 +371,6 @@ class MangoClass extends Controller
             $payin->hash = $hash;
             $payin->author_id = $author;
             $payin->credited_wallet = $credited_wallet;
-            $payin->amount = $amount + ($amount * 0.08);
             $payin->payment_type = "CARD";
             $payin->execution_type = "WEB";
             $payin->save();
