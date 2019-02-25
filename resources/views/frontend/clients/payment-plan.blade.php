@@ -202,8 +202,7 @@
         </div>
         <hr>
     </div>-->
-    <div class="col-md-8 invoice overflow-auto">
-        <div style="min-width: 600px">
+    <div class="col-xs-12 col-sm-12 col-md-8  invoice overflow-auto">
             <header>
                 <div class="row">
                     <div class="col">
@@ -315,7 +314,7 @@
                 Payment Plan was created on a computer and is valid without the signature and seal.
                 <p class="more"><a href="https://www.trustfy.io" target="_blank">Learn more about trustfy.io</a></p>
             </footer>
-        </div>
+
         <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
         <div></div>
     </div>
