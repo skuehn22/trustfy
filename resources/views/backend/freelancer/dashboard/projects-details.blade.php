@@ -12,7 +12,7 @@
 </div>
 <div class="row pt-3">
     <div class="col-md-3">
-        <strong>Created at:</strong>
+        <strong>Created on:</strong>
     </div>
     <div class="col-md-3">
         {{date('d.m.Y', strtotime($project->created_at))}}

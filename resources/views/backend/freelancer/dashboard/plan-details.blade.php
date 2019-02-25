@@ -6,7 +6,7 @@
 </div>
 <div class="row">
     <div class="col-md-2 text-left">
-        <strong>Plan Typ:</strong>
+        <strong>Plan Type:</strong>
     </div>
     <div class="col-md-4">
         <span>Single Payment/Deposit</span>
