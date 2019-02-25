@@ -266,7 +266,8 @@
             </div>
             <div class="col-md-2">
                 <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;">Terms</a></p>
-                <p><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
+                <p style="padding-bottom: 10px;"><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
+                <p><a href="/en/faq" style="color:#fff;">FAQ</a></p>
             </div>
             <div class="col-md-7">
                 <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">

@@ -20,11 +20,15 @@
             font-size: 16px;
         }
 
+        body{
+            padding-bottom: 18rem;
+        }
+
     </style>
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container" style="background-color: #ddd;">
         <br><br>
         <div class="row">
             <div class="col-md-12">
@@ -47,7 +51,7 @@
                 <p>If you&rsquo;re not 100% comfortable paying your freelancer up front, then don&rsquo;t! It takes you 2 minutes to pay into our secure account and 1 minute to release those funds when you&rsquo;re happy. It doesn&rsquo;t get any easier than that.</p>
                 <p>&nbsp;</p>
                 <h3>So that means my freelancer can&rsquo;t access the money I&rsquo;ve paid into Trustfy?</h3>
-                <p>Exactly, your freelancer can&rsquo;t touch that money until you release it. We securely hold your money until your freelancer has finished the project or a project milestone- whatever you have agreed to. Once you&rsquo;re satisfied with their work, you simply (INSERT DETAILS OF WHERE TO PRESS RELEASE).</p>
+                <p>Exactly, your freelancer can&rsquo;t touch that money until you release it. We securely hold your money until your freelancer has finished the project or a project milestone- whatever you have agreed to. Once you&rsquo;re satisfied with their work, you simply.</p>
                 <p>You don&rsquo;t have to pay up front for work you haven&rsquo;t seen and your freelancer can feel great about starting work with you.</p>
                 <p>&nbsp;</p>
                 <h3>How can I pay into Trustfy&rsquo;s secure account?</h3>
