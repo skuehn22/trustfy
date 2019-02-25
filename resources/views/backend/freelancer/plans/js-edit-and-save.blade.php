@@ -202,12 +202,11 @@
             $("#clients").on('change', function() {
                 document.getElementById("projects").innerHTML = "";
                 action('projects/by-client',  $(this).val());
-                insertdata('clients/get-by-id-client',  $(this).val());
+
             });
 
             $("#projects-dropdown").on('change', function() {
                 //action('projects/by-client',  $(this).val());
-                insertdata('projects/get-by-id',  $(this).val());
             });
 
             $( function() {
