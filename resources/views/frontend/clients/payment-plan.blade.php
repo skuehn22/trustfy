@@ -255,7 +255,7 @@
 
                             <form action="/payment-plan/pay-by-card/{{$plan->hash}}" id="paymentform">
                                 <div class="input-group">
-                                <select class="form-control" name="paymenttyp">
+                                <select class="form-control" name="paymenttyp" id="paymenttyp">
                                     <option>Select Payment Typ</option>
                                     <option value="2">Bank Transfer (free)</option>
                                     <option value="1">Credit Card (+2%)</option>
@@ -338,7 +338,7 @@
     <script>
 
     //loads projects for selected client
-    $(".paymenttyp").on('change', function() {
+    $("#paymenttyp").on('change', function() {
 
         if($(this).val() == 1){
                 $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
