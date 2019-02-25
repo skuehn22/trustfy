@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body style="font-size: 12px;">
 <!-- Navigation -->
 
 @yield('content')

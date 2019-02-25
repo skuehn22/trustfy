@@ -192,8 +192,7 @@
 
 @section('content')
 
-    <!--Author      : @arboshiki-->
-<div class="row" id="invoice" style=" float: none; display: block; margin: 0 auto;">
+<div class="row" id="invoice">
 <!--
     <div class="toolbar hidden-print">
         <div class="text-right">
@@ -202,7 +201,7 @@
         </div>
         <hr>
     </div>-->
-    <div class="col-xs-12 col-sm-12 col-md-8  invoice overflow-auto">
+    <div class="col col-lg-8 invoice overflow-auto">
             <header>
                 <div class="row">
                     <div class="col">
@@ -245,7 +244,7 @@
                     <tbody>
                     <tr>
                         <td class="no">01</td>
-                        <td class="text-left">
+                        <td class="text-left" style="width:40%;">
                             {{$milestone->name}}
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
@@ -253,8 +252,20 @@
                         <td class="qty"> {{$milestone->due_at}}</td>
                         <td class="qty"> {{ number_format($milestone->amount, 2) }} €</td>
                         <td style="text-align: right;">
-                            <a href="/payment-plan/pay-by-card/{{$plan->hash}}" target="_blank" class="btn btn-secondary">By Card ( +2% Fee)</a>
-                            <a href="/payment-plan/pay-by-bank/{{$plan->hash}}" target="_blank" class="btn btn-success">By Bank Transfer (free)</a>
+
+                            <form action="/payment-plan/pay-by-card/{{$plan->hash}}" id="paymentform">
+                                <div class="input-group">
+                                <select class="form-control" name="paymenttyp">
+                                    <option>Select Payment Typ</option>
+                                    <option value="2">Bank Transfer (free)</option>
+                                    <option value="1">Credit Card (+2%)</option>
+                                </select>
+                                    <span class="input-group-btn" style="padding-left: 5px;">
+                                        <button class="btn btn-success">Pay now</button>
+                                    </span>
+                                </div>
+                            </form>
+
                         </td>
                     </tr>
 
@@ -322,3 +333,26 @@
 
 
 @endsection
+
+@section('js')
+    <script>
+
+    //loads projects for selected client
+    $(".paymenttyp").on('change', function() {
+
+        if($(this).val() == 1){
+                $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
+        }else{
+            if($(this).val() == 2){
+                $('#paymentform').attr('action', '/payment-plan/pay-by-bank/{{$plan->hash}}');
+            }else{
+                $('#paymentform').removeAttr('action');
+            }
+        }
+
+    });
+
+    </script>
+
+@endsection
+
