@@ -37,6 +37,9 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
+                   <a class="nav-link" href="/faq">FAQ</a>
+               </li>-->
+                <li class="nav-item">
                     <a class="nav-link" href="/login">Sign in</a>
                </li>
                 <!--
