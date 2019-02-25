@@ -36,7 +36,9 @@
 
             $("#typ").val( {{$plan->typ}} );
 
-            getPlanTyp({{$plan->id}});
+            @if(isset($milestones_edit))
+                getPlanTyp({{$plan->id}});
+            @endif
 
         });
 
@@ -158,11 +160,6 @@
             $( "#creation-date" ).datepicker();
         } );
 
-        //loads projects for selected client
-        $("#creation-date").on('change', function() {
-            document.getElementById("marker-creation-date").innerHTML = "Date: " + $(this).val();
-        });
-
 
         //loads projects for selected client
         $("#typ").on('change', function() {
@@ -208,7 +205,7 @@
                 insertdata('clients/get-by-id-client',  $(this).val());
             });
 
-            $("#projects-dropwdowm").on('change', function() {
+            $("#projects-dropdown").on('change', function() {
                 //action('projects/by-client',  $(this).val());
                 insertdata('projects/get-by-id',  $(this).val());
             });
@@ -306,21 +303,27 @@
         }
 
         xmlhttp.onreadystatechange = function() {
+
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                 document.getElementById("plan-typ-response").innerHTML = xmlhttp.responseText;
 
                 @if(isset($milestones_edit->due_typ))
                     $("#pay-due").val({{$milestones_edit->due_typ}});
+                    $(".amount").removeClass("d-none");
+                    getDocs({{$plan->id}});
                 @endif
-                        
-                $(".amount").removeClass("d-none");
-                getDocs({{$plan->id}});
+
                 loadScript();
             }
         };
 
-        xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/get-plan-typ/?typedit="+id, true);
+        @if(isset($milestones_edit->due_typ))
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/get-plan-typ/?typedit="+id, true);
+        @else
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/get-plan-typ/?typ="+id, true);
+        @endif
+
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send();
     }

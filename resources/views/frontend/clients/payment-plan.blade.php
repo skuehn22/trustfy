@@ -17,13 +17,14 @@
             position: relative;
             background-color: #FFF;
             min-height: 680px;
-            padding: 15px
+            padding: 50px;
+            border: 1px solid #d4d4d4
         }
 
         .invoice header {
             padding: 10px 0;
             margin-bottom: 20px;
-            border-bottom: 1px solid #006600
+            border-bottom: 1px solid #28a745
         }
 
         .invoice .company-details {
@@ -33,11 +34,11 @@
         .invoice .company-details .name {
             margin-top: 0;
             margin-bottom: 0;
-            color: #006600;
+            color: #9d9d9d;
         }
 
         .invoice .contacts {
-            margin-bottom: 20px
+            margin-bottom: 50px
         }
 
         .invoice .invoice-to {
@@ -55,11 +56,12 @@
 
         .invoice .invoice-details .invoice-id {
             margin-top: 0;
-            color: #006600
+            color: #9d9d9d;
         }
 
         .invoice main {
-            padding-bottom: 50px
+            padding-bottom: 50px;
+            padding-top: 30px;
         }
 
         .invoice main .thanks {
@@ -69,7 +71,7 @@
 
         .invoice main .notices {
             padding-left: 6px;
-            border-left: 6px solid #006600
+            border-left: 6px solid #28a745;
         }
 
         .invoice main .notices .notice {
@@ -98,19 +100,18 @@
         .invoice table td h3 {
             margin: 0;
             font-weight: 400;
-            color: #006600;
+            color: #28a745;
             font-size: 1.2em
         }
 
         .invoice table .qty,.invoice table .total,.invoice table .unit {
             text-align: right;
-            font-size: 1.2em
         }
 
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
-            background: #006600
+            background: #28a745;
         }
 
         .invoice table .unit {
@@ -118,7 +119,7 @@
         }
 
         .invoice table .total {
-            background: #006600;
+            background: #28a745;
             color: #fff
         }
 
@@ -143,11 +144,20 @@
         .invoice table tfoot tr:last-child td {
             color: #006600;
             font-size: 1.4em;
-            border-top: 1px solid #006600
+            border-top: 1px solid #28a745;
         }
 
         .invoice table tfoot tr td:first-child {
             border: none
+        }
+
+        .more{
+            padding-top: 20px;
+        }
+
+        .more a{
+            color: #9d9d9d;
+            text-decoration: underline;
         }
 
         .invoice footer {
@@ -183,7 +193,7 @@
 @section('content')
 
     <!--Author      : @arboshiki-->
-<div id="invoice">
+<div class="row" id="invoice" style=" float: none; display: block; margin: 0 auto;">
 <!--
     <div class="toolbar hidden-print">
         <div class="text-right">
@@ -192,7 +202,7 @@
         </div>
         <hr>
     </div>-->
-    <div class="invoice overflow-auto">
+    <div class="col-md-8 invoice overflow-auto">
         <div style="min-width: 600px">
             <header>
                 <div class="row">
@@ -230,19 +240,15 @@
                         <th class="text-left">DESCRIPTION</th>
                         <th class="text-right">DUE AT</th>
                         <th class="text-right">TOTAL</th>
-                        <th class="text-right">Pay</th>
+                        <th class="text-right">PAY</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td class="no">01</td>
                         <td class="text-left">
-                            <h3>
-                                {{$milestone->name}}
-                            </h3>
-                            <h3>
-                                {{$milestone->desc}}
-                            </h3>
+                            {{$milestone->name}}
+                            @if(isset($milestone->desc) && $milestone->desc!=""):  {{$milestone->desc}} @endif
                         </td>
 
                         <td class="qty"> {{$milestone->due_at}}</td>
@@ -273,9 +279,28 @@
                     -->
                 </table>
 
-                <div style="float: right;">
+                @if(isset($docs) && count($docs)>0)
+
+                <div class="docs">
+
+                    Please note the following binding documents:
+
+                    @if(isset($docs))
+                        @foreach($docs as $doc)
+
+                            <p class="{{$doc->id}}">
+                                <a target="_blank" href="/uploads/companies/contracts/{{$doc->filename}}">{{$doc->name}}</a>
+                                <a href="#" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
+                                    <i class="fas fa-trash green"></i>
+                                </a>
+                            </p>
+
+                        @endforeach
+                    @endif
 
                 </div>
+
+                @endif
 
                 <div class="thanks">Thank you!</div>
                 <div class="notices">
@@ -285,6 +310,7 @@
             </main>
             <footer>
                 Payment Plan was created on a computer and is valid without the signature and seal.
+                <p class="more"><a href="https://www.trustfy.io" target="_blank">Learn more about trustfy.io</a></p>
             </footer>
         </div>
         <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->

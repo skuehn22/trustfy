@@ -97,8 +97,6 @@ class PlansManagementController extends Controller
             ->where("delete", "=", "0")
             ->get();
 
-
-
         $types = PlansTypes::where("delete", "=", "0")
         ->lists("name","id");
 
@@ -200,6 +198,10 @@ class PlansManagementController extends Controller
 
             if(isset($input['title-milestone'])){
                 $milestone->name = $input['title-milestone'];
+            }
+
+            if(isset($input['desc-milestone'])){
+                $milestone->desc = $input['desc-milestone'];
             }
 
             if(isset($input['single-amount'])){

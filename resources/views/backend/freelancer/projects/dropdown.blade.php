@@ -1,9 +1,9 @@
 
 <div class="form-row py-2">
-    <label class="col-md-2 col-form-label" for="projects-dropwdowm">Projects</label>
+    <label class="col-md-2 col-form-label" for="projects-dropdown">Projects</label>
 
     @if(count($projects)>0)
-        <select name="projects-dropdown" id="projects-dropwdowm" class="col-md-3">
+        <select name="projects-dropdown" id="projects-dropdown" class="col-md-3">
             <option value="0">select</option>
             @foreach($projects as $project)
                 <option value="{{$project->id}}">{{$project->name}}</option>

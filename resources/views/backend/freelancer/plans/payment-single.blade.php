@@ -13,6 +13,21 @@
 
 <div class="form-row py-2">
 
+    <label class="col-md-2 col-form-label" for="creation-date">
+        Description <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Explain your client what is the milestone about."></i>
+    </label>
+
+
+    @if(isset($milestones) && $milestones->desc)
+        <textarea class="form-control col-md-3" rows="4"  name="desc-milestone" id="desc-milestone">{{$milestones->desc}}</textarea>
+    @else
+        <textarea class="form-control col-md-3" rows="4"  name="desc-milestone" id="desc-milestone"></textarea>
+    @endif
+
+</div>
+
+<div class="form-row py-2">
+
     <label class="col-md-2 col-form-label" for="pay-due">To Pay At</label>
 
     <select class="form-control col-md-3" name="pay-due" id="pay-due">

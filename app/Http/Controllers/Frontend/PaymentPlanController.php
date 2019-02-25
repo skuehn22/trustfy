@@ -41,8 +41,6 @@ class PaymentPlanController extends Controller
 
         $blade["locale"] = App::getLocale();
 
-
-
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
@@ -59,8 +57,12 @@ class PaymentPlanController extends Controller
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
+        $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
+            ->get();
 
-        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone'));
+
+
+        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs'));
     }
 
     public function loadPreview($id) {

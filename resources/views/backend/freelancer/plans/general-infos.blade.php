@@ -55,9 +55,9 @@
     @if(isset($projects))
 
         <div class="form-row py-2">
-            <label class="col-md-2 col-form-label" for="projects-dropwdowm">Projects</label>
+            <label class="col-md-2 col-form-label" for="projects-dropdown">Projects</label>
             @if(count($projects)>0)
-                {!! Form::select('projects-dropwdowm', $projects, $selected_project->id , ['class' => 'form-control col-md-3', 'id' => 'projects-dropwdowm', 'placeholder' => 'select']) !!}
+                {!! Form::select('projects-dropdown', $projects, $selected_project->id , ['class' => 'form-control col-md-3', 'id' => 'projects-dropdown', 'placeholder' => 'select']) !!}
             @else
                 <div class="pt-2">
                     No projects for this client yet. <a href="/{{$blade["ll"]}}/freelancer/projects/new">Create Project</a>

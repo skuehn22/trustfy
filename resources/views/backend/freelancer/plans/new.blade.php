@@ -171,7 +171,8 @@
 
 
                     <div id="smartwizard" class="sw-main sw-theme-default">
-                        <ul id="arrows" class="nav nav-tabs step-anchor">
+
+                     <ul id="arrows" class="nav nav-tabs step-anchor">
                             <li><a href="#step-1">Step 1<br /><small>General Informations</small></a></li>
                             <li><a href="#step-2">Step 2<br /><small>Configuration Payment Plan</small></a></li>
                             <li><a href="#step-3">Step 3<br /><small>Upload Documents</small></a></li>

@@ -1,12 +1,13 @@
-<div class="form-row py-2 pt-0 pl-0 ml-0">
-    <h5 class="pt-0">Add Informations</h5>
-</div>
+<div class="col-md-9 p-0">
+    <div class="form-row py-2 pt-0 pl-0 ml-0">
+        <h5 class="pt-0">Add Informations</h5>
+    </div>
 
-<p style="font-size: 11px;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-<hr>
-<div class="alert" id="message" style="display: none"></div>
-<div class="row">
-    <div class="col-md-7">
+    <p style="font-size: 11px;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    <hr>
+    <div class="alert" id="message" style="display: none"></div>
+    <div class="row">
+        <div class="col-md-7" style="background-color: #ddd;">
 
             <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
             {{ csrf_field() }}
@@ -40,21 +41,23 @@
                 </div>
             </div>
 
+        </div>
+        <div class="col-md-5">
+            <div id="uploaded_image" class="d-none">
+                <span style="font-weight: 500;">Attached Documents</span>
+            </div>
+        </div>
     </div>
-    <div class="col-md-5">
-        <div id="uploaded_image" class="d-none">
-            <span style="font-weight: 500;">Attached Documents</span>
+    <div class="form-row py-2">
+        <div class="col-md-12 pt-1 text-right">
+            <div class="btn-group sw-btn-group" role="group" >
+                <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
+                <button class="btn btn-success next-btn" id="next-btn" type="button">Next</button>
+            </div>
         </div>
     </div>
 </div>
-<div class="form-row py-2">
-    <div class="col-md-12 pt-1 text-right">
-        <div class="btn-group sw-btn-group" role="group" >
-            <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
-            <button class="btn btn-success next-btn" id="next-btn" type="button">Next</button>
-        </div>
-    </div>
-</div>
+
 
 
 <script>
