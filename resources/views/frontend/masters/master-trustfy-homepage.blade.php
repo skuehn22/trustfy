@@ -198,7 +198,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto" style="text-align: center; ">
-                <h4>Be the first to test new features, stay up to date and help us build the product you want!</h4>
+                <h4>Sign up for the news!</h4>
                 <div class="badges">
 
                     <form class="form-inline" method="POST" action="/newsletter-sign-up">
