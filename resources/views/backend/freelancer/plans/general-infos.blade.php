@@ -20,10 +20,11 @@
     </label>
 
     @if($plan->date)
-        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3" value="{{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}}">
+        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3" value="{{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}}" required>
     @else
-        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3">
+        <input type="text" id="creation-date" name="creation-date" class="form-control col-md-3" required>
     @endif
+    <div class="help-block with-errors"></div>
 
 </div>
 <div class="form-row py-2">

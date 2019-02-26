@@ -14,7 +14,6 @@
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 
-
     <link href="{{ asset('css/backend/freelancer/sb-admin.css')}}" rel="stylesheet">
     <link href="{{ asset('css/backend/freelancer/smart_wizard.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css')}}" rel="stylesheet" type="text/css" />
@@ -22,19 +21,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
-
-
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
 
     @yield('css')
-
 </head>
 
 <body id="page-top">
@@ -149,8 +137,9 @@
     <div id="content-wrapper">
 
         <div class="container-fluid">
-
             @yield('content')
+        </div>
+
 
         </div>
         <!-- /.container-fluid -->
@@ -198,10 +187,11 @@
 </body>
 
 <!-- Include jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<!-- Include SmartWizard JavaScript source -->
+
 <script src="/js/freelancer/jquery.smartWizard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
 
@@ -210,7 +200,15 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function () {
+
+
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+
+$(document).ready(function () {
 
         var url = "{{env("APP_SSL")}}://" + window.location.hostname + window.location.pathname;
         //alert(url);
@@ -227,6 +225,11 @@
                 $(this).parents().addClass('active');
             }
         });
+
+    $(function () {
+        $('#color-picker-component').colorpicker();
+    });
+
     });
 
     $(function () {

@@ -169,7 +169,7 @@
         <div class="row">
             <div class="col-md-12 p-0">
 
-
+                    <form action="#" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
                     <div id="smartwizard" class="sw-main sw-theme-default">
 
                      <ul id="arrows" class="nav nav-tabs step-anchor">
@@ -197,7 +197,7 @@
 
                         <div class="sw-container tab-content" style=" padding-left: 40px;">
 
-                            <form method="post" id="upload_form" enctype="multipart/form-data">
+                            <!--<form method="post" id="upload_form" enctype="multipart/form-data">-->
                             <div id="step-1" class="tab-pane step-content">
                                 @include('backend.freelancer.plans.general-infos')
                             </div>
@@ -213,9 +213,10 @@
                                 @include('backend.freelancer.plans.finishing')
                             </div>
                                 <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
-                            </form>
+
                         </div>
                     </div>
+                    </form>
             </div>
         </div>
 
@@ -300,5 +301,8 @@
 
 @stop
 @section("javascript")
+    <!-- Include jQuery Validator plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+
     @include('backend.freelancer.plans.js-edit-and-save')
 @stop

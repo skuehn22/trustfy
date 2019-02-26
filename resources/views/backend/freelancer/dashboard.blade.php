@@ -135,7 +135,7 @@
 
 
     <!-- Setup Modal -->
-    <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop='static' data-keyboard='false'>
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body" id="modal-body">
@@ -431,25 +431,25 @@
             $('#setup-modal').modal('hide');
             $('#demo-modal').modal('show');
 
-            $(".demo-company-loading").addClass("").delay(1000).queue(function(next){
+            $(".demo-company-loading").addClass("").delay(1500).queue(function(next){
                 $(".demo-company-loading").addClass("d-none")
                 $(".demo-company-done").removeClass("d-none")
                 next();
             });
 
-            $(".demo-clients-loading").addClass("").delay(2000).queue(function(next){
+            $(".demo-clients-loading").addClass("").delay(2500).queue(function(next){
                 $(".demo-clients-loading").addClass("d-none")
                 $(".demo-clients-done").removeClass("d-none")
                 next();
             });
 
-            $(".demo-projects-loading").addClass("").delay(3000).queue(function(next){
+            $(".demo-projects-loading").addClass("").delay(3500).queue(function(next){
                 $(".demo-projects-loading").addClass("d-none")
                 $(".demo-projects-done").removeClass("d-none")
                 next();
             });
 
-            $(".demo-plans-loading").addClass("").delay(4000).queue(function(next){
+            $(".demo-plans-loading").addClass("").delay(4500).queue(function(next){
                 $(".demo-plans-loading").addClass("d-none")
                 $(".demo-plans-done").removeClass("d-none")
                 $("#get-started").removeClass("btn-disable").addClass("btn-classic")

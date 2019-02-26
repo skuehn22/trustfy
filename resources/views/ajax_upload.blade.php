@@ -17,41 +17,8 @@
         <span id="uploaded_image">
             @if(isset($company->logo))
                 <img src="/uploads/companies/logo/{{$company->logo or ''}}" class="img-thumbnail" width="300">
+                <a style="color: #1b1e21" href="#" id="delete-image"><i class="fas fa-minus-circle"></i> delete</a>
             @endif
         </span>
     </div>
 </div>
-
-
-
-
-<script>
-    $(document).ready(function(){
-
-        $('#upload_form').on('submit', function(event){
-
-
-
-            event.preventDefault();
-            $.ajax({
-                url:"{{ route('ajaxupload.action') }}",
-                method:"POST",
-                data:new FormData(this),
-                dataType:'JSON',
-                contentType: false,
-                cache: false,
-                processData: false,
-                success:function(data)
-                {
-                    $('#uploaded_image').html('');
-                    $('#message').css('display', 'block');
-                    $('#message').html(data.message);
-                    $('#message').addClass(data.class_name);
-                    $('.old_image').remove();
-                    $('#uploaded_image').html(data.uploaded_image);
-                }
-            })
-        });
-
-    });
-</script>

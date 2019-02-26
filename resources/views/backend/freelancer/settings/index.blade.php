@@ -2,14 +2,28 @@
 @section('seo')
 @stop
 @section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.6/css/bootstrap-colorpicker.css">
+
     <style>
 
     .modal-content {
         min-height: 200px;
     }
 
+    .input-group-addon {
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: #555;
+        text-align: center;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
     </style>
+
 @stop
 @section('content')
     <div class="settings">
@@ -74,6 +88,7 @@
 
 @stop
 @section("javascript")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.6/js/bootstrap-colorpicker.js"></script>
     <script>
 
         $( document ).ready(function() {
@@ -86,6 +101,52 @@
             $(".load-content").click(function() {
                 getContent($(this).attr('id'));
             })
+
+            $('#upload_form').on('submit', function(event){
+
+                event.preventDefault();
+                $.ajax({
+                    url:"{{ route('ajaxupload.action') }}",
+                    method:"POST",
+                    data:new FormData(this),
+                    dataType:'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(data)
+                    {
+                        $('#uploaded_image').html('');
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
+                        $('#message').addClass(data.class_name);
+                        $('.old_image').remove();
+                        $('#uploaded_image').html(data.uploaded_image);
+                        loadScrips();
+                    }
+                })
+            });
+
+            $('#delete-image').on('click', function(event){
+
+                alert("test");
+
+                var doc = $(this).data('name');
+
+                event.preventDefault();
+                $.ajax({
+                    url:"{{ route('ajaxupload.delete') }}",
+                    method:"GET",
+                    data: { variable: doc },
+                    dataType:'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(data)
+                    {
+                        $('#uploaded_image').html(" ");
+                    }
+                })
+            });
 
         }
 
@@ -172,6 +233,6 @@
             $("#delete-modal").modal('show');
         });
 
-    </script>
 
+    </script>
 @stop

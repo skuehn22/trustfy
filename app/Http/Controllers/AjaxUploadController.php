@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DatabaseModels\PlanDocs;
+
+
 use Illuminate\Http\Request;
 use Validator, Auth, DateTime;
 use App\DatabaseModels\Users;
@@ -20,6 +22,7 @@ class AjaxUploadController extends Controller
     {
         return view('ajax_file_upload');
     }
+
 
     function action(Request $request)
     {
@@ -40,7 +43,7 @@ class AjaxUploadController extends Controller
             $new_name = $user->id. $filename . '.' . $image->getClientOriginalExtension();
 
             $company = Companies::where('id', '=', $user->service_provider_fk )
-            ->first();
+                ->first();
 
             if(isset($company)){
                 $company->logo = $new_name;
@@ -58,7 +61,7 @@ class AjaxUploadController extends Controller
             $image->move(public_path('uploads/companies/logo'), $new_name);
             return response()->json([
                 'message'   => 'Image Upload Successfully',
-                'uploaded_image' => '<img src="/uploads/companies/logo/'.$new_name.'" class="img-thumbnail" width="300" />',
+                'uploaded_image' => '<img src="/uploads/companies/logo/'.$new_name.'" class="img-thumbnail" width="300" /> <a href="#" style="color: #1b1e21" id="delete-image"><i class="fas fa-minus-circle"></i> delete</a>',
                 'class_name'  => 'alert-success'
             ]);
         }
@@ -70,6 +73,25 @@ class AjaxUploadController extends Controller
                 'class_name'  => 'alert-danger'
             ]);
         }
+    }
+
+    function delete(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $company = Companies::where('id', '=', $user->service_provider_fk )
+            ->first();
+
+        $company->logo = null;
+        $company->save();
+
+        return response()->json([
+            'message'   => 'Image Upload Successfully',
+            'uploaded_image' => '<img src="/uploads/companies/logo/'.$user.'" class="img-thumbnail" width="300" />',
+            'class_name'  => 'alert-success'
+        ]);
+
     }
 
     function contractUpload(Request $request)

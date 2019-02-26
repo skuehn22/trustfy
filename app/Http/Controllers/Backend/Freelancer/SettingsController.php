@@ -103,6 +103,7 @@ class SettingsController extends Controller
         $company->address = $input["address"];
         $company->country = $input["country"];
         $company->users_fk =  $blade["user"]->id;
+        $company->color =  $input["color"];
         $user = Users::find($blade["user"]->id);
 
         if($company->mango_id == null){

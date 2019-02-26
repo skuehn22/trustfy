@@ -40,10 +40,15 @@
                 <label class="col-md-3 col-form-label" for="city">City</label>
                 <input id="city" type="text" class="form-control col-md-7" name="city" value="{{ $company->city or "" }}" placeholder="Your Company City" required>
             </div>
-
             <div class="form-row py-2">
                 <label class="col-md-3 col-form-label" for="country">Country</label>
                 @include('backend.settings.countries', ['default' => $blade['user']->country])
+            </div>
+            <div class="form-row py-2">
+                <label class="col-md-3 col-form-label" for="city">Your Color</label>
+                <div id="color-picker-component" class="input-group colorpicker-component col-md-7 p-0">
+                    <input type="text" value="{{ $company->color or "#006600" }}" class="form-control  col-md-12" name="color"/><span class="input-group-addon"><i></i></span>
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-md-10 float-left text-left pt-5 pl-0">
@@ -54,6 +59,7 @@
             </div>
         </div>
     </form>
+
     <div class="col-md-6">
         @include('ajax_upload')
     </div>
