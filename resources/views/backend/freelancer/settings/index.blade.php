@@ -97,6 +97,10 @@
 
         function loadScrips(){
 
+            $(function () {
+                $('#color-picker-component').colorpicker();
+            });
+
             //loads content for shortcuts
             $(".load-content").click(function() {
                 getContent($(this).attr('id'));
@@ -128,8 +132,6 @@
 
             $('#delete-image').on('click', function(event){
 
-                alert("test");
-
                 var doc = $(this).data('name');
 
                 event.preventDefault();
@@ -143,6 +145,9 @@
                     processData: false,
                     success:function(data)
                     {
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
+                        $('#message').addClass(data.class_name);
                         $('#uploaded_image').html(" ");
                     }
                 })

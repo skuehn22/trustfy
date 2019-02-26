@@ -87,9 +87,9 @@ class AjaxUploadController extends Controller
         $company->save();
 
         return response()->json([
-            'message'   => 'Image Upload Successfully',
+            'message'   => 'Image Deleted Successfully',
             'uploaded_image' => '<img src="/uploads/companies/logo/'.$user.'" class="img-thumbnail" width="300" />',
-            'class_name'  => 'alert-success'
+            'class_name'  => 'alert-info'
         ]);
 
     }

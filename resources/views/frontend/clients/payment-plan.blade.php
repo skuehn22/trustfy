@@ -168,6 +168,10 @@
             padding: 8px 0
         }
 
+        .pay-now{
+            font-size: 15px;
+        }
+
         @media print {
             .invoice {
                 font-size: 11px!important;
@@ -201,19 +205,26 @@
         </div>
         <hr>
     </div>-->
-    <div class="col col-lg-8 invoice overflow-auto">
+    @if($preview)
+        <div class="col col-lg-12 invoice overflow-auto">
+    @else
+        <div class="col col-lg-8 invoice overflow-auto">
+    @endif
+
             <header>
                 <div class="row">
                     <div class="col">
-                         <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
+                         @if(isset($company->logo))
+                            <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
+                         @endif
                     </div>
                     <div class="col company-details">
                         <h3 class="name">
-                                {{$company->name}}
+                                {!! $company->name or '<i>please fill in</i>' !!}
                         </h3>
-                        <div>  {{$company->address}}, {{$company->city}} </div>
-                        <div>  {{$user->email}}</div>
-                        <div> {{$user->phone}}</div>
+                        <div>  {{$company->address or ''}}, {{$company->city or ''}} </div>
+                        <div>  {{$user->email or ''}}</div>
+                        <div> {{$user->phone or ''}}</div>
                     </div>
                 </div>
             </header>
@@ -221,9 +232,13 @@
                 <div class="row contacts">
                     <div class="col invoice-to">
                         <div class="text-gray-light">Plan for:</div>
-                        <h2 class="to">{{$plan->firstname}} {{$plan->lastname}}</h2>
-                        <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
-                        <div class="email">{{$plan->mail}}</div>
+                        @if(isset($plan->lastname) && $plan->lastname!=" ")
+                            <h2 class="to">{{$plan->firstname}} {{$plan->lastname}}</h2>
+                            <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
+                            <div class="email">{{$plan->mail}}</div>
+                        @else
+                            <i>please fill in</i>
+                        @endif
                     </div>
                     <div class="col invoice-details">
                         <h1 class="invoice-id">Payment Plan</h1>
@@ -245,27 +260,55 @@
                     <tr>
                         <td class="no">01</td>
                         <td class="text-left" style="width:40%;">
-                            {{$milestone->name}}
+                            {!!  $milestone->name or '<i>please fill in</i>'!!}
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
 
-                        <td class="qty"> {{$milestone->due_at}}</td>
-                        <td class="qty"> {{ number_format($milestone->amount, 2) }} €</td>
-                        <td style="text-align: right;">
+                        <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
+                        <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount or '', 2) }} € @else  <i>please fill in</i> @endif</td>
+                        <td>
 
-                            <form action="/payment-plan/pay-by-card/{{$plan->hash}}" id="paymentform">
-                                <div class="input-group">
-                                <select class="form-control" name="paymenttyp" id="paymenttyp">
-                                    <option>Select Payment Typ</option>
-                                    <option value="2">Bank Transfer (free)</option>
-                                    <option value="1">Credit Card (+2%)</option>
-                                </select>
-                                    <span class="input-group-btn" style="padding-left: 5px;">
-                                        <button class="btn btn-success">Pay now</button>
-                                    </span>
+                            @if(isset($milestone->bank_transfer))
+                            <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
+                                <div class="row">
+                                    <div class="col-md-7">
+
+                                        @if($milestone->bank_transfer == 1)
+
+                                        @endif
+
+                                        @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
+                                            <div class="radio" style="padding-top: 10px;">
+                                                <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
+                                            </div>
+                                        @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
+
+                                            <div class="radio">
+                                                <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                            </div>
+
+                                            <div class="radio">
+                                                <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
+                                            </div>
+
+                                        @else
+                                            <div class="radio" style="padding-top: 10px;">
+                                                <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                            </div>
+                                        @endif
+
+
+                                    </div>
+                                    <div class="col-md-5"  style="text-align: right;">
+                                        <span class="input-group-btn" style="padding-left: 5px;">
+                                            <button class="btn btn-success pay-now">Pay now</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </form>
-
+                            @else
+                                <i>please fill in</i>
+                            @endif
                         </td>
                     </tr>
 
@@ -329,7 +372,7 @@
         <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
         <div></div>
     </div>
-</div>
+</div></div>
 
 
 @endsection
@@ -338,7 +381,9 @@
     <script>
 
     //loads projects for selected client
-    $("#paymenttyp").on('change', function() {
+
+    $('input[type=radio][name=paymenttyp]').change(function() {
+
 
         if($(this).val() == 1){
                 $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');

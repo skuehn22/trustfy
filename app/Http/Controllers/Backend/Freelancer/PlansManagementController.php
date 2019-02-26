@@ -166,7 +166,7 @@ class PlansManagementController extends Controller
         if(isset($input['projects-dropdown']))
             $plan->projects_id_fk = $input['projects-dropdown'];
 
-        if(isset($input['creation-date'])){
+        if(isset($input['creation-date']) && $input['creation-date']!=""){
             $creation = date("Y-m-d", strtotime($input['creation-date']) );
             $plan->date = $creation;
         }
@@ -174,11 +174,7 @@ class PlansManagementController extends Controller
         if(isset($input['typ']))
             $plan->typ = $input['typ'];
 
-        if(isset($input['cc']) && $input['cc']=="true")
-            $plan->credit_card = 1;
 
-        if(isset($input['bt']) && $input['bt']=="true")
-            $plan->bank_transfer = 1;
 
         if(isset($input['comment']))
             $plan->comment = $input['comment'];
@@ -189,6 +185,10 @@ class PlansManagementController extends Controller
         //$plan->hash = Hash::make(time());
         $plan->hash = time();
         $plan->save();
+
+        PlansMilestone::where("projects_plans_id_fk", "=", $input['plan'])
+            ->delete();
+
 
         //1 = Single Deposit
         if($input['typ'] == 1){
@@ -216,6 +216,18 @@ class PlansManagementController extends Controller
 
             if(isset($input['pay-due']) && $input['pay-due'] == 3){
                 $milestone->due_at = $input['due-date'];
+            }
+
+            if(isset($input['cc']) && $input['cc']=="true"){
+                $milestone->credit_card = 1;
+            }else{
+                $milestone->credit_card = 0;
+            }
+
+            if(isset($input['bt']) && $input['bt']=="true"){
+                $milestone->bank_transfer = 1;
+            }else{
+                $milestone->bank_transfer = 0;
             }
 
             $milestone->save();

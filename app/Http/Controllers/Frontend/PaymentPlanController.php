@@ -82,6 +82,7 @@ class PaymentPlanController extends Controller
         $blade["locale"] = App::getLocale();
 
         $user = Auth::user();
+        $preview = true;
 
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
@@ -93,11 +94,15 @@ class PaymentPlanController extends Controller
         $company = Companies::where("id", "=", $user->service_provider_fk)
             ->first();
 
+        if(!isset($plan)){
+            $plan = Plans::where("hash", "=", $hash)
+                ->first();
+        }
+
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
-
-        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone'));
+        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'preview'));
     }
 
     public function payCC($hash) {

@@ -113,7 +113,7 @@
                 success:function(data)
                 {
                     var plan = $("#plan").val();
-                    mywindow = window.open("/payment-plan/load-preview/"+plan , "mywindow", "location=1,status=1,scrollbars=1,  width=1050,height=800");
+                    mywindow = window.open("/payment-plan/load-preview/"+plan , "mywindow", "location=1,status=1,scrollbars=1,  width=950,height=800");
                 }
             })
         });
@@ -378,3 +378,60 @@
     }
 
 </script>
+
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#upload_form').on('submit', function(event){
+
+                event.preventDefault();
+                $.ajax({
+                    url:"{{ route('ajax_file_upload.action') }}",
+                    method:"POST",
+                    data:new FormData(this),
+                    dataType:'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(data)
+                    {
+
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
+                        $('#message').addClass(data.class_name);
+                        getDocs($("#plan").val());
+                    }
+                })
+            });
+
+        });
+
+
+        function getDocs(id) {
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    document.getElementById("uploaded_image").innerHTML = xmlhttp.responseText;
+                    $('#uploaded_image').removeClass("d-none");
+                    loadScrips();
+                }
+            }
+
+
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/docs?typ="+id, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+        }
+
+
+
+    </script>
