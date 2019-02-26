@@ -157,6 +157,20 @@
             width: 70px;
         }
 
+        .with-errors{
+            padding-left: 10px;
+        }
+
+        .form-inline label {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            /* align-items: center; */
+            -ms-flex-pack: center;
+            justify-content: left;
+            margin-bottom: 0;
+        }
+
     </style>
 @stop
 
@@ -196,9 +210,12 @@
 
                         <div class="sw-container tab-content" style=" padding-left: 40px;">
 
-                            <form method="post" id="upload_form" enctype="multipart/form-data">
+                            <form role="form" data-toggle="validator" method="post" accept-charset="utf-8" id="upload_form">
+
                             <div id="step-1" class="tab-pane step-content">
-                                @include('backend.freelancer.plans.general-infos')
+                                <div id="form-step-0" role="form" data-toggle="validator">
+                                    @include('backend.freelancer.plans.general-infos')
+                                </div>
                             </div>
 
                             <div id="step-2" class="tab-pane step-content">

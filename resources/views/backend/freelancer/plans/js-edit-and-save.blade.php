@@ -1,5 +1,6 @@
     <script>
 
+
         //initalize the arrow bar on the top of the modal
         $('#smartwizard').smartWizard({
             selected: 0,
@@ -15,6 +16,41 @@
         });
 
         $('#smartwizard').smartWizard("theme", "default");
+
+        $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+
+            var elmForm = $("#form-step-" + stepNumber);
+
+
+            // stepDirection === 'forward' :- this condition allows to do the form validation
+            // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
+            if(stepDirection === 'forward' && elmForm){
+
+                elmForm.validator('validate');
+
+                var elmErr = elmForm.children('.has-error');
+
+                if(elmErr && elmErr.length > 0){
+
+                    return false;
+                }
+
+                if(stepNumber == 0 ){
+
+                    var selected_value = $('#projects-dropdown').val()
+
+                    if(!selected_value ) {
+
+                        return false;
+
+                    }
+                }
+
+
+            }
+            return true;
+        });
+
 
         // External Button Events
         $(".next-btn").on("click", function() {
