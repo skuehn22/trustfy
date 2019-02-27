@@ -354,7 +354,6 @@ class PlansManagementController extends Controller
             $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($client->mail);
             $message->subject($company->name." - Payment Plan");
-            $message->bcc("kuehn.sebastian@gmail.com");
         });
 
 

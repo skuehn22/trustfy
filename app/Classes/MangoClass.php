@@ -84,7 +84,7 @@ class MangoClass extends Controller
             $freelancer_wallet = $this->createWallet($mango_freelancer->Id);
             $freelancer_wallet = $freelancer_wallet->Id;
             $wallet = new CompaniesMangowallets();
-            $wallet->id = $freelancer_wallet->Id;
+            $wallet->id = $freelancer_wallet;
             $wallet->performer_id_fk = $company->id;
             $wallet->save();
         }

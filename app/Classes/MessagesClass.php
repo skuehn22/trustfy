@@ -26,7 +26,6 @@ class MessagesClass  extends Controller
             $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($recipient);
             $message->subject($subject);
-            $message->bcc("kuehn.sebastian@gmail.com");
         });
 
     }
