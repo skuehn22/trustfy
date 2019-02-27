@@ -59,14 +59,14 @@ class MessagesClass  extends Controller
     }
 
 
-    public function payInSucceeded($milestone, $plan) {
+    public function payInSucceeded($milestone, $plan, $user) {
 
 
         $company = App\DatabaseModels\Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $sender = "kuehn.sebastian@gmail.com";
-        $recipient = "sebastian@trustfy.io";
+        $sender = "info@test.de";
+        $recipient = $user->email;
         $mailTemplate = "payInSucceeded";
         $subject = trans('messages.subject_typ_1');
 

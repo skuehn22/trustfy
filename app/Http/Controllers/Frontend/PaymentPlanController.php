@@ -85,7 +85,7 @@ class PaymentPlanController extends Controller
                 $milestone->save();
 
                 $msg_obj = new MessagesClass();
-                $result =   $msg_obj->payInSucceeded($milestone, $plan);
+                $result =   $msg_obj->payInSucceeded($milestone, $plan, $user);
 
             }
         }
