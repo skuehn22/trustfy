@@ -51,6 +51,7 @@ class DashboardController extends Controller
             //get all plan details for the normal payment plan view
             $query = DB::table('messages_companies');
             $query->join('projects', 'messages_companies.projects_id_fk', '=', 'projects.id');
+            $query->where('messages_companies.company_id_fk', '=',  $blade["user"]->service_provider_fk);
             $query->where('messages_companies.delete', '=', '0');
             $query->select('projects.name AS projectName', 'messages_companies.*');
             $messages = $query->get();
