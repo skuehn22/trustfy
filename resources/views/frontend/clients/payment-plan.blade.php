@@ -172,6 +172,14 @@
             font-size: 15px;
         }
 
+        .successful{
+            color: green;
+            font-weight: 700;
+            font-style: italic;
+            float: right;
+            font-size: 18px;
+        }
+
         @media print {
             .invoice {
                 font-size: 11px!important;
@@ -187,6 +195,8 @@
             .invoice>div:last-child {
                 page-break-before: always
             }
+
+
         }
 
     </style>
@@ -205,7 +215,7 @@
         </div>
         <hr>
     </div>-->
-    @if($preview)
+    @if(isset($preview))
         <div class="col col-lg-12 invoice overflow-auto">
     @else
         <div class="col col-lg-8 invoice overflow-auto">
@@ -214,9 +224,11 @@
             <header>
                 <div class="row">
                     <div class="col">
-                         @if(isset($company->logo))
-                            <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
-                         @endif
+                        @if(isset($company->logo))
+                            @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
+                                <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
+                            @endif
+                        @endif
                     </div>
                     <div class="col company-details">
                         <h3 class="name">
@@ -269,43 +281,47 @@
                         <td>
 
                             @if(isset($milestone->bank_transfer))
-                            <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
-                                <div class="row">
-                                    <div class="col-md-7">
+                                @if(isset($milestone->paystatus) && $milestone->paystatus==0)
+                                    <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
+                                        <div class="row">
+                                            <div class="col-md-7">
 
-                                        @if($milestone->bank_transfer == 1)
+                                                @if($milestone->bank_transfer == 1)
 
-                                        @endif
+                                                @endif
 
-                                        @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
-                                            <div class="radio" style="padding-top: 10px;">
-                                                <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
+                                                @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
+                                                    <div class="radio" style="padding-top: 10px;">
+                                                        <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
+                                                    </div>
+                                                @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
+
+                                                    <div class="radio">
+                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                    </div>
+
+                                                    <div class="radio">
+                                                        <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
+                                                    </div>
+
+                                                @else
+                                                    <div class="radio" style="padding-top: 10px;">
+                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                    </div>
+                                                @endif
+
+
                                             </div>
-                                        @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
-
-                                            <div class="radio">
-                                                <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                            <div class="col-md-5"  style="text-align: right;">
+                                                <span class="input-group-btn" style="padding-left: 5px;">
+                                                    <button class="btn btn-success pay-now">Pay now</button>
+                                                </span>
                                             </div>
-
-                                            <div class="radio">
-                                                <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
-                                            </div>
-
-                                        @else
-                                            <div class="radio" style="padding-top: 10px;">
-                                                <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
-                                            </div>
-                                        @endif
-
-
-                                    </div>
-                                    <div class="col-md-5"  style="text-align: right;">
-                                        <span class="input-group-btn" style="padding-left: 5px;">
-                                            <button class="btn btn-success pay-now">Pay now</button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
+                                        </div>
+                                    </form>
+                                @else
+                                    <p class="successful">PAYED</p>
+                                @endif
                             @else
                                 <i>please fill in</i>
                             @endif

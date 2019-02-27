@@ -37,7 +37,7 @@ class MangoClass extends Controller
 
     }
 
-    public function createTransaction($company, $client, $amount, $planHash)
+    public function createTransaction($company, $client, $milestone, $planHash)
     {
 
         $input = Request::all();
@@ -59,8 +59,6 @@ class MangoClass extends Controller
             $company->mango_id = $mango_freelancer->Id;
             $company->save();
 
-
-
         }
 
         //check if already an client with this email exists
@@ -74,7 +72,6 @@ class MangoClass extends Controller
 
             $client->mango_id = $mango_client->Id;
             $client->save();
-
 
         }
 
@@ -102,7 +99,7 @@ class MangoClass extends Controller
             $wallet->save();
         }
 
-        $hash = $this->prepPayInCardWeb($mango_client->Id, $freelancer_wallet_id, $amount);
+        $hash = $this->prepPayInCardWeb($mango_client->Id, $freelancer_wallet_id, $milestone);
         $url = $this->openTransaction($hash, $planHash);
         return $url;
 
@@ -361,7 +358,7 @@ class MangoClass extends Controller
         }
     }
 
-    public function prepPayInCardWeb($author, $credited_wallet, $amount) {
+    public function prepPayInCardWeb($author, $credited_wallet, $milestone) {
 
         try {
 
@@ -369,11 +366,13 @@ class MangoClass extends Controller
 
             $payin = new App\DatabaseModels\MangoPayin();
             $payin->hash = $hash;
+            $payin->milestone_id_fk = $milestone->id;
             $payin->author_id = $author;
             $payin->credited_wallet = $credited_wallet;
-            $payin->amount = $amount + ($amount * 0.02);
+            $payin->amount = $milestone->amount + ($milestone->amount * 0.02);
             $payin->payment_type = "CARD";
             $payin->execution_type = "WEB";
+            $payin->state = "PREP";
             $payin->save();
 
         } catch (MangoPay\Libraries\ResponseException $e) {
@@ -393,16 +392,10 @@ class MangoClass extends Controller
 
     public function openTransaction($hash, $planHash){
 
-        $input = Request::all();
         $blade["locale"] = App::getLocale();
         $blade["user"] = Auth::user();
 
         $payIn = $this->createPayInCardWeb($hash, $planHash);
-
-        //track user action
-        //$tracking = new ApplaudTracking();
-        //$tracking->action=1;
-        //$tracking->save();
 
         return $payIn;
 
@@ -411,7 +404,6 @@ class MangoClass extends Controller
     public function createPayInCardWeb($hash, $planHash) {
 
         try {
-
 
             $prepedPayIn = App\DatabaseModels\MangoPayin::where("hash", "=", $hash)
                 ->first();
@@ -431,12 +423,19 @@ class MangoClass extends Controller
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
-            $payIn->ExecutionDetails->ReturnURL = "https://www.trustfy.io/en/payment-plan/".$planHash;
+            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/payment-plan/".$planHash;
             $payIn->ExecutionDetails->Culture = "EN";
 
             $result = $this->mangopay->PayIns->Create($payIn);
 
             $prepRedirect = $result->ExecutionDetails;
+
+            $prepedPayIn->mango_id = $result->Id;
+            $prepedPayIn->state = $result->Status;
+            $prepedPayIn->result_code = $result->ResultCode;
+            $prepedPayIn->result_message = $result->ResultMessage;
+            $prepedPayIn->save();
+
 
             return $prepRedirect;
 
@@ -452,8 +451,27 @@ class MangoClass extends Controller
 
             MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
         }
-
     }
 
+
+    public function getPayInCardWeb($payInId) {
+
+        try {
+
+            $result = $this->mangopay->PayIns->Get($payInId);
+            return $result;
+
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+    }
 
 }

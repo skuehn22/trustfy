@@ -13,7 +13,7 @@ use App, Redirect, Auth, DB;
 
 use App\Http\Controllers\Controller;
 
-use App\DatabaseModels\Projects;
+use App\DatabaseModels\MangoPayin;
 use App\DatabaseModels\PlansTypes;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
@@ -41,6 +41,7 @@ class PaymentPlanController extends Controller
 
         $blade["locale"] = App::getLocale();
 
+        //get all plan details for the normal payment plan view
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
@@ -54,12 +55,36 @@ class PaymentPlanController extends Controller
         $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
             ->first();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-            ->first();
-
         $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
             ->get();
 
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+        //only if client comes back from mangopay
+        if(isset($_GET['transactionId'])){
+
+            //if client comes from mangopay they will habe an transaction id
+            $transactionId = $_GET['transactionId'];
+
+            //get result of the payin made by client
+            $mango_obj = new MangoClass($this->mangopay);
+            $payinResult =   $mango_obj->getPayInCardWeb($transactionId);
+
+            //update the result of the payin in intern DB
+            $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
+                ->first();
+
+            $payIn->state = $payinResult->Status;
+            $payIn->result_code = $payinResult->ResultCode;
+            $payIn->result_message = $payinResult->ResultMessage;
+            $payIn->save();
+
+            //if payment was successful update the paystatus of our intern DB
+            if($payinResult->Status == "SUCCEEDED"){
+                $milestone->paystatus = 1;
+            }
+        }
 
 
         return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs'));
@@ -123,7 +148,7 @@ class PaymentPlanController extends Controller
             ->first();
 
         $mango_obj = new MangoClass($this->mangopay);
-        $url=   $mango_obj->createTransaction($company, $client, $milestone->amount, $hash);
+        $url=   $mango_obj->createTransaction($company, $client, $milestone, $hash);
 
         return Redirect::to($url->RedirectURL);
 
