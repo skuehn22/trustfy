@@ -76,6 +76,10 @@
                 getPlanTyp({{$plan->id}});
             @endif
 
+            $('.sw-toolbar-top').removeClass("tab-content");
+
+
+
         });
 
         // External Button Events
