@@ -121,7 +121,7 @@ class Handler extends ExceptionHandler
                 $str = $request." \n --------------- \n".$e;
 
                 Mail::raw($str, function ($message) {
-                    $message->from('info@trustfy.io');
+                    $message->from('info@test.io');
                     $message->subject("trustfy Error");
                     $message->to('kuehn.sebastian@gmail.com');
                 });
