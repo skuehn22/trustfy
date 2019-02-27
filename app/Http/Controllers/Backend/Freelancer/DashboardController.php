@@ -13,8 +13,8 @@ use App, Auth, Redirect, DB;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
-use App\DatabaseModels\PlansTypes;
-use App\DatabaseModels\Clients;
+use App\DatabaseModels\MessagesCompanies;
+use App\DatabaseModels\Users;
 use App\DatabaseModels\Plans;
 use App\Classes\StateClass;
 
@@ -47,10 +47,20 @@ class DashboardController extends Controller
                 ->where("delete", "=", "0")
                 ->get();
 
+
+            //get all plan details for the normal payment plan view
+            $query = DB::table('messages_companies');
+            $query->join('projects', 'messages_companies.projects_id_fk', '=', 'projects.id');
+            $query->where('messages_companies.delete', '=', '0');
+            $query->select('projects.name AS projectName', 'messages_companies.*');
+            $messages = $query->get();
+
+
             $openRight = "180";
             $openLeft = "45";
 
-            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList'));
+            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages'));
+
         } else {
 
             return Redirect::to(env("MYHTTP"));
@@ -112,6 +122,19 @@ class DashboardController extends Controller
         }
 
     }
+
+
+    public function loadMsgDetails()
+    {
+
+
+        $msg = MessagesCompanies::where("id", "=", $_GET['msg'])
+            ->first();
+
+        return response()->json(['success' => 'Msg successfully created', 'data' => $msg]);
+    }
+
+
 
     public function loadPlan()
     {

@@ -22,8 +22,6 @@ class MessagesClass  extends Controller
     //global sender function
     public function send($mailTemplate, $recipient, $sender, $subject, $data){
 
-        $lang = App::getLocale();
-
         Mail::send('emails.'.$mailTemplate, compact('data'), function ($message) use ($recipient, $sender, $subject) {
             $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($recipient);
@@ -34,14 +32,13 @@ class MessagesClass  extends Controller
     }
 
     //global action save function
-    public function save($typ, $id, $companyId, $content){
-
-
+    public function save($typ, $id, $companyId, $content, $projectId){
         $msg = new MessagesCompanies();
         $msg->typ   = $typ;
         $msg->unique_id    = $id;
         $msg->meassage    = $content;
         $msg->company_id_fk = $companyId;
+        $msg->projects_id_fk = $projectId;
         $msg->save();
 
     }
@@ -72,15 +69,16 @@ class MessagesClass  extends Controller
         $sender = "kuehn.sebastian@gmail.com";
         $recipient = "sebastian@trustfy.io";
         $mailTemplate = "payInSucceeded";
-        $subject = trans('messages.payin_done_subject');
+        $subject = trans('messages.subject_typ_1');
 
         $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
 
         $data['content']=  trans('index.hello')." ". $company->name;
-        $data['content'].= "<p><strong>".trans('messages.payin_done_1')."</strong></p>";
+        $data['content'].= "<p><strong>".trans('messages.subject_typ_1')."</strong></p>";
         $data['content'].= "<p>".trans('index.project').": ".$plan->projectName."<br>";
         $data['content'].= trans('index.milestone').": ".$plan->name."<br>";
         $data['content'].= trans('index.amount').": ".number_format($milestone->amount, 2, ',', ' ')." €</p>";
+        $data['content'].= "<p>".trans('messages.payin_done_2')."</p>";
         $data['content'].= "<p><a href='".$planUrl."' target='_blank'>".trans('messages.show_plan')."</a>";
         $data['content'].= "<p>".trans('index.greetings')."</p>";
         $data['content'].= "<p>Panzerschwein</p>";
@@ -93,7 +91,7 @@ class MessagesClass  extends Controller
 
         if(!$exists){
             $this->send($mailTemplate, $recipient, $sender, $subject,  $data);
-            $this->save($typ, $id, $plan->service_provider_fk, $data['content']);
+            $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
         $msg="";

@@ -574,5 +574,41 @@
 
 
 
+        $(".get-details").on("click", function() {
+
+            var msg = $(this).attr('id');
+            getMsgDetails(msg);
+
+        });
+
+        function getMsgDetails(msg) {
+
+
+
+            $.ajax({
+                type: 'GET',
+                url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/msg/get/details',
+                data: { msg: msg },
+                dataType: 'json',
+
+                success: function(data) {
+
+                    items = data["data"];
+
+                    //typ = "messages.subject_typ_" + items["typ"];
+                    subject = '{{ trans("messages.subject_typ_1") }}';
+                    txt = items["meassage"];
+
+                    $("#modal-title-msg").text(subject);
+
+                    $("#modal-body-msg").html(txt);
+
+                    $('#msgDetail').modal('show');
+                }
+            });
+        }
+
+
+
     </script>
 @stop

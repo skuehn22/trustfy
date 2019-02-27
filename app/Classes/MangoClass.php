@@ -404,7 +404,7 @@ class MangoClass extends Controller
     public function createPayInCardWeb($hash, $planHash) {
 
         try {
-            
+
             $prepedPayIn = App\DatabaseModels\MangoPayin::where("hash", "=", $hash)
                 ->first();
 

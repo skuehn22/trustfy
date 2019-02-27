@@ -9,4 +9,7 @@ return [
 
     'greetings' => 'Kind Regards',
 
+
+    'no_messages' => 'No messages so far',
+
 ];
