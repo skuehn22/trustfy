@@ -404,7 +404,7 @@ class MangoClass extends Controller
     public function createPayInCardWeb($hash, $planHash) {
 
         try {
-
+            
             $prepedPayIn = App\DatabaseModels\MangoPayin::where("hash", "=", $hash)
                 ->first();
 
@@ -423,7 +423,7 @@ class MangoClass extends Controller
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
-            $payIn->ExecutionDetails->ReturnURL = "http://www.ws.mvp/en/payment-plan/".$planHash;
+            $payIn->ExecutionDetails->ReturnURL = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$planHash;
             $payIn->ExecutionDetails->Culture = "EN";
 
             $result = $this->mangopay->PayIns->Create($payIn);

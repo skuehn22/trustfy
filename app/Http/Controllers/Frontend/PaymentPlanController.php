@@ -13,15 +13,14 @@ use App, Redirect, Auth, DB;
 
 use App\Http\Controllers\Controller;
 
-use App\DatabaseModels\MangoPayin;
-use App\DatabaseModels\PlansTypes;
+
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
-use App\Classes\StateClass;
 use App\DatabaseModels\PlanDocs;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Companies;
 use App\Classes\MangoClass;
+use App\Classes\MessagesClass;
 
 class PaymentPlanController extends Controller
 {
@@ -46,7 +45,7 @@ class PaymentPlanController extends Controller
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.hash', '=', $hash );
-        $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $query->select('projects.name AS projectName', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
         $company = Companies::where("id", "=", $plan->service_provider_fk)
@@ -83,6 +82,11 @@ class PaymentPlanController extends Controller
             //if payment was successful update the paystatus of our intern DB
             if($payinResult->Status == "SUCCEEDED"){
                 $milestone->paystatus = 1;
+                $milestone->save();
+
+                $msg_obj = new MessagesClass();
+                $result =   $msg_obj->payInSucceeded($milestone, $plan);
+
             }
         }
 

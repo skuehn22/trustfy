@@ -286,10 +286,6 @@
                                         <div class="row">
                                             <div class="col-md-7">
 
-                                                @if($milestone->bank_transfer == 1)
-
-                                                @endif
-
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
                                                         <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
