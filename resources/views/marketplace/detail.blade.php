@@ -456,7 +456,7 @@
 
             $(document).ready(function () {
 
-                loadScrips();
+                loadScripts();
                 $('#dialog').dialog();
                 $('#dialog').dialog('close');
                 $('#send-offer-dialog').dialog();
@@ -466,7 +466,7 @@
             });
 
 
-            function loadScrips(){
+            function loadScripts(){
 
                 $("#paymenttyp").on("change", function() {
 
@@ -612,7 +612,7 @@
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
-                        loadScrips();
+                        loadScripts();
                     }
                 };
 
@@ -652,7 +652,7 @@
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
-                        loadScrips();
+                        loadScripts();
                     }
                 }
                 xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/"+ $url, true);

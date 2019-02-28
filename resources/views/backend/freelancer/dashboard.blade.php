@@ -195,7 +195,7 @@
 
         });
 
-        function loadScrips(){
+        function loadScripts(){
             // External Button Events
             $(".force-next").on("click", function() {
                 // Reset wizard
@@ -263,14 +263,14 @@
                         $("#msg").text(items);
                         clearClientForm();
                         $(".client-next").text("Next Step").addClass( "btn-success force-next" ).removeClass( "btn-secondary" );
-                        loadScrips();
+                        loadScripts();
                     }
 
                     if(items == "Project successfully created"){
                         $("#msg-project").text(items);
                         clearProjectForm();
                         $(".project-next").text("Next Step").addClass( "btn-success force-next" ).removeClass( "btn-secondary" );
-                        loadScrips();
+                        loadScripts();
                     }
                 }
             });
@@ -513,7 +513,7 @@
 
                     document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
                     $("#projects-modul").val(id);
-                    loadScrips();
+                    loadScripts();
                     getPlan($("#plan-details").val());
                 }
             }

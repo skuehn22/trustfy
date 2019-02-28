@@ -163,10 +163,10 @@
     <script>
 
         $( document ).ready(function() {
-            loadScrips();
+            loadScripts();
         });
 
-        function loadScrips(){
+        function loadScripts(){
 
             $( "#create-button" ).click(function() {
                 setEscrow( $('#performers').val(),  $('#clients_').val(), $('#offer_amount').val());
@@ -272,7 +272,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
-                    loadScrips();
+                    loadScripts();
                 }
             };
 
@@ -312,7 +312,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("modal-body").innerHTML = xmlhttp.responseText;
-                    loadScrips();
+                    loadScripts();
                 }
             }
             xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/applaud/admin/"+ $url, true);

@@ -92,10 +92,10 @@
     <script>
 
         $( document ).ready(function() {
-            loadScrips();
+            loadScripts();
         });
 
-        function loadScrips(){
+        function loadScripts(){
 
             $(function () {
                 $('#color-picker-component').colorpicker();
@@ -125,7 +125,7 @@
                         $('#message').addClass(data.class_name);
                         $('.old_image').remove();
                         $('#uploaded_image').html(data.uploaded_image);
-                        loadScrips();
+                        loadScripts();
                     }
                 })
             });
@@ -168,7 +168,7 @@
             xmlhttp.onreadystatechange = function() {
                 if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
                     document.getElementById("content-container").innerHTML = xmlhttp.responseText;
-                    loadScrips();
+                    loadScripts();
                 }
             };
 

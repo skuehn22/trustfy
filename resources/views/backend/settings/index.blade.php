@@ -46,10 +46,10 @@
 <script>
 
     $( document ).ready(function() {
-        loadScrips();
+        loadScripts();
     });
 
-    function loadScrips(){
+    function loadScripts(){
 
         //loads content for shortcuts
         $(".load-content").click(function() {
@@ -71,7 +71,7 @@
     xmlhttp.onreadystatechange = function() {
     if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
         document.getElementById("content-container").innerHTML = xmlhttp.responseText;
-        loadScrips();
+        loadScripts();
     }
     };
 

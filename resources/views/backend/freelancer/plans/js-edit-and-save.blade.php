@@ -462,7 +462,7 @@
 
                     document.getElementById("uploaded_image").innerHTML = xmlhttp.responseText;
                     $('#uploaded_image').removeClass("d-none");
-                    loadScrips();
+                    loadScripts();
                 }
             }
 
