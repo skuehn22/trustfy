@@ -127,6 +127,10 @@
             <div class="row">
                 <div class="col-md-12">
                     @include('backend.freelancer.dashboard.inbox')
+
+
+                    <a href="{{$planUrl}}">{{$planUrl}}</a>
+
                 </div>
             </div>
         </div>

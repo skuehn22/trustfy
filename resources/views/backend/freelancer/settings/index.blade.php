@@ -41,11 +41,15 @@
                         <li class="nav-item">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Banking</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#kyc" role="tab" aria-controls="kyc" aria-selected="false">KYC</a>
+                        </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> @include('backend.freelancer.settings.company')</div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> @include('backend.freelancer.settings.account')</div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> @include('backend.freelancer.settings.payments')</div>
+                        <div class="tab-pane fade" id="kyc" role="tabpanel" aria-labelledby="contact-tab"> @include('backend.freelancer.settings.kyc')</div>
                     </div>
                 </div>
             </div>
@@ -233,6 +237,13 @@
 
         $(".reset-account").on("click", function() {
             $("#delete-modal").modal('show');
+        });
+
+
+        $("#country_bank").on('change', function() {
+
+            $("#country_iso").val( $(this).val());
+
         });
 
 

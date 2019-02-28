@@ -8,6 +8,7 @@ use App\DatabaseModels\CompaniesMangowallets;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\ClientsMangowallets;
 use App\DatabaseModels\Clients;
+use App\DatabaseModels\MangoKyc;
 
 class MangoClass extends Controller
 {
@@ -473,5 +474,165 @@ class MangoClass extends Controller
             MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
         }
     }
+
+    public function createBankAccount($company){
+
+        try {
+
+        $UserId = $company->mango_id;
+        $BankAccount = new \MangoPay\BankAccount();
+        $BankAccount->Details = new MangoPay\BankAccountDetailsIBAN();
+        $BankAccount->OwnerAddress = new \MangoPay\Address();
+        $BankAccount->OwnerAddress->AddressLine1 = $company->address1;
+        $BankAccount->OwnerAddress->AddressLine2 = $company->address2;
+        $BankAccount->OwnerAddress->City = $company->city;
+        $BankAccount->OwnerAddress->PostalCode = $company->zip;
+        $BankAccount->OwnerAddress->Country = $company->country_iso;
+        $BankAccount->OwnerName = $company->name;
+        $BankAccount->IBAN = $company->iban;
+        $BankAccount->BIC = $company->bic;
+
+        $result = $this->mangopay->Users->CreateBankAccount($UserId, $BankAccount);
+
+        return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+    public function createKycDocument($company, $doctype){
+
+        try {
+
+            $UserId = $company->mango_id;
+
+            $KycDocument = new \MangoPay\KycDocument();
+            $KycDocument->Tag = "";
+            $KycDocument->Type = $doctype;
+
+            $result = $this->mangopay->Users->CreateKycDocument($UserId, $KycDocument);
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+    public function createKycPage($company, $kycdoc, $file){
+
+        try {
+
+            $UserId = $company->mango_id;
+            $KYCDocumentId  = $kycdoc;
+
+            $KycPage = new \MangoPay\KycPage();
+            $KycPage->File = $file;
+
+            $result = $this->mangopay->Users->CreateKycPage($UserId, $KYCDocumentId, $KycPage);
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+
+    public function submitKycDocument($company, $docId){
+
+        try {
+
+            $UserId = $company->mango_id;
+
+            $KycDocument = new \MangoPay\KycDocument();
+            $KycDocument->Tag = "";
+            $KycDocument->Status = "VALIDATION_ASKED";
+            $KycDocument->Id = $docId;
+
+
+            $result = $this->mangopay->Users->UpdateKycDocument($UserId, $KycDocument);
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+
+    public function checkKycDocuments($company, $docs){
+
+        try {
+
+            $UserId = $company->mango_id;
+
+            foreach ($docs as $doc){
+
+                $KYCDocumentId = $doc->created_id;
+                $result = $this->mangopay->Users->GetKycDocument($UserId, $KYCDocumentId);
+
+                if($result->Status !=  $doc->status){
+
+                    $kyc_doc_obj = MangoKyc::where("created_id", "=",  $doc->created_id)
+                        ->first();
+
+                    $kyc_doc_obj->status = $result->Status;
+                    $kyc_doc_obj->save();
+
+                }
+
+            }
+
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+
 
 }

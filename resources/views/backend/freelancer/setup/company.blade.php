@@ -37,7 +37,6 @@
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="country">Country</label>
-                    @include('backend.settings.countries', ['class' => 'form-control col-md-7', 'default' => $blade['user']->country])
                 </div>
 
 

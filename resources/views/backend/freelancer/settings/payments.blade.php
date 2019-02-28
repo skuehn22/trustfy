@@ -9,19 +9,19 @@
             <div class="col-md-5">
                 <div class="form-inline">
                     <label for="name" class="col-md-3 control-label  pl-0 pb-3">Owner Name</label>
-                    <div class="col-md-6 pl-0 pb-3">
+                    <div class="col-md-7 pl-0 pb-3">
                         <input id="name" type="text" class="form-control" name="name" value="{{$bank->name or ''}}">
                     </div>
                 </div>
                 <div class="form-inline">
                     <label for="iban" class="col-md-3 control-label  pl-0 pb-3">IBAN</label>
-                    <div class="col-md-6 pl-0 pb-3">
+                    <div class="col-md-7 pl-0 pb-3">
                         <input id="iban" type="text" class="form-control" name="iban" value="{{$bank->iban or ''}}">
                     </div>
                 </div>
                 <div class="form-inline">
                     <label for="bic" class="col-md-3 control-label  pl-0 pb-3">BIC</label>
-                    <div class="col-md-6 pl-0 pb-3">
+                    <div class="col-md-7 pl-0 pb-3">
                         <input id="bic" type="text" class="form-control" name="bic" value="{{$bank->bic or ''}}">
                     </div>
                 </div>
@@ -54,7 +54,8 @@
                 <div class="form-inline">
                     <label for="country" class="col-md-3 control-label  pl-0 pb-3">Country</label>
                     <div class="col-md-5 pb-3  text-right">
-                        @include('backend.settings.countries', [ 'class' => 'form-control col-md-12', 'default' => $bank->country])
+                        @include('backend.settings.countries', [ 'id' => 'country_bank', 'class' => 'form-control col-md-12', 'default' => $bank->country])
+                        <input type="hidden" id="country_iso" name="country_iso" value="{{$bank->country_iso or ''}}">
                     </div>
                 </div>
                 <div class="form-inline">

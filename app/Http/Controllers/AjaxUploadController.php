@@ -37,6 +37,7 @@ class AjaxUploadController extends Controller
         $validation = Validator::make($request->all(), [
             'select_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
         if($validation->passes())
         {
             $image = $request->file('select_file');
@@ -108,12 +109,7 @@ class AjaxUploadController extends Controller
             "image/gif,
             image/png,
             image/jpeg,
-            image/bmp,
-            image/webp,
-            application/octet-stream, application/pkcs12,
-            application/vnd.mspowerpoint,
-            application/xhtml+xml,
-            application/xml,
+            image/jpg,
             application/pdf"
         ];
 

@@ -1,4 +1,4 @@
-{!! Form::select('country', array(
+{!! Form::select($id, array(
 'Select a Country' => 'Select a Country',
 'Ascension Island' => 'Ascension Island',
 'Andorra' => 'Andorra',
@@ -246,4 +246,4 @@
 'South Africa' => 'South Africa',
 'Zambia' => 'Zambia',
 'Zimbabwe' => 'Zimbabwe'
-), $default, ['class' => $class, 'id' => 'country']) !!}
+), $default, ['class' => $class, 'id' => $id]) !!}

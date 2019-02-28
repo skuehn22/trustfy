@@ -60,7 +60,9 @@ class DashboardController extends Controller
             $openRight = "180";
             $openLeft = "45";
 
-            return view('backend.freelancer.dashboard', compact('blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages'));
+            $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
+
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages'));
 
         } else {
 

@@ -10,14 +10,15 @@ namespace App\Http\Controllers\Backend\Freelancer;
 
 
 // Libraries
-use App, Request, Auth, Redirect, Hash, MangoPay;
-
+use App, Auth, Redirect, Hash, MangoPay, Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\Users;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
+use App\DatabaseModels\MangoKyc;
 use App\Classes\MangoClass;
 
 class SettingsController extends Controller
@@ -54,9 +55,25 @@ class SettingsController extends Controller
                 ->first();
         }
 
+        //check if there were kyc actions in the past
+        $kyc_doc_objs = MangoKyc::where("company_id_fk", "=",  $user->service_provider_fk)
+            ->where("status", "!=",  "CREATED")
+            ->get();
 
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank'));
+        //checks if there was a update done by mango pay
+        if(count($kyc_doc_objs)>0){
+            $mango_obj = new MangoClass($this->mangopay);
+            $mango_obj->checkKycDocuments($company, $kyc_doc_objs);
+        }
+
+        //check if there were kyc actions in the past
+        $kyc_doc_objs = MangoKyc::where("company_id_fk", "=",  $user->service_provider_fk)
+            ->where("status", "!=",  "CREATED")
+            ->get();
+
+
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs'));
 
     } else {
 
@@ -330,7 +347,6 @@ class SettingsController extends Controller
 
     public function saveBank() {
 
-        $user = Auth::user();
         $blade["user"] = Auth::user();
         $blade["ll"] = App::getLocale();
 
@@ -352,11 +368,109 @@ class SettingsController extends Controller
         $bank->address2 = $input['address2'];
         $bank->city = $input['city'];
         $bank->zip = $input['code'];
-        $bank->country = $input['country'];
+        $bank->country = $input['country_bank'];
+        $bank->country = $input['country_iso'];
         $bank->save();
 
 
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+
+
+    }
+
+
+    public function kycCheck(Request $request) {
+
+        // Step1: create a document
+        // Step2: add pages to the document
+        // Step3: submit the document
+
+
+        $user = Auth::user();
+        $blade["ll"] = App::getLocale();
+
+        $allowed_mimes = [
+            "image/gif,
+            image/png,
+            image/jpeg,
+            image/jpg,
+            application/pdf"
+        ];
+
+        $validation = Validator::make($request->all(), [
+            'image' => $allowed_mimes,
+        ]);
+
+
+        if($validation->passes())
+        {
+
+            $doctype = $_POST['type'];
+
+            $company = Companies::where("id", "=",  $user->service_provider_fk)
+                ->first();
+
+            //check if there is a record in the DB for this kind of doc check
+            $kyc_doc_obj = MangoKyc::where("company_id_fk", "=",  $user->service_provider_fk)
+                ->where("doc_type", "=",  $doctype)
+                ->where("status", "=",  "CREATED")
+                ->first();
+
+            $mango_obj = new MangoClass($this->mangopay);
+
+            //check if a kyc check for this kind of doc type was already started and not finished
+            if(empty($kyc_doc_obj)){
+
+                $result =   $mango_obj->createKycDocument($company, $doctype);
+
+                $kyc_doc_obj = new MangoKyc();
+                $kyc_doc_obj->doc_type = $doctype;
+                $kyc_doc_obj->company_id_fk = $user->service_provider_fk;
+                $kyc_doc_obj->doc_type = $doctype;
+                $kyc_doc_obj->created_id = $result->Id;
+                $kyc_doc_obj->status = $result->Status;
+                $kyc_doc_obj->save();
+
+            }
+
+            //convert uploaded file
+            $file = base64_encode(file_get_contents($request->file('select_file')));
+
+            //add page to document
+            $result = $mango_obj->createKycPage($company, $kyc_doc_obj->created_id, $file);
+
+            //check if page was added to the document
+            if($result){
+                $result = $mango_obj->submitKycDocument($company, $kyc_doc_obj->created_id);
+            }else{
+                Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', "Insert page error");
+            }
+
+            //check if document was send
+            if($result){
+
+                //set status to submited
+                $kyc_doc_obj = MangoKyc::where("company_id_fk", "=",  $user->service_provider_fk)
+                    ->where("created_id", "=",  $kyc_doc_obj->created_id)
+                    ->first();
+
+                $kyc_doc_obj->status = "VALIDATION_ASKED";
+                $kyc_doc_obj->save();
+
+
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+            }else{
+                Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', "Error sending the document");
+            }
+
+
+        } else{
+
+            $error = $validation->errors()->all();
+
+            return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', $error[1]);
+
+        }
 
 
     }

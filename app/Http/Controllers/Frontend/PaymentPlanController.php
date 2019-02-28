@@ -183,4 +183,23 @@ class PaymentPlanController extends Controller
 
     }
 
+    public function releaseMilestone($hash) {
+
+
+        $user = Auth::user();
+
+        $query = DB::table('companies');
+        $query->join('companies_bank', 'companies_bank.service_provider_fk', '=', 'companies.id');
+        $query->where('companies.id', '=', $user->service_provider_fk );
+        $query->select('companies.id', 'companies.mango_id', 'companies_bank.*');
+        $company_details = $query->first();
+
+
+        $mango_obj = new MangoClass($this->mangopay);
+        $payinResult =   $mango_obj->createBankAccount($company_details);
+
+    }
+
+
+
 }

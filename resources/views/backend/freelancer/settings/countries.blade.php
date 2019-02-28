@@ -1,4 +1,4 @@
-{!! Form::select('country', array(
+{!! Form::select($id, array(
 'Select a Country' => 'Select a Country',
 'Ascension Island' => 'Ascension Island',
 'Andorra' => 'Andorra',
@@ -55,7 +55,7 @@
 'Christmas Island' => 'Christmas Island',
 'Cyprus' => 'Cyprus',
 'Czech Republic' => 'Czech Republic',
-'Germany' => 'Germany',
+'DE' => 'Germany',
 'Djibouti' => 'Djibouti',
 'Denmark' => 'Denmark',
 'Dominica' => 'Dominica',
@@ -73,7 +73,7 @@
 'Falkland Islands (Malvinas)' => 'Falkland Islands (Malvinas)',
 'Micronesia, Federated States Of' => 'Micronesia, Federated States Of',
 'Faroe Islands' => 'Faroe Islands',
-'France' => 'France',
+'FR' => 'France',
 'Gabon' => 'Gabon',
 'United Kingdom' => 'United Kingdom',
 'Grenada' => 'Grenada',
@@ -100,7 +100,7 @@
 'Haiti' => 'Haiti',
 'Hungary' => 'Hungary',
 'Indonesia' => 'Indonesia',
-'Ireland' => 'Ireland',
+'IE' => 'Ireland',
 'Israel' => 'Israel',
 'Isle of Man' => 'Isle of Man',
 'India' => 'India',
