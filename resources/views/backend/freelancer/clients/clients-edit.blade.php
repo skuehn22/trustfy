@@ -68,7 +68,7 @@
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-4 col-form-label" for="country">Country</label>
-                        @include('backend.settings.countries', ['default' => $blade['user']->country])
+                        @include('backend.settings.countries', ['class' => 'form-control col-md-7', 'default' => $blade['user']->country])
                     </div>
                     <div class="form-row pt-3 py-2">
                         <button type="submit" class="btn btn-classic">Save Client</button>

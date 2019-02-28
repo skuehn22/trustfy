@@ -144,7 +144,7 @@ class ProjectManagementController extends Controller
         }
 
 
-        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Process successfully completed!');
 
     }
 
@@ -159,7 +159,7 @@ class ProjectManagementController extends Controller
         $project->delete = 1;
         $project->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Process successfully completed!');
 
     }
 

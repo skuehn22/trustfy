@@ -317,7 +317,7 @@
                                         </div>
                                     </form>
                                 @else
-                                    <p class="successful">PAID</p>
+                                    <p class="successful">Amount Funded</p>
                                 @endif
                             @else
                                 <i>please fill in</i>

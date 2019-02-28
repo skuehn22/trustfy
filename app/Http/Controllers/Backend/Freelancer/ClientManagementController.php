@@ -135,7 +135,7 @@ class ClientManagementController extends Controller
         $client->delete = 1;
         $client->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'Process successfully completed!');
 
     }
 

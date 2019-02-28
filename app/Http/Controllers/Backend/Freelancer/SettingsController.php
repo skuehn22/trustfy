@@ -174,7 +174,7 @@ class SettingsController extends Controller
 
         $user->save();
 
-        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Process successfully completed!');
 
     }
 
@@ -348,10 +348,15 @@ class SettingsController extends Controller
         $bank->iban = $input['iban'];
         $bank->service_provider_fk = $blade["user"]->service_provider_fk;
         $bank->bic = $input['bic'];
+        $bank->address1 = $input['address1'];
+        $bank->address2 = $input['address2'];
+        $bank->city = $input['city'];
+        $bank->zip = $input['code'];
+        $bank->country = $input['country'];
         $bank->save();
 
 
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Vorgang erfolgreich abgeschlossen!');
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
 
 
     }

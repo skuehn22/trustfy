@@ -30,25 +30,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="exTab3">
-                    <ul  class="nav nav-pills">
-                        <li class="active"><a  href="#1b" data-toggle="tab">Company</a></li>
-                        <li><a href="#2b" data-toggle="tab">Account</a></li>
-                        <!--<li><a href="#3b" data-toggle="tab">Team Members</a></li>-->
-                        <li><a href="#4b" data-toggle="tab">Banking</a></li>
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Company</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Banking</a>
+                        </li>
                     </ul>
-                    <div class="tab-content clearfix">
-                        <div class="tab-pane active" id="1b">
-                            @include('backend.freelancer.settings.company')
-                        </div>
-                        <div class="tab-pane" id="2b">
-                            @include('backend.freelancer.settings.account')
-                        </div>
-                        <div class="tab-pane" id="3b">
-                            @include('backend.freelancer.settings.users')
-                        </div>
-                        <div class="tab-pane" id="4b">
-                            @include('backend.freelancer.settings.payments')
-                        </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> @include('backend.freelancer.settings.company')</div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> @include('backend.freelancer.settings.account')</div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> @include('backend.freelancer.settings.payments')</div>
                     </div>
                 </div>
             </div>

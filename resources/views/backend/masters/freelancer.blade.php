@@ -20,8 +20,6 @@
     <link href="{{ asset('css/backend/freelancer/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
-
     @yield('css')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -136,24 +134,22 @@
         </li>
     </ul>
 
-    <div id="content-wrapper">
+    <div id="content-wrapper" style="padding-bottom: 50px;">
 
         <div class="container-fluid">
             @yield('content')
         </div>
 
 
-        </div>
-        <!-- /.container-fluid -->
+    </div>
 
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © trustfy.io 2019</span>
-                </div>
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © trustfy.io 2019</span> | <span class="terms"><a href="https://www.trustfy.io/en/terms" target="_blank">Terms and Conditions</a></span>
             </div>
-        </footer>
+        </div>
+    </footer>
 
     </div>
     <!-- /.content-wrapper -->

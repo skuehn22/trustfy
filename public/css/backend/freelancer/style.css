@@ -291,7 +291,7 @@ h1{
     opacity: 0.5;
 }
 .settings{
-    padding-top: 50px;
+    padding-top: 15px;
 }
 
 .settings .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
@@ -310,7 +310,7 @@ h1{
 }
 
 .settings #exTab3 .tab-content .inner-panel {
-    padding : 25px;
+    padding : 0px;
 }
 
 .settings #exTab3 .tab-content {
@@ -326,6 +326,12 @@ h1{
 .settings label {
     color : #a79f9f;
 
+}
+
+.form-inline label
+{
+    text-align: left;
+    display: block;
 }
 
 .settings .nav>li>a {
@@ -766,6 +772,7 @@ h1{
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
 }
+
 
 
 
