@@ -54,7 +54,11 @@
                 <div class="form-inline">
                     <label for="country" class="col-md-3 control-label  pl-0 pb-3">Country</label>
                     <div class="col-md-5 pb-3  text-right">
-                        @include('backend.settings.countries', [ 'id' => 'country_bank', 'class' => 'form-control col-md-12', 'default' => $bank->country])
+                        @if(isset($bank->country))
+                            @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-12', 'default' => $bank->country])
+                        @else
+                            @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-12', 'default' =>''])
+                        @endif
                         <input type="hidden" id="country_iso" name="country_iso" value="{{$bank->country_iso or ''}}">
                     </div>
                 </div>
