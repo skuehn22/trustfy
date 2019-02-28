@@ -611,6 +611,8 @@ class MangoClass extends Controller
                         ->first();
 
                     $kyc_doc_obj->status = $result->Status;
+                    $kyc_doc_obj->refused_reason_msg = $result->RefusedReasonMessage;
+                    $kyc_doc_obj->refused_reason_type = $result->RefusedReasonType;
                     $kyc_doc_obj->save();
 
                 }
