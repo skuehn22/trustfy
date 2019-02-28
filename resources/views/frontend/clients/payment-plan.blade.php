@@ -24,7 +24,7 @@
         .invoice header {
             padding: 10px 0;
             margin-bottom: 20px;
-            border-bottom: 1px solid #28a745
+            border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
         .invoice .company-details {
@@ -71,7 +71,7 @@
 
         .invoice main .notices {
             padding-left: 6px;
-            border-left: 6px solid #28a745;
+            border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
         .invoice main .notices .notice {
@@ -100,7 +100,7 @@
         .invoice table td h3 {
             margin: 0;
             font-weight: 400;
-            color: #28a745;
+            color: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
             font-size: 1.2em
         }
 
@@ -111,7 +111,8 @@
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
-            background: #28a745;
+            background: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            width: 25px;
         }
 
         .invoice table .unit {
@@ -119,7 +120,7 @@
         }
 
         .invoice table .total {
-            background: #28a745;
+            background:@if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
             color: #fff
         }
 
@@ -144,7 +145,7 @@
         .invoice table tfoot tr:last-child td {
             color: #006600;
             font-size: 1.4em;
-            border-top: 1px solid #28a745;
+            border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
         .invoice table tfoot tr td:first-child {
@@ -277,7 +278,7 @@
                         </td>
 
                         <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
-                        <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount or '', 2) }} € @else  <i>please fill in</i> @endif</td>
+                        <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount,2) }} € @else  <i>please fill in</i> @endif</td>
                         <td>
 
                             @if(isset($milestone->bank_transfer))
@@ -316,7 +317,7 @@
                                         </div>
                                     </form>
                                 @else
-                                    <p class="successful">PAYED</p>
+                                    <p class="successful">PAID</p>
                                 @endif
                             @else
                                 <i>please fill in</i>

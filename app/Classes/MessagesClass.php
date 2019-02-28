@@ -20,10 +20,10 @@ class MessagesClass  extends Controller
 {
 
     //global sender function
-    public function send($mailTemplate, $recipient, $sender, $subject, $data){
+    public function send($mailTemplate, $recipient, $subject, $data){
 
-        Mail::send('emails.'.$mailTemplate, compact('data'), function ($message) use ($recipient, $sender, $subject) {
-            $message->from('info@test.io', 'Trustfy.io');
+        Mail::send('emails.'.$mailTemplate, compact('data'), function ($message) use ($recipient, $subject) {
+            $message->from('info@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->subject($subject);
         });
@@ -65,7 +65,6 @@ class MessagesClass  extends Controller
         $company = App\DatabaseModels\Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $sender = "info@test.de";
         $recipient = $user->email;
         $mailTemplate = "payInSucceeded";
         $subject = trans('messages.subject_typ_1');
@@ -75,7 +74,7 @@ class MessagesClass  extends Controller
         $data['content']=  trans('index.hello')." ". $company->name;
         $data['content'].= "<p><strong>".trans('messages.subject_typ_1')."</strong></p>";
         $data['content'].= "<p>".trans('index.project').": ".$plan->projectName."<br>";
-        $data['content'].= trans('index.milestone').": ".$plan->name."<br>";
+        $data['content'].= trans('index.milestone').": ".$milestone->name."<br>";
         $data['content'].= trans('index.amount').": ".number_format($milestone->amount, 2, ',', ' ')." €</p>";
         $data['content'].= "<p>".trans('messages.payin_done_2')."</p>";
         $data['content'].= "<p><a href='".$planUrl."' target='_blank'>".trans('messages.show_plan')."</a>";
@@ -89,7 +88,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $sender, $subject,  $data);
+            $this->send($mailTemplate, $recipient, $subject,  $data);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 

@@ -315,10 +315,7 @@
             //loads projects for selected client
             $(".delete-doc").on('click', function() {
 
-
-
                 var doc = $(this).data('id');
-                alert(doc);
 
                 $.ajax({
                     type: 'GET',

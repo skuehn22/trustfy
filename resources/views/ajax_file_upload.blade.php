@@ -6,7 +6,7 @@
     <p style="font-size: 11px;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
     <hr>
     <div class="alert" id="message" style="display: none"></div>
-    <div class="row">
+    <div class="row py-2 pt-0 pl-0 ml-0">
         <div class="col-md-7" style="background-color: #ddd;">
 
             <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">

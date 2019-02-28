@@ -127,7 +127,13 @@ class AjaxUploadController extends Controller
             $new_name = $user->id. $filename . '.' . $image->getClientOriginalExtension();
 
             $doc = new PlanDocs();
-            $doc->name = $_POST['doc-name'];
+
+            if(strlen($_POST['doc-name'])>0) {
+                $doc->name = $_POST['doc-name'];
+            }else{
+                $doc->name = $new_name;
+            }
+
             $doc->filename = $new_name;
             $doc->plan_id_fk = $_POST['plan'];
             $doc->save();

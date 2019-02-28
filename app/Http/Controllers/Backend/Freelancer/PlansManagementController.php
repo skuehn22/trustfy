@@ -175,7 +175,6 @@ class PlansManagementController extends Controller
             $plan->typ = $input['typ'];
 
 
-
         if(isset($input['comment']))
             $plan->comment = $input['comment'];
 
@@ -351,7 +350,7 @@ class PlansManagementController extends Controller
         //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
 
         Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company) {
-            $message->from('info@test.io', 'Trustfy.io');
+            $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($client->mail);
             $message->subject($company->name." - Payment Plan");
         });
