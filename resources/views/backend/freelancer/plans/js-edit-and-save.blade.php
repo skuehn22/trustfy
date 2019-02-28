@@ -315,7 +315,10 @@
             //loads projects for selected client
             $(".delete-doc").on('click', function() {
 
+
+
                 var doc = $(this).data('id');
+                alert(doc);
 
                 $.ajax({
                     type: 'GET',
@@ -462,7 +465,7 @@
 
                     document.getElementById("uploaded_image").innerHTML = xmlhttp.responseText;
                     $('#uploaded_image').removeClass("d-none");
-                    loadScripts();
+                    loadScript();
                 }
             }
 

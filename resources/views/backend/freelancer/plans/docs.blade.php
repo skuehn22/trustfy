@@ -6,7 +6,7 @@
     @foreach($docs as $doc)
 
         <p class="{{$doc->id}}">
-            <a target="_blank" href="/uploads/companies/contracts/{{$doc->filename}}">{{$doc->name}}</a>
+            <a target="_blank" href="/uploads/companies/contracts/{{$doc->filename}}">@if(strlen($doc->name)>0) {{$doc->name}} @else {{$doc->filename}} @endif</a>
             <a href="#" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
                 <i class="fas fa-trash green"></i>
             </a>

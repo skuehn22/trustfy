@@ -18,7 +18,7 @@
 
             <div class="form-row py-2">
                 <label class="col-md-2 col-form-label" for="doc-name">
-                    Name <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of the document. E.g. Proposal, Quote, Tender..."></i>
+                    Name <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of the document. E.g. Proposal, Quote, Tender... If you leave it blank the document name will be shown"></i>
                 </label>
                 <input type="text" class="form-control col-md-5" id="doc-name" name="doc-name" required>
             </div>
