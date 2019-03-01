@@ -151,9 +151,25 @@ class MangoClass extends Controller
             $mangouser->Email = $user->email;
             $mangouser->LegalRepresentativeFirstName =  $company->firstname;
             $mangouser->LegalRepresentativeLastName =  $company->lastname;
-            $mangouser->LegalRepresentativeBirthday = 509482307;
-            $mangouser->LegalRepresentativeNationality = "DE";
-            $mangouser->LegalRepresentativeCountryOfResidence = "DE";
+
+            if(isset($company->birthday)){
+                $mangouser->LegalRepresentativeBirthday = strtotime($company->birthday);;
+            }else{
+                $mangouser->LegalRepresentativeBirthday = time();
+            }
+
+            if(isset($company->country_nationality)){
+                $mangouser->LegalRepresentativeNationality = $company->country_nationality;
+            }else{
+                $mangouser->LegalRepresentativeNationality = "IE";
+            }
+
+            if(isset($company->country_residence)){
+                $mangouser->LegalRepresentativeCountryOfResidence = $company->country_residence;
+            }else{
+                $mangouser->LegalRepresentativeCountryOfResidence = "IE";
+            }
+
             $createdUser = $this->mangopay->Users->Create($mangouser);
 
             return $createdUser;
@@ -284,18 +300,34 @@ class MangoClass extends Controller
         }
     }
 
-    public function createNaturalUser($client) {
+    public function createNaturalUser($person, $account) {
         try {
 
             // create user for payment
 
             $user = new MangoPay\UserNatural();
-            $user->Email = $client->mail;
-            $user->FirstName = $client->firstname;
-            $user->LastName = $client->lastname;
-            $user->Birthday = time();
-            $user->Nationality = "FR";
-            $user->CountryOfResidence = "FR";
+            $user->Email = $account->email;
+            $user->FirstName = $person->firstname;
+            $user->LastName = $person->lastname;
+
+            if(isset($person->birthday)){
+                $user->Birthday = strtotime($person->birthday);
+            }else{
+                $user->Birthday = time();
+            }
+
+            if(isset($person->country_nationality)){
+                $user->Nationality = $person->country_nationality;
+            }else{
+                $user->Nationality = "IE";
+            }
+
+            if(isset($person->country_residence)){
+                $user->CountryOfResidence = $person->country_residence;
+            }else{
+                $user->CountryOfResidence = "IE";
+            }
+
             $result =  $this->mangopay->Users->Create($user);
 
         } catch (MangoPay\Libraries\ResponseException $e) {

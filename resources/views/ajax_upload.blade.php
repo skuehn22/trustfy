@@ -1,6 +1,6 @@
-<div class="row alert alert-secondary">
+<div class="row">
     <div class="col-md-12">
-        <p style="padding-top:25px;"><strong>Upload a new Logo</strong></p>
+        <p style="padding-top:25px;"><strong>Logo Upload</strong></p>
         <div class="alert" id="message" style="display: none"></div>
         <form method="post" id="upload_form" enctype="multipart/form-data">
             {{ csrf_field() }}

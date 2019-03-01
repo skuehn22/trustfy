@@ -113,20 +113,34 @@ class SettingsController extends Controller
             $company = new Companies();
         }
 
+        $company->name = $_POST["firstname"];
+        $company->birthday = $_POST["birthday"];
+        $company->country_nationality = $_POST["nationality"];
+        $company->country_residence = $_POST["country"];
+        $company->city = $_POST["lastname"];
         $company->name = $_POST["company"];
         $company->city = $_POST["city"];
         $company->address = $_POST["address"];
-        $company->country = $_POST["country"];
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
         $user = Users::find($blade["user"]->id);
 
+
         if($company->mango_id == null){
 
             $mango_obj = new MangoClass($this->mangopay);
-            $mango_user=   $mango_obj->createLegalUser($company, $user);
+
+            if($company->type == 1){
+                $mango_user = $mango_obj->createNaturalUser($company, $user);
+            }else{
+                $mango_user=   $mango_obj->createLegalUser($company, $user);
+            }
+
             $company->mango_id = $mango_user->Id;
+
         }
+
+
 
 
         $company->save();

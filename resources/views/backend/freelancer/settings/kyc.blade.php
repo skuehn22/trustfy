@@ -10,17 +10,22 @@
                 <label class="col-md-12 col-form-label pl-0" for="type">Document Type</label>
                 <select name="type" id="type" class="form-control col-md-9">
                     <option value=""></option>
-                    <option value="IDENTITY_PROOF">{{ trans('freelancer_backend.IDENTITY_PROOF') }}</option>
-                    <option value="REGISTRATION_PROOF">{{ trans('freelancer_backend.REGISTRATION_PROOF') }}</option>
-                    <option value="ARTICLES_OF_ASSOCIATION">{{ trans('freelancer_backend.ARTICLES_OF_ASSOCIATION') }}</option>
-                    <option value="SHAREHOLDER_DECLARATION">{{ trans('freelancer_backend.SHAREHOLDER_DECLARATION') }}</option>
-
-                    <!--
-
-                    <option value="ADDRESS_PROOF">{{ trans('freelancer_backend.ADDRESS_PROOF') }}</option>
 
 
-                    -->
+                    @if($company->type == 1)
+
+                        <option value="IDENTITY_PROOF">{{ trans('freelancer_backend.IDENTITY_PROOF') }}</option>
+                        <option value="ADDRESS_PROOF">{{ trans('freelancer_backend.ADDRESS_PROOF') }}</option>
+
+                    @else
+
+                        <option value="IDENTITY_PROOF">{{ trans('freelancer_backend.IDENTITY_PROOF') }}</option>
+                        <option value="REGISTRATION_PROOF">{{ trans('freelancer_backend.REGISTRATION_PROOF') }}</option>
+                        <option value="ARTICLES_OF_ASSOCIATION">{{ trans('freelancer_backend.ARTICLES_OF_ASSOCIATION') }}</option>
+                        <option value="SHAREHOLDER_DECLARATION">{{ trans('freelancer_backend.SHAREHOLDER_DECLARATION') }}</option>
+
+                    @endif
+
 
                 </select>
 
@@ -45,7 +50,8 @@
     <div class="col-md-7">
         @if(count($kyc_doc_objs)>0)
             <label class="col-md-12 col-form-label pl-0" for="type">KYC process</label>
-            <table  class="table" style="font-size: 10px;">
+            <table  class="table" style="font-size: 10px;
+">
                 <thead>
                 <tr>
                     <th scope="col">Document Type</th>
