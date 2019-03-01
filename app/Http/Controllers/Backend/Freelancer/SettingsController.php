@@ -14,6 +14,7 @@ use App, Auth, Redirect, Hash, MangoPay, Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
+use App\DatabaseModels\CompaniesType;
 use App\DatabaseModels\Users;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\Clients;
@@ -73,7 +74,10 @@ class SettingsController extends Controller
             ->get();
 
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs'));
+        $companyTypes= CompaniesType::where("delete", "=", "0")
+                ->lists('title', 'id');
+
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes'));
 
     } else {
 
@@ -96,14 +100,10 @@ class SettingsController extends Controller
     }
 
 
-
     public function saveCompany() {
 
         $blade["user"] = Auth::user();
         $blade["ll"] = App::getLocale();
-
-        $input = Request::all();
-        $user = Users::find($blade["user"]->id);
 
         $company = Companies::where("id", "=", $blade["user"]->service_provider_fk)
         ->where("delete", "=", "0")
@@ -113,14 +113,12 @@ class SettingsController extends Controller
             $company = new Companies();
         }
 
-        $company->firstname = $input["firstname"];
-        $company->lastname = $input["lastname"];
-        $company->name = $input["company"];
-        $company->city = $input["city"];
-        $company->address = $input["address"];
-        $company->country = $input["country"];
+        $company->name = $_POST["company"];
+        $company->city = $_POST["city"];
+        $company->address = $_POST["address"];
+        $company->country = $_POST["country"];
         $company->users_fk =  $blade["user"]->id;
-        $company->color =  $input["color"];
+        $company->color =  $_POST["color"];
         $user = Users::find($blade["user"]->id);
 
         if($company->mango_id == null){
@@ -137,22 +135,22 @@ class SettingsController extends Controller
         $user->service_provider_fk = $company->id;
         $user->save();
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user'));
+
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
 
     }
 
     public function saveAccount() {
 
         $blade["user"] = Auth::user();
-        $input = Request::all();
         $blade["ll"] = App::getLocale();
         $provider = Provider::find($blade["user"]->service_provider_fk);
 
         $user = Users::find($blade["user"]->id);
-        $user->firstname = $input["firstname"];
-        $user->lastname = $input["lastname"];
-        $user->email = $input["mail"];
-        $user->phone = $input["phone"];
+        $user->firstname = $_POST["firstname"];
+        $user->lastname = $_POST["lastname"];
+        $user->email = $_POST["mail"];
+        $user->phone = $_POST["phone"];
 
         $user->save();
 
@@ -173,18 +171,17 @@ class SettingsController extends Controller
     public function saveTeamMember() {
 
         $blade["user"] = Auth::user();
-        $input = Request::all();
         $blade["ll"] = App::getLocale();
         $provider = Provider::find($blade["user"]->service_provider_fk);
 
-        $password = Hash::make($input["password"]);
+        $password = Hash::make($_POST["password"]);
 
         $user = new Users();
         $user->service_provider_fk = $provider->id;
-        $user->firstname = $input["firstname"];
-        $user->lastname = $input["lastname"];
-        $user->email = $input["mail"];
-        $user->phone = $input["phone"];
+        $user->firstname = $_POST["firstname"];
+        $user->lastname = $_POST["lastname"];
+        $user->email = $_POST["mail"];
+        $user->phone = $_POST["phone"];
         $user->active = "1";
         $user->role = "0";
         $user->password = $password;
@@ -350,9 +347,6 @@ class SettingsController extends Controller
         $blade["user"] = Auth::user();
         $blade["ll"] = App::getLocale();
 
-        $input = Request::all();
-
-
         $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->first();
 
@@ -360,16 +354,16 @@ class SettingsController extends Controller
             $bank = new App\DatabaseModels\CompaniesBank();
         }
 
-        $bank->name = $input['name'];
-        $bank->iban = $input['iban'];
+        $bank->name = $_POST['name'];
+        $bank->iban = $_POST['iban'];
         $bank->service_provider_fk = $blade["user"]->service_provider_fk;
-        $bank->bic = $input['bic'];
-        $bank->address1 = $input['address1'];
-        $bank->address2 = $input['address2'];
-        $bank->city = $input['city'];
-        $bank->zip = $input['code'];
-        $bank->country = $input['country_bank'];
-        $bank->country = $input['country_iso'];
+        $bank->bic = $_POST['bic'];
+        $bank->address1 = $_POST['address1'];
+        $bank->address2 = $_POST['address2'];
+        $bank->city = $_POST['city'];
+        $bank->zip = $_POST['code'];
+        $bank->country = $_POST['country_bank'];
+        $bank->country = $_POST['country_iso'];
         $bank->save();
 
 

@@ -9,6 +9,13 @@ return [
     'SHAREHOLDER_DECLARATION' => 'Shareholder Declaration',
     'ADDRESS_PROOF' => 'Address Proof',
 
+
+    /* Company Types */
+    'soletrader' => 'Sole Trader',
+    'limited' => 'Limited  Copany',
+    'other' => 'Other',
+
+
 ];
 
 

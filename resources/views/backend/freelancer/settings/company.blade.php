@@ -16,20 +16,25 @@
         @endif
         </div>
         <div class="col-md-12">
-            <div class="form-row py-2">
-                <label class="col-md-3 col-form-label" for="firstname">Firstname</label>
-                <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="Your Firstname" required>
-            </div>
 
             <div class="form-row py-2">
-                <label class="col-md-3 col-form-label" for="lastname">Lastname</label>
-                <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Your Lastname" required>
-            </div>
-
-            <div class="form-row py-2">
-                <label class="col-md-3 col-form-label" for="company">Company</label>
+                <label class="col-md-3 col-form-label" for="company">
+                    Company
+                    <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="If you're a sole trader, just enter your name."></i>
+                </label>
                 <input id="company" type="text" class="form-control col-md-7" name="company" value="{{ $company->name or "" }}" placeholder="Your Company Name" required>
             </div>
+
+            <div class="form-row py-2">
+                <label class="col-md-3 col-form-label" for="companytype">
+                    Type of Company
+                </label>
+
+                {!! Form::select('companyType', $companyTypes, $company->type, ['class' => 'form-control col-md-7', 'id' => 'companyType','placeholder' => 'Select', 'required']) !!}
+
+
+            </div>
+
 
             <div class="form-row py-2">
                 <label class="col-md-3 col-form-label" for="address">Address</label>
