@@ -25,7 +25,7 @@ class UsersClass
             $users = new Users();
             $users->email = $data["email"];
             $users->password =  bcrypt(  $data["password"]);
-            $users->active = "1";
+            $users->active = "0";
             $users->role = 3;
             $users->remember_token = $data["_token"];
             $users->save();

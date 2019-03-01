@@ -58,6 +58,16 @@ class MessagesClass  extends Controller
 
     }
 
+    public function sendStandardMail($subject, $data) {
+
+        $recipient = "kuehn.sebastian@gmail.com";
+        $mailTemplate = "payInSucceeded";
+
+
+        $this->send($mailTemplate, $recipient, $subject,  $data);
+
+    }
+
 
     public function payInSucceeded($milestone, $plan, $user) {
 

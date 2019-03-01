@@ -12,6 +12,12 @@
                         {{ Session::get('error') }}
                     </div>
                 @endif
+                @if(Session::has('success'))
+                    <div class="alert alert-success error_message">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        {!!  Session::get('success') !!}
+                    </div>
+                @endif
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/beta-register-save') }}">
                         {{ csrf_field() }}
@@ -49,7 +55,7 @@
 
                             <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-
+                                <input id="status" type="hidden" class="form-control" name="status" value=" {{ $status or  '' }}">
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>

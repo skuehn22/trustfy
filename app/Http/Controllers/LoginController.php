@@ -7,8 +7,9 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
-use App\DatabaseModels\Newsletter;
+use App\DatabaseModels\Users;
 use App\Classes\UsersClass;
+use App\Classes\MessagesClass;
 
 
 
@@ -173,7 +174,11 @@ class LoginController extends Controller
 
                 return Redirect::to("$ll")->withInput()->with('error', 'Logindaten fehlerhaft!');
             }
+
             else {
+
+
+
                 $userdata = array(
                     'email' => $_POST["mail_register"],
                     'password' => $_POST["pw"]
@@ -225,7 +230,13 @@ class LoginController extends Controller
 
     public function betaRegister() {
 
-        return view('auth.register', compact('blade'));
+        if(isset($_GET['intern'])){
+            $status = 2202;
+        }else{
+            $status = 0;
+        }
+
+        return view('auth.register', compact('status'));
 
     }
 
@@ -246,7 +257,26 @@ class LoginController extends Controller
 
         }else{
 
-            $response = self::login();
+            if(isset($_POST['status']) && $_POST['status'] == 2202){
+
+                $user = Users::where("email", "=", $_POST['email'])->first();
+                $user->active = 1;
+                $user->save();
+                self::login();
+
+            }else{
+
+                $subject = "Beta Version Register";
+                $data['content'] = $_POST['email'];
+
+                $msg_obj = new MessagesClass();
+                $msg_obj->sendStandardMail($subject, $data);
+
+                return back()->withInput()->with('success', 'Thank you for registering. <br> We will get back to you as soon as possible.');
+            }
+
+
+
             return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);
         }
 
