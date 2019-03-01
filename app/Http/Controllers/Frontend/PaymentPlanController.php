@@ -201,5 +201,29 @@ class PaymentPlanController extends Controller
     }
 
 
+    public function setProtection() {
+
+
+
+        $plan = Plans::where("hash", "=", $_GET["hash"])
+            ->first();
+
+        //set hide to hide the modal which ask for setting up a protection
+        $plan->protection = "hide";
+        $plan->protection_email = $_GET["email"];
+        $plan->protection_pw =  bcrypt(  $_GET["password"]);
+        $plan->save();
+
+        $subject= "Trustfy Payments - Plan Protection";
+        $data['content'] = "Your Plan Protection: <br>".$plan->email."<br> Passwort:".$_GET["password"];
+
+        $msg_obj = new MessagesClass();
+        $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);
+
+        return $plan;
+
+    }
+
+
 
 }

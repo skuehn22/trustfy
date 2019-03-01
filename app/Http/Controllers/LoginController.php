@@ -270,7 +270,7 @@ class LoginController extends Controller
                 $data['content'] = $_POST['email'];
 
                 $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data);
+                $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io');
 
                 return back()->withInput()->with('success', 'Thank you for registering. <br> We will get back to you as soon as possible.');
             }

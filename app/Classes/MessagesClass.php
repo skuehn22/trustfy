@@ -58,12 +58,9 @@ class MessagesClass  extends Controller
 
     }
 
-    public function sendStandardMail($subject, $data) {
+    public function sendStandardMail($subject, $data, $recipient) {
 
-        $recipient = "kuehn.sebastian@gmail.com";
         $mailTemplate = "payInSucceeded";
-
-
         $this->send($mailTemplate, $recipient, $subject,  $data);
 
     }
