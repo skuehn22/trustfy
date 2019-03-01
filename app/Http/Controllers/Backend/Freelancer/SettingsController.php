@@ -77,7 +77,10 @@ class SettingsController extends Controller
         $companyTypes= CompaniesType::where("delete", "=", "0")
                 ->lists('title', 'id');
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes'));
+        $kyc_docs= CompaniesType::where("id", "=", $company->type)
+                ->first();
+
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs'));
 
     } else {
 
@@ -113,6 +116,7 @@ class SettingsController extends Controller
             $company = new Companies();
         }
 
+        $company->type = $_POST["companyType"];
         $company->name = $_POST["firstname"];
         $company->birthday = $_POST["birthday"];
         $company->country_nationality = $_POST["nationality"];

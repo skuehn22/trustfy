@@ -11,9 +11,9 @@ return [
 
 
     /* Company Types */
-    'soletrader' => 'Sole Trader',
-    'limited' => 'Limited  Copany',
-    'other' => 'Other',
+    'company_types_1' => 'Soletrader',
+    'company_types_2' => 'Business',
+    'company_types_3' => 'Organization',
 
 
 ];

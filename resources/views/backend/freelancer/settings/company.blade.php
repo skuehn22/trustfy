@@ -18,7 +18,7 @@
                     </div>
                 @endif
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 pl-0">
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="company">
