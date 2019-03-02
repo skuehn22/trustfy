@@ -39,6 +39,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/newsletter-sign-up', 'HomeController@newsletter');
     Route::any('/send-message', 'HomeController@contact');
     Route::any('/terms', 'HomeController@terms');
+    Route::any('/terms-detail', 'HomeController@termsDetail');
     Route::any('/privacy', 'HomeController@privacy');
 
 

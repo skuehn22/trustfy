@@ -125,6 +125,12 @@ class HomeController extends Controller
         return view('frontend.terms', compact('blade'));
     }
 
+
+    public function termsDetail() {
+        $blade["locale"] = App::getLocale();
+        return view('frontend.terms_detail', compact('blade'));
+    }
+
     public function faq() {
         $blade["locale"] = App::getLocale();
         return view('frontend.faq', compact('blade'));

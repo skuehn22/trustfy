@@ -1052,6 +1052,25 @@ button.btn {
     text-align: left;
 }
 
+
+.terms-detail-container{
+  padding-top:25px;
+  text-align: left;
+  font-size: 11px;
+}
+
+
+.terms-detail-container p{
+   text-align: left;
+  font-size: 13px;
+}
+
+.terms-detail-container h1{
+  text-align: left;
+  font-size: 20px;
+}
+
+
 .privacy-container{
     padding-top:25px;
     background-color: #fff;

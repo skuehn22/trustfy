@@ -48,14 +48,16 @@
             <a class="forget" href="{{ url('en/password/reset') }}">Forgot Your Password?</a>
         </div>
     </div>
-    <!--
+
     <div class="form-group">
         <div class="col-md-12 register pt-5">
             <span>New to Trustfy?</span>
             <a class="btn btn-secondary btn-register" href="/register" role="button">Create an ccount</a>
+            <br><br>
         </div>
+
     </div>
-    -->
+
 </form>
 
 
