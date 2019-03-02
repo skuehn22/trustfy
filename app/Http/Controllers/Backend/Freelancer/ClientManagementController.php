@@ -83,9 +83,25 @@ class ClientManagementController extends Controller
 
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
+        $input = Request::all();
 
         $client = Clients::where("id", "=", $id)
             ->first();
+
+        $client->firstname = $input["client-firstname"];
+        $client->lastname = $input["client-lastname"];
+        $client->phone = $input["client-phone"];
+        $client->mobile = $input["client-mobile"];
+        $client->mail = $input["client-mail"];
+
+        $client->currency = $input["currency"];
+        $client->address1 = $input["client-address1"];
+        $client->address2 = $input["client-address2"];
+        $client->city = $input["client-city"];
+        $client->country = $input["country"];
+
+        $client->service_provider_fk = $blade["user"]->service_provider_fk;
+        $client->save();
 
         return view('backend.freelancer.clients.clients-edit', compact('blade', 'client'));
 

@@ -13,7 +13,7 @@
 @stop
 
 @section('content')
-    <div class="clients">
+    <div class="clients" style="padding:35px;">
         <div class="row section-heading">
             <div class="col-md-6">
             </div>
@@ -21,7 +21,7 @@
         <form action="/{{$blade["ll"]}}/freelancer/clients/save/0">
         <div class="row">
             <div class="col-md-6">
-                <h5>New Client</h5>
+                <h5 class="pb-3">New Client</h5>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label" for="firstname">Firstname</label>
                     <input type="text" class="form-control col-md-7" id="client-firstname" name="client-firstname" required>
@@ -46,7 +46,7 @@
 
             </div>
             <div class="col-md-6">
-                <h5>Billing</h5>
+                <h5 class="pb-3">Billing</h5>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label" for="currency">Currency</label>
                     <select id="currency" name="currency" class="col-md-7 col-form-label">
@@ -68,9 +68,9 @@
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-4 col-form-label" for="country">Country</label>
-                    @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-12', 'default' => $blade['user']->country])
+                    @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => $blade['user']->country])
                 </div>
-                <div class="form-row pt-3 py-2">
+                <div class="form-row pt-3 py-2 pt-2">
                     <button type="submit" class="btn btn-classic">Save Client</button>
                 </div>
 

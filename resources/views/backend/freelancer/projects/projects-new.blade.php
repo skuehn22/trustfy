@@ -13,14 +13,14 @@
 @stop
 
 @section('content')
-    <div class="clients">
+    <div class="clients" style="padding: 35px;">
         <div class="row section-heading">
-            <div class="col-md-6">
+            <div class="col-md-6 pl-0">
                 <h3>Create new Project</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 pl-2">
                 <form action="/{{$blade["ll"]}}/freelancer/projects/save/0">
                     <div class="form-row py-2">
                         <h5>General Informations</h5>
@@ -28,7 +28,7 @@
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label" for="clients">Client</label>
                         @if(count($clients)>0)
-                        <select name="clients" id="clients" class="col-md-10">
+                        <select name="clients" id="clients" class="col-md-8">
                             @foreach($clients as $client)
                                 <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
                             @endforeach
@@ -42,32 +42,36 @@
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label" for="name">Name</label>
-                        <input type="text" class="form-control col-md-10" id="name" name="name">
+                        <input type="text" class="form-control col-md-8" id="name" name="name">
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label"  for="description">Description</label>
-                        <textarea class="form-control col-md-10" rows="5" id="description" name="description"></textarea>
+                        <textarea class="form-control col-md-8" rows="5" id="description" name="description"></textarea>
                     </div>
-                    <div class="form-row py-2">
-                       <h5>Address optional</h5>
-                    </div>
-                    <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label"  for="address">Street</label>
-                        <input type="text" class="form-control col-md-10" id="street" name="street">
-                    </div>
-                    <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label"  for="city">City</label>
-                        <input type="text" class="form-control col-md-10" id="city" name="city">
-                    </div>
-                    <div class="form-row py-2">
-                        <label class="col-md-2 col-form-label"  for="country">Country</label>
-                        <input type="text" class="form-control col-md-10" id="country" name="country">
-                    </div>
-                    <button type="submit" class="btn btn-classic">Save Project</button>
+
                 </form>
             </div>
+            <div class="col-md-6">
+                <div class="form-row py-2">
+                    <h5>Address optional</h5>
+                </div>
+                <div class="form-row py-2">
+                    <label class="col-md-2 col-form-label"  for="street">Street</label>
+                    <input type="text" class="form-control col-md-8" id="street" name="street">
+                </div>
+                <div class="form-row py-2">
+                    <label class="col-md-2 col-form-label"  for="city">City</label>
+                    <input type="text" class="form-control col-md-8" id="city" name="city">
+                </div>
+                <div class="form-row py-2">
+                    <label class="col-md-2 col-form-label"  for="country">Country</label>
+                    <input type="text" class="form-control col-md-8" id="country" name="country">
+                </div>
+                <div class="form-row pt-4">
+                    <button type="submit" class="btn btn-classic">Save Project</button>
+                </div>
+            </div>
         </div>
-
     </div>
 @stop
 @section("js")
