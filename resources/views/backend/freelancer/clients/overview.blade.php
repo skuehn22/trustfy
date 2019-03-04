@@ -23,7 +23,7 @@
             background: #fff;
             color: #006600;
             padding: 16px 30px;
-            margin: -20px -25px 10px;
+
             border: 1px solid #999;
             border-radius: 3px 3px 0 0;
         }

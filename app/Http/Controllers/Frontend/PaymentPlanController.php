@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Frontend;
 
 // Libraries
-use App, Redirect, Auth, DB;
+use App, Redirect, Auth, DB, Input, Validator;
 
 use App\Http\Controllers\Controller;
 
@@ -17,6 +17,7 @@ use App\Http\Controllers\Controller;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
 use App\DatabaseModels\PlanDocs;
+use App\DatabaseModels\UsersPaymentPlan;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Companies;
 use App\Classes\MangoClass;
@@ -38,13 +39,36 @@ class PaymentPlanController extends Controller
 
     public function index($hash) {
 
+        if (Auth::check()) {
+            //set an example< plan
+            $hash = "1551693284";
+            $login = true;
+        }else{
+            $login = false;
+        }
+
+
+        if(isset($_GET['protect']) && $_GET['protect'] == true){
+            $protect = true;
+            $login = true;
+        }else{
+            $protect = false;
+        }
+
+
+        if(isset($_GET['login']) && $_GET['login'] == true){
+            $loggedIn = true;
+        }else{
+            $loggedIn = false;
+        }
+
         $blade["locale"] = App::getLocale();
 
         //get all plan details for the normal payment plan view
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
-        $query->where('projects_plans.hash', '=', $hash );
+        $query->where('projects_plans.hash', '=', $hash);
         $query->select('projects.name AS projectName', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
@@ -61,14 +85,14 @@ class PaymentPlanController extends Controller
             ->first();
 
         //only if client comes back from mangopay
-        if(isset($_GET['transactionId'])){
+        if (isset($_GET['transactionId'])) {
 
             //if client comes from mangopay they will habe an transaction id
             $transactionId = $_GET['transactionId'];
 
             //get result of the payin made by client
             $mango_obj = new MangoClass($this->mangopay);
-            $payinResult =   $mango_obj->getPayInCardWeb($transactionId);
+            $payinResult = $mango_obj->getPayInCardWeb($transactionId);
 
             //update the result of the payin in intern DB
             $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
@@ -80,18 +104,19 @@ class PaymentPlanController extends Controller
             $payIn->save();
 
             //if payment was successful update the paystatus of our intern DB
-            if($payinResult->Status == "SUCCEEDED"){
+            if ($payinResult->Status == "SUCCEEDED") {
                 $milestone->paystatus = 1;
                 $milestone->save();
 
                 $msg_obj = new MessagesClass();
-                $result =   $msg_obj->payInSucceeded($milestone, $plan, $user);
+                $result = $msg_obj->payInSucceeded($milestone, $plan, $user);
 
             }
         }
 
+        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'login', 'hash', 'protect', 'loggedIn'));
 
-        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs'));
+
     }
 
     public function loadPreview($id) {
@@ -203,16 +228,23 @@ class PaymentPlanController extends Controller
 
     public function setProtection() {
 
-
+        $ll = App::getLocale();
+        $users = new UsersPaymentPlan;
+        $users->plan_hash = $_GET["hash"];
+        $users->email = $_GET["email"];
+        $users->password =  $_GET["password"];
+        $users->active = "0";
+        $users->role = 4;
+        $users->save();
 
         $plan = Plans::where("hash", "=", $_GET["hash"])
             ->first();
 
         //set hide to hide the modal which ask for setting up a protection
         $plan->protection = "hide";
-        $plan->protection_email = $_GET["email"];
-        $plan->protection_pw =  bcrypt(  $_GET["password"]);
+        $plan->protection_user = $users->id;
         $plan->save();
+
 
         $subject= "Trustfy Payments - Plan Protection";
         $data['content'] = "Your Plan Protection: <br>".$plan->email."<br> Passwort:".$_GET["password"];
@@ -220,8 +252,42 @@ class PaymentPlanController extends Controller
         $msg_obj = new MessagesClass();
         $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);
 
-        return $plan;
+        $result = self::login();
 
+        if($result){
+            return response()->json(['success' => true, 'msg' => 'Logged In']);
+        }else{
+            return response()->json(['success' => false, 'msg' => 'Unknown Login Data']);
+        }
+
+    }
+
+    public function loginPlan() {
+
+       $result = self::login();
+
+        if($result){
+            return response()->json(['success' => true, 'msg' => 'Logged In']);
+        }else{
+            return response()->json(['success' => false, 'msg' => 'Unknown Login Data']);
+        }
+
+    }
+
+
+
+    public function login() {
+
+        $data = Input::all();
+
+        $user = UsersPaymentPlan::where("plan_hash", "=", $data["hash"])
+            ->first();
+
+        if($user->email == $data["email"] && $user->password == $data["password"]){
+           return true;
+        }else{
+           return false;
+        }
     }
 
 

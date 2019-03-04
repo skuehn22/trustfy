@@ -200,6 +200,12 @@
 
         }
 
+
+        .blur {
+            -webkit-filter: blur(2px);
+            filter: blur(4px);
+        }
+
     </style>
 
 
@@ -207,7 +213,7 @@
 
 @section('content')
 
-<div class="row" id="invoice">
+<div class="row blur" id="invoice">
 <!--
     <div class="toolbar hidden-print">
         <div class="text-right">
@@ -223,10 +229,12 @@
     @endif
 
             <header>
-                <div class="alert alert-success success_message d-none">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    Thank you. The Payment Plan Protection is now active.
-                </div>
+                @if(isset($protect) && $protect == true)
+                    <div class="alert alert-success success_message">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        Thank you. The Payment Plan Protection is now active.
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col">
                         @if(isset($company->logo))
@@ -393,7 +401,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="save-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="protect-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -449,38 +457,125 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="login-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="alert alert-error login-error d-none">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <div class="login-error-msg"></div>
+                </div>
+                <h5 class="modal-title-msg" id="modal-title-msg">Log into your plan</h5>
+            </div>
+            <div class="modal-body"  id="modal-body-msg">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login-plan') }}">
+                    {{ csrf_field() }}
+                    <p>To protect your plan from unauthorized access please define your documents protection</p>
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="email" class="col-md-12 control-label">Enter a E-Mail Address</label>
+
+                        <div class="col-md-12 pl-0">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            <input type="hidden" value="{{$hash}}" name="hash" id="hash">
+
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <label for="password" class="col-md-12 control-label">Choose a Password</label>
+
+                        <div class="col-md-12  pl-0">
+                            <input id="password" type="password" class="form-control" name="password">
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 register  pl-0">
+                            <button id="log-protection" type="button" class="btn btn-success">
+                                <i class="fa fa-btn fa-user"></i> continue
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @endsection
 
 @section('js')
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     <script>
 
-     $('#save-plan').modal({{$plan->protection}});
+         @if( (!$login && $plan->protection == 'show'))
 
-    //loads projects for selected client
+            $('#protect-plan').modal('show');
 
-    $('input[type=radio][name=paymenttyp]').change(function() {
+         @elseif(!$login && $plan->protection == 'hide')
 
 
-        if($(this).val() == 1){
-                $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
-        }else{
-            if($(this).val() == 2){
-                $('#paymentform').attr('action', '/payment-plan/pay-by-bank/{{$plan->hash}}');
+                @if( isset($loggedIn) && $loggedIn == "true" )
+
+                    $('#invoice').removeClass('blur');
+
+                 @else
+
+                    $('#login-plan').modal('show');
+
+                @endif
+
+         @endif
+
+
+
+
+        //loads projects for selected client
+
+        $('input[type=radio][name=paymenttyp]').change(function() {
+
+
+            if($(this).val() == 1){
+                    $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
             }else{
-                $('#paymentform').removeAttr('action');
+                if($(this).val() == 2){
+                    $('#paymentform').attr('action', '/payment-plan/pay-by-bank/{{$plan->hash}}');
+                }else{
+                    $('#paymentform').removeAttr('action');
+                }
             }
-        }
 
-    });
+        });
 
-     // External Button Events
-     $("#set-protection").on("click", function() {
-         alert("huhu");
-         setProtection({{$plan->hash}});
-         return true;
-     });
+         // External Button Events
+         $("#set-protection").on("click", function() {
+             setProtection({{$plan->hash}});
+             return true;
+         });
+
+
+         // External Button Events
+         $("#log-protection").on("click", function() {
+             loginPlan({{$plan->hash}});
+             return true;
+         });
 
 
         function setProtection(hash) {
@@ -495,12 +590,41 @@
                 data: { hash: hash },
                 dataType: 'json',
                 success: function(data) {
-                    alert("geschafft");
-                    $('.success_message').show();
+
+                    if(data.success == true){
+                        window.location.href = window.location.href + "?protect=true";
+                    }else{
+                        alert("Fehler");
+                    }
 
                 }
             })
         }
+
+
+         function loginPlan(hash) {
+
+             var email = $("#email").val();
+             var password = $("#password").val();
+
+             $.ajax({
+
+                 type: 'GET',
+                 url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/login-plan?email='+email+'&password='+password+'&hash='+hash,
+                 data: { hash: hash },
+                 dataType: 'json',
+                 success: function(data) {
+
+
+                     if(data.success == true){
+                         window.location.href = window.location.href + "?login=true";
+                     }else{
+                         alert("Fehler");
+                     }
+
+                 }
+             })
+         }
 
     </script>
 

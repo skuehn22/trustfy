@@ -79,6 +79,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/payment-plan/pay-by-bank/{hash}', 'Frontend\PaymentPlanController@payBank') ;
     Route::any('/payment-plan/release-milestone/{hash}', 'Frontend\PaymentPlanController@releaseMilestone') ;
     Route::any('/protect-plan', 'Frontend\PaymentPlanController@setProtection') ;
+    Route::any('/login-plan', 'Frontend\PaymentPlanController@loginPlan') ;
 
     Route::any('/mango-hooks', 'Backend\Freelancer\MangoHooksController@receive') ;
 

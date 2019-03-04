@@ -25,6 +25,7 @@ class MessagesClass  extends Controller
         Mail::send('emails.'.$mailTemplate, compact('data'), function ($message) use ($recipient, $subject) {
             $message->from('info@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
+            $message->bcc('bcc@trustfy.io');
             $message->subject($subject);
         });
 
