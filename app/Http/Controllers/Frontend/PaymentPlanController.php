@@ -42,9 +42,6 @@ class PaymentPlanController extends Controller
         if (Auth::check()) {
             //set an example< plan
             $hash = "1551693284";
-            $login = true;
-        }else{
-            $login = false;
         }
 
 
@@ -52,6 +49,7 @@ class PaymentPlanController extends Controller
             $protect = true;
             $login = true;
         }else{
+            $login = false;
             $protect = false;
         }
 

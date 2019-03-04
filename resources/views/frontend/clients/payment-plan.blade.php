@@ -545,6 +545,11 @@
          @endif
 
 
+                @if( isset($protect) && $protect == "true" )
+                    $('#invoice').removeClass('blur');
+                @endif
+
+
 
 
         //loads projects for selected client
