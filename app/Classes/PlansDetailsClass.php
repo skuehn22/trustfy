@@ -8,7 +8,7 @@
 
 namespace App\Classes;
 
-use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash;
+use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash, DateTime;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\MessagesCompanies;
 use App\DatabaseModels\Companies;
@@ -27,6 +27,7 @@ class PlansDetailsClass  extends Controller
     $query->where('projects_plans.service_provider_fk', '=', $user);
     $query->where('projects_plans_milestones.delete', '=', '0');
     $query->where('projects_plans.delete', '=', '0');
+    $query->where('projects_plans_milestones.due_at', '!=', null);
     $query->select('projects_plans_milestones.*');
     $funds = $query->get();
 
@@ -60,6 +61,37 @@ class PlansDetailsClass  extends Controller
     }
 
       return $fundsCalculation;
+
+    }
+
+
+    public function upcomingPayment($user){
+
+        $today = date('m/d/Y');
+
+        $query = DB::table('projects_plans_milestones');
+        $query->join('projects_plans', 'projects_plans_milestones.projects_plans_id_fk', '=', 'projects_plans.id');
+        $query->where('projects_plans.service_provider_fk', '=', $user);
+        $query->where('projects_plans_milestones.delete', '=', '0');
+        $query->where('projects_plans.delete', '=', '0');
+        $query->where('projects_plans_milestones.due_at', '!=', null);
+        $query->where('projects_plans_milestones.due_at', '>', $today);
+        $query->select('projects_plans_milestones.*', 'projects_plans.name AS planName');
+        $funds = $query->get();
+
+
+        $upcoming = "01/01/2080";
+
+        foreach ($funds as $fund){
+
+            if( new DateTime($fund->due_at) < new DateTime($upcoming) ){
+                $upcoming = $fund->due_at;
+                $upcoming_fund = $fund;
+            }
+
+        }
+
+        return $upcoming_fund;
 
     }
 

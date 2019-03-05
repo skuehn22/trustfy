@@ -83,7 +83,6 @@ class DashboardController extends Controller
             }
 
 
-
             if($percent['released']>180){
                 $openRight['released'] =  180;
                 $openLeft['released'] =  $percent['released'] *360 / 100;
@@ -94,10 +93,12 @@ class DashboardController extends Controller
 
 
 
+            $upcoming = $planObj->upcomingPayment($blade["user"]->service_provider_fk);
+
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
 
-            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages', 'funds'));
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages', 'funds', 'upcoming'));
 
         } else {
 

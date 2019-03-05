@@ -18,8 +18,8 @@
             <div class="card-footer text-center">
                 <div class="text">
                     @if(count($plans)>0)
-                       Project: Name<br>
-                       Address: Any Street, 123456 Dublin
+                       Plan Name: {{ $upcoming->planName }}<br>
+                       Due at: {{date('d.m.Y', strtotime($upcoming->due_at))}} - Amount {{ number_format($upcoming->amount, 2) }} €
                     @else
                         No Payment Plans yet.
                     @endif
