@@ -351,7 +351,7 @@ class PlansManagementController extends Controller
 
         Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company) {
             $message->from('info@trustfy.io', 'Trustfy.io');
-            $message->to($client->mail);
+            $message->to($client->email);
             $message->subject($company->name." - Payment Plan");
         });
 

@@ -92,7 +92,7 @@ class ClientManagementController extends Controller
         $client->lastname = $input["client-lastname"];
         $client->phone = $input["client-phone"];
         $client->mobile = $input["client-mobile"];
-        $client->mail = $input["client-mail"];
+        $client->email = $input["client-mail"];
 
         $client->currency = $input["currency"];
         $client->address1 = $input["client-address1"];
@@ -125,7 +125,7 @@ class ClientManagementController extends Controller
         $client->lastname = $input["client-lastname"];
         $client->phone = $input["client-phone"];
         $client->mobile = $input["client-mobile"];
-        $client->mail = $input["client-mail"];
+        $client->email = $input["client-mail"];
 
         $client->currency = $input["currency"];
         $client->address1 = $input["client-address1"];

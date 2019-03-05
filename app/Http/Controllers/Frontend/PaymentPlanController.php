@@ -281,11 +281,22 @@ class PaymentPlanController extends Controller
         $user = UsersPaymentPlan::where("plan_hash", "=", $data["hash"])
             ->first();
 
-        if($user->email == $data["email"] && $user->password == $data["password"]){
-           return true;
+
+        if(isset($data["password-login"])){
+            if($user->email == $data["email-login"] && $user->password == $data["password-login"]){
+                return true;
+            }else{
+                return false;
+            }
         }else{
-           return false;
+            if($user->email == $data["email"] && $user->password == $data["password"]){
+                return true;
+            }else{
+                return false;
+            }
         }
+
+
     }
 
 

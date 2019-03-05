@@ -81,7 +81,7 @@ class SetupController extends Controller
         $client->lastname = $data->lastname;
         $client->phone = $data->phone;
         $client->mobile = $data->mobile;
-        $client->mail = $data->mail;
+        $client->email = $data->mail;
 
         if(isset($data->currency)){
             $client->currency = $data->currency;

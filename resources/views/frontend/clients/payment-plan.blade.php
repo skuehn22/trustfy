@@ -471,12 +471,13 @@
             <div class="modal-body"  id="modal-body-msg">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/login-plan') }}">
                     {{ csrf_field() }}
-                    <p>To protect your plan from unauthorized access please define your documents protection</p>
+                    <p>Your plan was protected. Please log in</p>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-12 control-label">Enter a E-Mail Address</label>
+                        <label for="email" class="col-md-12 control-label">E-Mail Address</label>
 
                         <div class="col-md-12 pl-0">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+
+                            <input id="email-login" type="email" class="form-control" name="email-login">
                             <input type="hidden" value="{{$hash}}" name="hash" id="hash">
 
                             @if ($errors->has('email'))
@@ -488,10 +489,10 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="password" class="col-md-12 control-label">Choose a Password</label>
+                        <label for="password-login" class="col-md-12 control-label">Password</label>
 
                         <div class="col-md-12  pl-0">
-                            <input id="password" type="password" class="form-control" name="password">
+                            <input id="password-login" type="password" class="form-control" name="password-login">
 
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -609,8 +610,8 @@
 
          function loginPlan(hash) {
 
-             var email = $("#email").val();
-             var password = $("#password").val();
+             var email = $("#email-login").val();
+             var password = $("#password-login").val();
 
              $.ajax({
 

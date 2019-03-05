@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-4 col-form-label"  for="client-mail">Email address</label>
-                        <input type="email" class="form-control col-md-7" id="client-mail" name="client-mail"  value="{{$client->mail or ''}}" aria-describedby="emailHelp" required>
+                        <input type="email" class="form-control col-md-7" id="client-mail" name="client-mail"  value="{{$client->email or ''}}" aria-describedby="emailHelp" required>
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-4 col-form-label"  for="client-phone">Phone</label>

@@ -20,7 +20,7 @@
                             <td>{{$client->firstname}}</td>
                             <td>{{$client->address}}</td>
                             <td>{{$client->city}}</td>
-                            <td>{{$client->mail}}</td>
+                            <td>{{$client->email}}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -200,7 +200,7 @@
                 @foreach($clients as $client)
                     <tr>
                         <td>{{ $client->firstname}} {{ $client->lastname}}</td>
-                        <td>{{$client->mail}}</td>
+                        <td>{{$client->email}}</td>
                         <td>{{$client->address1}}</td>
                         <td>{{$client->city}}</td>
                         <td>

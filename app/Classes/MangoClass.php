@@ -66,7 +66,7 @@ class MangoClass extends Controller
         if ($client->mango_id != 0) {
             $mango_client = $this->getUser($client);
         } else {
-            $mango_client = $this->createNaturalUser($client);
+            $mango_client = $this->createNaturalUser($client, $client);
 
             $client = Clients::where("id", "=", $client->id)
                 ->first();
