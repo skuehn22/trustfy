@@ -473,5 +473,53 @@
         }
 
 
+        $(".load-preview").on("click", function() {
+
+            event.preventDefault();
+            $.ajax({
+                url:"<?php echo e(route('freelancer.plans.save')); ?>",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+
+                    loadPreview();
+
+                }
+            })
+
+
+        });
+
+
+        function loadPreview() {
+
+            var plan =  $("#plan").val();
+
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                    $('.sw-toolbar').addClass("d-none");
+
+                    document.getElementById("preview-container").innerHTML = xmlhttp.responseText;
+
+                }
+            }
+
+
+            xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/preview/"+plan, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+        }
 
     </script>

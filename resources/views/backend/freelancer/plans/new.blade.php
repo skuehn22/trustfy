@@ -190,6 +190,7 @@
                             <li><a href="#step-2">Step 2<br /><small>Configuration Payment Plan</small></a></li>
                             <li><a href="#step-3">Step 3<br /><small>Upload Documents</small></a></li>
                             <li><a href="#step-4">Step 4<br /><small>Completion of creation</small></a></li>
+                            <li><a href="#step-5">Step 5<br /><small>Preview</small></a></li>
                             <li class="right;"></li>
                         </ul>
 
@@ -228,11 +229,13 @@
                             <div id="step-4" class="tab-pane step-content">
                                 @include('backend.freelancer.plans.finishing')
                             </div>
-                                <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
+                            <div id="step-5" class="tab-pane step-content">
+                                @include('backend.freelancer.plans.preview')
+                            </div>
+                            <input type="hidden" id="plan" name="plan" value="{{$plan->id}}">
                             </form>
                         </div>
                     </div>
-
             </div>
         </div>
 

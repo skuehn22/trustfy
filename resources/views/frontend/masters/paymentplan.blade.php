@@ -37,6 +37,7 @@
 
 
 </body>
+<script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 
 @yield('js')
 </html>

@@ -59,10 +59,10 @@
         @endif
     </div>
     <div class="form-row py-2">
-        <div class="col-md-12 pt-2 float-right text-right">
-            <div class="btn-group mr-2 sw-btn-group" role="group" >
+        <div class="col-md-12 pt-1 text-right">
+            <div class="btn-group sw-btn-group" role="group" >
                 <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
-                <button class="btn btn-success send-plan" style="width: 230px;" id="send-plan" type="button">View Preview and send</button>
+                <button class="btn btn-success next-btn load-preview" id="next-btn" type="button">Preview</button>
             </div>
         </div>
     </div>
