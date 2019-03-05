@@ -417,40 +417,7 @@ class PlansManagementController extends Controller
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
-        //only if client comes back from mangopay
-        if (isset($_GET['transactionId'])) {
-
-            //if client comes from mangopay they will habe an transaction id
-            $transactionId = $_GET['transactionId'];
-
-            //get result of the payin made by client
-            $mango_obj = new MangoClass($this->mangopay);
-            $payinResult = $mango_obj->getPayInCardWeb($transactionId);
-
-            //update the result of the payin in intern DB
-            $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
-                ->first();
-
-            $payIn->state = $payinResult->Status;
-            $payIn->result_code = $payinResult->ResultCode;
-            $payIn->result_message = $payinResult->ResultMessage;
-            $payIn->save();
-
-            //if payment was successful update the paystatus of our intern DB
-            if ($payinResult->Status == "SUCCEEDED") {
-                $milestone->paystatus = 1;
-                $milestone->save();
-
-                $msg_obj = new MessagesClass();
-                $result = $msg_obj->payInSucceeded($milestone, $plan, $user);
-
-            }
-
-
-        }
-
         $hash = $plan->hash;
-
 
         return view('frontend.clients.payment-plan-preview', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash'));
 

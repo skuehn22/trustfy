@@ -32,7 +32,8 @@ class HomeController extends Controller
 
         if(isset($blade["user"]->role)  && $blade["user"]->role == 0) {
 
-            return view('backend.provider.dashboard', compact('blade'));
+            return Redirect::to($blade["locale"]."/freelancer/dashboard")->withInput()->with('success', 'Your payment plan has been created!');
+
 
         }else{
             return view('frontend.masters.master-trustfy-homepage', compact('blade'));

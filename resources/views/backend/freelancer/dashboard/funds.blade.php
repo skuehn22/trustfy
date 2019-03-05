@@ -5,15 +5,14 @@
                 @if(count($plans)>0)
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="progress green">
                             <span class="progress-left">
                                 <span class="progress-bar"></span>
                             </span>
                                     <span class="progress-right">
-                                <span class="progress-bar"></span>
+                                <span class="progress-bar"  style="margin-left: -1px;"></span>
                             </span>
-                            <div class="progress-value">2200,00 €</div>
+                            <div class="progress-value"> {{ number_format($funds['funded'], 2) }} €</div>
                         </div>
                     </div>
                 </div>
@@ -27,6 +26,7 @@
                 @endif
             </div>
             <div class="card-footer ">
+<!--
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#">Last 7 Days</a>
@@ -34,7 +34,8 @@
                     <div class="col-md-6 text-right">
                         <a href="#">Details</a>
                     </div>
-                </div>
+
+                </div> -->
             </div>
         </div>
     </div>
@@ -50,9 +51,9 @@
                                 <span class="progress-bar"></span>
                             </span>
                                     <span class="progress-right">
-                                <span class="progress-bar"></span>
+                                <span class="progress-bar" style="margin-left: -1px;"></span>
                             </span>
-                            <div class="progress-value">800,00 €</div>
+                            <div class="progress-value">{{ number_format($funds['pending'], 2) }} €</div>
                         </div>
                     </div>
                 </div>
@@ -66,6 +67,7 @@
                 @endif
             </div>
             <div class="card-footer ">
+<!--
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#">Last 7 Days</a>
@@ -74,6 +76,7 @@
                         <a href="#">Details</a>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
@@ -89,9 +92,9 @@
                                 <span class="progress-bar"></span>
                             </span>
                             <span class="progress-right">
-                                <span class="progress-bar"></span>
+                                <span class="progress-bar" style="margin-left: -1px;"></span>
                             </span>
-                            <div class="progress-value">3000,00 €</div>
+                            <div class="progress-value">{{ number_format($funds['released'], 2) }} €</div>
                         </div>
                     </div>
                 </div>
@@ -105,6 +108,7 @@
                 @endif
             </div>
             <div class="card-footer ">
+                <!--
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#">Last 7 Days</a>
@@ -113,6 +117,7 @@
                         <a href="#">Details</a>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>

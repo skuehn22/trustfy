@@ -238,6 +238,8 @@ h1{
     position: absolute;
     left: 5%;
 }
+
+
 .progress.blue .progress-bar{
     border-color: #049dff;
 }
@@ -249,16 +251,9 @@ h1{
     animation: open-plans-right 0.5s linear forwards 0.8s;
 }
 
-.progress.green .progress-bar{
-    border-color: #28a745;
-}
-.progress.green .progress-left .progress-bar{
-    animation: open-plans-left 1.2s linear forwards 1.8s;
-}
 
-.progress.green .progress-right .progress-bar{
-    animation: open-plans-right 0.5s linear forwards 0.8s;
-}
+
+
 
 
 .progress.yellow .progress-bar{

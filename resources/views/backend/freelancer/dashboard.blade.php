@@ -22,69 +22,111 @@
         .ad a.title {color: #15C;text-decoration: none;font-weight: bold;font-size: 110%;}
         .ad a.url {color: #093;text-decoration: none;}
 
-        @keyframes open-plans-left{
+        @keyframes funded-plans-left{
             0%{
                 -webkit-transform: rotate(0deg);
                 transform: rotate(0deg);
             }
             100%{
-                -webkit-transform: rotate({{$openLeft}}deg);
-                transform: rotate({{$openLeft}}deg);
+                -webkit-transform: rotate({{$openLeft['funded']}}deg);
+                transform: rotate({{$openLeft['funded']}}deg);
             }
         }
 
-        @keyframes open-plans-right{
+        @keyframes funded-plans-right{
             0%{
                 -webkit-transform: rotate(0deg);
                 transform: rotate(0deg);
             }
             100%{
-                -webkit-transform: rotate({{$openRight}}deg);
-                transform: rotate({{$openRight}}deg);
+                -webkit-transform: rotate({{$openRight['funded']}}deg);
+                transform: rotate({{$openRight['funded']}}deg);
+            }
+        }
+
+        @keyframes pending-plans-left{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate({{$openLeft['funded']}}deg);
+                transform: rotate({{$openLeft['funded']}}deg);
+            }
+        }
+
+        @keyframes pending-plans-right{
+            0%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate({{$openRight['pending']}}deg);
+                transform: rotate({{$openRight['pending']}}deg);
             }
         }
 
 
-        @keyframes loading-2{
+
+        @keyframes released-plans-left{
             0%{
                 -webkit-transform: rotate(0deg);
                 transform: rotate(0deg);
             }
             100%{
-                -webkit-transform: rotate(10deg);
-                transform: rotate(10deg);
+                -webkit-transform: rotate({{$openLeft['released']}}deg);
+                transform: rotate({{$openLeft['released']}}deg);
             }
         }
-        @keyframes loading-3{
+
+        @keyframes released-plans-right{
             0%{
                 -webkit-transform: rotate(0deg);
                 transform: rotate(0deg);
             }
             100%{
-                -webkit-transform: rotate(90deg);
-                transform: rotate(90deg);
+                -webkit-transform: rotate({{$openRight['released']}}deg);
+                transform: rotate({{$openRight['released']}}deg);
             }
         }
-        @keyframes loading-4{
-            0%{
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100%{
-                -webkit-transform: rotate(36deg);
-                transform: rotate(36deg);
-            }
+
+
+        .progress.blue .progress-bar{
+            border-color: #049dff;
         }
-        @keyframes loading-5{
-            0%{
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100%{
-                -webkit-transform: rotate(126deg);
-                transform: rotate(126deg);
-            }
+        .progress.blue .progress-left .progress-bar{
+            animation: released-plans-left 1.2s linear forwards 1.8s;
         }
+
+        .progress.blue .progress-right .progress-bar{
+            animation: released-plans-right 0.5s linear forwards 0.8s;
+        }
+
+
+        .progress.green .progress-bar{
+            border-color: #28a745;
+        }
+        .progress.green .progress-left .progress-bar{
+            animation: funded-plans-left 1.2s linear forwards 1.8s;
+        }
+
+        .progress.green .progress-right .progress-bar{
+            animation: funded-plans-right 0.5s linear forwards 0.8s;
+        }
+
+
+        .progress.yellow .progress-bar{
+            border-color: #fdba04;
+        }
+        .progress.yellow .progress-left .progress-bar{
+            animation: pending-plans-left 1.2s linear forwards 1.8s;
+        }
+
+        .progress.yellow .progress-right .progress-bar{
+            animation: pending-plans-right 0.5s linear forwards 0.8s;
+        }
+
+
 
         .modal-content {
             min-height: 200px;

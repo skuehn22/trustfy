@@ -17,6 +17,7 @@ use App\DatabaseModels\MessagesCompanies;
 use App\DatabaseModels\Users;
 use App\DatabaseModels\Plans;
 use App\Classes\StateClass;
+use App\Classes\PlansDetailsClass;
 
 class DashboardController extends Controller
 {
@@ -57,12 +58,46 @@ class DashboardController extends Controller
             $messages = $query->get();
 
 
-            $openRight = "180";
-            $openLeft = "45";
+            $planObj = new PlansDetailsClass();
+            $funds = $planObj->getFundsDetails($blade["user"]->service_provider_fk);
+
+            $percent['funded'] = $funds['funded'] * 100 / $funds['total'];
+            $percent['pending'] = $funds['pending'] * 100 / $funds['total'];
+            $percent['released'] = $funds['released'] * 100 / $funds['total'];
+
+            if($percent['funded']>180){
+                $openRight['funded'] =  180;
+                $openLeft['funded'] =  $percent['funded'] *360 / 100;
+            }else{
+                $openRight['funded'] = $percent['funded'] *360 / 100;
+                $openLeft['funded'] =  0;
+            }
+
+
+            if($percent['pending']>180){
+                $openRight['pending'] =  180;
+                $openLeft['pending'] =  $percent['pending'] *360 / 100;
+            }else{
+                $openRight['pending'] = $percent['pending'] *360 / 100;
+                $openLeft['pending'] =  0;
+            }
+
+
+
+            if($percent['released']>180){
+                $openRight['released'] =  180;
+                $openLeft['released'] =  $percent['released'] *360 / 100;
+            }else{
+                $openRight['released'] = $percent['released'] *360 / 100;
+                $openLeft['released'] =  0;
+            }
+
+
+
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
 
-            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages'));
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages', 'funds'));
 
         } else {
 
