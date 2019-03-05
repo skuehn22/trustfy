@@ -77,7 +77,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/payment-plan/preview/{hash}', 'Frontend\PaymentPlanController@preview') ;
     Route::any('/payment-plan/pay-by-card/{hash}', 'Frontend\PaymentPlanController@payCC') ;
     Route::any('/payment-plan/pay-by-bank/{hash}', 'Frontend\PaymentPlanController@payBank') ;
-    Route::any('/payment-plan/release-milestone/{hash}', 'Frontend\PaymentPlanController@releaseMilestone') ;
+    Route::any('/payment-plan/release-milestone/{id}', 'Frontend\PaymentPlanController@releaseMilestone') ;
     Route::any('/protect-plan', 'Frontend\PaymentPlanController@setProtection') ;
     Route::any('/login-plan', 'Frontend\PaymentPlanController@loginPlan') ;
 

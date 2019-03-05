@@ -260,7 +260,7 @@
                         @if(isset($plan->lastname) && $plan->lastname!=" ")
                             <h2 class="to">{{$plan->firstname}} {{$plan->lastname}}</h2>
                             <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
-                            <div class="email">{{$plan->mail}}</div>
+                            <div class="email">{{$plan->email}}</div>
                         @else
                             <i>please fill in</i>
                         @endif
@@ -286,6 +286,7 @@
                         <td class="no">01</td>
                         <td class="text-left" style="width:40%;">
                             {!!  $milestone->name or '<i>please fill in</i>'!!}
+                            <input type="hidden" value="{{$milestone->name}}" id="name_{{$milestone->id}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
 
@@ -330,6 +331,9 @@
                                     </form>
                                 @else
                                     <p class="successful">Amount Funded</p>
+                                    <span class="input-group-btn" style="padding-left: 5px;">
+                                        <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
+                                    </span>
                                 @endif
                             @else
                                 <i>please fill in</i>
@@ -517,6 +521,42 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="release-money" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="alert alert-error login-error d-none">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <div class="login-error-msg"></div>
+                </div>
+                <h3 class="modal-title-msg" id="modal-title-msg">Work done</h3>
+            </div>
+            <div class="modal-body"  id="modal-body-msg">
+                <form class="form-horizontal" id="release-form" role="form" method="POST" action="/payment-plan/release-milestone/{hash}">
+                    {{ csrf_field() }}
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="milestone" class="col-md-12 control-label">Milestone</label>
+                        <div class="col-md-12 pl-0">
+                            <input id="milestone-done" type="text" class="form-control" name="milestone-done" value="" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 register  pl-0">
+                            <button id="do-release" type="submit" class="btn btn-success">
+                                <i class="fa fa-btn fa-user"></i> Release Money
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @endsection
 
@@ -546,9 +586,9 @@
          @endif
 
 
-                @if( isset($protect) && $protect == "true" )
-                    $('#invoice').removeClass('blur');
-                @endif
+        @if( isset($protect) && $protect == "true" )
+            $('#invoice').removeClass('blur');
+        @endif
 
 
 
@@ -581,6 +621,20 @@
          $("#log-protection").on("click", function() {
              loginPlan({{$plan->hash}});
              return true;
+         });
+
+         // External Button Events
+         $(".work-done").on("click", function() {
+
+             var id = $(this).attr("id");
+             var name =   $('#name_'+$(this).attr("id")).val();
+
+             $('#release-form').attr('action', '/payment-plan/release-milestone/'+id);
+             $('#milestone-done').val(name);
+             $('#release-money').modal('show');
+             return true;
+
+
          });
 
 

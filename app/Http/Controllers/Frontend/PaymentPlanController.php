@@ -39,11 +39,6 @@ class PaymentPlanController extends Controller
 
     public function index($hash) {
 
-        if (Auth::check()) {
-            //set an example< plan
-            $hash = "1551693284";
-        }
-
 
         if(isset($_GET['protect']) && $_GET['protect'] == true){
             $protect = true;
@@ -53,11 +48,14 @@ class PaymentPlanController extends Controller
             $protect = false;
         }
 
-
-        if(isset($_GET['login']) && $_GET['login'] == true){
+        if(isset($_GET['login']) && $_GET['login'] == 'true'){
             $loggedIn = true;
         }else{
             $loggedIn = false;
+        }
+
+        if (isset($_GET['transactionId'])) {
+            $loggedIn = true;
         }
 
         $blade["locale"] = App::getLocale();
@@ -67,7 +65,7 @@ class PaymentPlanController extends Controller
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.hash', '=', $hash);
-        $query->select('projects.name AS projectName', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $query->select('projects.name AS projectName', 'clients.firstname', 'clients.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
         $company = Companies::where("id", "=", $plan->service_provider_fk)
@@ -140,7 +138,7 @@ class PaymentPlanController extends Controller
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
         $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.hash', '=', $hash );
-        $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.mail', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
         $company = Companies::where("id", "=", $user->service_provider_fk)
@@ -206,20 +204,29 @@ class PaymentPlanController extends Controller
 
     }
 
-    public function releaseMilestone($hash) {
+    public function releaseMilestone($id) {
+
+        $milestone = PlansMilestone::where("id", "=", $id)
+            ->first();
 
 
-        $user = Auth::user();
+        //get all plan details for the normal payment plan view
+        $query = DB::table('projects_plans_milestone');
+        $query->join('projects_plans', 'projects_plans.id', '=', 'projects_plans_milestone.projects_plans_id');
+        $query->join('companies', 'projects_plans.service_provider_fk', '=', 'companies.id');
+        $query->join('companies_mangowallets', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
+        $query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.service_provider_fk');
+        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'companies_bank.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $plan = $query->first();
 
-        $query = DB::table('companies');
-        $query->join('companies_bank', 'companies_bank.service_provider_fk', '=', 'companies.id');
-        $query->where('companies.id', '=', $user->service_provider_fk );
-        $query->select('companies.id', 'companies.mango_id', 'companies_bank.*');
-        $company_details = $query->first();
 
-
+        //get result of the payin made by client
         $mango_obj = new MangoClass($this->mangopay);
-        $payinResult =   $mango_obj->createBankAccount($company_details);
+        $payOutResult = $mango_obj->createPayOut($milestone);
+
+
+
+        return Redirect::to("/payment-plan/1551712542")->withInput()->with('success', 'PayOut erfolgreich ausgeführt');
 
     }
 

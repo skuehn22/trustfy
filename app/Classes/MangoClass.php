@@ -507,7 +507,7 @@ class MangoClass extends Controller
         }
     }
 
-    public function createBankAccount($company){
+    public function createBankAccount($bank, $company){
 
         try {
 
@@ -515,16 +515,18 @@ class MangoClass extends Controller
         $BankAccount = new \MangoPay\BankAccount();
         $BankAccount->Details = new MangoPay\BankAccountDetailsIBAN();
         $BankAccount->OwnerAddress = new \MangoPay\Address();
-        $BankAccount->OwnerAddress->AddressLine1 = $company->address1;
-        $BankAccount->OwnerAddress->AddressLine2 = $company->address2;
-        $BankAccount->OwnerAddress->City = $company->city;
-        $BankAccount->OwnerAddress->PostalCode = $company->zip;
-        $BankAccount->OwnerAddress->Country = $company->country_iso;
-        $BankAccount->OwnerName = $company->name;
-        $BankAccount->IBAN = $company->iban;
-        $BankAccount->BIC = $company->bic;
+        $BankAccount->OwnerAddress->AddressLine1 = $bank->address1;
+        $BankAccount->OwnerAddress->AddressLine2 = $bank->address2;
+        $BankAccount->OwnerAddress->City = $bank->city;
+        $BankAccount->OwnerAddress->PostalCode = $bank->zip;
+        $BankAccount->OwnerAddress->Country = $bank->country_iso;
+        $BankAccount->OwnerName = $bank->name;
+        $BankAccount->IBAN = $bank->iban;
+        $BankAccount->BIC = $bank->bic;
 
         $result = $this->mangopay->Users->CreateBankAccount($UserId, $BankAccount);
+
+        $test = "";
 
         return $result;
 
@@ -540,6 +542,49 @@ class MangoClass extends Controller
         }
 
     }
+
+    public function getBankAccount($user, $bankId){
+
+        try {
+
+            $UserId = $user;
+            $result = $this->mangopay->Users->GetBankAccount($UserId, $bankId);
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+    public function deactivateBankAccount($user, $account){
+
+        try {
+
+            $account->Active = false;
+            $accountResult = $this->mangopay->Users->UpdateBankAccount($user, $account);
+            return $accountResult;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
 
     public function createKycDocument($company, $doctype){
 
@@ -666,6 +711,46 @@ class MangoClass extends Controller
         }
 
     }
+
+
+
+    public function createPayOut($milestone){
+        try {
+
+            $wallet = "61451381";
+            $user = "61450664";
+            $amount = 100;
+            $bank = "62091760";
+
+            $PayOut = new \MangoPay\PayOut();
+            $PayOut->AuthorId = $user;
+            $PayOut->DebitedWalletID = $wallet;
+            $PayOut->DebitedFunds = new \MangoPay\Money();
+            $PayOut->DebitedFunds->Currency = "EUR";
+            $PayOut->DebitedFunds->Amount = $amount;
+            $PayOut->Fees = new \MangoPay\Money();
+            $PayOut->Fees->Currency = "EUR";
+            $PayOut->Fees->Amount = 1;
+            $PayOut->PaymentType = "BANK_WIRE";
+            $PayOut->MeanOfPaymentDetails = new \MangoPay\PayOutPaymentDetailsBankWire();
+            $PayOut->MeanOfPaymentDetails->BankAccountId = $bank;
+            $result = $this->mangopay->PayOuts->Create($PayOut);
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
 
 
 }

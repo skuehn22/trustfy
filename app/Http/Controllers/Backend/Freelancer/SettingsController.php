@@ -365,11 +365,20 @@ class SettingsController extends Controller
         $blade["user"] = Auth::user();
         $blade["ll"] = App::getLocale();
 
+        $company = Companies::where("id", "=",  $blade["user"]->service_provider_fk)
+            ->first();
+
+
         $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->first();
 
         if(!isset($bank)){
             $bank = new App\DatabaseModels\CompaniesBank();
+        }else{
+
+            $mango_obj = new MangoClass($this->mangopay);
+            $oldAccount = $mango_obj->getBankAccount($company->mango_id, $bank->mango_bank_id);
+            $mango_obj->deactivateBankAccount($company->mango_id, $oldAccount);
         }
 
         $bank->name = $_POST['name'];
@@ -380,8 +389,15 @@ class SettingsController extends Controller
         $bank->address2 = $_POST['address2'];
         $bank->city = $_POST['city'];
         $bank->zip = $_POST['code'];
-        $bank->country = $_POST['country_bank'];
-        $bank->country = $_POST['country_iso'];
+        $bank->country = $_POST['country'];
+        $bank->country_iso = $_POST['country_iso'];
+
+
+
+        $mango_obj = new MangoClass($this->mangopay);
+        $result = $mango_obj->createBankAccount($bank, $company);
+
+        $bank->mango_bank_id = $result->Id;
         $bank->save();
 
 
