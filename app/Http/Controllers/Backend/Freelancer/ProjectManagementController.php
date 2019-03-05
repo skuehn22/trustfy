@@ -136,7 +136,7 @@ class ProjectManagementController extends Controller
         $project->save();
 
         if(!empty($input["street"])){
-            $projectaddress->street = $input["street"];
+            $projectaddress->address1 = $input["street"];
             $projectaddress->city = $input["city"];
             $projectaddress->country = $input["country"];
             $projectaddress->project_id_fk = $project->id;
@@ -144,7 +144,7 @@ class ProjectManagementController extends Controller
         }
 
 
-        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Process successfully completed!');
+        return Redirect::to($blade["ll"]."/freelancer/projects/")->withInput()->with('success', 'Project Saved!');
 
     }
 

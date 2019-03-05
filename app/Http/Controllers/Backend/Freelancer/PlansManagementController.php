@@ -349,10 +349,13 @@ class PlansManagementController extends Controller
         //$mango_obj = new MangoClass($this->mangopay);
         //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
 
-        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company) {
+        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user) {
             $message->from('info@trustfy.io', 'Trustfy.io');
             $message->to($client->email);
+            $message->to($client->email);
             $message->subject($company->name." - Payment Plan");
+            $message->replyTo($user->email, $user->firstname." ".$user->lastname);
+            $message->bcc('bcc@trustfy.io');
         });
 
 

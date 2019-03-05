@@ -13,6 +13,7 @@
 @stop
 
 @section('content')
+    <form action="/{{$blade["ll"]}}/freelancer/projects/save/0">
     <div class="clients" style="padding: 35px;">
         <div class="row section-heading">
             <div class="col-md-6 pl-0">
@@ -21,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-md-6 pl-2">
-                <form action="/{{$blade["ll"]}}/freelancer/projects/save/0">
+
                     <div class="form-row py-2">
                         <h5>General Informations</h5>
                     </div>
@@ -49,7 +50,7 @@
                         <textarea class="form-control col-md-8" rows="5" id="description" name="description"></textarea>
                     </div>
 
-                </form>
+
             </div>
             <div class="col-md-6">
                 <div class="form-row py-2">
@@ -73,6 +74,7 @@
             </div>
         </div>
     </div>
+    </form>
 @stop
 @section("js")
 

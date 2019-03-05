@@ -201,9 +201,9 @@
                         <td>{{$project->firstname}} {{$project->lastname}}</td>
                         <td>{{$project->desc}}</td>
                         <td>
-                            <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$project->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
+                            <a href="/{{$blade["ll"]}}/freelancer/projects/edit/{{$project->id}}" data-toggle="tooltip" data-placement="right" title="Edit"><i class="far fa-edit green"></i></a>
                             <span data-toggle="modal" data-target="#exampleModal">
-                                <a href="#" data-id="{{$project->id}}"  data-toggle="tooltip"  data-placement="top" title="Delete" class="delete-project">
+                                <a href="#" data-id="{{$project->id}}"  data-toggle="tooltip"  data-placement="right" title="Delete" class="delete-project">
                                     <i class="fas fa-trash green"></i>
                                 </a>
                             </span>
