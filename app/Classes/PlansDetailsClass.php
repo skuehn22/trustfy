@@ -91,7 +91,13 @@ class PlansDetailsClass  extends Controller
 
         }
 
-        return $upcoming_fund;
+        if(isset($upcoming_fund)){
+            return $upcoming_fund;
+        }else{
+            return false;
+        }
+
+
 
     }
 

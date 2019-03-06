@@ -61,9 +61,18 @@ class DashboardController extends Controller
             $planObj = new PlansDetailsClass();
             $funds = $planObj->getFundsDetails($blade["user"]->service_provider_fk);
 
-            $percent['funded'] = $funds['funded'] * 100 / $funds['total'];
-            $percent['pending'] = $funds['pending'] * 100 / $funds['total'];
-            $percent['released'] = $funds['released'] * 100 / $funds['total'];
+
+            if($funds['total']>0){
+                $percent['funded'] = $funds['funded'] * 100 / $funds['total'];
+                $percent['pending'] = $funds['pending'] * 100 / $funds['total'];
+                $percent['released'] = $funds['released'] * 100 / $funds['total'];
+            }else{
+                $percent['funded'] = 0;
+                $percent['pending'] = 0;
+                $percent['released'] = 0;
+            }
+
+
 
             if($percent['funded'] == 0) {
 
