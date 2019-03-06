@@ -14,7 +14,7 @@
                     @if($company->type == 1)
 
                         <option value="IDENTITY_PROOF">{{ trans('freelancer_backend.IDENTITY_PROOF') }}</option>
-                        <option value="ADDRESS_PROOF">{{ trans('freelancer_backend.REGISTRATION_PROOF') }}</option>
+                        <option value="REGISTRATION_PROOF">{{ trans('freelancer_backend.REGISTRATION_PROOF') }}</option>
 
                     @elseif($company->type == 2)
 
