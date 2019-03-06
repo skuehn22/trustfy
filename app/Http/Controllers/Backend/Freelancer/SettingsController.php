@@ -121,7 +121,9 @@ class SettingsController extends Controller
         }
 
         $company->type = $_POST["companyType"];
-        $company->name = $_POST["firstname"];
+        $company->name = $_POST["company"];
+        $company->firstname = $_POST["firstname"];
+        $company->lastname = $_POST["lastname"];
         $company->birthday = $_POST["birthday"];
         $company->country_nationality = $_POST["nationality"];
         $company->country_residence = $_POST["country"];

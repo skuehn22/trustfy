@@ -307,8 +307,16 @@ class MangoClass extends Controller
 
             $user = new MangoPay\UserNatural();
             $user->Email = $account->email;
-            $user->FirstName = $person->firstname;
-            $user->LastName = $person->lastname;
+
+            if(isset($person->firstname)){
+                $user->FirstName = $person->firstname;
+                $user->LastName = $person->lastname;
+            }else{
+                $user->FirstName = $account->firstname;
+                $user->LastName = $account->lastname;
+            }
+
+
 
             if(isset($person->birthday)){
                 $user->Birthday = strtotime($person->birthday);

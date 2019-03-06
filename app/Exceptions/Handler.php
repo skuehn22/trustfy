@@ -71,7 +71,7 @@ class Handler extends ExceptionHandler
                         $str = $request." \n --------------- \n".$e;
 
                         Mail::raw($str, function ($message) {
-                            $message->from('info@trustfy');
+                            $message->from('dev@work-smarter.io');
                             $message->subject("trustfy Error");
                             $message->to('kuehn.sebastian@gmail.com');
                         });
@@ -89,7 +89,7 @@ class Handler extends ExceptionHandler
                         $str = $request." \n --------------- \n".$e;
 
                         Mail::raw($str, function ($message) {
-                            $message->from('info@trustfy');
+                            $message->from('dev@work-smarter.io');
                             $message->subject("trustfy Error");
                             $message->to('kuehn.sebastian@gmail.com');
                         });
@@ -121,7 +121,7 @@ class Handler extends ExceptionHandler
                 $str = $request." \n --------------- \n".$e;
 
                 Mail::raw($str, function ($message) {
-                    $message->from('info@trustfy.io');
+                    $message->from('dev@work-smarter.io');
                     $message->subject("trustfy Error");
                     $message->to('kuehn.sebastian@gmail.com');
                 });
