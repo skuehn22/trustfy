@@ -713,6 +713,30 @@ class MangoClass extends Controller
     }
 
 
+    public function getKycDocuments($KYCDocumentId ){
+
+        try {
+
+            $userId = "";
+            $result = $this->mangopay->Users->GetKycDocument($userId, $KYCDocumentId);
+
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+
 
     public function createPayOut($milestone){
         try {
