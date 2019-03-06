@@ -19,7 +19,11 @@
 
                     <a class="list-group-item get-details" id="{{$message->id}}">
                         <span class="subject">{{ trans('messages.subject_typ_'.$message->typ) }} </span>
-                        <span class="name" style="min-width: 120px; display: inline-block;">{{ trans('index.project') }}: {{$message->projectName}}</span><br>
+
+                        @if(isset($message->projectName))
+                            <span class="name" style="min-width: 120px; display: inline-block;">{{ trans('index.project') }}: {{$message->projectName or ''}}</span>
+                        @endif
+                        <br>
                         <span class="text-muted" style="font-size: 11px;">{{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y H:i')}}</span>
                         <span class="text-muted" style="font-size: 11px; float:right;">See Details</span>
                     </a>

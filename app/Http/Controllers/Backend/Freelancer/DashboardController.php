@@ -49,13 +49,23 @@ class DashboardController extends Controller
                 ->get();
 
 
-            //get all plan details for the normal payment plan view
-            $query = DB::table('messages_companies');
-            $query->join('projects', 'messages_companies.projects_id_fk', '=', 'projects.id');
-            $query->where('messages_companies.company_id_fk', '=',  $blade["user"]->service_provider_fk);
-            $query->where('messages_companies.delete', '=', '0');
-            $query->select('projects.name AS projectName', 'messages_companies.*');
-            $messages = $query->get();
+            $messages = MessagesCompanies::where("company_id_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->get();
+
+
+            foreach($messages as $message){
+
+                if($message->projects_id_fk != 0){
+
+                    $tmp_project = Projects::where("id", "=", $message->projects_id_fk)
+                        ->first();
+
+                    $messages->projectName = $tmp_project->name;
+
+                }
+
+            }
 
 
             $planObj = new PlansDetailsClass();
@@ -208,7 +218,9 @@ class DashboardController extends Controller
         $msg = MessagesCompanies::where("id", "=", $_GET['msg'])
             ->first();
 
-        return response()->json(['success' => 'Msg successfully created', 'data' => $msg]);
+        $typ = $msg->typ;
+
+        return response()->json(['success' => 'Msg successfully created', 'data' => $msg, 'typ' => $typ]);
     }
 
 

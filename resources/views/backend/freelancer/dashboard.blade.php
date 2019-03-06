@@ -62,6 +62,7 @@
             }
             100%{
                 -webkit-transform: rotate({{$openRight['pending']}}deg);
+                -webkit-transform: rotate({{$openRight['pending']}}deg);
                 transform: rotate({{$openRight['pending']}}deg);
             }
         }
@@ -637,8 +638,16 @@
 
                     items = data["data"];
 
-                    //typ = "messages.subject_typ_" + items["typ"];
-                    subject = '{{ trans("messages.subject_typ_1") }}';
+
+                    if( items["typ"] == 1){
+                        subject = '{{ trans("messages.subject_typ_1") }}';
+                    }
+
+                    if( items["typ"] == 2){
+                        subject = '{{ trans("messages.subject_typ_2") }}';
+                    }
+
+
                     txt = items["meassage"];
 
                     $("#modal-title-msg").text(subject);
