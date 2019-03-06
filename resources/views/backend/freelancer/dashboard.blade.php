@@ -50,8 +50,8 @@
                 transform: rotate(0deg);
             }
             100%{
-                -webkit-transform: rotate({{$openLeft['funded']}}deg);
-                transform: rotate({{$openLeft['funded']}}deg);
+                -webkit-transform: rotate({{$openLeft['pending']}}deg);
+                transform: rotate({{$openLeft['pending']}}deg);
             }
         }
 

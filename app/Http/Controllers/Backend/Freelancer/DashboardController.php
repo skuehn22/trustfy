@@ -65,39 +65,68 @@ class DashboardController extends Controller
             $percent['pending'] = $funds['pending'] * 100 / $funds['total'];
             $percent['released'] = $funds['released'] * 100 / $funds['total'];
 
-            if($percent['funded']>180){
+            if($percent['funded'] == 0) {
+
                 $openRight['funded'] =  180;
-                $openLeft['funded'] =  $percent['funded'] *360 / 100;
+                $openLeft['funded'] =  180;
+
             }else{
-                $openRight['funded'] = $percent['funded'] *360 / 100;
-                $openLeft['funded'] =  0;
+
+
+                if( $percent['funded'] >50){
+                    $openRight['funded'] =  180;
+                    $openLeft['funded'] =  $percent['funded'] *180 / 100;
+                }else{
+
+                    $openRight['funded'] = $percent['funded'] *180 / 100;
+                    $openLeft['funded'] =  0;
+
+                }
+
             }
 
+            if($percent['pending'] == 0) {
 
-            if($percent['pending']>180){
                 $openRight['pending'] =  180;
-                $openLeft['pending'] =  $percent['pending'] *360 / 100;
+                $openLeft['pending'] =  180;
+
             }else{
-                $openRight['pending'] = $percent['pending'] *360 / 100;
-                $openLeft['pending'] =  0;
+
+                if($percent['pending']>50){
+                    $openRight['pending'] =  180;
+                    $openLeft['pending'] =  $percent['pending'] *180 / 100;
+                }else{
+                    $openRight['pending'] = $percent['pending'] *180 / 100;
+                    $openLeft['pending'] =  0;
+                }
+
+
             }
 
 
-            if($percent['released']>180){
+            if($percent['released'] == 0) {
+
                 $openRight['released'] =  180;
-                $openLeft['released'] =  $percent['released'] *360 / 100;
+                $openLeft['released'] =  180;
+
             }else{
-                $openRight['released'] = $percent['released'] *360 / 100;
-                $openLeft['released'] =  0;
+
+                if($percent['released']>50){
+                    $openRight['released'] =  180;
+                    $openLeft['released'] =  $percent['released'] *360 / 100;
+                }else{
+                    $openRight['released'] = $percent['released'] *360 / 100;
+                    $openLeft['released'] =  0;
+                }
+
             }
 
-
+            
 
             $upcoming = $planObj->upcomingPayment($blade["user"]->service_provider_fk);
 
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
-
             return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages', 'funds', 'upcoming'));
 
         } else {

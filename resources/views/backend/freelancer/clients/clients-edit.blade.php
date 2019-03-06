@@ -18,7 +18,7 @@
             <div class="col-md-6">
             </div>
         </div>
-        <form action="/{{$blade["ll"]}}/freelancer/clients/edit/{{$client->id}}">
+        <form action="/{{$blade["ll"]}}/freelancer/clients/save/{{$client->id}}">
             <div class="row">
                 <div class="col-md-6">
                     <h5 class="pb-3">Edit Client</h5>
