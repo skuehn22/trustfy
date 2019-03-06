@@ -37,7 +37,7 @@ class MangoHooksController extends Controller
 
 
                 $subject = "Trustfy Payments - KYC susseeded";
-                $data['content'] = "Congratulations You have completed the KYC procedure.";
+                $data['content'] = $kycdoc->doc_type." accepted";
                 $msg_obj = new MessagesClass();
                 $msg_obj->sendStandardMail($subject, $data, $user->email);
 
