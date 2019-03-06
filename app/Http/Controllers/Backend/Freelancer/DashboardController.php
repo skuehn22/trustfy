@@ -67,8 +67,8 @@ class DashboardController extends Controller
 
             if($percent['funded'] == 0) {
 
-                $openRight['funded'] =  0;
-                $openLeft['funded'] =  0;
+                $openRight['funded'] =  180;
+                $openLeft['funded'] =  180;
 
             }else{
 
@@ -87,8 +87,8 @@ class DashboardController extends Controller
 
             if($percent['pending'] == 0) {
 
-                $openRight['pending'] =  0;
-                $openLeft['pending'] =  0;
+                $openRight['pending'] =  180;
+                $openLeft['pending'] =  180;
 
             }else{
 
@@ -106,8 +106,8 @@ class DashboardController extends Controller
 
             if($percent['released'] == 0) {
 
-                $openRight['released'] =  0;
-                $openLeft['released'] =  0;
+                $openRight['released'] =  180;
+                $openLeft['released'] =  180;
 
             }else{
 
