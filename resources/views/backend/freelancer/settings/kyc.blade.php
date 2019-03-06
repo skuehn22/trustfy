@@ -1,5 +1,13 @@
 <h4 class="pb-3">Verify your account</h4>
-<p style="font-size: 11px;"><i>As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need follwoing documents: {{$kyc_docs->mango_kyc_docs}}</i></p>
+
+@if(isset($company->type))
+
+    <p style="font-size: 11px;"><i>As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need follwoing documents: {{$kyc_docs->mango_kyc_docs}}</i></p>
+@else
+    <p>Please save your company first</p>
+
+@endif
+
 <div class="row">
     <div class="col-md-4 pl-0">
         <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/kyc-check"  enctype="multipart/form-data">
@@ -11,12 +19,12 @@
                     <option value=""></option>
 
 
-                    @if($company->type == 1)
+                    @if(isset($company->type) && $company->type == 1)
 
                         <option value="IDENTITY_PROOF">{{ trans('freelancer_backend.IDENTITY_PROOF') }}</option>
                         <option value="REGISTRATION_PROOF">{{ trans('freelancer_backend.REGISTRATION_PROOF') }}</option>
 
-                    @elseif($company->type == 2)
+                    @elseif(isset($company->type) && $company->type == 2)
 
                         <option value="IDENTITY_PROOF">{{ trans('freelancer_backend.IDENTITY_PROOF') }}</option>
                         <option value="REGISTRATION_PROOF">{{ trans('freelancer_backend.REGISTRATION_PROOF') }}</option>

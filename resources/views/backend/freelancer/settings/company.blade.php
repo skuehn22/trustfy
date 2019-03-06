@@ -33,8 +33,12 @@
                         Type
                     </label>
 
-                    {!! Form::select('companyType', $companyTypes, $company->type, ['class' => 'form-control col-md-7', 'id' => 'companyType','placeholder' => 'Select', 'required']) !!}
 
+                    @if(isset($company->type))
+                        {!! Form::select('companyType', $companyTypes, $company->type, ['class' => 'form-control col-md-7', 'id' => 'companyType','placeholder' => 'Select', 'required']) !!}
+                    @else
+                        {!! Form::select('companyType', $companyTypes, null, ['class' => 'form-control col-md-7', 'id' => 'companyType','placeholder' => 'Select', 'required']) !!}
+                    @endif
 
                 </div>
 
@@ -51,7 +55,14 @@
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="country">Country</label>
-                    @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => $company->country_residence])
+
+                    @if(isset($company->country_residence))
+                        @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => $company->country_residence])
+                    @else
+                        @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => ''])
+                    @endif
+
+
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="city">Your Color</label>
@@ -96,7 +107,15 @@
         </div>
         <div class="form-row py-2">
             <label class="col-md-3 col-form-label" for="nationality">Nationality</label>
-            @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => $company->country_nationality])
+
+            @if(isset($company->country_nationality))
+                @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => $company->country_nationality])
+            @else
+                @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => ''])
+            @endif
+
+
+
         </div>
         <br><br>
         @include('ajax_upload')

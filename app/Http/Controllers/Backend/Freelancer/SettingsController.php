@@ -77,8 +77,12 @@ class SettingsController extends Controller
         $companyTypes= CompaniesType::where("delete", "=", "0")
                 ->lists('title', 'id');
 
-        $kyc_docs= CompaniesType::where("id", "=", $company->type)
+        if(isset($company)){
+            $kyc_docs= CompaniesType::where("id", "=", $company->type)
                 ->first();
+        }
+
+
 
         return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs'));
 
