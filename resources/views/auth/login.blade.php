@@ -52,7 +52,7 @@
     <div class="form-group">
         <div class="col-md-12 register pt-5">
             <span>New to Trustfy?</span>
-            <a class="btn btn-secondary btn-register" href="/register" role="button">Create an ccount</a>
+            <a class="btn btn-secondary btn-register" href="/beta-register" role="button">Create an ccount</a>
             <br><br>
         </div>
 
