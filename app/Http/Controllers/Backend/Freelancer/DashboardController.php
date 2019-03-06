@@ -76,18 +76,18 @@ class DashboardController extends Controller
 
             if($percent['funded'] == 0) {
 
-                $openRight['funded'] =  180;
-                $openLeft['funded'] =  180;
+                $openRight['funded'] =  0;
+                $openLeft['funded'] =  0;
 
             }else{
 
 
                 if( $percent['funded'] >50){
                     $openRight['funded'] =  180;
-                    $openLeft['funded'] =  $percent['funded'] *180 / 100;
+                    $openLeft['funded'] =  $percent['funded'] *360 / 100;
                 }else{
 
-                    $openRight['funded'] = $percent['funded'] *180 / 100;
+                    $openRight['funded'] = $percent['funded'] *360 / 100;
                     $openLeft['funded'] =  0;
 
                 }
@@ -96,16 +96,16 @@ class DashboardController extends Controller
 
             if($percent['pending'] == 0) {
 
-                $openRight['pending'] =  180;
-                $openLeft['pending'] =  180;
+                $openRight['pending'] =  0;
+                $openLeft['pending'] =  0;
 
             }else{
 
                 if($percent['pending']>50){
                     $openRight['pending'] =  180;
-                    $openLeft['pending'] =  $percent['pending'] *180 / 100;
+                    $openLeft['pending'] =  $percent['pending'] *360 / 100;
                 }else{
-                    $openRight['pending'] = $percent['pending'] *180 / 100;
+                    $openRight['pending'] = $percent['pending'] *360 / 100;
                     $openLeft['pending'] =  0;
                 }
 
@@ -115,8 +115,8 @@ class DashboardController extends Controller
 
             if($percent['released'] == 0) {
 
-                $openRight['released'] =  180;
-                $openLeft['released'] =  180;
+                $openRight['released'] =  0;
+                $openLeft['released'] =  0;
 
             }else{
 

@@ -17,8 +17,8 @@
             </div>
             <div class="card-footer text-center">
                 <div class="text">
-                    @if(count($plans)>0)
-                       Plan Name: {{ $upcoming->planName }}<br>
+                    @if(count($plans)>0 && $upcoming != false)
+                       Plan Name: {{ $upcoming->planName or '' }}<br>
                        Due at: {{date('d.m.Y', strtotime($upcoming->due_at))}} - Amount {{ number_format($upcoming->amount, 2) }} €
                     @else
                         No Payment Plans yet.
