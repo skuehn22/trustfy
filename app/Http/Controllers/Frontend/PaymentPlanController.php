@@ -202,10 +202,6 @@ class PaymentPlanController extends Controller
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
-        $client = Clients::where("id", "=", $plan->clients_id_fk)
-            ->first();
-
-
 
         return view('frontend.clients.bank-transfer', compact('blade', 'plan', 'user', 'company', 'milestone'));
 
@@ -260,7 +256,7 @@ class PaymentPlanController extends Controller
 
 
         $subject= "Trustfy Payments - Plan Protection";
-        $data['content'] = "Your Plan Protection: <br>".$_GET["password"]."<br> Passwort:".$_GET["password"];
+        $data['content'] = "Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
         $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);
@@ -282,7 +278,7 @@ class PaymentPlanController extends Controller
         if($result){
             return response()->json(['success' => true, 'msg' => $result]);
         }else{
-            return response()->json(['success' => false, 'msg' => 'Unknown Login Data']);
+            return response()->json(['success' => false, 'msg' => 'Unknown Login Data.']);
         }
 
     }
@@ -297,28 +293,41 @@ class PaymentPlanController extends Controller
             ->first();
 
 
-        if(isset($data["password-login"])){
-            if($user->email == $data["email-login"] && $user->password == $data["password-login"]){
+        if(empty($user)){
 
-                $user->user_hash = hash($data["password-login"]);
-                $user->save();
+            $plan = Plan::where("hash", "=", $data["hash"])
+                ->first();
 
-                return $user->user_hash;
-            }else{
-                return false;
-            }
+            $plan->protection = "show";
+            $plan->save();
+
+            return false;
+
         }else{
-            if($user->email == $data["email"] && $user->password == $data["password"]){
 
-                $user->user_hash = Hash::make($data["password"]);
-                $user->save();
+            if(isset($data["password-login"])){
+                if($user->email == $data["email-login"] && $user->password == $data["password-login"]){
 
-                return $user->user_hash;
+                    $user->user_hash = Hash::make($data["password"]);
+                    $user->save();
+
+                    return $user->user_hash;
+                }else{
+                    return false;
+                }
             }else{
-                return false;
-            }
-        }
+                if($user->email == $data["email"] && $user->password == $data["password"]){
 
+                    $user->user_hash = Hash::make($data["password"]);
+                    $user->save();
+
+                    return $user->user_hash;
+                }else{
+                    return false;
+                }
+            }
+
+        }
 
     }
 
