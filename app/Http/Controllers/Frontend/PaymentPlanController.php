@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Frontend;
 
 // Libraries
-use App, Redirect, Auth, DB, Input, Validator;
+use App, Redirect, Auth, DB, Input, Validator, Hash;
 
 use App\Http\Controllers\Controller;
 
@@ -48,8 +48,16 @@ class PaymentPlanController extends Controller
             $protect = false;
         }
 
-        if(isset($_GET['login']) && $_GET['login'] == 'true'){
+
+        // needs a complete new methode -> not safe at all
+
+        if(isset($_GET['login'])) {
+
+
             $loggedIn = true;
+
+
+
         }else{
             $loggedIn = false;
         }
@@ -252,7 +260,7 @@ class PaymentPlanController extends Controller
 
 
         $subject= "Trustfy Payments - Plan Protection";
-        $data['content'] = "Your Plan Protection: <br>".$plan->email."<br> Passwort:".$_GET["password"];
+        $data['content'] = "Your Plan Protection: <br>".$_GET["password"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
         $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);
@@ -272,7 +280,7 @@ class PaymentPlanController extends Controller
        $result = self::login();
 
         if($result){
-            return response()->json(['success' => true, 'msg' => 'Logged In']);
+            return response()->json(['success' => true, 'msg' => $result]);
         }else{
             return response()->json(['success' => false, 'msg' => 'Unknown Login Data']);
         }
@@ -291,13 +299,21 @@ class PaymentPlanController extends Controller
 
         if(isset($data["password-login"])){
             if($user->email == $data["email-login"] && $user->password == $data["password-login"]){
-                return true;
+
+                $user->user_hash = hash($data["password-login"]);
+                $user->save();
+
+                return $user->user_hash;
             }else{
                 return false;
             }
         }else{
             if($user->email == $data["email"] && $user->password == $data["password"]){
-                return true;
+
+                $user->user_hash = Hash::make($data["password"]);
+                $user->save();
+
+                return $user->user_hash;
             }else{
                 return false;
             }

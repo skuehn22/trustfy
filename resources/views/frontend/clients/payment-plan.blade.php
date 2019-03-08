@@ -268,7 +268,7 @@
                     <div class="col invoice-details">
                         <h1 class="invoice-id">Payment Plan</h1>
                         <div class="date">Date of Invoice: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}} </div>
-                      
+
                     </div>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">
@@ -405,7 +405,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="protect-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="protect-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -462,7 +462,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="login-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="login-plan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -677,9 +677,13 @@
 
 
                      if(data.success == true){
-                         window.location.href = window.location.href + "?login=true";
+
+                         window.location.href = window.location.href + "?login="+data.msg;
+
                      }else{
-                         alert("Fehler");
+
+                         alert("The input does not match the plan.");
+
                      }
 
                  }
