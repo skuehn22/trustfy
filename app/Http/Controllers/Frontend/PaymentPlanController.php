@@ -110,7 +110,7 @@ class PaymentPlanController extends Controller
 
             //if payment was successful update the paystatus of our intern DB
             if ($payinResult->Status == "SUCCEEDED") {
-                $milestone->paystatus = 1;
+                $milestone->paystatus = 2;
                 $milestone->save();
 
                 $msg_obj = new MessagesClass();
@@ -239,7 +239,7 @@ class PaymentPlanController extends Controller
             $msg_obj = new MessagesClass();
             $msg_obj->sendStandardMail($subject, $data, $user->email);
 
-            $milestone->paystatus = 2;
+            $milestone->paystatus = 3;
             $milestone->save();
 
         }

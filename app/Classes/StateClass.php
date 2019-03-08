@@ -44,12 +44,24 @@ class StateClass
 
         switch ($id) {
             case 0:
-                $state['color'] = "text-success";
-                $state['state'] = "active";
+                $state['color'] = "text-secondary";
+                $state['state'] = "saved";
                 break;
             case 1:
                 $state['color'] = "text-warning";
-                $state['state'] = "not send";
+                $state['state'] = "send";
+                break;
+            case 2:
+                $state['color'] = "text-green";
+                $state['state'] = "funded";
+                break;
+            case 3:
+                $state['color'] = "text-primary";
+                $state['state'] = "payout created";
+                break;
+            case 4:
+                $state['color'] = "text-green";
+                $state['state'] = "payout succeded";
                 break;
             default:
                 $state['color'] = "text-secondary";

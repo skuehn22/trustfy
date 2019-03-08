@@ -296,7 +296,12 @@
 
                             @if(isset($milestone->bank_transfer))
                                 @if(isset($milestone->paystatus) && $milestone->paystatus==0)
-                                    <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
+
+                                    @if($milestone->bank_transfer == 0 && $milestone->credit_card == 1)
+                                        <form action="/payment-plan/pay-by-card/{{$plan->hash}}" id="paymentform">
+                                    @else
+                                        <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
+                                    @endif
                                         <div class="row">
                                             <div class="col-md-7">
 
