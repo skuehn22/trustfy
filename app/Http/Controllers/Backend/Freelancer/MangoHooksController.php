@@ -8,9 +8,12 @@ use App, Auth;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\MangoHooks;
+use App\DatabaseModels\MangoPayout;
 use App\DatabaseModels\MangoKyc;
 use App\DatabaseModels\MessagesCompanies;
 use App\DatabaseModels\Users;
+use App\DatabaseModels\PlansMilestone;
+use App\DatabaseModels\Plans;
 use App\Classes\MessagesClass;
 
 class MangoHooksController extends Controller
@@ -26,8 +29,6 @@ class MangoHooksController extends Controller
         switch ($hook->type) {
 
             case "KYC_SUCCEEDED":
-
-
 
                 $kycdoc = MangoKyc::where("created_id", "=", $hook->ressourceId)
                     ->first();
@@ -50,9 +51,39 @@ class MangoHooksController extends Controller
 
                 break;
 
-            case "blue":
-                echo "Your favorite color is blue!";
+            case "PAYOUT_NORMAL_SUCCEEDED":
+
+                $payout = MangoPayout::where("mango_id", "=", $hook->ressourceId)
+                    ->first();
+
+                $payout->status = $hook->type;
+                $payout->save();
+
+                $milestone = PlansMilestone::where("id", "=", $payout->milestone_id_fk)
+                    ->first();
+
+                $milestone->paystatus = 4;
+                $milestone->save();
+
+
+                //check if that was the last open milestone and the project is finsihed
+                $all_milestones = PlansMilestone::where("projects_plans_id_fk", "=", $milestone->projects_plans_id_fk)
+                    ->where('paystatus', '<', '4')
+                    ->get();
+
+
+                if(empty($all_milestones)){
+
+                    $plan = Plans::where("id", "=", $milestone->projects_plans_id_fk)
+                        ->first();
+
+                    $plan->state = 2;
+                    $plan->save();
+
+                }
+
                 break;
+
             case "green":
                 echo "Your favorite color is green!";
                 break;

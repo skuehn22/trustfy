@@ -19,6 +19,7 @@ use App\DatabaseModels\Plans;
 use App\DatabaseModels\PlanDocs;
 use App\DatabaseModels\UsersPaymentPlan;
 use App\DatabaseModels\PlansMilestone;
+use App\DatabaseModels\MangoPayout;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
@@ -230,6 +231,13 @@ class PaymentPlanController extends Controller
         //get result of the payin made by client
         $mango_obj = new MangoClass($this->mangopay);
         $payOutResult = $mango_obj->createPayOut($milestone);
+
+        $payout = new MangoPayout();
+        $payout->status = $payOutResult->Status;
+        $payout->company_id_fk = $plan->service_provider_fk;
+        $payout->mango_id = $payOutResult->Id;
+        $payout->milestone_id_fk = $id;
+        $payout->save();
 
         if($payOutResult->Status == "CREATED"){
 
