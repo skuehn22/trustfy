@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer text-center">
+            <div class="card-footer text-center  pt-2 pb-2">
                 <div class="text">
                     @if(count($plans)>0 && $upcoming != false)
                        Plan Name: {{ $upcoming->planName or '' }}<br>
@@ -27,12 +27,13 @@
             </div>
         </div>
         <div class="materialbox materialbox-upcoming p-0">
-        <div class="col-md-12 pl-5 pt-2 pb-2">
+        <div class="col-md-12 pl-5 pt-5 pb-5">
+            <h4 class="pb-4">New Payment Plan</h4>
             @if(count($projects)>0)
                 <form class="form-horizontal" role="form" method="POST" action="/freelancer/plans/new">
                     {!! Form::select('projects', $projectList, null, ['class' => 'form-control col-md-10', 'id' => 'projects','placeholder' => 'Select Project', 'required']) !!}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <p class="pt-3"><button type="submit" class="btn btn-success col-md-10">Create Payment Plan</button></p>
+                    <p class="pt-3"><button type="submit" class="btn btn-success col-md-10">Create</button></p>
                 </form>
             @else
                 <div class="pt-2">

@@ -14,8 +14,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
 
-    <link href="{{ asset('css/backend/freelancer/sb-admin.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/backend/style_backend.css')}}" rel="stylesheet">
+
     <link href="{{ asset('css/backend/freelancer/smart_wizard.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/style.css')}}" rel="stylesheet">
@@ -26,165 +28,126 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
-<body id="page-top">
-<!--
-<nav class="navbar navbar-expand static-top">
 
-    <a class="navbar-brand mr-1" href="index.html">
-        <img src="/images/trustfy.png" class="img-responsive logo">
+<body>
+
+<header class="cd-main-header">
+    <a href="#0" class="cd-logo">
+        <img src="/img/trustfy-new-mixed.png" class="img-responsive logo" style="width: 150px;">
     </a>
+    <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+    <nav class="cd-nav">
+        <ul class="cd-top-nav">
+            <li><a href="#0">Tour</a></li>
+            <li><a href="#0">Support</a></li>
+            <li class="has-children account">
+                <a href="#0">
+                    <i class="fas fa-user-circle"></i>
+                    Account
+                </a>
+                <ul>
+                    <li><a href="#0">My Account</a></li>
+                    <li><a href="#0">Edit Account</a></li>
+                    <li><a href="#0">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="cd-main-content">
+    <nav class="cd-side-nav">
+        <ul class="navbar-nav">
+            <li class="cd-label">Main</li>
+            <li class="has-children">
+                <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard
+                </a>
+            </li>
+            <li class="has-children">
+                <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}"><i class="fas fa-users"></i> Clients</a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to($blade["ll"].'/freelancer/clients/new') }}">
+                            Add Client
+                        </a>
+                    </li>
 
+                </ul>
+            </li>
+            <li class="has-children">
+                <a href="{{ URL::to($blade["ll"].'/freelancer/projects') }}"><i class="fas fa-project-diagram"></i> Projects</a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::to($blade["ll"].'/freelancer/projects') }}">
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to($blade["ll"].'/freelancer/projects/new') }}">
+                            Add Project
+                        </a>
+                    </li>
 
+                </ul>
+            </li>
+            <li class="has-children">
+                <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">  <i class="far fa-money-bill-alt"></i> Payment Plans</a>
+                <ul>
+                    <li>
+                        <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to($blade["ll"].'/freelancer/plans/new') }}">
+                            Add Plan
+                        </a>
+                    </li>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-    </button>
--->
-    <!-- Navbar Search -->
-<!--
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li class="cd-label">Secondary</li>
+            <li class="has-children">
+                <a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </li>
+            <li class="has-children">
+                <a class="nav-link" href="{{ URL::to($blade["ll"].'/logout') }}">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li class="cd-label">Action</li>
+            <li class="action-btn"><a href="{{ URL::to($blade["ll"].'/freelancer/plans/new') }}">Create Plan</a></li>
+        </ul>
+    </nav>
 
-        </div>
-    </form>
--->
-    <!-- Navbar -->
-<!-- <ul class="navbar-nav ml-auto ml-md-0">
-
-   <li class="nav-item dropdown no-arrow mx-1">
-       <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fas fa-bell fa-fw"></i>
-           <span class="badge badge-danger">9+</span>
-       </a>
-       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-           <a class="dropdown-item" href="#">Action</a>
-           <a class="dropdown-item" href="#">Another action</a>
-           <div class="dropdown-divider"></div>
-           <a class="dropdown-item" href="#">Something else here</a>
-       </div>
-   </li>
-   <li class="nav-item dropdown no-arrow mx-1">
-       <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fas fa-envelope fa-fw"></i>
-           <span class="badge badge-danger">7</span>
-       </a>
-       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-           <a class="dropdown-item" href="#">Action</a>
-           <a class="dropdown-item" href="#">Another action</a>
-           <div class="dropdown-divider"></div>
-           <a class="dropdown-item" href="#">Something else here</a>
-       </div>
-   </li>
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle green" data-toggle="dropdown"><i class="fa fa-user"></i> {{$blade["user"]->firstname." ".$blade["user"]->lastname}}<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-
-                 <li>
-                     <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                 </li>
-
-                <li class="divider"></li>
-                <li>
-                    <a href="{{ URL::to('en/logout') }}"><i class="fa fa-fw fa-power-off"></i>Logout</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-
-</nav>
--->
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-        <a class="navbar-brand mr-1 pb-5" href="/freelancer/dashboard">
-            <img src="/img/trustfy-new-mixed.png" class="img-responsive logo">
-        </a>
-        <li class="nav-item">
-            <a class="nav-link  active" href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-               <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
-                <i class="fas fa-users"></i>
-                <span>Clients</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/projects') }}">
-                <i class="fas fa-project-diagram"></i>
-                <span>Projects</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
-                <i class="far fa-money-bill-alt"></i>
-                <span>Payment Plans</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
-                <i class="fas fa-cog"></i>
-                <span>Settings</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to($blade["ll"].'/logout') }}">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span></a>
-        </li>
-    </ul>
-
-    <div id="content-wrapper" style="padding-bottom: 50px;">
-
-        <div class="container-fluid">
-            @yield('content')
-        </div>
-
-
+    <div class="content-wrapper">
+        @yield('content')
     </div>
 
-    <footer class="sticky-footer">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright © trustfy.io 2019</span> | <span class="terms"><a href="https://www.trustfy.io/en/terms" target="_blank">Terms and Conditions</a></span>
-            </div>
-        </div>
-    </footer>
+</main>
 
-    </div>
-    <!-- /.content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
+<footer class="sticky-footer">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright © trustfy.io 2019</span> | <span class="terms"><a href="https://www.trustfy.io/en/terms" target="_blank">Terms and Conditions</a></span>
         </div>
     </div>
-</div>
+</footer>
 
-
-</body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="/js/freelancer/menu-aim.js"></script>
+<script src="/js/freelancer/main.js"></script>
 <!-- Include jQuery -->
 <script src="https://unpkg.com/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -200,12 +163,13 @@
 
 
 
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
 
-$(document).ready(function () {
+    $(document).ready(function () {
 
         var url = "{{env("APP_SSL")}}://" + window.location.hostname + window.location.pathname;
         //alert(url);
@@ -224,6 +188,10 @@ $(document).ready(function () {
         });
 
 
+        $('ul.navbar-nav li ul').removeClass("active");
+        $('ul.navbar-nav li ul li').removeClass("active");
+
+
 
     });
 
@@ -237,5 +205,5 @@ $(document).ready(function () {
 
 
 </script>
-
+</body>
 </html>

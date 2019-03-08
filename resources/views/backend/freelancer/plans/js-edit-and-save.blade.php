@@ -5,6 +5,7 @@
         $('#smartwizard').smartWizard({
             selected: 0,
             theme: 'default',
+            keyNavigation: false,
             transitionEffect:'slide',
             autoAdjustHeight: false,
             toolbarSettings: {toolbarPosition: 'none',
