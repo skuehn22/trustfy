@@ -260,7 +260,7 @@
                                 <div class="col invoice-details">
                                     <h1 class="invoice-id">Payment Plan</h1>
                                     <div class="date">Date of Invoice: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}} </div>
-                                    <div class="date">Due Date: {{ \Carbon\Carbon::parse($plan->due_date)->format('d/m/Y')}}</div>
+
                                 </div>
                             </div>
                             <table border="0" cellspacing="0" cellpadding="0">
@@ -283,7 +283,7 @@
                                     </td>
 
                                     <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
-                                    <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount,2) }} € @else  <i>please fill in</i> @endif</td>
+                                    <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount, 2, '.', ',') }} € @else  <i>please fill in</i> @endif</td>
                                     <td>
 
                                         @if(isset($milestone->bank_transfer))
