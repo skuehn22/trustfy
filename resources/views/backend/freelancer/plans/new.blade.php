@@ -263,20 +263,20 @@
     </div>
 
 
-    <div class="modal fade" id="send-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="send-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog preview-modal" role="document"  style="width: 200px;">
             <div class="modal-content">
 
                 <div class="modal-header">
 
-                    <span class="modal-title" id="exampleModalLabel">Your Payment Plan was send to your client!</span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div id="msg-send"></div>
+
                 </div>
                 <div class="modal-body" id="modal-body preview-body">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-success close-saved" data-dismiss="modal" aria-label="Close">Cool Beans =)</button>
+
+                        <a href="/{{$blade['ll']}}/freelancer/plans" class="btn btn-success close-saved">Cool Beans =)</a>
+
                     </div>
 
                 </div>

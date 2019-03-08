@@ -186,7 +186,7 @@
                         processData: false,
                         success:function(data)
                         {
-                            $('#msg').html(data.success);
+                            $('#msg-send').html(data.message);
                             $('#send-modal').modal('show');
                         }
                     })

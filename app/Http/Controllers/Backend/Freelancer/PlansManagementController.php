@@ -156,11 +156,6 @@ class PlansManagementController extends Controller
     }
 
 
-
-
-
-
-
     public function save(Request $request) {
 
         $blade["ll"] = App::getLocale();
@@ -191,8 +186,10 @@ class PlansManagementController extends Controller
         if(isset($input['comment']))
             $plan->comment = $input['comment'];
 
+        if($plan->state < 2){
+            $plan->state = 1;
+        }
 
-        $plan->state = 1;
         $plan->hidden = 0;
         //$plan->hash = Hash::make(time());
         $plan->hash = time();
@@ -353,32 +350,41 @@ class PlansManagementController extends Controller
         $plan = Plans::where("id", "=", $_GET['plan'])
             ->first();
 
-        $plan->state =  2;
-        $plan->save();
+        if($plan->state == 2){
 
-        $client = Clients::where("id", "=", $_GET['clients'])
-            ->first();
+            return response()->json([
+                'message'   => 'Your Payment was already sent earlier.'
 
-        $company = App\DatabaseModels\Companies::where("id", "=", $user->service_provider_fk)
-            ->first();
+            ]);
 
-        //$mango_obj = new MangoClass($this->mangopay);
-        //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
+        }else{
+            $plan->state =  2;
+            $plan->save();
 
-        Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user) {
-            $message->from($user->email, $user->firstname." ".$user->lastname);
-            $message->to($client->email);
-            $message->to($client->email);
-            $message->subject($company->name." - Payment Plan");
-            $message->bcc('bcc@trustfy.io');
-        });
+            $client = Clients::where("id", "=", $_GET['clients'])
+                ->first();
+
+            $company = App\DatabaseModels\Companies::where("id", "=", $user->service_provider_fk)
+                ->first();
+
+            //$mango_obj = new MangoClass($this->mangopay);
+            //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
+
+            Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user) {
+                $message->from($user->email, $user->firstname." ".$user->lastname);
+                $message->to($client->email);
+                $message->to($client->email);
+                $message->subject($company->name." - Payment Plan");
+                $message->bcc('bcc@trustfy.io');
+            });
 
 
 
-        return response()->json([
-            'message'   => 'Your Payment Plan was send to your client'
+            return response()->json([
+                'message'   => 'Your Payment Plan was send to your client'
 
-        ]);
+            ]);
+        }
 
     }
 

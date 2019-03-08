@@ -12,6 +12,7 @@
         Trustfy
         IBAN: IE95 AIBK 9310 7128 1910 54<br>
         BIC: AIBKIE2D
+        Reference: C-{{$milestone->id}}-{{$miletone->projects_plans_id_fk}}
     </div>
 @stop
 
