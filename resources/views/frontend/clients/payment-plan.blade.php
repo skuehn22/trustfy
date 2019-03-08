@@ -291,7 +291,7 @@
                         </td>
 
                         <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
-                        <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount,2) }} € @else  <i>please fill in</i> @endif</td>
+                        <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount, 2, '.', ',') }} € @else  <i>please fill in</i> @endif</td>
                         <td>
 
                             @if(isset($milestone->bank_transfer))

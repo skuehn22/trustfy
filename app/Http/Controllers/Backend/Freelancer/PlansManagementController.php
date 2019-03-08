@@ -205,7 +205,7 @@ class PlansManagementController extends Controller
             }
 
             if(isset($input['single-amount'])){
-                $milestone->amount = $input['single-amount'];
+                $milestone->amount = str_replace(',', '', $input['single-amount']);
             }
 
             if(isset($input['pay-due'])){
