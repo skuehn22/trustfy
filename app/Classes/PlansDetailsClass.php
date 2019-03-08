@@ -45,10 +45,18 @@ class PlansDetailsClass  extends Controller
                 break;
 
             case "1":
-                $fundsCalculation['funded'] = $fundsCalculation['funded'] + $fund->amount;
+                $fundsCalculation['pending'] = $fundsCalculation['pending'] + $fund->amount;
                 break;
 
             case "2":
+                $fundsCalculation['funded'] = $fundsCalculation['funded'] + $fund->amount;
+                break;
+
+            case "3":
+                $fundsCalculation['pending'] = $fundsCalculation['released'] + $fund->amount;
+                break;
+
+            case "4":
                 $fundsCalculation['released'] = $fundsCalculation['released'] + $fund->amount;
                 break;
 
@@ -84,10 +92,14 @@ class PlansDetailsClass  extends Controller
 
         foreach ($funds as $fund){
 
-            if( new DateTime($fund->due_at) < new DateTime($upcoming) ){
-                $upcoming = $fund->due_at;
-                $upcoming_fund = $fund;
+            if($fund->paystatus <4){
+                if( new DateTime($fund->due_at) < new DateTime($upcoming) ){
+                    $upcoming = $fund->due_at;
+                    $upcoming_fund = $fund;
+                }
             }
+
+
 
         }
 

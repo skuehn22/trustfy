@@ -21,7 +21,7 @@
                        Plan Name: {{ $upcoming->planName or '' }}<br>
                        Due at: {{date('d.m.Y', strtotime($upcoming->due_at))}} - Amount {{ number_format($upcoming->amount, 2) }} €
                     @else
-                        No Payment Plans yet.
+                        No open payment plans.
                     @endif
                 </div>
             </div>
