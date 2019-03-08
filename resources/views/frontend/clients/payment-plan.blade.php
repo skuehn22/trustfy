@@ -334,7 +334,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==2)
+                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==3)
                                         <p class="successful">Money Realsed</p>
                                     @else
                                         <p class="successful">Amount Funded</p>

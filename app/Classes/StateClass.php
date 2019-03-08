@@ -70,7 +70,7 @@ class StateClass
         switch ($id) {
             case 0:
                 $state['color'] = "grey";
-                $state['state'] = "saved";
+                $state['state'] = "open";
                 break;
             case 1:
                 $state['color'] = "yellow";
