@@ -20,6 +20,7 @@ use App\DatabaseModels\PlanDocs;
 use App\DatabaseModels\UsersPaymentPlan;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Companies;
+use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
 use App\Classes\MessagesClass;
 
@@ -213,22 +214,35 @@ class PaymentPlanController extends Controller
         $milestone = PlansMilestone::where("id", "=", $id)
             ->first();
 
-
         //get all plan details for the normal payment plan view
-        $query = DB::table('projects_plans_milestone');
-        $query->join('projects_plans', 'projects_plans.id', '=', 'projects_plans_milestone.projects_plans_id');
+        $query = DB::table('projects_plans_milestones');
+        $query->join('projects_plans', 'projects_plans.id', '=', 'projects_plans_milestones.projects_plans_id_fk');
         $query->join('companies', 'projects_plans.service_provider_fk', '=', 'companies.id');
         $query->join('companies_mangowallets', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
-        $query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.service_provider_fk');
-        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'companies_bank.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
+        $query->where('projects_plans_milestones.id', '=', $id);
+        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'projects_plans.*');
         $plan = $query->first();
 
+        $user = Users::where("service_provider_fk", "=", $plan->service_provider_fk)
+            ->first();
 
         //get result of the payin made by client
         $mango_obj = new MangoClass($this->mangopay);
         $payOutResult = $mango_obj->createPayOut($milestone);
 
+        if($payOutResult->Status == "CREATED"){
 
+            $subject = "Trustfy Payments - Payout created";
+            $data['content'] = "Money for ".$milestone->name." was realsed by the customer. Will be in your bank soon... maybe...";
+
+            $msg_obj = new MessagesClass();
+            $msg_obj->sendStandardMail($subject, $data, $user->email);
+
+            $milestone->paystatus = 2;
+            $milestone->save();
+
+        }
 
         return Redirect::to("/payment-plan/1551712542")->withInput()->with('success', 'PayOut erfolgreich ausgeführt');
 
