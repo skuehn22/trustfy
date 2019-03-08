@@ -185,10 +185,10 @@
                             <td><a href="#">{{ $plan->name or 'not set' }}</a></td>
                             <td>{{ \Carbon\Carbon::parse($plan->updated_at)->format('d/m/Y')}} </td>
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
-                            <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}</td>
+                            <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state_txt}}</td>
                             <td>
 
-                                @if($plan->state=='open')
+                                @if($plan->state > 0)
                                     <a href="/{{$blade["ll"]}}/freelancer/plans/payment-plan/{{$plan->hash}}" target="_blank" data-toggle="tooltip" data-placement="top" title="Show">
                                         <i class="fas fa-eye"></i>
                                     </a>

@@ -59,7 +59,7 @@ class PlansManagementController extends Controller
         foreach($plans as $plan) {
             $response =$statusObj->plans($plan->state);
             $plan->color =  $response['color'];
-            $plan->state =  $response['state'];
+            $plan->state_txt =  $response['state'];
         }
 
 
@@ -358,7 +358,7 @@ class PlansManagementController extends Controller
             ]);
 
         }else{
-            $plan->state =  2;
+            $plan->state =  1;
             $plan->save();
 
             $client = Clients::where("id", "=", $_GET['clients'])
@@ -472,7 +472,10 @@ class PlansManagementController extends Controller
 
         $hash = $plan->hash;
 
-        return view('frontend.clients.payment-plan-freelancer', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash'));
+        $statusObj = new StateClass();
+        $status =$statusObj->milestones($milestone->paystatus);
+
+        return view('frontend.clients.payment-plan-freelancer', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash', 'status'));
 
 
     }

@@ -287,45 +287,39 @@
                         <td>
 
                             @if(isset($milestone->bank_transfer))
-                                @if(isset($milestone->paystatus) && $milestone->paystatus==0)
-                                    <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
+
+
                                         <div class="row">
                                             <div class="col-md-7">
+                                                @if(isset($milestone->paystatus) && $milestone->paystatus<1)
+                                                    @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
+                                                        <div class="radio" style="padding-top: 10px;">
+                                                            <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
+                                                        </div>
+                                                    @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
 
-                                                @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
-                                                    <div class="radio" style="padding-top: 10px;">
-                                                        <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
-                                                    </div>
-                                                @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
+                                                        <div class="radio">
+                                                            <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                        </div>
 
-                                                    <div class="radio">
-                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
-                                                    </div>
+                                                        <div class="radio">
+                                                            <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
+                                                        </div>
 
-                                                    <div class="radio">
-                                                        <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
-                                                    </div>
-
-                                                @else
-                                                    <div class="radio" style="padding-top: 10px;">
-                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
-                                                    </div>
+                                                    @else
+                                                        <div class="radio" style="padding-top: 10px;">
+                                                            <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                        </div>
+                                                    @endif
                                                 @endif
-
-
                                             </div>
+
                                             <div class="col-md-5"  style="text-align: right;">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                   OPEN
+                                                    <h4 style="color:{{ $status['color'] }}"><i>{{ $status['state'] }}</i></h4>
                                                 </span>
                                             </div>
                                         </div>
-                                    </form>
-                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==2)
-                                    <p class="successful">Money Realsed</p>
-                                @else
-                                    <p class="successful">Amount Funded</p>
-                                @endif
                             @else
                                 <i>please fill in</i>
                             @endif
