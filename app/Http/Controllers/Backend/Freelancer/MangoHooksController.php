@@ -65,15 +65,6 @@ class MangoHooksController extends Controller
                 $milestone->paystatus = 4;
                 $milestone->save();
 
-                $user = Users::where("service_provider_fk", "=", $payout->company_id_fk)
-                    ->first();
-
-                $subject = "Trustfy Payments - Payout succeeded";
-                $data['content'] = "Message from mango hook that payout was succeded";
-                $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data, $user->email);
-
-
                 //check if that was the last open milestone and the project is finsihed
                 $all_milestones = PlansMilestone::where("projects_plans_id_fk", "=", $milestone->projects_plans_id_fk)
                     ->where('paystatus', '<', '4')
@@ -92,8 +83,24 @@ class MangoHooksController extends Controller
 
                 break;
 
-            case "green":
-                echo "Your favorite color is green!";
+            case "PAYOUT_NORMAL_FAILED":
+
+                $payout = MangoPayout::where("mango_id", "=", $hook->ressourceId)
+                    ->first();
+
+                $payout->status = $hook->type;
+                $payout->save();
+
+                $user = Users::where("service_provider_fk", "=", $payout->company_id_fk)
+                    ->first();
+
+                $subject = "Trustfy Payments - Payout failed";
+                $data['content'] = "Payout failed - please contact trustfy!";
+
+                $msg_obj = new MessagesClass();
+                $msg_obj->sendStandardMail($subject, $data, $user->email);
+
+
                 break;
             default:
                 echo "Your favorite color is neither red, blue, nor green!";
