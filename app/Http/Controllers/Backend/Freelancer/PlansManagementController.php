@@ -126,28 +126,40 @@ class PlansManagementController extends Controller
             ->where("delete", "=", "0")
             ->first();
 
-        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-            ->where("delete", "=", "0")
-            ->get();
+        if($plan->state == 2){
 
-        $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-            ->where("delete", "=", "0")
-            ->lists("name", "id");
+            return Redirect::to($blade["ll"]."/freelancer/plans/")->withInput()->with('error', 'Payment Plan can not be edited.');
 
-        $selected_project = Projects::where("id", "=", $plan->projects_id_fk)
-            ->where("delete", "=", "0")
-            ->first();
+        }else{
+            $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->get();
 
-        $types = PlansTypes::where("delete", "=", "0")
-            ->lists("name","id");
+            $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->lists("name", "id");
 
-        $milestones_edit = PlansMilestone::where("projects_plans_id_fk", "=", $id)
-            ->first();
+            $selected_project = Projects::where("id", "=", $plan->projects_id_fk)
+                ->where("delete", "=", "0")
+                ->first();
+
+            $types = PlansTypes::where("delete", "=", "0")
+                ->lists("name","id");
+
+            $milestones_edit = PlansMilestone::where("projects_plans_id_fk", "=", $id)
+                ->first();
 
 
-        return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types', 'selected_project', 'milestones_edit'));
+            return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types', 'selected_project', 'milestones_edit'));
 
+        }
     }
+
+
+
+
+
+
 
     public function save(Request $request) {
 
@@ -341,6 +353,9 @@ class PlansManagementController extends Controller
         $plan = Plans::where("id", "=", $_GET['plan'])
             ->first();
 
+        $plan->state =  2;
+        $plan->save();
+
         $client = Clients::where("id", "=", $_GET['clients'])
             ->first();
 
@@ -351,11 +366,10 @@ class PlansManagementController extends Controller
         //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
 
         Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user) {
-            $message->from('info@trustfy.io', 'Trustfy.io');
+            $message->from($user->email, $user->firstname." ".$user->lastname);
             $message->to($client->email);
             $message->to($client->email);
             $message->subject($company->name." - Payment Plan");
-            $message->replyTo($user->email, $user->firstname." ".$user->lastname);
             $message->bcc('bcc@trustfy.io');
         });
 
@@ -424,6 +438,38 @@ class PlansManagementController extends Controller
 
     }
 
+
+    function loadPlan($hash){
+
+
+        $blade["locale"] = App::getLocale();
+
+        //get all plan details for the normal payment plan view
+        $query = DB::table('projects_plans');
+        $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
+        $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
+        $query->where('projects_plans.hash', '=', $hash);
+        $query->select('projects.name AS projectName', 'clients.firstname', 'clients.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $plan = $query->first();
+
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
+            ->first();
+
+        $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
+            ->get();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+        $hash = $plan->hash;
+
+        return view('frontend.clients.payment-plan-freelancer', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash'));
+
+
+    }
 
 
 

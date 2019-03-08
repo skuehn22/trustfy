@@ -147,6 +147,13 @@
             </div>
         @endif
 
+        @if(Session::has('error'))
+            <div class="alert alert-danger error_message">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ Session::get('error') }}
+            </div>
+        @endif
+
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -180,7 +187,19 @@
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
                             <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state}}</td>
                             <td>
-                                <a href="/{{$blade["ll"]}}/freelancer/plans/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
+
+                                @if($plan->state=='open')
+                                    <a href="/{{$blade["ll"]}}/freelancer/plans/payment-plan/{{$plan->hash}}" target="_blank" data-toggle="tooltip" data-placement="top" title="Show">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                @else
+                                    <a href="/{{$blade["ll"]}}/freelancer/plans/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="far fa-edit green"></i>
+                                    </a>
+                                @endif
+
+
+
                                 <span data-toggle="modal" data-target="#exampleModal">
                                     <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete" class="delete-client">
                                         <i class="fas fa-trash green"></i>

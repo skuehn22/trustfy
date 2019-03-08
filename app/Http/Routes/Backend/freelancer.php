@@ -60,6 +60,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/plans/docs', 'Backend\Freelancer\PlansManagementController@getDocs');
     Route::any('/freelancer/plans/delete-doc', 'Backend\Freelancer\PlansManagementController@deleteDoc');
     Route::any('/freelancer/plans/preview/{id}', 'Backend\Freelancer\PlansManagementController@loadPreview');
+    Route::any('/freelancer/plans/payment-plan/{hash}', 'Backend\Freelancer\PlansManagementController@loadPlan');
 
 
     Route::any('/freelancer/settings', 'Backend\Freelancer\SettingsController@index') ;
