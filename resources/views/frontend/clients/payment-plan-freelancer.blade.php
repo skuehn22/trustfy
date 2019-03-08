@@ -321,11 +321,10 @@
                                             </div>
                                         </div>
                                     </form>
+                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==2)
+                                    <p class="successful">Money Realsed</p>
                                 @else
                                     <p class="successful">Amount Funded</p>
-                                    <span class="input-group-btn" style="padding-left: 5px;">
-                                        <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
-                                    </span>
                                 @endif
                             @else
                                 <i>please fill in</i>
