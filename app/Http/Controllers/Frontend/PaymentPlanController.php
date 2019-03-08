@@ -244,7 +244,7 @@ class PaymentPlanController extends Controller
 
         }
 
-        return Redirect::to("/payment-plan/1551712542")->withInput()->with('success', 'PayOut erfolgreich ausgeführt');
+        return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'PayOut erfolgreich ausgeführt');
 
     }
 
@@ -325,7 +325,7 @@ class PaymentPlanController extends Controller
                     $user->user_hash = Hash::make($data["password"]);
                     $user->save();
 
-                    return $user->user_hash;
+                    return true;
                 }else{
                     return false;
                 }
@@ -334,6 +334,9 @@ class PaymentPlanController extends Controller
 
                     $user->user_hash = Hash::make($data["password"]);
                     $user->save();
+
+
+                    return true;
 
                     return $user->user_hash;
                 }else{
