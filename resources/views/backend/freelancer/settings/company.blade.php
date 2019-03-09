@@ -1,5 +1,6 @@
+<form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
 <div class="row">
-    <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
+
     <div class="col-md-6">
         <h4>Your Company Details</h4>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -118,10 +119,10 @@
         </div>
         <br><br>
 
-</form>
+
         @include('ajax_upload')
     </div>
 
 </div>
 
-
+</form>
