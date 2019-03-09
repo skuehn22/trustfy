@@ -200,6 +200,7 @@
 
 
 
+
                                 <span data-toggle="modal" data-target="#exampleModal">
                                     <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete" class="delete-client">
                                         <i class="fas fa-trash green"></i>
