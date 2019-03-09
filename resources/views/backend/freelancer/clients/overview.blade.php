@@ -278,8 +278,8 @@
 
 
 
-            $(".cd-app-screen").addClass('cd-app-screen-step3').removeClass('cd-app-screen');
-            $(".cd-nugget-info").addClass('cd-nugget-info-step3').removeClass('cd-nugget-info');
+            $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step3').removeClass('cd-app-screen');
+            $(".cd-nugget-info").removeClass('d-none').addClass('cd-nugget-info-step3').removeClass('cd-nugget-info');
             $("#cd-tour-trigger-step3").removeClass('d-none');
             $("#cd-tour-trigger").addClass('d-none');
 

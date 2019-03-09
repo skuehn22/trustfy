@@ -98,18 +98,20 @@
 
             if($("#tour").length && $("#tour").val() == "true"){
 
-                $(".cd-app-screen").addClass('cd-app-screen-step1').removeClass('cd-app-screen');
-                $(".cd-nugget-info").addClass('cd-nugget-info-step1').removeClass('cd-nugget-info');
+                $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step1').removeClass('cd-app-screen');
+                $(".cd-nugget-info").removeClass('d-none').addClass('cd-nugget-info-step1').removeClass('cd-nugget-info');
                 $("#cd-tour-trigger-step1").removeClass('d-none');
                 $("#cd-tour-trigger").addClass('d-none');
+
             }
 
 
             @if(Session::has('success'))
 
                 if($("#tour").length && $("#tour").val() == "true"){
-                    $(".cd-app-screen").addClass('cd-app-screen-step1').removeClass('cd-app-screen');
-                    $(".cd-nugget-info").addClass('cd-nugget-info-step1').removeClass('cd-nugget-info');
+                    $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step1').removeClass('cd-app-screen');
+                    $(".cd-nugget-info").removeClass('d-none').addClass('cd-nugget-info-step1').removeClass('cd-nugget-info');
+                    $("#cd-tour-trigger-step1").addClass('d-none');
                     $("#cd-tour-trigger-step2").removeClass('d-none');
                     $("#cd-tour-trigger").addClass('d-none');
 

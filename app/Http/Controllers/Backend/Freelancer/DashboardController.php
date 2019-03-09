@@ -36,7 +36,7 @@ class DashboardController extends Controller
 
                 $user->tour = "true";
                 $user->save();
-                $blade["user"] = Auth::user();
+                $blade["user"] = $user;
 
             }
 

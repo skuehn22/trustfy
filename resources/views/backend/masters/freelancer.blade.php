@@ -143,8 +143,9 @@
         </div>
     </div>
 </footer>
-<div class="cd-nugget-info">
+<div class="cd-nugget-info d-none">
     <h1>Product Tour</h1>
+    <p>Dickie!! :)</p>
     <button id="cd-tour-trigger" class="cd-btn">Start tour</button>
     <button id="cd-tour-trigger-step1" class="cd-btn d-none">Step 1 of 3 </button>
     <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 2 of 3 </button>
@@ -152,7 +153,7 @@
     <button id="cd-tour-trigger-step4" class="cd-btn d-none">Finished</button>
 </div>
 
-<ul class="cd-tour-wrapper">
+<ul class="cd-tour-wrapper d-none">
     <li class="cd-single-step">
         <span>Step 1</span>
 
@@ -184,7 +185,7 @@
     </li> <!-- .cd-single-step -->
 </ul> <!-- .cd-tour-wrapper -->
 
-<div class="cd-app-screen"></div>
+<div class="cd-app-screen d-none"></div>
 
 <div class="cd-cover-layer"></div>
 <!--
@@ -241,17 +242,11 @@
 
 
         if($("#tour").length && $("#tour").val() == "true"){
-
+            $(".cd-tour-wrapper").removeClass('d-none');
+            $(".cd-nugget-info").removeClass('d-none');
+            $(".cd-app-screen").removeClass('d-none');
+            $(".blur-dashboard").addClass('blur');
             $(".cd-tour-nav").addClass('d-none');
-
-        }else{
-
-            $(".cd-tour-wrapper").addClass('d-none');
-            $(".cd-nugget-info").addClass('d-none');
-            $(".cd-tour-nav").addClass('d-none');
-            $(".cd-app-screen").addClass('d-none');
-            $(".blur").removeClass('blur');
-
         }
 
 
