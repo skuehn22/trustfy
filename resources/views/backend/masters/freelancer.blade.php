@@ -30,7 +30,7 @@
 <body>
 
 <header class="cd-main-header">
-    <a href="#0" class="cd-logo">
+    <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}" class="cd-logo">
         <img src="/img/trustfy-new-mixed.png" class="img-responsive logo" style="width: 150px;">
     </a>
     <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
