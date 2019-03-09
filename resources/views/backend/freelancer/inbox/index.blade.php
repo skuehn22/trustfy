@@ -33,6 +33,11 @@
                 <p class="no-message">{{ trans('index.no_messages') }}</p>
             @endif
         </div>
+        <div class="text-xs-center">
+            <div class="col-md-12 text-xs-center">
+                {{$messages->links()}}
+            </div>
+        </div>
     </div>
     <div class="tab-pane fade in" id="profile">
         <div class="list-group">

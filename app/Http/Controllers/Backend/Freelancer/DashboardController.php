@@ -51,7 +51,7 @@ class DashboardController extends Controller
 
             $messages = MessagesCompanies::where("company_id_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
-                ->get();
+                ->paginate(4);
 
 
             foreach($messages as $message){
