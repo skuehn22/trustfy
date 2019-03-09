@@ -139,11 +139,6 @@
             font-size: 13px;
         }
 
-        .btn-success{
-            padding: 2px;
-            font-size: 14px;
-        }
-
 
     </style>
 
@@ -155,7 +150,7 @@
 @stop
 
 @section('content')
-    <div class="row" style="padding-top: 20px;">
+    <div class="row blur" style="padding-top: 20px;">
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4">
@@ -212,6 +207,13 @@
 @stop
 @section("javascript")
     <script type="text/javascript">
+
+        // External Button Events
+        $("#cd-tour-trigger").on("click", function() {
+            $(".dashboard-sidebar").removeClass('active');
+            $(".settings-sidebar").addClass('active');
+        });
+
 
         //checks if a new setup is required for the freelancer
         var setup = $('#setup').val();

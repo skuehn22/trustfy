@@ -86,6 +86,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/mango-hooks', 'Backend\Freelancer\MangoHooksController@receive') ;
 
 
+    Route::any('/freelancer/tour/done', 'Backend\Freelancer\DashboardController@tourDone') ;
+
+
 
 });
 

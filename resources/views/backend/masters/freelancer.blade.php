@@ -17,6 +17,7 @@
     <link href="{{ asset('css/backend/freelancer/smart_wizard_theme_arrows.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/backend/freelancer/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/backend/freelancer/tour.css')}}" rel="stylesheet">
 
     @yield('css')
 
@@ -33,7 +34,7 @@
     <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
     <nav class="cd-nav">
         <ul class="cd-top-nav">
-            <li><a href="#0">Tour</a></li>
+            <li><a href="/freelancer/dashboard?tour=activate">Tour</a></li>
             <li><a href="#0">Support</a></li>
             <li class="has-children account">
                 <a href="#0">
@@ -41,9 +42,8 @@
                     Account
                 </a>
                 <ul>
-                    <li><a href="#0">My Account</a></li>
-                    <li><a href="#0">Edit Account</a></li>
-                    <li><a href="#0">Logout</a></li>
+                    <li><a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">My Account</a></li>
+                    <li><a href="{{ URL::to($blade["ll"].'/logout') }}">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -53,12 +53,12 @@
     <nav class="cd-side-nav">
         <ul class="navbar-nav">
             <li class="cd-label">Main</li>
-            <li class="has-children">
+            <li class="has-children dashboard-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard
                 </a>
             </li>
-            <li class="has-children">
+            <li class="has-children client-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}"><i class="fas fa-users"></i> Clients</a>
                 <ul>
                     <li>
@@ -93,7 +93,7 @@
             </li>
 
             -->
-            <li class="has-children">
+            <li class="has-children plan-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">  <i class="far fa-money-bill-alt"></i> Payment Plans</a>
                 <ul>
                     <li>
@@ -112,7 +112,7 @@
         </ul>
         <ul>
             <li class="cd-label">Secondary</li>
-            <li class="has-children">
+            <li class="has-children settings-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
                     <i class="fas fa-cog"></i> Settings
                 </a>
@@ -131,6 +131,7 @@
 
     <div class="content-wrapper">
         @yield('content')
+        <input type="hidden" name="tour" id="tour" value="{{$blade["user"]->tour}}">
     </div>
 
 </main>
@@ -142,7 +143,50 @@
         </div>
     </div>
 </footer>
+<div class="cd-nugget-info">
+    <h1>Product Tour</h1>
+    <button id="cd-tour-trigger" class="cd-btn">Start tour</button>
+    <button id="cd-tour-trigger-step1" class="cd-btn d-none">Step 1 of 3 </button>
+    <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 2 of 3 </button>
+    <button id="cd-tour-trigger-step3" class="cd-btn d-none">Step 3 of 3 </button>
+    <button id="cd-tour-trigger-step4" class="cd-btn d-none">Finished</button>
+</div>
 
+<ul class="cd-tour-wrapper">
+    <li class="cd-single-step">
+        <span>Step 1</span>
+
+        <div class="cd-more-info bottom">
+            <h2>Step Number 1: Company</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi alias animi molestias in, aperiam.</p>
+            <img src="/img/step-1.png" alt="step 1">
+        </div>
+    </li> <!-- .cd-single-step -->
+
+    <li class="cd-single-step tour-step-2">
+        <span>Step 2</span>
+
+        <div class="cd-more-info right">
+            <h2>Step Number 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia quasi in quisquam.</p>
+            <img src="/img/step-2.png" alt="step 2">
+        </div>
+    </li> <!-- .cd-single-step -->
+
+    <li class="cd-single-step tour-step-3">
+        <span>Step 3</span>
+
+        <div class="cd-more-info right">
+            <h2>Step Number 3</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio illo non enim ut necessitatibus perspiciatis, dignissimos.</p>
+            <img src="/img/step-3.png" alt="step 3">
+        </div>
+    </li> <!-- .cd-single-step -->
+</ul> <!-- .cd-tour-wrapper -->
+
+<div class="cd-app-screen"></div>
+
+<div class="cd-cover-layer"></div>
 <!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 -->
@@ -158,13 +202,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
 <script src="/js/freelancer/jquery.smartWizard.min.js"></script>
 
+<!--order of script is important-->
+<script>
+    var url = "{{env("APP_SSL")}}://" + window.location.hostname + window.location.pathname;
+    //alert(url);
+
+    $('ul.navbar-nav li a').each(function () {
+
+        if (this.href == url) {
+
+            $("ul.navbar-nav li").each(function () {
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                }
+            });
+            $(this).parents().addClass('active');
+        }
+    });
+
+
+    $('ul.navbar-nav li ul').removeClass("active");
+    $('ul.navbar-nav li ul li').removeClass("active");
+</script>
+
+
 @yield('javascript')
 @yield('javascript-expanded')
 
 <script type="text/javascript">
-
-
-
 
 
     $(function () {
@@ -174,26 +239,20 @@
 
     $(document).ready(function () {
 
-        var url = "{{env("APP_SSL")}}://" + window.location.hostname + window.location.pathname;
-        //alert(url);
 
-        $('ul.navbar-nav li a').each(function () {
+        if($("#tour").length && $("#tour").val() == "true"){
 
-            if (this.href == url) {
+            $(".cd-tour-nav").addClass('d-none');
 
-                $("ul.navbar-nav li").each(function () {
-                    if ($(this).hasClass("active")) {
-                        $(this).removeClass("active");
-                    }
-                });
-                $(this).parents().addClass('active');
-            }
-        });
+        }else{
 
+            $(".cd-tour-wrapper").addClass('d-none');
+            $(".cd-nugget-info").addClass('d-none');
+            $(".cd-tour-nav").addClass('d-none');
+            $(".cd-app-screen").addClass('d-none');
+            $(".blur").removeClass('blur');
 
-        $('ul.navbar-nav li ul').removeClass("active");
-        $('ul.navbar-nav li ul li').removeClass("active");
-
+        }
 
 
     });

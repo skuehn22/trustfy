@@ -1,5 +1,6 @@
 
 <form class="form-horizontal" role="form" method="POST" action="/provider/settings/save-company">
+    <input type="hidden" name="tour" id="tour" value="true">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="form-group">
         <label for="company" class="col-md-3 control-label">Company</label>

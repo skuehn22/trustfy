@@ -1,5 +1,37 @@
     <script>
 
+        if($("#tour").length && $("#tour").val() == "true"){
+            $(".cd-app-screen").addClass('cd-app-screen-step2').removeClass('cd-app-screen');
+            $(".cd-nugget-info").addClass('cd-nugget-info-step2').removeClass('cd-nugget-info');
+            $("#cd-tour-trigger-step4").removeClass('d-none');
+            $("#cd-tour-trigger").addClass('d-none');
+        }
+
+
+        // External Button Events
+        $("#cd-tour-trigger-step4").on("click", function() {
+
+            $(".cd-app-screen-step2").addClass('d-none');
+            $(".cd-nugget-info-step2").addClass('d-none');
+
+            var doc = "";
+
+            $.ajax({
+                type: 'GET',
+                url: '{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/tour/done',
+                data: { variable: doc },
+                dataType: 'json',
+
+                success: function(data) {
+
+
+
+                }
+            });
+
+
+        });
+
 
         //initalize the arrow bar on the top of the modal
         $('#smartwizard').smartWizard({

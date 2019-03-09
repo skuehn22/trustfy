@@ -1,4 +1,5 @@
 <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
+
 <div class="row">
 
     <div class="col-md-6">

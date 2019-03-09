@@ -255,7 +255,6 @@
 
 
 
-
         $('#modal-from-dom').on('show', function() {
             var id = $(this).data('id'),
                 removeBtn = $(this).find('.danger');
@@ -271,5 +270,25 @@
             var id = $(this).data('id');
             $('#modal-from-dom').data('id', id).modal('show');
         });
+
+
+        @if(Session::has('success'))
+
+        if($("#tour").length && $("#tour").val() == "true"){
+
+
+
+            $(".cd-app-screen").addClass('cd-app-screen-step3').removeClass('cd-app-screen');
+            $(".cd-nugget-info").addClass('cd-nugget-info-step3').removeClass('cd-nugget-info');
+            $("#cd-tour-trigger-step3").removeClass('d-none');
+            $("#cd-tour-trigger").addClass('d-none');
+
+            $(".tour-step-3").addClass('is-selected');
+            $(".plan-sidebar").addClass('active');
+            $(".client-sidebar").removeClass('active');
+        }
+
+        @endif
+
     </script>
 @stop

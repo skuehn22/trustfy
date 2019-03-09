@@ -14,8 +14,9 @@ use App, Auth, Redirect, DB;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\MessagesCompanies;
-use App\DatabaseModels\Users;
+use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
+use App\DatabaseModels\Users;
 use App\Classes\StateClass;
 use App\Classes\PlansDetailsClass;
 
@@ -26,8 +27,21 @@ class DashboardController extends Controller
 
         if (Auth::check()) {
 
-            $blade["ll"] = App::getLocale();
             $blade["user"] = Auth::user();
+
+            if(isset($_GET['tour']) && $_GET['tour']=="activate" ){
+
+                $user = Users::where("id", "=", $blade["user"]->id)
+                    ->first();
+
+                $user->tour = "true";
+                $user->save();
+                $blade["user"] = Auth::user();
+
+            }
+
+            $blade["ll"] = App::getLocale();
+
             $setup = $blade["user"]->setup;
 
 
@@ -36,13 +50,14 @@ class DashboardController extends Controller
                 ->where("delete", "=", "0")
                 ->get();
 
-            $clients = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
-                ->lists('name', 'id');
+                ->lists('lastname', 'id');
 
 
             $plansList= Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
+                ->where("hidden", "=", "0")
                 ->lists('name', 'id');
 
          /*
@@ -251,5 +266,28 @@ class DashboardController extends Controller
 
         }
     }
+
+
+    public function tourDone()
+    {
+
+        if (Auth::check()) {
+
+            $blade["ll"] = App::getLocale();
+            $blade["user"] = Auth::user();
+
+            $user = Users::where("id", "=", $blade["user"]->id)
+                ->first();
+
+            $user->tour = "false";
+            $user->save();
+
+            return $user;
+
+        }
+    }
+
+
+
 
 }
