@@ -52,7 +52,7 @@ class StateClass
                 $state['state'] = "sent";
                 break;
             case 2:
-                $state['color'] = "text-green";
+                $state['color'] = "text-success";
                 $state['state'] = "finished";
                 break;
             default:

@@ -74,6 +74,7 @@
 
                 </ul>
             </li>
+            <!--
             <li class="has-children">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/projects') }}"><i class="fas fa-project-diagram"></i> Projects</a>
                 <ul>
@@ -90,6 +91,8 @@
 
                 </ul>
             </li>
+
+            -->
             <li class="has-children">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">  <i class="far fa-money-bill-alt"></i> Payment Plans</a>
                 <ul>

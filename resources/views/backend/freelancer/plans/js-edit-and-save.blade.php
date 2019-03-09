@@ -38,13 +38,7 @@
 
                 if(stepNumber == 0 ){
 
-                    var selected_value = $('#projects-dropdown').val()
 
-                    if(!selected_value ) {
-
-                        return false;
-
-                    }
                 }
 
 
@@ -239,12 +233,6 @@
                 $('[data-toggle="tooltip"]').tooltip()
             });
 
-            //loads projects for selected client
-            $("#clients").on('change', function() {
-                document.getElementById("projects").innerHTML = "";
-                action('projects/by-client',  $(this).val());
-
-            });
 
             $("#projects-dropdown").on('change', function() {
                 //action('projects/by-client',  $(this).val());
@@ -254,7 +242,7 @@
                 $( "#due-date" ).datepicker();
             } );
 
-            //loads projects for selected client
+
             $("#pay-due").on('change', function() {
 
                 if($(this).val() == 3){

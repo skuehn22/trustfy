@@ -42,7 +42,7 @@
             <select name="clients" id="clients" class="col-md-3" required>
                 <option></option>
                 @foreach($clients as $client)
-                    @if(isset($selected_project) && $client->id == $selected_project->client_id_fk)
+                    @if(isset($plan->clients_id_fk) && $client->id == $plan->clients_id_fk)
                         <option value="{{$client->id}}" selected>{{$client->firstname}} {{$client->lastname}}</option>
                     @else
                         <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
@@ -61,27 +61,6 @@
         </div>
     </div>
 
-
-<div id="projects">
-
-    @if(isset($projects))
-
-        <div class="form-group">
-            <div class="form-inline">
-                <label class="col-md-2 col-form-label" for="projects-dropdown">Projects</label>
-                @if(count($projects)>0)
-                    {!! Form::select('projects-dropdown', $projects, $selected_project->id , ['class' => 'form-control col-md-3', 'id' => 'projects-dropdown', 'placeholder' => 'select']) !!}
-                @else
-                    <div class="pt-2">
-                        No projects for this client yet. <a href="/{{$blade["ll"]}}/freelancer/projects/new">Create Project</a>
-                    </div>
-                @endif
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-    @endif
-
-</div>
 <div class="form-row py-2">
     <div class="col-md-5 pt-1 text-right float-right">
         <button class="btn btn-success next-btn" id="next-btn" type="button">Next</button>

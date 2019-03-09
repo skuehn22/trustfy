@@ -31,23 +31,26 @@ class DashboardController extends Controller
             $setup = $blade["user"]->setup;
 
 
-            $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $plans = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("hidden", "=", "0")
                 ->where("delete", "=", "0")
                 ->get();
 
-            $projectList= Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $clients = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->lists('name', 'id');
 
-            $last_project = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+
+            $plansList= Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->lists('name', 'id');
+
+         /*
+            $last_plan = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->where("last_viewed", "=", "1")
                 ->first();
-
-            $plans = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-                ->where("delete", "=", "0")
-                ->get();
-
+        */
 
             $messages = MessagesCompanies::where("company_id_fk", "=", $blade["user"]->service_provider_fk)
                 ->where("delete", "=", "0")
@@ -146,7 +149,7 @@ class DashboardController extends Controller
 
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
-            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft', 'projects','last_project', 'plans', 'projectList', 'messages', 'funds', 'upcoming'));
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients'));
 
         } else {
 

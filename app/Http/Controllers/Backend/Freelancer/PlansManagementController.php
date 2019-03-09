@@ -47,11 +47,9 @@ class PlansManagementController extends Controller
 
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
-        $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.service_provider_fk', '=', $blade["user"]->service_provider_fk );
-        $query->where('projects_plans.state', '>', 0 );
         $query->where('projects_plans.delete', '=', 0 );
-        $query->select('projects.name', 'clients.firstname', 'clients.lastname', 'clients.firstname', 'projects_plans.*');
+        $query->select('clients.firstname', 'clients.lastname', 'clients.firstname', 'projects_plans.*');
         $plans = $query->get();
 
         $statusObj = new StateClass();
@@ -135,13 +133,6 @@ class PlansManagementController extends Controller
                 ->where("delete", "=", "0")
                 ->get();
 
-            $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-                ->where("delete", "=", "0")
-                ->lists("name", "id");
-
-            $selected_project = Projects::where("id", "=", $plan->projects_id_fk)
-                ->where("delete", "=", "0")
-                ->first();
 
             $types = PlansTypes::where("delete", "=", "0")
                 ->lists("name","id");
@@ -150,7 +141,7 @@ class PlansManagementController extends Controller
                 ->first();
 
 
-            return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'projects', 'types', 'selected_project', 'milestones_edit'));
+            return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'types', 'milestones_edit'));
 
         }
     }
@@ -187,7 +178,7 @@ class PlansManagementController extends Controller
             $plan->comment = $input['comment'];
 
         if($plan->state < 2){
-            $plan->state = 1;
+            $plan->state = 0;
         }
 
         $plan->hidden = 0;
@@ -420,9 +411,8 @@ class PlansManagementController extends Controller
         //get all plan details for the normal payment plan view
         $query = DB::table('projects_plans');
         $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
-        $query->join('projects', 'projects_plans.projects_id_fk', '=', 'projects.id');
         $query->where('projects_plans.id', '=', $id);
-        $query->select('projects.name AS projectName', 'clients.firstname', 'clients.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
+        $query->select('clients.firstname', 'clients.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
         $company = Companies::where("id", "=", $plan->service_provider_fk)

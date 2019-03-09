@@ -3,15 +3,15 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12 col-md-12">
-                    @if(count($projects)>0)
+                    @if(count($plans)>0)
                         <select name="projects-modul" id="projects-modul" class="form-control col-md-12 input-lg">
-                            @foreach($projects as $project)
-                                <option value="{{$project->id}}">Project: {{$project->name}}</option>
+                            @foreach($plans as $plan)
+                                <option value="{{$plan->id}}">Payment Plan: {{$plan->name}}</option>
                             @endforeach
                         </select>
                     @else
                         <div class="pt-2">
-                            No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Project</a>
+                            No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Plan</a>
                         </div>
                         <div class="row pt-3">
                             <div class="col-md-12">
