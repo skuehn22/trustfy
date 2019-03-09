@@ -29,6 +29,12 @@ a {
     text-decoration: none;
 }
 
+.blur {
+    -webkit-filter: blur(2px);
+    filter: blur(4px);
+}
+
+
 input {
     font-family: "Open Sans", sans-serif;
     font-size: 1.6rem;
@@ -39,211 +45,6 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
     display: none;
-}
-
-/* --------------------------------
-
-xnugget info
-
--------------------------------- */
-.cd-nugget-info {
-    text-align: center;
-    margin: 2em 0;
-}
-.cd-nugget-info a {
-    display: inline-block;
-    padding: 1.4em 1.6em;
-    background-color: #006600;
-    border-radius: .25em;
-    position: relative;
-    font-size: 14px;
-    color: #ffffff;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    transition: all 0.2s;
-}
-.no-touch .cd-nugget-info a:hover {
-    opacity: .8;
-}
-.cd-nugget-info span {
-    vertical-align: middle;
-    display: inline-block;
-}
-.cd-nugget-info span svg {
-    display: block;
-}
-.cd-nugget-info .cd-nugget-info-arrow {
-    fill: #ffffff;
-}
-
-/* --------------------------------
-
-xcarbonads
-
--------------------------------- */
-#carbonads-container,
-#ui8ads-container {
-    position: fixed;
-    top: 80px;
-    right: 5%;
-    width: 180px;
-    display: none;
-    z-index: 1;
-}
-#carbonads-container .close-carbon-adv,
-#carbonads-container .close-ui8-adv,
-#ui8ads-container .close-carbon-adv,
-#ui8ads-container .close-ui8-adv {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 100%;
-    background: rgba(62, 69, 76, 0.8);
-    text-indent: 100%;
-    overflow: hidden;
-    width: 32px;
-    height: 32px;
-}
-#carbonads-container .close-carbon-adv:hover,
-#carbonads-container .close-ui8-adv:hover,
-#ui8ads-container .close-carbon-adv:hover,
-#ui8ads-container .close-ui8-adv:hover {
-    background: #3e454c;
-}
-#carbonads-container .close-carbon-adv::after, #carbonads-container .close-carbon-adv::before,
-#carbonads-container .close-ui8-adv::after,
-#carbonads-container .close-ui8-adv::before,
-#ui8ads-container .close-carbon-adv::after,
-#ui8ads-container .close-carbon-adv::before,
-#ui8ads-container .close-ui8-adv::after,
-#ui8ads-container .close-ui8-adv::before {
-    content: '';
-    background-color: #fff;
-    height: 2px;
-    width: 14px;
-    position: absolute;
-    top: 14px;
-    left: 9px;
-}
-#carbonads-container .close-carbon-adv::after,
-#carbonads-container .close-ui8-adv::after,
-#ui8ads-container .close-carbon-adv::after,
-#ui8ads-container .close-ui8-adv::after {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-#carbonads-container .close-carbon-adv::before,
-#carbonads-container .close-ui8-adv::before,
-#ui8ads-container .close-carbon-adv::before,
-#ui8ads-container .close-ui8-adv::before {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-#carbonads-container .carbonad,
-#carbonads-container .ui8ad,
-#ui8ads-container .carbonad,
-#ui8ads-container .ui8ad {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    width: 100%;
-    height: auto;
-    padding: 14px;
-    text-align: center;
-    border-radius: 0 3px 3px 3px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-#carbonads-container .carbonad .carbon-img img,
-#carbonads-container .ui8ad .carbon-img img,
-#ui8ads-container .carbonad .carbon-img img,
-#ui8ads-container .ui8ad .carbon-img img {
-    margin: 0 10px 10px;
-    width: 130px;
-}
-#carbonads-container .carbonad .carbon-text, #carbonads-container .carbonad .carbonad-tag,
-#carbonads-container .carbonad .carbon-poweredby,
-#carbonads-container .ui8ad .carbon-text,
-#carbonads-container .ui8ad .carbonad-tag,
-#carbonads-container .ui8ad .carbon-poweredby,
-#ui8ads-container .carbonad .carbon-text,
-#ui8ads-container .carbonad .carbonad-tag,
-#ui8ads-container .carbonad .carbon-poweredby,
-#ui8ads-container .ui8ad .carbon-text,
-#ui8ads-container .ui8ad .carbonad-tag,
-#ui8ads-container .ui8ad .carbon-poweredby {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-#carbonads-container .carbonad .carbon-wrap,
-#carbonads-container .ui8ad .carbon-wrap,
-#ui8ads-container .carbonad .carbon-wrap,
-#ui8ads-container .ui8ad .carbon-wrap {
-    display: block;
-    width: 100%;
-    padding: 0;
-}
-#carbonads-container .carbonad .carbon-wrap a,
-#carbonads-container .ui8ad .carbon-wrap a,
-#ui8ads-container .carbonad .carbon-wrap a,
-#ui8ads-container .ui8ad .carbon-wrap a {
-    color: #006600;
-    font-size: 13px;
-    font-weight: bold;
-}
-.no-touch #carbonads-container .carbonad .carbon-wrap a:hover, .no-touch
-#carbonads-container .ui8ad .carbon-wrap a:hover, .no-touch
-#ui8ads-container .carbonad .carbon-wrap a:hover, .no-touch
-#ui8ads-container .ui8ad .carbon-wrap a:hover {
-    text-decoration: underline;
-}
-#carbonads-container .carbonad .carbonad-tag,
-#carbonads-container .carbonad .carbon-poweredby,
-#carbonads-container .ui8ad .carbonad-tag,
-#carbonads-container .ui8ad .carbon-poweredby,
-#ui8ads-container .carbonad .carbonad-tag,
-#ui8ads-container .carbonad .carbon-poweredby,
-#ui8ads-container .ui8ad .carbonad-tag,
-#ui8ads-container .ui8ad .carbon-poweredby {
-    margin-top: 5px;
-    color: #3e454c;
-}
-#carbonads-container .carbonad .carbonad-tag a,
-#carbonads-container .carbonad .carbon-poweredby a,
-#carbonads-container .ui8ad .carbonad-tag a,
-#carbonads-container .ui8ad .carbon-poweredby a,
-#ui8ads-container .carbonad .carbonad-tag a,
-#ui8ads-container .carbonad .carbon-poweredby a,
-#ui8ads-container .ui8ad .carbonad-tag a,
-#ui8ads-container .ui8ad .carbon-poweredby a {
-    color: #3e454c;
-}
-#carbonads-container .carbonad .carbonad-tag a:hover,
-#carbonads-container .carbonad .carbon-poweredby a:hover,
-#carbonads-container .ui8ad .carbonad-tag a:hover,
-#carbonads-container .ui8ad .carbon-poweredby a:hover,
-#ui8ads-container .carbonad .carbonad-tag a:hover,
-#ui8ads-container .carbonad .carbon-poweredby a:hover,
-#ui8ads-container .ui8ad .carbonad-tag a:hover,
-#ui8ads-container .ui8ad .carbon-poweredby a:hover {
-    color: #006600;
-}
-#carbonads-container .carbonad .carbon-poweredby,
-#carbonads-container .ui8ad .carbon-poweredby,
-#ui8ads-container .carbonad .carbon-poweredby,
-#ui8ads-container .ui8ad .carbon-poweredby {
-    display: inline-block;
-    font-size: 11px;
-    line-height: 15px;
-}
-@media only screen and (min-width: 1170px) {
-    #carbonads-container,
-    #ui8ads-container {
-        display: block;
-    }
 }
 
 /* --------------------------------
@@ -564,7 +365,7 @@ Top Navigation
 }
 @media only screen and (min-width: 1170px) {
     .cd-top-nav li:not(.has-children) a:hover {
-        color: #006600;
+        color: #ddd;
     }
 }
 
@@ -834,6 +635,12 @@ Sidebar
     background-color: #9e9e9e;
     box-shadow: inset 3px 0 0 #ff9046;
 }
+
+ul.navbar-nav li ul{
+    background-color: #b5b2b2;
+
+}
+
 .has-children > a::after {
     /* arrow icon */
     position: absolute;
