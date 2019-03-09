@@ -139,6 +139,11 @@
             font-size: 13px;
         }
 
+        .btn-success{
+            padding: 2px;
+            font-size: 14px;
+        }
+
 
     </style>
 
