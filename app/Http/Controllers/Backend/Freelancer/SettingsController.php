@@ -44,7 +44,15 @@ class SettingsController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
+
+        //check if user comes from tour. if yes prevent that he sees the demo dashboard again
+        if($blade["user"]->logins_sum <= 1 || $blade["user"]->logins_sum == null){
+            $blade["user"]->logins_sum = 2;
+            $blade["user"]->save();
+        }
+
         $user = Users::find($blade["user"]->id);
+
 
         $company = $this->getCompany($blade["user"]);
 
@@ -122,12 +130,7 @@ class SettingsController extends Controller
 
         $company->type = $_POST["companyType"];
         $company->name = $_POST["company"];
-        $company->firstname = $_POST["firstname"];
-        $company->lastname = $_POST["lastname"];
-        $company->birthday = $_POST["birthday"];
-        $company->country_nationality = $_POST["nationality"];
         $company->country_residence = $_POST["country"];
-        $company->city = $_POST["lastname"];
         $company->name = $_POST["company"];
         $company->city = $_POST["city"];
         $company->address = $_POST["address"];
@@ -159,6 +162,31 @@ class SettingsController extends Controller
         $user->service_provider_fk = $company->id;
         $user->save();
 
+
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+
+    }
+
+
+
+    public function saveAdditionalKycData() {
+
+        $blade["user"] = Auth::user();
+        $blade["ll"] = App::getLocale();
+
+        $company = Companies::where("id", "=", $blade["user"]->service_provider_fk)
+            ->where("delete", "=", "0")
+            ->first();
+
+        if(!isset($company)){
+            $company = new Companies();
+        }
+
+        $company->firstname = $_POST["firstname"];
+        $company->lastname = $_POST["lastname"];
+        $company->birthday = $_POST["birthday"];
+        $company->country_nationality = $_POST["nationality"];
+        $company->save();
 
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
 

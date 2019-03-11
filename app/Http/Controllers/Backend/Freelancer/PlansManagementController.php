@@ -75,6 +75,12 @@ class PlansManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
+        //check if user comes from tour. if yes prevent that he sees the demo dashboard again
+        if($blade["user"]->tour == "true"){
+            $blade["user"]->tour= "false";
+            $blade["user"]->save();
+        }
+
 
         if(isset($_POST['projects'])){
 

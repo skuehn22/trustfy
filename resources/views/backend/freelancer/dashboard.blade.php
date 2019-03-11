@@ -208,12 +208,6 @@
 @section("javascript")
     <script type="text/javascript">
 
-        // External Button Events
-        $("#cd-tour-trigger").on("click", function() {
-            $(".dashboard-sidebar").removeClass('active');
-            $(".settings-sidebar").addClass('active');
-        });
-
 
         //checks if a new setup is required for the freelancer
         var setup = $('#setup').val();

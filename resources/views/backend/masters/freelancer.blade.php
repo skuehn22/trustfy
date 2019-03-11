@@ -131,7 +131,14 @@
 
     <div class="content-wrapper">
         @yield('content')
-        <input type="hidden" name="tour" id="tour" value="{{$blade["user"]->tour}}">
+
+        @if(!isset($user))
+            <input type="hidden" name="tour" id="tour" value="{{$blade['user']->tour or ''}}">
+        @else
+            <input type="hidden" name="tour" id="tour" value="{{$user->tour or ''}}">
+        @endif
+
+
     </div>
 
 </main>
@@ -143,55 +150,15 @@
         </div>
     </div>
 </footer>
-<div class="cd-nugget-info d-none">
-    <h1>Product Tour</h1>
-    <p>Dickie!! :)</p>
-    <button id="cd-tour-trigger" class="cd-btn">Start tour</button>
-    <button id="cd-tour-trigger-step1" class="cd-btn d-none">Step 1 of 3 </button>
-    <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 2 of 3 </button>
-    <button id="cd-tour-trigger-step3" class="cd-btn d-none">Step 3 of 3 </button>
-    <button id="cd-tour-trigger-step4" class="cd-btn d-none">Finished</button>
-</div>
 
-<ul class="cd-tour-wrapper d-none">
-    <li class="cd-single-step">
-        <span>Step 1</span>
 
-        <div class="cd-more-info bottom">
-            <h2>Step Number 1: Company</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi alias animi molestias in, aperiam.</p>
-            <img src="/img/step-1.png" alt="step 1">
-        </div>
-    </li> <!-- .cd-single-step -->
 
-    <li class="cd-single-step tour-step-2">
-        <span>Step 2</span>
+@if((isset($user->tour) && $user->tour == "true") || (isset($blade['user']->tour) && $blade['user']->tour == "true"))
+    @include('backend.freelancer.tour.index')
+@endif
 
-        <div class="cd-more-info right">
-            <h2>Step Number 2</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia quasi in quisquam.</p>
-            <img src="/img/step-2.png" alt="step 2">
-        </div>
-    </li> <!-- .cd-single-step -->
 
-    <li class="cd-single-step tour-step-3">
-        <span>Step 3</span>
-
-        <div class="cd-more-info right">
-            <h2>Step Number 3</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio illo non enim ut necessitatibus perspiciatis, dignissimos.</p>
-            <img src="/img/step-3.png" alt="step 3">
-        </div>
-    </li> <!-- .cd-single-step -->
-</ul> <!-- .cd-tour-wrapper -->
-
-<div class="cd-app-screen d-none"></div>
-
-<div class="cd-cover-layer"></div>
-<!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
--->
-
 <script src="/js/freelancer/main.js"></script>
 <script src="/js/freelancer/menu-aim.js"></script>
 
@@ -232,25 +199,6 @@
 
 <script type="text/javascript">
 
-
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-
-
-    $(document).ready(function () {
-
-
-        if($("#tour").length && $("#tour").val() == "true"){
-            $(".cd-tour-wrapper").removeClass('d-none');
-            $(".cd-nugget-info").removeClass('d-none');
-            $(".cd-app-screen").removeClass('d-none');
-            $(".blur-dashboard").addClass('blur');
-            $(".cd-tour-nav").addClass('d-none');
-        }
-
-
-    });
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

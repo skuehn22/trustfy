@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 // Libraries
-use App, Auth, Redirect, Session, Mail, Input, Validator, Lang, Route;
+use App, Auth, Redirect, Session, Mail, Input, Validator, Lang, Route, DateTime;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
@@ -51,6 +51,11 @@ class LoginController extends Controller
                     if($user->active == "1") {
 
                         if($user->role == 0 || $user->role ==200 || $user->role ==3) {
+
+
+                            $user->last_login = date("Y-m-d H:i:s");
+                            $user->logins_sum = $user->logins_sum+1;
+                            $user->save();
 
                             if($user->setup == 0) {
                                 return Redirect::to("$ll/freelancer/dashboard?setup=yes")->with('ll', $ll);

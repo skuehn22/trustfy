@@ -276,16 +276,14 @@
 
         if($("#tour").length && $("#tour").val() == "true"){
 
-
-
-            $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step3').removeClass('cd-app-screen');
-            $(".cd-nugget-info").removeClass('d-none').addClass('cd-nugget-info-step3').removeClass('cd-nugget-info');
-            $("#cd-tour-trigger-step3").removeClass('d-none');
-            $("#cd-tour-trigger").addClass('d-none');
-
-            $(".tour-step-3").addClass('is-selected');
+            $(".cd-app-screen").removeClass('cd-app-screen');
+            $(".cd-nugget-info").removeClass('cd-nugget-info');
+            $(".tour-step-5").removeClass('is-selected');
+            $(".tour-step-6").addClass('is-selected');
             $(".plan-sidebar").addClass('active');
             $(".client-sidebar").removeClass('active');
+
+
         }
 
         @endif

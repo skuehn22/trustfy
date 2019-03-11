@@ -27,47 +27,52 @@ class DashboardController extends Controller
 
         if (Auth::check()) {
 
-            $blade["user"] = Auth::user();
+            $user = Auth::user();
+
+            if($user->logins_sum <= 1 || $user->logins_sum == null){
+                $user = Users::where("id", "=", 1)
+                    ->first();
+            }
 
             if(isset($_GET['tour']) && $_GET['tour']=="activate" ){
 
-                $user = Users::where("id", "=", $blade["user"]->id)
+                $user = Users::where("id", "=", $user->id)
                     ->first();
 
                 $user->tour = "true";
                 $user->save();
-                $blade["user"] = $user;
+                $user = $user;
 
             }
 
             $blade["ll"] = App::getLocale();
 
-            $setup = $blade["user"]->setup;
+            $setup = $user->setup;
 
 
-            $plans = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $plans = Plans::where("service_provider_fk", "=", $user->service_provider_fk)
                 ->where("hidden", "=", "0")
                 ->where("delete", "=", "0")
                 ->get();
 
-            $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $clients = Clients::where("service_provider_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->lists('lastname', 'id');
 
 
-            $plansList= Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $plansList= Plans::where("service_provider_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->where("hidden", "=", "0")
                 ->lists('name', 'id');
 
          /*
-            $last_plan = Plans::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+            $last_plan = Plans::where("service_provider_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->where("last_viewed", "=", "1")
                 ->first();
         */
 
-            $messages = MessagesCompanies::where("company_id_fk", "=", $blade["user"]->service_provider_fk)
+            $messages = MessagesCompanies::where("company_id_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
                 ->paginate(4);
 
@@ -87,7 +92,7 @@ class DashboardController extends Controller
 
 
             $planObj = new PlansDetailsClass();
-            $funds = $planObj->getFundsDetails($blade["user"]->service_provider_fk);
+            $funds = $planObj->getFundsDetails($user->service_provider_fk);
 
 
             if($funds['total']>0){
@@ -160,11 +165,11 @@ class DashboardController extends Controller
 
 
 
-            $upcoming = $planObj->upcomingPayment($blade["user"]->service_provider_fk);
+            $upcoming = $planObj->upcomingPayment($user->service_provider_fk);
 
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
-            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients'));
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients'));
 
         } else {
 

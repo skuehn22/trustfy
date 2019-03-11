@@ -83,42 +83,7 @@
 
     </div>
     <div class="col-md-6">
-        <h4>Legal Representative
-            <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This information is required for a payment out."></i>
-        </h4>
-        <div class="form-row py-2">
-            <label class="col-md-3 col-form-label" for="firstname">
-                Firstname
-                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
-            </label>
-            <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="Firstname" required>
-        </div>
 
-        <div class="form-row py-2">
-            <label class="col-md-3 col-form-label" for="address">Lastname</label>
-            <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Lastname" required>
-        </div>
-
-        <div class="form-row py-2">
-            <label class="col-md-3 col-form-label" for="birthday">
-                Birthday
-                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Birthday of company’s legal representative person"></i>
-            </label>
-            <input type="date" name="birthday" min="1000-01-01" max="3000-12-31" class="form-control col-md-7" value="{{  $company->birthday or "" }}">
-        </div>
-        <div class="form-row py-2">
-            <label class="col-md-3 col-form-label" for="nationality">Nationality</label>
-
-            @if(isset($company->country_nationality))
-                @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => $company->country_nationality])
-            @else
-                @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => ''])
-            @endif
-
-
-
-        </div>
-        <br><br>
 
 
         @include('ajax_upload')
