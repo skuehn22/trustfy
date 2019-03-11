@@ -54,6 +54,7 @@
         <div class="cd-more-info right">
             <h2>Create a client</h2>
             <p>Here you can create your first customer.</p>
+            <a href="/freelancer/clients/new" class="btn btn-secondary">ok</a>
             <img src="/img/step-3.png" alt="step 3">
         </div>
     </li>
