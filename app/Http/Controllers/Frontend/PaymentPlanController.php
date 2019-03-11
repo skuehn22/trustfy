@@ -183,7 +183,12 @@ class PaymentPlanController extends Controller
         $mango_obj = new MangoClass($this->mangopay);
         $url=   $mango_obj->createTransaction($company, $client, $milestone, $hash);
 
-        return Redirect::to($url->RedirectURL);
+        if(isset($url->RedirectURL)){
+            return Redirect::to($url->RedirectURL);
+        }else{
+            return redirect()->back()->withInput()->with('error', 'Error. Please try again or contact trustfy.io.');
+        }
+
 
 
     }

@@ -229,6 +229,12 @@
     @endif
 
             <header>
+                @if(Session::has('error'))
+                    <div class="alert alert-danger error_message">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
                 @if(isset($protect) && $protect == true)
                     <div class="alert alert-success success_message">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
