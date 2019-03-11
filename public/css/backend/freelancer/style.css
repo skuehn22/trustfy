@@ -1,5 +1,31 @@
 h1{
+    font-size: 22px;
+    font-weight: 600;
+    padding: 15px 15px 0 0;
+}
 
+h2{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 15px 0 0;
+}
+
+h3{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 15px 0 0;
+}
+
+h4{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 15px 0 0;
+}
+
+h5{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 15px 0 0;
 }
 
 
@@ -347,6 +373,10 @@ h1{
 .plan-preview{
     border: 1px solid #535353;
     min-height: 1250px;
+}
+
+.plans-content{
+    padding-top: 25px;
 }
 
 .plans .modal-content .preview-modal {

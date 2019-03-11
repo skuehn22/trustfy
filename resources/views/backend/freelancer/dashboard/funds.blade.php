@@ -26,16 +26,16 @@
                 @endif
             </div>
             <div class="card-footer ">
-<!--
+
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#">Last 7 Days</a>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="#">Details</a>
+                        <a href="/freelancer/plans">Details</a>
                     </div>
 
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -67,16 +67,16 @@
                 @endif
             </div>
             <div class="card-footer ">
-<!--
+
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#">Last 7 Days</a>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="#">Details</a>
+                        <a href="/freelancer/plans">Details</a>
                     </div>
                 </div>
-                -->
+
             </div>
         </div>
     </div>
@@ -108,16 +108,16 @@
                 @endif
             </div>
             <div class="card-footer ">
-                <!--
+
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="#">Last 7 Days</a>
+                        <a href="#">Last Month</a>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="#">Details</a>
+                        <a href="/freelancer/plans">Details</a>
                     </div>
                 </div>
-                -->
+
             </div>
         </div>
     </div>

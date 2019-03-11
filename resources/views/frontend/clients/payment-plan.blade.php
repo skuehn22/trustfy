@@ -264,7 +264,7 @@
                     <div class="col invoice-to">
                         <div class="text-gray-light">Plan for:</div>
                         @if(isset($plan->lastname) && $plan->lastname!=" ")
-                            <h2 class="to">{{$plan->firstname}} {{$plan->lastname}}</h2>
+                            <h5 class="to">{{$plan->firstname}} {{$plan->lastname}}</h5>
                             <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
                             <div class="email">{{$plan->email}}</div>
                         @else
@@ -275,6 +275,11 @@
                         <h1 class="invoice-id">Payment Plan</h1>
                         <div class="date">Date of Invoice: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}} </div>
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{$plan->name}}</h3>
                     </div>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">

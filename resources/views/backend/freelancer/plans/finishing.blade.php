@@ -1,5 +1,5 @@
 <div class="form-row py-2 pt-0 pl-0 ml-0">
-    <h5 class="pt-0">Completion of your plan</h5>
+    <h5 class="pt-0">Project Information</h5>
 </div>
 <div class="row">
 <hr>
@@ -46,7 +46,7 @@
 </div>
 <div class="col-md 6">
     <div class="form-row py-2">
-        <span style="font-weight: 500;"> Additional Notes
+        <span style="font-weight: 500;"> Personal Message
             <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Will be added to your E-Mail"></i>
         </span>
     </div>
@@ -55,7 +55,7 @@
         @if($plan->comment)
             <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment">{{$plan->comment}}</textarea>
         @else
-            <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment"></textarea>
+            <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment" placeholder="Hi John, &#10;I'm really looking forward to working together! &#10;Best,&#10;Jane"></textarea>
         @endif
     </div>
     <div class="form-row py-2">

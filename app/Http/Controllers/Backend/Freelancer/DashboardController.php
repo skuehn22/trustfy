@@ -12,7 +12,7 @@ namespace App\Http\Controllers\Backend\Freelancer;
 use App, Auth, Redirect, DB;
 
 use App\Http\Controllers\Controller;
-use App\DatabaseModels\Projects;
+use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\MessagesCompanies;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
@@ -57,7 +57,7 @@ class DashboardController extends Controller
 
             $clients = Clients::where("service_provider_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
-                ->lists('lastname', 'id');
+                ->get();
 
 
             $plansList= Plans::where("service_provider_fk", "=", $user->service_provider_fk)
@@ -150,45 +150,44 @@ class DashboardController extends Controller
 
             if($_GET['id']!="undefined"){
 
-                $query = DB::table('projects');
-                $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
-                $query->where('projects.id', '=', $_GET["id"]);
-                $query->select('projects.*', 'clients.firstname', 'clients.lastname');
+                $query = DB::table('projects_plans');
+                $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
+                $query->where('projects_plans.id', '=', $_GET["id"]);
+                $query->select('projects_plans.*', 'clients.*');
                 $project = $query->first();
 
                 //set last viewed to load relevant project when the user returns
                 //set past viewed project to 0
-                $viewed = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-                    ->where("last_viewed", "=", "1")
+
+
+
+                $docs = App\DatabaseModels\PlanDocs::where("plan_id_fk", "=", $_GET["id"])
+                    ->where("delete", "=", "0")
                     ->first();
 
-                if(isset($viewed)){
+                $statusObj = new StateClass();
+                $response =$statusObj->plans($project->state);
 
-                    $viewed->last_viewed = 0;
-                    $viewed->save();
 
-                    //set new viewed project to 1
-                    $viewed = Projects::where("id", "=", $project->id)
-                        ->first();
-
-                    $viewed->last_viewed = 1;
-                    $viewed->save();
-                }
-
+                $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $_GET["id"])
+                    ->where("delete", "=", "0")
+                    ->first();
 
                 $statusObj = new StateClass();
-                $response =$statusObj->projects($project->state);
+                $response =$statusObj->milestones($milestone->paystatus);
+
+                $milestone->color =  $response['color'];
+                $milestone->state =  $response['state'];
+
 
                 $project->color =  $response['color'];
                 $project->state =  $response['state'];
 
-                $plans = Plans::where("projects_id_fk", "=", $project->id)
-                    ->where("delete", "=", "0")
-                    ->lists('name', 'id');
             }
 
 
-            return view('backend.freelancer.dashboard.projects-details', compact('blade', 'setup', 'plans', 'project'));
+            return view('backend.freelancer.dashboard.projects-details', compact('blade', 'setup', 'project', 'docs', 'milestone'));
+
         } else {
 
             return Redirect::to(env("MYHTTP"));

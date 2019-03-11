@@ -45,15 +45,15 @@ class StateClass
         switch ($id) {
             case 0:
                 $state['color'] = "text-secondary";
-                $state['state'] = "saved";
+                $state['state'] = "Saved";
                 break;
             case 1:
                 $state['color'] = "text-warning";
-                $state['state'] = "sent";
+                $state['state'] = "Sent";
                 break;
             case 2:
                 $state['color'] = "text-success";
-                $state['state'] = "finished";
+                $state['state'] = "Paid";
                 break;
             default:
                 $state['color'] = "text-secondary";

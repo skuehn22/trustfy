@@ -34,6 +34,10 @@ a {
     filter: blur(4px);
 }
 
+.plans-content{
+    padding-top: 25px;
+}
+
 
 input {
     font-family: "Open Sans", sans-serif;

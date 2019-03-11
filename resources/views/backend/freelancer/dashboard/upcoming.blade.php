@@ -29,17 +29,30 @@
         <div class="materialbox materialbox-upcoming p-0">
         <div class="col-md-12 pl-5 pt-5 pb-5">
             <p class="headline green">New Payment Plan</p>
+
+
             @if(count($clients)>0)
                 <form class="form-horizontal" role="form" method="POST" action="/freelancer/plans/new">
-                    {!! Form::select('clients', $clients, null, ['class' => 'form-control col-md-10', 'id' => 'clients','placeholder' => 'Select Client', 'required']) !!}
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <p class="pt-3"><button type="submit" class="btn btn-success col-md-10">Create</button></p>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <select name="clients" id="clients" class="form-control col-md-11" required>
+                    <option></option>
+                    @foreach($clients as $client)
+                            <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
+                    @endforeach
+                </select>
+                    <p class="pt-3"><button type="submit" class="btn btn-success col-md-11">Create</button></p>
+                <div class="help-block with-errors"></div>
                 </form>
             @else
+                <span id="client-list"></span>
+
                 <div class="pt-2">
-                    No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/plans/new">Create Plan</a>
+                    <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly">Create Client</a></div>
                 </div>
+
             @endif
+
+
 
         </div>
         </div>

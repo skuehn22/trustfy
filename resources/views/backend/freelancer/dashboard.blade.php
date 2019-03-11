@@ -545,7 +545,7 @@
 
         function getProject(id) {
 
-            /*
+
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -566,7 +566,7 @@
             xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-project?id="+id, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
-            */
+
         }
 
 

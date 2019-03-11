@@ -172,11 +172,11 @@
 
                 <div id="smartwizard" class="sw-main sw-theme-default">
                     <ul id="arrows" class="nav nav-tabs step-anchor">
-                        <li><a href="#step-1">Step 1<br /><small>General Informations</small></a></li>
-                        <li><a href="#step-2">Step 2<br /><small>Configuration Payment Plan</small></a></li>
-                        <li><a href="#step-3">Step 3<br /><small>Upload Documents</small></a></li>
-                        <li><a href="#step-4">Step 4<br /><small>Completion of creation</small></a></li>
-                        <li><a href="#step-5">Step 5<br /><small>Preview</small></a></li>
+                        <li class="text-center"><a href="#step-1">Step 1<br /><small>General Information</small></a></li>
+                        <li class="text-center"><a href="#step-2">Step 2<br /><small>Set up milestones</small></a></li>
+                        <li class="text-center"><a href="#step-3">Step 3<br /><small>Add documents</small></a></li>
+                        <li class="text-center"><a href="#step-4">Step 4<br /><small>Payment options</small></a></li>
+                        <li class="text-center"><a href="#step-5">Step 5<br /><small>Preview</small></a></li>
                         <li class="right;"></li>
                     </ul>
 

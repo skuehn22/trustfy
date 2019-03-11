@@ -34,15 +34,20 @@
     <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
     <nav class="cd-nav">
         <ul class="cd-top-nav">
-            <li><a href="/freelancer/dashboard?tour=activate">Tour</a></li>
-            <li><a href="#0">Support</a></li>
+            <li><a href="/freelancer/dashboard?tour=activate">Start Tour</a></li>
             <li class="has-children account">
                 <a href="#0">
                     <i class="fas fa-user-circle"></i>
-                    Account
+                    @if(isset($company->name) && $company->name != null)
+                        {{$company->name}}
+                    @else
+                        Account
+                    @endif
+
+
                 </a>
                 <ul>
-                    <li><a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">My Account</a></li>
+                    <li><a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">Settings</a></li>
                     <li><a href="{{ URL::to($blade["ll"].'/logout') }}">Logout</a></li>
                 </ul>
             </li>
@@ -115,11 +120,6 @@
             <li class="has-children settings-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
                     <i class="fas fa-cog"></i> Settings
-                </a>
-            </li>
-            <li class="has-children">
-                <a class="nav-link" href="{{ URL::to($blade["ll"].'/logout') }}">
-                    <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </li>
         </ul>

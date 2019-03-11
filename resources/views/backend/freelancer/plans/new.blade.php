@@ -61,7 +61,7 @@
             position: relative;
             display: inline-block;
             width: 90px;
-            height: 34px;
+            height: 29px;
         }
 
         .switch input {display:none;}
@@ -81,7 +81,7 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 26px;
+            height: 21px;
             width: 26px;
             left: 4px;
             bottom: 4px;
@@ -117,7 +117,7 @@
             transform: translate(-50%,-50%);
             top: 50%;
             left: 50%;
-            font-size: 10px;
+            font-size: 8px;
             font-family: Verdana, sans-serif;
         }
 
@@ -175,7 +175,7 @@
 @stop
 
 @section('content')
-    <div class="plans">
+    <div class="plans plans-content">
         <div class="row">
 
         </div>
@@ -186,28 +186,27 @@
                     <div id="smartwizard" class="sw-main sw-theme-default">
 
                      <ul id="arrows" class="nav nav-tabs step-anchor">
-                            <li><a href="#step-1">Step 1<br /><small>General Informations</small></a></li>
-                            <li><a href="#step-2">Step 2<br /><small>Configuration Payment Plan</small></a></li>
-                            <li><a href="#step-3">Step 3<br /><small>Upload Documents</small></a></li>
-                            <li><a href="#step-4">Step 4<br /><small>Completion of creation</small></a></li>
-                            <li><a href="#step-5">Step 5<br /><small>Preview</small></a></li>
-                            <li class="right;"></li>
-                        </ul>
+                        <li class="text-center"><a href="#step-1">Step 1<br /><small>General Information</small></a></li>
+                        <li class="text-center"><a href="#step-2">Step 2<br /><small>Set up milestones</small></a></li>
+                        <li class="text-center"><a href="#step-3">Step 3<br /><small>Add documents</small></a></li>
+                        <li class="text-center"><a href="#step-4">Step 4<br /><small>Payment options</small></a></li>
+                        <li class="text-center"><a href="#step-5">Step 5<br /><small>Preview</small></a></li>
+                        <li class="right;"></li>
+                     </ul>
 
 
+                    <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;">
 
-                        <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;">
-
-                            <div class="btn-group mr-2 sw-btn-group" role="group" >
-                                <a class="btn btn-secondary cancel-plan" id="cancel" href="/freelancer/plans/"><i class="fas fa-ban"></i> Close</a>
-                                <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-save"></i> Save</button>
-                            </div>
-
-                            <div class="btn-group mr-2 sw-btn-group" role="group" >
-                                <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
-                            </div>
-
+                        <div class="btn-group mr-2 sw-btn-group" role="group" >
+                            <a class="btn btn-secondary cancel-plan" id="cancel" href="/freelancer/plans/"><i class="fas fa-ban"></i> Close</a>
+                            <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-save"></i> Save</button>
                         </div>
+
+                        <div class="btn-group mr-2 sw-btn-group" role="group" >
+                            <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
+                        </div>
+
+                    </div>
 
                         <div class="sw-container tab-content" style=" padding-left: 40px;">
 

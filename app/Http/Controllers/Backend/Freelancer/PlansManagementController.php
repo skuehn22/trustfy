@@ -82,22 +82,6 @@ class PlansManagementController extends Controller
         }
 
 
-        if(isset($_POST['projects'])){
-
-            $selected_project = Projects::where("id", "=", $_POST['projects'])
-                ->where("delete", "=", "0")
-                ->first();
-
-            $projects = Projects::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-                ->where("delete", "=", "0")
-                ->lists("name", "id");
-
-        }else{
-
-
-
-        }
-
         $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
             ->where("delete", "=", "0")
             ->get();
@@ -111,6 +95,10 @@ class PlansManagementController extends Controller
             $plan->service_provider_fk = -1;
         }else{
             $plan->service_provider_fk = $blade["user"]->service_provider_fk;
+        }
+
+        if(isset($_POST['clients'])){
+            $plan->clients_id_fk = $_POST['clients'];
         }
 
         $plan->hidden = 1;

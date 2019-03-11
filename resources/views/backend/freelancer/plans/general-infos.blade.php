@@ -6,7 +6,7 @@
     <div class="form-group">
         <div class="form-inline">
             <label class="col-md-2 col-form-label" for="creation-date">
-                Title  <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Only for your internal usage"></i>
+                Project Title  <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="What is this payment plan for? e.g. website design, wedding photography"></i>
             </label>
             @if($plan->name)
                 <input type="text" id="title" name="title" class="form-control col-md-3" value="{{$plan->name}}" required>
@@ -21,7 +21,7 @@
     <div class="form-group">
         <div class="form-inline">
             <label class="col-md-2 col-form-label" for="creation-date">
-                Date
+                Date Created
                  <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This date is on the payment plan as the creation date of the plan"></i>
             </label>
 
