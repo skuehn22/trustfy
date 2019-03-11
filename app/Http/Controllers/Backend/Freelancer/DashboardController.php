@@ -168,20 +168,21 @@ class DashboardController extends Controller
                 $statusObj = new StateClass();
                 $response =$statusObj->plans($project->state);
 
+                $project->color =  $response['color'];
+                $project->state =  $response['state'];
 
                 $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $_GET["id"])
                     ->where("delete", "=", "0")
                     ->first();
 
-                $statusObj = new StateClass();
-                $response =$statusObj->milestones($milestone->paystatus);
+                if(!empty($milestone)){
+                    $statusObj = new StateClass();
+                    $response =$statusObj->milestones($milestone->paystatus);
 
-                $milestone->color =  $response['color'];
-                $milestone->state =  $response['state'];
+                    $milestone->color =  $response['color'];
+                    $milestone->state =  $response['state'];
+                }
 
-
-                $project->color =  $response['color'];
-                $project->state =  $response['state'];
 
             }
 

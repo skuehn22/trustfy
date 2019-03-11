@@ -3,13 +3,13 @@
     <div class="col-md-6">
         <div class="row">
         <div class="col-md-12">
-            <h4>{{$project->name}}</h4>
+            <h4>{{$project->name or ''}}</h4>
         </div>
         <div class="col-md-12">
-           Client: {{$project->firstname}} {{$project->lastname}}
+           Client: {{$project->firstname or ''}} {{$project->lastname or ''}}
         </div>
         <div class="col-md-12">
-            Address: {{$project->address1}} {{$project->address2 or ''}} {{$project->city}}
+            Address: {{$project->address1 or ''}} {{$project->address2 or ''}} {{$project->city or ''}}
         </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
     <div class="col-md-6">
 <div class="row">
         <div class="col-md-12 pt-5">
-            Status:   <span class="status {{$project->color}}">&bull;</span> {{$project->state}}
+            Status:   <span class="status {{$project->color or ''}}">&bull;</span> {{$project->state or ''}}
         </div>
         <div class="col-md-12">
             Plan Creation: {{date('d.m.Y', strtotime($project->date))}}
@@ -50,13 +50,13 @@
                 1
             </div>
             <div class="col-md-4">
-                {{$milestone->name}}
+                {{$milestone->name or ''}}
             </div>
             <div class="col-md-4">
                 Due on: {{date('d.m.Y', strtotime($milestone->due_at))}}
             </div>
             <div class="col-md-3">
-                Status:   <span class="status {{$milestone->color}}">&bull;</span> {{$milestone->state}}
+                Status:   <span class="status {{$milestone->color or ''}}">&bull;</span> {{$milestone->state or ''}}
             </div>
         </div>
     </div>
