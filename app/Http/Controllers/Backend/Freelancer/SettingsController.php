@@ -136,26 +136,6 @@ class SettingsController extends Controller
         $company->address = $_POST["address"];
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
-        $user = Users::find($blade["user"]->id);
-
-
-        if($company->mango_id == null){
-
-            $mango_obj = new MangoClass($this->mangopay);
-
-            if($company->type == 1){
-                $mango_user = $mango_obj->createNaturalUser($company, $user);
-            }else{
-                $mango_user=   $mango_obj->createLegalUser($company, $user);
-            }
-
-            $company->mango_id = $mango_user->Id;
-
-        }
-
-
-
-
         $company->save();
 
         $user = Users::find($blade["user"]->id);
@@ -188,6 +168,24 @@ class SettingsController extends Controller
         $company->country_nationality = $_POST["nationality"];
         $company->save();
 
+        $user = Users::find($blade["user"]->id);
+
+
+        if($company->mango_id == null){
+
+            $mango_obj = new MangoClass($this->mangopay);
+
+            if($company->type == 1){
+                $mango_user = $mango_obj->createNaturalUser($company, $user);
+            }else{
+                $mango_user=   $mango_obj->createLegalUser($company, $user);
+            }
+
+            $company->mango_id = $mango_user->Id;
+
+        }
+
+
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
 
     }
@@ -203,9 +201,7 @@ class SettingsController extends Controller
         $user->lastname = $_POST["lastname"];
         $user->email = $_POST["mail"];
         $user->phone = $_POST["phone"];
-
         $user->save();
-
 
         return view('backend.settings.index', compact('blade', 'user', 'provider'));
 
@@ -426,17 +422,13 @@ class SettingsController extends Controller
         $bank->country = $_POST['country'];
         $bank->country_iso = $_POST['country_iso'];
 
-
-
         $mango_obj = new MangoClass($this->mangopay);
         $result = $mango_obj->createBankAccount($bank, $company);
 
         $bank->mango_bank_id = $result->Id;
         $bank->save();
 
-
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
-
 
     }
 
@@ -533,7 +525,6 @@ class SettingsController extends Controller
             return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', $error[1]);
 
         }
-
 
     }
 

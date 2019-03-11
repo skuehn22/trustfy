@@ -21,14 +21,14 @@
                        Plan Name: {{ $upcoming->planName or '' }}<br>
                        Due at: {{date('d.m.Y', strtotime($upcoming->due_at))}} - Amount {{ number_format($upcoming->amount, 2) }} €
                     @else
-                        No open payment plans.
+                        No payments yet!.
                     @endif
                 </div>
             </div>
         </div>
         <div class="materialbox materialbox-upcoming p-0">
         <div class="col-md-12 pl-5 pt-5 pb-5">
-            <h4 class="pb-4">New Payment Plan</h4>
+            <p class="headline green">New Payment Plan</p>
             @if(count($clients)>0)
                 <form class="form-horizontal" role="form" method="POST" action="/freelancer/plans/new">
                     {!! Form::select('clients', $clients, null, ['class' => 'form-control col-md-10', 'id' => 'clients','placeholder' => 'Select Client', 'required']) !!}

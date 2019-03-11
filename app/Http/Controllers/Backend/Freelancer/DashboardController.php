@@ -41,7 +41,7 @@ class DashboardController extends Controller
 
                 $user->tour = "true";
                 $user->save();
-                $user = $user;
+
 
             }
 
@@ -77,23 +77,8 @@ class DashboardController extends Controller
                 ->paginate(4);
 
 
-            foreach($messages as $message){
-
-                if($message->projects_id_fk != 0){
-
-                    $tmp_project = Projects::where("id", "=", $message->projects_id_fk)
-                        ->first();
-
-                    $messages->projectName = $tmp_project->name;
-
-                }
-
-            }
-
-
             $planObj = new PlansDetailsClass();
             $funds = $planObj->getFundsDetails($user->service_provider_fk);
-
 
             if($funds['total']>0){
                 $percent['funded'] = $funds['funded'] * 100 / $funds['total'];
@@ -105,35 +90,23 @@ class DashboardController extends Controller
                 $percent['released'] = 0;
             }
 
-
-
             if($percent['funded'] == 0) {
-
                 $openRight['funded'] =  0;
                 $openLeft['funded'] =  0;
-
             }else{
-
-
                 if( $percent['funded'] >50){
                     $openRight['funded'] =  180;
                     $openLeft['funded'] =  $percent['funded'] *360 / 100;
                 }else{
-
                     $openRight['funded'] = $percent['funded'] *360 / 100;
                     $openLeft['funded'] =  0;
-
                 }
-
             }
 
             if($percent['pending'] == 0) {
-
                 $openRight['pending'] =  0;
                 $openLeft['pending'] =  0;
-
             }else{
-
                 if($percent['pending']>50){
                     $openRight['pending'] =  180;
                     $openLeft['pending'] =  $percent['pending'] *360 / 100;
@@ -141,18 +114,12 @@ class DashboardController extends Controller
                     $openRight['pending'] = $percent['pending'] *360 / 100;
                     $openLeft['pending'] =  0;
                 }
-
-
             }
 
-
             if($percent['released'] == 0) {
-
                 $openRight['released'] =  0;
                 $openLeft['released'] =  0;
-
             }else{
-
                 if($percent['released']>50){
                     $openRight['released'] =  180;
                     $openLeft['released'] =  $percent['released'] *360 / 100;
@@ -160,13 +127,9 @@ class DashboardController extends Controller
                     $openRight['released'] = $percent['released'] *360 / 100;
                     $openLeft['released'] =  0;
                 }
-
             }
 
-
-
             $upcoming = $planObj->upcomingPayment($user->service_provider_fk);
-
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
             return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients'));

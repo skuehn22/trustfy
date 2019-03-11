@@ -122,6 +122,8 @@
             $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step0').removeClass('cd-app-screen');
             $(".cd-nugget-info").removeClass('d-none').addClass('cd-nugget-info-step0').removeClass('cd-nugget-info');
             $("#cd-tour-trigger-step1").removeClass('d-none');
+            $(".cd-nugget-info-step0").addClass('d-none');
+
 
             /*the real steps */
             $(".tour-step-1").addClass('is-selected');

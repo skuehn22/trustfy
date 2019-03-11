@@ -210,6 +210,8 @@
 
 
         //checks if a new setup is required for the freelancer
+
+        /*
         var setup = $('#setup').val();
 
         if( setup == 0 ) {
@@ -228,15 +230,12 @@
             }
 
         }
+        */
 
         $(document).ready(function (e) {
             $('.active-inbox').click();
             $('#inbox-start').click();
             getProject($("#projects-modul").val());
-
-
-
-
         });
 
         function loadScripts(){
