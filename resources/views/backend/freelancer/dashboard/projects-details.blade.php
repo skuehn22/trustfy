@@ -36,6 +36,8 @@
 </div>
     </div>
 </div>
+
+@if(isset($milestone) && $milestone != null)
 <div class="row">
     <div class="col-md-12">
         <div class="row">
@@ -53,7 +55,9 @@
                 {{$milestone->name or ''}}
             </div>
             <div class="col-md-4">
-                Due on: {{date('d.m.Y', strtotime($milestone->due_at))}}
+                @if(isset($milestone->due_at))
+                    Due on: {{date('d.m.Y', strtotime($milestone->due_at ))}}
+                @endif
             </div>
             <div class="col-md-3">
                 Status:   <span class="status {{$milestone->color or ''}}">&bull;</span> {{$milestone->state or ''}}
@@ -61,4 +65,5 @@
         </div>
     </div>
 </div>
+@endif
 @endif
