@@ -61,6 +61,13 @@ input[type="search"]::-webkit-search-results-decoration {
 
 }
 
+
+.menu-top a:hover{
+    background-color: #eee;
+    text-decoration: none;
+}
+
+
 /* --------------------------------
 
 Main Page Content
@@ -115,7 +122,7 @@ Header
     height: 45px;
     width: 100%;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(22, 21, 15, 0.91);
+    box-shadow: 0 1px 3px rgba(230, 228, 217, 0.91);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -141,7 +148,7 @@ Header
 }
 @media only screen and (min-width: 768px) {
     .cd-logo {
-        margin: 16px 0 0 28px;
+        margin: 16px 0 0 25px;
     }
 }
 
@@ -521,7 +528,7 @@ Sidebar
         top: auto;
         width: 110px;
         min-height: 100vh;
-        padding-top: 55px;
+        padding-top: 80px;
         /* reset style */
         visibility: visible;
         opacity: 1;
@@ -574,6 +581,12 @@ Sidebar
     .cd-side-nav > ul > li >  a:hover {
         text-decoration: none;
     }
+
+
+    .cd-side-nav > ul > li >  i{
+        padding-right: 20px;
+    }
+
 
     .cd-side-nav .count {
         height: 8px;
@@ -658,6 +671,7 @@ Sidebar
     box-shadow: inset 3px 0 0 #ff9046;
 }
 
+
 ul.navbar-nav li ul{
     background-color: #b5b2b2;
 
@@ -724,6 +738,13 @@ ul.navbar-nav li ul{
         padding: 0 calc(1.8em + 22px) 0 calc(1.8em + 26px) !important;
         line-height: 55px;
     }
+
+    .cd-top-nav .single-point > a {
+        height: 100%;
+        padding: 0 calc(1.8em + 22px) 0 calc(1.8em + 26px) !important;
+        line-height: 55px;
+    }
+
     .cd-top-nav .has-children > a::after {
         display: block;
         right: 1.8em;

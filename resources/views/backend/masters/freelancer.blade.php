@@ -33,9 +33,9 @@
     </a>
     <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
     <nav class="cd-nav">
+
         <ul class="cd-top-nav">
-            <li><a href="/freelancer/dashboard?tour=activate">Start Tour</a></li>
-            <li class="has-children account">
+                       <li class="has-children account menu-top">
                 <a href="#0">
                     <i class="fas fa-user-circle"></i>
                     @if(isset($company->name) && $company->name != null)
@@ -43,14 +43,13 @@
                     @else
                         Account
                     @endif
-
-
                 </a>
                 <ul>
                     <li><a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">Settings</a></li>
                     <li><a href="{{ URL::to($blade["ll"].'/logout') }}">Logout</a></li>
                 </ul>
             </li>
+
         </ul>
     </nav>
 </header>
@@ -60,11 +59,11 @@
             <li class="cd-label">Main</li>
             <li class="has-children dashboard-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard
+                    <i class="fas fa-fw fa-tachometer-alt"></i> <span class="pl-2">Dashboard</span>
                 </a>
             </li>
             <li class="has-children client-sidebar">
-                <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}"><i class="fas fa-users"></i> Clients</a>
+                <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}"><i class="fas fa-users"></i> <span class="pl-2">Clients</span></a>
                 <ul>
                     <li>
                         <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
@@ -99,7 +98,7 @@
 
             -->
             <li class="has-children plan-sidebar">
-                <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">  <i class="far fa-money-bill-alt"></i> Payment Plans</a>
+                <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">  <i class="far fa-money-bill-alt"></i> <span class="pl-2">Payment Plans</span></a>
                 <ul>
                     <li>
                         <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
@@ -119,7 +118,12 @@
             <li class="cd-label">Information</li>
             <li class="has-children settings-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
-                    <i class="fas fa-cog"></i> Settings
+                    <i class="fas fa-cog"></i><span class="pl-2"> Settings</span>
+                </a>
+            </li>
+            <li class="has-children settings-sidebar">
+                <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard?tour=activate') }}">
+                    <i class="fas fa-eye"></i> <span class="pl-2">Start Tour</span>
                 </a>
             </li>
         </ul>
