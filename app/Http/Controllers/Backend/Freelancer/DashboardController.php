@@ -65,12 +65,11 @@ class DashboardController extends Controller
                 ->where("hidden", "=", "0")
                 ->lists('name', 'id');
 
-         /*
+
             $last_plan = Plans::where("service_provider_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
-                ->where("last_viewed", "=", "1")
                 ->first();
-        */
+
 
             $messages = MessagesCompanies::where("company_id_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
@@ -132,7 +131,7 @@ class DashboardController extends Controller
             $upcoming = $planObj->upcomingPayment($user->service_provider_fk);
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
-            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients'));
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients', 'last_plan'));
 
         } else {
 

@@ -233,9 +233,13 @@
         */
 
         $(document).ready(function (e) {
+
             $('.active-inbox').click();
             $('#inbox-start').click();
-            getProject($("#projects-modul").val());
+
+            var id = $(".dropdown-item").data("id");
+            getProject(id);
+
         });
 
         function loadScripts(){
@@ -534,17 +538,14 @@
             $('#arrows').addClass("d-none");
         });
 
-
-
-        //loads projects for selected client
-        $("#projects-modul").on('change', function() {
-            getProject($(this).val());
+        // Expand the modal width for setup creation through freelancer
+        $(".dropdown-item").on("click", function() {
+            var planID = $(this).data("id");
+            getProject(planID);
         });
 
 
-
         function getProject(id) {
-
 
 
             if (window.XMLHttpRequest) {

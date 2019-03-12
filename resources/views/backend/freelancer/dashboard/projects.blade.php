@@ -3,27 +3,24 @@
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-12 col-md-12">
-                    @if(count($plans)>0)
-                        <select name="projects-modul" id="projects-modul" class="form-control col-md-12 input-lg">
-                            @foreach($plans as $plan)
-                                <option value="{{$plan->id}}">Payment Plan: {{$plan->name}}</option>
-                            @endforeach
-                        </select>
-                    @else
-                        <div class="pt-2">
-                            No projects created yet. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Plan</a>
-                        </div>
-                        <div class="row pt-3">
-                            <div class="col-md-12">
-                                <div id="dashboard-plan"></div>
+
+                    <div class="btn-group btn-block">
+                        <button class="btn btn-block btn-secondary btn-lg dropdown-toggle text-left" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select payment plan for details
+                        </button>
+
+                        @if(count($plans)>0)
+                            <div class="dropdown-menu btn-block ">
+                                @foreach($plans as $plan)
+                                    <a class="dropdown-item" data-id="{{$plan->id}}" href="#">{{$plan->name}}</a>
+                                @endforeach
                             </div>
-                        </div>
-                    @endif
+                        @endif
+
+                    </div>
+                    <div id="dashboard-projects"></div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer" id="dashboard-projects">
-
         </div>
     </div>
 </div>
