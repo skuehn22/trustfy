@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="form-row py-2">
-        <div class="col-md-12 pt-1 text-right">
+        <div class="col-md-12 pt-1">
             <div class="btn-group sw-btn-group" role="group" >
                 <button class="btn btn-secondary prev-btn" id="prev-btn" type="button">Back</button>
                 <button class="btn btn-success next-btn" id="next-btn" type="button">Next</button>

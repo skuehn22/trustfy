@@ -6,7 +6,37 @@
 
     <style>
 
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 13px;
+        }
+
+
+        .table-wrapper {
+            background: #fff;
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 15px;
+            background: #fff;
+            color: #006600;
+            padding: 16px 30px;
+            margin: -20px -25px 10px;
+            border-radius: 3px 3px 0 0;
+        }
+        .table-title h2 {
+            margin: 5px 0 0;
+            font-size: 24px;
+        }
+
     </style>
+
 @stop
 @section('breadcrumb')
     Dashboard
@@ -14,14 +44,22 @@
 
 @section('content')
     <div class="clients" style="padding:35px;">
-        <div class="row section-heading">
-            <div class="col-md-6">
-            </div>
-        </div>
         <form action="/{{$blade["ll"]}}/freelancer/clients/save/{{$client->id}}">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h2>Edit Client</h2>
+                        </div>
+                        <div class="col-sm-7 float-right text-right pt-3">
+                            <button type="submit" class="btn btn-classic">Save Client</button>
+                        </div>
+                    </div>
+                </div>
+
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="pb-3">Edit Client</h5>
+                    <h5 class="pb-3">General Information</h5>
                     <div class="form-row py-2">
                         <label class="col-md-4 col-form-label" for="client-firstname">Firstname</label>
                         <input type="text" class="form-control col-md-7" id="client-firstname" name="client-firstname" value="{{$client->firstname or ''}}" required>
@@ -70,11 +108,9 @@
                         <label class="col-md-4 col-form-label" for="country">Country</label>
                         @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => $blade['user']->country])
                     </div>
-                    <div class="form-row pt-3 py-2">
-                        <button type="submit" class="btn btn-classic">Save Client</button>
-                    </div>
 
                 </div>
+            </div>
             </div>
         </form>
     </div>

@@ -175,7 +175,7 @@
 <div class="clients">
 
 @if(Session::has('success'))
-        <div class="alert alert-success error_message">
+        <div class="alert alert-success error_message" style="padding-top: 15px; margin-top: 32px;">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             {{ Session::get('success') }}
         </div>

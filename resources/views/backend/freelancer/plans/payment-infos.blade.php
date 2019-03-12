@@ -1,5 +1,5 @@
 <div class="form-row py-2 pt-0 pl-0 ml-0">
-    <h5 class="pt-0">Payment Plan</h5>
+    <h4 class="pt-0">Payment Plan</h4>
 </div>
 <div class="form-row py-2">
     <label class="col-md-2 col-form-label" for="typ">Typ</label>

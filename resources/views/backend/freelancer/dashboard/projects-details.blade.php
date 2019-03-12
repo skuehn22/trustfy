@@ -1,6 +1,6 @@
 @if(isset($project->state))
-<div class="row p-3">
-    <div class="col-md-6">
+<div class="row">
+    <div class="col-md-6 pl-5">
         <div class="row">
         <div class="col-md-12 pb-2">
             <h4>{{$project->name or ''}}</h4>
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 pl-1">
         <div class="row p-3">
                 <div class="col-md-12 pt-5  pb-3">
                     Status:   <span class="status {{$project->color or ''}}">&bull;</span> {{$project->state or ''}}
@@ -36,11 +36,13 @@
                 </div>
         </div>
     </div>
+
+
 </div>
 
 @if(isset($milestone) && $milestone != null)
-<div class="row p-3">
-    <div class="col-md-12">
+
+    <div class="col-md-12" style="margin-top: -25px;">
         <div class="row">
         <div class="col-md-12">
             <h5>Payments</h5>
@@ -65,6 +67,6 @@
             </div>
         </div>
     </div>
-</div>
+
 @endif
 @endif

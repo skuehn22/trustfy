@@ -5,6 +5,15 @@
 @section('css')
 
     <style>
+
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 14px;
+        }
+
+
         .sw-theme-arrows .sw-container {
             min-height: 40px;
         }
@@ -17,10 +26,11 @@
 
         .sw-theme-default .sw-container {
             min-height: auto;
+            background-color: #fff;
         }
 
         .sw-theme-default .sw-toolbar {
-            background: #f9f9f9;
+            background: #fff;
             border-radius: 0 !important;
             padding-left: 10px;
             padding-right: 10px;
@@ -169,6 +179,10 @@
             -ms-flex-pack: center;
             justify-content: left;
             margin-bottom: 0;
+        }
+
+        .btn{
+            font-size: 14px;
         }
 
     </style>
