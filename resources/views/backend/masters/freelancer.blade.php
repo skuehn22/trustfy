@@ -116,7 +116,7 @@
             </li>
         </ul>
         <ul>
-            <li class="cd-label">Secondary</li>
+            <li class="cd-label">Information</li>
             <li class="has-children settings-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
                     <i class="fas fa-cog"></i> Settings

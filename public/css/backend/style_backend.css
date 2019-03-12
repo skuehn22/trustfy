@@ -51,6 +51,16 @@ input[type="search"]::-webkit-search-results-decoration {
     display: none;
 }
 
+
+.btn-normal{
+
+    height: 40px;
+    font-size: 20px;
+    background-color: #006600;
+    border-color: #006600;
+
+}
+
 /* --------------------------------
 
 Main Page Content
@@ -131,7 +141,7 @@ Header
 }
 @media only screen and (min-width: 768px) {
     .cd-logo {
-        margin: 16px 0 0 36px;
+        margin: 16px 0 0 28px;
     }
 }
 
@@ -369,7 +379,7 @@ Top Navigation
 }
 @media only screen and (min-width: 1170px) {
     .cd-top-nav li:not(.has-children) a:hover {
-        color: #ddd;
+        color: #000;
     }
 }
 
@@ -554,9 +564,17 @@ Sidebar
         box-shadow: inset 3px 0 0 #ff9046;
         background-color: #9e9e9e;
     }
-    .cd-side-nav .action-btn a {
-        margin: 1em 10% 0;
+
+    .cd-side-nav .active > a {
+        box-shadow: inset 3px 0 0 #ff9046;
+        background-color: #9e9e9e;
     }
+
+
+    .cd-side-nav > ul > li >  a:hover {
+        text-decoration: none;
+    }
+
     .cd-side-nav .count {
         height: 8px;
         width: 8px;
@@ -699,7 +717,7 @@ ul.navbar-nav li ul{
     }
     .cd-top-nav .has-children {
         position: relative;
-        background-color: #ff9046;
+        background-color: #fff;
     }
     .cd-top-nav .has-children > a {
         height: 100%;
@@ -711,7 +729,7 @@ ul.navbar-nav li ul{
         right: 1.8em;
     }
     .cd-top-nav .has-children ul {
-        background-color: #1c1f22;
+        background-color: #cccccc;
         width: 200px;
         top: 100%;
         right: 0;

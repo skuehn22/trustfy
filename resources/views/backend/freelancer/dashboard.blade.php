@@ -140,6 +140,14 @@
         }
 
 
+        .btn-group-lg>.btn, .btn-lg {
+            padding: .5rem 1rem;
+            font-size: 1.50rem;
+            line-height: 1.5;
+            border-radius: .3rem;
+        }
+
+
     </style>
 
     <script>

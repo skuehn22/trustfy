@@ -40,7 +40,7 @@
                             <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>
                     @endforeach
                 </select>
-                    <p class="pt-3"><button type="submit" class="btn btn-success col-md-11">Create</button></p>
+                    <p class="pt-3"><button type="submit" class="btn btn-success btn-normal col-md-11">Create</button></p>
                 <div class="help-block with-errors"></div>
                 </form>
             @else

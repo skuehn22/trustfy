@@ -5,7 +5,7 @@
                 <div class="col-12 col-md-12">
 
                     <div class="btn-group btn-block">
-                        <button class="btn btn-block btn-secondary btn-lg dropdown-toggle text-left" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-block btn-secondary btn-lg dropdown-toggle text-left" style="height: 55px;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Select payment plan for details
                         </button>
 
