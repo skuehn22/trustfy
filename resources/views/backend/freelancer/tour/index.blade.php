@@ -2,7 +2,6 @@
 <!-- Startframe -->
 <div class="cd-nugget-info d-none">
     <h1>Product Tour</h1>
-    <p>Herzlich Willkommen du dicker Dummkopf</p>
     <button id="cd-tour-trigger-step1" class="cd-btn">Start</button>
     <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 1 of ? </button>
     <button id="cd-tour-trigger-step3" class="cd-btn d-none">Step 2 of ? </button>

@@ -161,7 +161,7 @@
                         <h2>Payment Plans</h2>
                     </div>
                     <div class="col-sm-7 float-right text-right">
-                        <a href="/{{$blade["ll"]}}/freelancer/plans/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Create Plan</a>
+                        <a href="/{{$blade["ll"]}}/freelancer/plans/new" class="btn btn-default btn-lg active" style="color: #fff;" role="button" aria-pressed="true">Create Plan</a>
                     </div>
                 </div>
             </div>

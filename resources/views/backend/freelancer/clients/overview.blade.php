@@ -180,7 +180,7 @@
                     <h2>Clients</h2>
                 </div>
                 <div class="col-sm-7 float-right text-right">
-                    <a href="/{{$blade["ll"]}}/freelancer/clients/new" class="btn btn-default btn-lg active" role="button" aria-pressed="true">Add Client</a>
+                    <a href="/{{$blade["ll"]}}/freelancer/clients/new" class="btn btn-default btn-lg active" role="button" style="color: #fff;" aria-pressed="true">Add Client</a>
                 </div>
             </div>
         </div>

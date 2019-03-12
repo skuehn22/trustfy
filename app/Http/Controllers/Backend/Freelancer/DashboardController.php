@@ -47,6 +47,10 @@ class DashboardController extends Controller
 
             $blade["ll"] = App::getLocale();
 
+            $company = App\DatabaseModels\Companies::where("users_fk", "=", $user->id)
+                ->first();
+
+
             $setup = $user->setup;
 
 
@@ -131,7 +135,7 @@ class DashboardController extends Controller
             $upcoming = $planObj->upcomingPayment($user->service_provider_fk);
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
-            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients', 'last_plan'));
+            return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'company', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients', 'last_plan'));
 
         } else {
 

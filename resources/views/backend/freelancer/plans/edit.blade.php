@@ -241,7 +241,7 @@
                 </div>
                 <div class="modal-body" id="modal-body preview-body">
                     <div class="col-md-12">
-                         <button type="submit" class="btn btn-success close-saved">Cool Beans =)</button>
+                         <button type="submit" class="btn btn-success close-saved">Okay</button>
                     </div>
 
                 </div>
@@ -262,7 +262,7 @@
                 </div>
                 <div class="modal-body" id="modal-body preview-body">
                     <div class="col-md-12">
-                      <button type="submit" class="btn btn-success close-saved" data-dismiss="modal" aria-label="Close">Cool Beans =)</button>
+                      <button type="submit" class="btn btn-success close-saved" data-dismiss="modal" aria-label="Close">Okay</button>
                     </div>
 
                 </div>

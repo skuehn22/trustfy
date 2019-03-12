@@ -274,7 +274,7 @@
                 <div class="modal-body" id="modal-body preview-body">
                     <div class="col-md-12">
 
-                        <a href="/{{$blade['ll']}}/freelancer/plans" class="btn btn-success close-saved">Cool Beans =)</a>
+                        <a href="/{{$blade['ll']}}/freelancer/plans" class="btn btn-success close-saved">Okay</a>
 
                     </div>
 

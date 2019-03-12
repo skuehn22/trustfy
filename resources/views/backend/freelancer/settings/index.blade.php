@@ -42,7 +42,7 @@
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Banking</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#kyc" role="tab" aria-controls="kyc" aria-selected="false">KYC</a>
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#kyc" role="tab" aria-controls="kyc" aria-selected="false">Verification</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
