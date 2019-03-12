@@ -52,16 +52,16 @@
             <div class="col-md-1 p-3 text-center"   style="background-color: #006600; color: #fff; font-weight: 600">
                 1
             </div>
-            <div class="col-md-4 p-3"   style="background-color: #bfbfbf; color: #fff;">
+            <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
                 {{$milestone->name or ''}}
             </div>
-            <div class="col-md-4 p-3"   style="background-color: #bfbfbf; color: #fff;">
+            <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
                 @if(isset($milestone->due_at))
                     Due on: {{date('d.m.Y', strtotime($milestone->due_at ))}}
                 @endif
             </div>
-            <div class="col-md-3 p-3"   style="background-color: #bfbfbf;">
-                <span style="color: #fff;">Status:</span>   <span class="status {{$milestone->color or ''}}">&bull;</span> <span style="color: #fff;">{{$milestone->state or ''}}</span>
+            <div class="col-md-3 p-3"   style="background-color: #e2e2e2;">
+                <span style="color: #566787;">Status:</span>   <span class="status {{$milestone->color or ''}}">&bull;</span> <span style="color: #566787;">{{$milestone->state or ''}}</span>
             </div>
         </div>
     </div>

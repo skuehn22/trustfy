@@ -409,7 +409,7 @@ h5{
 
 .materialbox {
     background: #fff;
-    border-radius: 2px;
+    border-radius: 0px;
     display: inline-block;
     margin: 1rem;
     position: relative;
@@ -436,12 +436,12 @@ h5{
 
 .materialbox-upcoming .text {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .materialbox-inbox {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    height: 333px;
+    height: 300px;
 }
 
 .materialbox-inbox:hover {
@@ -493,7 +493,7 @@ h5{
 
 .materialbox-projects{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    height: 333px;
+    height: 300px;
 }
 
 .materialbox-projects:hover {
@@ -580,13 +580,13 @@ h5{
 
 
 .inbox .panel-heading{
-    background-color: #6c757d;
+    background-color: #737070;
     height: 56px;
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.3333333;
     border: 1px solid #cccccc;
-    border-radius: 3px;
+    border-radius: 0px;
     color: #fff;
     background-image: none;
     padding-top: 15px;

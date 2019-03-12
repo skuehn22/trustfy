@@ -5,8 +5,8 @@
                 <div class="col-12 col-md-12">
 
                     <div class="btn-group btn-block">
-                        <button class="btn btn-block btn-secondary btn-lg dropdown-toggle text-left" style="height: 55px;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select payment plan for details
+                        <button class="btn btn-block btn-secondary plans-dropdown btn-lg dropdown-toggle text-left" style="font-size: 18px; height: 55px;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-file-alt"></i> Select payment plan for details
                         </button>
 
                         @if(count($plans)>0)

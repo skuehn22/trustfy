@@ -24,7 +24,6 @@
             color: #006600;
             padding: 16px 30px;
             margin: -20px -25px 10px;
-            border: 1px solid #999;
             border-radius: 3px 3px 0 0;
         }
         .table-title h2 {
@@ -32,15 +31,23 @@
             font-size: 24px;
         }
 
+        .table-title .btn {
+            color: #566787;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+
         .table-title .btn:hover, .table-title .btn:focus {
             color: #566787;
-            background: #f2f2f2;
         }
+
         .table-title .btn i {
             float: left;
             font-size: 21px;
             margin-right: 5px;
         }
+
         .table-title .btn span {
             float: left;
             margin-top: 2px;

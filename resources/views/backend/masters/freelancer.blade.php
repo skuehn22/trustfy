@@ -65,12 +65,12 @@
             <li class="has-children client-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}"><i class="fas fa-users"></i> <span class="pl-2">Clients</span></a>
                 <ul>
-                    <li>
+                    <li class="menu-left-sub">
                         <a href="{{ URL::to($blade["ll"].'/freelancer/clients') }}">
                             Overview
                         </a>
                     </li>
-                    <li>
+                    <li class="menu-left-sub">
                         <a href="{{ URL::to($blade["ll"].'/freelancer/clients/new') }}">
                             Add Client
                         </a>
@@ -100,12 +100,12 @@
             <li class="has-children plan-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">  <i class="far fa-money-bill-alt"></i> <span class="pl-2">Payment Plans</span></a>
                 <ul>
-                    <li>
+                    <li class="menu-left-sub">
                         <a href="{{ URL::to($blade["ll"].'/freelancer/plans') }}">
                             Overview
                         </a>
                     </li>
-                    <li>
+                    <li class="menu-left-sub">
                         <a href="{{ URL::to($blade["ll"].'/freelancer/plans/new') }}">
                             Add Plan
                         </a>

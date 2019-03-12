@@ -147,6 +147,60 @@
             border-radius: .3rem;
         }
 
+        .plans-dropdown{
+            color: #fff;
+            background-color: #737070;
+            border:0px;
+        }
+
+        .plans-dropdown:hover {
+            color: #fff;
+            background-color: #737070;
+            border-color: #737070;
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            font-size: 1.5em;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 10rem;
+            padding: .5rem 0;
+            margin: .125rem 0 0;
+            font-size: 1rem;
+            color: #212529;
+            text-align: left;
+            list-style: none;
+            background-color: #eeeeee;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.15);
+            border-radius: .25rem;
+        }
+
+
+        .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+            color: #fff;
+            background-color: #d8d8d8;
+            border-color: #fff;
+        }
+
+
 
     </style>
 
@@ -578,30 +632,6 @@
 
         }
 
-
-        function getPlan(id) {
-
-
-
-                if (window.XMLHttpRequest) {
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-                        document.getElementById("dashboard-plan").innerHTML = xmlhttp.responseText;
-                        $("#plan").val(id);
-                    }
-                }
-
-                xmlhttp.open("GET", "{{env('MYHTTP')}}/{{$blade["ll"]}}/freelancer/dashboard/load-plan?id="+id, true);
-                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send();
-
-        }
 
 
         $('#load-dashboard').click(function() {

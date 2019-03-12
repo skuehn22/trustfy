@@ -5,37 +5,45 @@
 @section('css')
 
         <style type="text/css">
-                              body {
-                                  color: #566787;
-                                  background: #f5f5f5;
-                                  font-family: 'Varela Round', sans-serif;
-                                  font-size: 13px;
-                              }
-        .table-wrapper {
-            background: #fff;
-            padding: 0px 0px;
-            margin: 15px 0;
-            border-radius: 3px;
-            box-shadow: 0 1px 1px rgba(0,0,0,.05);
-        }
-        .table-title {
-            padding-bottom: 15px;
-            background: #fff;
-            color: #006600;
-            padding: 16px 30px;
 
-            border: 1px solid #999;
-            border-radius: 3px 3px 0 0;
-        }
-        .table-title h2 {
-            margin: 5px 0 0;
-            font-size: 24px;
-        }
+      body {
+          color: #566787;
+          background: #f5f5f5;
+          font-family: 'Varela Round', sans-serif;
+          font-size: 13px;
+      }
+
+      .table-wrapper {
+          background: #fff;
+          padding: 20px 25px;
+          margin: 30px 0;
+          border-radius: 3px;
+          box-shadow: 0 1px 1px rgba(0,0,0,.05);
+      }
+
+      .table-title {
+          padding-bottom: 15px;
+          background: #fff;
+          color: #006600;
+          padding: 16px 30px;
+          margin: -20px -25px 10px;
+          border-radius: 3px 3px 0 0;
+      }
+      .table-title h2 {
+          margin: 5px 0 0;
+          font-size: 24px;
+      }
+
+        .table-title .btn {
+              color: #566787;
+            padding: 10px;
+            font-size: 14px;
+          }
 
         .table-title .btn:hover, .table-title .btn:focus {
             color: #566787;
-            background: #f2f2f2;
         }
+
         .table-title .btn i {
             float: left;
             font-size: 21px;

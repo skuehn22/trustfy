@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="materialbox materialbox-upcoming p-0">
-        <div class="col-md-12 pl-5 pt-5 pb-5">
+        <div class="col-md-12 pl-5 pt-4 pb-2">
             <p class="headline green">New Payment Plan</p>
 
 
