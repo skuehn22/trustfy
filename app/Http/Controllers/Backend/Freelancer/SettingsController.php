@@ -183,6 +183,8 @@ class SettingsController extends Controller
 
             $company->mango_id = $mango_user->Id;
 
+            $company->save();
+
         }
 
 
