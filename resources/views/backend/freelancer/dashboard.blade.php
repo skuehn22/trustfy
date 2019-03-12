@@ -659,6 +659,11 @@
                     }
 
 
+                    if( items["typ"] == 2){
+                        subject = '{{ trans("messages.subject_typ_3") }}';
+                    }
+
+
                     txt = items["meassage"];
 
                     $("#modal-title-msg").text(subject);

@@ -209,7 +209,7 @@
 
 @section('content')
 
-    <div class="row blur" id="invoice">
+    <div class="row" id="invoice">
         <!--
             <div class="toolbar hidden-print">
                 <div class="text-right">
