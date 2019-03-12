@@ -81,7 +81,6 @@ class MessagesClass  extends Controller
 
         $data['content']=  trans('index.hello')." ". $company->name;
         $data['content'].= "<p><strong>".trans('messages.subject_typ_1')."</strong></p>";
-        $data['content'].= "<p>".trans('index.project').": ".$plan->projectName."<br>";
         $data['content'].= trans('index.milestone').": ".$milestone->name."<br>";
         $data['content'].= trans('index.amount').": ".number_format($milestone->amount, 2, ',', ' ')." €</p>";
         $data['content'].= "<p>".trans('messages.payin_done_2')."</p>";
