@@ -26,7 +26,6 @@ class ProjectManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
 
-
         $query = DB::table('projects');
         $query->join('clients', 'projects.client_id_fk', '=', 'clients.id');
         $query->where('projects.service_provider_fk', '=', $blade["user"]->service_provider_fk );
@@ -34,8 +33,11 @@ class ProjectManagementController extends Controller
         $query->select('projects.*', 'clients.firstname', 'clients.lastname');
         $projects = $query->get();
 
+        $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
+            ->first();
 
-        return view('backend.freelancer.projects.overview', compact('blade', 'projects'));
+
+        return view('backend.freelancer.projects.overview', compact('blade', 'projects', 'company'));
 
     } else {
 

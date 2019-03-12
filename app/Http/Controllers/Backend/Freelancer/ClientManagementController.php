@@ -28,7 +28,10 @@ class ClientManagementController extends Controller
             ->where("delete", "=", "0")
             ->get();
 
-        return view('backend.freelancer.clients.overview', compact('blade', 'clients'));
+        $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
+            ->first();
+
+        return view('backend.freelancer.clients.overview', compact('blade', 'clients', 'company'));
 
         } else {
 

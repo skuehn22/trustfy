@@ -53,7 +53,7 @@ class StateClass
                 break;
             case 2:
                 $state['color'] = "text-success";
-                $state['state'] = "Paid";
+                $state['state'] = "Funded";
                 break;
             default:
                 $state['color'] = "text-secondary";

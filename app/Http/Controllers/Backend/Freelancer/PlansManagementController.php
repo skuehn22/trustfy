@@ -60,8 +60,11 @@ class PlansManagementController extends Controller
             $plan->state_txt =  $response['state'];
         }
 
+        $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
+            ->first();
 
-        return view('backend.freelancer.plans.overview', compact('blade', 'plans'));
+
+        return view('backend.freelancer.plans.overview', compact('blade', 'plans', 'company'));
 
     }
      else {
