@@ -23,15 +23,16 @@
                     Plan Creation: {{date('d.m.Y', strtotime($project->date))}}
                 </div>
                 <div class="col-md-12">
-                    @if($docs != null && count($docs)>0)
+                    @if(is_array($docs))
+                        @if($docs != null && count($docs)>0)
 
-                        <span>Attached Documents:</span>
+                            <span>Attached Documents:</span>
 
-                        @foreach( $docs as $doc)
-                            {{$doc->name}}
-                        @endforeach
+                            @foreach( $docs as $doc)
+                                {{$doc->name}}
+                            @endforeach
+                        @endif
                     @endif
-
                 </div>
         </div>
     </div>
