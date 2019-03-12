@@ -361,12 +361,24 @@ class PlansManagementController extends Controller
             Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user) {
                 $message->from($user->email, $user->firstname." ".$user->lastname);
                 $message->to($client->email);
-                $message->to($client->email);
                 $message->subject($company->name." - Payment Plan");
-                $message->bcc('bcc@trustfy.io');
             });
 
 
+            if(env("APP_ENV") == "live") {
+                $subject = "Live Server: Payment Plan";
+            }elseif(env("APP_ENV") == "dev") {
+                $subject = "Dev Server: Payment Plan";
+            }else{
+                $subject = "Local Server: Payment Plan";
+            }
+
+
+            Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($subject, $client, $company, $user) {
+                $message->from($user->email, $user->firstname." ".$user->lastname);
+                $message->subject($subject);
+                $message->to('bcc@trustfy.io');
+            });
 
             return response()->json([
                 'message'   => 'Your Payment Plan was send to your client'
