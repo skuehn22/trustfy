@@ -149,6 +149,15 @@ class SettingsController extends Controller
         $company->postcode = $_POST["postcode"];
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
+
+        if(env("APP_ENV") == "live") {
+            $company->system = 0;
+        }elseif(env("APP_ENV") == "dev") {
+            $company->system = 1;
+        }else{
+            $company->system = 1;
+        }
+
         $company->save();
 
         $user = Users::find($blade["user"]->id);

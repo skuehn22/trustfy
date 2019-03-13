@@ -59,6 +59,7 @@
             // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
             if(stepDirection === 'forward' && elmForm){
 
+
                 elmForm.validator('validate');
 
                 var elmErr = elmForm.children('.has-error');
@@ -68,11 +69,36 @@
                     return false;
                 }
 
-                if(stepNumber == 0 ){
 
+
+                if(stepNumber == 1 ){
+
+
+                    var temp = $('#typ').val();
+                    if(temp == ""){
+                        $('#typ').focus();
+                        return false;
+                    }
+
+                    var temp = $('#title-milestone').val();
+                    if(temp == ""){
+                        $('#title-milestone').focus();
+                        return false;
+                    }
+
+                    var temp = $('#due-date').val();
+                    if(temp == ""){
+                        $('#due-date').focus();
+                        return false;
+                    }
+
+                    var temp = $('#single-amount').val();
+                    if(temp == ""){
+                        $('#single-amount').focus();
+                        return false;
+                    }
 
                 }
-
 
             }
             return true;
@@ -235,7 +261,12 @@
 
         //loads projects for selected client
         $("#typ").on('change', function() {
-            getPlanTyp($(this).val());
+
+            if($("#typ").val() == 1){
+                getPlanTyp($(this).val());
+            }
+
+
         });
 
 

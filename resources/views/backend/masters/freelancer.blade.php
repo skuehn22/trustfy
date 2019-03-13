@@ -107,7 +107,7 @@
                     </li>
                     <li class="menu-left-sub">
                         <a href="{{ URL::to($blade["ll"].'/freelancer/plans/new') }}">
-                            Add Plan
+                            New Plan
                         </a>
                     </li>
 
