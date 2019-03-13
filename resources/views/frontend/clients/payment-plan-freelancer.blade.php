@@ -123,7 +123,7 @@
                         <th class="text-left">DESCRIPTION</th>
                         <th class="text-right">DUE AT</th>
                         <th class="text-right">TOTAL</th>
-                        <th class="text-right">PAY POSITION</th>
+                        <th class="text-right">PAY STATUS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -136,7 +136,7 @@
                         </td>
 
                         <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
-                        <td class="qty"> @if(isset($milestone->amount)){{ number_format($milestone->amount, 2, '.', ',') }} € @else  <i>please fill in</i> @endif</td>
+                        <td class="qty"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                         <td>
 
                             @if(isset($milestone->bank_transfer))
@@ -212,7 +212,7 @@
                             @foreach($docs as $doc)
 
                                 <p class="{{$doc->id}}">
-                                    <a target="_blank" href="/uploads/companies/contracts/{{$doc->filename}}">{{$doc->name}}</a>
+                                    <a target="_blank" href="/uploads/companies/contracts/{{$plan->id}}/{{$doc->filename}}">{{$doc->name}}</a>
                                     <a href="#" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
                                         <i class="fas fa-trash green"></i>
                                     </a>
