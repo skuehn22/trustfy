@@ -1,9 +1,9 @@
 <div class="col-md-9 p-0">
     <div class="form-row py-2 pt-0 pl-0 ml-0">
-        <h5 class="pt-0">Add Informations</h5>
+        <h5 class="pt-0">Add Documents</h5>
     </div>
 
-    <p style="font-size: 11px;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    <p style="font-size: 11px;">Optional: Add the project plan, details of deliverables, your contact or your terms of service- anything that's relevant to the project. Make sure you and your client have a writeen record of your agreement!</p>
     <hr>
     <div class="alert" id="message" style="display: none"></div>
     <div class="row py-2 pt-0 pl-0 ml-0">
@@ -13,12 +13,8 @@
             {{ csrf_field() }}
 
             <div class="form-row py-2">
-                <span style="font-weight: 500;">Upload addional Documents <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Documents will be added to the payment plan"></i></span>
-            </div>
-
-            <div class="form-row py-2">
                 <label class="col-md-2 col-form-label" for="doc-name">
-                    Name <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of the document. E.g. Proposal, Quote, Tender... If you leave it blank the document name will be shown"></i>
+                    Name <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="document name will be shown if left blank"></i>
                 </label>
                 <input type="text" class="form-control col-md-5" id="doc-name" name="doc-name" required>
             </div>

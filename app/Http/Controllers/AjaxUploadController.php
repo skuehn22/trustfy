@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DatabaseModels\PlanDocs;
-
+use File;
 
 use Illuminate\Http\Request;
 use Validator, Auth, DateTime;
@@ -101,7 +101,7 @@ class AjaxUploadController extends Controller
         //create unique timestamp for images
         //without the image from the cache is loading in the preview
         $date = new DateTime();
-        $filename = $date->getTimestamp();
+        //$filename = $date->getTimestamp();
 
         $user = Auth::user();
 
@@ -120,7 +120,9 @@ class AjaxUploadController extends Controller
         if($validation->passes())
         {
             $image = $request->file('select_file');
-            $new_name = $user->id. $filename . '.' . $image->getClientOriginalExtension();
+            $filename = $image->getClientOriginalName();
+            $new_name = $filename . '.' . $image->getClientOriginalExtension();
+
 
             $doc = new PlanDocs();
 
@@ -134,9 +136,10 @@ class AjaxUploadController extends Controller
             $doc->plan_id_fk = $_POST['plan'];
             $doc->save();
 
-            $image->move(public_path('uploads/companies/contracts'), $new_name);
+            $path = public_path().'/uploads/companies/contracts/' . $doc->plan_id_fk;
+            File::makeDirectory($path, $mode = 0777, true, true);
 
-
+            $image->move($path, $new_name);
 
             return response()->json([
                 'message'   => 'File Upload Successfully',

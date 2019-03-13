@@ -566,7 +566,7 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-                    $('.sw-toolbar').addClass("d-none");
+                    $('#preview-btn').addClass("d-none");
 
                     document.getElementById("preview-container").innerHTML = xmlhttp.responseText;
 

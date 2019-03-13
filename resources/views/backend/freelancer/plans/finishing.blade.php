@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-3">
             <label class="switch">
-                <input type="checkbox" name="cc" id="togBtn" value="true">
+                <input type="checkbox" name="cc" id="togBtn" value="false">
                 <div class="slider round"><!--ADDED HTML -->
                     <span class="on">ON</span>
                     <span class="off">OFF</span><!--END-->
@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-3">
             <label class="switch">
-                <input type="checkbox" name="bt" id="togBtnBt">
+                <input type="checkbox" name="bt" id="togBtnBt"  value="false">
                 <div class="slider round"><!--ADDED HTML -->
                     <span class="on">ON</span>
                     <span class="off">OFF</span><!--END-->

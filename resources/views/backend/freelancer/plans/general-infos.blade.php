@@ -25,7 +25,7 @@
             @if($plan->reference)
                 <input type="text" id="reference" name="reference" class="form-control col-md-3" value="{{$plan->reference}}">
             @else
-                <input type="text" id="reference" name="reference" class="form-control col-md-3" required>
+                <input type="text" id="reference" name="reference" class="form-control col-md-3">
             @endif
             <div class="help-block with-errors"></div>
         </div>
