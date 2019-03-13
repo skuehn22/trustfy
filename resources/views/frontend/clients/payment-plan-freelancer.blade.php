@@ -63,7 +63,7 @@
                 <hr>
             </div>-->
 
-        <div class="col col-lg-9 invoice overflow-auto">
+        <div class="col col-lg-9 col-md-12 col-sm-12 invoice overflow-auto">
             <header>
                 @if(isset($protect) && $protect == true)
                     <div class="alert alert-success success_message">

@@ -65,7 +65,7 @@
     @if(isset($preview))
         <div class="col col-lg-12 invoice overflow-auto">
     @else
-        <div class="col col-lg-8 invoice overflow-auto">
+        <div class="col col-lg-8 col-md-12 col-sm-12 invoice overflow-auto">
     @endif
 
             <header>
@@ -158,7 +158,7 @@
                                         <form action="/payment-plan/pay-by-bank/{{$plan->hash or ''}}" id="paymentform">
                                     @endif
                                         <div class="row">
-                                            <div class="col-md-7">
+                                            <div class="col-md-6">
 
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
@@ -182,7 +182,7 @@
 
 
                                             </div>
-                                            <div class="col-md-5"  style="text-align: right;">
+                                            <div class="col-md-6"  style="text-align: right;">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
                                                     <button class="btn btn-success pay-now">Pay now</button>
                                                 </span>
