@@ -1,8 +1,9 @@
 
 <!-- Startframe -->
 <div class="cd-nugget-info d-none">
-    <h1>Product Tour</h1>
-    <button id="cd-tour-trigger-step1" class="cd-btn">Start</button>
+    <h1>Welcome to Trustfy</h1>
+    <p>We’re glad you’re here!</p>
+    <button id="cd-tour-trigger-step1" class="cd-btn">Get Started</button>
     <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 1 of ? </button>
     <button id="cd-tour-trigger-step3" class="cd-btn d-none">Step 2 of ? </button>
     <button id="cd-tour-trigger-step4" class="cd-btn d-none">Step 3 of ? </button>
@@ -18,8 +19,9 @@
         <span>Step 1</span>
 
         <div class="cd-more-info right">
-            <h2>Dashboard</h2>
-            <p>Here you can get an overview of everything</p>
+            <h2>Meet your Dashboard</h2>
+            <p>It’s your personal headquarters giving you have an overview of all your projects and payments
+            </p>
             <button id="step-trigger-1" class="btn btn-secondary">Next</button>
             <img src="/img/step-1.png" alt="step 1">
         </div>
@@ -30,8 +32,8 @@
         <span>Step 2</span>
 
         <div class="cd-more-info right">
-            <h2>Create Company</h2>
-            <p>Here you can enter information about your company</p>
+            <h2>Set up your company</h2>
+            <p>Send out payment plans that match your brand!</p>
             <a href="/freelancer/settings" class="btn btn-secondary">ok</a>
             <img src="/img/step-1.png" alt="step 1">
         </div>

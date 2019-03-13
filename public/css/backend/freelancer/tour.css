@@ -388,13 +388,14 @@ Main Components
     font-size: 2rem;
     line-height: 1.2;
     margin-bottom: .4em;
+    color: #494545;
 }
 .cd-single-step .cd-more-info p {
     font-size: 1.3rem;
     line-height: 1.6;
     margin-bottom: 1.4em;
     font-family: Georgia, serif;
-    color: #ffffff;
+    color: #494545;
 }
 .cd-single-step .cd-more-info img {
     margin-bottom: 1.4em;
@@ -965,4 +966,11 @@ xapp prototype - no need to import this in production
 
 .cd-app-screen::after {
 
+}
+
+
+.btn-secondary {
+    padding:10px;
+    font-size: 13px;
+    width: 150px;
 }
