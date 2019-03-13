@@ -1,46 +1,52 @@
 <h4 class="pb-3">Verify your account</h4>
 
-<form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-additional-kyc">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-<h4>Legal Representative
-    <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This information is required for a payment out."></i>
-</h4>
-<div class="form-row py-2">
-    <label class="col-md-3 col-form-label" for="firstname">
-        Firstname
-        <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
-    </label>
-    <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="Firstname" required>
-</div>
+<form data-toggle="validator" class="needs-validation" novalidate role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-additional-kyc">
 
-<div class="form-row py-2">
-    <label class="col-md-3 col-form-label" for="address">Lastname</label>
-    <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Lastname" required>
-</div>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <h4>Legal Representative
+        <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This information is required for a payment out."></i>
+    </h4>
 
-<div class="form-row py-2">
-    <label class="col-md-3 col-form-label" for="birthday">
-        Birthday
-        <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Birthday of company’s legal representative person"></i>
-    </label>
-    <input type="date" name="birthday" min="1000-01-01" max="3000-12-31" class="form-control col-md-7" value="{{  $company->birthday or "" }}">
-</div>
-<div class="form-row py-2">
-    <label class="col-md-3 col-form-label" for="nationality">Nationality</label>
-
-    @if(isset($company->country_nationality))
-        @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => $company->country_nationality])
-    @else
-        @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => ''])
-    @endif
-</div>
-    <div class="form-group">
-        <div class="col-md-10 float-left text-left pt-5 pl-0">
-            <button type="submit" class="btn btn-classic">
-                <i class="fas fa-save"></i> Save Settings
-            </button>
+    <div class="form-row py-2">
+        <label class="col-md-3 col-form-label" for="firstname">
+            Firstname*
+            <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
+        </label>
+        <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="Firstname" required>
+        <div class="valid-feedback">
+            Looks good!
         </div>
     </div>
+
+    <div class="form-row py-2">
+        <label class="col-md-3 col-form-label" for="address">Lastname*</label>
+        <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Lastname" required>
+    </div>
+
+    <div class="form-row py-2">
+        <label class="col-md-3 col-form-label" for="birthday">
+            Birthday*
+            <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Birthday of company’s legal representative person"></i>
+        </label>
+        <input type="date" name="birthday" min="1000-01-01" max="3000-12-31" class="form-control col-md-7" value="{{  $company->birthday or "" }}" required>
+    </div>
+    <div class="form-row py-2">
+        <label class="col-md-3 col-form-label" for="nationality">Nationality*</label>
+
+        @if(isset($company->country_nationality))
+            @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => $company->country_nationality])
+        @else
+            @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => 'IE'])
+        @endif
+    </div>
+        <div class="form-group">
+            <div class="col-md-10 float-left text-left pt-5 pl-0">
+                <button type="submit" class="btn btn-classic">
+                    <i class="fas fa-save"></i> Save Settings
+                </button>
+            </div>
+        </div>
+
 </form>
 <br><br><br><br>
 

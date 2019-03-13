@@ -967,10 +967,3 @@ xapp prototype - no need to import this in production
 .cd-app-screen::after {
 
 }
-
-
-.btn-secondary {
-    padding:10px;
-    font-size: 13px;
-    width: 150px;
-}

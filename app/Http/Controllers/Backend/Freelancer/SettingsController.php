@@ -170,7 +170,6 @@ class SettingsController extends Controller
     }
 
 
-
     public function saveAdditionalKycData() {
 
         $blade["user"] = Auth::user();
