@@ -142,7 +142,7 @@
                                         @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                                     </td>
 
-                                    <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
+                                    <td class="qty">@if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}} @else  <i>please fill in</i> @endif </td>
                                     <td class="qty"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                                     <td>
 

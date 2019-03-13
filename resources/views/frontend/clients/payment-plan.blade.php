@@ -145,7 +145,12 @@
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
 
-                        <td class="qty"> {!!  $milestone->due_at or '<i>please fill in</i>' !!}</td>
+                        <td class="qty">
+
+                            @if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}} @else  <i>please fill in</i> @endif
+
+
+                        </td>
                         <td class="qty"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif</td>
                         <td>
 
@@ -283,7 +288,7 @@
                     {{ csrf_field() }}
                     <p>To protect your plan from unauthorized access please define your documents protection</p>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-12 control-label">Enter a E-Mail Address</label>
+                        <label for="email" class="col-md-12 control-label">Enter a E-Mail</label>
 
                         <div class="col-md-12 pl-0">
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -341,7 +346,7 @@
                     {{ csrf_field() }}
                     <p>Your plan was protected. Please log in</p>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-12 control-label">E-Mail Address</label>
+                        <label for="email" class="col-md-12 control-label">E-Mail</label>
 
                         <div class="col-md-12 pl-0">
 
@@ -464,7 +469,7 @@
         //loads projects for selected client
 
         $('input[type=radio][name=paymenttyp]').change(function() {
-            
+
 
             if($(this).val() == 1){
                     $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');

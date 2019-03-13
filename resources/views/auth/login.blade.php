@@ -10,10 +10,10 @@
     {{ csrf_field() }}
 
     <div class="col-md-12 pb-3">
-        <h1 class="text-left">Sign in</h1>
+        <h1 class="text-left">Login in</h1>
     </div>
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="email" class="col-md-12 control-label text-left font-weight-bold">E-Mail Address</label>
+        <label for="email" class="col-md-12 control-label text-left font-weight-bold">E-Mail</label>
         <div class="col-md-12">
             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
@@ -42,7 +42,7 @@
     <div class="form-group sign-up">
         <div class="col-md-12 pb-3">
             <button type="submit" class="btn btn-secondary btn-sign">
-                Login
+                Log in
             </button>
 
             <!--<a class="forget" href="{{ url('en/password/reset') }}">Forgot Your Password?</a>-->
@@ -51,8 +51,8 @@
 
     <div class="form-group">
         <div class="col-md-12 register pt-5">
-            <span>New to Trustfy?</span>
-            <a class="btn btn-secondary btn-register" href="/beta-register" role="button">Create an ccount</a>
+            <p style="font-size: 18px; padding-bottom: 0px;">New to Trustfy?</p>
+            <a class="btn btn-secondary btn-register" href="/beta-register" role="button">Create an account</a>
             <br><br>
         </div>
 
@@ -67,7 +67,7 @@
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <label for="email" class="col-md-4 control-label">E-Mail</label>
 
         <div class="col-md-8">
             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
