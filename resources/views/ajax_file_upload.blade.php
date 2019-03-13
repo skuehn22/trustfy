@@ -1,9 +1,9 @@
 <div class="col-md-9 p-0">
     <div class="form-row py-2 pt-0 pl-0 ml-0">
-        <h5 class="pt-0">Add Documents</h5>
+        <h3 class="pt-0">Add Documents</h3>
     </div>
 
-    <p style="font-size: 11px;">Optional: Add the project plan, details of deliverables, your contact or your terms of service- anything that's relevant to the project. Make sure you and your client have a writeen record of your agreement!</p>
+    <p style="font-size: 11px;">Optional: Add the project plan, details of deliverables, your contact or your terms of service- anything that's relevant to the project. <br>Make sure you and your client have a writeen record of your agreement!</p>
     <hr>
     <div class="alert" id="message" style="display: none"></div>
     <div class="row py-2 pt-0 pl-0 ml-0">
