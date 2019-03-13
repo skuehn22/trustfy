@@ -107,7 +107,10 @@ class PlansManagementController extends Controller
         $plan->hidden = 1;
         $plan->save();
 
-        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects'));
+        $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
+            ->first();
+
+        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects', 'company'));
 
     }
 
