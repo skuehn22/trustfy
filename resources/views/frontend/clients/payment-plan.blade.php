@@ -133,7 +133,7 @@
                         <th class="text-left">DESCRIPTION</th>
                         <th class="text-right">DUE AT</th>
                         <th class="text-right">TOTAL</th>
-                        <th class="text-right">PAY STATUS</th>
+                        <th class="text-right">PAYMENT STATUS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -162,21 +162,21 @@
 
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
-                                                        <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
+                                                        <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card</label>
                                                     </div>
                                                 @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
 
                                                     <div class="radio">
-                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer</label>
                                                     </div>
 
                                                     <div class="radio">
-                                                        <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
+                                                        <label><input type="radio" name="paymenttyp" value="1" > Credit Card</label>
                                                     </div>
 
                                                 @else
                                                     <div class="radio" style="padding-top: 10px;">
-                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                        <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer</label>
                                                     </div>
                                                 @endif
 
@@ -465,6 +465,7 @@
 
         $('input[type=radio][name=paymenttyp]').change(function() {
 
+            alert("dddd");
 
             if($(this).val() == 1){
                     $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
