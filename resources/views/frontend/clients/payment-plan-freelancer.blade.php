@@ -121,7 +121,7 @@
                         <th class="text-left">DESCRIPTION</th>
                         <th class="text-right">DUE AT</th>
                         <th class="text-right">TOTAL</th>
-                        <th class="text-right">PAY STATUS</th>
+                        <th class="text-right">PAYMENT STATUS</th>
                     </tr>
                     </thead>
                     <tbody>
