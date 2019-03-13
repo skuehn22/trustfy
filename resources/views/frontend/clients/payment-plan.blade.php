@@ -464,8 +464,7 @@
         //loads projects for selected client
 
         $('input[type=radio][name=paymenttyp]').change(function() {
-
-            alert("dddd");
+            
 
             if($(this).val() == 1){
                     $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
