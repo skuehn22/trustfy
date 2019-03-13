@@ -70,10 +70,21 @@ class SettingsController extends Controller
             ->get();
 
 
+        if(env("APP_ENV") == "live" && $company->system != 0) {
+
+            return Redirect::to($blade["ll"]."/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the live system. Please contact the administrator.');
+
+        }elseif(env("APP_ENV") != "live" && $company->system == 0) {
+
+            return Redirect::to($blade["ll"]."/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the dev system. Please contact the administrator.');
+
+        }
+
+
         //checks if there was a update done by mango pay
         if(count($kyc_doc_objs)>0){
             $mango_obj = new MangoClass($this->mangopay);
-            $mango_obj->checkKycDocuments($company, $kyc_doc_objs);
+            $result = $mango_obj->checkKycDocuments($company, $kyc_doc_objs);
         }
 
         //check if there were kyc actions in the past
@@ -182,6 +193,14 @@ class SettingsController extends Controller
             }
 
             $company->mango_id = $mango_user->Id;
+
+            if(env("APP_ENV") == "live") {
+                $company->system = 0;
+            }elseif(env("APP_ENV") == "dev") {
+                $company->system = 1;
+            }else{
+                $company->system = 1;
+            }
 
             $company->save();
 
