@@ -43,7 +43,7 @@
     <div class="form-group">
         <div class="col-md-offset-3 col-md-6">
             <button type="submit" class="btn btn-orange">
-                <i class="fas fa-save"></i> Save Settings
+                <i class="fas fa-save"></i> Save Setti
             </button>
         </div>
     </div>

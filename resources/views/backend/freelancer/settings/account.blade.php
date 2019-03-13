@@ -24,7 +24,7 @@
             <div class="form-group">
                 <div class="col-md-10 pl-0">
                     <button type="submit" class="btn btn-classic">
-                        <i class="fas fa-save"></i> Change Data
+                        <i class="fas fa-save"></i> Save
                     </button>
                 </div>
             </div>

@@ -361,7 +361,7 @@ class SettingsController extends Controller
             $data->password =  bcrypt(  $_POST["password"]);
             $data->save();
 
-            return back()->withInput()->with('success', 'Data changed successful.');
+            return back()->withInput()->with('success', 'Data changed successfully.');
 
         }
 
