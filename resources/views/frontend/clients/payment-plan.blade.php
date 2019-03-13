@@ -143,7 +143,7 @@
                         <td class="no">01</td>
                         <td class="text-left" style="width:40%;">
                             {!!  $milestone->name or '<i>please fill in</i>'!!}
-                            <input type="hidden" value="{{$milestone->name}}" id="name_{{$milestone->id}}">
+                            <input type="hidden" value="{{$milestone->name or ''}}" id="name_{{$milestone->id or ''}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
 
@@ -155,9 +155,9 @@
                                 @if(isset($milestone->paystatus) && $milestone->paystatus==0)
 
                                     @if($milestone->bank_transfer == 0 && $milestone->credit_card == 1)
-                                        <form action="/payment-plan/pay-by-card/{{$plan->hash}}" id="paymentform">
+                                        <form action="/payment-plan/pay-by-card/{{$plan->hash or ''}}" id="paymentform">
                                     @else
-                                        <form action="/payment-plan/pay-by-bank/{{$plan->hash}}" id="paymentform">
+                                        <form action="/payment-plan/pay-by-bank/{{$plan->hash or ''}}" id="paymentform">
                                     @endif
                                         <div class="row">
                                             <div class="col-md-7">
@@ -346,7 +346,7 @@
                         <div class="col-md-12 pl-0">
 
                             <input id="email-login" type="email" class="form-control" name="email-login">
-                            <input type="hidden" value="{{$hash}}" name="hash" id="hash">
+                            <input type="hidden" value="{{$hash or ''}}" name="hash" id="hash">
 
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -430,30 +430,34 @@
 
     <script>
 
-         @if( (!$login && $plan->protection == 'show'))
 
-            $('#protect-plan').modal('show');
+        @if(isset($login))
 
-         @elseif(!$login && $plan->protection == 'hide')
+             @if( (!$login && $plan->protection == 'show'))
 
+                $('#protect-plan').modal('show');
 
-                @if( isset($loggedIn) && $loggedIn == "true" )
-
-                    $('#invoice').removeClass('blur');
-
-                 @else
-
-                    $('#login-plan').modal('show');
-
-                @endif
-
-         @endif
+             @elseif(!$login && $plan->protection == 'hide')
 
 
-        @if( isset($protect) && $protect == "true" )
-            $('#invoice').removeClass('blur');
+                    @if( isset($loggedIn) && $loggedIn == "true" )
+
+                        $('#invoice').removeClass('blur');
+
+                     @else
+
+                        $('#login-plan').modal('show');
+
+                    @endif
+
+             @endif
+
+
+            @if( isset($protect) && $protect == "true" )
+                $('#invoice').removeClass('blur');
+            @endif
+                    
         @endif
-
 
 
 
