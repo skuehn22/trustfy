@@ -6,7 +6,7 @@
     <div class="form-group">
         <div class="form-inline">
             <label class="col-md-2 pl-0 col-form-label" for="creation-date">
-                Project Title  <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="What is this payment plan for? e.g. website design, wedding photography"></i>
+                Project Title*  <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="What is this payment plan for? e.g. website design, wedding photography"></i>
             </label>
             @if($plan->name)
                 <input type="text" id="title" name="title" class="form-control col-md-3" value="{{$plan->name}}" required>
@@ -17,11 +17,25 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <div class="form-inline">
+            <label class="col-md-2 pl-0 col-form-label" for="creation-date">
+                Referenz  <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="Number or character from your internal system"></i>
+            </label>
+            @if($plan->reference)
+                <input type="text" id="reference" name="reference" class="form-control col-md-3" value="{{$plan->reference}}">
+            @else
+                <input type="text" id="reference" name="reference" class="form-control col-md-3" required>
+            @endif
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+
 
     <div class="form-group">
         <div class="form-inline">
             <label class="col-md-2 pl-0 col-form-label" for="creation-date">
-                Date Created
+                Date Created*
                  <i class="fas fa-info-circle green pl-2" data-toggle="tooltip" data-placement="top" title="This date is on the payment plan as the creation date of the plan"></i>
             </label>
 
@@ -37,7 +51,7 @@
 
     <div class="form-group">
         <div class="form-inline">
-        <label class="col-md-2 pl-0 col-form-label" for="clients">Client</label>
+        <label class="col-md-2 pl-0 col-form-label" for="clients">Client*</label>
         @if(count($clients)>0)
             <select name="clients" id="clients" class="col-md-3" required>
                 <option></option>

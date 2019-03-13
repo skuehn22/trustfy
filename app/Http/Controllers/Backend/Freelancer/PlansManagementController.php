@@ -159,6 +159,9 @@ class PlansManagementController extends Controller
         if(isset($input['title']))
             $plan->name = $input['title'];
 
+        if(isset($input['reference']))
+            $plan->reference = $input['reference'];
+
         if(isset($input['projects-dropdown']))
             $plan->projects_id_fk = $input['projects-dropdown'];
 

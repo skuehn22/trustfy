@@ -9,93 +9,15 @@
 
     <style>
 
-        #invoice{
-            padding: 30px;
-        }
-
-        .invoice {
-            position: relative;
-            background-color: #FFF;
-            min-height: 680px;
-            padding: 50px;
-            border: 1px solid #d4d4d4
-        }
-
         .invoice header {
             padding: 10px 0;
             margin-bottom: 20px;
             border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
-        .invoice .company-details {
-            text-align: right
-        }
-
-        .invoice .company-details .name {
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #9d9d9d;
-        }
-
-        .invoice .contacts {
-            margin-bottom: 50px
-        }
-
-        .invoice .invoice-to {
-            text-align: left
-        }
-
-        .invoice .invoice-to .to {
-            margin-top: 0;
-            margin-bottom: 0
-        }
-
-        .invoice .invoice-details {
-            text-align: right
-        }
-
-        .invoice .invoice-details .invoice-id {
-            margin-top: 0;
-            color: #9d9d9d;
-        }
-
-        .invoice main {
-            padding-bottom: 50px;
-            padding-top: 30px;
-        }
-
-        .invoice main .thanks {
-            font-size: 2em;
-            margin-bottom: 50px
-        }
-
         .invoice main .notices {
             padding-left: 6px;
             border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
-        }
-
-        .invoice main .notices .notice {
-            font-size: 1.2em
-        }
-
-        .invoice table {
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            margin-bottom: 20px
-        }
-
-        .invoice table td,.invoice table th {
-            padding: 15px;
-            background: #eee;
-            border-bottom: 1px solid #fff;
-            font-size: 14px;
-        }
-
-        .invoice table th {
-            white-space: nowrap;
-            font-weight: 400;
-            font-size: 14px
         }
 
         .invoice table td h3 {
@@ -105,10 +27,6 @@
             font-size: 1.2em
         }
 
-        .invoice table .qty,.invoice table .total,.invoice table .unit {
-            text-align: right;
-        }
-
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
@@ -116,31 +34,9 @@
             width: 25px;
         }
 
-        .invoice table .unit {
-            background: #ddd
-        }
-
         .invoice table .total {
             background:@if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
             color: #fff
-        }
-
-        .invoice table tbody tr:last-child td {
-            border: none
-        }
-
-        .invoice table tfoot td {
-            background: 0 0;
-            border-bottom: none;
-            white-space: nowrap;
-            text-align: right;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-top: 1px solid #aaa
-        }
-
-        .invoice table tfoot tr:first-child td {
-            border-top: none
         }
 
         .invoice table tfoot tr:last-child td {
@@ -149,58 +45,15 @@
             border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
-        .invoice table tfoot tr td:first-child {
-            border: none
+        .name{
+            padding-right: 0px;
         }
 
-        .more{
-            padding-top: 20px;
+        .cd-main-content .content-wrapper h1 {
+            padding: 2em 0 0;
+            font-size: 3.2rem;
+            font-weight: 300;
         }
-
-        .more a{
-            color: #9d9d9d;
-            text-decoration: underline;
-        }
-
-        .invoice footer {
-            width: 100%;
-            text-align: center;
-            color: #777;
-            border-top: 1px solid #aaa;
-            padding: 8px 0
-        }
-
-        .pay-now{
-            font-size: 15px;
-        }
-
-        .successful{
-            color: green;
-            font-weight: 700;
-            font-style: italic;
-            float: right;
-            font-size: 18px;
-        }
-
-        @media print {
-            .invoice {
-                font-size: 11px!important;
-                overflow: hidden!important
-            }
-
-            .invoice footer {
-                position: absolute;
-                bottom: 10px;
-                page-break-after: always
-            }
-
-            .invoice>div:last-child {
-                page-break-before: always
-            }
-
-
-        }
-
 
     </style>
 
@@ -241,7 +94,6 @@
                                     </h3>
                                     <div>
                                         {{$company->address1 or ''}},
-                                        @if(isset($company->address2) && $company->address2!='') {{$company->address2 or ''}}, @endif
                                         {{$company->postcode or ''}},
                                         {{$company->city or ''}}
                                     </div>
@@ -253,7 +105,6 @@
                         <main>
                             <div class="row contacts">
                                 <div class="col invoice-to">
-                                    <div class="text-gray-light">Plan for:</div>
                                     @if(isset($plan->lastname) && $plan->lastname!=" ")
                                         <h2 class="to">{{$plan->firstname}} {{$plan->lastname}}</h2>
                                         <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
@@ -263,10 +114,14 @@
                                     @endif
                                 </div>
                                 <div class="col invoice-details">
-                                    <h1 class="invoice-id">Payment Plan</h1>
-                                    <div class="date">Date of Invoice: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}} </div>
-
+                                    <h1 class="invoice-id" style="text-align: right;">Payment Plan</h1>
+                                    <div class="date">Invoice Date: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}} </div>
+                                    @if($plan->reference != null) <div class="date">Reference: {{ $plan->reference }} </div> @endif
                                 </div>
+                            </div>
+
+                            <div class="col invoice-details">
+                                <h1 class="invoice-id"style="text-align: left; padding-top: 25px; padding-bottom: 10px;">{{$plan->name}}</h1>
                             </div>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <thead>
@@ -299,21 +154,21 @@
 
                                                             @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                                 <div class="radio" style="padding-top: 10px;">
-                                                                    <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card (+2%)</label>
+                                                                    <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card</label>
                                                                 </div>
                                                             @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
 
                                                                 <div class="radio">
-                                                                    <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                                    <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer</label>
                                                                 </div>
 
                                                                 <div class="radio">
-                                                                    <label><input type="radio" name="paymenttyp" value="1" > Credit Card (+2%)</label>
+                                                                    <label><input type="radio" name="paymenttyp" value="1" > Credit Card</label>
                                                                 </div>
 
                                                             @else
                                                                 <div class="radio" style="padding-top: 10px;">
-                                                                    <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer (free)</label>
+                                                                    <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer</label>
                                                                 </div>
                                                             @endif
 
@@ -321,8 +176,8 @@
                                                         </div>
                                                         <div class="col-md-5"  style="text-align: right;">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <button class="btn btn-success pay-now" disabled data-toggle="tooltip" data-placement="top" title="In Preview deactivate">Pay now</button><br>
-                                                    <i>deactivate in preview</i>
+                                                    <button class="btn btn-success pay-now" disabled data-toggle="tooltip" data-placement="top" title="In Preview deactivated">Pay now</button><br>
+                                                    <i>deactivated in preview</i>
                                                 </span>
                                                         </div>
                                                     </div>
@@ -386,10 +241,12 @@
                             @endif
 
                             <div class="thanks">Thank you!</div>
-                            <div class="notices">
-                                <div>NOTICE:</div>
-                                <div class="notice">{{$plan->comment}}</div>
-                            </div>
+                            @if($plan->comment!=null)
+                                <div class="notices">
+                                    <div>NOTICE:</div>
+                                    <div class="notice">{{$plan->comment}}</div>
+                                </div>
+                            @endif
                         </main>
                         <footer>
                             Payment Plan was created on a computer and is valid without the signature and seal.

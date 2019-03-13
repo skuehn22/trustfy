@@ -9,92 +9,15 @@
 
     <style>
 
-        #invoice{
-            padding: 30px;
-        }
-
-        .invoice {
-            position: relative;
-            background-color: #FFF;
-            min-height: 680px;
-            padding: 50px;
-            border: 1px solid #d4d4d4
-        }
-
         .invoice header {
             padding: 10px 0;
             margin-bottom: 20px;
             border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
-        .invoice .company-details {
-            text-align: right
-        }
-
-        .invoice .company-details .name {
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #9d9d9d;
-        }
-
-        .invoice .contacts {
-            margin-bottom: 50px
-        }
-
-        .invoice .invoice-to {
-            text-align: left
-        }
-
-        .invoice .invoice-to .to {
-            margin-top: 0;
-            margin-bottom: 0
-        }
-
-        .invoice .invoice-details {
-            text-align: right
-        }
-
-        .invoice .invoice-details .invoice-id {
-            margin-top: 0;
-            color: #9d9d9d;
-        }
-
-        .invoice main {
-            padding-bottom: 50px;
-            padding-top: 30px;
-        }
-
-        .invoice main .thanks {
-            font-size: 2em;
-            margin-bottom: 50px
-        }
-
         .invoice main .notices {
             padding-left: 6px;
             border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
-        }
-
-        .invoice main .notices .notice {
-            font-size: 1.2em
-        }
-
-        .invoice table {
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            margin-bottom: 20px
-        }
-
-        .invoice table td,.invoice table th {
-            padding: 15px;
-            background: #eee;
-            border-bottom: 1px solid #fff
-        }
-
-        .invoice table th {
-            white-space: nowrap;
-            font-weight: 400;
-            font-size: 16px
         }
 
         .invoice table td h3 {
@@ -104,10 +27,6 @@
             font-size: 1.2em
         }
 
-        .invoice table .qty,.invoice table .total,.invoice table .unit {
-            text-align: right;
-        }
-
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
@@ -115,31 +34,9 @@
             width: 25px;
         }
 
-        .invoice table .unit {
-            background: #ddd
-        }
-
         .invoice table .total {
             background:@if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
             color: #fff
-        }
-
-        .invoice table tbody tr:last-child td {
-            border: none
-        }
-
-        .invoice table tfoot td {
-            background: 0 0;
-            border-bottom: none;
-            white-space: nowrap;
-            text-align: right;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-top: 1px solid #aaa
-        }
-
-        .invoice table tfoot tr:first-child td {
-            border-top: none
         }
 
         .invoice table tfoot tr:last-child td {
@@ -148,63 +45,6 @@
             border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
-        .invoice table tfoot tr td:first-child {
-            border: none
-        }
-
-        .more{
-            padding-top: 20px;
-        }
-
-        .more a{
-            color: #9d9d9d;
-            text-decoration: underline;
-        }
-
-        .invoice footer {
-            width: 100%;
-            text-align: center;
-            color: #777;
-            border-top: 1px solid #aaa;
-            padding: 8px 0
-        }
-
-        .pay-now{
-            font-size: 15px;
-        }
-
-        .successful{
-            color: green;
-            font-weight: 700;
-            font-style: italic;
-            float: right;
-            font-size: 18px;
-        }
-
-        @media print {
-            .invoice {
-                font-size: 11px!important;
-                overflow: hidden!important
-            }
-
-            .invoice footer {
-                position: absolute;
-                bottom: 10px;
-                page-break-after: always
-            }
-
-            .invoice>div:last-child {
-                page-break-before: always
-            }
-
-
-        }
-
-
-        .blur {
-            -webkit-filter: blur(2px);
-            filter: blur(4px);
-        }
 
     </style>
 
@@ -264,10 +104,11 @@
                     </div>
                 </div>
             </header>
+
+
             <main>
                 <div class="row contacts">
                     <div class="col invoice-to">
-                        <div class="text-gray-light">Plan for:</div>
                         @if(isset($plan->lastname) && $plan->lastname!=" ")
                             <h5 class="to">{{$plan->firstname}} {{$plan->lastname}}</h5>
                             <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
