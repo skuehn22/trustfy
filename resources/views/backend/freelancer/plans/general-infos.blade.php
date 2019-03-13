@@ -20,7 +20,7 @@
     <div class="form-group">
         <div class="form-inline">
             <label class="col-md-2 pl-0 col-form-label" for="creation-date">
-                Referenz  <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="Number or character from your internal system"></i>
+                Reference  <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="Number or character from your internal system"></i>
             </label>
             @if($plan->reference)
                 <input type="text" id="reference" name="reference" class="form-control col-md-3" value="{{$plan->reference}}">

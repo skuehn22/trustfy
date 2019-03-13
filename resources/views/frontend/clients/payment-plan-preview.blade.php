@@ -81,7 +81,7 @@
                             @endif
                             <div class="row">
                                 <div class="col">
-                                    @if(isset($company->logo))
+                                    @if(isset($company->logo) && $company->logo!="3.png")
                                         @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
                                             <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
                                         @endif
@@ -92,8 +92,9 @@
                                         {!! $company->name or '<i>please fill in</i>' !!}
                                     </h3>
                                     <div>
-                                        {{$company->address1 or ''}},
-                                        {{$company->postcode or ''}},
+                                        {{$company->address1 or ''}}<br>
+                                        @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
+                                        @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
                                         {{$company->city or ''}}
                                     </div>
                                     <div>  {{$user->email or ''}}</div>

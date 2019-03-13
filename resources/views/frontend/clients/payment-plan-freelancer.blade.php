@@ -73,7 +73,7 @@
                 @endif
                 <div class="row">
                     <div class="col">
-                        @if(isset($company->logo))
+                        @if(isset($company->logo) && $company->logo!="3.png")
                             @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
                                 <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
                             @endif
@@ -84,9 +84,9 @@
                             {!! $company->name or '<i>please fill in</i>' !!}
                         </h3>
                         <div>
-                            {{$company->address1 or ''}},
-                            @if(isset($company->address2) && $company->address2!='') {{$company->address2 or ''}},@endif
-                            {{$company->postcode or ''}},
+                            {{$company->address1 or ''}}<br>
+                            @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
+                            @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
                             {{$company->city or ''}}
                         </div>
                         <div>  {{$user->email or ''}}</div>
@@ -111,10 +111,8 @@
 
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>{{$plan->name}}</h3>
-                    </div>
+                <div class="col invoice-details">
+                    <h1 class="invoice-id"style="text-align: left; padding-top: 25px; padding-bottom: 10px;">{{$plan->name}}</h1>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <thead>
@@ -226,10 +224,12 @@
                 @endif
 
                 <div class="thanks">Thank you!</div>
-                <div class="notices">
-                    <div>NOTICE:</div>
-                    <div class="notice">{{$plan->comment}}</div>
-                </div>
+                @if($plan->comment!=null)
+                    <div class="notices">
+                        <div>NOTICE:</div>
+                        <div class="notice">{{$plan->comment}}</div>
+                    </div>
+                @endif
             </main>
             <footer>
                 Payment Plan was created on a computer and is valid without the signature and seal.
