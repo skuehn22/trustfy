@@ -431,6 +431,7 @@ class MangoClass extends Controller
 
     }
 
+
     public function openTransaction($hash, $planHash){
 
         $blade["locale"] = App::getLocale();
