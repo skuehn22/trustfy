@@ -144,7 +144,9 @@ class SettingsController extends Controller
         $company->country_residence = $_POST["country"];
         $company->name = $_POST["company"];
         $company->city = $_POST["city"];
-        $company->address = $_POST["address"];
+        $company->address1 = $_POST["address1"];
+        $company->address2 = $_POST["address2"];
+        $company->postcode = $_POST["postcode"];
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
         $company->save();

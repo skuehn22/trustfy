@@ -253,7 +253,12 @@
                         <h3 class="name">
                                 {!! $company->name or '<i>please fill in</i>' !!}
                         </h3>
-                        <div>  {{$company->address or ''}}, {{$company->city or ''}} </div>
+                        <div>
+                            {{$company->address1 or ''}},
+                            @if(isset($company->address2) && $compnay->address2!='') {{$company->address2 or ''}},  @endif
+                            {{$company->postcode or ''}},                         ,
+                            {{$company->city or ''}}
+                        </div>
                         <div>  {{$user->email or ''}}</div>
                         <div> {{$user->phone or ''}}</div>
                     </div>

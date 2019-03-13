@@ -32,8 +32,18 @@
 
 
                 <div class="form-row py-2">
-                    <label class="col-md-3 col-form-label" for="address">Address</label>
-                    <input id="address" type="text" class="form-control col-md-7" name="address" value="{{ $company->address or "" }}" placeholder="The company address" required>
+                    <label class="col-md-3 col-form-label" for="address">Address1</label>
+                    <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{ $company->address1 or "" }}" placeholder="The company address" required>
+                </div>
+
+                <div class="form-row py-2">
+                    <label class="col-md-3 col-form-label" for="address2">Address2</label>
+                    <input id="address2" type="text" class="form-control col-md-7" name="address2" value="{{ $company->address2 or "" }}" placeholder="The company address" required>
+                </div>
+
+                <div class="form-row py-2">
+                    <label class="col-md-3 col-form-label" for="postcode">Post Code</label>
+                    <input id="postcode" type="text" class="form-control col-md-7" name="postcode" value="{{ $company->postcode or "" }}" placeholder="The company postcode" required>
                 </div>
 
                 <div class="form-row py-2">
