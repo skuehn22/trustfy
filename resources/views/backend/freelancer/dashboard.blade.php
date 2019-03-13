@@ -212,6 +212,28 @@
 @stop
 
 @section('content')
+
+    @if(Session::has('error'))
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-md-12">
+                <div class="alert alert-danger error_message">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    {{ Session::get('error') }}
+                </div>
+            </div>
+        </div>
+    @endif
+    @if(Session::has('success'))
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-md-12">
+                <div class="alert alert-success success_message">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="row blur-dashboard" style="padding-top: 20px;">
         <div class="col-md-9">
             <div class="row">

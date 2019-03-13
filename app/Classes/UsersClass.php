@@ -12,6 +12,9 @@ use App\Http\Requests\Request;
 
 use App\DatabaseModels\MessagesCompanies;
 
+// Libraries
+use App, Auth, Redirect, Hash, MangoPay, Session;
+
 class UsersClass
 {
 
@@ -56,6 +59,21 @@ class UsersClass
     }
 
     public function createCompany($data) {
+
+    }
+
+
+    public function checkSystem($company) {
+
+        if(env("APP_ENV") == "live" && $company->system != 0) {
+
+            Session::flash('error', 'It is not a user from the live system. Please contact the administrator.');
+
+        }elseif(env("APP_ENV") != "live" && $company->system == 0) {
+
+            Session::flash('error', 'It is not a user from the dev system. Please contact the administrator.');
+
+        }
 
     }
 

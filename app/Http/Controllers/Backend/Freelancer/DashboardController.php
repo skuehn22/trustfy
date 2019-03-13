@@ -19,6 +19,7 @@ use App\DatabaseModels\Plans;
 use App\DatabaseModels\Users;
 use App\Classes\StateClass;
 use App\Classes\PlansDetailsClass;
+use App\Classes\UsersClass;
 
 class DashboardController extends Controller
 {
@@ -133,6 +134,10 @@ class DashboardController extends Controller
             }
 
             $upcoming = $planObj->upcomingPayment($user->service_provider_fk);
+
+
+            $usersObj = new UsersClass();
+            $usersObj->checkSystem($company);
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
             return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'company', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients', 'last_plan'));

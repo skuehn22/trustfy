@@ -5,20 +5,6 @@
     <div class="col-md-6">
         <h4>Your Company Details</h4>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="col-md-10">
-                @if(Session::has('error'))
-                    <div class="alert alert-danger error_message">
-                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                        {{ Session::get('error') }}
-                    </div>
-                @endif
-                @if(Session::has('success'))
-                    <div class="alert alert-success success_message">
-                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-            </div>
             <div class="col-md-12 pl-0">
 
                 <div class="form-row py-2">
