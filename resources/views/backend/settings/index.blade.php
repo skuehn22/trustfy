@@ -60,24 +60,24 @@
 
     function getContent($url){
 
-    //alert($url);
+        //alert($url);
 
-    if (window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-    } else {
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+        if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+        } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
 
-    xmlhttp.onreadystatechange = function() {
-    if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
-        document.getElementById("content-container").innerHTML = xmlhttp.responseText;
-        loadScripts();
-    }
-    };
+        xmlhttp.onreadystatechange = function() {
+        if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)) {
+            document.getElementById("content-container").innerHTML = xmlhttp.responseText;
+            loadScripts();
+        }
+        };
 
-    xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/settings/"+ $url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
+        xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade['locale']}}/provider/settings/"+ $url, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
 
     }
 

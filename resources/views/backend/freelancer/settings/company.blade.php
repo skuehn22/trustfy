@@ -1,8 +1,9 @@
-<form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
+
 
 <div class="row">
 
     <div class="col-md-6">
+        <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
         <h4>Your Company Details</h4>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="col-md-12 pl-0">
@@ -20,7 +21,6 @@
                         Type
                     </label>
 
-
                     @if(isset($company->type))
                         {!! Form::select('companyType', $companyTypes, $company->type, ['class' => 'form-control col-md-7', 'id' => 'companyType','placeholder' => 'Select', 'required']) !!}
                     @else
@@ -29,8 +29,6 @@
 
                 </div>
 
-
-
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="address">Address1</label>
                     <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{ $company->address1 or "" }}" placeholder="The company address" required>
@@ -38,12 +36,12 @@
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="address2">Address2</label>
-                    <input id="address2" type="text" class="form-control col-md-7" name="address2" value="{{ $company->address2 or "" }}" placeholder="The company address" required>
+                    <input id="address2" type="text" class="form-control col-md-7" name="address2" value="{{ $company->address2 or "" }}" placeholder="The company address">
                 </div>
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="postcode">Post Code</label>
-                    <input id="postcode" type="text" class="form-control col-md-7" name="postcode" value="{{ $company->postcode or "" }}" placeholder="The company postcode" required>
+                    <input id="postcode" type="text" class="form-control col-md-7" name="postcode" value="{{ $company->postcode or "" }}" placeholder="The company postcode">
                 </div>
 
                 <div class="form-row py-2">
@@ -75,16 +73,10 @@
                     </div>
                 </div>
             </div>
-
-
+        </form>
     </div>
     <div class="col-md-6">
-
-
-
         @include('ajax_upload')
     </div>
-
 </div>
 
-</form>

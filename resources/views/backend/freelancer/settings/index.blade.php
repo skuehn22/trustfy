@@ -29,6 +29,20 @@
         border-radius: 4px;
     }
 
+    .btn-upload{
+
+        padding: 10px;
+        font-size: 14px;
+
+    }
+
+
+    input[type=file] {
+        font-size: 14px;
+        background-color: #eeeeee;
+        color: #0f0f0f;
+    }
+
     </style>
 
 @stop
