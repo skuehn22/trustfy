@@ -1,11 +1,6 @@
-<div class="form-row py-2 pt-0 pl-0 ml-0">
-    <h4 class="pt-0">Project Information</h4>
-</div>
-
-
 <div class="form-group">
     <div class="form-inline">
-        <span style="font-weight: 500;"> Payment Methods
+        <span style="font-weight: 500;"> Payment Method
                 <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Payment Methode you would allow your Client."></i>
         </span>
     </div>
@@ -18,7 +13,7 @@
         </div>
         <div class="col-md-3">
             <label class="switch">
-                <input type="checkbox" name="cc" id="togBtn">
+                <input type="checkbox" name="cc" id="togBtn" value="true">
                 <div class="slider round"><!--ADDED HTML -->
                     <span class="on">ON</span>
                     <span class="off">OFF</span><!--END-->
@@ -53,7 +48,6 @@
             </span>
         </div>
         <div class="form-group">
-            <label class="pl-0" for="comment">Comment:</label>
             @if($plan->comment)
                 <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment">{{$plan->comment}}</textarea>
             @else

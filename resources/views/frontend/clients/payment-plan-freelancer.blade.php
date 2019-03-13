@@ -241,7 +241,7 @@
                         </h3>
                         <div>
                             {{$company->address1 or ''}},
-                            @if(isset($company->address2) && $compnay->address2!='') {{$company->address2 or ''}},@endif
+                            @if(isset($company->address2) && $company->address2!='') {{$company->address2 or ''}},@endif
                             {{$company->postcode or ''}},
                             {{$company->city or ''}}
                         </div>

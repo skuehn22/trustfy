@@ -94,6 +94,11 @@
 
 
         $( document ).ready(function() {
+
+            //activate payment options
+            $('#togBtn').click();
+            $('#togBtnBt').click();
+
             loadScript();
             $('.btn-group').removeClass("step-content");
 

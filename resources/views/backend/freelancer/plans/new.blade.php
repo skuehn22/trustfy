@@ -209,7 +209,7 @@
                      </ul>
 
 
-                    <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;">
+                    <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;  padding-right: 40px;">
 
                         <div class="btn-group mr-2 sw-btn-group" role="group" >
                             <a class="btn btn-secondary cancel-plan" id="cancel" href="/freelancer/plans/"><i class="fas fa-ban"></i> Close</a>
@@ -222,7 +222,7 @@
 
                     </div>
 
-                        <div class="sw-container tab-content" style=" padding-left: 40px;">
+                        <div class="col-md-12  sw-container tab-content" style=" padding-left: 40px; padding-right: 40px;">
 
                             <form role="form" data-toggle="validator" method="post" accept-charset="utf-8" id="upload_form">
 
