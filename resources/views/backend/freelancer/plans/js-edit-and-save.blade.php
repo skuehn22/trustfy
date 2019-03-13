@@ -255,7 +255,14 @@
 
         //initalize datepicker
         $( function() {
-            $( "#creation-date" ).datepicker();
+
+
+            $( "#creation-date" ).datepicker( );
+            $( "#creation-date" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+            $('#creation-date').datepicker('setDate', new Date());
+
+
+
         } );
 
 

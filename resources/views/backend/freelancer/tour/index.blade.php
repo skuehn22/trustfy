@@ -43,8 +43,7 @@
         <span>Step 2</span>
 
         <div class="cd-more-info bottom">
-            <h2>Save Company</h2>
-            <p>Make your entries and save.</p>
+            <h2>Save your entries here</h2>
             <img src="/img/step-2.png" alt="step 2">
         </div>
     </li> <!-- .cd-single-step -->
@@ -53,8 +52,7 @@
         <span>Step 3</span>
 
         <div class="cd-more-info right">
-            <h2>Create a client</h2>
-            <p>Here you can create your first customer.</p>
+            <h2>Add your first client!</h2>
             <a href="/freelancer/clients/new" class="btn btn-secondary">ok</a>
             <img src="/img/step-3.png" alt="step 3">
         </div>
@@ -64,8 +62,7 @@
         <span>Step 3</span>
 
         <div class="cd-more-info bottom">
-            <h2>Save client</h2>
-            <p>Make your entries and save.</p>
+            <h2>Save your entries here</h2>
             <img src="/img/step-3.png" alt="step 3">
         </div>
     </li>
@@ -75,9 +72,8 @@
         <span>Step 3</span>
 
         <div class="cd-more-info right">
-            <h2>Congratulation </h2>
-            <p>You can now set up your first payment plan.</p>
-            <a href="/freelancer/plans/new" class="btn btn-secondary">Sounds good</a>
+            <h2>You’re ready to set up your first payment plan!</h2>
+            <a href="/freelancer/plans/new" class="btn btn-secondary">Let’s go</a>
             <img src="/img/step-3.png" alt="step 3">
         </div>
     </li>

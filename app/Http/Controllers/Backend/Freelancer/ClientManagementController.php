@@ -126,7 +126,7 @@ class ClientManagementController extends Controller
         $client->service_provider_fk = $blade["user"]->service_provider_fk;
         $client->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'The client has been created.');
+        return Redirect::to($blade["ll"]."/freelancer/clients/")->withInput()->with('success', 'Client saved');
 
     }
 

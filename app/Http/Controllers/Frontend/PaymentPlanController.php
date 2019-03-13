@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Frontend;
 
 // Libraries
-use App, Redirect, Auth, DB, Input, Validator, Hash;
+use App, Redirect, Auth, DB, Input, Validator, Hash, Session;
 
 use App\Http\Controllers\Controller;
 
@@ -65,6 +65,7 @@ class PaymentPlanController extends Controller
         }
 
         if (isset($_GET['transactionId'])) {
+
             $loggedIn = true;
         }
 
@@ -115,6 +116,10 @@ class PaymentPlanController extends Controller
 
                 $msg_obj = new MessagesClass();
                 $result = $msg_obj->payInSucceeded($milestone, $plan, $user);
+
+            }else{
+
+                Session::flash('error', 'An error has occurred- '.$payinResult->ResultMessage);
 
             }
         }

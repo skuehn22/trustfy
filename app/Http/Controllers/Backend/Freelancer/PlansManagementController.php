@@ -75,42 +75,49 @@ class PlansManagementController extends Controller
 
     public function create() {
 
-        $blade["ll"] = App::getLocale();
-        $blade["user"] = Auth::user();
+        if (Auth::check()) {
 
-        //check if user comes from tour. if yes prevent that he sees the demo dashboard again
-        if($blade["user"]->tour == "true"){
-            $blade["user"]->tour= "false";
-            $blade["user"]->save();
-        }
+            $blade["ll"] = App::getLocale();
+            $blade["user"] = Auth::user();
+
+            //check if user comes from tour. if yes prevent that he sees the demo dashboard again
+            if ($blade["user"]->tour == "true") {
+                $blade["user"]->tour = "false";
+                $blade["user"]->save();
+            }
 
 
-        $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-            ->where("delete", "=", "0")
-            ->get();
+            $clients = Clients::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->where("delete", "=", "0")
+                ->get();
 
-        $types = PlansTypes::where("delete", "=", "0")
-        ->lists("name","id");
+            $types = PlansTypes::where("delete", "=", "0")
+                ->lists("name", "id");
 
-        $plan = new Plans();
+            $plan = new Plans();
 
-        if($blade["user"]->service_provider_fk == 0){
-            $plan->service_provider_fk = -1;
-        }else{
-            $plan->service_provider_fk = $blade["user"]->service_provider_fk;
-        }
+            if ($blade["user"]->service_provider_fk == 0) {
+                $plan->service_provider_fk = -1;
+            } else {
+                $plan->service_provider_fk = $blade["user"]->service_provider_fk;
+            }
 
-        if(isset($_POST['clients'])){
-            $plan->clients_id_fk = $_POST['clients'];
-        }
+            if (isset($_POST['clients'])) {
+                $plan->clients_id_fk = $_POST['clients'];
+            }
 
-        $plan->hidden = 1;
-        $plan->save();
+            $plan->hidden = 1;
+            $plan->save();
 
-        $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
-            ->first();
+            $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
+                ->first();
 
-        return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects', 'company'));
+            return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects', 'company'));
+
+        }else {
+
+                return Redirect::to(env("MYHTTP"));
+            }
 
     }
 

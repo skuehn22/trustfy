@@ -5,4 +5,7 @@
 
 
 <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+
+<meta name="theme-color" content="#ffffff">
+
 <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
