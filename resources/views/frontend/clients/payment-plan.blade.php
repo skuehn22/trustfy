@@ -131,7 +131,7 @@
                     <tr>
                         <th>#</th>
                         <th class="text-left">DESCRIPTION</th>
-                        <th class="text-right">DUE AT</th>
+                        <th class="text-right">DUE ON</th>
                         <th class="text-right">TOTAL</th>
                         <th class="text-right">PAYMENT STATUS</th>
                     </tr>
@@ -139,7 +139,7 @@
                     <tbody>
                     <tr>
                         <td class="no">01</td>
-                        <td class="text-left" style="width:40%;">
+                        <td class="text-left" style="width:35%;">
                             {!!  $milestone->name or '<i>please fill in</i>'!!}
                             <input type="hidden" value="{{$milestone->name or ''}}" id="name_{{$milestone->id or ''}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
@@ -151,8 +151,8 @@
 
 
                         </td>
-                        <td class="qty"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif</td>
-                        <td>
+                        <td class="qty" style="width:16%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif</td>
+                        <td style="text-align: right;">
 
                             @if(isset($milestone->bank_transfer))
                                 @if(isset($milestone->paystatus) && $milestone->paystatus==0)
@@ -195,9 +195,10 @@
                                         </div>
                                     </form>
                                 @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4)
-                                        <p class="successful">Money Realsed</p>
+                                        <p class="successful">Money Released</p>
                                     @else
                                         <p class="successful">Amount Funded</p>
+                                                <br>
                                         <span class="input-group-btn" style="padding-left: 5px;">
                                             <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
                                         </span>

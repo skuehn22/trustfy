@@ -327,10 +327,10 @@
                                     <td style="text-align: center">
                                         <p class="header-text">{{$company->name}} has sent you a payment plan</p>
 
-
+                                        <br><br>
                                         <p>Hi {{$client->firstname}} {{$client->lastname}},</p>
-                                        <p>{{$company->name}} as created a payment plan with you on Trustfy.io. </p>
-                                        <p>Please review the terms and agree to the transaction.</p>
+                                        <p>{{$company->name}} as created a payment plan for you. </p>
+                                        <p>You can review the terms and make a payment below.</p>
                                         <br><br>
                                     </td>
                                 </tr>
