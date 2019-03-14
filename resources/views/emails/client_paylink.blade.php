@@ -325,7 +325,7 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align: center">
-                                        <p class="header-text">{{$company->name}} has sent you a payment plan for</p>
+                                        <p class="header-text">{{$company->name}} has sent you a payment plan</p>
 
 
                                         <p>Hi {{$client->firstname}} {{$client->lastname}},</p>
