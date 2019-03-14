@@ -75,7 +75,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/settings/save-bank', 'Backend\Freelancer\SettingsController@saveBank') ;
     Route::any('/freelancer/settings/kyc-check', 'Backend\Freelancer\SettingsController@kycCheck') ;
 
+
+
     Route::any('/payment-plan/{hash}', 'Frontend\PaymentPlanController@index') ;
+
+
     Route::any('/payment-plan/load-preview/{id}', 'Frontend\PaymentPlanController@loadPreview') ;
     Route::any('/payment-plan/preview/{hash}', 'Frontend\PaymentPlanController@preview') ;
     Route::any('/payment-plan/pay-by-card/{hash}', 'Frontend\PaymentPlanController@payCC') ;

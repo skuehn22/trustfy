@@ -972,12 +972,8 @@ xapp prototype - no need to import this in production
 .btn:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
-.btn-secondary {
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
-}
-.btn {
+
+.btn-tour {
     display: inline-block;
     font-weight: 400;
     text-align: center;

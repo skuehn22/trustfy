@@ -148,16 +148,20 @@
 
 @section('content')
         @if(Session::has('success'))
-            <div class="alert alert-success error_message">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                {{ Session::get('success') }}
+            <div class="pt-5">
+                <div class="alert alert-success error_message">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    {{ Session::get('success') }}
+                </div>
             </div>
         @endif
 
         @if(Session::has('error'))
-            <div class="alert alert-danger error_message">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                {{ Session::get('error') }}
+            <div class="pt-5">
+                <div class="alert alert-danger error_message pt-3">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    {{ Session::get('error') }}
+                </div>
             </div>
         @endif
 
@@ -238,8 +242,11 @@
                 <div class="modal-footer">
                     <form action="/{{$blade["ll"]}}/freelancer/plans/delete/" id="deleteform" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <p>
+                            Are you sure you want to delete this plan? Your client will not be able to access it or make payments any more.
+                        </p>
+                        <button type="button" class="btn btn-secondary" style="width:80px;" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger" style="width:80px;">Yes</button>
                     </form>
                 </div>
             </div>

@@ -313,6 +313,7 @@ class PlansManagementController extends Controller
 
     }
 
+
     public function getPlanByTyp(){
 
         $input = Request::all();
@@ -469,28 +470,30 @@ class PlansManagementController extends Controller
         $query->select('clients.firstname', 'clients.lastname', 'clients.email', 'clients.firstname', 'clients.address1', 'clients.city', 'clients.address2', 'projects_plans.*');
         $plan = $query->first();
 
-        $company = Companies::where("id", "=", $plan->service_provider_fk)
-            ->first();
+        if($plan->delete ==1){
 
-        $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
-            ->first();
+            return view('frontend.clients.payment-plan-deleted', compact('blade'));
 
-        $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
-            ->get();
+        }else{
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-            ->first();
+            $company = Companies::where("id", "=", $plan->service_provider_fk)
+                ->first();
 
-        $hash = $plan->hash;
+            $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
+                ->first();
 
-        $statusObj = new StateClass();
-        $status =$statusObj->milestones($milestone->paystatus);
+            $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
+                ->get();
 
-        return view('frontend.clients.payment-plan-freelancer', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash', 'status'));
+            $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+                ->first();
 
+            $hash = $plan->hash;
 
+            $statusObj = new StateClass();
+            $status =$statusObj->milestones($milestone->paystatus);
+
+            return view('frontend.clients.payment-plan-freelancer', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash', 'status'));
+        }
     }
-
-
-
 }

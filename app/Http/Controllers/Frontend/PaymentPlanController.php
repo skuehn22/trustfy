@@ -41,7 +41,6 @@ class PaymentPlanController extends Controller
 
     public function index($hash) {
 
-
         if(isset($_GET['protect']) && $_GET['protect'] == true){
             $protect = true;
             $login = true;
@@ -50,22 +49,15 @@ class PaymentPlanController extends Controller
             $protect = false;
         }
 
-
         // needs a complete new methode -> not safe at all
 
         if(isset($_GET['login'])) {
-
-
             $loggedIn = true;
-
-
-
         }else{
             $loggedIn = false;
         }
 
         if (isset($_GET['transactionId'])) {
-
             $loggedIn = true;
         }
 
@@ -81,51 +73,60 @@ class PaymentPlanController extends Controller
         $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
-            ->first();
+        if($plan->delete ==1){
 
-        $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
-            ->get();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-            ->first();
+            return view('frontend.clients.payment-plan-deleted', compact('blade', 'company', 'plan'));
 
-        //only if client comes back from mangopay
-        if (isset($_GET['transactionId'])) {
+        }else{
 
-            //if client comes from mangopay they will habe an transaction id
-            $transactionId = $_GET['transactionId'];
 
-            //get result of the payin made by client
-            $mango_obj = new MangoClass($this->mangopay);
-            $payinResult = $mango_obj->getPayInCardWeb($transactionId);
-
-            //update the result of the payin in intern DB
-            $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
+            $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
                 ->first();
 
-            $payIn->state = $payinResult->Status;
-            $payIn->result_code = $payinResult->ResultCode;
-            $payIn->result_message = $payinResult->ResultMessage;
-            $payIn->save();
+            $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
+                ->get();
 
-            //if payment was successful update the paystatus of our intern DB
-            if ($payinResult->Status == "SUCCEEDED") {
-                $milestone->paystatus = 2;
-                $milestone->save();
+            $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+                ->first();
 
-                $msg_obj = new MessagesClass();
-                $result = $msg_obj->payInSucceeded($milestone, $plan, $user);
+            //only if client comes back from mangopay
+            if (isset($_GET['transactionId'])) {
 
-            }else{
+                //if client comes from mangopay they will habe an transaction id
+                $transactionId = $_GET['transactionId'];
 
-                Session::flash('error', 'An error has occurred- '.$payinResult->ResultMessage);
+                //get result of the payin made by client
+                $mango_obj = new MangoClass($this->mangopay);
+                $payinResult = $mango_obj->getPayInCardWeb($transactionId);
 
+                //update the result of the payin in intern DB
+                $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
+                    ->first();
+
+                $payIn->state = $payinResult->Status;
+                $payIn->result_code = $payinResult->ResultCode;
+                $payIn->result_message = $payinResult->ResultMessage;
+                $payIn->save();
+
+                //if payment was successful update the paystatus of our intern DB
+                if ($payinResult->Status == "SUCCEEDED") {
+                    $milestone->paystatus = 2;
+                    $milestone->save();
+
+                    $msg_obj = new MessagesClass();
+                    $result = $msg_obj->payInSucceeded($milestone, $plan, $user);
+
+                }else{
+
+                    Session::flash('error', 'An error has occurred- '.$payinResult->ResultMessage);
+
+                }
             }
+
+            return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'login', 'hash', 'protect', 'loggedIn'));
+
         }
-
-        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'login', 'hash', 'protect', 'loggedIn'));
-
 
     }
 

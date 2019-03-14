@@ -22,7 +22,7 @@
             <h2>Meet your Dashboard</h2>
             <p>It’s your personal headquarters giving you an overview of all your projects and payments
             </p>
-            <button id="step-trigger-1" class="btn btn-secondary">Next</button>
+            <button id="step-trigger-1" class="btn btn-secondary btn-tour">Next</button>
             <img src="/img/step-1.png" alt="step 1">
         </div>
     </li>
@@ -34,7 +34,7 @@
         <div class="cd-more-info right">
             <h2>Set up your company</h2>
             <p>Send out payment plans that match your brand!</p>
-            <a href="/freelancer/settings" class="btn btn-secondary">ok</a>
+            <a href="/freelancer/settings" class="btn btn-secondary btn-tour">ok</a>
             <img src="/img/step-1.png" alt="step 1">
         </div>
     </li> <!-- .cd-single-step -->
@@ -53,7 +53,7 @@
 
         <div class="cd-more-info right">
             <h2>Add your first client!</h2>
-            <a href="/freelancer/clients/new" class="btn btn-secondary">ok</a>
+            <a href="/freelancer/clients/new" class="btn btn-secondary btn-tour">ok</a>
             <img src="/img/step-3.png" alt="step 3">
         </div>
     </li>
@@ -73,7 +73,7 @@
 
         <div class="cd-more-info right">
             <h2>You’re ready to set up your first payment plan!</h2>
-            <a href="/freelancer/plans/new" class="btn btn-secondary">Let’s go</a>
+            <a href="/freelancer/plans/new" class="btn btn-secondary btn-tour">Let’s go</a>
             <img src="/img/step-3.png" alt="step 3">
         </div>
     </li>
