@@ -2,7 +2,7 @@
 <!-- Startframe -->
 <div class="cd-nugget-info d-none">
     <h1>Welcome to Trustfy</h1>
-    <p>We’re glad you’re here!</p>
+    <h3>We’re glad you’re here!</h3>
     <button id="cd-tour-trigger-step1" class="cd-btn">Get Started</button>
     <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 1 of ? </button>
     <button id="cd-tour-trigger-step3" class="cd-btn d-none">Step 2 of ? </button>
@@ -20,7 +20,7 @@
 
         <div class="cd-more-info right">
             <h2>Meet your Dashboard</h2>
-            <p>It’s your personal headquarters giving you have an overview of all your projects and payments
+            <p>It’s your personal headquarters giving you an overview of all your projects and payments
             </p>
             <button id="step-trigger-1" class="btn btn-secondary">Next</button>
             <img src="/img/step-1.png" alt="step 1">
