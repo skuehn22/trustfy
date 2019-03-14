@@ -10,7 +10,7 @@
     {{ csrf_field() }}
 
     <div class="col-md-12 pb-3">
-        <h1 class="text-left">Login in</h1>
+        <h1 class="text-left">Login</h1>
     </div>
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         <label for="email" class="col-md-12 control-label text-left font-weight-bold">E-Mail</label>
@@ -52,7 +52,7 @@
     <div class="form-group">
         <div class="col-md-12 register pt-5">
             <p style="font-size: 18px; padding-bottom: 0px;">New to Trustfy?</p>
-            <a class="btn btn-secondary btn-register" href="/beta-register" role="button">Create an account</a>
+            <a class="btn btn-secondary btn-register" href="/beta-register" role="button">Create an Account</a>
             <br><br>
         </div>
 
