@@ -62,7 +62,7 @@ class MessagesClass  extends Controller
     public function sendStandardMail($subject, $data, $recipient) {
 
         $mailTemplate = "payInSucceeded";
-        $this->send($mailTemplate, $recipient, $subject,  $data);
+        $this->send($mailTemplate, $recipient, $subject,  $data, null, null, null, null);
 
     }
 
