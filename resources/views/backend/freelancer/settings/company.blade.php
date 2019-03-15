@@ -1,5 +1,15 @@
-
-
+@if($user->logins_sum < 4)
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Why we need the follwoing data</strong> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+@endif
 <div class="row">
 
     <div class="col-md-6">
@@ -40,21 +50,18 @@
                 </div>
 
                 <div class="form-row py-2">
-                    <label class="col-md-3 col-form-label" for="postcode">Post Code</label>
-                    <input id="postcode" type="text" class="form-control col-md-7" name="postcode" value="{{ $company->postcode or "" }}" placeholder="The company postcode">
-                </div>
-
-                <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="city">City</label>
-                    <input id="city" type="text" class="form-control col-md-7" name="city" value="{{ $company->city or "" }}" placeholder="Your Company City" required>
+                    <input id="city" type="text" class="form-control col-md-4" name="city" value="{{ $company->city or "" }}" placeholder="City" required>
+                    <input id="postcode" type="text" class="form-control col-md-3" name="postcode" value="{{ $company->postcode or "" }}" placeholder="Post Code">
                 </div>
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="country">Country</label>
 
+
                     @if(isset($company->country_residence))
-                        @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => $company->country_residence])
+                        {!! Form::select('country', $countries, $company->country_residence, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
                     @else
-                        @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => ''])
+                        {!! Form::select('country', $countries, null, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
                     @endif
 
 

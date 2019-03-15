@@ -19,6 +19,7 @@ use App\DatabaseModels\Users;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
+use App\DatabaseModels\Countries;
 use App\DatabaseModels\MangoKyc;
 use App\Classes\MangoClass;
 
@@ -102,8 +103,9 @@ class SettingsController extends Controller
         }
 
 
+        $countries= Countries::lists('country_name', 'alpha2_code');
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs'));
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs', 'countries'));
 
     } else {
 

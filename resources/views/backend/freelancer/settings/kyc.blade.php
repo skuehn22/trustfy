@@ -34,10 +34,11 @@
         <label class="col-md-3 col-form-label" for="nationality">Nationality*</label>
 
         @if(isset($company->country_nationality))
-            @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => $company->country_nationality])
+            {!! Form::select('nationality', $countries, $company->country_nationality, ['id' => 'nationality', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
         @else
-            @include('backend.settings.countries', [ 'id' => 'nationality', 'class' => 'form-control col-md-7', 'default' => 'IE'])
+            {!! Form::select('nationality', $countries, null, ['id' => 'nationality', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
         @endif
+
     </div>
         <div class="form-group">
             <div class="col-md-10 float-left text-left pt-5 pl-0">

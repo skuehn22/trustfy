@@ -13,6 +13,7 @@ use App, Auth, Request, Redirect;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Clients;
+use App\DatabaseModels\Countries;
 
 class ClientManagementController extends Controller
 {
@@ -76,8 +77,9 @@ class ClientManagementController extends Controller
 
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
+        $countries= Countries::lists('country_name', 'alpha2_code');
 
-        return view('backend.freelancer.clients.clients-new', compact('blade', 'clients'));
+        return view('backend.freelancer.clients.clients-new', compact('blade', 'clients', 'countries'));
 
     }
 

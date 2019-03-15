@@ -108,7 +108,9 @@
                         </div>
                         <div class="form-row py-2">
                             <label class="col-md-4 col-form-label" for="country">Country</label>
-                            @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-7', 'default' => $blade['user']->country])
+
+                            {!! Form::select('country', $countries, null, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
+
                         </div>
                         <div class="form-row pt-3 py-2 pt-2">
 
