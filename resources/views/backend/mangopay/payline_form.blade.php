@@ -120,6 +120,15 @@
 
 <div id="PaylineForm"></div>
 
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-4 pt-3 mx-auto text-center">
+        <div class="text-center">
+            <a class="" href="{{ asset('/') }}">
+                <img src="https://www.mangopay.com/terms/powered-by-mangopay.png" width="500px" alt="Trustfy Freelancer Payment">
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
