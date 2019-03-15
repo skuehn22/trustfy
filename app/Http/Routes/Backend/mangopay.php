@@ -18,4 +18,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::any('/mangopay/sandbox/create-payin', 'Backend\Mangopay\SandboxController@createPayIn');
     Route::any('/mangopay/sandbox/create-payout', 'Backend\Mangopay\SandboxController@createPayOut');
 
+    Route::any('/mangopay/payline-template', 'Backend\Mangopay\TestController@template');
+
 });

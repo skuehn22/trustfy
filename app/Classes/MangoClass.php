@@ -461,12 +461,14 @@ class MangoClass extends Controller
             $payIn->DebitedFunds->Amount = $prepedPayIn->amount*100;
             $payIn->DebitedFunds->Currency ="EUR";
             $payIn->Fees = new \MangoPay\Money();
-            $payIn->Fees->Amount = 300;
+            $payIn->Fees->Amount = ($prepedPayIn->amount*100) * 0.03;
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
             $payIn->ExecutionDetails->ReturnURL = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$planHash;
             $payIn->ExecutionDetails->Culture = "EN";
+            $payIn->ExecutionDetails->TemplateURL = "https://www.trustfy.io";
+
 
             $result = $this->mangopay->PayIns->Create($payIn);
 

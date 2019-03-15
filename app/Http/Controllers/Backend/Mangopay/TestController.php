@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Backend\Mangopay;
 
-use MangoPay, Redirect;
+use MangoPay, Redirect, App;
 use App\Http\Controllers\Controller;
 
 class TestController extends Controller
@@ -211,6 +211,11 @@ class TestController extends Controller
     }
 
 
+    public function template() {
 
+        $blade["locale"] = App::getLocale();
+        return view('backend.mangopay.payline_form', compact('blade'));
+
+    }
 
 }
