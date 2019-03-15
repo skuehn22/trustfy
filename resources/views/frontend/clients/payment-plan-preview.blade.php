@@ -177,7 +177,6 @@
                                                         <div class="col-md-5"  style="text-align: right;">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
                                                     <button class="btn btn-success pay-now" disabled data-toggle="tooltip" data-placement="top" title="In Preview deactivated">Pay now</button><br>
-                                                    <i>deactivated in preview</i>
                                                 </span>
                                                         </div>
                                                     </div>
