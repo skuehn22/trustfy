@@ -52,7 +52,7 @@
                         Account
                     @endif
                 </a>
-                <ul>
+                <ul style="list-style-type: none;">
                     <li><a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">Settings</a></li>
                     <li><a href="{{ URL::to($blade["ll"].'/logout') }}">Logout</a></li>
                 </ul>

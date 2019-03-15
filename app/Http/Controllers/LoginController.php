@@ -229,7 +229,25 @@ class LoginController extends Controller
 
     public function reset() {
 
-        return view('auth.passwords.reset', compact('blade'));
+        $token = "";
+
+        return view('auth.passwords.reset', compact('blade', 'token'));
+
+    }
+
+    public function resetMail() {
+
+
+
+        $subject= "Trustfy Payments - Reset Password";
+        $data['content'] = "<h3>Information to your plan protection</h3>Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
+
+        $msg_obj = new MessagesClass();
+        $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);
+
+
+
+        return view('auth.passwords.reset', compact('blade', 'token'));
 
     }
 

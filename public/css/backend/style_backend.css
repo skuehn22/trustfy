@@ -340,12 +340,19 @@ Top Navigation
     /* top nav - not visible on mobile devices */
     display: none;
 }
+
+
 @media only screen and (min-width: 768px) {
     .cd-nav {
         display: block;
         float: right;
         height: 100%;
     }
+}
+
+
+.cd-top-nav{
+    list-style-type: none;
 }
 
 .cd-top-nav > li > a::before {
