@@ -467,7 +467,7 @@ class MangoClass extends Controller
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
             $payIn->ExecutionDetails->ReturnURL = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$planHash;
             $payIn->ExecutionDetails->Culture = "EN";
-            $payIn->ExecutionDetails->TemplateURL = "https://www.trustfy.io";
+            $payIn->ExecutionDetails->TemplateURL = "https://www.trustfy.io/mangopay/payline-template";
 
 
             $result = $this->mangopay->PayIns->Create($payIn);
