@@ -231,7 +231,7 @@ class PaymentPlanController extends Controller
         $query->join('companies_mangowallets', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
         $query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
         $query->where('projects_plans_milestones.id', '=', $id);
-        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'projects_plans.*');
+        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'projects_plans.*', 'projects_plans.id AS planId') ;
         $plan = $query->first();
 
         $user = Users::where("service_provider_fk", "=", $plan->service_provider_fk)
@@ -250,11 +250,9 @@ class PaymentPlanController extends Controller
 
         if($payOutResult->Status == "CREATED"){
 
-            $subject = "Trustfy Payments - Payout created";
-            $data['content'] = "Money for ".$milestone->name." was realsed by the customer. Will be in your bank soon... maybe...";
-
+            $subject = "Trustfy Payments - Pay-out confirmation";
             $msg_obj = new MessagesClass();
-            $msg_obj->sendStandardMail($subject, $data, $user->email);
+            $msg_obj->payOutCreated($subject, $user->email, $payout, $plan->planId);
 
             $milestone->paystatus = 3;
             $milestone->save();
@@ -287,7 +285,7 @@ class PaymentPlanController extends Controller
 
 
         $subject= "Trustfy Payments - Plan Protection";
-        $data['content'] = "Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
+        $data['content'] = "<h3>Information to your plan protection</h3>Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
         $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);

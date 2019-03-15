@@ -11,8 +11,8 @@ namespace App\Classes;
 use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\MessagesCompanies;
-use App\DatabaseModels\Companies;
-use App\DatabaseModels\ClientsMangowallets;
+use App\DatabaseModels\Plans;
+use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Clients;
 
 
@@ -20,10 +20,10 @@ class MessagesClass  extends Controller
 {
 
     //global sender function
-    public function send($mailTemplate, $recipient, $subject, $data, $client, $plan, $milestone, $planUrl){
+    public function send($mailTemplate, $recipient, $subject,  $data){
 
-        Mail::send('emails.'.$mailTemplate, compact('data', 'client', 'plan', 'milestone', 'planUrl'), function ($message) use ($recipient, $subject) {
-            $message->from('info@trustfy.io', 'Trustfy - Payment Plans');
+        Mail::send('emails.'.$mailTemplate, compact('data'), function ($message) use ($recipient, $subject) {
+            $message->from('plan@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->bcc('bcc@trustfy.io');
             $message->subject($subject);
@@ -61,38 +61,31 @@ class MessagesClass  extends Controller
 
     public function sendStandardMail($subject, $data, $recipient) {
 
-        $mailTemplate = "payInSucceeded";
-        $this->send($mailTemplate, $recipient, $subject,  $data, null, null, null, null);
+        $mailTemplate = "default";
+        $this->send($mailTemplate, $recipient, $subject,  $data);
 
     }
 
 
     public function payInSucceeded($milestone, $plan, $user) {
 
-
-        $company = App\DatabaseModels\Companies::where("id", "=", $plan->service_provider_fk)
-            ->first();
-
-        $client = Clients::where("service_provider_fk", "=", $plan->clients_id_fk)
-            ->first();
-
-
         $recipient = $user->email;
         $mailTemplate = "payInSucceeded";
         $subject = trans('messages.subject_typ_1');
-
-        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
-        $data['content']="";
-
-
-        $typ = 1;
+        $typ = 4;
         $id = $milestone->id;
+
+        $data['content']="";
+        $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
+        $data['client'] = Clients::where("id", "=", "1162")->first();
+        $data['milestone'] = $milestone;
+        $data['plan'] = $plan;
 
         //check if msg was already send
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, $client, $plan, $milestone, $planUrl);
+            $this->send($mailTemplate, $recipient, $subject,  $data);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -101,5 +94,31 @@ class MessagesClass  extends Controller
 
     }
 
+    public function payOutCreated($subject, $recipient, $payout, $planId) {
+
+        $plan = Plans::where("id", "=", $planId)->first();
+        $milestone = PlansMilestone::where("id", "=", $payout->milestone_id_fk)->first();
+        $mailTemplate = "payOutCreated";
+        $typ = 1;
+        $id = $payout->milestone_id_fk;
+
+        $data['content']="";
+        $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
+        $data['client'] = Clients::where("id", "=", "1162")->first();
+        $data['milestone'] = $milestone;
+        $data['plan'] = $plan;
+
+        //check if msg was already send
+        $exists = $this->check($typ, $id, $plan->service_provider_fk);
+
+        if(!$exists){
+            $this->send($mailTemplate, $recipient, $subject,  $data);
+            $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
+        }
+
+        $msg="";
+        return $msg;
+
+    }
 
 }

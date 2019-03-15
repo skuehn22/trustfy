@@ -300,7 +300,7 @@
     </style>
 </head>
 <body class="">
-<span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+<!--<span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>-->
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td>&nbsp;</td>
@@ -317,15 +317,15 @@
 
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
-                                        <img src="http://dev.work-smarter.io/img/trustfy-green.png" width="200px;">
+                                        <img src="https://www.trustfy.io/img/trustfy-green.png" width="200px;">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
-                                        <p>Great news! {{$client->firstname}} {{$client->lastname}} has made a payment for the following project:</p>
-                                        <p>Project: {{$plan->name}}</p>
-                                        <p>Milestone: {{$milestone->name}}</p>
-                                        <p>Amount: € {{number_format($milestone->amount, 2, ',', ' ')}}</p>
+                                        <p>Great news! <br>{{$data['client']->firstname}} {{$data['client']->lastname}} has made a payment for the following project:</p>
+                                        <p>Project: {{$data['plan']->name}}</p>
+                                        <p>Milestone: {{$data['milestone']->name}}</p>
+                                        <p>Amount: € {{number_format($data['milestone']->amount, 2, ',', ' ')}}</p>
                                         <p>Your money is being held in a secure account, <br>so go ahead and work with confidence- your money is there for you! </p>
                                     </td>
                                 </tr>
@@ -338,7 +338,7 @@
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td  style="text-align: center">  <a href="{{ $planUrl }}" target="_blank">View Plan</a> </td>
+                                                            <td  style="text-align: center">  <a href="{{ $data['planUrl'] }}" target="_blank">View Plan</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

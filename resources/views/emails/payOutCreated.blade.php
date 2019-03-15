@@ -300,7 +300,7 @@
     </style>
 </head>
 <body class="">
-<span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+<!--<span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>-->
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td>&nbsp;</td>
@@ -314,24 +314,16 @@
                     <tr>
                         <td class="wrapper">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
-                                        @if(isset($company->logo) && $company->logo!="3.png")
-                                            @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
-                                                <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
-                                            @endif
-                                        @endif
+                                        <img src="https://www.trustfy.io/img/trustfy-green.png" width="200px;">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center">
-                                        <p class="header-text">{{$company->name}} has sent you a payment plan</p>
-
-                                        <br><br>
-                                        <p>Hi {{$client->firstname}} {{$client->lastname}},</p>
-                                        <p>{{$company->name}} as created a payment plan for you. </p>
-                                        <p>You can review the terms and make a payment below.</p>
-                                        <br><br>
+                                    <td style="text-align: center; padding-bottom: 35px;">
+                                        <p class="header-text">Your money is on the way!</p>
+                                        <p>{{$data['client']->firstname}} {{$data['client']->lastname}} released a payment for: <br> "{{$data['milestone']->name}}" <br>it’ll be in your bank soon.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -343,7 +335,7 @@
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td  style="text-align: center">  <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" target="_blank">View & Pay</a> </td>
+                                                            <td  style="text-align: center">  <a href="{{ $data['planUrl'] }}" target="_blank">View Plan</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -351,15 +343,8 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <p>
-                                               <br><br>
-                                               <strong>{!! $company->name or '<i>please fill in</i>' !!}</strong> <br>
-                                                {{$company->address1 or ''}}<br>
-                                                @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
-                                                @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
-                                                {{$company->city or ''}}<br>
-                                                <a href="mailto:{{$user->email or ''}}" style="color: #000; text-decoration: none;"> {{$user->email or ''}}</a>
-                                        </p>
+
+
                                     </td>
                                 </tr>
                             </table>

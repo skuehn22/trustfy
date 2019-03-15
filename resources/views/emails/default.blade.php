@@ -314,52 +314,15 @@
                     <tr>
                         <td class="wrapper">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
-                                        @if(isset($company->logo) && $company->logo!="3.png")
-                                            @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
-                                                <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
-                                            @endif
-                                        @endif
+                                        <img src="https://www.trustfy.io/img/trustfy-green.png" width="200px;">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center">
-                                        <p class="header-text">{{$company->name}} has sent you a payment plan</p>
-
-                                        <br><br>
-                                        <p>Hi {{$client->firstname}} {{$client->lastname}},</p>
-                                        <p>{{$company->name}} as created a payment plan for you. </p>
-                                        <p>You can review the terms and make a payment below.</p>
-                                        <br><br>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center">
-                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                                            <tbody>
-                                            <tr>
-                                                <td align="center">
-                                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td  style="text-align: center">  <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" target="_blank">View & Pay</a> </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <p>
-                                               <br><br>
-                                               <strong>{!! $company->name or '<i>please fill in</i>' !!}</strong> <br>
-                                                {{$company->address1 or ''}}<br>
-                                                @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
-                                                @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
-                                                {{$company->city or ''}}<br>
-                                                <a href="mailto:{{$user->email or ''}}" style="color: #000; text-decoration: none;"> {{$user->email or ''}}</a>
-                                        </p>
+                                    <td style="text-align: center; padding-bottom: 35px;">
+                                       <p> {!! $data['content'] !!} </p>
                                     </td>
                                 </tr>
                             </table>
