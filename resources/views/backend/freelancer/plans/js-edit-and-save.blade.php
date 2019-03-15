@@ -107,17 +107,23 @@
 
         // External Button Events
         $(".next-btn").on("click", function() {
+            $('#msg').hide();
             // Reset wizard
             $('#smartwizard').smartWizard("next");
             return true;
         });
 
         $(".prev-btn").on("click", function() {
+            $('#msg').hide();
             // Navigate previous
             $('#smartwizard').smartWizard("prev");
             return true;
         });
 
+
+        $('*').on('blur change click dblclick error focus focusin focusout hover keydown keypress keyup load resize select submit', function(){
+            $('#msg').hide();
+        });
 
         $( document ).ready(function() {
 
@@ -192,7 +198,7 @@
                 success:function(data)
                 {
                     $('#msg').html(data.message);
-                    $('#saved-modal').modal('show');
+                    $('#msg').show();
                 }
             })
         });

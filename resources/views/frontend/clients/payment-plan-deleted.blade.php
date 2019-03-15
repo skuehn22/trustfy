@@ -205,7 +205,7 @@
                 </div>
                 <div class="text-center">
                     <hr>
-                    <span class="footer-txt"><a href="https://www.trusty.io">Powered by Trustfy</a></span>
+                    <span class="footer-txt"><a href="https://www.trustfy.io">Powered by Trustfy</a></span>
                     <br><br>
                 </div>
             </div>

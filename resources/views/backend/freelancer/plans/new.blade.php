@@ -211,6 +211,8 @@
 
                     <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;  padding-right: 40px;">
 
+                        <span class="text-success" id="msg" style="padding-right: 15px; font-size: 14px; font-weight:700; display: inline;">  </span>
+
                         <div class="btn-group mr-2 sw-btn-group" role="group" >
                             <a class="btn btn-secondary cancel-plan" id="cancel" href="/freelancer/plans/"><i class="fas fa-ban"></i> Close</a>
                             <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-save"></i> Save</button>
@@ -255,26 +257,6 @@
 
 
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="saved-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog preview-modal" role="document"  style="width: 200px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="modal-body preview-body">
-                    <div class="col-md-12">
-                        <div id="msg">Saved!</div>    <button type="submit" class="btn btn-success close-saved">Cool</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <div class="modal fade" id="send-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog preview-modal" role="document"  style="width: 200px;">
