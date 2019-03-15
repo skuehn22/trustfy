@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash;
+use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash, Session;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
@@ -62,6 +62,12 @@ class PlansManagementController extends Controller
 
         $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
             ->first();
+
+
+        if(isset($_GET['sent'])){
+
+            Session::flash('success', 'The plan was sent successfully.');
+        }
 
 
         return view('backend.freelancer.plans.overview', compact('blade', 'plans', 'company'));

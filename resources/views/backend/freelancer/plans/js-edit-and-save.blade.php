@@ -250,7 +250,10 @@
                         success:function(data)
                         {
                             $('#msg-send').html(data.message);
-                            $('#send-modal').modal('show');
+
+                            url = "/freelancer/plans?sent=true";
+                            $( location ).attr("href", url);
+
                         }
                     })
                 }
