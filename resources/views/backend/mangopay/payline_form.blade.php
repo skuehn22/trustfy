@@ -1,4 +1,7 @@
 <html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
 <style type= “text/css“>
 
     #PaylineForm {
@@ -104,7 +107,17 @@
 
 </style>
 <body>
-TEST
+
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-4 pt-3 mx-auto text-center">
+        <div class="text-center">
+            <a class="" href="{{ asset('/') }}">
+                <img src="https://www.trustfy.io/img/trustfy-green.png" width="200px" alt="Trustfy Freelancer Payment">
+            </a>
+        </div>
+    </div>
+</div>
+
 <div id="PaylineForm"></div>
 
 </body>
