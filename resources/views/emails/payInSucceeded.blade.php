@@ -364,12 +364,12 @@
                         <tr>
                             <td class="content-block">
                                 <span class="apple-link">Powered by Trustfy</span>
-                                <br> The secure escrow payment system for freelancers and their clients. <a href="https://www.trusty.io">Get started</a>.
+                                <br> The secure escrow payment system for freelancers and their clients. <a href="https://www.trustfy.io">Get started</a>.
                             </td>
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                © <a href="https://www.trusty.io">trustfy.io</a> 2019. All Rights Reserved.
+                                © <a href="https://www.trustfy.io">trustfy.io</a> 2019. All Rights Reserved.
                             </td>
                         </tr>
                     </table>
