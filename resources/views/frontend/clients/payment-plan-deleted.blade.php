@@ -45,6 +45,27 @@
             border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
+        .blur {
+            -webkit-filter: blur(2px);
+            filter: blur(8px);
+        }
+
+        .modal-dialog {
+            max-width: 400px;
+            margin: 1.75rem auto;
+        }
+
+        .footer-txt {
+            color: #aaa;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .footer-txt a{
+            color: #aaa;
+            font-size: 11px;
+            text-align: center;
+        }
 
     </style>
 
@@ -171,10 +192,38 @@
                     </div>
             </div></div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="plan-deleted-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center"  id="modal-body-msg">
+                    <h4 class="modal-title-msg" id="modal-title-msg">Payment plan deleted</h4>
+                    <p style="padding-top: 15px; font-size: 13px;">
+                        The plan was deleted by   {!! $company->name !!}. <br>Please get in contact.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <hr>
+                    <span class="footer-txt"><a href="https://www.trusty.io">Powered by Trustfy</a></span>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('js')
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
 
+        $( document ).ready(function() {
+            $('#plan-deleted-modal').modal('show');
+        });
+
+
+    </script>
 
 @endsection
 
