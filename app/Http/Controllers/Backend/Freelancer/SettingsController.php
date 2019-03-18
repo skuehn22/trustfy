@@ -71,11 +71,11 @@ class SettingsController extends Controller
             ->get();
 
 
-        if(env("APP_ENV") == "live" && $company->system != 0) {
+            if(env("APP_ENV") == "live" && (isset($company) && $company->system != 0)) {
 
             return Redirect::to($blade["ll"]."/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the live system. Please contact the administrator.');
 
-        }elseif(env("APP_ENV") != "live" && $company->system == 0) {
+            }elseif(env("APP_ENV") != "live" && (isset($company) &&  $company->system == 0)) {
 
             return Redirect::to($blade["ll"]."/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the dev system. Please contact the administrator.');
 
