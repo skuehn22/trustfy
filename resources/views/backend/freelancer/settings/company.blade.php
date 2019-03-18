@@ -40,12 +40,12 @@
                 </div>
 
                 <div class="form-row py-2">
-                    <label class="col-md-3 col-form-label" for="address">Address1</label>
+                    <label class="col-md-3 col-form-label" for="address">Address 1</label>
                     <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{ $company->address1 or "" }}" placeholder="The company address" required>
                 </div>
 
                 <div class="form-row py-2">
-                    <label class="col-md-3 col-form-label" for="address2">Address2</label>
+                    <label class="col-md-3 col-form-label" for="address2">Address 2</label>
                     <input id="address2" type="text" class="form-control col-md-7" name="address2" value="{{ $company->address2 or "" }}" placeholder="The company address">
                 </div>
 

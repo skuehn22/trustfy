@@ -1,7 +1,7 @@
-<h4 class="pb-3">Verify your account</h4>
+
 
 <form data-toggle="validator" class="needs-validation" novalidate role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-additional-kyc">
-
+    <h4>Verify your account</h4>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <h4>Legal Representative
         <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This information is required for a payment out."></i>
@@ -9,18 +9,18 @@
 
     <div class="form-row py-2">
         <label class="col-md-3 col-form-label" for="firstname">
-            Firstname*
+            First name*
             <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
         </label>
-        <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="Firstname" required>
+        <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="First name" required>
         <div class="valid-feedback">
             Looks good!
         </div>
     </div>
 
     <div class="form-row py-2">
-        <label class="col-md-3 col-form-label" for="address">Lastname*</label>
-        <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Lastname" required>
+        <label class="col-md-3 col-form-label" for="address">Last name*</label>
+        <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Last name" required>
     </div>
 
     <div class="form-row py-2">
