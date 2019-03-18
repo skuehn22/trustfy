@@ -65,11 +65,11 @@ class UsersClass
 
     public function checkSystem($company) {
 
-        if(env("APP_ENV") == "live" && $company->system != 0) {
+        if(env("APP_ENV") == "live" && (isset($company) && $company->system != 0)) {
 
             Session::flash('error', 'It is not a user from the live system. Please contact the administrator.');
 
-        }elseif(env("APP_ENV") != "live" && $company->system == 0) {
+        }elseif(env("APP_ENV") != "live" && (isset($company) &&  $company->system == 0)) {
 
             Session::flash('error', 'It is not a user from the dev system. Please contact the administrator.');
 
