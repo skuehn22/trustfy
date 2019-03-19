@@ -8,25 +8,22 @@
         <br><br>
         <div class="row privacy-container">
             <div class="col-md-12" style="text-align: center;">
-                <h2>Privacy</h2>
+                <h1>Privacy</h1>
                 <p>
                     <span class="strong">Updated: May 25, 2018</span>
                 </p>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 content">
                 <p>
                     The protection and security of your information is a top priority for us, Freelance Flow Ltd, and this informs all our business processes. In this privacy policy, we will provide you with an overview of our online offering that are related to privacy and data protection.
                 </p>
                 <p>
                     In the following, we will explain what information we collect when you use Freelance Flow Ltd's online services and
-                </p>
-                <p class="strong">
+
                     for what purposes we and our affiliated third parties use this information,
-                </p>
-                <p class="strong">
+
                     what rights and choices you have regarding the processing of your information and
-                </p>
-                <p class="strong">
+
                     how to contact us regarding data protection.
                 </p>
                 <br>
@@ -198,6 +195,3 @@
         </div>
     </div>
 @endsection
-
-
->

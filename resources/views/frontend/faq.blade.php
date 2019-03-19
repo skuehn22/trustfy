@@ -7,31 +7,14 @@
 
 @section('css')
     <style>
-        h2{
-            font-size: 20px;
-        }
-
-        h3{
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        p{
-            font-size: 16px;
-        }
-
-        body{
-            padding-bottom: 18rem;
-        }
-
     </style>
 @endsection
 
 @section('content')
-    <div class="container" style="background-color: #ddd;">
+    <div class="container content-container">
         <br><br>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 content">
                 <h1>FAQ - General</h1>
                 <p>&nbsp;</p>
                 <h3>What is escrow?</h3>
