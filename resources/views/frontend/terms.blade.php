@@ -6,13 +6,15 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container content-container">
         <br><br>
-        <div class="row terms-container">
+        <div class="row terms-container" style="padding-top:70px; padding-bottom: 70px;">
             <div class="col-md-12">
-               <h2>Terms and Conditions</h2>
+               <h1>Terms and Conditions</h1>
                 <p style="padding-top: 15px;">
-                    Trustfy.io is a service of Freelance Flow Ltd <br>
+                    Trustfy.io is a service of Freelance Flow Ltd
+                </p>
+                <p>
                     By using our services you are agreeing to our Terms & Conditions,Privacy Policy and the Terms of our Affiliates.
                 </p>
 

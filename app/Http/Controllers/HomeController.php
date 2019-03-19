@@ -137,5 +137,10 @@ class HomeController extends Controller
         return view('frontend.faq', compact('blade'));
     }
 
+    public function about() {
+        $blade["locale"] = App::getLocale();
+        return view('frontend.about', compact('blade'));
+    }
+
 
 }

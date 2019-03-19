@@ -6,6 +6,7 @@
 <meta name="description" content="Create easy payment plans for freelancer and your clients pay at a press of a button during the ongoing project. No more payment delays in the future.">
 <meta name="keywords" content="Trustfy, Freelancer, Payment, Escrow, Reminder, Milestone">
 @include('frontend.masters.elements.meta')
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
 <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
@@ -34,6 +35,12 @@
                     <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
                 </li>-->
                 <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
@@ -52,7 +59,7 @@
     </div>
 </nav>
 
-<header class="masthead">
+<header class="masthead" id="home">
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-lg-7 my-auto">
@@ -283,6 +290,7 @@
 </footer>
 
 <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/homepage.min.js') }}"></script>
 
