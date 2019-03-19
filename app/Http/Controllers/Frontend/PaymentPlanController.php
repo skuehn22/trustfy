@@ -290,7 +290,7 @@ class PaymentPlanController extends Controller
         $data['content'] = "<h3>Information to your plan protection</h3>Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $_GET["email"]);
+        $msg_obj->sendStandardMail($subject, $data, $_GET["email"], null);
 
         $result = self::login();
 
@@ -383,6 +383,194 @@ class PaymentPlanController extends Controller
         return view('frontend.clients.bank-transfer', compact('blade', 'plan', 'user', 'company', 'milestone'));
 
 
+    }
+
+
+    public function completedBank($hash){
+
+        $blade["locale"] = App::getLocale();
+
+        $plan = Plans::where("hash", "=", $hash)
+            ->first();
+
+        $client = Clients::where("id", "=", $plan->clients_id_fk)
+            ->first();
+
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+        $milestone->payment_method = 1;
+        $milestone->paystatus = 5;
+        $milestone->save();
+
+        $subject= "Trustfy Payments";
+        $data['content'] = "<h3>Thank you for your transfer</h3>";
+        $data['content'] .= "<p>You have a payment for the milestone:\" ".$milestone->name."\" arranged.</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>the amount € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+
+        $data['content'] .=
+
+        "<p><table style=\"width: 450px; padding-left: 135px;\">
+        <tr>
+            <td class=\"text-left\">Name:</td>          <td>Trustfy</td>
+        </tr>
+        <tr>
+            <td class=\"text-left\">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>
+        </tr>
+        <tr>
+            <td class=\"text-left\">BIC:</td>           <td>AIBKIE2D</td>
+        </tr>
+        <tr>
+            <td class=\"text-left\">Reference:</td>     <td>C-{$milestone->id}-{$milestone->projects_plans_id_fk}</td>
+        </tr>
+        </table></p>";
+
+        $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
+        $data['content'] .= "<a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Methode</a>";
+
+
+        $data['content'] .= "<p><br>Your money will then be held in a trust account and <br> you don't have to worry about your money.</p>";
+
+        $msg_obj = new MessagesClass();
+        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+
+        $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
+            ->first();
+
+        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
+
+        $subject= "Trustfy Payments - Payment arranged";
+        $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has initated a bank transfer:</p>";
+        $data['content'] .= "<p>Project: ".$plan->name."</p>";
+        $data['content'] .= "<p>Milestone: ".$milestone->name."</p>";
+        $data['content'] .= "  <p>Amount: € ".number_format($milestone->amount, 2, ',', ' ')."</p>";
+        $data['content'] .= "<p>We will lt you know when the money arrives </p>";
+
+        $data['content'] .='
+
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                <tbody>
+                <tr>
+                    <td align="center">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank">View Plan</a> </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        ';
+
+        $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+
+
+        return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
+
+    }
+
+
+    public function remindBank($hash){
+
+        $blade["locale"] = App::getLocale();
+
+        $plan = Plans::where("hash", "=", $hash)
+            ->first();
+
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $client = Clients::where("id", "=", $plan->clients_id_fk)
+            ->first();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+        $milestone->payment_method = 1;
+        $milestone->paystatus = 6;
+        $milestone->save();
+
+        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash;
+        $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
+
+        $subject= "Trustfy Payments - Open Bank Transfer";
+        $data['content'] = "<h3>Hello,</h3>";
+        $data['content'] .= "<p>You have an open payment for the milestone: ".$milestone->name.".</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>the amount € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+
+        $data['content'] .=
+
+            "<p><table style=\"width: 450px; padding-left:135px; \">
+        <tr>
+            <td class=\"text-left\">Name:</td>          <td>Trustfy</td>
+        </tr>
+        <tr>
+            <td class=\"text-left\">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>
+        </tr>
+        <tr>
+            <td class=\"text-left\">BIC:</td>           <td>AIBKIE2D</td>
+        </tr>
+        <tr>
+            <td class=\"text-left\">Reference:</td>     <td>C-{{$milestone->id}}-{{$milestone->projects_plans_id_fk}}<br><br></td>
+        </tr>
+        </table></p>";
+
+        $data['content'] .='
+
+
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+            <tbody>
+            <tr>
+                <td align="center">
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank">Done</a> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        ';
+
+        $data['content'] .= "<a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Methode</a>";
+
+
+        $msg_obj = new MessagesClass();
+        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+
+        return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
+
+    }
+
+
+    public function changeMethode($hash){
+
+        $blade["locale"] = App::getLocale();
+
+        $plan = Plans::where("hash", "=", $hash)
+            ->first();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+        if($milestone->paystatus == 5 || $milestone->paystatus == 6){
+
+            $milestone->paystatus = 0;
+            $milestone->save();
+
+            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Your old payment methode is now deleted. You can change the methode now');
+        }else{
+            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('erroe', 'You can not change the payment methode anymore');
+        }
     }
 
 

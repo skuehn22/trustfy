@@ -134,6 +134,13 @@
 
 .pay-now{
     font-size: 15px;
+    color: #fff;
+}
+
+
+a:not([href]):not([tabindex]) {
+    color: #fff;
+    text-decoration: none;
 }
 
 .successful{

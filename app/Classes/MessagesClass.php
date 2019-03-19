@@ -20,9 +20,9 @@ class MessagesClass  extends Controller
 {
 
     //global sender function
-    public function send($mailTemplate, $recipient, $subject,  $data){
+    public function send($mailTemplate, $recipient, $subject,  $data, $logo){
 
-        Mail::send('emails.'.$mailTemplate, compact('data'), function ($message) use ($recipient, $subject) {
+        Mail::send('emails.'.$mailTemplate, compact('data', 'logo'), function ($message) use ($recipient, $subject) {
             $message->from('plan@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->bcc('bcc@trustfy.io');
@@ -59,10 +59,10 @@ class MessagesClass  extends Controller
 
     }
 
-    public function sendStandardMail($subject, $data, $recipient) {
+    public function sendStandardMail($subject, $data, $recipient, $logo) {
 
         $mailTemplate = "default";
-        $this->send($mailTemplate, $recipient, $subject,  $data);
+        $this->send($mailTemplate, $recipient, $subject,  $data, $logo);
 
     }
 
@@ -85,7 +85,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -112,7 +112,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 

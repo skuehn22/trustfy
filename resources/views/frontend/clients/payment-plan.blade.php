@@ -55,6 +55,24 @@
         }
 
 
+        .modal-header {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #acb1b7;
+            border-top-left-radius: .3rem;
+            border-top-right-radius: .3rem;
+            background-color: #ded9d9;
+        }
+
+
     </style>
 
 
@@ -84,6 +102,12 @@
                         {{ Session::get('error') }}
                     </div>
                 @endif
+                    @if(Session::has('success'))
+                        <div class="alert alert-success success_message">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
                 @if(isset($protect) && $protect == true)
                     <div class="alert alert-success success_message">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -164,7 +188,7 @@
                         <td style="text-align: right;">
 
                             @if(isset($milestone->bank_transfer))
-                                @if(isset($milestone->paystatus) && $milestone->paystatus==0)
+                                @if(isset($milestone->paystatus) && ($milestone->paystatus==0 || $milestone->paystatus==6))
 
                                     @if($milestone->bank_transfer == 0 && $milestone->credit_card == 1)
                                         <form action="/payment-plan/pay-by-card/{{$plan->hash or ''}}" id="paymentform">
@@ -206,11 +230,19 @@
                                 @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4)
                                         <p class="successful">Money Released</p>
                                     @else
-                                        <p class="successful">Amount Funded</p>
+
+                                        @if(isset($milestone->paystatus) && $milestone->paystatus==5)
+                                            <p class="successful" style="padding-top: 14px;">Bank transfer pending</p>
+                                        @else
+
+                                            <p class="successful">Amount Funded</p>
                                                 <br>
-                                        <span class="input-group-btn" style="padding-left: 5px;">
-                                            <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
-                                        </span>
+                                            <span class="input-group-btn" style="padding-left: 5px;">
+                                                <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
+                                            </span>
+
+                                        @endif
+
                                 @endif
                             @else
                                 <i>please fill in</i>
@@ -537,8 +569,6 @@
              $('#milestone-done').val(name);
              $('#release-money').modal('show');
              return true;
-
-
          });
 
 
@@ -548,7 +578,6 @@
             var password = $("#password").val();
 
             $.ajax({
-
                 type: 'GET',
                 url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/protect-plan?email='+email+'&password='+password+'&hash='+hash,
                 data: { hash: hash },
@@ -560,7 +589,6 @@
                     }else{
                         alert("Fehler");
                     }
-
                 }
             })
         }
@@ -568,25 +596,15 @@
 
         // External Button Events
         $(".pay-now").on("click", function() {
-
-            alert("1");
-
             if(!jQuery('#paymentform').get(0).hasAttribute('action')){
-
-                alert("34");
-
                 getBankTransfer({{$plan->hash}});
                 $('#bank-transfer').modal('show');
-
             }
-
-
         });
 
 
         function getBankTransfer(hash) {
 
-            alert("2");
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
             } else {
@@ -595,9 +613,8 @@
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    alert("3");
                     document.getElementById("modal-bank-content").innerHTML = xmlhttp.responseText;
-
+                    loadScript();
                 }
             }
 
@@ -613,27 +630,87 @@
              var password = $("#password-login").val();
 
              $.ajax({
-
                  type: 'GET',
                  url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/login-plan?email='+email+'&password='+password+'&hash='+hash,
                  data: { hash: hash },
                  dataType: 'json',
                  success: function(data) {
 
-
                      if(data.success == true){
-
                          window.location.href = window.location.href + "?login="+data.msg;
-
                      }else{
-
                          alert("The input does not match the plan.");
-
                      }
-
                  }
              })
          }
+
+
+        function loadScript(){
+
+            // External Button Events
+            $(".completed").on("click", function() {
+
+                transferCompleted({{$plan->hash}});
+                return true;
+            });
+
+
+            // External Button Events
+            $(".later").on("click", function() {
+
+                transferCompleted({{$plan->hash}});
+                return true;
+            });
+
+
+            function transferReminder(hash) {
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-reminder/'+hash,
+                    data: { hash: hash },
+                    dataType: 'json',
+                    success: function(data) {
+
+                        if(data.success == true){
+                            window.location.href = window.location.href + "?protect=true";
+                        }else{
+                            alert("Fehler");
+                        }
+                    }
+                })
+            }
+
+
+
+            function transferCompleted(hash) {
+
+                alert("2");
+
+                $.ajax({
+                    type: 'GET',
+                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-completed/'+hash,
+                    data: { hash: hash },
+                    dataType: 'json',
+                    success: function(data) {
+
+                        if(data.success == true){
+                            alert("3");
+                            window.location.href = window.location.href + "?protect=true";
+                        }else{
+                            alert("Fehler");
+                        }
+                    }
+                })
+            }
+
+        }
+
+
+
+
+
 
     </script>
 

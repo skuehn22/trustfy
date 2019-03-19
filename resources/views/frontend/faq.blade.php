@@ -68,7 +68,7 @@
                 <p>And the process is really easy on your client. It takes 2 minutes to pay into our secure account and 1 minute to release those funds when you&rsquo;ve completed the work. It&rsquo;s no more complicated than paying an ordinary invoice.</p>
                 <h3>&nbsp;</h3>
                 <h3>What fees do you take?</h3>
-                <p>Please change to: We’re dedicated to keeping our prices simple and fair, we just take a 3% transaction fee.</p>
+                <p>We’re dedicated to keeping our prices simple and fair, we just take a 3% transaction fee.</p>
                 <p>That&rsquo;s it. No extra fees. No cash-out expenses. No small print. And no surprise fees on holidays and days that end in y.</p>
                 <p>&nbsp;</p>
                 <h3>Why should I upload a contract?</h3>
