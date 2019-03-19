@@ -152,7 +152,7 @@
                     <div class="col invoice-to">
                         @if(isset($plan->lastname) && $plan->lastname!=" ")
                             <h5 class="to">{{$plan->firstname}} {{$plan->lastname}}</h5>
-                            <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
+                            <div class="address">{{$plan->address1}} <br> {{$plan->address2 or ''}} <br> {{$plan->city}}</div>
                             <div class="email">{{$plan->email}}</div>
                         @else
                             <i>please fill in</i>
