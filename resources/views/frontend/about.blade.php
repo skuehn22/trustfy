@@ -6,22 +6,7 @@
 
 
 @section('css')
-    <style>
 
-
-        footer {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.3);
-            background-color: #222222;
-            position: absolute;
-            right: 0;
-            bottom: -80px;
-            left: 0;
-        }
-
-
-
-    </style>
 @endsection
 
 @section('content')
