@@ -470,8 +470,14 @@ class PaymentPlanController extends Controller
 
         $msg_obj->sendStandardMail($subject, $data, $user->email, null);
 
+        //checks from which point the payment was clicked as done
+        if(isset($_GET['typ'])){
+            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'We changed the status of your plan.');
+        }else{
+            return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
+        }
 
-        return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
+
 
     }
 
@@ -496,7 +502,7 @@ class PaymentPlanController extends Controller
         $milestone->paystatus = 6;
         $milestone->save();
 
-        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash;
+        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash."?typ=mail";
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
 
         $subject= "Trustfy Payments - Open Bank Transfer";

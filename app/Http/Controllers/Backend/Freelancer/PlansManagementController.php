@@ -451,6 +451,7 @@ class PlansManagementController extends Controller
             ->first();
 
         $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
+            ->where('delete', '=', '0' )
             ->get();
 
         $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)

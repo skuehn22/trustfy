@@ -137,7 +137,7 @@
                         <div>
                             {{$company->address1 or ''}}<br>
                             @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
-                            @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
+                            @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, <br>@endif
                             {{$company->city or ''}}
                         </div>
                         <div>  {{$user->email or ''}}</div>
@@ -607,6 +607,8 @@
             if(!jQuery('#paymentform').get(0).hasAttribute('action')){
                 getBankTransfer({{$plan->hash}});
                 $('#bank-transfer').modal('show');
+            }else{
+                $( "#paymentform" ).submit();
             }
         });
 
@@ -705,7 +707,9 @@
 
                         if(data.success == true){
 
-                            window.location.href = window.location.href;
+
+                            window.location.href = window.location.href + "?bank="+data.msg;
+
                         }else{
                             alert("Fehler");
                         }
