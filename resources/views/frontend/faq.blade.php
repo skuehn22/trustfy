@@ -34,7 +34,7 @@
                 <p>If you&rsquo;re not 100% comfortable paying your freelancer up front, then don&rsquo;t! It takes you 2 minutes to pay into our secure account and 1 minute to release those funds when you&rsquo;re happy. It doesn&rsquo;t get any easier than that.</p>
                 <p>&nbsp;</p>
                 <h3>So that means my freelancer can&rsquo;t access the money I&rsquo;ve paid into Trustfy?</h3>
-                <p>Exactly, your freelancer can&rsquo;t touch that money until you release it. We securely hold your money until your freelancer has finished the project or a project milestone- whatever you have agreed to. Once you&rsquo;re satisfied with their work, you simply.</p>
+                <p>Exactly, your freelancer can&rsquo;t touch that money until you release it. We securely hold your money until your freelancer has finished the project or a project milestone- whatever you have agreed to. Once you’re satisfied with their work, you simply click "release payment" and the money is transferred directly to your freelancer.</p>
                 <p>You don&rsquo;t have to pay up front for work you haven&rsquo;t seen and your freelancer can feel great about starting work with you.</p>
                 <p>&nbsp;</p>
                 <h3>How can I pay into Trustfy&rsquo;s secure account?</h3>
@@ -50,7 +50,7 @@
                 <p>If your freelancer is a no-show and doesn&rsquo;t respond, we&rsquo;ll release your money back to you.</p>
                 <p>&nbsp;</p>
                 <h3>What happens if I cancel the contract?</h3>
-                <p>That depends on the contract or terms of service you&rsquo;ve agreed to with your freelancer. If there&rsquo;s a termination clause of some sort, we respect your agreement and release the money in accordingly.</p>
+                <p>That depends on the contract or terms of service you&rsquo;ve agreed to with your freelancer. If there&rsquo;s a termination clause of some sort, we respect your agreement and release the money accordingly.</p>
                 <p>&nbsp;</p>
                 <p>If you&rsquo;re not sure about what your contract or agreement says, check your inbox or log in to your Trustfy account. It was attached to the payment plan you received from your freelancer at the start of the project and we&rsquo;ve got it saved for you. Just register using the email that your freelancer is using to communicate with you and it will be right there anytime you need it.</p>
                 <p>&nbsp;</p>

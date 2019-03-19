@@ -123,10 +123,10 @@
                     <div class="row">
                         <div class="offset-md-2 col-md-10">
                             <br><br>
-                            <p class="check-container"> <i class="fas fa-check"></i> Late payment protection</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Payment in-full protection</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Payment in-full protection</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Cancelled milestone protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> No more chasing payment</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Confidence in cash flow</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Protection from unresponsive clients</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Peace of mind</p>
                         </div>
                     </div>
                 </div>
@@ -166,10 +166,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <p class="check-container"> <i class="fas fa-check"></i> Late work compensation</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Quality of work protection</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> No deposits in blind faith</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> No direct up front payment</p>
                             <p class="check-container"> <i class="fas fa-check"></i> Freelancer no-show protection</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> No more deposits in blind faith</p>
+                            <p class="check-container"> <i class="fas fa-check"></i> Peace of mind</p>
                         </div>
                     </div>
                 </div>
