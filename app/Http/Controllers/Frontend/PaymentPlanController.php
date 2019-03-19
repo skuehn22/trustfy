@@ -501,7 +501,7 @@ class PaymentPlanController extends Controller
 
         $subject= "Trustfy Payments - Open Bank Transfer";
         $data['content'] = "<h3>Hello,</h3>";
-        $data['content'] .= "<p>You have an open payment for the milestone: ".$milestone->name.".</p>";
+        $data['content'] .= "<p>You have an open payment for the milestone: \"".$milestone->name."\".</p>";
         $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>the amount € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
@@ -517,7 +517,7 @@ class PaymentPlanController extends Controller
             <td class=\"text-left\">BIC:</td>           <td>AIBKIE2D</td>
         </tr>
         <tr>
-            <td class=\"text-left\">Reference:</td>     <td>C-{{$milestone->id}}-{{$milestone->projects_plans_id_fk}}<br><br></td>
+            <td class=\"text-left\">Reference:</td>     <td>C-{$milestone->id}-{$milestone->projects_plans_id_fk}<br><br></td>
         </tr>
         </table></p>";
 

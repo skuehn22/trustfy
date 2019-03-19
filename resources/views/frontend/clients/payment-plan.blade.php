@@ -114,6 +114,14 @@
                         Thank you. The Payment Plan Protection is now active.
                     </div>
                 @endif
+
+
+
+                <div class="alert alert-success success_message reminder-alert d-none">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    We sent you an E-Mail with the payment instructions!
+                </div>
+
                 <div class="row">
                     <div class="col">
                         @if(isset($company->logo) && $company->logo!="3.png")
@@ -674,7 +682,9 @@
                     success: function(data) {
 
                         if(data.success == true){
-                            window.location.href = window.location.href;
+                            $('#bank-transfer').modal('hide');
+                            $('.reminder-alert').removeClass('d-none');
+
                         }else{
                             alert("Fehler");
                         }
@@ -685,7 +695,7 @@
 
 
             function transferCompleted(hash) {
-                
+
                 $.ajax({
                     type: 'GET',
                     url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-completed/'+hash,
