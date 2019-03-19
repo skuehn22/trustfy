@@ -63,6 +63,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/plans/payment-plan/{hash}', 'Backend\Freelancer\PlansManagementController@loadPlan');
 
 
+
     Route::any('/freelancer/settings', 'Backend\Freelancer\SettingsController@index') ;
     Route::any('/freelancer/settings/save-company', 'Backend\Freelancer\SettingsController@saveCompany') ;
     Route::any('/freelancer/settings/save-additional-kyc', 'Backend\Freelancer\SettingsController@saveAdditionalKycData') ;
@@ -85,6 +86,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/payment-plan/pay-by-card/{hash}', 'Frontend\PaymentPlanController@payCC') ;
     Route::any('/payment-plan/pay-by-bank/{hash}', 'Frontend\PaymentPlanController@payBank') ;
     Route::any('/payment-plan/release-milestone/{id}', 'Frontend\PaymentPlanController@releaseMilestone') ;
+    Route::any('/payment-plan/bank-transfer/{hash}', 'Frontend\PaymentPlanController@loadBank');
+
+
     Route::any('/protect-plan', 'Frontend\PaymentPlanController@setProtection') ;
     Route::any('/login-plan', 'Frontend\PaymentPlanController@loginPlan') ;
 

@@ -45,6 +45,15 @@
             border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
 
+        .pay-now{
+            color: #fff;
+        }
+
+
+        .pay-now a{
+            color: #fff;
+        }
+
 
     </style>
 
@@ -160,7 +169,7 @@
                                     @if($milestone->bank_transfer == 0 && $milestone->credit_card == 1)
                                         <form action="/payment-plan/pay-by-card/{{$plan->hash or ''}}" id="paymentform">
                                     @else
-                                        <form action="/payment-plan/pay-by-bank/{{$plan->hash or ''}}" id="paymentform">
+                                        <form id="paymentform">
                                     @endif
                                         <div class="row">
                                             <div class="col-md-6">
@@ -189,7 +198,7 @@
                                             </div>
                                             <div class="col-md-6"  style="text-align: right;">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <button class="btn btn-success pay-now">Pay now</button>
+                                                    <a class="btn btn-success pay-now">Pay now</a>
                                                 </span>
                                             </div>
                                         </div>
@@ -427,6 +436,27 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="bank-transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bank Transfer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"  id="modal-bank-content">
+
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @endsection
 
@@ -476,7 +506,7 @@
                     $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
             }else{
                 if($(this).val() == 2){
-                    $('#paymentform').attr('action', '/payment-plan/pay-by-bank/{{$plan->hash}}');
+                    $('#paymentform').removeAttr('action');
                 }else{
                     $('#paymentform').removeAttr('action');
                 }
@@ -535,6 +565,47 @@
             })
         }
 
+
+        // External Button Events
+        $(".pay-now").on("click", function() {
+
+            alert("1");
+
+            if(!jQuery('#paymentform').get(0).hasAttribute('action')){
+
+                alert("34");
+
+                getBankTransfer({{$plan->hash}});
+                $('#bank-transfer').modal('show');
+
+            }
+
+
+        });
+
+
+        function getBankTransfer(hash) {
+
+            alert("2");
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    alert("3");
+                    document.getElementById("modal-bank-content").innerHTML = xmlhttp.responseText;
+
+                }
+            }
+
+            xmlhttp.open("GET", "{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-transfer/"+hash, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+
+        }
 
          function loginPlan(hash) {
 

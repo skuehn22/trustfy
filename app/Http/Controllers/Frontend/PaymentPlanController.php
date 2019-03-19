@@ -124,6 +124,8 @@ class PaymentPlanController extends Controller
                 }
             }
 
+            $login = true;
+
             return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'login', 'hash', 'protect', 'loggedIn'));
 
         }
@@ -363,6 +365,25 @@ class PaymentPlanController extends Controller
 
     }
 
+
+    public function loadBank($hash){
+
+        $blade["locale"] = App::getLocale();
+
+        $plan = Plans::where("hash", "=", $hash)
+            ->first();
+
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->first();
+
+
+        return view('frontend.clients.bank-transfer', compact('blade', 'plan', 'user', 'company', 'milestone'));
+
+
+    }
 
 
 }
