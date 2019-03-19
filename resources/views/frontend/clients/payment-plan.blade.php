@@ -659,7 +659,7 @@
             // External Button Events
             $(".later").on("click", function() {
 
-                transferCompleted({{$plan->hash}});
+                transferReminder({{$plan->hash}});
                 return true;
             });
 
@@ -674,7 +674,7 @@
                     success: function(data) {
 
                         if(data.success == true){
-                            window.location.href = window.location.href + "?protect=true";
+                            window.location.href = window.location.href;
                         }else{
                             alert("Fehler");
                         }
@@ -685,9 +685,7 @@
 
 
             function transferCompleted(hash) {
-
-                alert("2");
-
+                
                 $.ajax({
                     type: 'GET',
                     url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-completed/'+hash,
@@ -696,8 +694,8 @@
                     success: function(data) {
 
                         if(data.success == true){
-                            alert("3");
-                            window.location.href = window.location.href + "?protect=true";
+
+                            window.location.href = window.location.href;
                         }else{
                             alert("Fehler");
                         }
