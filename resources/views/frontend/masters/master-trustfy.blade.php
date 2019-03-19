@@ -54,10 +54,36 @@
             left: 0;
         }
 
+
+
+
         .content{
             padding-left: 110px;
             padding-right: 110px;
             padding-top: 45px;
+
+        }
+
+
+        @media only screen and (max-width: 600px) {
+
+            .content{
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+
+            }
+
+            footer {
+                text-align: center;
+                color: rgba(255, 255, 255, 0.3);
+                background-color: #222222;
+                position: absolute;
+                right: 0;
+                bottom: -190px;
+                left: 0;
+            }
+
 
         }
 

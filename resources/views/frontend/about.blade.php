@@ -28,16 +28,16 @@
     <div class="container" style="background-color: #fff;">
         <br><br>
         <div class="row">
-            <div class="col-md-12 content">
+            <div class="col-xs-12 col-md-12 content">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-xs-12 col-md-8">
                         <h1>About Us</h1>
                         <p>&nbsp;</p>
 
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-xs-12 col-md-8">
 
                         <p><i><strong>"My dad was a contractor, so I grew up watching him struggle to get paid.
                                     Chasing a payment after he'd done good work really chipped away at his
@@ -48,12 +48,12 @@
                                     worry if their money is safe. Not freelancers. Not clients."</strong></i></p>
                         <p><strong>Sebastian<br>Co-founder and CTO</strong></p>
                     </div>
-                  <div class="col-md-4">
+                  <div class="col-xs-12 col-md-4">
                       <img src="img/sebastian.jpg" class="img-responsive rounded-circle" style="width:250px;" alt="Sebastian - Trustfy">
                   </div>
                 </div>
             </div>
-            <div class="col-md-12 content">
+            <div class="col-xs-12 col-md-12 content">
                 <br><br>
 
                 <p style="text-align: justify">We founded Trustfy because we want to make the future of work fairer, more
