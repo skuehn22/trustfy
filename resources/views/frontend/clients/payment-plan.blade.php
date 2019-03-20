@@ -119,7 +119,7 @@
 
                 <div class="alert alert-success success_message reminder-alert d-none">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    We sent you an E-Mail with the payment instructions!
+                   Check your inbox for the payment instructions!
                 </div>
 
                 <div class="row">
@@ -236,7 +236,7 @@
                                         </div>
                                     </form>
                                 @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4)
-                                        <p class="successful">Money Released</p>
+                                        <p class="successful">Money Released!</p>
                                     @else
 
                                         @if(isset($milestone->paystatus) && $milestone->paystatus==5)

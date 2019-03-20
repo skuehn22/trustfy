@@ -410,7 +410,7 @@ class MangoClass extends Controller
             $payin->milestone_id_fk = $milestone->id;
             $payin->author_id = $author;
             $payin->credited_wallet = $credited_wallet;
-            $payin->amount = $milestone->amount + ($milestone->amount * 0.02);
+            $payin->amount = $milestone->amount;
             $payin->payment_type = "CARD";
             $payin->execution_type = "WEB";
             $payin->state = "PREP";
@@ -461,7 +461,7 @@ class MangoClass extends Controller
             $payIn->DebitedFunds->Amount = $prepedPayIn->amount*100;
             $payIn->DebitedFunds->Currency ="EUR";
             $payIn->Fees = new \MangoPay\Money();
-            $payIn->Fees->Amount = ($prepedPayIn->amount*100) * 0.03;
+            $payIn->Fees->Amount = 0;
             $payIn->Fees->Currency = "EUR";
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();

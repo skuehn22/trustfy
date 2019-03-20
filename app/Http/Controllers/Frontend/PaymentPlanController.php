@@ -407,8 +407,8 @@ class PaymentPlanController extends Controller
         $milestone->save();
 
         $subject= "Trustfy Payments";
-        $data['content'] = "<h3>Thank you for your payment</h3>";
-        $data['content'] .= "<p>You have marked the bank transfer for:\" ".$milestone->name."\" as complete.</p>";
+        $data['content'] = "<h3>Thank you for your payment!</h3>";
+        $data['content'] .= "<p>You have marked the bank transfer for: \"".$milestone->name."\" as complete.</p>";
         $data['content'] .= "<p>If you have not made the transfer yet, please <br>transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
@@ -506,9 +506,9 @@ class PaymentPlanController extends Controller
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
 
         $subject= "Payment reminder for ".$milestone->name;
-        $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname."</p>,";
+        $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname.",</p>,";
         $data['content'] .= "<p>This is a friendly reminder to make a payment for: \"".$milestone->name."\".</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>€ ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 
