@@ -442,7 +442,7 @@ class PaymentPlanController extends Controller
 
         $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
 
-        $subject= "Trustfy Payments - Payment arranged";
+        $subject= "Trustfy Payments - Payment initiated";
         $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has initated a bank transfer:</p>";
         $data['content'] .= "<p>Project: ".$plan->name."</p>";
         $data['content'] .= "<p>Milestone: ".$milestone->name."</p>";
@@ -458,7 +458,7 @@ class PaymentPlanController extends Controller
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tbody>
                             <tr>
-                                <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank">View Plan</a> </td>
+                                <td  style="text-align: center">  <a href="'.$planUrl.'" class="btn btn-primary" target="_blank">View Plan</a> </td>
                             </tr>
                             </tbody>
                         </table>
@@ -539,7 +539,7 @@ class PaymentPlanController extends Controller
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tbody>
                         <tr>
-                            <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank">Transfer Complete</a> </td>
+                            <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank" class="btn btn-primary">Transfer Complete</a> </td>
                         </tr>
                         </tbody>
                     </table>
