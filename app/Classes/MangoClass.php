@@ -83,9 +83,9 @@ class MangoClass extends Controller
         //if there is no wallet create one
         if (!$freelancer_wallet_id) {
             $freelancer_wallet = $this->createWallet($mango_freelancer->Id);
-            $freelancer_wallet = $freelancer_wallet->Id;
+            $freelancer_wallet_id = $freelancer_wallet->Id;
             $wallet = new CompaniesMangowallets();
-            $wallet->id = $freelancer_wallet;
+            $wallet->id = $freelancer_wallet_id;
             $wallet->performer_id_fk = $company->id;
             $wallet->save();
         }
@@ -100,6 +100,7 @@ class MangoClass extends Controller
             $wallet->save();
         }
 
+        //$freelancer_wallet_id = credited_wallet
         $hash = $this->prepPayInCardWeb($mango_client->Id, $freelancer_wallet_id, $milestone);
         $url = $this->openTransaction($hash, $planHash);
         return $url;
@@ -408,8 +409,13 @@ class MangoClass extends Controller
             $payin = new App\DatabaseModels\MangoPayin();
             $payin->hash = $hash;
             $payin->milestone_id_fk = $milestone->id;
+
+            // client mango id (DB table clients)
             $payin->author_id = $author;
+
+            // this is the freelancer wallet
             $payin->credited_wallet = $credited_wallet;
+
             $payin->amount = $milestone->amount;
             $payin->payment_type = "CARD";
             $payin->execution_type = "WEB";
