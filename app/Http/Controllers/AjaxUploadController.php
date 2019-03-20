@@ -142,7 +142,7 @@ class AjaxUploadController extends Controller
             $image->move($path, $new_name);
 
             return response()->json([
-                'message'   => 'File Upload Successfully',
+                'message'   => 'File upload successful written',
                 'uploaded_image' => $_POST['plan'],
                 'class_name'  => 'alert-success'
             ]);

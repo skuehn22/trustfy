@@ -3,7 +3,7 @@
 return [
 
 
-    'subject_typ_1' => 'Trustfy- Payment Plans- Down payment received',
+    'subject_typ_1' => 'Trustfy Payment Plans- Payment received',
     'subject_typ_2' => 'KYC Document accepted',
     'subject_typ_3' => 'Welcome to Trustfy',
 
