@@ -2,13 +2,16 @@
     <form class="form-horizontal" role="form" method="POST" action="/freelancer/settings/save-bank">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h4 class="pb-3">Your Bank Details
-            <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Please give us your bank details in which we should relase deposits"></i>
+            <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Which account should we release payments to?"></i>
         </h4>
 
         <div class="row">
             <div class="col-md-5">
                 <div class="form-inline">
-                    <label for="name" class="col-md-3 control-label  pl-0 pb-3">Owner Name</label>
+                    <label for="name" class="col-md-3 control-label  pl-0 pb-3">Owner Name
+                        <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This must match the company or the legal representative"></i>
+                    </label>
+
                     <div class="col-md-7 pl-0 pb-3">
                         <input id="name" type="text" class="form-control" name="name" value="{{$bank->name or ''}}">
                     </div>
@@ -28,7 +31,10 @@
             </div>
             <div class="col-md-6">
                 <div class="form-inline">
-                    <label for="address1" class="col-md-3 control-label  pl-0 pb-3">Address Line 1</label>
+                    <label for="address1" class="col-md-3 control-label  pl-0 pb-3">Address Line 1
+                        <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="The address of the owner of the bank account"></i>
+                    </label>
+
                     <div class="col-md-5 pl-0 pb-3  text-right">
                         <input id="address1" type="text" class="form-control" name="address1" value="{{$bank->address1 or ''}}">
                     </div>

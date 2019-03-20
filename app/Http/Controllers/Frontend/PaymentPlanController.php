@@ -261,7 +261,7 @@ class PaymentPlanController extends Controller
 
         }
 
-        return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'PayOut erfolgreich ausgeführt');
+        return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Money released');
 
     }
 
