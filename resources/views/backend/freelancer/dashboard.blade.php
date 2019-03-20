@@ -644,7 +644,7 @@
                     document.getElementById("dashboard-projects").innerHTML = xmlhttp.responseText;
                     $("#projects-modul").val(id);
                     loadScripts();
-                    getPlan($("#plan-details").val());
+                    //getPlan($("#plan-details").val());
                 }
             }
 
@@ -711,8 +711,12 @@
                     }
 
 
-                    if( items["typ"] == 2){
+                    if( items["typ"] == 3){
                         subject = '{{ trans("messages.subject_typ_3") }}';
+                    }
+
+                    if( items["typ"] == 4){
+                        subject = '{{ trans("messages.subject_typ_4") }}';
                     }
 
 

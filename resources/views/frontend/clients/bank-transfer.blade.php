@@ -1,10 +1,10 @@
 <div class="col-md-12" style="padding-top:25px; padding-bottom:25px;">
-    Please transfer the money to the following bank account:
+   Please make your transfer to the following account:
     <br><br>
 
     <table style="width: 450px;">
         <tr>
-            <td class="text-left">Name:</td>          <td>Trustfy</td>
+            <td class="text-left">Name:</td>          <td>Trustfy Client Account</td>
         </tr>
         <tr>
             <td class="text-left">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>

@@ -60,11 +60,13 @@
                 <div class="form-inline">
                     <label for="country" class="col-md-3 control-label  pl-0 pb-3">Country</label>
                     <div class="col-md-5 pb-3  text-right">
+
                         @if(isset($bank->country))
-                            @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-12', 'default' => $bank->country])
+                            {!! Form::select('country', $countries, $bank->country, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-12']) !!}
                         @else
-                            @include('backend.settings.countries', [ 'id' => 'country', 'class' => 'form-control col-md-12', 'default' =>''])
+                            {!! Form::select('country', $countries, null, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-11']) !!}
                         @endif
+
                         <input type="hidden" id="country_iso" name="country_iso" value="{{$bank->country_iso or ''}}">
                     </div>
                 </div>

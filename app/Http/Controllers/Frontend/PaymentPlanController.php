@@ -505,9 +505,9 @@ class PaymentPlanController extends Controller
         $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash."?typ=mail";
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
 
-        $subject= "Trustfy Payments - Open Bank Transfer";
-        $data['content'] = "<h3>Hello,</h3>";
-        $data['content'] .= "<p>You have an open payment for the milestone: \"".$milestone->name."\".</p>";
+        $subject= "Trustfy Payments - Payment reminder for ".$milestone->name;
+        $data['content'] = "<h3>Hello </h3>".$client->firstname." ".$client->lastname.",";
+        $data['content'] .= "<p>This is a friendly reminder to make a payment for: \"".$milestone->name."\".</p>";
         $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>the amount € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
@@ -527,6 +527,8 @@ class PaymentPlanController extends Controller
         </tr>
         </table></p>";
 
+        $data['content'] .= "<p>Once the transfer is complete, press the transfer complete button and we will not send you further reminders!</p>";
+
         $data['content'] .='
 
 
@@ -537,7 +539,7 @@ class PaymentPlanController extends Controller
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tbody>
                         <tr>
-                            <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank">Done</a> </td>
+                            <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank">Transfer Complete</a> </td>
                         </tr>
                         </tbody>
                     </table>
@@ -547,7 +549,7 @@ class PaymentPlanController extends Controller
         </table>
         ';
 
-        $data['content'] .= "<a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Methode</a>";
+        $data['content'] .= "<a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Method</a>";
 
 
         $msg_obj = new MessagesClass();

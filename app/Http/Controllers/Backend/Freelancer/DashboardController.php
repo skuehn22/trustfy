@@ -78,7 +78,7 @@ class DashboardController extends Controller
 
             $messages = MessagesCompanies::where("company_id_fk", "=", $user->service_provider_fk)
                 ->where("delete", "=", "0")
-                ->paginate(4);
+                ->paginate(3);
 
 
             $planObj = new PlansDetailsClass();
