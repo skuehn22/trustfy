@@ -236,7 +236,7 @@
                                         </div>
                                     </form>
                                 @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4)
-                                        <p class="successful">Money Released!</p>
+                                        <p class="successful">Money Released</p>
                                     @else
 
                                         @if(isset($milestone->paystatus) && $milestone->paystatus==5)
