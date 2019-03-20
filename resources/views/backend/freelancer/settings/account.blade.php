@@ -31,6 +31,7 @@
         </form>
     </div>
     <div class="col-md-6">
+        <!--
         <h4  class="pt-3">Manage Database</h4>
         <div class="row">
             <div class="col-md-6 pt-0">
@@ -63,6 +64,7 @@
 
 
         </div>
-
+ -->
     </div>
+
 </div>
