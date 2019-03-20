@@ -179,8 +179,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
+                    <th style="width:20%;">Name</th>
                     <th>Date Created</th>
                     <th>Client</th>
                     <th>Status</th>
@@ -192,11 +191,21 @@
                 @if(isset($plans))
                     @foreach($plans as $plan)
                         <tr>
-                            <td>{{$plan->id}}</td>
-                            <td><a href="#">{{ $plan->name or 'not set' }}</a></td>
+                            <td>
+                                @if($plan->state > 0)
+                                    <a href="/{{$blade["ll"]}}/freelancer/plans/payment-plan/{{$plan->hash}}" target="_blank" data-toggle="tooltip" data-placement="top" title="Show">
+                                        {{ $plan->name or 'not set' }}
+                                    </a>
+                                @else
+                                    <a href="/{{$blade["ll"]}}/freelancer/plans/edit/{{$plan->id}}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        {{ $plan->name or 'not set' }}
+                                    </a>
+                                @endif
+                            </td>
                             <td>{{ \Carbon\Carbon::parse($plan->updated_at)->format('d/m/Y')}} </td>
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
                             <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state_txt}}</td>
+
                             <td>
 
                                 @if($plan->state > 0)
@@ -208,9 +217,6 @@
                                         <i class="far fa-edit green"></i>
                                     </a>
                                 @endif
-
-
-
 
                                 <span data-toggle="modal" data-target="#exampleModal">
                                     <a href="#" data-id="{{$plan->id}}"  data-toggle="tooltip" data-placement="top"  title="Delete" class="delete-client">
