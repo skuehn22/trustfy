@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Why we need the follwoing data</strong> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            <strong>Why do we need this information?</strong> This isn’t about collecting your data! There’s a lot of bad people out there (think traffickers and terrorists) trying to launder money through legitimate businesses, and we’re dedicated to preventing that. By properly verifying our users, we’re staying compliant with national and EU regulation and doing our part to stop them.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

@@ -1,6 +1,6 @@
 @if(isset($company->type))
 
-    <p style="font-size: 11px;"><i>As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need following documents: {{$kyc_docs->mango_kyc_docs}}</i></p>
+    <p style="font-size: 11px;"><i>As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need following documents: {{$kyc_docs->mango_kyc_docs}}.</i> <a href="#" id="kyc-details">Details</a></p>
 @else
     <p style="color: orange">Please save your company first</p>
 

@@ -131,6 +131,53 @@
         </div>
     </div>
 
+
+
+    <div class="modal fade" id="kyc-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 700px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">KYC documents</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th style="padding-bottom: 15px;">Document type</th>
+                            <th style="padding-bottom: 15px;">Usage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width: 300px;">&quot;IDENTITY_PROOF&quot;</td>
+                            <td><p>ID Card, Passport, Residence Permit, or Driving License for SEPA area. Passport or Driving Licence for the UK, USA and Canada. For other nationalities, a passport is required.<br>In the case of a legal user, this document should refer to the individual duly empowered to act on behalf of the legal entity.  ID card: Front AND Back (Valid) OR Passport (Valid)</p></td>
+                        </tr>
+                        <tr>
+                            <td>&quot;ARTICLES_OF_ASSOCIATION&quot;</td>
+                            <td><p>Certified articles of association (Statute) - formal memorandum stated by the entrepreneurs, in which the following information is mentioned: business name, activity, registered address, shareholding…</p></td>
+                        </tr>
+                        <tr>
+                            <td>&quot;REGISTRATION_PROOF&quot;</td>
+                            <td><p>Extract from the Company Register issued within the last three months<br>In the case of an organization or soletrader, this can be a proof of registration from the official authority</p></td>
+                        </tr>
+                        <tr>
+                            <td>&quot;SHAREHOLDER_DECLARATION&quot;</td>
+                            <td><p>Send information referring to the <a href="https://www.mangopay.com/terms/shareholder-declaration/Shareholder_Declaration-EN.pdf" target="_blank">shareholder declaration</a></p></td>
+                        </tr>
+                        <tr>
+                            <td>&quot;ADDRESS_PROOF&quot;</td>
+                            <td><p>Proof of address. Confirmation of residence: Less than a year old. Can be: Residential Registration Form, Water/electricity/gas/telephone bill, Tax certificate, Householder insurance, Confirmation of real estate ownership</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 @section("javascript")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.6/js/bootstrap-colorpicker.js"></script>
@@ -322,6 +369,10 @@
 
         });
 
+
+        $("#kyc-details").on("click", function() {
+            $("#kyc-modal").modal('show');
+        });
 
 
 
