@@ -48,22 +48,29 @@
 @stop
 @section('content')
     <div class="settings">
-    <div class="row">
-        <div class="col-md-12">
+
             @if(Session::has('error'))
-                <div class="alert alert-danger error_message">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    {{ Session::get('error') }}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger error_message">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        {{ Session::get('error') }}
+                    </div>
                 </div>
+            </div>
             @endif
             @if(Session::has('success'))
-                <div class="alert alert-success success_message">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    {{ Session::get('success') }}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success success_message">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            {{ Session::get('success') }}
+                        </div>
+                    </div>
                 </div>
             @endif
-        </div>
-    </div>
+
+
         <div class="row">
             <div class="col-md-12">
                 <div id="exTab3">

@@ -151,6 +151,27 @@ class SettingsController extends Controller
         $company->postcode = $_POST["postcode"];
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
+        $company->firstname = $_POST["firstname"];
+        $company->lastname = $_POST["lastname"];
+        $company->birthday = $_POST["birthday"];
+        $company->country_nationality = $_POST["nationality"];
+
+        $user = Users::find($blade["user"]->id);
+
+        if($company->mango_id == null){
+
+            $mango_obj = new MangoClass($this->mangopay);
+
+            if($company->type == 1){
+                $mango_user = $mango_obj->createNaturalUser($company, $user);
+            }else{
+                $mango_user=   $mango_obj->createLegalUser($company, $user);
+            }
+
+            $company->mango_id = $mango_user->Id;
+
+        }
+
 
         if(env("APP_ENV") == "live") {
             $company->system = 0;
@@ -165,63 +186,11 @@ class SettingsController extends Controller
         $user = Users::find($blade["user"]->id);
         $user->service_provider_fk = $company->id;
         $user->save();
-
-
+        
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
 
     }
 
-
-    public function saveAdditionalKycData() {
-
-        $blade["user"] = Auth::user();
-        $blade["ll"] = App::getLocale();
-
-        $company = Companies::where("id", "=", $blade["user"]->service_provider_fk)
-            ->where("delete", "=", "0")
-            ->first();
-
-        if(!isset($company)){
-            $company = new Companies();
-        }
-
-        $company->firstname = $_POST["firstname"];
-        $company->lastname = $_POST["lastname"];
-        $company->birthday = $_POST["birthday"];
-        $company->country_nationality = $_POST["nationality"];
-        $company->save();
-
-        $user = Users::find($blade["user"]->id);
-
-
-        if($company->mango_id == null){
-
-            $mango_obj = new MangoClass($this->mangopay);
-
-            if($company->type == 1){
-                $mango_user = $mango_obj->createNaturalUser($company, $user);
-            }else{
-                $mango_user=   $mango_obj->createLegalUser($company, $user);
-            }
-
-            $company->mango_id = $mango_user->Id;
-
-            if(env("APP_ENV") == "live") {
-                $company->system = 0;
-            }elseif(env("APP_ENV") == "dev") {
-                $company->system = 1;
-            }else{
-                $company->system = 1;
-            }
-
-            $company->save();
-
-        }
-
-
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
-
-    }
 
     public function saveAccount() {
 
