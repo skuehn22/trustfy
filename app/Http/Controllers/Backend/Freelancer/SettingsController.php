@@ -422,15 +422,25 @@ class SettingsController extends Controller
         $bank->city = $_POST['city'];
         $bank->zip = $_POST['code'];
         $bank->country = $_POST['country'];
-        $bank->country_iso = $_POST['country_iso'];
+        $bank->country_iso = $_POST['country'];
 
         $mango_obj = new MangoClass($this->mangopay);
         $result = $mango_obj->createBankAccount($bank, $company);
 
-        $bank->mango_bank_id = $result->Id;
-        $bank->save();
+        if(!$result){
 
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+            return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', 'An error has occurred!');
+
+        }else{
+            $bank->mango_bank_id = $result->Id;
+            $bank->save();
+
+            return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+        }
+
+
+
+
 
     }
 

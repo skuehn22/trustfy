@@ -538,8 +538,6 @@ class MangoClass extends Controller
 
         $result = $this->mangopay->Users->CreateBankAccount($UserId, $BankAccount);
 
-        $test = "";
-
         return $result;
 
         } catch (MangoPay\Libraries\ResponseException $e) {

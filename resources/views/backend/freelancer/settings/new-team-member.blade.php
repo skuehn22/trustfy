@@ -1,31 +1,31 @@
 <form class="form-horizontal" role="form" method="POST" action="/provider/settings/save-team-member">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="form-group">
-        <label for="company" class="col-md-2 control-label">Firstname</label>
+        <label for="company" class="col-md-3 control-label">Firstname</label>
         <div class="col-md-6">
             <input id="firstname" type="text" class="form-control" name="firstname">
         </div>
     </div>
     <div class="form-group">
-        <label for="lastname" class="col-md-2 control-label">Lastname</label>
+        <label for="lastname" class="col-md-3 control-label">Lastname</label>
         <div class="col-md-6">
             <input id="lastname" type="text" class="form-control" name="lastname">
         </div>
     </div>
     <div class="form-group">
-        <label for="mail" class="col-md-2 control-label">E-Mail</label>
+        <label for="mail" class="col-md-3 control-label">E-Mail</label>
         <div class="col-md-6">
             <input id="mail" type="text" class="form-control" name="mail">
         </div>
     </div>
     <div class="form-group">
-        <label for="phone" class="col-md-2 control-label">Phone</label>
+        <label for="phone" class="col-md-3 control-label">Phone</label>
         <div class="col-md-6">
             <input id="phone" type="text" class="form-control" name="phone">
         </div>
     </div>
     <div class="form-group">
-        <label for="password" class="col-md-2 control-label">Phone</label>
+        <label for="password" class="col-md-3 control-label">Phone</label>
         <div class="col-md-6">
             <input type="password" class="form-control" id="password" name="password">
         </div>
