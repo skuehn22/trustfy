@@ -429,7 +429,7 @@ class PaymentPlanController extends Controller
         </table></p>";
 
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
-        $data['content'] .= "<a href=".$changeUrl. " style='color: #949494; text-decoration: underline;'>Change Payment Methode</a>";
+        $data['content'] .= "<a href=".$changeUrl. " style='color: #949494; text-decoration: underline;'>Change Payment Method</a>";
 
 
         $data['content'] .= "<p><br>Your money will be held in a secure client account<br>for the duration of the project. Simply click \"release funds\" when the work is done!</p>";
@@ -577,7 +577,7 @@ class PaymentPlanController extends Controller
 
             return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Your payment method has been reset, just choose a payment method below.');
         }else{
-            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('erroe', 'You can not change the payment methode anymore');
+            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('erroe', 'You can not change the payment method anymore');
         }
     }
 
