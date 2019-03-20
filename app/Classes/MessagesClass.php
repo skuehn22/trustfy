@@ -76,7 +76,7 @@ class MessagesClass  extends Controller
         $id = $milestone->id;
 
         $data['content']="";
-        $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
+        $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/plans/payment-plan/".$plan->hash;
         $data['client'] = Clients::where("id", "=", $plan->clients_id_fk)->first();
         $data['milestone'] = $milestone;
         $data['plan'] = $plan;
@@ -103,7 +103,7 @@ class MessagesClass  extends Controller
         $id = $payout->milestone_id_fk;
 
         $data['content']="";
-        $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
+        $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/plans/payment-plan/".$plan->hash;
         $data['client'] = Clients::where("id", "=", $plan->clients_id_fk)->first();
         $data['milestone'] = $milestone;
         $data['plan'] = $plan;
