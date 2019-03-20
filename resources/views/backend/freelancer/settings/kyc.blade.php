@@ -1,6 +1,6 @@
 @if(isset($company->type))
 
-    <p style="font-size: 11px;"><i>As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need follwoing documents: {{$kyc_docs->mango_kyc_docs}}</i></p>
+    <p style="font-size: 11px;"><i>As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need following documents: {{$kyc_docs->mango_kyc_docs}}</i></p>
 @else
     <p style="color: orange">Please save your company first</p>
 
@@ -44,7 +44,7 @@
                 </div>
 
                 <p style="font-size: 11px;">
-                    Note: Please note that all pages are contained in <br>one document.
+                    Note: Please make sure all pages are contained in the document e.g. front and back of driving license
                 </p>
 
                 <div class="form-group">

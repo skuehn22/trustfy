@@ -449,7 +449,7 @@
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
                     <div class="login-error-msg"></div>
                 </div>
-                <h3 class="modal-title-msg" id="modal-title-msg">Work done</h3>
+                <h3 class="modal-title-msg" id="modal-title-msg">Milestone Completed</h3>
             </div>
             <div class="modal-body"  id="modal-body-msg">
                 <form class="form-horizontal" id="release-form" role="form" method="POST" action="/payment-plan/release-milestone/{hash}">
