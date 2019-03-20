@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="form-inline">
         <span style="font-weight: 500;"> Payment Method
-                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Payment Methode you would allow your Client."></i>
+                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Which payment methods would you like to accept?"></i>
         </span>
     </div>
 </div>
@@ -44,7 +44,7 @@
     <div class="col-md 6">
         <div class="form-row py-2">
             <span style="font-weight: 500;"> Personal Message
-                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Will be added to your E-Mail"></i>
+                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Will be added to your payment plan"></i>
             </span>
         </div>
         <div class="form-group">

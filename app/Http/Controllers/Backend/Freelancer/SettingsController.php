@@ -186,7 +186,7 @@ class SettingsController extends Controller
         $user = Users::find($blade["user"]->id);
         $user->service_provider_fk = $company->id;
         $user->save();
-        
+
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
 
     }

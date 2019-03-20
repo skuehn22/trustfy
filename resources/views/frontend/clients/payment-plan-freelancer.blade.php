@@ -98,8 +98,10 @@
                 <div class="row contacts">
                     <div class="col invoice-to">
                         @if(isset($plan->lastname) && $plan->lastname!=" ")
-                            <h2 class="to">{{$plan->firstname}} {{$plan->lastname}}</h2>
-                            <div class="address">{{$plan->address1}} {{$plan->address2}} {{$plan->city}}</div>
+                            <h5 class="to">{{$plan->firstname}} {{$plan->lastname}}</h5>
+                            <div class="address">{{$plan->address1}} <br>
+                            @if(strlen($plan->address2)>1){{$plan->address2 or ''}}<br> @endif
+                            {{$plan->city}}</div>
                             <div class="email">{{$plan->email}}</div>
                         @else
                             <i>please fill in</i>
@@ -134,7 +136,7 @@
                         </td>
 
                         <td class="qty"> @if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}} @else  <i>please fill in</i> @endif</td>
-                        <td class="qty"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
+                        <td class="qty"  style="width:16%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                         <td>
 
                             @if(isset($milestone->bank_transfer))
