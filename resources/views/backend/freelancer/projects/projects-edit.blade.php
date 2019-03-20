@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-6">
                     <div class="form-row py-2">
-                        <h5 class="pb-3">General Informations</h5>
+                        <h5 class="pb-3">General Information</h5>
                     </div>
                     <div class="form-row py-2">
                         <label class="col-md-2 col-form-label" for="clients">Client</label>

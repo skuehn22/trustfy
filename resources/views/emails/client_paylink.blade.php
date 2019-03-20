@@ -343,7 +343,9 @@
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td  style="text-align: center">  <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" target="_blank">View & Pay</a> </td>
+                                                            <td  style="text-align: center">
+                                                                <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" target="_blank">View & Pay</a>
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

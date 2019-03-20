@@ -1,5 +1,5 @@
 <div class="form-row py-2 pt-0 pl-0 ml-0">
-    <h4 class="pt-0">General Informations</h4><br><br>
+    <h4 class="pt-0">General Information</h4><br><br>
 </div>
 
 

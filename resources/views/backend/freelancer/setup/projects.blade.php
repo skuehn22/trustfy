@@ -12,7 +12,7 @@
 
        </div>
         <div class="col-md-6">
-            <h5>General Informations</h5>
+            <h5>General Information</h5>
             <div class="form-row py-2 client-list" id="client-list"></div>
             <div class="form-row py-2">
                 <label class="col-md-4 col-form-label" for="project-name">Name</label>
