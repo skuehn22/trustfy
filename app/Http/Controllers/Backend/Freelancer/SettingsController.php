@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Backend\Freelancer;
 
 
 // Libraries
-use App, Auth, Redirect, Hash, MangoPay, Validator;
+use App, Auth, Redirect, Hash, MangoPay, Validator, Lang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
@@ -106,6 +106,7 @@ class SettingsController extends Controller
 
 
         $countries= Countries::lists('country_name', 'alpha2_code');
+        $countries->prepend(Lang::get('freelancer_backend.please_select'), 0);
 
         return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs', 'countries'));
 

@@ -383,7 +383,7 @@ class MangoClass extends Controller
             $wallet = new \MangoPay\Wallet();
             $wallet->Owners = array( $user );
             $wallet->Currency = 'EUR';
-            $wallet->Description = "MVP Description";
+            $wallet->Description = "default";
             $createdWallet = $this->mangopay->Wallets->Create($wallet);
 
             return $createdWallet;
@@ -754,26 +754,26 @@ class MangoClass extends Controller
 
 
 
-    public function createPayOut($milestone){
+    public function createPayOut($author, $milestone, $bank, $wallet){
         try {
 
-            $wallet = "61451381";
-            $user = "61450664";
-            $amount = 100;
-            $bank = "62091760";
+            //$wallet = "61451381";
+            //$user = "61450664";
+            //$amount = $milestone->amount;
+            //$bank = "62091760";
 
             $PayOut = new \MangoPay\PayOut();
-            $PayOut->AuthorId = $user;
-            $PayOut->DebitedWalletID = $wallet;
+            $PayOut->AuthorId = $author;
+            $PayOut->DebitedWalletID = $wallet->id;
             $PayOut->DebitedFunds = new \MangoPay\Money();
             $PayOut->DebitedFunds->Currency = "EUR";
-            $PayOut->DebitedFunds->Amount = $amount;
+            $PayOut->DebitedFunds->Amount = $milestone->amount*100;
             $PayOut->Fees = new \MangoPay\Money();
             $PayOut->Fees->Currency = "EUR";
-            $PayOut->Fees->Amount = 1;
+            $PayOut->Fees->Amount = $milestone->amount*0.03*100;
             $PayOut->PaymentType = "BANK_WIRE";
             $PayOut->MeanOfPaymentDetails = new \MangoPay\PayOutPaymentDetailsBankWire();
-            $PayOut->MeanOfPaymentDetails->BankAccountId = $bank;
+            $PayOut->MeanOfPaymentDetails->BankAccountId = $bank->mango_bank_id;
             $result = $this->mangopay->PayOuts->Create($PayOut);
 
             return $result;

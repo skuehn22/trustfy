@@ -11,12 +11,12 @@ return [
 
 
     /* Company Types */
-    'company_types_1' => 'Sole trader',
-    'company_types_2' => 'Company',
-    'company_types_3' => 'Organization',
+    'company_types_1' => 'Freelancer',
+    'company_types_2' => 'Unternemen',
+    'company_types_3' => 'Organisation',
 
 
-    'please_select' => 'please select',
+    'please_select' => 'bitte wählen',
 
 ];
 

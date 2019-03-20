@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect;
+use App, Auth, Request, Redirect, Lang;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Clients;
@@ -78,6 +78,7 @@ class ClientManagementController extends Controller
         $blade["ll"] = App::getLocale();
         $blade["user"] = Auth::user();
         $countries= Countries::lists('country_name', 'alpha2_code');
+        $countries->prepend(Lang::get('freelancer_backend.please_select'), 0);
 
         return view('backend.freelancer.clients.clients-new', compact('blade', 'clients', 'countries'));
 

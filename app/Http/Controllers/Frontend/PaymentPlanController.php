@@ -21,6 +21,8 @@ use App\DatabaseModels\UsersPaymentPlan;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\MangoPayout;
 use App\DatabaseModels\Companies;
+use App\DatabaseModels\CompaniesBank;
+use App\DatabaseModels\CompaniesMangowallets;
 use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
 use App\Classes\MessagesClass;
@@ -239,9 +241,18 @@ class PaymentPlanController extends Controller
         $user = Users::where("service_provider_fk", "=", $plan->service_provider_fk)
             ->first();
 
-        //get result of the payin made by client
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $bank = CompaniesBank::where("service_provider_fk", "=", $plan->service_provider_fk)
+            ->first();
+
+        $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
+            ->first();
+
+
         $mango_obj = new MangoClass($this->mangopay);
-        $payOutResult = $mango_obj->createPayOut($milestone);
+        $payOutResult = $mango_obj->createPayOut($company->mango_id, $milestone, $bank, $wallet);
 
         $payout = new MangoPayout();
         $payout->status = $payOutResult->Status;
