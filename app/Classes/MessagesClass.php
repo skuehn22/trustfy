@@ -104,7 +104,7 @@ class MessagesClass  extends Controller
 
         $data['content']="";
         $data['planUrl'] = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
-        $data['client'] = Clients::where("id", "=", "1162")->first();
+        $data['client'] = Clients::where("id", "=", $plan->clients_id_fk)->first();
         $data['milestone'] = $milestone;
         $data['plan'] = $plan;
 

@@ -407,15 +407,15 @@ class PaymentPlanController extends Controller
         $milestone->save();
 
         $subject= "Trustfy Payments";
-        $data['content'] = "<h3>Thank you for your transfer</h3>";
-        $data['content'] .= "<p>You have a payment for the milestone:\" ".$milestone->name."\" arranged.</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>the amount € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] = "<h3>Thank you for your payment</h3>";
+        $data['content'] .= "<p>You have marked the bank transfer for:\" ".$milestone->name."\" as complete.</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please <br>transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 
         "<p><table style=\"width: 450px; padding-left: 135px;\">
         <tr>
-            <td class=\"text-left\">Name:</td>          <td>Trustfy</td>
+            <td class=\"text-left\">Name:</td>          <td>Trustfy Client Account</td>
         </tr>
         <tr>
             <td class=\"text-left\">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>
@@ -429,10 +429,10 @@ class PaymentPlanController extends Controller
         </table></p>";
 
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
-        $data['content'] .= "<a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Methode</a>";
+        $data['content'] .= "<a href=".$changeUrl. " style='color: #949494; text-decoration: underline;'>Change Payment Methode</a>";
 
 
-        $data['content'] .= "<p><br>Your money will then be held in a trust account and <br> you don't have to worry about your money.</p>";
+        $data['content'] .= "<p><br>Your money will be held in a secure client account<br>for the duration of the project. Simply click \"release funds\" when the work is done!</p>";
 
         $msg_obj = new MessagesClass();
         $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);

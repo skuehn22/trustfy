@@ -323,7 +323,7 @@
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
                                         <p class="header-text">Your money is on the way!</p>
-                                        <p>{{$data['client']->firstname}} {{$data['client']->lastname}} released a payment for: <br> "{{$data['milestone']->name}}" <br>it’ll be in your bank soon.</p>
+                                        <p>{{$data['client']->firstname}} {{$data['client']->lastname}} released a payment for: <br> "{{$data['milestone']->name}}" <br>It will be in your bank account soon.</p>
                                     </td>
                                 </tr>
                                 <tr>
