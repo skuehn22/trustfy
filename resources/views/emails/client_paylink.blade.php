@@ -329,7 +329,7 @@
 
                                         <br><br>
                                         <p>Hi {{$client->firstname}} {{$client->lastname}},</p>
-                                        <p>{{$company->name}} as created a payment plan for you. </p>
+                                        <p>{{$company->name}} has created a payment plan for you. </p>
                                         <p>You can review the terms and make a payment below.</p>
                                         <br><br>
                                     </td>

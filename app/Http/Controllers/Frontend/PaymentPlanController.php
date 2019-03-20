@@ -573,7 +573,7 @@ class PaymentPlanController extends Controller
             $milestone->paystatus = 0;
             $milestone->save();
 
-            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Your old payment methode is now deleted. You can change the methode now');
+            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Your payment method has been reset, just choose a payment method below.');
         }else{
             return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('erroe', 'You can not change the payment methode anymore');
         }
