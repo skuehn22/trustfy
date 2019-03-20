@@ -300,7 +300,7 @@
     </style>
 </head>
 <body class="">
-<!--<span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>-->
+
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td>&nbsp;</td>
@@ -344,7 +344,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <td  style="text-align: center">
-                                                                <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" target="_blank">View & Pay</a>
+                                                                <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}"  class="btn btn-primary" target="_blank">View & Pay</a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
