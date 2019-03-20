@@ -505,16 +505,16 @@ class PaymentPlanController extends Controller
         $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash."?typ=mail";
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
 
-        $subject= "Trustfy Payments - Payment reminder for ".$milestone->name;
-        $data['content'] = "<h3>Hello </h3>".$client->firstname." ".$client->lastname.",";
+        $subject= "Payment reminder for ".$milestone->name;
+        $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname."</p>,";
         $data['content'] .= "<p>This is a friendly reminder to make a payment for: \"".$milestone->name."\".</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>the amount € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 
             "<p><table style=\"width: 450px; padding-left:135px; \">
         <tr>
-            <td class=\"text-left\">Name:</td>          <td>Trustfy</td>
+            <td class=\"text-left\">Name:</td>          <td>Trustfy Client Account</td>
         </tr>
         <tr>
             <td class=\"text-left\">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>
@@ -527,7 +527,7 @@ class PaymentPlanController extends Controller
         </tr>
         </table></p>";
 
-        $data['content'] .= "<p>Once the transfer is complete, press the transfer complete button and we will not send you further reminders!</p>";
+        $data['content'] .= "<p>Once the transfer is complete, press the transfer complete button <br> and we will not send you further reminders!</p>";
 
         $data['content'] .='
 
