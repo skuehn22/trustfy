@@ -330,7 +330,7 @@
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td  style="text-align: center">  <a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" target="_blank">Reset Password</a> </td>
+                                                            <td  style="text-align: center">  <a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}" class="btn btn-primary" target="_blank">Reset Password</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

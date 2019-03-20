@@ -335,7 +335,7 @@
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td  style="text-align: center">  <a href="{{ $data['planUrl'] }}" target="_blank">View Plan</a> </td>
+                                                            <td  style="text-align: center">  <a href="{{ $data['planUrl'] }}" class="btn btn-primary" target="_blank">View Plan</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
