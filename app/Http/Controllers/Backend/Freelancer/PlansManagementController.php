@@ -21,7 +21,7 @@ use App\DatabaseModels\PlanDocs;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Companies;
 
-use App\Classes\MangoClass;
+use App\Classes\MessagesClass;
 use Faker\Provider\Company;
 
 class PlansManagementController extends Controller
@@ -465,10 +465,11 @@ class PlansManagementController extends Controller
     }
 
 
+
     function loadPlan($hash){
 
 
-        $blade["locale"] = App::getLocale();
+        $blade["ll"] = App::getLocale();
 
         //get all plan details for the normal payment plan view
         $query = DB::table('projects_plans');
@@ -500,7 +501,61 @@ class PlansManagementController extends Controller
             $statusObj = new StateClass();
             $status =$statusObj->milestones($milestone->paystatus);
 
-            return view('frontend.clients.payment-plan-freelancer', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash', 'status'));
+            return view('backend.freelancer.plans.show', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash', 'status'));
         }
     }
+
+    public function workDone($id) {
+
+        $milestone = PlansMilestone::where("id", "=", $id)
+            ->first();
+
+        $milestone->paystatus = 2;
+        $milestone->save();
+
+        $plan = Plans::where("id", "=", $milestone->projects_plans_id_fk)
+            ->first();
+
+        $company = Companies::where("id", "=", $plan->service_provider_fk)
+            ->first();
+
+        $client = Clients::where("id", "=", $plan->clients_id_fk)
+            ->first();
+
+        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
+
+        $subject = "Trustfy Payments - Work completed";
+        $data['content'] =  "<p>Great news! <br>".$company->name." has completed the milestone: \"".$milestone->name."\"</p>";
+        $data['content'] .= "<p>Please view and release the money</p>";
+
+        $data['content'] .='
+
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                <tbody>
+                <tr>
+                    <td align="center">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td  style="text-align: center">  <a href="'.$planUrl.'" class="btn btn-primary" target="_blank">Open Plan</a> </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        ';
+
+        $msg_obj = new MessagesClass();
+        //$msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+
+
+        return response()->json([
+            'message'   => 'great'
+
+        ]);
+
+    }
+
 }

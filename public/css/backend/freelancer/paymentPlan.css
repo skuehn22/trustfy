@@ -10,6 +10,11 @@
     border: 1px solid #d4d4d4
 }
 
+.btn-success {
+    color: #fff;
+    background-color: #006600;
+    border-color: #006600;
+}
 
 
 .invoice .company-details {
@@ -144,7 +149,7 @@ a:not([href]):not([tabindex]) {
 }
 
 .successful{
-    color: green;
+    color: #006600;
     font-weight: 700;
     font-style: italic;
     float: right;

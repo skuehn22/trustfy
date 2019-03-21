@@ -28,7 +28,7 @@ class StateClass
                 $state['state'] = "canceled";
                 break;
             case 3:
-                $state['color'] = "green";
+                $state['color'] = "#006600";
                 $state['state'] = "finished";
                 break;
             default:
@@ -77,7 +77,7 @@ class StateClass
                 $state['state'] = "send";
                 break;
             case 2:
-                $state['color'] = "green";
+                $state['color'] = "#006600";
                 $state['state'] = "funded";
                 break;
             case 3:
@@ -85,8 +85,12 @@ class StateClass
                 $state['state'] = "payout created";
                 break;
             case 4:
-                $state['color'] = "green";
+                $state['color'] = "#006600";
                 $state['state'] = "payout succeded";
+                break;
+            case 7:
+                $state['color'] = "#006600";
+                $state['state'] = "work completed";
                 break;
             default:
                 $state['color'] = "text-secondary";

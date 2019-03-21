@@ -78,3 +78,8 @@ button.btn.btn-info.add_field_button {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.btn-success {
+    color: #fff;
+    background-color: #006600;
+    border-color: #006600;
+}

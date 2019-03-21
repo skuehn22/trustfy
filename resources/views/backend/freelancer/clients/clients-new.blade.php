@@ -96,7 +96,7 @@
                         </div>
                         <div class="form-row py-2">
                             <label class="col-md-4 col-form-label"  for="client-address1">Address 1</label>
-                            <input type="text" class="form-control col-md-7" id="client-address1" name="client-address1" required>
+                            <input type="text" class="form-control col-md-7" id="client-address1" name="client-address1">
                         </div>
                         <div class="form-row py-2">
                             <label class="col-md-4 col-form-label"  for="client-address2">Address 2</label>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="form-row py-2">
                             <label class="col-md-4 col-form-label"  for="city">City</label>
-                            <input type="text" class="form-control col-md-7" id="client-city" name="client-city" required>
+                            <input type="text" class="form-control col-md-7" id="client-city" name="client-city">
                         </div>
                         <div class="form-row py-2">
                             <label class="col-md-4 col-form-label" for="country">Country</label>

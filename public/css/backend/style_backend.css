@@ -29,6 +29,14 @@ a {
     text-decoration: none;
 }
 
+
+.btn-success {
+    color: #fff;
+    background-color: #006600;
+    border-color: #006600;
+}
+
+
 .blur {
     -webkit-filter: blur(2px);
     filter: blur(4px);
