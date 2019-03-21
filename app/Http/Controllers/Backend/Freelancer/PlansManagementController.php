@@ -510,7 +510,7 @@ class PlansManagementController extends Controller
         $milestone = PlansMilestone::where("id", "=", $id)
             ->first();
 
-        $milestone->paystatus = 2;
+        $milestone->paystatus = 7;
         $milestone->save();
 
         $plan = Plans::where("id", "=", $milestone->projects_plans_id_fk)
@@ -548,7 +548,7 @@ class PlansManagementController extends Controller
         ';
 
         $msg_obj = new MessagesClass();
-        //$msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
 
 
         return response()->json([
