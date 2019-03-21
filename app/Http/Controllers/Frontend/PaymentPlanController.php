@@ -424,20 +424,14 @@ class PaymentPlanController extends Controller
 
         $data['content'] .=
 
-        "<p><table style=\"width: 450px; padding-left: 135px;\">
-        <tr>
-            <td class=\"text-left\">Name:</td>          <td>Trustfy Client Account</td>
-        </tr>
-        <tr>
-            <td class=\"text-left\">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>
-        </tr>
-        <tr>
-            <td class=\"text-left\">BIC:</td>           <td>AIBKIE2D</td>
-        </tr>
-        <tr>
-            <td class=\"text-left\">Reference:</td>     <td>C-{$milestone->id}-{$milestone->projects_plans_id_fk}</td>
-        </tr>
-        </table></p>";
+            "<p>
+
+                <span>Name: </span><span>Trustfy Client Account</span><br>
+                <span>IBAN: </span><span>IE95 AIBK 9310 7128 1910 54</span><br>
+                 <span>BIC: </span><span>AIBKIE2D</span><br>
+                  <span>Reference: </span><span>C-{$milestone->id}-{$milestone->projects_plans_id_fk}</span><br>
+        </p>";
+
 
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
         $data['content'] .= "<a href=".$changeUrl. " style='color: #949494; text-decoration: underline;'>Change Payment Method</a>";
@@ -462,21 +456,10 @@ class PaymentPlanController extends Controller
 
         $data['content'] .='
 
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                <tbody>
-                <tr>
-                    <td align="center">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                            <tr>
-                                <td  style="text-align: center">  <a href="'.$planUrl.'" class="btn btn-primary" target="_blank">View Plan</a> </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <p><br><br>
+             <a href="'.$planUrl.'" class="btn btn-primary"  style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank">View Plan</a>
+            </p>
+           
         ';
 
         $msg_obj->sendStandardMail($subject, $data, $user->email, null);
@@ -517,50 +500,32 @@ class PaymentPlanController extends Controller
         $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
 
         $subject= "Payment reminder for ".$milestone->name;
-        $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname.",</p>,";
+        $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname.",</p>";
         $data['content'] .= "<p>This is a friendly reminder to make a payment for: \"".$milestone->name."\".</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please transfer <br>€ ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 
-            "<p><table style=\"width: 450px; padding-left:135px; \">
-        <tr>
-            <td class=\"text-left\">Name:</td>          <td>Trustfy Client Account</td>
-        </tr>
-        <tr>
-            <td class=\"text-left\">IBAN:</td>          <td>IE95 AIBK 9310 7128 1910 54</td>
-        </tr>
-        <tr>
-            <td class=\"text-left\">BIC:</td>           <td>AIBKIE2D</td>
-        </tr>
-        <tr>
-            <td class=\"text-left\">Reference:</td>     <td>C-{$milestone->id}-{$milestone->projects_plans_id_fk}<br><br></td>
-        </tr>
-        </table></p>";
+            "<p>
 
-        $data['content'] .= "<p>Once the transfer is complete, press the transfer complete button <br> and we will not send you further reminders!</p>";
+                <span>Name: </span><span>Trustfy Client Account</span><br>
+                <span>IBAN: </span><span>IE95 AIBK 9310 7128 1910 54</span><br>
+                 <span>BIC: </span><span>AIBKIE2D</span><br>
+                  <span>Reference: </span><span>C-{$milestone->id}-{$milestone->projects_plans_id_fk}</span><br>
+</p>";
+
+        $data['content'] .= "<p>Once the transfer is complete, press the transfer complete button and we will not send you further reminders!<br><br><br></p>";
 
         $data['content'] .='
 
 
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-            <tbody>
-            <tr>
-                <td align="center">
-                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                        <tbody>
-                        <tr>
-                            <td  style="text-align: center">  <a href="'.$planUrl.'" target="_blank" class="btn btn-primary">Transfer Complete</a> </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <p>
+            <a href="'.$planUrl.'"  style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank" class="btn btn-primary">Transfer Complete</a>
+        </p>
+        
         ';
 
-        $data['content'] .= "<a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Method</a>";
+        $data['content'] .= "<br><br><a href=".$changeUrl." style='color: #aaa; text-decoration: underline;'>Change Payment Method</a>";
 
 
         $msg_obj = new MessagesClass();

@@ -265,6 +265,8 @@
                 max-width: 100% !important;
                 width: auto !important;
             }
+
+
         }
         /* -------------------------------------
             PRESERVE THESE STYLES IN THE HEAD
@@ -339,17 +341,18 @@
                 <!-- END CENTERED WHITE CONTAINER -->
 
                 <!-- START FOOTER -->
-                <div class="footer">
+                <div class="footer" style="text-align: center;">
+<hr>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Powered by Trustfy</span>
-                                <br> The secure escrow payment system for freelancers and their clients. <a href="https://www.trustfy.io">Get started</a>.
+                                <span class="apple-link" style="color: #1b1e21">Powered by Trustfy</span>
+                                <br> <span  style="color: #1b1e21">The secure escrow payment system for freelancers and their clients. </span><a style="color:#006600; text-decoration: none;" href="https://www.trustfy.io">Get started</a>.
                             </td>
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                © <a href="https://www.trustfy.io">trustfy.io</a> 2019. All Rights Reserved.
+                                <span  style="color: #1b1e21"> © <a href="https://www.trustfy.io" style="color:#006600; text-decoration: none;">trustfy.io</a> 2019. All Rights Reserved.</span>
                             </td>
                         </tr>
                     </table>

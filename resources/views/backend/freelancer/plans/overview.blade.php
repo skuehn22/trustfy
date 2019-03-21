@@ -193,7 +193,7 @@
                         <tr>
                             <td>
                                 @if($plan->state > 0)
-                                    <a href="/{{$blade["ll"]}}/freelancer/plans/payment-plan/{{$plan->hash}}" target="_blank" data-toggle="tooltip" data-placement="top" title="Show">
+                                    <a href="/{{$blade["ll"]}}/freelancer/plans/payment-plan/{{$plan->hash}}" data-toggle="tooltip" data-placement="top" title="Show">
                                         {{ $plan->name or 'not set' }}
                                     </a>
                                 @else

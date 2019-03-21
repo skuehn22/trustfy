@@ -510,7 +510,7 @@ class PlansManagementController extends Controller
         $milestone = PlansMilestone::where("id", "=", $id)
             ->first();
 
-        $milestone->paystatus = 7;
+        $milestone->paystatus = 2;
         $milestone->save();
 
         $plan = Plans::where("id", "=", $milestone->projects_plans_id_fk)
@@ -525,26 +525,13 @@ class PlansManagementController extends Controller
         $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$plan->hash;
 
         $subject = "Trustfy Payments - Work completed";
-        $data['content'] =  "<p>Great news! <br>".$company->name." has completed the milestone: \"".$milestone->name."\"</p>";
-        $data['content'] .= "<p>Please view and release the money</p>";
+        $data['content'] =  "<p>Good news! <br> <br>".$company->name." has marked \"".$milestone->name."\" as complete.</p>";
+        $data['content'] .= "<p>Click below to view the payment plan and release your payment. <br> <br></p>";
 
         $data['content'] .='
-
-            <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                <tbody>
-                <tr>
-                    <td align="center">
-                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                            <tbody>
-                            <tr>
-                                <td  style="text-align: center">  <a href="'.$planUrl.'" class="btn btn-primary" target="_blank">Open Plan</a> </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <p>
+               <a href="'.$planUrl.'" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Open Plan</a>                  
+            </p>
         ';
 
         $msg_obj = new MessagesClass();
