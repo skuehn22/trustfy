@@ -42,7 +42,7 @@
     <li class="cd-single-step tour-step-3">
         <span>Step 2</span>
 
-        <div class="cd-more-info bottom">
+        <div class="cd-more-info right">
             <h2>Save your entries here</h2>
             <img src="/img/step-2.png" alt="step 2">
         </div>
@@ -61,7 +61,7 @@
     <li class="cd-single-step tour-step-5">
         <span>Step 3</span>
 
-        <div class="cd-more-info bottom">
+        <div class="cd-more-info top">
             <h2>Save your entries here</h2>
             <img src="/img/step-3.png" alt="step 3">
         </div>

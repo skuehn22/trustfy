@@ -286,6 +286,7 @@
 
     </div>
     <input id="setup" type="hidden" value="{{$setup or ''}}">
+    <input id="tour" type="hidden" value="{{$user->tour}}">
 
 
 @stop

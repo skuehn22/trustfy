@@ -278,28 +278,28 @@ Main Components
 
     .cd-single-step:nth-of-type(2) {
         /* set tour points positions */
-        bottom: 58%;
-        right: 88%;
+        bottom: 44%;
+        right: 85%;
     }
 
     .cd-single-step:nth-of-type(3) {
-        bottom: 28%;
-        right: 74%;
+        bottom: 7%;
+        right: 68%;
     }
 
     .cd-single-step:nth-of-type(4) {
-        top: 36%;
-        left: 11%;
+        top: 44%;
+        left: 14%;
     }
 
     .cd-single-step:nth-of-type(5) {
-        top: 53%;
-        left: 63%;
+        top: 22%;
+        left: 89%;
     }
 
     .cd-single-step:nth-of-type(6) {
-        top: 36%;
-        left: 11%;
+        top: 53%;
+        left: 15%;
     }
 
     .cd-single-step > span, .cd-single-step::after {

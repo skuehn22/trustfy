@@ -452,7 +452,7 @@ class PaymentPlanController extends Controller
         $data['content'] .= "<p>Project: ".$plan->name."</p>";
         $data['content'] .= "<p>Milestone: ".$milestone->name."</p>";
         $data['content'] .= "  <p>Amount: € ".number_format($milestone->amount, 2, ',', ' ')."</p>";
-        $data['content'] .= "<p>We will lt you know when the money arrives </p>";
+        $data['content'] .= "<p>We will let you know when the money arrives </p>";
 
         $data['content'] .='
 
@@ -466,7 +466,7 @@ class PaymentPlanController extends Controller
 
         //checks from which point the payment was clicked as done
         if(isset($_GET['typ'])){
-            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'We changed the status of your plan.');
+            return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Payment status updated.');
         }else{
             return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
         }
@@ -514,13 +514,13 @@ class PaymentPlanController extends Controller
                   <span>Reference: </span><span>C-{$milestone->id}-{$milestone->projects_plans_id_fk}</span><br>
 </p>";
 
-        $data['content'] .= "<p>Once the transfer is complete, press the transfer complete button and we will not send you further reminders!<br><br><br></p>";
+        $data['content'] .= "<p><strong>Once the transfer is complete, press the transfer complete button and we will not send you further reminders!</strong><br><br><br></p>";
 
         $data['content'] .='
 
 
         <p>
-            <a href="'.$planUrl.'"  style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank" class="btn btn-primary">Transfer Complete</a>
+            <a href="'.$planUrl.'"  style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank" class="btn btn-primary">Mark Transfer Complete</a>
         </p>
         
         ';
