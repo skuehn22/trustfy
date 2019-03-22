@@ -60,6 +60,11 @@ class PlansDetailsClass  extends Controller
                 $fundsCalculation['released'] = $fundsCalculation['released'] + $fund->amount;
                 break;
 
+            case "8":
+                $fundsCalculation['released'] = $fundsCalculation['released'] + $fund->amount;
+                break;
+
+
             default:
                 $fundsCalculation['unknown'] = 0;
         }
