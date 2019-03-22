@@ -94,7 +94,7 @@ class StateClass
                 break;
             case 8:
                 $state['color'] = "#006600";
-                $state['state'] = "money realsed";
+                $state['state'] = "money released";
                 break;
             default:
                 $state['color'] = "text-secondary";
