@@ -1,9 +1,9 @@
 @extends('backend.masters.freelancer')
 @section('seo')
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+
 @stop
 @section('css')
-
+    <link href="{{ asset('css/jquery.Wload.css')}}" rel="stylesheet">
     <style>
 
         body {
@@ -307,6 +307,15 @@
                         </div>
                     </div>
                  </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-loading fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="width: 48px">
+                <span class="fa fa-spinner fa-spin fa-3x"></span>
             </div>
         </div>
     </div>

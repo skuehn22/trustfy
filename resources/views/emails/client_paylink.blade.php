@@ -299,77 +299,58 @@
         }
     </style>
 </head>
-<body class="">
 
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+<body style=" background-color: #f6f6f6; font-family: sans-serif;-webkit-font-smoothing: antialiased;font-size: 14px;line-height: 1.4; margin: 0;padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;width: 100%;">
+
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style=" border-collapse: separate;  mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
     <tr>
         <td>&nbsp;</td>
-        <td class="container">
-            <div class="content">
+        <td class="container" style="display: block; margin: 0 auto !important;  /* makes it centered */max-width: 580px; padding: 10px;width: 580px;">
 
+            <div class="content" style="box-sizing: border-box; display: block;margin: 0 auto;max-width: 580px;padding: 10px;">
                 <!-- START CENTERED WHITE CONTAINER -->
-                <table role="presentation" class="main">
 
-                    <!-- START MAIN CONTENT AREA -->
-                    <tr>
-                        <td class="wrapper">
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td style="text-align: center; padding-bottom: 35px;">
-                                        @if(isset($company->logo) && $company->logo!="3.png")
-                                            @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
-                                                <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
-                                            @endif
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center">
-                                        <p class="header-text">{{$company->name}} has sent you a payment plan</p>
+                <div class="footer" style="text-align: center;">
 
-                                        <br><br>
-                                        <p>Hi {{$client->firstname}} {{$client->lastname}},</p>
-                                        <p>{{$company->name}} has created a payment plan for you. </p>
-                                        <p>You can review the terms and make a payment below.</p>
-                                        <br><br>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center">
-                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                                            <tbody>
-                                            <tr>
-                                                <td align="center">
-                                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td  style="text-align: center">
-                                                                <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">View & Pay</a>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <p>
-                                               <br><br>
-                                               <strong>{!! $company->name or '<i>please fill in</i>' !!}</strong> <br>
-                                                {{$company->address1 or ''}}<br>
-                                                @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
-                                                @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
-                                                {{$company->city or ''}}<br>
-                                                <a href="mailto:{{$user->email or ''}}" style="color: #000; text-decoration: none;"> {{$user->email or ''}}</a>
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="content-block">
+                                <br><br>
+                                @if(isset($company->logo) && $company->logo!="3.png")
+                                    @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
+                                        <p><img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" /></p>
+                                    @endif
+                                @endif
+                                <br><br>
 
-                    <!-- END MAIN CONTENT AREA -->
-                </table>
+                                <span class="header-text"><strong>{{$company->name}} has sent you a payment plan</strong></span>
+
+                                <br><br>
+                                <span>Hi {{$client->firstname}} {{$client->lastname}},</span>
+                                <span>{{$company->name}} has created a payment plan for you. </span>
+                                <p>You can review the terms and make a payment below.</p>
+                                <br><br>
+
+                                <p>
+                                    <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 12px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">View & Pay</a>
+                                </p>
+                                <p>
+                                    <br><br>
+                                    <strong>{!! $company->name or '<i>please fill in</i>' !!}</strong> <br>
+                                    {{$company->address1 or ''}}<br>
+                                    @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
+                                    @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
+                                    {{$company->city or ''}}<br>
+                                    <a href="mailto:{{$user->email or ''}}" style="color: #000; text-decoration: none;"> {{$user->email or ''}}</a>
+                                </p>
+
+                            </td>
+                        </tr>
+                    </table>
+<br><br><br>
+
+
+                </div>
                 <!-- END CENTERED WHITE CONTAINER -->
 
                 <!-- START FOOTER -->
@@ -379,7 +360,7 @@
                         <tr>
                             <td class="content-block">
                                 <span class="apple-link" style="color: #1b1e21">Powered by Trustfy</span>
-                                <br> <span  style="color: #1b1e21">The secure escrow payment system for freelancers and their clients. </span><a style="color:#006600; text-decoration: none;" href="https://www.trustfy.io">Get started</a>.
+                                <br> <span  style="color: #1b1e21">The secure escrow payment system for freelancers and their clients. </span><br><a style="color:#006600; text-decoration: none;" href="https://www.trustfy.io">Get started</a>.
                             </td>
                         </tr>
                         <tr>
