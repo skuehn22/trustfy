@@ -254,7 +254,7 @@ class LoginController extends Controller
 
     public function betaRegister() {
 
-        if(isset($_GET['intern'])){
+        if(isset($_GET['beta']) && $_GET['beta'] == true ){
             $status = 2202;
         }else{
             $status = 0;
@@ -281,7 +281,7 @@ class LoginController extends Controller
 
         }else{
 
-            if(isset($_POST['status']) && $_POST['status'] == 2202){
+            if(isset($_POST['status']) && ($_POST['status'] == 2202)){
 
                 $user = Users::where("email", "=", $_POST['email'])->first();
                 $user->active = 1;

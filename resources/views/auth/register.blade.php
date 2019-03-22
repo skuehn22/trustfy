@@ -7,6 +7,7 @@
             <div class="panel panel-default" style="padding:20px;">
                 <div class="panel-heading"><h3>Want to be a Beta Tester</h3></div>
                 <p style="font-size: 14px;">Register below and be the first to test and have your voice heard!</p>
+                <p><hr></p>
                 @if(Session::has('error'))
                     <div class="alert alert-danger error_message">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -19,7 +20,7 @@
                         {!!  Session::get('success') !!}
                     </div>
                 @endif
-                <div class="panel-body">
+                <div class="panel-body text-left" >
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/beta-register-save') }}">
                         {{ csrf_field() }}
 

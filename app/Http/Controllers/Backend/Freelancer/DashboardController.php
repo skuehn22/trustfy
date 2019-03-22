@@ -33,6 +33,9 @@ class DashboardController extends Controller
             if($user->logins_sum <= 1 || $user->logins_sum == null){
                 $user = Users::where("id", "=", 1)
                     ->first();
+
+                $user->tour=true;
+
             }
 
             if(isset($_GET['tour']) && $_GET['tour']=="activate" ){
