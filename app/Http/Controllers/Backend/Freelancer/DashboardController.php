@@ -34,7 +34,7 @@ class DashboardController extends Controller
                 $user = Users::where("id", "=", 1)
                     ->first();
 
-                $user->tour=true;
+                $user->tour="true";
 
             }
 

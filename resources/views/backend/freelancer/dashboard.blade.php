@@ -261,38 +261,36 @@
 
 
 
-    <!-- Setup Modal -->
+    <!-- Setup Modal
     <div class="modal fade" id="setup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop='static' data-keyboard='false'>
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body" id="modal-body">
-                    @include('backend.freelancer.setup.welcome')
+
                 </div>
             </div>
         </div>
     </div>
+-->
 
-
-    <!-- DEMO Installation Modal -->
+    <!-- DEMO Installation Modal
     <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body" id="modal-body">
-                    @include('backend.freelancer.setup.demo')
+
                 </div>
             </div>
         </div>
     </div>
+    -->
 
     </div>
     <input id="setup" type="hidden" value="{{$setup or ''}}">
-    <input id="tour" type="hidden" value="{{$user->tour}}">
-
 
 @stop
 @section("javascript")
     <script type="text/javascript">
-
 
         //checks if a new setup is required for the freelancer
 
@@ -431,6 +429,8 @@
 
 
         // Smart Wizard
+
+        /*
         $('#smartwizard').smartWizard({
             selected: 0,
             theme: 'default',
@@ -456,6 +456,7 @@
             $('#smartwizard').smartWizard("prev");
             return true;
         });
+
 
         $(".save-company").on("click", function() {
 
@@ -628,7 +629,7 @@
             var planID = $(this).data("id");
             getProject(planID);
         });
-
+        */
 
         function getProject(id) {
 
