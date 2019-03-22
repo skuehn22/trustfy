@@ -1,4 +1,5 @@
-    <script>
+<script src="/js/jquery.Wload.js"></script>
+<script>
 
         if($("#tour").length && $("#tour").val() == "true"){
             $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step2').removeClass('cd-app-screen');
@@ -225,6 +226,12 @@
 
         $("#send-plan").on("click", function() {
 
+            $(function(){
+                $('body').Wload({text:' Sending'})
+
+            })
+
+
             event.preventDefault();
             $.ajax({
                 url:"{{ route('freelancer.plans.save') }}",
@@ -250,10 +257,9 @@
                         success:function(data)
                         {
                             $('#msg-send').html(data.message);
-
+                            $('.w_load_body').addClass("d-none");
                             url = "/freelancer/plans?sent=true";
                             $( location ).attr("href", url);
-
                         }
                     })
                 }
@@ -264,25 +270,17 @@
 
         //initalize datepicker
         $( function() {
-
-
             $( "#creation-date" ).datepicker( );
             $( "#creation-date" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
             $('#creation-date').datepicker('setDate', new Date());
-
-
-
         } );
 
 
         //loads projects for selected client
         $("#typ").on('change', function() {
-
             if($("#typ").val() == 1){
                 getPlanTyp($(this).val());
             }
-
-
         });
 
 
@@ -548,6 +546,11 @@
 
         $(".load-preview").on("click", function() {
 
+            //loading spinner
+            $(function(){
+                $('body').Wload({text:' Loading...'})
+            });
+
             event.preventDefault();
             $.ajax({
                 url:"<?php echo e(route('freelancer.plans.save')); ?>",
@@ -559,9 +562,7 @@
                 processData: false,
                 success:function(data)
                 {
-
                     loadPreview();
-
                 }
             })
 
@@ -583,16 +584,21 @@
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                     $('#preview-btn').addClass("d-none");
+                    $('.w_load_body').addClass("d-none");
 
                     document.getElementById("preview-container").innerHTML = xmlhttp.responseText;
 
                 }
-            }
+            };
 
 
             xmlhttp.open("GET","{{env("MYHTTP")}}/{{$blade["ll"]}}/freelancer/plans/preview/"+plan, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
         }
+
+
+
+
 
     </script>
