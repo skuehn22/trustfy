@@ -71,7 +71,7 @@
                     </div></div>
 
             <div class="pt-2">
-                <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly">Create Client</a></div>
+                <div  id="no-client"> No clients saved. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Client</a></div>
             </div>
 
         @endif

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default" style="padding:20px;">
-                <div class="panel-heading"><h3>Want to be a Beta Tester</h3></div>
+                <div class="panel-heading"><h3>Want to be a beta tester?</h3></div>
                 <p style="font-size: 14px;">Register below and be the first to test and have your voice heard!</p>
                 <p><hr></p>
                 @if(Session::has('error'))

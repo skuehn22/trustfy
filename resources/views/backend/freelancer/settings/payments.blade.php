@@ -58,11 +58,6 @@
             <input id="code" type="text" class="form-control col-md-7" name="code" value="{{$bank->zip or ''}}">
         </div>
 
-        <div class="form-row py-2">
-            <label for="city" class="col-md-3 col-form-label">City</label>
-            <input id="city" type="text" class="form-control col-md-7" name="city" value="{{$bank->city or ''}}" required>
-        </div>
-
 
         <div class="form-row py-2">
             <label class="col-md-3 col-form-label" for="nationality">Nationality*</label>
