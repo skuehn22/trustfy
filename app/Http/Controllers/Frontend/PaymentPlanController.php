@@ -437,7 +437,7 @@ class PaymentPlanController extends Controller
         $data['content'] .= "<a href=".$changeUrl. " style='color: #949494; text-decoration: underline;'>Change Payment Method</a>";
 
 
-        $data['content'] .= "<p><br>Your money will be held in a secure client account<br>for the duration of the project. Simply click \"release funds\" when the work is done!</p>";
+        $data['content'] .= "<p><br>Your money will be held in a secure client account<br>for the duration of the project. <br>Simply click \"release funds\" when the work is done!</p>";
 
         $msg_obj = new MessagesClass();
         $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);

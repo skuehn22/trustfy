@@ -74,7 +74,7 @@ class StateClass
                 break;
             case 1:
                 $state['color'] = "yellow";
-                $state['state'] = "send";
+                $state['state'] = "sent";
                 break;
             case 2:
                 $state['color'] = "#006600";
