@@ -197,8 +197,10 @@
                                         <span class="input-group-btn" style="padding-left: 5px;">
                                          <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
                                          <i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="A message will be sent to the customer that the task has been completed."></i>
-                                    </span>
-
+                                        </span>
+                                    @endif
+                                    @if($milestone->paystatus==8)
+                                        <i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="Waiting for you to save your bank account, so that we can realse the money into your bank."></i>
                                     @endif
 
 

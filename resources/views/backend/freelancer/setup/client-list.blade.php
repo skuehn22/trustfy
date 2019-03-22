@@ -1,5 +1,5 @@
 @if(isset($clients) && count($clients)>0)
-    <select name="{{$para['name'] or ''}}" id="{{$para['id'] or ''}}" class="form-control col-md-{{$para['width'] or ''}}">
+    <select name="{{$para['name'] or ''}}" id="{{$para['id'] or ''}}" class="form-control col-md-12">
             <option value="0">select</option>
         @foreach($clients as $client)
             <option value="{{$client->id}}">{{$client->firstname}} {{$client->lastname}}</option>

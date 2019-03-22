@@ -65,7 +65,10 @@
             </select>
             <div class="help-block with-errors"></div>
         @else
+                <div class="form-group">
+                    <div class="form-inline">
             <span id="client-list"></span>
+                    </div></div>
 
             <div class="pt-2">
                 <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly">Create Client</a></div>

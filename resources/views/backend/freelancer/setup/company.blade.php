@@ -11,28 +11,28 @@
             <form data-toggle="validator" role="form" id="company-data" name="company-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-row py-2">
-                    <label class="col-md-3 col-form-label" for="firstname">Firstname</label>
-                    <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="Your Firstname" required>
+                    <label class="col-md-3 col-form-label" for="firstname">First name</label>
+                    <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" required>
                 </div>
 
                 <div class="form-row py-2">
-                    <label class="col-md-3 col-form-label" for="lastname">Lastname</label>
-                    <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Your Lastname" required>
+                    <label class="col-md-3 col-form-label" for="lastname">Last name</label>
+                    <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}"  required>
                 </div>
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="company">Company</label>
-                    <input id="company" type="text" class="form-control col-md-7" name="company" value="{{ $company->name or "" }}" placeholder="Your Company Name" required>
+                    <input id="company" type="text" class="form-control col-md-7" name="company" value="{{ $company->name or "" }}"  required>
                 </div>
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="address">Address</label>
-                    <input id="address" type="text" class="form-control col-md-7" name="address" value="{{ $company->address or "" }}" placeholder="The company address" required>
+                    <input id="address" type="text" class="form-control col-md-7" name="address" value="{{ $company->address or "" }}"  required>
                 </div>
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="city">City</label>
-                    <input id="city" type="text" class="form-control col-md-7" name="city" value="{{ $company->city or "" }}" placeholder="Your Company City" required>
+                    <input id="city" type="text" class="form-control col-md-7" name="city" value="{{ $company->city or "" }}"  required>
                 </div>
 
                 <div class="form-row py-2">

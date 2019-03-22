@@ -235,7 +235,7 @@ class PaymentPlanController extends Controller
         $query->join('companies_mangowallets', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
         $query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
         $query->where('projects_plans_milestones.id', '=', $id);
-        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'projects_plans.*', 'projects_plans.id AS planId') ;
+        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'projects_plans.*', 'projects_plans.id AS planId', 'projects_plans.clients_id_fk AS clientId') ;
         $plan = $query->first();
 
         $user = Users::where("service_provider_fk", "=", $plan->service_provider_fk)
@@ -247,30 +247,57 @@ class PaymentPlanController extends Controller
         $bank = CompaniesBank::where("service_provider_fk", "=", $plan->service_provider_fk)
             ->first();
 
-        $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
-            ->first();
+        if(!empty($bank) && $bank->mango_bank_id != 0){
+
+            $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
+                ->first();
 
 
-        $mango_obj = new MangoClass($this->mangopay);
-        $payOutResult = $mango_obj->createPayOut($company->mango_id, $milestone, $bank, $wallet);
+            $mango_obj = new MangoClass($this->mangopay);
+            $payOutResult = $mango_obj->createPayOut($company->mango_id, $milestone, $bank, $wallet);
 
-        $payout = new MangoPayout();
-        $payout->status = $payOutResult->Status;
-        $payout->company_id_fk = $plan->service_provider_fk;
-        $payout->mango_id = $payOutResult->Id;
-        $payout->milestone_id_fk = $id;
-        $payout->save();
+            $payout = new MangoPayout();
+            $payout->status = $payOutResult->Status;
+            $payout->company_id_fk = $plan->service_provider_fk;
+            $payout->mango_id = $payOutResult->Id;
+            $payout->milestone_id_fk = $id;
+            $payout->save();
 
-        if($payOutResult->Status == "CREATED"){
+            if($payOutResult->Status == "CREATED"){
 
-            $subject = "Trustfy - Pay-out confirmation";
+                $subject = "Trustfy - Pay-out confirmation";
+                $msg_obj = new MessagesClass();
+                $msg_obj->payOutCreated($subject, $user->email, $payout, $plan->planId);
+
+                $milestone->paystatus = 3;
+                $milestone->save();
+
+            }
+
+        }else{
+
+            $client = Clients::where("id", "=", $plan->clientId)
+                ->first();
+
+            $subject = "Trustfy - Pay-out created";
+            $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has realesed funds</p>";
+            $data['content'] .= "<p>Unfornuattttallly you havent saved a bank account you damm slut! <br> <br></p>";
+
+            $data['content'] .='
+            <p>
+               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Login</a>                  
+            </p>';
+
             $msg_obj = new MessagesClass();
-            $msg_obj->payOutCreated($subject, $user->email, $payout, $plan->planId);
+            $msg_obj->sendStandardMail($subject, $data, $user->email, null);
 
-            $milestone->paystatus = 3;
+            $milestone->paystatus = 8;
             $milestone->save();
 
         }
+
+
+
 
         return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Money released!');
 

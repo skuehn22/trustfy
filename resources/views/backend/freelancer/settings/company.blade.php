@@ -13,7 +13,7 @@
 <div class="row">
 
     <div class="col-md-6">
-        <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
+        <form role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
         <h4>Your Company Details</h4>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="col-md-12 pl-0">
@@ -23,8 +23,9 @@
                         Company
                         <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="If you're a sole trader, just enter your name."></i>
                     </label>
-                    <input id="company" type="text" class="form-control col-md-7" name="company" value="{{ $company->name or "" }}" placeholder="Your Company Name" required>
+                    <input id="company" type="text" class="form-control col-md-7" name="company" value="{{ $company->name or "" }}" required>
                 </div>
+
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="companytype">
@@ -41,17 +42,17 @@
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="address">Address 1</label>
-                    <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{ $company->address1 or "" }}" placeholder="The company address" required>
+                    <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{ $company->address1 or "" }}" required>
                 </div>
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="address2">Address 2</label>
-                    <input id="address2" type="text" class="form-control col-md-7" name="address2" value="{{ $company->address2 or "" }}" placeholder="The company address">
+                    <input id="address2" type="text" class="form-control col-md-7" name="address2" value="{{ $company->address2 or "" }}">
                 </div>
 
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="city">City</label>
-                    <input id="city" type="text" class="form-control col-md-4" name="city" value="{{ $company->city or "" }}" placeholder="City" required>
+                    <input id="city" type="text" class="form-control col-md-4" name="city" value="{{ $company->city or "" }}"  required>
                     <input id="postcode" type="text" class="form-control col-md-3" name="postcode" value="{{ $company->postcode or "" }}" placeholder="Post Code">
                 </div>
                 <div class="form-row py-2">
@@ -93,7 +94,7 @@
                 First name*
                 <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
             </label>
-            <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}" placeholder="First name" required>
+            <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}"required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -101,7 +102,7 @@
 
         <div class="form-row py-2">
             <label class="col-md-3 col-form-label" for="address">Last name*</label>
-            <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" placeholder="Last name" required>
+            <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" required>
         </div>
 
         <div class="form-row py-2">

@@ -5,8 +5,8 @@
                     <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th>Lastname</th>
-                        <th>Firstname</th>
+                        <th>Last name</th>
+                        <th>First name</th>
                         <th>Address</th>
                         <th>City</th>
                         <th>Mail</th>

@@ -115,18 +115,6 @@
                     </div>
                 @endif
 
-                    @if(isset($milestone->paystatus) && $milestone->paystatus == 0)
-                        <div class="alert alert-success success_message" style="font-size: 11px; padding-bottom: 25px;  padding-top: 25px;">
-                            <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            You've just received a Trustfy payment plan! -
-                            This is not a direct payment to your freelancer- your money will be held securely until you decide to release it. By paying through Trustfy, your payments are protected. Only you decide when to release a payment, so rest assured that your money is safe!<br>
-                            <br><br>Here's how it works:<br>
-                            1. First, you fund the project via card or bank transfer.<br>
-                            2. Your money is held in a secure account until you're satisfied the work is done.<br>
-                            3. You press "release payment" and your freelancer gets paid!
-                        </div><br><br>
-                    @endif
-
                 <div class="alert alert-success success_message reminder-alert d-none">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
                    Check your inbox for the payment instructions!
@@ -245,7 +233,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4)
+                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4 || $milestone->paystatus==8)
                                         <p class="successful">Money Released</p>
                                     @else
 
@@ -330,6 +318,8 @@
         <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
         <div></div>
     </div>
+
+
 </div></div>
 
 
@@ -505,6 +495,28 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="bank-transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bank Transfer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"  id="modal-bank-content">
+
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
