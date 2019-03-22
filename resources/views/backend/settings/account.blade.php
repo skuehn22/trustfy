@@ -2,13 +2,13 @@
 <form class="form-horizontal" role="form" method="POST" action="/provider/settings/save-account">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="form-group">
-        <label for="company" class="col-md-2 control-label">Firstname</label>
+        <label for="company" class="col-md-2 control-label">First name</label>
         <div class="col-md-6">
             <input id="firstname" type="text" class="form-control" name="firstname" value="{{$user->firstname}}">
         </div>
     </div>
     <div class="form-group">
-        <label for="lastname" class="col-md-2 control-label">Lastname</label>
+        <label for="lastname" class="col-md-2 control-label">Last name</label>
         <div class="col-md-6">
             <input id="lastname" type="text" class="form-control" name="lastname" value="{{$user->lastname}}">
         </div>

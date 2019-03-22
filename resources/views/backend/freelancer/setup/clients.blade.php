@@ -14,11 +14,11 @@
         <div class="col-md-6">
                 <h5>Contact</h5>
                 <div class="form-row py-2">
-                    <label class="col-md-4 col-form-label" for="firstname">Firstname</label>
+                    <label class="col-md-4 col-form-label" for="firstname">First name</label>
                     <input type="text" class="form-control col-md-7" id="client-firstname" name="client-firstname" required>
                 </div>
                 <div class="form-row py-2">
-                    <label class="col-md-4 col-form-label"  for="lastname">Lastname</label>
+                    <label class="col-md-4 col-form-label"  for="lastname">Last name</label>
                     <input type="text" class="form-control col-md-7" id="client-lastname" name="client-lastname" required>
                 </div>
                 <div class="form-row py-2">
