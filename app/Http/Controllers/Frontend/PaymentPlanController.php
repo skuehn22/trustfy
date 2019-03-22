@@ -479,7 +479,7 @@ class PaymentPlanController extends Controller
         $data['content'] .= "<p>Project: ".$plan->name."</p>";
         $data['content'] .= "<p>Milestone: ".$milestone->name."</p>";
         $data['content'] .= "  <p>Amount: € ".number_format($milestone->amount, 2, ',', ' ')."</p>";
-        $data['content'] .= "<p>We will let you know when the money arrives </p>";
+        $data['content'] .= "<p>We will let you know when the money arrives.</p>";
 
         $data['content'] .='
 

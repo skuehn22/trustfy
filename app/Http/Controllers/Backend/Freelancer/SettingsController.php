@@ -63,6 +63,25 @@ class SettingsController extends Controller
 
             $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $company->id)
                 ->first();
+        }else{
+
+            $company = new Companies();
+            $company->users_fk =  $blade["user"]->id;
+
+            if(env("APP_ENV") == "live") {
+                $company->system = 0;
+            }elseif(env("APP_ENV") == "dev") {
+                $company->system = 1;
+            }else{
+                $company->system = 1;
+            }
+
+            $company->save();
+
+            $user = Users::find($blade["user"]->id);
+            $user->service_provider_fk = $company->id;
+            $user->save();
+
         }
 
         //check if there were kyc actions in the past
