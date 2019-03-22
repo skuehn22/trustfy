@@ -63,6 +63,7 @@
 
         <div class="cd-more-info top">
             <h2>Save your entries here</h2>
+            <a href="#" style="color:#767676; text-decoration: underline;" class="skip-client">skip</a>
             <img src="/img/step-3.png" alt="step 3">
         </div>
     </li>
@@ -89,6 +90,10 @@
     <script type="text/javascript">
 
         /*Demo Tour */
+
+
+
+
 
         $(document).ready(function () {
 

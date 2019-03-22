@@ -128,6 +128,16 @@
 
     <script>
 
+        $(".skip-client").on("click", function() {
+
+            $(".plan-sidebar").addClass('active');
+            $(".client-sidebar").removeClass('active');
+            $(".tour-step-5").removeClass('is-selected');
+            $(".tour-step-6").addClass('is-selected');
+
+        });
+
+
         $( document ).ready(function() {
 
             if($("#tour").length && $("#tour").val() == "true"){

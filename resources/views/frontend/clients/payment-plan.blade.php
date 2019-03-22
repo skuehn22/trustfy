@@ -116,20 +116,15 @@
                 @endif
 
                     @if(isset($milestone->paystatus) && $milestone->paystatus == 0)
-                        <div class="alert alert-success success_message">
+                        <div class="alert alert-success success_message" style="font-size: 11px; padding-bottom: 25px;  padding-top: 25px;">
                             <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <p>
-                            Hi! You've just received your first Trustfy payment plan. This is NOT an up front payment- the money is held securely until you release it to your freelancer. Enjoy your peace of mind during the project, your money is safe!
-                            </p>
-                            <p>
-                            Here's how it works:
-                            </p>
-                            <p>
-                            First, you fund the project via card or bank transfer.<br>
-                            Your money is then held in a secure account until you're satisfied the work is done.<br>
-                            Then you press "release payment" and your freelancer gets paid!
-                            </p>
-                        </div>
+                            You've just received a Trustfy payment plan! -
+                            This is not a direct payment to your freelancer- your money will be held securely until you decide to release it. By paying through Trustfy, your payments are protected. Only you decide when to release a payment, so rest assured that your money is safe!<br>
+                            <br><br>Here's how it works:<br>
+                            1. First, you fund the project via card or bank transfer.<br>
+                            2. Your money is held in a secure account until you're satisfied the work is done.<br>
+                            3. You press "release payment" and your freelancer gets paid!
+                        </div><br><br>
                     @endif
 
                 <div class="alert alert-success success_message reminder-alert d-none">
