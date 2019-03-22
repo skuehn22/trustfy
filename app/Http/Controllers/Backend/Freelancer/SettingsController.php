@@ -399,52 +399,86 @@ class SettingsController extends Controller
 
         $blade["user"] = Auth::user();
         $blade["ll"] = App::getLocale();
+        $check = $this->iban($_POST['iban']);
 
-        $company = Companies::where("id", "=",  $blade["user"]->service_provider_fk)
-            ->first();
+        if($check){
+
+            $company = Companies::where("id", "=",  $blade["user"]->service_provider_fk)
+                ->first();
 
 
-        $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
-            ->first();
+            $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
+                ->first();
 
-        if(!isset($bank)){
-            $bank = new App\DatabaseModels\CompaniesBank();
-        }else{
+            if(!isset($bank)){
+                $bank = new App\DatabaseModels\CompaniesBank();
+            }else{
+
+                $mango_obj = new MangoClass($this->mangopay);
+                $oldAccount = $mango_obj->getBankAccount($company->mango_id, $bank->mango_bank_id);
+                $mango_obj->deactivateBankAccount($company->mango_id, $oldAccount);
+            }
+
+            $bank->name = $_POST['name'];
+            $bank->iban = $_POST['iban'];
+            $bank->service_provider_fk = $blade["user"]->service_provider_fk;
+            $bank->bic = $_POST['bic'];
+            $bank->address1 = $_POST['address1'];
+            $bank->address2 = $_POST['address2'];
+            $bank->city = $_POST['city'];
+            $bank->zip = $_POST['code'];
+            $bank->country = $_POST['country'];
+            $bank->country_iso = $_POST['country'];
 
             $mango_obj = new MangoClass($this->mangopay);
-            $oldAccount = $mango_obj->getBankAccount($company->mango_id, $bank->mango_bank_id);
-            $mango_obj->deactivateBankAccount($company->mango_id, $oldAccount);
-        }
+            $result = $mango_obj->createBankAccount($bank, $company);
 
-        $bank->name = $_POST['name'];
-        $bank->iban = $_POST['iban'];
-        $bank->service_provider_fk = $blade["user"]->service_provider_fk;
-        $bank->bic = $_POST['bic'];
-        $bank->address1 = $_POST['address1'];
-        $bank->address2 = $_POST['address2'];
-        $bank->city = $_POST['city'];
-        $bank->zip = $_POST['code'];
-        $bank->country = $_POST['country'];
-        $bank->country_iso = $_POST['country'];
+            if(!$result){
 
-        $mango_obj = new MangoClass($this->mangopay);
-        $result = $mango_obj->createBankAccount($bank, $company);
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', 'An error has occurred!');
 
-        if(!$result){
+            }else{
+                $bank->mango_bank_id = $result->Id;
+                $bank->save();
 
-            return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', 'An error has occurred!');
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+            }
 
         }else{
-            $bank->mango_bank_id = $result->Id;
-            $bank->save();
 
-            return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+            return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', 'Incorrect IBAN');
+
         }
 
 
 
+    }
 
 
+    public function iban($check)
+    {
+        if (!preg_match('/^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/', $check)) {
+            return false;
+        }
+
+        $country = substr($check, 0, 2);
+        $checkInt = intval(substr($check, 2, 2));
+        $account = substr($check, 4);
+        $search = range('A', 'Z');
+        $replace = [];
+        foreach (range(10, 35) as $tmp) {
+            $replace[] = strval($tmp);
+        }
+        $numStr = str_replace($search, $replace, $account . $country . '00');
+        $checksum = intval(substr($numStr, 0, 1));
+        $numStrLength = strlen($numStr);
+        for ($pos = 1; $pos < $numStrLength; $pos++) {
+            $checksum *= 10;
+            $checksum += intval(substr($numStr, $pos, 1));
+            $checksum %= 97;
+        }
+
+        return ((98 - $checksum) === $checkInt);
     }
 
 

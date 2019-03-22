@@ -279,13 +279,13 @@ class PaymentPlanController extends Controller
             $client = Clients::where("id", "=", $plan->clientId)
                 ->first();
 
-            $subject = "Trustfy - Pay-out created";
-            $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has realesed funds</p>";
-            $data['content'] .= "<p>Unfornuattttallly you havent saved a bank account you damm slut! <br> <br></p>";
+            $subject = "Trustfy - Payment released";
+            $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has released a payment for ".$milestone->name."</p>";
+            $data['content'] .= "<p>We just need you to <strong>add your bank account details</strong> and your money will be on its way.<br> <br></p>";
 
             $data['content'] .='
             <p>
-               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Login</a>                  
+               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
             </p>';
 
             $msg_obj = new MessagesClass();

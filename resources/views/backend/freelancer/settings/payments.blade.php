@@ -14,17 +14,17 @@
                     <label for="name" class="col-md-4 control-label  pl-0 pb-3">Owner Name
                         <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This must match the company or the legal representative"></i>
                     </label>
-                    <input id="name" type="text" class="form-control col-md-7" name="name" value="{{$bank->name or ''}}">
+                    <input id="name" type="text" class="form-control col-md-7" name="name" value="{{$bank->name or ''}}" required>
                 </div>
 
                 <div class="form-row py-2">
                     <label for="iban" class="col-md-4 control-label  pl-0 pb-3">IBAN</label>
-                    <input id="iban" type="text" class="form-control col-md-7" name="iban" value="{{$bank->iban or ''}}">
+                    <input id="iban" type="text" class="form-control col-md-7" name="iban" value="{{$bank->iban or ''}}" required>
                 </div>
 
                 <div class="form-row py-2">
                     <label for="bic" class="col-md-4 control-label  pl-0 pb-3">BIC</label>
-                    <input id="bic" type="text" class="form-control col-md-7" name="bic" value="{{$bank->bic or ''}}">
+                    <input id="bic" type="text" class="form-control col-md-7" name="bic" value="{{$bank->bic or ''}}" required>
                 </div>
             </div>
     </div>
@@ -37,7 +37,7 @@
             <label for="address1" class="col-md-3 col-form-label">Address Line 1
 
             </label>
-            <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{$bank->address1 or ''}}">
+            <input id="address1" type="text" class="form-control col-md-7" name="address1" value="{{$bank->address1 or ''}}" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -50,7 +50,7 @@
 
         <div class="form-row py-2">
             <label for="city" class="col-md-3 col-form-label">City</label>
-            <input id="city" type="text" class="form-control col-md-7" name="city" value="{{$bank->city or ''}}">
+            <input id="city" type="text" class="form-control col-md-7" name="city" value="{{$bank->city or ''}}" required>
         </div>
 
         <div class="form-row py-2">
@@ -60,7 +60,7 @@
 
         <div class="form-row py-2">
             <label for="city" class="col-md-3 col-form-label">City</label>
-            <input id="city" type="text" class="form-control col-md-7" name="city" value="{{$bank->city or ''}}">
+            <input id="city" type="text" class="form-control col-md-7" name="city" value="{{$bank->city or ''}}" required>
         </div>
 
 
