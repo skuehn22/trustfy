@@ -71,7 +71,7 @@ class MessagesClass  extends Controller
 
         $recipient = $user->email;
         $mailTemplate = "payInSucceeded";
-        $subject = trans('messages.subject_typ_1');
+        $subject = "Trustfy - ".trans('messages.subject_typ_1');
         $typ = 4;
         $id = $milestone->id;
 

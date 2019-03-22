@@ -263,7 +263,7 @@ class PaymentPlanController extends Controller
 
         if($payOutResult->Status == "CREATED"){
 
-            $subject = "Trustfy Payments - Pay-out confirmation";
+            $subject = "Trustfy - Pay-out confirmation";
             $msg_obj = new MessagesClass();
             $msg_obj->payOutCreated($subject, $user->email, $payout, $plan->planId);
 
@@ -297,7 +297,7 @@ class PaymentPlanController extends Controller
         $plan->save();
 
 
-        $subject= "Trustfy Payments - Plan Protection";
+        $subject= "Trustfy - Plan Protection";
         $data['content'] = "<h3>Information to your plan protection</h3>Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
