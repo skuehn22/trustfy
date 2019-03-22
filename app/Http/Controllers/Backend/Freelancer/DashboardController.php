@@ -31,7 +31,7 @@ class DashboardController extends Controller
             $user = Auth::user();
 
             if($user->logins_sum <= 1 || $user->logins_sum == null){
-                $user = Users::where("id", "=", 1)
+                $user = Users::where("id", "=", 118)
                     ->first();
 
                 $user->tour="true";
