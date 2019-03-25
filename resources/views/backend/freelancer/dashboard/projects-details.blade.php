@@ -1,22 +1,27 @@
 @if(isset($project->state))
+
 <div class="row">
+    <div class="col-md-12 pl-5">
+        <h4>{{$project->name or ''}}</h4>
+    </div>
+</div>
+
+<div class="row">
+
     <div class="col-md-6 pl-5">
         <div class="row">
-        <div class="col-md-12 pb-2">
-            <h4>{{$project->name or ''}}</h4>
-        </div>
-        <div class="col-md-12 pb-3">
-           Client: {{$project->firstname or ''}} {{$project->lastname or ''}}
-        </div>
-        <div class="col-md-12">
-            Address: {{$project->address1 or ''}} {{$project->address2 or ''}} {{$project->city or ''}}
-        </div>
+            <div class="col-md-12 pb-3">
+               Client: {{$project->firstname or ''}} {{$project->lastname or ''}}
+            </div>
+            <div class="col-md-12">
+                Address: {{$project->address1 or ''}} <br>{{$project->address2 or ''}} {{$project->city or ''}}
+            </div>
         </div>
     </div>
 
-    <div class="col-md-6 pl-1">
-        <div class="row p-3">
-                <div class="col-md-12 pt-5  pb-3">
+    <div class="col-md-6 pl-5">
+        <div class="row">
+                <div class="col-md-12 pb-3">
                     Status:   <span class="status {{$project->color or ''}}">&bull;</span> {{$project->state or ''}}
                 </div>
                 <div class="col-md-12">
@@ -51,7 +56,7 @@
     </div>
     <div class="col-md-12">
         <div class="row p-3">
-            <div class="col-md-1 p-3 text-center"   style="background-color: #006600; color: #fff; font-weight: 600">
+            <div class="col-md-1 p-3 text-left" style="background-color: #006600; color: #fff; font-weight: 600">
                 1
             </div>
             <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">

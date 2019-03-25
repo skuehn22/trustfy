@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="materialbox materialbox-funds">
+        <div class="materialbox materialbox-funds mb-4">
             <div class="card-body ">
                 @if(count($plans)>0)
                 <div class="row">
@@ -25,8 +25,8 @@
                     No Payment Plans yet.
                 @endif
             </div>
+            <!--
             <div class="card-footer ">
-
                 <div class="row">
                     <div class="col-md-6">
                         <a href="#">Last 7 Days</a>
@@ -34,14 +34,14 @@
                     <div class="col-md-6 text-right">
                         <a href="/freelancer/plans">Details</a>
                     </div>
-
                 </div>
             </div>
+            -->
         </div>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="materialbox materialbox-funds">
+        <div class="materialbox materialbox-funds mb-4">
             <div class="card-body ">
                 @if(count($plans)>0)
                 <div class="row">
@@ -66,23 +66,24 @@
                     No Payment Plans yet.
                 @endif
             </div>
+            <!--
             <div class="card-footer ">
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="#">Last 7 Days</a>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="/freelancer/plans">Details</a>
-                    </div>
-                </div>
-
+               <div class="row">
+                   <div class="col-md-6">
+                       <a href="#">Last 7 Days</a>
+                   </div>
+                   <div class="col-md-6 text-right">
+                       <a href="/freelancer/plans">Details</a>
+                   </div>
+               </div>
             </div>
+            -->
         </div>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="materialbox materialbox-funds">
+        <div class="materialbox materialbox-funds mb-4">
             <div class="card-body ">
                 @if(count($plans)>0)
                 <div class="row">
@@ -107,6 +108,7 @@
                     No Payment Plans yet.
                 @endif
             </div>
+            <!--
             <div class="card-footer ">
 
                 <div class="row">
@@ -119,6 +121,7 @@
                 </div>
 
             </div>
+            -->
         </div>
     </div>
 

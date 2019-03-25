@@ -18,7 +18,7 @@
                         @endif
 
                     </div>
-                    <div id="dashboard-projects"></div>
+                    <div id="dashboard-projects" style="min-height: 254px;"></div>
                 </div>
             </div>
         </div>

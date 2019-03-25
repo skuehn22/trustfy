@@ -218,8 +218,6 @@ select{
 }
 
 
-
-
 .modal-expand{
     max-width: 900px;
 }
@@ -307,9 +305,6 @@ select{
 .progress.blue .progress-right .progress-bar{
     animation: open-plans-right 0.5s linear forwards 0.8s;
 }
-
-
-
 
 
 
@@ -443,10 +438,17 @@ select{
     background: #fff;
     border-radius: 0px;
     display: inline-block;
-    margin: 1rem;
+    /*margin: 1rem;*/
     position: relative;
     width: 100%;
 }
+
+@media (min-width: 576px) {
+
+
+
+}
+
 
 .materialbox-upcoming {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -525,7 +527,7 @@ select{
 
 .materialbox-projects{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    height: 310px;
+    /*height: 310px;*/
 }
 
 .materialbox-projects:hover {
@@ -829,8 +831,6 @@ select{
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
 }
-
-
 
 
 /* INBOX */

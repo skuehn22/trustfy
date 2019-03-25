@@ -1,6 +1,6 @@
 <div class="upcoming">
     <div class="col-lg-12 col-md-12 col-sm-12 p-0">
-        <div class="materialbox materialbox-upcoming p-0">
+        <div class="materialbox materialbox-upcoming p-0 mb-4">
             <div class="card-body pb-1">
                 <div class="row">
                     <div class="col-4 col-md-4 pt-3">
