@@ -246,7 +246,7 @@
             </div>
             <div class="row pt-4">
                 <div class="col-md-12">
-                    <p style="font-size: 20px; font-family: 'Fjalla One', sans-serif; color: #006600;">Money status</p>
+                    <p style="font-size: 20px; font-family: 'Fjalla One', sans-serif; color: #006600;">Payment status</p>
                 </div>
             </div>
             <div class="row">
