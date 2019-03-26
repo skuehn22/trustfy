@@ -45,7 +45,7 @@
         }
 
         .menu-icons button{
-            width: 115px;
+            width: 100px;
         }
 
         .menu-icons i {
@@ -151,9 +151,7 @@
             width: 115px;
         }
 
-        .nav-tabs{
-            padding-left: 40px;
-        }
+
 
         .sw-container{
             padding-left: 40px;
@@ -185,6 +183,56 @@
             font-size: 14px;
         }
 
+
+        .nav-item{
+            width:100%;
+        }
+
+        /*Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            .nav-tabs{
+                padding-left: 40px;
+            }
+
+            .menu-icons button{
+                width: 115px;
+            }
+
+            .btn-toolbar{
+                text-align: right;  padding-right: 40px;
+            }
+
+
+            .sw-container{
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+        }
+
+        /*Extra large devices (large desktops, 1200px and up)*/
+        @media (min-width: 1200px) {
+            .nav-tabs{
+                padding-left: 40px;
+            }
+
+            .menu-icons button{
+                width: 115px;
+            }
+
+            .btn-toolbar{
+                text-align: right;  padding-right: 40px;
+            }
+
+            .sw-container{
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+        }
+
+
+
     </style>
 @stop
 
@@ -209,7 +257,7 @@
                      </ul>
 
 
-                    <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons" style="text-align: right;  padding-right: 40px;">
+                    <div class="col-md-12 btn-toolbar sw-toolbar sw-toolbar-top justify-content-end  menu-icons">
 
                         <span class="text-success" id="msg" style="padding-right: 15px; font-size: 14px; font-weight:700; display: inline;">  </span>
 
@@ -224,7 +272,7 @@
 
                     </div>
 
-                        <div class="col-md-12  sw-container tab-content" style=" padding-left: 40px; padding-right: 40px;">
+                        <div class="col-md-12  sw-container tab-content" >
 
                             <form role="form" data-toggle="validator" method="post" accept-charset="utf-8" id="upload_form">
 

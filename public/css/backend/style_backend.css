@@ -708,7 +708,7 @@ Sidebar
 
 ul.navbar-nav li ul{
     background-color: #b5b2b2;
-
+    list-style-type: none;
 }
 
 .has-children > a::after {
@@ -727,6 +727,8 @@ ul.navbar-nav li ul{
     transform: translateY(-50%);
 }
 .has-children.selected > ul {
+
+
     display: block;
 }
 .has-children.selected > a::after {

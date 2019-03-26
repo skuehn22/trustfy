@@ -52,11 +52,34 @@
             float: left;
             margin-top: 2px;
         }
+
+
         table.table tr th, table.table tr td {
             border-color: #e9e9e9;
-            padding: 12px 15px;
+            padding: 5px;
             vertical-align: middle;
         }
+
+        /*Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+                padding: 12px 15px;
+                vertical-align: middle;
+            }
+        }
+
+        /*Extra large devices (large desktops, 1200px and up)*/
+        @media (min-width: 1200px) {
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+                padding: 12px 15px;
+                vertical-align: middle;
+            }
+        }
+
+
+
         table.table tr th:first-child {
             width: 60px;
         }
@@ -142,6 +165,25 @@
             min-height: 200px;
         }
 
+
+
+        /*Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            .new-button{
+                text-align: right;
+                float: right;
+            }
+        }
+
+        /*Extra large devices (large desktops, 1200px and up)*/
+        @media (min-width: 1200px) {
+            .new-button{
+                text-align: right;
+                float: right;
+            }
+        }
+
+
     </style>
 
 @stop
@@ -168,20 +210,21 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-xs-12 col-sm-5">
                         <h2>Payment Plans</h2>
                     </div>
-                    <div class="col-sm-7 float-right text-right">
+                    <div class="col-xs-12 col-sm-7 new-button pt-3">
                         <a href="/{{$blade["ll"]}}/freelancer/plans/new" class="btn btn-default btn-lg active" style="color: #fff;" role="button" aria-pressed="true">Create Plan</a>
                     </div>
+
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th style="width:20%;">Name</th>
-                    <th>Date Created</th>
-                    <th>Client</th>
+                    <th style="width:25%;">Name</th>
+
+                    <th style="width:25%;">Client</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -202,7 +245,7 @@
                                     </a>
                                 @endif
                             </td>
-                            <td>{{ \Carbon\Carbon::parse($plan->updated_at)->format('d/m/Y')}} </td>
+
                             <td>{{$plan->firstname}} {{$plan->lastname}}</td>
                             <td><span class="status {{$plan->color}}">&bull;</span> {{$plan->state_txt}}</td>
 

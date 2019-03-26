@@ -23,17 +23,9 @@
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-5 pl-0">
-                    <table class="table">
-                        <tr>
-                            <td class="p-0" width="30">
-                                <input type="file" name="select_file" id="select_file" /><br>
-                                <span class="logo-hint">*pdf, jpg, png, gif</span>
-                            </td>
-                            <td class="p-0" width="30%" align="left">
-                                <input type="submit" name="upload" id="upload" class="btn btn-secondary" value="Upload">
-                            </td>
-                        </tr>
-                    </table>
+                    <input type="file" name="select_file" id="select_file" /><br>
+                    <span class="logo-hint">*pdf, jpg, png, gif</span>
+                    <input type="submit" name="upload" id="upload" class="btn btn-secondary" value="Upload">
                 </div>
             </div>
 

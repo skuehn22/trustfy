@@ -35,6 +35,24 @@
             font-size: 24px;
         }
 
+        .clients{
+            padding:0px;
+        }
+
+        /*Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            .clients{
+                padding:35px;
+            }
+        }
+
+        /*Extra large devices (large desktops, 1200px and up)*/
+        @media (min-width: 1200px) {
+            .clients{
+                padding:35px;
+            }
+        }
+
     </style>
 
 
@@ -44,16 +62,13 @@
 @stop
 
 @section('content')
-    <div class="clients" style="padding:35px;">
+    <div class="clients">
         <form action="/{{$blade["ll"]}}/freelancer/clients/save/0">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>New Client</h2>
-                    </div>
-                    <div class="col-sm-7 float-right text-right pt-3">
-                        <button type="submit" class="btn btn-classic">Save Client</button>
                     </div>
                 </div>
             </div>
@@ -112,14 +127,12 @@
                             {!! Form::select('country', $countries, null, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
 
                         </div>
-                        <div class="form-row pt-3 py-2 pt-2">
-
+                        <div class="form-row pt-3 py-2 pt-5">
+                            <button type="submit" class="btn btn-classic">Save Client</button>
                         </div>
 
                     </div>
                 </div>
-
-
     </div>
         </form>
 </div>
