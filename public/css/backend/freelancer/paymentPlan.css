@@ -2,13 +2,38 @@
     padding: 30px;
 }
 
+
+
 .invoice {
     position: relative;
     background-color: #FFF;
     min-height: 680px;
-    padding: 50px;
-    border: 1px solid #d4d4d4
 }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .invoice {
+        position: relative;
+        background-color: #FFF;
+        min-height: 680px;
+        padding: 50px;
+        border: 1px solid #d4d4d4;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .invoice {
+        position: relative;
+        background-color: #FFF;
+        min-height: 680px;
+        padding: 50px;
+        border: 1px solid #d4d4d4;
+    }
+}
+
+
+
 
 .btn-success {
     color: #fff;

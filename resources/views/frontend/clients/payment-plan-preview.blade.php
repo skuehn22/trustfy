@@ -125,7 +125,7 @@
                             <div class="col invoice-details">
                                 <h1 class="invoice-id"style="text-align: left; padding-top: 25px; padding-bottom: 10px;">{{$plan->name}}</h1>
                             </div>
-                            <table border="0" cellspacing="0" cellpadding="0">
+                            <table border="0" cellspacing="0" cellpadding="0"  class="table table-striped table-hover">
                                 <thead>
                                 <tr>
                                     <th>#</th>
