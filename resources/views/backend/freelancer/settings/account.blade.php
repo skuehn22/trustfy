@@ -31,6 +31,7 @@
         </form>
     </div>
     <div class="col-md-6">
+    @include('ajax_upload')
         <!--
         <h4  class="pt-3">Manage Database</h4>
         <div class="row">

@@ -39,7 +39,7 @@ class UsersClass
             $msg->users_id_fk   = $users->id;
             $msg->typ   = 3;
             $msg->unique_id    = $users->id;
-            $msg->meassage    = "Hello, welcome to Trustfy. If you have any problems, ask Anika.";
+            $msg->meassage    = "Welcome to Trustfy, please make yourself at home! We'd love to hear from you-  if you have any feedback for us or there's anything you're not sure about, just drop us a mail at info@trustfy.io and we'll be happy to help.";
             $msg->save();
 
 

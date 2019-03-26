@@ -10,6 +10,7 @@ use Jenssegers\Agent\Agent;
 use App\DatabaseModels\Users;
 use App\Classes\UsersClass;
 use App\Classes\MessagesClass;
+use App\DatabaseModels\MessagesCompanies;
 
 
 
@@ -280,6 +281,14 @@ class LoginController extends Controller
             return back()->withInput()->with('error', 'E-Mail already taken.');
 
         }else{
+
+            $user = Users::where("email", "=", $_POST['email'])->first();
+
+            $msg = new MessagesCompanies();
+            $msg->typ   = 3;
+            $msg->users_id_fk = $user->id;
+            $msg->save();
+
 
             if(isset($_POST['status']) && ($_POST['status'] == 2202)){
 

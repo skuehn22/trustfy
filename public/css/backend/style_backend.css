@@ -189,8 +189,17 @@ Header
     display: inline-block;
     height: 3px;
     width: 24px;
-    background: #ffffff;
+    background: #006600;
 }
+
+.cd-nav-trigger a{
+    color: transparent;
+}
+
+.cd-nav-trigger a:hover{
+    color: transparent;
+}
+
 .cd-nav-trigger span {
     /* line in the center */
     position: absolute;

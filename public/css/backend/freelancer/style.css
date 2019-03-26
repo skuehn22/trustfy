@@ -384,7 +384,7 @@ select{
 .settings .nav>li>a {
     position: relative;
     display: block;
-    padding: 10px 15px;
+    padding: 5px 5px;
     color: #006600;
 }
 
@@ -441,12 +441,6 @@ select{
     /*margin: 1rem;*/
     position: relative;
     width: 100%;
-}
-
-@media (min-width: 576px) {
-
-
-
 }
 
 
@@ -547,9 +541,6 @@ select{
     color: #fff;
     background: url(/img/select-arrow-down.png) no-repeat right #9e9e9e;
 }
-
-
-
 
 
 .materialbox-projects .input-md {
@@ -896,3 +887,36 @@ select{
     padding-left: 15px;
 }
 
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+    .settings .nav>li>a {
+        position: relative;
+        display: block;
+        padding: 15px 10px;
+        color: #006600;
+    }
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+    .settings .nav>li>a {
+        position: relative;
+        display: block;
+        padding: 15px 10px;
+        color: #006600;
+    }
+
+}

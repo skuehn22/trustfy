@@ -238,7 +238,7 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    @include('backend.freelancer.dashboard.upcoming')
+                    @include('backend.freelancer.dashboard.inbox')
                 </div>
                 <div class="col-md-8 mb-4">
                     @include('backend.freelancer.dashboard.projects')
@@ -258,7 +258,7 @@
         <div class="col-md-3">
             <div class="row">
                 <div class="col-md-12 mb-4">
-                    @include('backend.freelancer.dashboard.inbox')
+                    @include('backend.freelancer.dashboard.upcoming')
                 </div>
             </div>
         </div>

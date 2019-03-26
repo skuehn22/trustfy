@@ -10,10 +10,10 @@
     </div>
 </div>
 @endif
-<div class="row">
 
+<form role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
+<div class="row">
     <div class="col-md-6">
-        <form role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-company">
         <h4>Your Company Details</h4>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="col-md-12 pl-0">
@@ -73,13 +73,6 @@
                         <input type="text" value="{{ $company->color or "#006600" }}" class="form-control  col-md-12" name="color"/><span class="input-group-addon"><i></i></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10 float-left text-left pt-5 pl-0">
-                        <button type="submit" class="btn btn-classic">
-                            <i class="fas fa-save"></i> Save Settings
-                        </button>
-                    </div>
-                </div>
             </div>
 
     </div>
@@ -122,9 +115,12 @@
             @endif
 
         </div>
-        </form>
-        <br><br>
-        @include('ajax_upload')
+        <div class="form-row py-2 pt-5">
+        <button type="submit" class="btn btn-classic">
+            <i class="fas fa-save"></i> Save Settings
+        </button>
+        </div>
     </div>
 </div>
 
+</form>
