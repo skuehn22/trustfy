@@ -53,12 +53,34 @@
             float: left;
             margin-top: 2px;
         }
-        table.table tr th, table.table tr td {
-            border-color: #e9e9e9;
-            padding: 12px 15px;
-            vertical-align: middle;
-        }
-        table.table tr th:first-child {
+
+
+      table.table tr th, table.table tr td {
+          border-color: #e9e9e9;
+          padding: 5px;
+          vertical-align: middle;
+      }
+
+      /*Large devices (desktops, 992px and up)*/
+      @media (min-width: 992px) {
+          table.table tr th, table.table tr td {
+              border-color: #e9e9e9;
+              padding: 12px 15px;
+              vertical-align: middle;
+          }
+      }
+
+      /*Extra large devices (large desktops, 1200px and up)*/
+      @media (min-width: 1200px) {
+          table.table tr th, table.table tr td {
+              border-color: #e9e9e9;
+              padding: 12px 15px;
+              vertical-align: middle;
+          }
+      }
+
+
+      table.table tr th:first-child {
             width: 60px;
         }
         table.table tr th:last-child {
@@ -164,7 +186,6 @@
             min-height: 200px;
         }
 
-
     </style>
 @stop
 @section('breadcrumb')
@@ -195,11 +216,9 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th style="width: 25%;">Name</th>
+                <th>Name</th>
                 <th>E-Mail</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -209,8 +228,6 @@
                     <tr>
                         <td>{{ $client->firstname}} {{ $client->lastname}}</td>
                         <td>{{$client->email}}</td>
-                        <td>{{$client->address1}}</td>
-                        <td>{{$client->city}}</td>
                         <td>
                             <a href="/{{$blade["ll"]}}/freelancer/clients/edit/{{$client->id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit green"></i></a>
                             <span data-toggle="modal" data-target="#exampleModal">
