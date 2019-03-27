@@ -229,7 +229,7 @@
             $(function(){
                 $('body').Wload({text:' Sending'})
 
-            })
+            });
 
 
             event.preventDefault();
@@ -278,9 +278,11 @@
 
         //loads projects for selected client
         $("#typ").on('change', function() {
-            if($("#typ").val() == 1){
+
+            if($("#typ").val() == 1 || $("#typ").val() == 2){
                 getPlanTyp($(this).val());
             }
+
         });
 
 
@@ -337,18 +339,18 @@
             });
 
             $(document).ready(function () {
-                var counter = 0;
+                var counter = 1;
 
                 $("#addrow").on("click", function () {
                     var newRow = $("<tr>");
                     var cols = "";
 
-                    cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
-                    cols += '<td><input type="text" class="form-control" name="amount' + counter + '"/></td>';
-                    cols += '<td><input type="text" class="form-control" id="due_date' + counter + '" name="due_date' + counter + '"/></td>';
-                    cols += '<td><textarea class="form-control" rows="3" name="description' + counter + '"></textarea></td>';
-
+                    cols += '<td><input type="text" class="form-control" name="name[]"/></td>';
+                    cols += '<td><input type="number" class="form-control" name="amount[]"/></td>';
+                    cols += '<td><input type="text" class="form-control" id="due_date' + counter + '" name="due_date[]"/></td>';
+                    cols += '<td><textarea class="form-control" rows="3" name="description[]"></textarea></td>';
                     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+
                     newRow.append(cols);
                     $("table.order-list").append(newRow);
                     $( "#due_date" + counter).datepicker();
@@ -406,6 +408,7 @@
 
     function getPlanTyp(id) {
 
+
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         } else {
@@ -417,6 +420,13 @@
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
                 document.getElementById("plan-typ-response").innerHTML = xmlhttp.responseText;
+
+
+                if(id == 1){
+                    $(".button-bar-footer").removeClass("col-md-12").addClass("col-md-5");
+                }else{
+                    $(".button-bar-footer").removeClass("col-md-5").addClass("col-md-12");
+                }
 
                 @if(isset($milestones_edit->due_typ))
                     $("#pay-due").val({{$milestones_edit->due_typ}});

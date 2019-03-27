@@ -18,6 +18,6 @@
     </table>
 </div>
 <div class="col-md-12 text-center">
-    <button type="button" class="btn btn-secondary later">Remind me later</button>
-    <button type="button" class="btn btn-success completed">Transfer completed</button>
+    <button type="button" class="btn btn-secondary later"  name="{{$milestone->id}}">Remind me later</button>
+    <button type="button" class="btn btn-success completed" name="{{$milestone->id}}">Transfer completed</button>
 </div>

@@ -188,6 +188,16 @@
             width:100%;
         }
 
+
+        .add-row {
+            color: #006600;
+            background-color: #fff;
+            border-color: #006600;
+            width: 148px;
+            font-size: 14px;
+        }
+
+
         /*Large devices (desktops, 992px and up)*/
         @media (min-width: 992px) {
             .nav-tabs{
@@ -203,9 +213,18 @@
             }
 
 
-            .sw-container{
+            .sw-main .sw-container {
                 padding-left: 40px;
                 padding-right: 40px;
+            }
+
+
+            .nav-item{
+                width:16%;
+            }
+
+            .tab-content{
+                padding:40px;
             }
 
         }
@@ -224,10 +243,20 @@
                 text-align: right;  padding-right: 40px;
             }
 
-            .sw-container{
+
+            .nav-item{
+                width:16%;
+            }
+
+            .tab-content{
+                padding:40px;
+            }
+
+            .sw-main .sw-container {
                 padding-left: 40px;
                 padding-right: 40px;
             }
+
 
         }
 

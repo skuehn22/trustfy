@@ -97,8 +97,10 @@ class PlansManagementController extends Controller
                 ->where("delete", "=", "0")
                 ->get();
 
-            $types = PlansTypes::where("delete", "=", "0")
-                ->lists("name", "id");
+            //$types = PlansTypes::where("delete", "=", "0")
+            //    ->lists("name", "id");
+
+            $types = PlansTypes::lists("name", "id");
 
             $plan = new Plans();
 
@@ -248,9 +250,37 @@ class PlansManagementController extends Controller
 
             $milestone->save();
 
+
         }else{
 
+            foreach($input['name'] as $key => $value){
+
+                $milestone = new PlansMilestone();
+                $milestone->projects_plans_id_fk = $plan->id;
+                $milestone->order = $key+1;
+                $milestone->typ = 2;
+                $milestone->name = $value;
+                $milestone->amount = $input['amount'][$key];
+                $milestone->desc = $input['description'][$key];
+                $milestone->due_at = $input['due_date'][$key];
+
+                if(isset($input['cc']) && $input['cc']=="true"){
+                    $milestone->credit_card = 1;
+                }else{
+                    $milestone->credit_card = 0;
+                }
+
+                if(isset($input['bt']) && $input['bt']=="true"){
+                    $milestone->bank_transfer = 1;
+                }else{
+                    $milestone->bank_transfer = 0;
+                }
+
+                $milestone->save();
+            }
         }
+
+
 
         return response()->json([
             'message'   => 'Successfully saved'
@@ -454,12 +484,13 @@ class PlansManagementController extends Controller
             ->where('delete', '=', '0' )
             ->get();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-            ->first();
+        $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->OrderBy('order', 'asc')
+            ->get();
 
         $hash = $plan->hash;
 
-        return view('frontend.clients.payment-plan-preview', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash'));
+        return view('frontend.clients.payment-plan-preview', compact('blade', 'plan', 'user', 'company', 'milestones', 'docs', 'hash'));
 
 
     }
@@ -493,15 +524,18 @@ class PlansManagementController extends Controller
             $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
                 ->get();
 
-            $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-                ->first();
+            $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+                ->OrderBy('order', 'asc')
+                ->get();
 
             $hash = $plan->hash;
 
-            $statusObj = new StateClass();
-            $status =$statusObj->milestones($milestone->paystatus);
+            foreach ($milestones as $milestone){
+                $statusObj = new StateClass();
+                $status =$statusObj->milestones($milestone->paystatus);
+            }
 
-            return view('backend.freelancer.plans.show', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'hash', 'status'));
+            return view('backend.freelancer.plans.show', compact('blade', 'plan', 'user', 'company', 'milestones', 'docs', 'hash', 'status'));
         }
     }
 

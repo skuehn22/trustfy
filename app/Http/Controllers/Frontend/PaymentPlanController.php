@@ -26,6 +26,7 @@ use App\DatabaseModels\CompaniesMangowallets;
 use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
 use App\Classes\MessagesClass;
+use App\Classes\StateClass;
 
 class PaymentPlanController extends Controller
 {
@@ -89,8 +90,6 @@ class PaymentPlanController extends Controller
             $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
                 ->get();
 
-            $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-                ->first();
 
             //only if client comes back from mangopay
             if (isset($_GET['transactionId'])) {
@@ -111,6 +110,9 @@ class PaymentPlanController extends Controller
                 $payIn->result_message = $payinResult->ResultMessage;
                 $payIn->save();
 
+                $milestone = PlansMilestone::where("id", "=", $payIn->milestone_id_fk)
+                    ->first();
+
                 //if payment was successful update the paystatus of our intern DB
                 if ($payinResult->Status == "SUCCEEDED") {
                     $milestone->paystatus = 2;
@@ -126,9 +128,21 @@ class PaymentPlanController extends Controller
                 }
             }
 
+            $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+                ->OrderBy('order', 'asc')
+                ->get();
+
+            foreach ($milestones as $milestone){
+                $statusObj = new StateClass();
+                $status = $statusObj->milestones($milestone->paystatus);
+                $milestone->statusTxt = $status['state'];
+                $milestone->color = $status['color'];
+                $milestone->info = $status['info'];
+            }
+
             $login = true;
 
-            return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'docs', 'login', 'hash', 'protect', 'loggedIn'));
+            return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestones', 'docs', 'login', 'hash', 'protect', 'loggedIn'));
 
         }
 
@@ -167,10 +181,11 @@ class PaymentPlanController extends Controller
                 ->first();
         }
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
-            ->first();
+        $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->OrderBy('order', 'asc')
+            ->get();
 
-        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestone', 'preview'));
+        return view('frontend.clients.payment-plan', compact('blade', 'plan', 'user', 'company', 'milestones', 'preview'));
     }
 
     public function payCC($hash) {
@@ -184,7 +199,7 @@ class PaymentPlanController extends Controller
         $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+        $milestone = PlansMilestone::where("id", "=", $_GET['milestone_to_pay'])
             ->first();
 
         $client = Clients::where("id", "=", $plan->clients_id_fk)
@@ -303,7 +318,6 @@ class PaymentPlanController extends Controller
 
     }
 
-
     public function setProtection() {
 
         $ll = App::getLocale();
@@ -351,8 +365,6 @@ class PaymentPlanController extends Controller
         }
 
     }
-
-
 
     public function login() {
 
@@ -403,7 +415,6 @@ class PaymentPlanController extends Controller
 
     }
 
-
     public function loadBank($hash){
 
         $blade["locale"] = App::getLocale();
@@ -414,7 +425,7 @@ class PaymentPlanController extends Controller
         $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+        $milestone = PlansMilestone::where("id", "=", $_GET['val'])
             ->first();
 
 
@@ -422,7 +433,6 @@ class PaymentPlanController extends Controller
 
 
     }
-
 
     public function completedBank($hash){
 
@@ -437,7 +447,8 @@ class PaymentPlanController extends Controller
         $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+        $milestone = PlansMilestone::where("id", "=", $_GET['val'])
+            ->where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
         $milestone->payment_method = 1;
@@ -460,7 +471,7 @@ class PaymentPlanController extends Controller
         </p>";
 
 
-        $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
+        $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash."?val=".$_GET['val'];
         $data['content'] .= "<a href=".$changeUrl. " style='color: #949494; text-decoration: underline;'>Change Payment Method</a>";
 
 
@@ -498,8 +509,6 @@ class PaymentPlanController extends Controller
             return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
         }
 
-
-
     }
 
 
@@ -516,7 +525,8 @@ class PaymentPlanController extends Controller
         $client = Clients::where("id", "=", $plan->clients_id_fk)
             ->first();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+        $milestone = PlansMilestone::where("id", "=", $_GET['val'])
+            ->where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
         $milestone->payment_method = 1;
@@ -562,7 +572,6 @@ class PaymentPlanController extends Controller
 
     }
 
-
     public function changeMethode($hash){
 
         $blade["locale"] = App::getLocale();
@@ -570,7 +579,8 @@ class PaymentPlanController extends Controller
         $plan = Plans::where("hash", "=", $hash)
             ->first();
 
-        $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+        $milestone = PlansMilestone::where("id", "=", $_GET['val'])
+            ->where("projects_plans_id_fk", "=", $plan->id)
             ->first();
 
         if($milestone->paystatus == 5 || $milestone->paystatus == 6){

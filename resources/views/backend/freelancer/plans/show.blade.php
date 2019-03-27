@@ -170,8 +170,11 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    @foreach($milestones as $milestone)
+
                     <tr>
-                        <td class="no">01</td>
+                        <td class="no">0{{ $milestone->order }}</td>
                         <td class="text-left" style="width:30%;">
                             {!!  $milestone->name or '<i>please fill in</i>'!!}
                             <input type="hidden" value="{{$milestone->name}}" id="name_{{$milestone->id}}">
@@ -208,7 +211,7 @@
 
                         </td>
                     </tr>
-
+                    @endforeach
 
                     </tbody>
                     <!--

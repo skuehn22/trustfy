@@ -172,38 +172,47 @@
                         <th class="text-left">DESCRIPTION</th>
                         <th class="text-right">DUE ON</th>
                         <th class="text-right">TOTAL</th>
-                        <th class="text-right">PAYMENT STATUS</th>
+                        <th class="text-right">STATUS</th>
+                        <th class="text-right">ACTION</th>
                     </tr>
                     </thead>
                     <tbody>
+
+                    @foreach($milestones as $milestone)
                     <tr>
-                        <td class="no">01</td>
-                        <td class="text-left" style="width:35%;">
-                            {!!  $milestone->name or '<i>please fill in</i>'!!}
+                        <td class="no">0{{ $milestone->order }}</td>
+                        <td class="text-left" style="width:25%;">
+                            {!!  $milestone->name or '<i>please fill in</i>'!!}<br>
                             <input type="hidden" value="{{$milestone->name or ''}}" id="name_{{$milestone->id or ''}}">
-                            @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
+                            @if(isset($milestone->desc) && $milestone->desc!="") {{$milestone->desc}} @endif
                         </td>
 
-                        <td class="qty">
+                        <td class="qty"  style="width:5%;">
 
                             @if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}} @else  <i>please fill in</i> @endif
 
 
                         </td>
-                        <td class="qty" style="width:16%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif</td>
+                        <td class="qty" style="width:10%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif</td>
+                        <td style="text-align: right;">
+                            <span style="font-weight:600; color: {{$milestone->color}}">{{$milestone->statusTxt}}
+                                <i class="fas fa-info-circle green" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="{{$milestone->info}}"></i>
+                            </span>
+                        </td>
                         <td style="text-align: right;">
 
-                            @if(isset($milestone->bank_transfer))
                                 @if(isset($milestone->paystatus) && ($milestone->paystatus==0 || $milestone->paystatus==6))
 
                                     @if($milestone->bank_transfer == 0 && $milestone->credit_card == 1)
                                         <form action="/payment-plan/pay-by-card/{{$plan->hash or ''}}" id="paymentform">
                                     @else
-                                        <form id="paymentform">
+                                         <form id="paymentform">
                                     @endif
-                                        <div class="row">
-                                            <div class="col-md-6">
 
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <input type="hidden" value="{{$milestone->id}}"  name="milestone_to_pay">
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
                                                         <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card</label>
@@ -223,39 +232,30 @@
                                                         <label><input type="radio" name="paymenttyp" value="2" checked> Bank Transfer</label>
                                                     </div>
                                                 @endif
-
-
                                             </div>
+
                                             <div class="col-md-6"  style="text-align: right;">
+
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <a class="btn btn-success pay-now">Pay now</a>
+                                                    <a class="btn btn-success action-btn pay-now" name="{{$milestone->id}}">Pay now</a>
                                                 </span>
+
                                             </div>
                                         </div>
                                     </form>
-                                @elseif(isset($milestone->paystatus) && $milestone->paystatus==3 || $milestone->paystatus==4 || $milestone->paystatus==8)
-                                        <p class="successful">Money Released</p>
-                                    @else
-
-                                        @if(isset($milestone->paystatus) && $milestone->paystatus==5)
-                                            <p class="successful" style="padding-top: 14px;">Bank transfer pending</p>
-                                        @else
-
-                                            <p class="successful">Amount Funded</p>
-                                                <br>
-                                            <span class="input-group-btn" style="padding-left: 5px;">
-                                                <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
-                                            </span>
-
-                                        @endif
+                                @elseif(isset($milestone->paystatus) && ($milestone->paystatus==2))
+                                    <span class="input-group-btn" style="padding-left: 5px;">
+                                        <button class="btn btn-success action-btn work-done" id="{{$milestone->id}}">Work Done</button>
+                                    </span>
+                                @else
 
                                 @endif
-                            @else
-                                <i>please fill in</i>
-                            @endif
-                        </td>
-                    </tr>
 
+
+                        </td>
+
+                    </tr>
+                    @endforeach
 
                     </tbody>
                     <!--
@@ -497,29 +497,6 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="bank-transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Bank Transfer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body"  id="modal-bank-content">
-
-
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 @endsection
 
 @section('js')
@@ -527,7 +504,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
-
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
 
         @if(isset($login))
 
@@ -554,10 +533,8 @@
             @if( isset($protect) && $protect == "true" )
                 $('#invoice').removeClass('blur');
             @endif
-                    
+
         @endif
-
-
 
         //loads projects for selected client
 
@@ -581,7 +558,6 @@
              setProtection({{$plan->hash}});
              return true;
          });
-
 
          // External Button Events
          $("#log-protection").on("click", function() {
@@ -626,16 +602,25 @@
 
         // External Button Events
         $(".pay-now").on("click", function() {
+
             if(!jQuery('#paymentform').get(0).hasAttribute('action')){
-                getBankTransfer({{$plan->hash}});
+                alert('bank');
+
+                var id  = $(this).attr("name");
+
+                getBankTransfer({{$plan->hash}}, id);
+
                 $('#bank-transfer').modal('show');
+
             }else{
+
                 $( "#paymentform" ).submit();
+
             }
         });
 
 
-        function getBankTransfer(hash) {
+        function getBankTransfer(hash, id) {
 
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -645,12 +630,13 @@
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
                     document.getElementById("modal-bank-content").innerHTML = xmlhttp.responseText;
                     loadScript();
                 }
             }
 
-            xmlhttp.open("GET", "{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-transfer/"+hash, true);
+            xmlhttp.open("GET", "{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-transfer/"+hash+"?val="+id, true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send();
 
@@ -683,7 +669,9 @@
             // External Button Events
             $(".completed").on("click", function() {
 
-                transferCompleted({{$plan->hash}});
+                var id  = $(this).attr("name");
+
+                transferCompleted({{$plan->hash}}, id);
                 return true;
             });
 
@@ -691,16 +679,19 @@
             // External Button Events
             $(".later").on("click", function() {
 
-                transferReminder({{$plan->hash}});
+                var id  = $(this).attr("name");
+                transferReminder({{$plan->hash}}, id);
                 return true;
             });
 
 
-            function transferReminder(hash) {
+            function transferReminder(hash, id) {
+
+                alert("ddd");
 
                 $.ajax({
                     type: 'GET',
-                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-reminder/'+hash,
+                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-reminder/'+hash+'?val='+id,
                     data: { hash: hash },
                     dataType: 'json',
                     success: function(data) {
@@ -718,17 +709,20 @@
 
 
 
-            function transferCompleted(hash) {
+            function transferCompleted(hash, id) {
+
+
 
                 $.ajax({
                     type: 'GET',
-                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-completed/'+hash,
+                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/payment-plan/bank-completed/'+hash+'?val='+id,
                     data: { hash: hash },
                     dataType: 'json',
                     success: function(data) {
 
                         if(data.success == true){
 
+                            alert(id);
 
                             window.location.href = window.location.href + "?bank="+data.msg;
 
