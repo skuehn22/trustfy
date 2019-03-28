@@ -193,7 +193,10 @@
 
 
                         </td>
-                        <td class="qty" style="width:10%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif</td>
+                        <td class="qty" style="width:10%;">
+                            <input type="hidden" value="€ {{ number_format($milestone->amount, 2, '.', ',') }}" id="amount_name_{{$milestone->id or ''}}">
+                            @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
+                        </td>
                         <td style="text-align: right;">
                             <span style="font-weight:600; color: {{$milestone->color}}">{{$milestone->statusTxt}}
                                 <i class="fas fa-info-circle green" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="{{$milestone->info}}"></i>
@@ -449,24 +452,19 @@
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
                     <div class="login-error-msg"></div>
                 </div>
-                <h3 class="modal-title-msg" id="modal-title-msg">Milestone Completed</h3>
+                <h5 class="modal-title-msg" id="modal-title-msg">Milestone Completed</h5>
             </div>
             <div class="modal-body"  id="modal-body-msg">
                 <form class="form-horizontal" id="release-form" role="form" method="POST" action="/payment-plan/release-milestone/{hash}">
                     {{ csrf_field() }}
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="milestone" class="col-md-12 control-label">Milestone</label>
-                        <div class="col-md-12 pl-0">
-                            <input id="milestone-done" type="text" class="form-control" name="milestone-done" value="" readonly>
-                        </div>
+
+                    <div class="form-check form-check-inline">
+                        <div id="milestone-done" name="milestone-done" class="pr-5"></div>
+                        <button id="do-release" type="submit" class="btn btn-success">
+                            <span class="ui-button-text">My Text</span>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12 register  pl-0">
-                            <button id="do-release" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-user"></i> Release Money
-                            </button>
-                        </div>
-                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -569,10 +567,13 @@
          $(".work-done").on("click", function() {
 
              var id = $(this).attr("id");
+             var amount=  $('#amount_name_'+id).val();
              var name =   $('#name_'+$(this).attr("id")).val();
 
              $('#release-form').attr('action', '/payment-plan/release-milestone/'+id);
-             $('#milestone-done').val(name);
+             $('#milestone-done').html("Milestone: " +name);
+             $("#do-release span").text("Release " +amount);
+
              $('#release-money').modal('show');
              return true;
          });

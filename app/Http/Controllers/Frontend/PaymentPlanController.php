@@ -295,8 +295,8 @@ class PaymentPlanController extends Controller
                 ->first();
 
             $subject = "Trustfy - Payment released";
-            $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has released a payment for ".$milestone->name."</p>";
-            $data['content'] .= "<p>We just need you to <strong>add your bank account details</strong> and your money will be on its way.<br> <br></p>";
+            $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has released a payment for ".$milestone->name."<br></p>";
+            $data['content'] .= "<p>Just <strong>add your bank account details</strong> and your money will be on its way!<br> <br></p>";
 
             $data['content'] .='
             <p>
