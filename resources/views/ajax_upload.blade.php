@@ -1,4 +1,4 @@
-<div class="row pt-5">
+<div class="row">
     <div class="col-md-12">
         <h4>Add your logo</h4>
         <div class="alert" id="message" style="display: none"></div>

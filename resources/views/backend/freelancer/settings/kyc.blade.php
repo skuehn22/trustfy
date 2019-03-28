@@ -1,3 +1,65 @@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Why do we need this information?</strong> This isn’t about collecting your data! There’s a lot of bad people out there (think traffickers and terrorists) trying to launder money through legitimate businesses, and we’re dedicated to preventing that. By properly verifying our users, we’re staying compliant with national and EU regulation and doing our part to stop them.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+<div class="row">
+    <div class="col-md-6 pb-5">
+        <form role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/save-legal">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <h4>Legal Representative
+            <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This information is required for a payment out."></i>
+        </h4>
+
+        <div class="form-row py-2">
+            <label class="col-md-3 col-form-label" for="firstname">
+                First name*
+                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
+            </label>
+            <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}"required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="form-row py-2">
+            <label class="col-md-3 col-form-label" for="address">Last name*</label>
+            <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" required>
+        </div>
+
+        <div class="form-row py-2">
+            <label class="col-md-3 col-form-label" for="birthday">
+                Birthday*
+                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Birthday of company’s legal representative person"></i>
+            </label>
+            <input type="date" name="birthday" min="1000-01-01" max="3000-12-31" class="form-control col-md-7" value="{{  $company->birthday or "" }}" required>
+        </div>
+        <div class="form-row py-2">
+            <label class="col-md-3 col-form-label" for="nationality">Nationality*</label>
+
+            @if(isset($company->country_nationality))
+                {!! Form::select('nationality', $countries, $company->country_nationality, ['id' => 'nationality', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
+            @else
+                {!! Form::select('nationality', $countries, null, ['id' => 'nationality', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
+            @endif
+
+        </div>
+        <div class="form-row py-2 pt-5">
+            <button type="submit" class="btn btn-classic">
+                <i class="fas fa-save"></i> Save Settings
+            </button>
+        </div>
+        </form>
+    </div>
+</div>
 @if(isset($company->type))
 
     <p style="font-size: 12px;">As a  {{ trans('freelancer_backend.company_types_'.$company->type) }} you need following documents: {{$kyc_docs->mango_kyc_docs}}.</i> <a href="#" id="kyc-details"><strong>Details</strong></a></p>
@@ -6,6 +68,7 @@
 
 @endif
 <div class="row">
+
     <div class="col-md-4 pl-0">
         <form data-toggle="validator" role="form" id="company-data" name="company-data" method="POST" action="/freelancer/settings/kyc-check"  enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

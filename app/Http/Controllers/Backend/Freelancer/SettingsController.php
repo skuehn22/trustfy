@@ -176,6 +176,41 @@ class SettingsController extends Controller
         $company->postcode = $_POST["postcode"];
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
+
+        $user = Users::find($blade["user"]->id);
+
+        if(env("APP_ENV") == "live") {
+            $company->system = 0;
+        }elseif(env("APP_ENV") == "dev") {
+            $company->system = 1;
+        }else{
+            $company->system = 1;
+        }
+
+        $company->save();
+
+        $user = Users::find($blade["user"]->id);
+        $user->service_provider_fk = $company->id;
+        $user->save();
+
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
+
+    }
+
+
+    public function saveLegalUser() {
+
+        $blade["user"] = Auth::user();
+        $blade["ll"] = App::getLocale();
+
+        $company = Companies::where("id", "=", $blade["user"]->service_provider_fk)
+            ->where("delete", "=", "0")
+            ->first();
+
+        if(!isset($company)){
+            $company = new Companies();
+        }
+
         $company->firstname = $_POST["firstname"];
         $company->lastname = $_POST["lastname"];
         $company->birthday = $_POST["birthday"];
@@ -215,7 +250,6 @@ class SettingsController extends Controller
         return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
 
     }
-
 
     public function saveAccount() {
 
