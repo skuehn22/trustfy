@@ -120,6 +120,7 @@
             <i class="fas fa-save"></i> Save Settings
         </button>
         </div>
+        @include('ajax_upload')
     </div>
 </div>
 

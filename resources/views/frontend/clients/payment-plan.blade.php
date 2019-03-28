@@ -604,7 +604,6 @@
         $(".pay-now").on("click", function() {
 
             if(!jQuery('#paymentform').get(0).hasAttribute('action')){
-                alert('bank');
 
                 var id  = $(this).attr("name");
 

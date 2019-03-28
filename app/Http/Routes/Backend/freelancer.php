@@ -75,6 +75,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/settings/change-password', 'Backend\Freelancer\SettingsController@resetPw') ;
     Route::any('/freelancer/settings/save-bank', 'Backend\Freelancer\SettingsController@saveBank') ;
     Route::any('/freelancer/settings/kyc-check', 'Backend\Freelancer\SettingsController@kycCheck') ;
+    Route::any('/freelancer/settings/email-pref', 'Backend\Freelancer\SettingsController@saveMailPref') ;
 
 
 

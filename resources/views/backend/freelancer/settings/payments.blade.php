@@ -60,7 +60,7 @@
 
 
         <div class="form-row py-2">
-            <label class="col-md-3 col-form-label" for="nationality">Nationality*</label>
+            <label class="col-md-3 col-form-label" for="nationality">Country*</label>
 
             @if(isset($bank->country))
                 {!! Form::select('country', $countries, $bank->country, ['id' => 'country_bank', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}

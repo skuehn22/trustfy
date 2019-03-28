@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <form class="form-horizontal" role="form" method="POST" action="/freelancer/settings/change-password">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <h4 class="pb-3">Edit Account</h4>
+            <h4 class="pb-3">Privacy Settings</h4>
             <div class="form-group">
                 <label for="email" class="col-md-5 control-label  pl-0">E-Mail</label>
                 <div class="col-md-8 pl-0">
@@ -24,14 +24,50 @@
             <div class="form-group">
                 <div class="col-md-10 pl-0">
                     <button type="submit" class="btn btn-classic">
-                        <i class="fas fa-save"></i> Save
+                        <i class="fas fa-save"></i> Save Password
                     </button>
                 </div>
             </div>
         </form>
     </div>
     <div class="col-md-6">
-    @include('ajax_upload')
+
+        <form class="form-horizontal" role="form" method="POST" action="/freelancer/settings/email-pref">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <h4 class="pb-3">E-Mail Preferences</h4>
+            <div class="form-check pb-4">
+
+                @if(isset($user_pref) && $user_pref->nl == 1)
+                    <input class="form-check-input" type="checkbox" value="check" name="newsletter" id="newsletter" checked>
+                @else
+                    <input class="form-check-input" type="checkbox" value="check" name="newsletter" id="newsletter">
+                @endif
+
+                <label class="form-check-label" for="defaultCheck1">
+                    &nbsp;&nbsp;Trustfy Newsletter
+                </label>
+            </div>
+            <div class="form-check pb-4">
+
+                @if(isset($user_pref) && $user_pref->special_offer == 1)
+                    <input class="form-check-input" type="checkbox" value="check" name="offers" id="offers" checked>
+                @else
+                    <input class="form-check-input" type="checkbox" value="check" name="offers" id="offers">
+                @endif
+
+                <label class="form-check-label" for="defaultCheck1">
+                    &nbsp;&nbsp;Special offers and updates
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10 pl-0">
+                    <button type="submit" class="btn btn-classic">
+                        <i class="fas fa-save"></i> Save Preferences
+                    </button>
+                </div>
+            </div>
+        </form>
+
         <!--
         <h4  class="pt-3">Manage Database</h4>
         <div class="row">

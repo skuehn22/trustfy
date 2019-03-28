@@ -16,12 +16,14 @@ use App\Http\Controllers\Controller;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\CompaniesType;
 use App\DatabaseModels\Users;
+use App\DatabaseModels\UsersEmailPref;
 use App\DatabaseModels\Projects;
 use App\DatabaseModels\Clients;
 use App\DatabaseModels\Plans;
 use App\DatabaseModels\Countries;
 use App\DatabaseModels\MangoKyc;
 use App\Classes\MangoClass;
+
 
 class SettingsController extends Controller
 {
@@ -53,7 +55,8 @@ class SettingsController extends Controller
         }
 
         $user = Users::find($blade["user"]->id);
-
+        $user_pref = UsersEmailPref::where("users_fk_id", "=", $blade["user"]->id)
+            ->first();
 
         $company = $this->getCompany($blade["user"]);
 
@@ -127,7 +130,7 @@ class SettingsController extends Controller
         $countries= Countries::lists('country_name', 'alpha2_code');
         $countries->prepend(Lang::get('freelancer_backend.please_select'), 0);
 
-        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs', 'countries'));
+        return view('backend.freelancer.settings.index', compact('blade', 'company', 'user', 'team', 'bank', 'kyc_doc_objs', 'companyTypes', 'kyc_docs', 'countries', 'user_pref'));
 
     } else {
 
@@ -209,7 +212,7 @@ class SettingsController extends Controller
         $user->service_provider_fk = $company->id;
         $user->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
 
     }
 
@@ -227,7 +230,52 @@ class SettingsController extends Controller
         $user->phone = $_POST["phone"];
         $user->save();
 
+
+        $user_mail = new UsersEmailPref();
+
+        if(isset($_POST['newsletter'])){
+            $user_mail->newsletter = 1;
+        }
+
+        if(isset($_POST['offers'])){
+            $user_mail->offers = 1;
+        }
+
+        $user_mail->save();
+
         return view('backend.settings.index', compact('blade', 'user', 'provider'));
+
+    }
+
+    public function saveMailPref() {
+
+        $blade["user"] = Auth::user();
+        $blade["ll"] = App::getLocale();
+
+        $user_mail = UsersEmailPref::where("users_fk_id", "=", $blade["user"]->id)
+            ->first();
+
+        if(!$user_mail){
+            $user_mail = new UsersEmailPref();
+        }
+
+
+        if(!empty($_POST['newsletter'])){
+            $user_mail->nl = 1;
+        }else{
+            $user_mail->nl = 0;
+        }
+
+        if(!empty($_POST['offers'])){
+            $user_mail->special_offer = 1;
+        }else{
+            $user_mail->special_offer = 0;
+        }
+
+        $user_mail->users_fk_id=$blade["user"]->id;
+        $user_mail->save();
+
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
 
     }
 
@@ -260,7 +308,7 @@ class SettingsController extends Controller
 
         $user->save();
 
-        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Process successfully completed!');
+        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Settings saved');
 
     }
 
@@ -460,7 +508,7 @@ class SettingsController extends Controller
                 $bank->mango_bank_id = $result->Id;
                 $bank->save();
 
-                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
             }
 
         }else{
@@ -580,7 +628,7 @@ class SettingsController extends Controller
                 $kyc_doc_obj->save();
 
 
-                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Process successfully completed!');
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
             }else{
                 Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', "Error sending the document");
             }

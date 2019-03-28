@@ -119,7 +119,7 @@ class SettingsController extends Controller
 
         $user->save();
 
-        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Process successfully completed!');
+        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Settings saved');
 
     }
 
