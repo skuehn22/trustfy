@@ -5,7 +5,7 @@
 
                 <div class="panel-heading">
                     <span class="panel-title">
-                        <i class="far fa-envelope"></i> Inbox </span>
+                        <i class="far fa-envelope"></i> {{ trans('freelancer_backend.inbox') }} </span>
                 </div>
                 <div class="panel-body">
                     <div class="row">

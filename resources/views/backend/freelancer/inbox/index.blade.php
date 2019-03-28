@@ -42,14 +42,14 @@
     <div class="tab-pane fade in" id="profile">
         <div class="list-group">
             <div class="list-group-item">
-                <span class="text-center">This tab is empty.</span>
+                <span class="text-center">{{ trans('freelancer_backend.empty') }}</span>
             </div>
         </div>
     </div>
     <div class="tab-pane fade in" id="messages">
         ...</div>
     <div class="tab-pane fade in" id="settings">
-        This tab is empty.</div>
+        {{ trans('freelancer_backend.empty') }}</div>
 </div>
 </div>
 

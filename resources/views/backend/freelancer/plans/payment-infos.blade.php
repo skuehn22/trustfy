@@ -2,7 +2,7 @@
     <h4 class="pt-0">Payment Plan</h4>
 </div>
 <div class="form-row py-2">
-    <label class="col-md-2 col-form-label" for="typ">Typ*</label>
+    <label class="col-md-2 col-form-label" for="typ">Type*</label>
 
 
         {!! Form::select('typ', $types, null , ['class' => 'form-control col-md-3', 'id' => 'typ', 'placeholder' => 'select']) !!}

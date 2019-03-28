@@ -2,6 +2,12 @@
 
 return [
 
+    /* dashboard inbox */
+    'inbox' => 'Inbox',
+    'inbox_empty' => 'This tab is empty.',
+
+
+
     /* KYC Methodes */
     'IDENTITY_PROOF' => 'Identity Proof',
     'REGISTRATION_PROOF' => 'Registration Proof',
