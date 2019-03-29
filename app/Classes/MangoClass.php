@@ -282,10 +282,10 @@ class MangoClass extends Controller
 
     }
 
-    public function getUser($performer) {
+    public function getUser($id) {
         try {
 
-            $mangoPerformer = $this->mangopay->Users->Get($performer->mango_id);
+            $mangoPerformer = $this->mangopay->Users->Get($id);
             return $mangoPerformer;
 
 

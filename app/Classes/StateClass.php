@@ -111,7 +111,17 @@ class StateClass
             case 8:
                 $state['color'] = "#006600";
                 $state['state'] = "money released";
-                $state['info'] = "Waiting for the freelancer to finish the work.";
+                $state['info'] = "The money can be paid out as soon as you have provided your bank details.";
+                break;
+            case 9:
+                $state['color'] = "#006600";
+                $state['state'] = "money released";
+                $state['info'] = "The money can be paid out as soon as you have completed the verification.";
+                break;
+            case 10:
+                $state['color'] = "#006600";
+                $state['state'] = "money released";
+                $state['info'] = "The money can be paid out as soon as you have completed the verification and provided your bank details.";
                 break;
             default:
                 $state['color'] = "text-secondary";

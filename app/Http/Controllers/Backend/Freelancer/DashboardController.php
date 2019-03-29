@@ -20,9 +20,22 @@ use App\DatabaseModels\Users;
 use App\Classes\StateClass;
 use App\Classes\PlansDetailsClass;
 use App\Classes\UsersClass;
+use App\Classes\MangoClass;
 
 class DashboardController extends Controller
 {
+
+    /**
+     * @var \MangoPay\MangoPayApi
+     */
+    private $mangopay;
+
+    public function __construct(\MangoPay\MangoPayApi $mangopay) {
+
+        $this->mangopay = $mangopay;
+
+    }
+
 
     public function index() {
 
@@ -141,6 +154,8 @@ class DashboardController extends Controller
 
             $usersObj = new UsersClass();
             $usersObj->checkSystem($company);
+
+
 
             $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/release-milestone/abc";
             return view('backend.freelancer.dashboard', compact('planUrl', 'blade', 'user', 'setup', 'openRight', 'company', 'openLeft','last_plan', 'plans', 'plansList', 'messages', 'funds', 'upcoming', 'clients', 'last_plan'));

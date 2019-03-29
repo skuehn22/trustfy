@@ -264,30 +264,59 @@ class PaymentPlanController extends Controller
 
         if(!empty($bank) && $bank->mango_bank_id != 0){
 
-            $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
-                ->first();
-
 
             $mango_obj = new MangoClass($this->mangopay);
-            $payOutResult = $mango_obj->createPayOut($company->mango_id, $milestone, $bank, $wallet);
+            $mangoUser = $mango_obj->getUser($company->mango_id);
 
-            $payout = new MangoPayout();
-            $payout->status = $payOutResult->Status;
-            $payout->company_id_fk = $plan->service_provider_fk;
-            $payout->mango_id = $payOutResult->Id;
-            $payout->milestone_id_fk = $id;
-            $payout->save();
+            if($mangoUser->KYCLevel=="REGULAR"){
 
-            if($payOutResult->Status == "CREATED"){
+                $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
+                    ->first();
 
-                $subject = "Trustfy - Pay-out confirmation";
+
+                $mango_obj = new MangoClass($this->mangopay);
+                $payOutResult = $mango_obj->createPayOut($company->mango_id, $milestone, $bank, $wallet);
+
+                $payout = new MangoPayout();
+                $payout->status = $payOutResult->Status;
+                $payout->company_id_fk = $plan->service_provider_fk;
+                $payout->mango_id = $payOutResult->Id;
+                $payout->milestone_id_fk = $id;
+                $payout->save();
+
+                if($payOutResult->Status == "CREATED"){
+
+                    $subject = "Trustfy - Pay-out confirmation";
+                    $msg_obj = new MessagesClass();
+                    $msg_obj->payOutCreated($subject, $user->email, $payout, $plan->planId);
+
+                    $milestone->paystatus = 3;
+                    $milestone->save();
+
+                }
+
+            }else{
+
+                $client = Clients::where("id", "=", $plan->clientId)
+                    ->first();
+
+                $subject = "Trustfy - Payment released";
+                $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has released a payment for ".$milestone->name."<br></p>";
+                $data['content'] .= "<p><strong>Complete the verification</strong> and your money will be on its way!<br> <br></p>";
+
+                $data['content'] .='
+            <p>
+               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
+            </p>';
+
                 $msg_obj = new MessagesClass();
-                $msg_obj->payOutCreated($subject, $user->email, $payout, $plan->planId);
+                $msg_obj->sendStandardMail($subject, $data, $user->email, null);
 
-                $milestone->paystatus = 3;
+                $milestone->paystatus = 9;
                 $milestone->save();
 
             }
+
 
         }else{
 
@@ -296,7 +325,18 @@ class PaymentPlanController extends Controller
 
             $subject = "Trustfy - Payment released";
             $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has released a payment for ".$milestone->name."<br></p>";
-            $data['content'] .= "<p>Just <strong>add your bank account details</strong> and your money will be on its way!<br> <br></p>";
+
+            $mango_obj = new MangoClass($this->mangopay);
+            $mangoUser = $mango_obj->getUser($company->mango_id);
+
+            if($mangoUser->KYCLevel=="REGULAR"){
+                $data['content'] .= "<p>Just <strong>add your bank account details</strong> and your money will be on its way!<br> <br></p>";
+                $milestone->paystatus = 8;
+            }else{
+                $data['content'] .= "<p>Just <strong>add your bank account details and complete the verification</strong> and your money will be on its way!<br> <br></p>";
+                $milestone->paystatus = 10;
+            }
+
 
             $data['content'] .='
             <p>
@@ -306,7 +346,7 @@ class PaymentPlanController extends Controller
             $msg_obj = new MessagesClass();
             $msg_obj->sendStandardMail($subject, $data, $user->email, null);
 
-            $milestone->paystatus = 8;
+
             $milestone->save();
 
         }
