@@ -22,6 +22,8 @@ class CompanyClass extends Controller
 
         if(!$company->mango_id){
             $status['legal'] = 1;
+        }else{
+            $status['legal'] = 0;
         }
 
 
@@ -29,6 +31,8 @@ class CompanyClass extends Controller
 
         if(empty($bank) || !$bank->mango_bank_id){
             $status['bank'] = 1;
+        }else{
+            $status['bank'] = 0;
         }
 
         //$kyc = $this->checkMangoKYC($company);
@@ -38,7 +42,9 @@ class CompanyClass extends Controller
         //}
 
 
-        return $status;
+            return $status;
+
+
 
     }
 
