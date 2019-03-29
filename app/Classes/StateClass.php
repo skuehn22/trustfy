@@ -71,7 +71,7 @@ class StateClass
             case 0:
                 $state['color'] = "grey";
                 $state['state'] = "open";
-                $state['info'] = "Please pay the money when the milestone is due..";
+                $state['info'] = "Waiting that the customer pay in the money";
                 break;
             case 1:
                 $state['color'] = "#d39c06";
@@ -115,7 +115,7 @@ class StateClass
                 break;
             case 9:
                 $state['color'] = "#006600";
-                $state['state'] = "money released";
+                $state['state'] = "released (pending)";
                 $state['info'] = "The money can be paid out as soon as you have completed the verification.";
                 break;
             case 10:

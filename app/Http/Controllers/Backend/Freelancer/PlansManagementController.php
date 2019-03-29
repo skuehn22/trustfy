@@ -532,7 +532,7 @@ class PlansManagementController extends Controller
 
             foreach ($milestones as $milestone){
                 $statusObj = new StateClass();
-                $status =$statusObj->milestones($milestone->paystatus);
+                $milestone->status = $statusObj->milestones($milestone->paystatus);
             }
 
             return view('backend.freelancer.plans.show', compact('blade', 'plan', 'user', 'company', 'milestones', 'docs', 'hash', 'status'));

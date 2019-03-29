@@ -185,27 +185,17 @@
                         <td class="qty"  style="width:16%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                         <td class="text-right">
 
-                                <p style="color:{{ $status['color'] }}; padding-top: 12px;" id="plan-status-{{$milestone->id}}">
+                                <p style="color:{{ $milestone->status['color'] }}; padding-top: 12px;" id="plan-status-{{$milestone->id}}">
 
-                                        <i><strong>{{ $status['state'] }}</strong></i>
+                                    <i><strong>{{ $milestone->status['state'] }}</strong></i>
+                                    <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="{{ $milestone->status['info'] }}"></i>
 
 
-                                    @if($milestone->paystatus==0)
-                                    <i class="fas fa-info-circle green  pl-2" data-toggle="tooltip" data-placement="top" title="It is waited for the customer to pay the amount into escrow"></i>
-                                    @endif
-                                    @if($milestone->paystatus==7)
-                                        <i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="Waiting for the customer to release the money."></i>
-                                    @endif
                                     @if($milestone->paystatus==2)
                                         <span class="input-group-btn" style="padding-left: 5px;">
                                          <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
-                                         <i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="A message will be sent to the customer that the task has been completed."></i>
                                         </span>
                                     @endif
-                                    @if($milestone->paystatus==8)
-                                        <i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="Waiting for you to save your bank account, so that we can realse the money into your bank."></i>
-                                    @endif
-
 
                                 </p>
 
@@ -309,12 +299,13 @@
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
                         <div class="login-error-msg"></div>
                     </div>
-                    <h5 class="modal-title-msg" id="modal-title-msg">Milestone Completed</h5>
+                    <h4 class="modal-title-msg" id="modal-title-msg">Mark this milestone as complete?</h4>
+                    <h5 class="modal-title-msg" id="modal-title-msg">Your client will be notified that work is complete and can release payment.</h5>
                 </div>
                 <div class="modal-body"  id="modal-body-msg">
                     <div class="form-check form-check-inline">
                         <div id="milestone-done" name="milestone-done" class="pr-5"></div>
-                        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Cancel</button>
                         <button id="do-release" type="button" class="btn btn-success work-done-confirm">
                             <span class="ui-button-text">My Text</span>
                         </button>
