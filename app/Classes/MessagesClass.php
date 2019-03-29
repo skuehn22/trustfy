@@ -20,9 +20,9 @@ class MessagesClass  extends Controller
 {
 
     //global sender function
-    public function send($mailTemplate, $recipient, $subject,  $data, $logo){
+    public function send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements){
 
-        Mail::send('emails.'.$mailTemplate, compact('data', 'logo'), function ($message) use ($recipient, $subject) {
+        Mail::send('emails.'.$mailTemplate, compact('data', 'logo', 'requirements'), function ($message) use ($recipient, $subject) {
             $message->from('plan@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->bcc('bcc@trustfy.io');
@@ -62,12 +62,12 @@ class MessagesClass  extends Controller
     public function sendStandardMail($subject, $data, $recipient, $logo) {
 
         $mailTemplate = "default";
-        $this->send($mailTemplate, $recipient, $subject,  $data, $logo);
+        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, null);
 
     }
 
 
-    public function payInSucceeded($milestone, $plan, $user) {
+    public function payInSucceeded($milestone, $plan, $user, $requirements) {
 
         $recipient = $user->email;
         $mailTemplate = "payInSucceeded";
@@ -84,8 +84,8 @@ class MessagesClass  extends Controller
         //check if msg was already send
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
-        if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, null);
+        if($exists){
+            $this->send($mailTemplate, $recipient, $subject,  $data, null, $requirements);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -112,7 +112,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, null);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 

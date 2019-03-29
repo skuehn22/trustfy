@@ -326,6 +326,7 @@
                                         <p>Milestone: {{$data['milestone']->name}}</p>
                                         <p>Amount: € {{number_format($data['milestone']->amount, 2, ',', ' ')}}</p>
                                         <p>Your money is being held in a secure account, <br>so go ahead and work with confidence- your money is there for you! </p>
+                                        <p><br><br>{{$requirements}}</p>
                                     </td>
                                 </tr>
                                 <tr>

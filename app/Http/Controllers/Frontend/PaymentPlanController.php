@@ -27,6 +27,7 @@ use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
 use App\Classes\MessagesClass;
 use App\Classes\StateClass;
+use App\Classes\CompanyClass;
 
 class PaymentPlanController extends Controller
 {
@@ -118,8 +119,42 @@ class PaymentPlanController extends Controller
                     $milestone->paystatus = 2;
                     $milestone->save();
 
+                    //check if the money can be realesd later or if things are missing on the freelancer site
+                    $company_obj = new CompanyClass();
+                    $status = $company_obj->checkMangoRequirements($company);
+
+                    $kyc = $this->checkKYC($company);
+                    if(!$kyc){
+                        $status['kyc'] = 1;
+                    }
+
+                    $i = 0;
+
+                    $requirements = "Please remember to create the following things in your backend for a payout: <br>";
+
+                    if(isset($status['kyc']) && $status['kyc'] == 1){
+                        $requirements.= "<p>Verification of the company</p>";
+                        $i = 1;
+                    }
+
+                    if(isset($status['bank']) && $status['bank'] == 1){
+                        $requirements.= "<p>Register a bank</p>";
+                        $i = 1;
+                    }
+
+                    if(isset($status['legal']) && $status['legal'] == 1){
+                        $requirements.= "<p>Personal data</p>";
+                        $i = 1;
+                    }
+
+                    if($i = 0){
+                        $requirements = "";
+                    }
+
+                    //check end
+
                     $msg_obj = new MessagesClass();
-                    $result = $msg_obj->payInSucceeded($milestone, $plan, $user);
+                    $result = $msg_obj->payInSucceeded($milestone, $plan, $user, $requirements);
 
                 }else{
 
@@ -208,14 +243,34 @@ class PaymentPlanController extends Controller
         $mango_obj = new MangoClass($this->mangopay);
         $url=   $mango_obj->createTransaction($company, $client, $milestone, $hash);
 
+
         if(isset($url->RedirectURL)){
             return Redirect::to($url->RedirectURL);
         }else{
             return redirect()->back()->withInput()->with('error', 'Error. Please try again or contact trustfy.io.');
         }
 
+    }
 
 
+
+
+
+    public function checkKYC($company){
+
+        $mango_obj = new MangoClass($this->mangopay);
+
+        if($company->mango_id){
+            $mangoUser = $mango_obj->getUser($company->mango_id);
+
+            if($mangoUser->KYCLevel=="REGULAR"){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     public function payBank($hash) {
@@ -262,7 +317,7 @@ class PaymentPlanController extends Controller
         $bank = CompaniesBank::where("service_provider_fk", "=", $plan->service_provider_fk)
             ->first();
 
-        if(!empty($bank) && $bank->mango_bank_id != 0){
+        if(!empty($bank) && $bank->mango_bank_id){
 
 
             $mango_obj = new MangoClass($this->mangopay);

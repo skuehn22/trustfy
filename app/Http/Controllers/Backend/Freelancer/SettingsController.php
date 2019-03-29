@@ -23,7 +23,7 @@ use App\DatabaseModels\Plans;
 use App\DatabaseModels\Countries;
 use App\DatabaseModels\MangoKyc;
 use App\Classes\MangoClass;
-
+use App\Classes\CompanyClass;
 
 class SettingsController extends Controller
 {
@@ -42,6 +42,7 @@ class SettingsController extends Controller
 
     public function index() {
 
+
         if (Auth::check()) {
 
         $blade["ll"] = App::getLocale();
@@ -59,6 +60,11 @@ class SettingsController extends Controller
             ->first();
 
         $company = $this->getCompany($blade["user"]);
+
+
+            $company_obj = new CompanyClass;
+            $company_obj->checkMangoRequirements($company);
+
 
         if(isset($company)){
             $team = Users::where("service_provider_fk", "=", $company->id)
