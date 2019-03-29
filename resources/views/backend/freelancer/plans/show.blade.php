@@ -176,7 +176,7 @@
                     <tr>
                         <td class="no">0{{ $milestone->order }}</td>
                         <td class="text-left" style="width:30%;">
-                            {!!  $milestone->name or '<i>please fill in</i>'!!}
+                            <strong>{!!  $milestone->name or '<i>please fill in</i>'!!}</strong>
                             <input type="hidden" value="{{$milestone->name}}" id="name_{{$milestone->id}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>
@@ -193,7 +193,7 @@
 
                                     @if($milestone->paystatus==2)
                                         <span class="input-group-btn" style="padding-left: 5px;">
-                                         <button class="btn btn-success work-done" id="{{$milestone->id}}">Work Done</button>
+                                         <button class="btn btn-success work-done" id="{{$milestone->id}}">Request Release</button>
                                         </span>
                                     @endif
 
@@ -299,11 +299,12 @@
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
                         <div class="login-error-msg"></div>
                     </div>
-                    <h4 class="modal-title-msg" id="modal-title-msg">Mark this milestone as complete?</h4>
-                    <h5 class="modal-title-msg" id="modal-title-msg">Your client will be notified that work is complete and can release payment.</h5>
+
                 </div>
                 <div class="modal-body"  id="modal-body-msg">
                     <div class="form-check form-check-inline">
+                        <h4 class="modal-title-msg" id="modal-title-msg">Mark this milestone as complete?</h4>
+                        <h5 class="modal-title-msg" id="modal-title-msg">Your client will be notified that work is complete and can release payment.</h5>
                         <div id="milestone-done" name="milestone-done" class="pr-5"></div>
                         <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Cancel</button>
                         <button id="do-release" type="button" class="btn btn-success work-done-confirm">

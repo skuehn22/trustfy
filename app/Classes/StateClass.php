@@ -81,7 +81,7 @@ class StateClass
             case 2:
                 $state['color'] = "#006600";
                 $state['state'] = "funded";
-                $state['info'] = 'Once work is complete, click "release" to pay your freelancer.';
+                $state['info'] = 'Your client will receive a message notifying them this work has been completed.';
                 break;
             case 3:
                 $state['color'] = "blue";
@@ -116,7 +116,7 @@ class StateClass
             case 9:
                 $state['color'] = "#006600";
                 $state['state'] = "released (pending)";
-                $state['info'] = "The money can be paid out as soon as you have completed the verification.";
+                $state['info'] = "This money will be paid out as soon as you verify your account.";
                 break;
             case 10:
                 $state['color'] = "#006600";
