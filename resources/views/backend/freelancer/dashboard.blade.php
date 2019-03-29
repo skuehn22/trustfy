@@ -628,13 +628,13 @@
         $(".project-next").on("click", function() {
             $('#arrows').addClass("d-none");
         });
-
+  */
         // Expand the modal width for setup creation through freelancer
         $(".dropdown-item").on("click", function() {
             var planID = $(this).data("id");
             getProject(planID);
         });
-        */
+
 
         function getProject(id) {
 
