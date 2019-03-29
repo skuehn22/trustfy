@@ -70,7 +70,7 @@ Main Components
 -------------------------------- */
 .cd-tour-wrapper {
     position: fixed;
-    z-index: 2;
+    z-index: 20;
     height: 90%;
     width: 90%;
     left: 50%;
