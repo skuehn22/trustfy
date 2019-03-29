@@ -64,7 +64,7 @@
                     <div class="col-md-12">
                         <div class="alert alert-success success_message">
                             <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            {{ Session::get('success') }}
+                            {!! Session::get('success') !!}
                         </div>
                     </div>
                 </div>

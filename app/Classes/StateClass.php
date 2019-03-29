@@ -71,7 +71,7 @@ class StateClass
             case 0:
                 $state['color'] = "grey";
                 $state['state'] = "open";
-                $state['info'] = "Waiting that the customer pay in the money";
+                $state['info'] = "This milestone has not been funded yet";
                 break;
             case 1:
                 $state['color'] = "#d39c06";

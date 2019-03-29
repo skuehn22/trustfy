@@ -62,8 +62,7 @@ class SettingsController extends Controller
         $company = $this->getCompany($blade["user"]);
 
 
-            $company_obj = new CompanyClass;
-            $company_obj->checkMangoRequirements($company);
+
 
 
         if(isset($company)){
@@ -200,7 +199,7 @@ class SettingsController extends Controller
         $user->service_provider_fk = $company->id;
         $user->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved <i class="fas fa-check"></i>');
 
     }
 
@@ -254,7 +253,7 @@ class SettingsController extends Controller
         $user->service_provider_fk = $company->id;
         $user->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved <i class="fas fa-check"></i>');
 
     }
 
@@ -316,7 +315,7 @@ class SettingsController extends Controller
         $user_mail->users_fk_id=$blade["user"]->id;
         $user_mail->save();
 
-        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
+        return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved <i class="fas fa-check"></i>');
 
     }
 
@@ -349,7 +348,7 @@ class SettingsController extends Controller
 
         $user->save();
 
-        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Settings saved');
+        return Redirect::to($blade["locale"]."/provider/settings/")->withInput()->with('success', 'Settings saved <i class="fas fa-check"></i>');
 
     }
 
@@ -549,7 +548,7 @@ class SettingsController extends Controller
                 $bank->mango_bank_id = $result->Id;
                 $bank->save();
 
-                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved <i class="fas fa-check"></i>');
             }
 
         }else{
@@ -669,7 +668,7 @@ class SettingsController extends Controller
                 $kyc_doc_obj->save();
 
 
-                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved');
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', 'Settings saved <i class="fas fa-check"></i>');
             }else{
                 Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', "Error sending the document");
             }
