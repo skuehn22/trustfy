@@ -49,22 +49,25 @@ class MangoClass extends Controller
             ->first();
 
         //check if already an performer with this email exists
-        if ($company->mango_id != 0) {
-            $mango_freelancer = $this->getUser($company);
-        } else {
-            $mango_freelancer = $this->createLegalUser($company, $user);
 
-            $company = Companies::where("users_fk", "=", $user->id)
-                ->first();
 
-            $company->mango_id = $mango_freelancer->Id;
-            $company->save();
+        //if ($company->mango_id != 0) {
+        //    $mango_freelancer = $this->getUser($company);
+        //} else {
+        //    $mango_freelancer = $this->createLegalUser($company, $user);
 
-        }
+        //    $company = Companies::where("users_fk", "=", $user->id)
+        //       ->first();
+
+        //   $company->mango_id = $mango_freelancer->Id;
+        //   $company->save();
+
+        //}
+
 
         //check if already an client with this email exists
         if ($client->mango_id != 0) {
-            $mango_client = $this->getUser($client);
+            $mango_client = $this->getUser($client->mango_id);
         } else {
             $mango_client = $this->createNaturalUser($client, $client);
 
@@ -77,10 +80,16 @@ class MangoClass extends Controller
         }
 
         //get wallet for performer and client
-        $freelancer_wallet_id = $this->getMangoWallets($mango_freelancer->Id);
+
+
+        //$freelancer_wallet_id = $this->getMangoWallets($mango_freelancer->Id);
+
+
         $client_wallet_id = $this->getMangoWallets($mango_client->Id);
 
         //if there is no wallet create one
+
+        /*
         if (!$freelancer_wallet_id) {
             $freelancer_wallet = $this->createWallet($mango_freelancer->Id);
             $freelancer_wallet_id = $freelancer_wallet->Id;
@@ -89,6 +98,7 @@ class MangoClass extends Controller
             $wallet->performer_id_fk = $company->id;
             $wallet->save();
         }
+        */
 
         //if there is no wallet create one
         if (!$client_wallet_id) {
@@ -101,7 +111,7 @@ class MangoClass extends Controller
         }
 
         //$freelancer_wallet_id = credited_wallet
-        $hash = $this->prepPayInCardWeb($mango_client->Id, $freelancer_wallet_id, $milestone);
+        $hash = $this->prepPayInCardWeb($mango_client->Id, $client_wallet_id, $milestone);
         $url = $this->openTransaction($hash, $planHash);
         return $url;
 

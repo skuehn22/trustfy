@@ -247,10 +247,10 @@ class PaymentPlanController extends Controller
         $query = DB::table('projects_plans_milestones');
         $query->join('projects_plans', 'projects_plans.id', '=', 'projects_plans_milestones.projects_plans_id_fk');
         $query->join('companies', 'projects_plans.service_provider_fk', '=', 'companies.id');
-        $query->join('companies_mangowallets', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
-        $query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
+        //$query->join('companies_mangowallets', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
+        //$query->join('companies_bank', 'companies.id', '=', 'companies_mangowallets.performer_id_fk');
         $query->where('projects_plans_milestones.id', '=', $id);
-        $query->select('companies.mango_id AS author', 'companies_mangowallets.id AS debited_wallet', 'projects_plans.*', 'projects_plans.id AS planId', 'projects_plans.clients_id_fk AS clientId') ;
+        $query->select('companies.mango_id AS author', 'projects_plans.*', 'projects_plans.id AS planId', 'projects_plans.clients_id_fk AS clientId') ;
         $plan = $query->first();
 
         $user = Users::where("service_provider_fk", "=", $plan->service_provider_fk)
@@ -326,10 +326,14 @@ class PaymentPlanController extends Controller
             $subject = "Trustfy - Payment released";
             $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has released a payment for ".$milestone->name."<br></p>";
 
-            $mango_obj = new MangoClass($this->mangopay);
-            $mangoUser = $mango_obj->getUser($company->mango_id);
+            if($company->mango_id != 0){
+                $mango_obj = new MangoClass($this->mangopay);
+                $mangoUser = $mango_obj->getUser($company->mango_id);
+            }
 
-            if($mangoUser->KYCLevel=="REGULAR"){
+
+
+            if(isset($mangoUser) && $mangoUser->KYCLevel=="REGULAR"){
                 $data['content'] .= "<p>Just <strong>add your bank account details</strong> and your money will be on its way!<br> <br></p>";
                 $milestone->paystatus = 8;
             }else{

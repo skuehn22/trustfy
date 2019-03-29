@@ -92,19 +92,20 @@ class SettingsController extends Controller
             ->where("status", "!=",  "CREATED")
             ->get();
 
+
+        if($company->service_provider_fk){
             if(isset($company) && $company->id!=191){
 
                 if(env("APP_ENV") == "live" && (isset($company) && $company->system != 0)) {
 
-                return Redirect::to($blade["ll"]."/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the live system. Please contact the administrator.');
+                    return Redirect::to($blade["ll"]."/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the live system. Please contact the administrator.');
 
                 }elseif(env("APP_ENV") != "live" && (isset($company) &&  $company->system == 0)) {
 
-                return Redirect::to($blade["ll"] . "/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the dev system. Please contact the administrator.');
+                    return Redirect::to($blade["ll"] . "/freelancer/dashboard")->withInput()->with('error', 'It is not a user from the dev system. Please contact the administrator.');
+                }
             }
-
         }
-
 
         //checks if there was a update done by mango pay
         if(count($kyc_doc_objs)>0){

@@ -61,7 +61,7 @@
     <li class="cd-single-step tour-step-5">
         <span>Step 3</span>
 
-        <div class="cd-more-info top">
+        <div class="cd-more-info right">
             <h2>Save your entries here</h2>
             <a href="#" style="color:#767676; text-decoration: underline;" class="skip-client">skip</a>
             <img src="/img/step-3.png" alt="step 3">
