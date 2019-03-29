@@ -89,6 +89,7 @@ class PaymentPlanController extends Controller
                 ->first();
 
             $docs = PlanDocs::where("plan_id_fk", "=", $plan->id)
+                ->where("delete", "=", "0")
                 ->get();
 
 

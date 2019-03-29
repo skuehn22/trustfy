@@ -182,7 +182,7 @@
                     <tr>
                         <td class="no">0{{ $milestone->order }}</td>
                         <td class="text-left" style="width:25%;">
-                            {!!  $milestone->name or '<i>please fill in</i>'!!}<br>
+                           <strong>{!!  $milestone->name or '<i>please fill in</i>'!!} </strong><br>
                             <input type="hidden" value="{{$milestone->name or ''}}" id="name_{{$milestone->id or ''}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") {{$milestone->desc}} @endif
                         </td>
@@ -204,7 +204,7 @@
                                 @endif
                             </span>
                         </td>
-                        <td style="text-align: right;">
+                        <td>
 
                                 @if(isset($milestone->paystatus) && ($milestone->paystatus==0 || $milestone->paystatus==6))
 
@@ -216,7 +216,7 @@
 
                                         <div class="row">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 pl-5" >
                                                 <input type="hidden" value="{{$milestone->id}}"  name="milestone_to_pay">
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
@@ -249,9 +249,13 @@
                                         </div>
                                     </form>
                                 @elseif(isset($milestone->paystatus) && ($milestone->paystatus==2 || $milestone->paystatus==11))
-                                    <span class="input-group-btn" style="padding-left: 5px;">
-                                        <button class="btn btn-success action-btn work-done" id="{{$milestone->id}}">Work Done</button>
-                                    </span>
+                                    <div class="row">
+                                        <div class="col-md-12 pl-5 text-right" >
+                                            <span class="input-group-btn" style="padding-left: 5px;">
+                                            <button class="btn btn-success action-btn work-done" id="{{$milestone->id}}">Work Done</button>
+                                            </span>
+                                        </div>
+                                    </div>
                                 @else
 
                                 @endif
