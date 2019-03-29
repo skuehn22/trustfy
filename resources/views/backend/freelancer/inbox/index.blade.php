@@ -34,7 +34,7 @@
             @endif
         </div>
         <div class="text-xs-center">
-            <div class="col-md-12 text-xs-center">
+            <div class="col-sm-10 col-md-12 text-xs-center">
                 {{$messages->links()}}
             </div>
         </div>

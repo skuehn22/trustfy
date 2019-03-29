@@ -19,7 +19,7 @@
                 <div class="text">
                     @if(count($plans)>0 && $upcoming != false)
                        Plan Name: {{ $upcoming->planName or '' }}<br>
-                       Due at: {{date('d.m.Y', strtotime($upcoming->due_at))}} - Amount  € {{ number_format($upcoming->amount, 2) }}
+                       Due on: {{date('d.m.Y', strtotime($upcoming->due_at))}} -  € {{ number_format($upcoming->amount, 2) }}
                     @else
                         No payments yet!.
                     @endif
@@ -47,7 +47,7 @@
                 <span id="client-list"></span>
 
                 <div class="pt-2">
-                    <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly">Create Client</a></div>
+                    <div  id="no-client">No clients created yet. <a href="#" id="create-client-fly"><br>Create Client</a></div>
                 </div>
 
             @endif

@@ -139,7 +139,7 @@
             </li>
         </ul>
         <ul>
-            <li class="cd-label">Action</li>
+
             <li class="action-btn"><a href="{{ URL::to($blade["ll"].'/freelancer/plans/new') }}">Create Plan</a></li>
         </ul>
     </nav>
