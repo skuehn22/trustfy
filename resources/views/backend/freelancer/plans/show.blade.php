@@ -185,7 +185,7 @@
                         <td class="qty"  style="width:16%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                         <td class="text-right">
 
-                                <p style="color:{{ $status['color'] }}; padding-top: 12px;" id="plan-status">
+                                <p style="color:{{ $status['color'] }}; padding-top: 12px;" id="plan-status-{{$milestone->id}}">
 
                                         <i><strong>{{ $status['state'] }}</strong></i>
 
@@ -300,21 +300,59 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="release-money" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width: 314px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="alert alert-error login-error d-none">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <div class="login-error-msg"></div>
+                    </div>
+                    <h5 class="modal-title-msg" id="modal-title-msg">Milestone Completed</h5>
+                </div>
+                <div class="modal-body"  id="modal-body-msg">
+                    <div class="form-check form-check-inline">
+                        <div id="milestone-done" name="milestone-done" class="pr-5"></div>
+                        <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Close</button>
+                        <button id="do-release" type="button" class="btn btn-success work-done-confirm">
+                            <span class="ui-button-text">My Text</span>
+                        </button>
+                        <input type="hidden" value="" id="completed-milestone">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 @stop
 @section("javascript")
 
     <script>
-
-        $( document ).ready(function() {
-
-
-        });
 
         // External Button Events
         $(".work-done").on("click", function() {
 
             var id = $(this).attr("id");
             var name =   $('#name_'+$(this).attr("id")).val();
+
+            $("#completed-milestone").val(id);
+            $('#milestone-done').html("Milestone completed: " +name);
+            $("#do-release span").text("Confirm");
+
+            $('#release-money').modal('show');
+
+            return true;
+        });
+
+        // External Button Events
+        $(".work-done-confirm").on("click", function() {
+
+            var id =  $("#completed-milestone").val();
+            /*var name =   $('#name_'+$(this).attr("id")).val();*/
 
             $.ajax({
                 type: 'GET',
@@ -324,7 +362,9 @@
 
                 success: function(data) {
 
-                    $('#plan-status').html(' <i><strong>work completed</strong></i><i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="Waiting for the customer to release the money."></i>');
+
+                    $('#plan-status-'+id).html(' <i><strong>work completed</strong></i><i class="fas fa-info-circle green  pl-2" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="Waiting for the customer to release the money."></i>');
+                    $('#release-money').modal('hide');
                     $('#doneModal').modal('show');
 
                 }
@@ -338,5 +378,9 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
+
+
+
     </script>
 @stop

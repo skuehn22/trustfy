@@ -544,7 +544,7 @@ class PlansManagementController extends Controller
         $milestone = PlansMilestone::where("id", "=", $id)
             ->first();
 
-        $milestone->paystatus = 2;
+        $milestone->paystatus = 11;
         $milestone->save();
 
         $plan = Plans::where("id", "=", $milestone->projects_plans_id_fk)

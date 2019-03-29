@@ -92,7 +92,7 @@
     @if(isset($preview))
         <div class="col col-lg-12 invoice overflow-auto">
     @else
-        <div class="col col-lg-8 col-md-12 col-sm-12 invoice overflow-auto">
+        <div class="col col-lg-9 col-md-12 col-sm-12 invoice overflow-auto">
     @endif
 
             <header>
@@ -193,13 +193,15 @@
 
 
                         </td>
-                        <td class="qty" style="width:10%;">
+                        <td class="qty" style="width:13%;">
                             <input type="hidden" value="€ {{ number_format($milestone->amount, 2, '.', ',') }}" id="amount_name_{{$milestone->id or ''}}">
                             @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
                         </td>
                         <td style="text-align: right;">
                             <span style="font-weight:600; color: {{$milestone->color}}">{{$milestone->statusTxt}}
+                                @if($milestone->info)
                                 <i class="fas fa-info-circle green" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="{{$milestone->info}}"></i>
+                                @endif
                             </span>
                         </td>
                         <td style="text-align: right;">
@@ -246,7 +248,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                @elseif(isset($milestone->paystatus) && ($milestone->paystatus==2))
+                                @elseif(isset($milestone->paystatus) && ($milestone->paystatus==2 || $milestone->paystatus==11))
                                     <span class="input-group-btn" style="padding-left: 5px;">
                                         <button class="btn btn-success action-btn work-done" id="{{$milestone->id}}">Work Done</button>
                                     </span>
@@ -291,7 +293,7 @@
                     @if(isset($docs))
                         @foreach($docs as $doc)
 
-                            <p class="{{$doc->id}}">
+                            <p class="{{$doc->id}}" style="margin: 0px;">
                                 <a target="_blank" href="/uploads/companies/contracts/{{$plan->id}}/{{$doc->filename}}">{{$doc->name}}</a>
                                 <a href="#" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
                                     <i class="fas fa-trash green"></i>
@@ -305,7 +307,7 @@
 
                 @endif
 
-                <div class="thanks">Thank you!</div>
+                <div class="thanks pt-3">Thank you!</div>
                 @if($plan->comment!=null)
                     <div class="notices">
                         <div>NOTICE:</div>

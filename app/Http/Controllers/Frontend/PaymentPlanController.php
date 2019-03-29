@@ -134,7 +134,7 @@ class PaymentPlanController extends Controller
 
             foreach ($milestones as $milestone){
                 $statusObj = new StateClass();
-                $status = $statusObj->milestones($milestone->paystatus);
+                $status = $statusObj->milestonesClient($milestone->paystatus);
                 $milestone->statusTxt = $status['state'];
                 $milestone->color = $status['color'];
                 $milestone->info = $status['info'];
