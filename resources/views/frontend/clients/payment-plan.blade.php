@@ -261,6 +261,14 @@
                                             </span>
                                         </div>
                                     </div>
+                                @elseif(isset($milestone->paystatus) && ($milestone->paystatus==5))
+                                        <div class="row">
+                                        <div class="col-md-12 pl-5 text-right" >
+                                            <span class="input-group-btn" style="padding-left: 5px;">
+                                            <a href="/payment-plan/change-methode/{{$hash}}?val={{$milestone->id}}" class="btn btn-outline-secondary action-btn-paymentplan" id="{{$milestone->id}}">Change</a>
+                                            </span>
+                                        </div>
+                                    </div>
                                 @else
 
                                 @endif

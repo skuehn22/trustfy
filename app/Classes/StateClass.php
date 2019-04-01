@@ -96,7 +96,7 @@ class StateClass
             case 5:
                 $state['color'] = "#d39c06";
                 $state['state'] = "pending";
-                $state['info'] = "Waiting for the arrival of the money.";
+                $state['info'] = "Status will update when money arrives.";
                 break;
             case 6:
                 $state['color'] = "#d39c06";
@@ -170,7 +170,7 @@ class StateClass
             case 5:
                 $state['color'] = "#d39c06";
                 $state['state'] = "pending";
-                $state['info'] = "Waiting for the arrival of the money.";
+                $state['info'] = "Status will update when money arrives.";
                 break;
             case 6:
                 $state['color'] = "#d39c06";
