@@ -37,7 +37,9 @@ a:hover {
     }
 }
 
-
+.more:hover{
+    text-decoration: none;
+}
 
 
 .btn-success {

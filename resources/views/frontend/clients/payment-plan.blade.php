@@ -115,6 +115,32 @@
                     </div>
                 @endif
 
+
+                <div class="alert alert-success success_message reminder-alert">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+
+                    <a style="color: #006600;" class="more" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-info-circle"></i> You've just received a Trustfy payment plan: <span style="text-decoration: underline; font-weight: 600;" >more information</span>
+                    </a>
+
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+
+                            <div class="col-md-12 pt-4">
+                                This is not a direct payment to your freelancer- your money will be held securely until you decide to release it. <br>
+                                By paying through Trustfy, your payments are protected. Only you decide when to release a payment, so rest assured that your money is safe!
+                                <p>
+                                Here's how it works:<br>
+                                1. First, you fund the project via card or bank transfer.<br>
+                                2. Your money is held in a secure account until you're satisfied the work is done.<br>
+                                3. You press "release payment" and your freelancer gets paid!<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="alert alert-success success_message reminder-alert d-none">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
                    Check your inbox for the payment instructions!
@@ -170,6 +196,7 @@
                 <div class="col invoice-details">
                     <h1 class="invoice-id"style="text-align: left; padding-top: 25px; padding-bottom: 10px;">{{$plan->name}}</h1>
                 </div>
+
                 <table border="0" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
@@ -221,7 +248,7 @@
 
                                         <div class="row">
 
-                                            <div class="col-md-6 pl-5" >
+                                            <div class="col-md-6 pl-4" >
                                                 <input type="hidden" value="{{$milestone->id}}"  name="milestone_to_pay">
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
