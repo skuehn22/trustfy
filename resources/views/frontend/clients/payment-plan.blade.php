@@ -149,8 +149,13 @@
                 <div class="row contacts">
                     <div class="col invoice-to">
                         @if(isset($plan->lastname) && $plan->lastname!=" ")
+
+
                             <h5 class="to">{{$plan->firstname}} {{$plan->lastname}}</h5>
-                            <div class="address">{{$plan->address1}} <br> {{$plan->address2 or ''}} <br> {{$plan->city}}</div>
+                            {{$plan->address1 or ''}}<br>
+                            @if(strlen($plan->address2)>1){{$plan->address2 or ''}}<br> @endif
+                            @if(isset($plan->postcode) && strlen($plan->postcode)>1) {{$plan->postcode or ''}}@endif
+                            {{$plan->city}}
                             <div class="email">{{$plan->email}}</div>
                         @else
                             <i>please fill in</i>
@@ -693,7 +698,6 @@
 
             function transferReminder(hash, id) {
 
-                alert("ddd");
 
                 $.ajax({
                     type: 'GET',
@@ -728,7 +732,7 @@
 
                         if(data.success == true){
 
-                            alert(id);
+
 
                             window.location.href = window.location.href + "?bank="+data.msg;
 
