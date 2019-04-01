@@ -84,7 +84,7 @@ class MessagesClass  extends Controller
         //check if msg was already send
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
-        if($exists){
+        if(!$exists){
             $this->send($mailTemplate, $recipient, $subject,  $data, null, $requirements);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
