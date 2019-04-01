@@ -145,7 +145,7 @@ class StateClass
             case 0:
                 $state['color'] = "grey";
                 $state['state'] = "open";
-                $state['info'] = "Please pay the money when the milestone is due..";
+                $state['info'] = "Please pay by milestone due date.";
                 break;
             case 1:
                 $state['color'] = "#d39c06";

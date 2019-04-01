@@ -3,6 +3,11 @@
 }
 
 
+a:hover {
+    color: #16150f;
+    text-decoration: underline;
+}
+
 
 .invoice {
     position: relative;
@@ -181,7 +186,7 @@ a:not([href]):not([tabindex]) {
     font-size: 14px;
 }
 
-.action-btn{
+.action-btn-paymentplan{
     width: 100px;
     font-size: 12px;
 }

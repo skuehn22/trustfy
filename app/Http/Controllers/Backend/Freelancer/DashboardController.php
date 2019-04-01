@@ -179,6 +179,7 @@ class DashboardController extends Controller
                 $query = DB::table('projects_plans');
                 $query->join('clients', 'projects_plans.clients_id_fk', '=', 'clients.id');
                 $query->where('projects_plans.id', '=', $_GET["id"]);
+                $query->where('projects_plans.delete', '=', "0");
                 $query->select('projects_plans.*', 'clients.*');
                 $project = $query->first();
 
@@ -197,23 +198,30 @@ class DashboardController extends Controller
                 $project->color =  $response['color'];
                 $project->state =  $response['state'];
 
-                $milestone = PlansMilestone::where("projects_plans_id_fk", "=", $_GET["id"])
+                $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $_GET["id"])
                     ->where("delete", "=", "0")
-                    ->first();
+                    ->OrderBy('order', 'asc')
+                    ->get();
 
-                if(!empty($milestone)){
-                    $statusObj = new StateClass();
-                    $response =$statusObj->milestones($milestone->paystatus);
+                if(!empty($milestones)){
 
-                    $milestone->color =  $response['color'];
-                    $milestone->state =  $response['state'];
+
+                    foreach ($milestones as $milestone){
+                        $statusObj = new StateClass();
+                        $status = $statusObj->milestonesClient($milestone->paystatus);
+                        $milestone->statusTxt = $status['state'];
+                        $milestone->color = $status['color'];
+                        $milestone->info = $status['info'];
+
+                    }
+
                 }
 
 
             }
 
 
-            return view('backend.freelancer.dashboard.projects-details', compact('blade', 'setup', 'project', 'docs', 'milestone'));
+            return view('backend.freelancer.dashboard.projects-details', compact('blade', 'setup', 'project', 'docs', 'milestones'));
 
         } else {
 

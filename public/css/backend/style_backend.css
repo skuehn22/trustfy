@@ -29,6 +29,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: #16150f;
+    text-decoration: underline;
+}
 
 .btn-success {
     color: #fff;

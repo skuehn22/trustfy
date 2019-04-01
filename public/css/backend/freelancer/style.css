@@ -33,6 +33,10 @@ h5{
     font-size: 12px;
 }
 
+a:hover {
+    color: #16150f;
+    text-decoration: underline;
+}
 
 
 .menu-icons {
