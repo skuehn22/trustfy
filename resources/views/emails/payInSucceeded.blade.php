@@ -329,7 +329,7 @@
                                         <p>
                                             When you've completed the project or milestone, go to the project plan in your Trustfy account and press "Request Release." Your client will be notified and can release your payment!
                                         </p>
-                                        <p><br><br>{{$requirements}}</p>
+                                        <p><br><br>{!! $requirements !!}</p>
                                     </td>
                                 </tr>
                                 <tr>

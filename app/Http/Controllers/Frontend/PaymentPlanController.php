@@ -131,7 +131,7 @@ class PaymentPlanController extends Controller
 
                     $i = 0;
 
-                    $requirements = "Please remember to create the following things in your backend for a payout: <br>";
+                    $requirements = "<p>Please remember to create the following things in your backend for a payout:</p>";
 
                     if(isset($status['kyc']) && $status['kyc'] == 1){
                         $requirements.= "<p>Verification of the company</p>";
@@ -148,7 +148,7 @@ class PaymentPlanController extends Controller
                         $i = 1;
                     }
 
-                    if($i = 0){
+                    if($i == 0){
                         $requirements = "";
                     }
 
