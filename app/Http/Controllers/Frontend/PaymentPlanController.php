@@ -131,25 +131,27 @@ class PaymentPlanController extends Controller
 
                     $i = 0;
 
-                    $requirements = "<p>Please remember to create the following things in your backend for a payout:</p>";
+                    $requirements = "<p>Please remember to add the following things in your account settings:</p>";
 
                     if(isset($status['kyc']) && $status['kyc'] == 1){
-                        $requirements.= "<p>Verification of the company</p>";
+                        $requirements.= "<p>Your company verification</p>";
                         $i = 1;
                     }
 
                     if(isset($status['bank']) && $status['bank'] == 1){
-                        $requirements.= "<p>Register a bank</p>";
+                        $requirements.= "<p>Your bank details</p>";
                         $i = 1;
                     }
 
                     if(isset($status['legal']) && $status['legal'] == 1){
-                        $requirements.= "<p>Personal data</p>";
+                        $requirements.= "<p>Your personal details</p>";
                         $i = 1;
                     }
 
                     if($i == 0){
                         $requirements = "";
+                    }else{
+                        $requirements.= "<p><strong>Without this information, we cannot release your payment!</strong></p>";
                     }
 
                     //check end
