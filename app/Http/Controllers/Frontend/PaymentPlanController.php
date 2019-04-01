@@ -633,8 +633,8 @@ class PaymentPlanController extends Controller
         $milestone->paystatus = 6;
         $milestone->save();
 
-        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash."?typ=mail";
-        $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash;
+        $planUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/bank-completed/".$plan->hash."?typ=mail&val=".$_GET['val'];
+        $changeUrl = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/change-methode/".$plan->hash."?typ=mail&val=".$_GET['val'];
 
         $subject= "Payment reminder for ".$milestone->name;
         $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname.",</p>";
