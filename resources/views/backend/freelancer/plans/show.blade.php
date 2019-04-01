@@ -299,12 +299,12 @@
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
                         <div class="login-error-msg"></div>
                     </div>
+                    <h4 class="modal-title-msg" id="modal-title-msg">Mark this milestone as complete?</h4>
 
                 </div>
                 <div class="modal-body"  id="modal-body-msg">
+                    <p>Your client will be notified that work is complete and can release payment.</p>
                     <div class="form-check form-check-inline">
-                        <h4 class="modal-title-msg" id="modal-title-msg">Mark this milestone as complete?</h4>
-                        <h5 class="modal-title-msg" id="modal-title-msg">Your client will be notified that work is complete and can release payment.</h5>
                         <div id="milestone-done" name="milestone-done" class="pr-5"></div>
                         <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Cancel</button>
                         <button id="do-release" type="button" class="btn btn-success work-done-confirm">

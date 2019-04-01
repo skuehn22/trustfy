@@ -326,7 +326,7 @@
                                 <span class="header-text"><strong>{{$company->name}} has sent you a payment plan</strong></span>
 
                                 <br><br>
-                                <span>Hi {{$client->firstname}} {{$client->lastname}},</span>
+                                <span>Hi {{$client->firstname}} {{$client->lastname}},</span><br>
                                 <span>{{$company->name}} has created a payment plan for you. </span>
                                 <p>You can review the terms and make a payment below.</p>
                                 <br><br>
