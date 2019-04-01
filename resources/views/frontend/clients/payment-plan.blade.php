@@ -130,7 +130,7 @@
                                 This is not a direct payment to your freelancer- your money will be held securely until you decide to release it. <br>
                                 By paying through Trustfy, your payments are protected. Only you decide when to release a payment, so rest assured that your money is safe!
                                 <p>
-                                Here's how it works:<br>
+                                <strong>Here's how it works:</strong><br>
                                 1. First, you fund the project via card or bank transfer.<br>
                                 2. Your money is held in a secure account until you're satisfied the work is done.<br>
                                 3. You press "release payment" and your freelancer gets paid!<br>
