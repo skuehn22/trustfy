@@ -60,24 +60,21 @@
             <div class="row p-3">
 
                 @if(count($milestones)>1)
-                    <div class="col-md-1 p-3 text-center" style="background-color: #006600; color: #fff; font-weight: 600">
-                        {{count($milestones)}}
-                    </div>
-                    <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
-                        Milestones
+                    <div class="col-md-4 p-3  pl-4"   style="background-color: #e2e2e2; color: #566787;">
+                        {{count($milestones)}} Milestones
                     </div>
                     <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
                     </div>
-                    <div class="col-md-3 p-3"   style="background-color: #e2e2e2;">
+                    <div class="col-md-4 p-3 pr-4 text-right"   style="background-color: #e2e2e2;">
                         <span style="color: #566787;">
                              <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Show details
+                                Show details <i class="fas fa-angle-double-down"></i>
                              </a>
                         </span>
                     </div>
                 @else
                     <div class="col-md-1 p-3 text-left" style="background-color: #006600; color: #fff; font-weight: 600">
-                        0{{ $milestones[0]->order }}
+                        {{ $milestones[0]->order }}
                     </div>
                     <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
                         {{$milestones[0]->name or ''}}
@@ -106,7 +103,7 @@
                         <div class="col-md-12">
                             <div class="row p-3">
                                 <div class="col-md-1 p-3 text-center" style="background-color: #006600; color: #fff; font-weight: 600">
-                                    0{{ $milestone->order }}
+                                    {{ $milestone->order }}
                                 </div>
                                 <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
                                     {{$milestone->name or ''}}
