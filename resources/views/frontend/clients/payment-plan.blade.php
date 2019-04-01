@@ -252,7 +252,7 @@
                                     <div class="row">
                                         <div class="col-md-12 pl-5 text-right" >
                                             <span class="input-group-btn" style="padding-left: 5px;">
-                                            <button class="btn btn-success action-btn-paymentplan work-done" id="{{$milestone->id}}">Work Done</button>
+                                            <button class="btn btn-success action-btn-paymentplan work-done" id="{{$milestone->id}}">Release</button>
                                             </span>
                                         </div>
                                     </div>
