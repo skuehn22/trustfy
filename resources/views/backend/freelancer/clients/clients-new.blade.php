@@ -153,16 +153,21 @@
 
         $( document ).ready(function() {
 
-            if($("#tour").length && $("#tour").val() == "true"){
+
+            if(/android|webos|iphone|ipad|ipod|blackberry|opera mini|Windows Phone|iemobile|WPDesktop|XBLWP7/i.test(navigator.userAgent.toLowerCase())) {
+                return false;
+            }else{
+                if($("#tour").length && $("#tour").val() == "true"){
 
 
-                $(".cd-app-screen").removeClass('cd-app-screen');
-                $(".cd-nugget-info").removeClass('cd-nugget-info');
-                $("#cd-tour-trigger-step2").removeClass('d-none');
-                $("#cd-tour-trigger").addClass('d-none');
+                    $(".cd-app-screen").removeClass('cd-app-screen');
+                    $(".cd-nugget-info").removeClass('cd-nugget-info');
+                    $("#cd-tour-trigger-step2").removeClass('d-none');
+                    $("#cd-tour-trigger").addClass('d-none');
 
-                $(".tour-step-5").addClass('is-selected');
+                    $(".tour-step-5").addClass('is-selected');
 
+                }
             }
 
         });

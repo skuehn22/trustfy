@@ -1,12 +1,19 @@
 <script src="/js/jquery.Wload.js"></script>
 <script>
 
+
+    if(/android|webos|iphone|ipad|ipod|blackberry|opera mini|Windows Phone|iemobile|WPDesktop|XBLWP7/i.test(navigator.userAgent.toLowerCase())) {
+
+    }else{
         if($("#tour").length && $("#tour").val() == "true"){
             $(".cd-app-screen").removeClass('d-none').addClass('cd-app-screen-step2').removeClass('cd-app-screen');
             $(".cd-nugget-info").removeClass('d-none').addClass('cd-nugget-info-step2').removeClass('cd-nugget-info');
             $("#cd-tour-trigger-step4").removeClass('d-none');
             $("#cd-tour-trigger").addClass('d-none');
         }
+    }
+
+
 
 
         // External Button Events

@@ -322,6 +322,9 @@
 
         $(document).ready(function (e) {
 
+
+
+
             $('.active-inbox').click();
             $('#inbox-start').click();
 
@@ -329,6 +332,8 @@
             getProject(id);
 
         });
+
+
 
         function loadScripts(){
             // External Button Events

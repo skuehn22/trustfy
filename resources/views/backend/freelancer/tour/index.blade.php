@@ -92,19 +92,22 @@
         /*Demo Tour */
 
 
-
-
-
         $(document).ready(function () {
 
 
             if($("#tour").length && $("#tour").val() == "true"){
 
-                $(".cd-tour-wrapper").removeClass('d-none');
-                $(".cd-nugget-info").removeClass('d-none');
-                $(".cd-app-screen").removeClass('d-none');
-                $(".blur-dashboard").addClass('blur');
-                $(".cd-tour-nav").addClass('d-none');
+                if(/android|webos|iphone|ipad|ipod|blackberry|opera mini|Windows Phone|iemobile|WPDesktop|XBLWP7/i.test(navigator.userAgent.toLowerCase())) {
+                    return false;
+                }else{
+
+                    $(".cd-tour-wrapper").removeClass('d-none');
+                    $(".cd-nugget-info").removeClass('d-none');
+                    $(".cd-app-screen").removeClass('d-none');
+                    $(".blur-dashboard").addClass('blur');
+                    $(".cd-tour-nav").addClass('d-none');
+
+                }
 
             }
 

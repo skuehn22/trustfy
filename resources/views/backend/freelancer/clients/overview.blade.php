@@ -299,17 +299,23 @@
 
         @if(Session::has('success'))
 
-        if($("#tour").length && $("#tour").val() == "true"){
+        if(/android|webos|iphone|ipad|ipod|blackberry|opera mini|Windows Phone|iemobile|WPDesktop|XBLWP7/i.test(navigator.userAgent.toLowerCase())) {
 
-            $(".cd-app-screen").removeClass('cd-app-screen');
-            $(".cd-nugget-info").removeClass('cd-nugget-info');
-            $(".tour-step-5").removeClass('is-selected');
-            $(".tour-step-6").addClass('is-selected');
-            $(".plan-sidebar").addClass('active');
-            $(".client-sidebar").removeClass('active');
+        }else{
+            if($("#tour").length && $("#tour").val() == "true"){
 
+                $(".cd-app-screen").removeClass('cd-app-screen');
+                $(".cd-nugget-info").removeClass('cd-nugget-info');
+                $(".tour-step-5").removeClass('is-selected');
+                $(".tour-step-6").addClass('is-selected');
+                $(".plan-sidebar").addClass('active');
+                $(".client-sidebar").removeClass('active');
+
+
+            }
 
         }
+
 
         @endif
 
