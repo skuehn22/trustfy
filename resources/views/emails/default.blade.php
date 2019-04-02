@@ -330,6 +330,7 @@
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
                                        <p> {!! $data['content'] !!} </p>
+                                       <p><br><br>{!! $requirements !!}</p>
                                     </td>
                                 </tr>
                             </table>
