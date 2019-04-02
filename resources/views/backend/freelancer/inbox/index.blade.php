@@ -35,7 +35,46 @@
         </div>
         <div class="text-xs-center">
             <div class="col-sm-10 col-md-12 text-xs-center">
-                {{$messages->links()}}
+                @if ($messages->hasPages())
+                    <ul class="pagination pagination">
+                        {{-- Previous Page Link --}}
+                        @if ($messages->firstItem())
+                            <li class="disabled"><span>«</span></li>
+                        @else
+                            <li><a href="{{ $messages->previousPageUrl() }}" rel="prev">«</a></li>
+                        @endif
+
+                        @if($messages->currentPage() > 3)
+                            <li class="hidden-xs"><a href="{{ $messages->url(1) }}">1</a></li>
+                        @endif
+                        @if($messages->currentPage() > 4)
+                            <li><span>...</span></li>
+                        @endif
+                        @foreach(range(1, $messages->lastPage()) as $i)
+                            @if($i >= $messages->currentPage() - 2 && $i <= $messages->currentPage() + 2)
+                                @if ($i == $messages->currentPage())
+                                    <li class="active"><span>{{ $i }}</span></li>
+                                @else
+                                    <li><a href="{{ $messages->url($i) }}">{{ $i }}</a></li>
+                                @endif
+                            @endif
+                        @endforeach
+                        @if($messages->currentPage() < $messages->lastPage() - 3)
+                            <li><span>...</span></li>
+                        @endif
+                        @if($messages->currentPage() < $messages->lastPage() - 2)
+                            <li class="hidden-xs"><a href="{{ $messages->url($messages->lastPage()) }}">{{ $messages->lastPage() }}</a></li>
+                        @endif
+
+                        {{-- Next Page Link --}}
+                        @if ($messages->hasMorePages())
+                            <li><a href="{{ $messages->nextPageUrl() }}" rel="next">»</a></li>
+                        @else
+                            <li class="disabled"><span>»</span></li>
+                        @endif
+                    </ul>
+                @endif
+
             </div>
         </div>
     </div>

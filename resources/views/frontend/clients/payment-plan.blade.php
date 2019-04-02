@@ -127,8 +127,10 @@
                         <div class="card card-body">
 
                             <div class="col-md-12 pt-4">
+                                <p>
                                 This is not a direct payment to your freelancer- your money will be held securely until you decide to release it. <br>
                                 By paying through Trustfy, your payments are protected. Only you decide when to release a payment, so rest assured that your money is safe!
+                                </p>
                                 <p>
                                 <strong>Here's how it works:</strong><br>
                                 1. First, you fund the project via card or bank transfer.<br>
@@ -545,7 +547,7 @@
 
 @section('js')
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
     <script>
         $(function () {
