@@ -113,7 +113,7 @@ class SettingsController extends Controller
         }
 
         //checks if there was a update done by mango pay
-        if(count($kyc_doc_objs)>0){
+        if(count($kyc_doc_objs)>0 && $company->mango_id){
             $mango_obj = new MangoClass($this->mangopay);
             $result = $mango_obj->checkKycDocuments($company, $kyc_doc_objs);
         }
@@ -516,6 +516,26 @@ class SettingsController extends Controller
 
             $bank = App\DatabaseModels\CompaniesBank::where("service_provider_fk", "=", $blade["user"]->service_provider_fk)
                 ->first();
+
+
+            if(!$company->mango_id){
+
+                $mango_obj = new MangoClass($this->mangopay);
+
+                $mango_user=   $mango_obj->createLegalUser($company, $blade["user"]);
+
+                /*
+                if($company->type == 1){
+                    $mango_user = $mango_obj->createNaturalUser($company, $blade["user"]);
+                }else{
+                    $mango_user=   $mango_obj->createLegalUser($company, $blade["user"]);
+                }
+                */
+
+                $company->mango_id = $mango_user->Id;
+                $company->save();
+
+            }
 
             if(!isset($bank)){
                 $bank = new App\DatabaseModels\CompaniesBank();

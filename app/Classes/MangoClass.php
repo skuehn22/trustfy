@@ -157,7 +157,14 @@ class MangoClass extends Controller
             // create user for payment
             $mangouser = new MangoPay\UserLegal();
 
-            $mangouser->LegalPersonType = \MangoPay\LegalPersonType::Business;
+            if($company->type == 1){
+                $mangouser->LegalPersonType = \MangoPay\LegalPersonType::Soletrader;
+            }elseif($company->type == 2){
+                $mangouser->LegalPersonType = \MangoPay\LegalPersonType::Business;
+            }else{
+                $mangouser->LegalPersonType = \MangoPay\LegalPersonType::Organization;
+            }
+
             $mangouser->Name = $company->name;
             $mangouser->Email = $user->email;
             $mangouser->LegalRepresentativeFirstName =  $company->firstname;
