@@ -570,7 +570,7 @@ class PlansManagementController extends Controller
         ';
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo, null);
 
 
         return response()->json([

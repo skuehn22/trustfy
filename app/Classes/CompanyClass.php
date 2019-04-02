@@ -91,7 +91,7 @@ class CompanyClass extends Controller
             ->first();
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+        $msg_obj->sendStandardMail($subject, $data, $user->email, null, null);
 
 
     }

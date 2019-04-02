@@ -244,7 +244,7 @@ class LoginController extends Controller
         $data['content'] = "<h3>Information to your plan protection</h3>Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $_GET["email"], null);
+        $msg_obj->sendStandardMail($subject, $data, $_GET["email"], null, null);
 
 
 
@@ -303,7 +303,7 @@ class LoginController extends Controller
                 $data['content'] = $_POST['email'];
 
                 $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null);
+                $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null, null);
 
                 return back()->withInput()->with('success', 'Thank you for registering. <br> We will get back to you as soon as possible.');
             }

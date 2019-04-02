@@ -93,78 +93,87 @@ class PaymentPlanController extends Controller
                 ->get();
 
 
-            //only if client comes back from mangopay
-            if (isset($_GET['transactionId'])) {
 
-                //if client comes from mangopay they will habe an transaction id
-                $transactionId = $_GET['transactionId'];
 
-                //get result of the payin made by client
-                $mango_obj = new MangoClass($this->mangopay);
-                $payinResult = $mango_obj->getPayInCardWeb($transactionId);
+                //only if client comes back from mangopay
+                if (isset($_GET['transactionId'])) {
 
-                //update the result of the payin in intern DB
-                $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
-                    ->first();
+                    if (strpos($_GET['transactionId'], 'bank') == false) {
 
-                $payIn->state = $payinResult->Status;
-                $payIn->result_code = $payinResult->ResultCode;
-                $payIn->result_message = $payinResult->ResultMessage;
-                $payIn->save();
 
-                $milestone = PlansMilestone::where("id", "=", $payIn->milestone_id_fk)
-                    ->first();
+                        //if client comes from mangopay they will habe an transaction id
+                        $transactionId = $_GET['transactionId'];
 
-                //if payment was successful update the paystatus of our intern DB
-                if ($payinResult->Status == "SUCCEEDED") {
-                    $milestone->paystatus = 2;
-                    $milestone->save();
+                        //get result of the payin made by client
+                        $mango_obj = new MangoClass($this->mangopay);
+                        $payinResult = $mango_obj->getPayInCardWeb($transactionId);
 
-                    //check if the money can be realesd later or if things are missing on the freelancer site
-                    $company_obj = new CompanyClass();
-                    $status = $company_obj->checkMangoRequirements($company);
+                        //update the result of the payin in intern DB
+                        $payIn = App\DatabaseModels\MangoPayin::where("mango_id", "=", $transactionId)
+                            ->first();
 
-                    $kyc = $this->checkKYC($company);
-                    if(!$kyc){
-                        $status['kyc'] = 1;
-                    }
+                        $payIn->state = $payinResult->Status;
+                        $payIn->result_code = $payinResult->ResultCode;
+                        $payIn->result_message = $payinResult->ResultMessage;
+                        $payIn->save();
 
-                    $i = 0;
+                        $milestone = PlansMilestone::where("id", "=", $payIn->milestone_id_fk)
+                            ->first();
 
-                    $requirements = "<p>Please remember to add the following things in your account settings:</p>";
+                        //if payment was successful update the paystatus of our intern DB
+                        if ($payinResult->Status == "SUCCEEDED") {
+                            $milestone->paystatus = 2;
+                            $milestone->save();
 
-                    if(isset($status['kyc']) && $status['kyc'] == 1){
-                        $requirements.= "<p>Your company verification</p>";
-                        $i = 1;
-                    }
+                            //check if the money can be realesd later or if things are missing on the freelancer site
+                            $company_obj = new CompanyClass();
+                            $status = $company_obj->checkMangoRequirements($company);
 
-                    if(isset($status['bank']) && $status['bank'] == 1){
-                        $requirements.= "<p>Your bank details</p>";
-                        $i = 1;
-                    }
+                            $kyc = $this->checkKYC($company);
+                            if (!$kyc) {
+                                $status['kyc'] = 1;
+                            }
 
-                    if(isset($status['legal']) && $status['legal'] == 1){
-                        $requirements.= "<p>Your personal details</p>";
-                        $i = 1;
-                    }
+                            $i = 0;
 
-                    if($i == 0){
-                        $requirements = "";
-                    }else{
-                        $requirements.= "<p><strong>Without this information, we cannot release your payment!</strong></p>";
-                    }
+                            $requirements = "<p>Please remember to add the following things in your account settings:</p>";
 
-                    //check end
+                            if (isset($status['kyc']) && $status['kyc'] == 1) {
+                                $requirements .= "<p>Your company verification</p>";
+                                $i = 1;
+                            }
 
-                    $msg_obj = new MessagesClass();
-                    $result = $msg_obj->payInSucceeded($milestone, $plan, $user, $requirements);
+                            if (isset($status['bank']) && $status['bank'] == 1) {
+                                $requirements .= "<p>Your bank details</p>";
+                                $i = 1;
+                            }
 
-                }else{
+                            if (isset($status['legal']) && $status['legal'] == 1) {
+                                $requirements .= "<p>Your personal details</p>";
+                                $i = 1;
+                            }
 
-                    Session::flash('error', 'An error has occurred- '.$payinResult->ResultMessage);
+                            if ($i == 0) {
+                                $requirements = "";
+                            } else {
+                                $requirements .= "<p><strong>Without this information, we cannot release your payment!</strong></p>";
+                            }
+
+                            //check end
+
+                            $msg_obj = new MessagesClass();
+                            $result = $msg_obj->payInSucceeded($milestone, $plan, $user, $requirements);
+
+                        } else {
+
+                            Session::flash('error', 'An error has occurred- ' . $payinResult->ResultMessage);
+
+                        }
 
                 }
             }
+
+
 
             $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
                 ->OrderBy('order', 'asc')
@@ -368,7 +377,7 @@ class PaymentPlanController extends Controller
             </p>';
 
                 $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+                $msg_obj->sendStandardMail($subject, $data, $user->email, null, null);
 
                 $milestone->paystatus = 9;
                 $milestone->save();
@@ -406,7 +415,7 @@ class PaymentPlanController extends Controller
             </p>';
 
             $msg_obj = new MessagesClass();
-            $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+            $msg_obj->sendStandardMail($subject, $data, $user->email, null, null);
 
 
             $milestone->save();
@@ -444,7 +453,7 @@ class PaymentPlanController extends Controller
         $data['content'] = "<h3>Information to your plan protection</h3>Your Plan Protection: <br>".$_GET["email"]."<br> Passwort:".$_GET["password"];
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $_GET["email"], null);
+        $msg_obj->sendStandardMail($subject, $data, $_GET["email"], null, null);
 
         $result = self::login();
 
@@ -580,7 +589,7 @@ class PaymentPlanController extends Controller
         $data['content'] .= "<p><br>Your money will be held in a secure client account<br>for the duration of the project. <br>Simply click \"release funds\" when the work is done!</p>";
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo, null);
 
         $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
             ->first();
@@ -602,7 +611,10 @@ class PaymentPlanController extends Controller
            
         ';
 
-        $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+
+        $requirements = $this->checkRequirements($company);
+
+        $msg_obj->sendStandardMail($subject, $data, $user->email, null, $requirements);
 
         //checks from which point the payment was clicked as done
         if(isset($_GET['typ'])){
@@ -668,7 +680,7 @@ class PaymentPlanController extends Controller
 
 
         $msg_obj = new MessagesClass();
-        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo);
+        $msg_obj->sendStandardMail($subject, $data, $client->email, $company->logo, null);
 
         return response()->json(['success' => true, 'msg' => 'Bank transfer pending']);
 
@@ -694,6 +706,46 @@ class PaymentPlanController extends Controller
         }else{
             return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('erroe', 'You can not change the payment method anymore');
         }
+    }
+
+
+    public function checkRequirements($company){
+
+        //check if the money can be realesd later or if things are missing on the freelancer site
+        $company_obj = new CompanyClass();
+        $status = $company_obj->checkMangoRequirements($company);
+
+        $kyc = $this->checkKYC($company);
+        if(!$kyc){
+            $status['kyc'] = 1;
+        }
+
+        $i = 0;
+
+        $requirements = "<p>Please remember to add the following things in your account settings:</p>";
+
+        if(isset($status['kyc']) && $status['kyc'] == 1){
+            $requirements.= "<p>Your company verification</p>";
+            $i = 1;
+        }
+
+        if(isset($status['bank']) && $status['bank'] == 1){
+            $requirements.= "<p>Your bank details</p>";
+            $i = 1;
+        }
+
+        if(isset($status['legal']) && $status['legal'] == 1){
+            $requirements.= "<p>Your personal details</p>";
+            $i = 1;
+        }
+
+        if($i == 0){
+            $requirements = "";
+        }else{
+            $requirements.= "<p><strong>Without this information, we cannot release your payment!</strong></p>";
+        }
+
+        return $requirements;
     }
 
 

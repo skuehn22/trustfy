@@ -59,10 +59,10 @@ class MessagesClass  extends Controller
 
     }
 
-    public function sendStandardMail($subject, $data, $recipient, $logo) {
+    public function sendStandardMail($subject, $data, $recipient, $logo, $requirements) {
 
         $mailTemplate = "default";
-        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, null);
+        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements);
 
     }
 

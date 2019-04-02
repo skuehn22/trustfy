@@ -39,7 +39,7 @@ class MangoHooksController extends Controller
                 $subject = "Trustfy Payments - KYC document accepted";
                 $data['content'] = $kycdoc->doc_type." accepted";
                 $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+                $msg_obj->sendStandardMail($subject, $data, $user->email, null, null);
 
                 $msg = new MessagesCompanies();
                 $msg->typ   = 2;
@@ -98,7 +98,7 @@ class MangoHooksController extends Controller
                 $data['content'] = "Payout failed - please contact trustfy!";
 
                 $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data, $user->email, null);
+                $msg_obj->sendStandardMail($subject, $data, $user->email, null, null);
 
 
                 break;
