@@ -231,6 +231,7 @@
 
             });
 
+            $( "#test-mail" ).val("false");
 
             event.preventDefault();
             $.ajax({
@@ -260,6 +261,51 @@
                             $('.w_load_body').addClass("d-none");
                             url = "/freelancer/plans?sent=true";
                             $( location ).attr("href", url);
+                        }
+                    })
+                }
+            })
+
+        });
+
+
+        $("#send-test").on("click", function() {
+
+            $(function(){
+                $('body').Wload({text:' Sending'})
+
+            });
+
+            $( "#test-mail" ).val("true");
+
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('freelancer.plans.save') }}",
+                method:"GET",
+                data:$('#upload_form').serialize(),
+                dataType:'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data)
+                {
+
+                    var plan = $("#plan").val();
+                    event.preventDefault();
+                    $.ajax({
+                        url:"{{ route('freelancer.plan.send') }}",
+                        method:"GET",
+                        data: $('#upload_form').serialize(),
+                        dataType:'JSON',
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success:function(data)
+                        {
+                            $('#msg-send').html(data.message);
+                            $('.w_load_body').addClass("d-none");
+                            //url = "/freelancer/plans?sent=true&test=true";
+                            //$( location ).attr("href", url);
                         }
                     })
                 }

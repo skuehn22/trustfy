@@ -405,12 +405,20 @@ class PlansManagementController extends Controller
             $company = App\DatabaseModels\Companies::where("id", "=", $user->service_provider_fk)
                 ->first();
 
+
+            if($_GET['test-mail'] == "true"){
+                $to = $user->email;
+            } else{
+                $to = $client->email;
+            }
+
+
             //$mango_obj = new MangoClass($this->mangopay);
             //$url=   $mango_obj->createTransaction($company, $client, $input['single-amount']);
 
-            Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user) {
+            Mail::send('emails.client_paylink', compact('data', 'client', 'company', 'user', 'plan', 'lang'), function ($message) use ($client, $company, $user, $to) {
                 $message->from($user->email, $user->firstname." ".$user->lastname);
-                $message->to($client->email);
+                $message->to($to);
                 $message->subject($company->name." - Payment Plan");
             });
 

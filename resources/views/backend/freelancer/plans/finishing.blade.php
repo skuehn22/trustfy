@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="form-inline">
         <span style="font-weight: 500;"> Payment Method
-                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Which payment methods would you like to accept?"></i>
+                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Which payment methods would you like to accept? Flat fee of 3% for both payment types."></i>
         </span>
     </div>
 </div>
@@ -53,6 +53,9 @@
             @else
                 <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment" placeholder="Hi John, &#10;I'm really looking forward to working together! &#10;Best,&#10;Jane"></textarea>
             @endif
+
+            <input type="hidden" value="false" id="test-mail" name="test-mail">
+
         </div>
         <div class="form-row py-2">
             <div class="col-md-12 pt-1 text-right">

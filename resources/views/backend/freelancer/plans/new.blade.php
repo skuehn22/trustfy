@@ -294,11 +294,11 @@
                             <a class="btn btn-secondary cancel-plan" id="cancel" href="/freelancer/plans/"><i class="fas fa-ban"></i> Close</a>
                             <button class="btn btn-success save-plan button-menu" id="save"><i class="fas fa-save"></i> Save</button>
                         </div>
-
+                        <!--
                         <div class="btn-group mr-2 sw-btn-group" role="group" >
                             <button class="btn btn-alternative" id="preview-btn"><i class="fas fa-search"></i>Preview</button>
                         </div>
-
+                        -->
                     </div>
 
                         <div class="col-md-12  sw-container tab-content" >
