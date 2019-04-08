@@ -20,7 +20,7 @@
                 <h3>What is escrow?</h3>
                 <p>Escrow might sound complicated, but it&rsquo;s actually a really simple process!</p>
                 <p>It means that during a financial transaction, a trusted third party holds onto the money and releases it at the end.</p>
-                <p>Here&rsquo;s an example: Imagine you&rsquo;re selling a watch online. You wouldn&rsquo;t want to ship it to a buyer unless they&rsquo;ve paid you, right? But the buyer doesn&rsquo;t want to transfer you the money until they have the watch. This is where escrow comes into play: A trusted third person or company, like Ebay, holds on to that money until the watch has been delivered. Then they release it to the you.</p>
+                <p>Here&rsquo;s an example: Imagine you&rsquo;re selling a watch online. You wouldn&rsquo;t want to ship it to a buyer unless they&rsquo;ve paid you, right? But the buyer doesn&rsquo;t want to transfer you the money until they have the watch. This is where escrow comes into play: A trusted third person or company, like Ebay, holds on to that money until the watch has been delivered. Then they release it to you.</p>
                 <p>&nbsp;</p>
                 <h3>So Trustfy is an escrow system for freelancers, what exactly does that mean?</h3>
                 <p>It means you can pay for a freelance project with peace of mind, knowing that your money will only be released when you&rsquo;re satisfied.</p>
