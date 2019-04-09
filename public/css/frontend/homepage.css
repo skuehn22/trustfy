@@ -691,13 +691,13 @@ header.masthead {
   padding-top: 150px;
   padding-bottom: 100px;
   color: white;
-  background: url("../../img/bg-pattern.png"), #7b4397;
-  background: url("../../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#336633), to(#536753));
-  background: url("../../img/bg-pattern.png"), linear-gradient(to left, #336633, #536753);
+  background-color: #73c9c0;
+
+
 }
 
 header.masthead .header-content {
-  max-width: 500px;
+
   margin-bottom: 100px;
   text-align: center;
 }
@@ -718,8 +718,8 @@ header.masthead .device-container .screen img {
 
 @media (min-width: 992px) {
   header.masthead {
-    height: 100vh;
-    min-height: 775px;
+    height: 80vh;
+    min-height: 570px;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -756,6 +756,42 @@ section.download .badges .badge-link:last-child {
 
 section.download .badges .badge-link img {
   height: 60px;
+}
+
+.how-text{
+  font-size: 25px;
+  font-weight: 500;
+  color: #767676;
+  padding-top:40px;
+}
+
+.bg-dark {
+  background-color: #7c7c7c!important;
+}
+
+hr  {
+  max-width: 100px;
+  margin: 25px auto 0;
+  border-width: 1px;
+  border-color: rgba(25, 163, 184);
+}
+
+.advantages-icon{
+  color: #19A3B8!important;
+  font-size: 72px;
+  padding-bottom: 10px;
+}
+
+.btn-start {
+  color: white;
+  border: 1px solid #19A3B8;
+  background-color: #19A3B8;
+}
+
+.advantages-txt{
+  color: #7c7c7c!important;
+  font-size: 20px;
+
 }
 
 @media (min-width: 768px) {
@@ -996,6 +1032,13 @@ section.contact ul.list-social li.social-google-plus a:hover {
   color: white;
   border: 1px solid;
   border-color: white;
+}
+
+
+.btn-sign {
+  color: white;
+  border: 1px solid #fdcc52;
+  background-color: #fdcc52;
 }
 
 .btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active {

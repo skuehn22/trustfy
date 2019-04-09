@@ -62,31 +62,37 @@
 <header class="masthead" id="home">
     <div class="container h-100">
         <div class="row h-100">
-            <div class="col-lg-7 my-auto">
+            <div class="col-lg-4 my-auto">
+                <img src="{{ asset('img/jagd.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
+            </div>
+            <div class="col-lg-8 my-auto">
                 <div class="header-content mx-auto">
                     @if(session()->has('message'))
                         <div class="alert alert-success">
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                    <h1 class="mb-5">We build trust between freelancers and their clients</h1>
-                    <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Sign up for the news!</a>
+                    <h1 class="mb-5" style="text-transform: uppercase;text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700">Get paid on time</h1>
+                    <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Are you regularly chasing payments?</h2>
+                        <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We help get your money when work is done</h2>
+                        <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">For freelancer and who work with them</h4>
+
+                    <a href="#contact" class="btn btn-sign btn-xl js-scroll-trigger">Sign up for free</a>
                 </div>
-            </div>
-            <div class="col-lg-5 my-auto">
+                <!--
                 <div class="device-container">
                     <div class="device-mockup iphone6_plus portrait white">
                         <div class="device">
                             <div class="screen">
-                                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+
                                 <img src="{{ asset('img/trustyfy-screenshot20.png') }}" class="img-fluid logo-desktop" alt="Get paid on time">
                             </div>
                             <div class="button">
-                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+
                   </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -95,45 +101,150 @@
 <div class="section section-demo" style="padding-top:45px;">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h2>How we Build Trust</h2>
-                <p class="homepage-txt" style="margin-top:0px; padding-top: 14px;">
-                    Our mission is to ensure that good work is rewarded with fair pay.
+            <div class="col-md-12 text-center">
+                <h2>Trustfy is an easy to use escrow system for freelancer</h2>
+                <p class="homepage-txt text-center" style="margin-top:0px; padding-top: 14px;">
+                    It has never been easier to ask a client for a trustworthy deposit! Trustfy creates trust between freelancers and their customers.
+                    <br>
+                    The freelancer knows that the money is there and the customer is not afraid that the freelancer disappears with the deposit.
                 </p>
-            </div>
-            <div class="col-md-12">
-                <div class="demo-image">
-                    <img src="{{ asset('img/solution.png') }}" alt="Freelance Escrow System">
-                </div>
+                <p><hr></p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="section section-demo freelancer" id="features" style="padding-top:45px;">
+
+<div class="section section-demo">
     <div class="container">
-        <div class="section-heading text-center">
-            <h2>Freelancer Protection</h2>
-            <p class="text-muted">A professional payment system that gets you paid on time.</p>
-            <hr>
+        <div class="section-heading text-center pb-5">
+            <h2>How it works</h2>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="container-fluid ">
-                    <div class="row">
-                        <div class="offset-md-2 col-md-10">
-                            <br><br>
-                            <p class="check-container"> <i class="fas fa-check"></i> No more chasing payment</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Confidence in cash flow</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Protection from unresponsive clients</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Peace of mind</p>
+                    <div class="row how-text">
+                        <div class="offset-md-2 col-md-10 how-text text-center">
+                            <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">1</span>
+                           <p class="how-text pt-0"> <br>The freelancer creates a payment plan and sends it to the client.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="demo-image">
-                    <img src="{{ asset('img/solution1.png') }}" alt="Late Payment Protection">
+                    <img src="{{ asset('img/solution12.png') }}" alt="Late Payment Protection">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section section-demo">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col-md-4 text-center">
+                <div class="demo-image">
+                    <div class="col-md-9 float-right">
+                    <div class="device-container">
+                        <div class="device-mockup iphone6_plus portrait black">
+                            <div class="device">
+                                <div class="screen">
+                                    <img src="{{ asset('img/cc-payment.png') }}" class="img-fluid" alt="No more deposits in blind faith">
+                                </div>
+                                <div class="button">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+            </div>
+            <div class="col-md-8">
+                <div class="container-fluid ">
+                    <div class="row how-text">
+                        <div class="offset-md-2 col-md-10 how-text text-center">
+                            <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
+                            <p class="how-text pt-0"> <br>The client opens it up and <br> makes in a escrow account. <br> The money is now safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section section-demo">
+    <div class="container">
+        <div class="row text-center">
+
+
+            <div class="col-md-8">
+                <div class="container-fluid ">
+                    <div class="row how-text">
+                        <div class="offset-md-2 col-md-10 how-text text-center" style="padding-top: 85px;">
+                            <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">3</span>
+                            <p class="how-text pt-0"> <br>After the freelancer finshed the work, <br>the mone will be relased</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="demo-image">
+                    <div class="col-md-9 float-right">
+                        <div class="device-container">
+                            <div class="device-mockup iphone6_plus portrait black">
+                                <div class="device">
+                                    <div class="screen">
+                                        <img src="{{ asset('img/trustyfy-screenshot.png') }}" class="img-fluid" alt="No more deposits in blind faith">
+                                    </div>
+                                    <div class="button">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="section section-demo freelancer" id="features" style="padding-bottom:10px;">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Advantages for freelancers</h2>
+
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <i class="fas fa-file-invoice-dollar advantages-icon"></i> <br>
+                                    <span class="advantages-txt">No more chasing payment</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <i class="fas fa-meteor advantages-icon"></i> <br>
+                                    <span class="advantages-txt"> Get paid much faster</span>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <i class="fas fa-money-bill-alt advantages-icon"></i><br>
+                                    <span class="advantages-txt">Confidence in cash flow</span>
+
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <i class="fas fa-lock advantages-icon"></i><br>
+                                    <span class="advantages-txt">Protection from unresponsive clients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,6 +252,20 @@
 </section>
 
 
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>All for a fair fee</h2>
+            <p class="text-muted">Trustfy takes a fair fee of 3%. <br>No hidden extra costs. The costs are only due when the freelancer gets their money.</p>
+            <hr>
+            <p><br>
+                <a href="#contact" class="btn btn-start btn-xl js-scroll-trigger">GET STARTED</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!--
 <section class="features" id="features">
     <div class="container">
         <div class="section-heading text-center">
@@ -177,7 +302,8 @@
         </div>
     </div>
 </section>
-
+-->
+<!--
 <section class="section why section-gray">
     <div class="container">
 
@@ -201,6 +327,7 @@
 
     </div>
 </section>
+-->
 <section class="contact bg-primary" id="contact">
     <div class="container">
         <div class="row">
