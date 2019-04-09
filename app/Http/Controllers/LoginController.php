@@ -266,6 +266,17 @@ class LoginController extends Controller
     }
 
 
+    public function betaRegisterNew() {
+
+
+        $status = 2202;
+
+
+        return view('auth.register', compact('status'));
+
+    }
+
+
     public function betaRegisterSave() {
 
         $ll = App::getLocale();
@@ -292,6 +303,12 @@ class LoginController extends Controller
 
             if(isset($_POST['status']) && ($_POST['status'] == 2202)){
 
+                $subject = "Direct Beta Version Register";
+                $data['content'] = $_POST['email'];
+
+                $msg_obj = new MessagesClass();
+                $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null, null);
+
                 $user = Users::where("email", "=", $_POST['email'])->first();
                 $user->active = 1;
                 $user->save();
@@ -299,7 +316,7 @@ class LoginController extends Controller
 
             }else{
 
-                $subject = "Beta Version Register";
+                $subject = "Register - Trustfy";
                 $data['content'] = $_POST['email'];
 
                 $msg_obj = new MessagesClass();
