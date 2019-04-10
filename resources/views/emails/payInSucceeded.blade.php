@@ -324,7 +324,7 @@
                                         <p>Great news! <br>{{$data['client']->firstname}} {{$data['client']->lastname}} has made a payment for the following project:</p>
                                         <p>Project: {{$data['plan']->name}}</p>
                                         <p>Milestone: {{$data['milestone']->name}}</p>
-                                        <p>Amount: € {{number_format($data['milestone']->amount, 2, ',', ' ')}}</p>
+                                        <p>Amount: {{$data['milestone']->currency}} {{number_format($data['milestone']->amount, 2, ',', ' ')}}</p>
                                         <p>Your money is being held in a secure account, <br>so go ahead and work with confidence- your money is there for you! </p>
                                         <p>
                                             When you've completed the project or milestone, go to the project plan in your Trustfy account and press "Request Release." Your client will be notified and can release your payment!

@@ -84,8 +84,15 @@ class MangoClass extends Controller
 
         //$freelancer_wallet_id = $this->getMangoWallets($mango_freelancer->Id);
 
+        $client_wallets = $this->getMangoWallets($mango_client->Id);
 
-        $client_wallet_id = $this->getMangoWallets($mango_client->Id);
+        foreach ($client_wallets as $client_wallet){
+
+            if($client_wallet->Currency ==  $milestone->currency){
+                $client_wallet_id = $client_wallet->Id;
+            }
+        }
+
 
         //if there is no wallet create one
 
@@ -101,12 +108,13 @@ class MangoClass extends Controller
         */
 
         //if there is no wallet create one
-        if (!$client_wallet_id) {
-            $client_wallet = $this->createWallet($mango_client->Id);
+        if (!isset($client_wallet_id)) {
+            $client_wallet = $this->createWallet($mango_client->Id, $milestone->currency);
             $client_wallet_id = $client_wallet->Id;
             $wallet = new ClientsMangowallets();
             $wallet->id = $client_wallet->Id;
             $wallet->client_id_fk = $client->id;
+            $wallet->currency = $milestone->currency;
             $wallet->save();
         }
 
@@ -386,20 +394,18 @@ class MangoClass extends Controller
             MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
         }
 
-        if(isset($wallets[0]->Id)){
-            return $wallets[0]->Id;
-        }else{
-            return false;
-        }
+
+        return $wallets;
+
     }
 
-    public function createWallet($user) {
+    public function createWallet($user, $currency) {
         try {
 
             // create temporary wallet for user
             $wallet = new \MangoPay\Wallet();
             $wallet->Owners = array( $user );
-            $wallet->Currency = 'EUR';
+            $wallet->Currency = $currency;
             $wallet->Description = "default";
             $createdWallet = $this->mangopay->Wallets->Create($wallet);
 
@@ -434,6 +440,7 @@ class MangoClass extends Controller
             $payin->credited_wallet = $credited_wallet;
 
             $payin->amount = $milestone->amount;
+            $payin->currency = $milestone->currency;
             $payin->payment_type = "CARD";
             $payin->execution_type = "WEB";
             $payin->state = "PREP";
@@ -482,10 +489,10 @@ class MangoClass extends Controller
             $payIn->PaymentDetails->CardType = "CB_VISA_MASTERCARD";
             $payIn->DebitedFunds = new \MangoPay\Money();
             $payIn->DebitedFunds->Amount = $prepedPayIn->amount*100;
-            $payIn->DebitedFunds->Currency ="EUR";
+            $payIn->DebitedFunds->Currency = $prepedPayIn->currency;
             $payIn->Fees = new \MangoPay\Money();
             $payIn->Fees->Amount = 0;
-            $payIn->Fees->Currency = "EUR";
+            $payIn->Fees->Currency = $prepedPayIn->currency;
             $payIn->ExecutionType = "WEB";
             $payIn->ExecutionDetails = new \MangoPay\PayInExecutionDetailsWeb();
             $payIn->ExecutionDetails->ReturnURL = env("APP_URL") . "/" . App::getLocale() . "/payment-plan/".$planHash;
@@ -783,15 +790,48 @@ class MangoClass extends Controller
             $PayOut->AuthorId = $author;
             $PayOut->DebitedWalletID = $wallet->id;
             $PayOut->DebitedFunds = new \MangoPay\Money();
-            $PayOut->DebitedFunds->Currency = "EUR";
+            $PayOut->DebitedFunds->Currency = $milestone->currency;
             $PayOut->DebitedFunds->Amount = $milestone->amount*100;
             $PayOut->Fees = new \MangoPay\Money();
-            $PayOut->Fees->Currency = "EUR";
+            $PayOut->Fees->Currency = $milestone->currency;
             $PayOut->Fees->Amount = $milestone->amount*0.03*100;
             $PayOut->PaymentType = "BANK_WIRE";
             $PayOut->MeanOfPaymentDetails = new \MangoPay\PayOutPaymentDetailsBankWire();
             $PayOut->MeanOfPaymentDetails->BankAccountId = $bank->mango_bank_id;
             $result = $this->mangopay->PayOuts->Create($PayOut);
+
+            return $result;
+
+        } catch (MangoPay\Libraries\ResponseException $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\ResponseException Code', $e->GetCode());
+            MangoPay\Libraries\Logs::Debug('Message', $e->GetMessage());
+            MangoPay\Libraries\Logs::Debug('Details', $e->GetErrorDetails());
+
+        } catch (MangoPay\Libraries\Exception $e) {
+
+            MangoPay\Libraries\Logs::Debug('MangoPay\Exception Message', $e->GetMessage());
+        }
+
+    }
+
+    public function createTransfer($client_mango_id, $milestone, $client_wallet, $freelancer_wallet){
+        try {
+
+
+            $Transfer = new \MangoPay\Transfer();
+            $Transfer->Tag = "custom meta";
+            $Transfer->AuthorId = $client_mango_id;
+            $Transfer->DebitedFunds = new \MangoPay\Money();
+            $Transfer->DebitedFunds->Currency = $milestone->currency;
+            $Transfer->DebitedFunds->Amount = $milestone->amount*100;
+            $Transfer->Fees = new \MangoPay\Money();
+            $Transfer->Fees->Currency = $milestone->currency;
+            $Transfer->Fees->Amount = 0;
+            $Transfer->DebitedWalletId = $client_wallet->id;
+            $Transfer->CreditedWalletId = $freelancer_wallet->id;
+
+            $result = $this->mangopay->Transfers->Create($Transfer);
 
             return $result;
 

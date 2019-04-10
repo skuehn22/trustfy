@@ -23,6 +23,7 @@ use App\DatabaseModels\MangoPayout;
 use App\DatabaseModels\Companies;
 use App\DatabaseModels\CompaniesBank;
 use App\DatabaseModels\CompaniesMangowallets;
+use App\DatabaseModels\ClientsMangowallets;
 use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
 use App\Classes\MessagesClass;
@@ -246,7 +247,9 @@ class PaymentPlanController extends Controller
         $company = Companies::where("id", "=", $plan->service_provider_fk)
             ->first();
 
-        $milestone = PlansMilestone::where("id", "=", $_GET['milestone_to_pay'])
+
+
+        $milestone = PlansMilestone::where("id", "=", $_POST['milestone_to_pay'])
             ->first();
 
         $client = Clients::where("id", "=", $plan->clients_id_fk)
@@ -329,17 +332,45 @@ class PaymentPlanController extends Controller
         $bank = CompaniesBank::where("service_provider_fk", "=", $plan->service_provider_fk)
             ->first();
 
-        if(!empty($bank) && $bank->mango_bank_id){
 
+        $client = Clients::where("id", "=", $plan->clientId)
+            ->first();
+
+        $client_wallet = ClientsMangowallets::where("client_id_fk", "=", $client->id)
+            ->where("currency", "=", $milestone->currency)
+            ->first();
+
+        //check if there is a wallet with the right currency
+        $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
+            ->where("currency", "=", $milestone->currency)
+            ->first();
+
+        //if there is no wallet with the right currency create on and save
+        if(empty($wallet)){
+
+            $mango_obj = new MangoClass($this->mangopay);
+            $mangoWallet = $mango_obj->createWallet($company->mango_id, $milestone->currency);
+
+            $wallet = new CompaniesMangowallets();
+            $wallet->id = $mangoWallet->Id;
+            $wallet->performer_id_fk = $company->id;
+            $wallet->currency = $milestone->currency;
+            $wallet->save();
+
+        }
+
+
+        //make transfer of the money: from client wallet to freelancer wallet
+        $mango_obj = new MangoClass($this->mangopay);
+        $transfer = $mango_obj->createTransfer($client->mango_id, $milestone, $client_wallet, $wallet);
+
+
+        if(!empty($bank) && $bank->mango_bank_id){
 
             $mango_obj = new MangoClass($this->mangopay);
             $mangoUser = $mango_obj->getUser($company->mango_id);
 
             if($mangoUser->KYCLevel=="REGULAR"){
-
-                $wallet = CompaniesMangowallets::where("performer_id_fk", "=", $plan->service_provider_fk)
-                    ->first();
-
 
                 $mango_obj = new MangoClass($this->mangopay);
                 $payOutResult = $mango_obj->createPayOut($company->mango_id, $milestone, $bank, $wallet);
@@ -421,9 +452,6 @@ class PaymentPlanController extends Controller
             $milestone->save();
 
         }
-
-
-
 
         return Redirect::to("/payment-plan/".$plan->hash)->withInput()->with('success', 'Money released!');
 
@@ -569,7 +597,7 @@ class PaymentPlanController extends Controller
         $subject= "Trustfy Payments";
         $data['content'] = "<h3>Thank you for your payment!</h3>";
         $data['content'] .= "<p>You have marked the bank transfer for: \"".$milestone->name."\" as complete.</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please <br>transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please <br>transfer ".$milestone->currency." ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 
@@ -600,7 +628,7 @@ class PaymentPlanController extends Controller
         $data['content'] =  "<p>Great news! <br>".$client->firstname." ".$client->lastname." has initated a bank transfer:</p>";
         $data['content'] .= "<p>Project: ".$plan->name."</p>";
         $data['content'] .= "<p>Milestone: ".$milestone->name."</p>";
-        $data['content'] .= "  <p>Amount: € ".number_format($milestone->amount, 2, ',', ' ')."</p>";
+        $data['content'] .= "  <p>Amount: ".$milestone->currency." ".number_format($milestone->amount, 2, ',', ' ')."</p>";
         $data['content'] .= "<p>We will let you know when the money arrives.</p>";
 
         $data['content'] .='
@@ -653,7 +681,7 @@ class PaymentPlanController extends Controller
         $subject= "Payment reminder for ".$milestone->name;
         $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname.",</p>";
         $data['content'] .= "<p>This is a friendly reminder to make a payment for: \"".$milestone->name."\".</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please transfer € ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer". $milestone->currency ." ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 

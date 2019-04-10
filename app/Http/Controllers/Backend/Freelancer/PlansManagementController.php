@@ -226,6 +226,10 @@ class PlansManagementController extends Controller
                 $milestone->amount = str_replace(',', '', $input['single-amount']);
             }
 
+            if(isset($input['currency'])){
+                $milestone->currency = $input['currency'];
+            }
+
             if(isset($input['pay-due'])){
                 $milestone->due_typ = $input['pay-due'];
             }
@@ -261,6 +265,7 @@ class PlansManagementController extends Controller
                 $milestone->typ = 2;
                 $milestone->name = $value;
                 $milestone->amount = $input['amount'][$key];
+                $milestone->currency = $input['currency'][$key];
                 $milestone->desc = $input['description'][$key];
                 $milestone->due_at = $input['due_date'][$key];
 
@@ -289,50 +294,6 @@ class PlansManagementController extends Controller
 
     }
 
-    public function finishing($id) {
-
-    }
-
-
-    public function saveAndClose($id) {
-
-        $blade["ll"] = App::getLocale();
-        $blade["user"] = Auth::user();
-        $input = Request::all();
-
-        $plan = Plans::where("id", "=", $id)
-            ->first();
-
-        if(isset($input['clients']))
-            $plan->clients_id_fk = $input['clients'];
-
-        if(isset($input['creation-date']))
-            $creation = date("Y-m-d", strtotime($input['creation-date']) );
-            $plan->date = $creation;
-
-        if(isset($input['typ']))
-            $plan->typ = $input['typ'];
-
-        if(isset($input['pay-due']))
-            $plan->due_typ = $input['pay-due'];
-
-        if(isset($input['due-date']))
-            $dueDate = date("Y-m-d", strtotime($input['due-date']) );
-            $plan->due_date = $dueDate;
-
-        if(isset($input['single-amount']))
-            $plan->amount = $input['single-amount'];
-
-        if(isset($input['projects-dropdown']))
-            $plan->projects_id_fk = $input['projects-dropdown'];
-
-        $plan->state = 1;
-        $plan->hidden = 0;
-        $plan->save();
-
-        return Redirect::to($blade["ll"]."/freelancer/plans/")->withInput()->with('success', 'Your payment plan has been created!');
-
-    }
 
     public function delete($id) {
 

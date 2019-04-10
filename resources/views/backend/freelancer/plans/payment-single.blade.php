@@ -52,12 +52,20 @@
 </div>
 
 <div class="form-row py-2 amount">
-    <label class="col-md-2 col-form-label" for="single-amount">Amount (€)*</label>
+    <label class="col-md-2 col-form-label" for="single-amount">Amount*</label>
 
     @if(isset($milestones) && $milestones->amount)
-        <input type="number" id="single-amount" name="single-amount" class="form-control col-md-3" value="{{$milestones->amount}}">
+        <input type="number" id="single-amount" name="single-amount" class="form-control col-md-2" value="{{$milestones->amount}}">
     @else
-        <input type="number" id="single-amount" name="single-amount" class="form-control col-md-3">
+        <input type="number" id="single-amount" name="single-amount" class="form-control col-md-2">
     @endif
+
+    <select name="currency" id="currency" class="form-control col-md-1">
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="USD">USD</option>
+    </select>
+
+
 
 </div>

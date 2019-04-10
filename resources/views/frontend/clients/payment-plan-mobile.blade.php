@@ -196,7 +196,7 @@
                                         <strong>{!!  $milestone->name or '<i>please fill in</i>'!!} </strong>
                                     </div>
                                     <div class="col-4">
-                                        @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
+                                        @if(isset($milestone->amount)){{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
                                     </div>
                                     <div class="col-1">
                                         <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

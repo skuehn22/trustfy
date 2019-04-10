@@ -228,8 +228,8 @@
 
                         </td>
                         <td class="qty" style="width:13%;">
-                            <input type="hidden" value="€ {{ number_format($milestone->amount, 2, '.', ',') }}" id="amount_name_{{$milestone->id or ''}}">
-                            @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
+                            <input type="hidden" value="{{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }}" id="amount_name_{{$milestone->id or ''}}">
+                            @if(isset($milestone->amount)){{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
                         </td>
                         <td style="text-align: right;">
                             <span style="font-weight:600; color: {{$milestone->color}}">{{$milestone->statusTxt}}
@@ -243,18 +243,18 @@
                                 @if(isset($milestone->paystatus) && ($milestone->paystatus==0 || $milestone->paystatus==6))
 
                                     @if($milestone->bank_transfer == 0 && $milestone->credit_card == 1)
-                                        <form action="/payment-plan/pay-by-card/{{$plan->hash or ''}}" id="paymentform">
+                                        <form action="/payment-plan/pay-by-card/{{$plan->hash or ''}}" id="paymentform_{{$milestone->id}}" method="post">
                                     @else
-                                         <form id="paymentform">
+                                         <form id="paymentform_{{$milestone->id}}"  method="post">
                                     @endif
-
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="row">
 
                                             <div class="col-md-6 pl-4" >
                                                 <input type="hidden" value="{{$milestone->id}}"  name="milestone_to_pay">
                                                 @if($milestone->credit_card == 1 && $milestone->bank_transfer == 0)
                                                     <div class="radio" style="padding-top: 10px;">
-                                                        <label><input type="radio" name="paymenttyp" value="1" checked> Credit Card</label>
+                                                        <label><input type="radio" name="paymenttyp"  value="1" checked> Credit Card</label>
                                                     </div>
                                                 @elseif($milestone->credit_card == 1 && $milestone->bank_transfer == 1)
 
@@ -587,13 +587,14 @@
         $('input[type=radio][name=paymenttyp]').change(function() {
 
 
+
             if($(this).val() == 1){
-                    $('#paymentform').attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
+                $(this.form).attr('action', '/payment-plan/pay-by-card/{{$plan->hash}}');
             }else{
                 if($(this).val() == 2){
-                    $('#paymentform').removeAttr('action');
+                    $(this.form).removeAttr('action');
                 }else{
-                    $('#paymentform').removeAttr('action');
+                    $(this.form).removeAttr('action');
                 }
             }
 
@@ -652,7 +653,7 @@
         // External Button Events
         $(".pay-now").on("click", function() {
 
-            if(!jQuery('#paymentform').get(0).hasAttribute('action')){
+            if(!jQuery('#paymentform_'+$(this).attr("name")).get(0).hasAttribute('action')){
 
                 var id  = $(this).attr("name");
 
@@ -662,7 +663,7 @@
 
             }else{
 
-                $( "#paymentform" ).submit();
+                $( "#paymentform_"+$(this).attr("name") ).submit();
 
             }
         });

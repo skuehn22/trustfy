@@ -400,6 +400,7 @@
 
                     cols += '<td><input type="text" class="form-control" name="name[]"/></td>';
                     cols += '<td><input type="number" class="form-control" name="amount[]"/></td>';
+                    cols += '<td class="col-sm-1 col-lg-1"  style="width: 9%"><select name="currency[]" id="currency[]" class="form-control"><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="USD">USD</option></select></td>';
                     cols += '<td><input type="text" class="form-control" id="due_date' + counter + '" name="due_date[]"/></td>';
                     cols += '<td><textarea class="form-control" rows="3" name="description[]"></textarea></td>';
                     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';

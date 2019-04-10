@@ -182,7 +182,7 @@
                         </td>
 
                         <td class="qty"> @if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}} @else  <i>please fill in</i> @endif</td>
-                        <td class="qty"  style="width:16%;"> @if(isset($milestone->amount))€ {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
+                        <td class="qty"  style="width:16%;"> @if(isset($milestone->amount)){{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                         <td class="text-right">
 
                                 <p style="color:{{ $milestone->status['color'] }}; padding-top: 12px;" id="plan-status-{{$milestone->id}}">
