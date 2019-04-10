@@ -73,7 +73,7 @@
                         </span>
                     </div>
                 @else
-                    <div class="col-md-1 p-3 text-left" style="background-color: #006600; color: #fff; font-weight: 600">
+                    <div class="col-md-1 p-3 text-left" style="background-color: #19A3B8; color: #fff; font-weight: 600">
                         {{ $milestones[0]->order }}
                     </div>
                     <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">
@@ -102,7 +102,7 @@
 
                         <div class="col-md-12">
                             <div class="row p-3">
-                                <div class="col-md-1 p-3 text-center" style="background-color: #006600; color: #fff; font-weight: 600">
+                                <div class="col-md-1 p-3 text-center" style="background-color: #19A3B8; color: #fff; font-weight: 600">
                                     {{ $milestone->order }}
                                 </div>
                                 <div class="col-md-4 p-3"   style="background-color: #e2e2e2; color: #566787;">

@@ -134,7 +134,7 @@ a:hover {
 }
 
 .green h5{
-    color: #006600;
+    color: #19A3B8;
 }
 
 .clients{
@@ -181,22 +181,22 @@ select{
 
 .btn-classic {
     color: #fff;
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
     width: 148px;
     font-size: 14px;
 }
 
 .btn-classic-no-width{
     color: #fff;
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
 }
 
 .btn-alternative{
     color: #fff;
-    background-color: #ff9046;
-    border-color: #ff9046;
+    background-color: #fdcc52;
+    border-color: #fdcc52;
     width: 200px;
 }
 
@@ -208,13 +208,13 @@ select{
 }
 
 .btn-default {
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
 }
 
 .btn-default.active, .btn-default:active {
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
 }
 
 .prev-btn{
@@ -309,7 +309,7 @@ select{
 
 
 .progress.blue .progress-bar{
-    border-color: #049dff;
+    border-color: #19A3B8;
 }
 .progress.blue .progress-left .progress-bar{
     animation: open-plans-left 1.2s linear forwards 1.8s;
@@ -322,7 +322,7 @@ select{
 
 
 .progress.yellow .progress-bar{
-    border-color: #fdba04;
+    border-color: #fdcc52;
 }
 .progress.yellow .progress-left .progress-bar{
     animation: loading-3 1s linear forwards 1.8s;
@@ -346,7 +346,7 @@ select{
 
 .ready-icon{
     padding-top: 30px;
-    color: #006600;
+    color: #19A3B8;
     font-size: 160px;
     opacity: 0.5;
 }
@@ -356,7 +356,7 @@ select{
 
 .settings .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #fff;
-    background-color: #006600;
+    background-color: #19A3B8;
 }
 
 .settings  #exTab3 .nav-pills > li > a {
@@ -374,7 +374,7 @@ select{
 }
 
 .settings #exTab3 .tab-content {
-    border: 1px solid #006600;
+    border: 1px solid #19A3B8;
 }
 
 
@@ -398,7 +398,7 @@ select{
     position: relative;
     display: block;
     padding: 5px 5px;
-    color: #006600;
+    color: #19A3B8;
 }
 
 .preview-modal{
@@ -596,29 +596,29 @@ select{
 
 .released .fas {
     font-size: 25px;
-    color: #049dff;
+    color: #19A3B8;
 }
 
 .released .headline{
     font-size: 20px;
-    color: #049dff;
+    color: #19A3B8;
 }
 
 
 .pending .fas {
     font-size: 25px;
-    color: #fdba04;
+    color: #fdcc52;
 }
 
 .pending .headline{
     font-size: 20px;
-    color: #fdba04;
+    color: #fdcc52;
 }
 
 
 
 .inbox .panel-heading{
-    background-color: #737070;
+    background-color: #9e9e9e;
     height: 56px;
     padding: 10px 16px;
     font-size: 18px;
@@ -875,7 +875,7 @@ select{
     padding: 0px 12px;
     margin-left: -1px;
     line-height: 1.42857143;
-    color: #006600;
+    color: #19A3B8;
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -917,7 +917,7 @@ select{
         position: relative;
         display: block;
         padding: 15px 10px;
-        color: #006600;
+        color: #19A3B8;
     }
 
 }
@@ -929,7 +929,7 @@ select{
         position: relative;
         display: block;
         padding: 15px 10px;
-        color: #006600;
+        color: #19A3B8;
     }
 
 }

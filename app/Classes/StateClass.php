@@ -28,7 +28,7 @@ class StateClass
                 $state['state'] = "canceled";
                 break;
             case 3:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "finished";
                 break;
             default:
@@ -79,7 +79,7 @@ class StateClass
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 2:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "funded";
                 $state['info'] = 'Your client will receive a message notifying them this work has been completed.';
                 break;
@@ -89,7 +89,7 @@ class StateClass
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 4:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "payout succeded";
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
@@ -104,27 +104,27 @@ class StateClass
                 $state['info'] = "Please see your E-mails: Transfer the amount into escrow and mark transaction as complete.";
                 break;
             case 7:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "work completed";
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 8:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "money released";
                 $state['info'] = "The money can be paid out as soon as you have provided your bank details.";
                 break;
             case 9:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "released (pending)";
                 $state['info'] = "This money will be paid out as soon as you verify your account.";
                 break;
             case 10:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "money released";
                 $state['info'] = "The money can be paid out as soon as you have completed the verification and provided your bank details.";
                 break;
             case 11:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "work completed";
                 $state['info'] = "It is waited for the customer to confirm this.";
                 break;
@@ -163,7 +163,7 @@ class StateClass
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 4:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "payout succeded";
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
@@ -178,27 +178,27 @@ class StateClass
                 $state['info'] = "Please see your E-mails: Transfer the amount into escrow and mark transaction as complete.";
                 break;
             case 7:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "work completed";
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 8:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "paid";
                 $state['info'] = null;
                 break;
             case 9:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "paid";
                 $state['info'] = null;
                 break;
             case 10:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "paid";
                 $state['info'] = null;
                 break;
             case 11:
-                $state['color'] = "#006600";
+                $state['color'] = "#19A3B8";
                 $state['state'] = "work completed";
                 $state['info'] = "Please release the money.";
                 break;

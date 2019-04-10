@@ -59,7 +59,7 @@
                 </div>
                 <div class="row pending">
                     <div class="col-md-12 text-center pt-3">
-                        <i class="fas fa-hourglass-end"></i> <span class="headline" style="color: #fdba04;">Pending</span>
+                        <i class="fas fa-hourglass-end"></i> <span class="headline" style="color: ##fdcc52fdcc52;">Pending</span>
                     </div>
                 </div>
                 @else
@@ -101,7 +101,7 @@
                 </div>
                 <div class="row released">
                     <div class="col-md-12 text-center pt-3">
-                        <i class="fas fa-dollar-sign"></i> <span class="headline" style="color: #049dff;">Released</span>
+                        <i class="fas fa-dollar-sign"></i> <span class="headline" style="color: #19a3b8;">Released</span>
                     </div>
                 </div>
                 @else

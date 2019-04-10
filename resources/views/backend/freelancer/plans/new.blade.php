@@ -56,7 +56,7 @@
 
         .sw-theme-default > ul.step-anchor > li.active > a {
             border: none !important;
-            color: #006600 !important;
+            color: #19A3B8 !important;
             background: transparent !important;
             cursor: pointer;
         }
@@ -190,9 +190,9 @@
 
 
         .add-row {
-            color: #006600;
+            color: #19A3B8;
             background-color: #fff;
-            border-color: #006600;
+            border-color: #19A3B8;
             width: 148px;
             font-size: 14px;
         }

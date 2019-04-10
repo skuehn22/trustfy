@@ -93,7 +93,7 @@
 
 
         .progress.blue .progress-bar{
-            border-color: #049dff;
+            border-color: #19A3B8;
         }
         .progress.blue .progress-left .progress-bar{
             animation: released-plans-left 1.2s linear forwards 1.8s;
@@ -117,7 +117,7 @@
 
 
         .progress.yellow .progress-bar{
-            border-color: #fdba04;
+            border-color: #fdcc52;
         }
         .progress.yellow .progress-left .progress-bar{
             animation: pending-plans-left 1.2s linear forwards 1.8s;
@@ -149,14 +149,14 @@
 
         .plans-dropdown{
             color: #fff;
-            background-color: #737070;
+            background-color: #9e9e9e;
             border:0px;
         }
 
         .plans-dropdown:hover {
             color: #fff;
-            background-color: #737070;
-            border-color: #737070;
+            background-color: #9e9e9e;
+            border-color: #9e9e9e;
         }
 
         .dropdown-item {
@@ -246,7 +246,7 @@
             </div>
             <div class="row pt-4">
                 <div class="col-md-12">
-                    <p style="font-size: 20px; font-family: 'Fjalla One', sans-serif; color: #006600;">Payment status</p>
+                    <p style="font-size: 20px; font-family: 'Fjalla One', sans-serif; color: #19A3B8;">Payment status</p>
                 </div>
             </div>
             <div class="row">

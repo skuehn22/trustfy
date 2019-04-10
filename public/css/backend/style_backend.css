@@ -25,7 +25,7 @@ body::after {
 }
 
 a {
-    color: #006600;
+    color: #19A3B8;
     text-decoration: none;
 }
 
@@ -36,8 +36,8 @@ a:hover {
 
 .btn-success {
     color: #fff;
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
 }
 
 
@@ -68,8 +68,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
     height: 35px;
     font-size: 16px;
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
 
 }
 
@@ -193,7 +193,7 @@ Header
     display: inline-block;
     height: 3px;
     width: 24px;
-    background: #006600;
+    background: #19A3B8;
 }
 
 .cd-nav-trigger a{
@@ -440,7 +440,7 @@ Sidebar
     z-index: 1;
     width: 100%;
     padding: 45px 0 0;
-    background-color: #006600;
+    background-color: #19A3B8;
     visibility: hidden;
     opacity: 0;
     max-height: 100vh;
@@ -548,7 +548,7 @@ Sidebar
     display: block;
     margin: 0 5%;
     padding: 1em 0;
-    background-color: #ff9046;
+    background-color: #fdcc52;
     border-radius: .25em;
     border: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -606,12 +606,12 @@ Sidebar
     }
     .cd-side-nav .active > a {
         /* current page */
-        box-shadow: inset 3px 0 0 #ff9046;
+        box-shadow: inset 3px 0 0 #fdcc52;
         background-color: #9e9e9e;
     }
 
     .cd-side-nav .active > a {
-        box-shadow: inset 3px 0 0 #ff9046;
+        box-shadow: inset 3px 0 0 #fdcc52;
         background-color: #9e9e9e;
     }
 
@@ -706,7 +706,7 @@ Sidebar
     width: 100%;
     display: none;
     background-color: #9e9e9e;
-    box-shadow: inset 3px 0 0 #ff9046;
+    box-shadow: inset 3px 0 0 #fdcc52;
 }
 
 
@@ -760,14 +760,14 @@ ul.navbar-nav li ul{
         padding: 1em;
     }
     .no-touch .has-children ul a:hover {
-        color: #006600;
+        color: #19A3B8;
     }
     .has-children > a::after {
         display: none;
     }
     .cd-side-nav .has-children.selected > a {
         /* focus state -> show sub pages */
-        background-color: #ff9046;
+        background-color: #fdcc52;
     }
     .cd-top-nav .has-children {
         position: relative;

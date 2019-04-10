@@ -59,7 +59,7 @@
                 <div class="form-row py-2">
                     <label class="col-md-3 col-form-label" for="city">Your Color</label>
                     <div id="color-picker-component" class="input-group colorpicker-component col-md-7 p-0">
-                        <input type="text" value="{{ $company->color or "#006600" }}" class="form-control  col-md-12" name="color"/><span class="input-group-addon"><i></i></span>
+                        <input type="text" value="{{ $company->color or "#19A3B8" }}" class="form-control  col-md-12" name="color"/><span class="input-group-addon"><i></i></span>
                     </div>
                 </div>
             </div>

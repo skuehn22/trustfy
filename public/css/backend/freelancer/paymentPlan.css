@@ -61,8 +61,8 @@ a:hover {
 
 .btn-success {
     color: #fff;
-    background-color: #006600;
-    border-color: #006600;
+    background-color: #19A3B8;
+    border-color: #19A3B8;
 }
 
 
@@ -198,7 +198,7 @@ a:not([href]):not([tabindex]) {
 }
 
 .successful{
-    color: #006600;
+    color: #19A3B8;
     font-weight: 600;
     font-style: italic;
     float: right;

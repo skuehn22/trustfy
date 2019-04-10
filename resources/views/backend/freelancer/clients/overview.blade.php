@@ -24,7 +24,7 @@
       .table-title {
           padding-bottom: 15px;
           background: #fff;
-          color: #006600;
+          color: #19A3B8;
           padding: 16px 30px;
           margin: -20px -25px 10px;
           border-radius: 3px 3px 0 0;

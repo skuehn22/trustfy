@@ -348,12 +348,12 @@
                         <tr>
                             <td class="content-block">
                                 <span class="apple-link" style="color: #1b1e21">Powered by Trustfy</span>
-                                <br> <span  style="color: #1b1e21">The secure escrow payment system for freelancers and their clients. </span><a style="color:#006600; text-decoration: none;" href="https://www.trustfy.io">Get started</a>.
+                                <br> <span  style="color: #1b1e21">The secure escrow payment system for freelancers and their clients. </span><a style="color:#19A3B8; text-decoration: none;" href="https://www.trustfy.io">Get started</a>.
                             </td>
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                <span  style="color: #1b1e21"> © <a href="https://www.trustfy.io" style="color:#006600; text-decoration: none;">trustfy.io</a> 2019. All Rights Reserved.</span>
+                                <span  style="color: #1b1e21"> © <a href="https://www.trustfy.io" style="color:#19A3B8; text-decoration: none;">trustfy.io</a> 2019. All Rights Reserved.</span>
                             </td>
                         </tr>
                     </table>

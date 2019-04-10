@@ -404,7 +404,7 @@ class PaymentPlanController extends Controller
 
                 $data['content'] .='
             <p>
-               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
+               <a href="https://www.trustfy.io/login" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
             </p>';
 
                 $msg_obj = new MessagesClass();
@@ -442,7 +442,7 @@ class PaymentPlanController extends Controller
 
             $data['content'] .='
             <p>
-               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
+               <a href="https://www.trustfy.io/login" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
             </p>';
 
             $msg_obj = new MessagesClass();
@@ -634,7 +634,7 @@ class PaymentPlanController extends Controller
         $data['content'] .='
 
             <p><br><br>
-             <a href="'.$planUrl.'" class="btn btn-primary"  style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank">View Plan</a>
+             <a href="'.$planUrl.'" class="btn btn-primary"  style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank">View Plan</a>
             </p>
            
         ';
@@ -699,7 +699,7 @@ class PaymentPlanController extends Controller
 
 
         <p>
-            <a href="'.$planUrl.'"  style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank" class="btn btn-primary">Mark Transfer Complete</a>
+            <a href="'.$planUrl.'"  style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" target="_blank" class="btn btn-primary">Mark Transfer Complete</a>
         </p>
         
         ';

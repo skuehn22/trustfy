@@ -84,7 +84,7 @@ class CompanyClass extends Controller
 
         $data['content'] .='
             <p>
-               <a href="https://www.trustfy.io/login" style="background-color: #006600; text-decoration: none; border-color: #006600; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
+               <a href="https://www.trustfy.io/login" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 14px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Add Account Details</a>                  
             </p>';
 
         $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)

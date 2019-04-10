@@ -36,7 +36,7 @@
         }
 
         .invoice table tfoot tr:last-child td {
-            color: #006600;
+            color: #19A3B8;
             font-size: 1.4em;
             border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
         }
