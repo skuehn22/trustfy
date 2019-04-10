@@ -77,7 +77,7 @@
                         <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We help get your money when work is done</h2>
                         <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">For freelancer and who work with them</h4>
 
-                    <a href="#contact" class="btn btn-sign btn-xl js-scroll-trigger">Sign up for free</a>
+                    <a href="/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">Sign up for free</a>
                 </div>
                 <!--
                 <div class="device-container">
@@ -141,7 +141,7 @@
 </div>
 
 
-<div class="section section-demo">
+<div class="section section-demo d-none d-lg-block d-md-block d-xl-block">
     <div class="container">
         <div class="row text-center">
 
@@ -175,6 +175,40 @@
     </div>
 </div>
 
+
+<div class="section section-demo d-lg-none d-md-none d-xl-none">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-8">
+                <div class="container-fluid ">
+                    <div class="row how-text">
+                        <div class="offset-md-2 col-md-10 how-text text-center">
+                            <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
+                            <p class="how-text pt-0"> <br>The client opens it up and <br> makes in a escrow account. <br> The money is now safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="demo-image">
+                    <div class="col-md-9 float-right">
+                        <div class="device-container">
+                            <div class="device-mockup iphone6_plus portrait black">
+                                <div class="device">
+                                    <div class="screen">
+                                        <img src="{{ asset('img/cc-payment.png') }}" class="img-fluid" alt="No more deposits in blind faith">
+                                    </div>
+                                    <div class="button">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div class="section section-demo">
     <div class="container">

@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #dadada">
 <!-- Navigation -->
 
 <div class="row">
