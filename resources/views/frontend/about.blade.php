@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="container" style="background-color: #fff;">
+    <div class="container content-container" style="background-color: #fff;">
         <br><br>
         <div class="row">
             <div class="col-xs-12 col-md-12 content">

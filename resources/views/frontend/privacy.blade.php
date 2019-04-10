@@ -4,7 +4,7 @@
     <meta name="description" content="Here you find trustfy.io privacy conditions">
 @endsection
 @section('content')
-    <div class="container pb-5">
+    <div class="container  content-container pb-5">
         <br><br>
         <div class="row privacy-container">
             <div class="col-md-12" style="text-align: center;">

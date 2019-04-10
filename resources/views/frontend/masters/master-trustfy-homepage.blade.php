@@ -103,14 +103,14 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h2 class="text-muted">An easy to use freelance escrow system</h2>
-                <p class="homepage-txt text-center text-muted" style="margin-top:0px; padding-top: 14px;">
+                <p class="homepage-txt text-center text-muted" style="margin-top:0px; padding-top: 14px; font-size: 19px;">
                     It’s never been easier to ask a client for a secure deposit!
                 </p>
-                <p class="text-muted">Trustfy builds trust between you and your client:</p>
-                   <p class="text-muted">
+                <p class="text-muted" style="font-size: 19px;">Trustfy builds trust between you and your client</p>
+                   <p class="text-muted" style="font-size: 19px;">
                        Your customer can make payments with peace of mind and you can work with confidence, knowing the money is there for you.
                 </p>
-
+                <hr>
             </div>
         </div>
     </div>
@@ -294,11 +294,11 @@
     <div class="container">
         <div class="section-heading text-center">
             <h3 class="text-muted">All for a fair fee of 3%</h3>
-            <p class="text-muted">You only pay when you get paid.</p>
-            <p class="text-muted">No complex pricing. No sign-up fees. No hidden costs. </p>
+            <p class="text-muted" style="font-size: 20px;">You only pay when you get paid.</p>
+            <p class="text-muted" style="font-size: 20px;">No complex pricing. No sign-up fees. No hidden costs. </p>
             <hr>
             <p><br>
-                <a href="#contact" class="btn btn-start btn-xl js-scroll-trigger">GET STARTED</a>
+                <a href="/beta-register" class="btn btn-start btn-xl js-scroll-trigger">GET STARTED</a>
             </p>
         </div>
     </div>
