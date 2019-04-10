@@ -63,7 +63,7 @@
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-lg-4 my-auto">
-                <img src="{{ asset('img/jagd.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
+                <img src="{{ asset('img/men.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
             </div>
             <div class="col-lg-8 my-auto">
                 <div class="header-content mx-auto">
@@ -74,8 +74,8 @@
                     @endif
                     <h1 class="mb-5" style="text-transform: uppercase;text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700">Get paid on time</h1>
                     <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Are you regularly chasing payments?</h2>
-                        <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We help get your money when work is done</h2>
-                        <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">For freelancer and who work with them</h4>
+                        <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We get you paid when your work is done.</h2>
+                        <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Payment protection for freelancers and their clients</h4>
 
                     <a href="/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">Sign up for free</a>
                 </div>
@@ -102,13 +102,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2>Trustfy is an easy to use escrow system for freelancer</h2>
-                <p class="homepage-txt text-center" style="margin-top:0px; padding-top: 14px;">
-                    It has never been easier to ask a client for a trustworthy deposit! Trustfy creates trust between freelancers and their customers.
-                    <br>
-                    The freelancer knows that the money is there and the customer is not afraid that the freelancer disappears with the deposit.
+                <h2 class="text-muted">An easy to use freelance escrow system</h2>
+                <p class="homepage-txt text-center text-muted" style="margin-top:0px; padding-top: 14px;">
+                    It’s never been easier to ask a client for a secure deposit!
                 </p>
-                <p><hr></p>
+                <p class="text-muted">Trustfy builds trust between you and your client:</p>
+                   <p class="text-muted">
+                       Your customer can make payments with peace of mind and you can work with confidence, knowing the money is there for you.
+                </p>
+
             </div>
         </div>
     </div>
@@ -118,7 +120,7 @@
 <div class="section section-demo">
     <div class="container">
         <div class="section-heading text-center pb-5">
-            <h2>How it works</h2>
+            <h2 class="text-muted">How it works</h2>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -126,7 +128,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">1</span>
-                           <p class="how-text pt-0"> <br>The freelancer creates a payment plan and sends it to the client.</p>
+                           <p class="how-text pt-0"> <br>Click together a payment plan<br> and send it to your client.</p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +168,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
-                            <p class="how-text pt-0"> <br>The client opens it up and <br> makes in a escrow account. <br> The money is now safe.</p>
+                            <p class="how-text pt-0"> <br>Your client receives the plan and <br>makes a secure payment into escrow.</p>
                         </div>
                     </div>
                 </div>
@@ -184,7 +186,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
-                            <p class="how-text pt-0"> <br>The client opens it up and <br> makes in a escrow account. <br> The money is now safe.</p>
+                            <p class="how-text pt-0"> <br>Your client receives the plan and <br>makes a secure payment into escrow.</p>
                         </div>
                     </div>
                 </div>
@@ -220,7 +222,9 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center" style="padding-top: 85px;">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">3</span>
-                            <p class="how-text pt-0"> <br>After the freelancer finshed the work, <br>the mone will be relased</p>
+                            <p class="how-text pt-0"> <br>3.	The money is held until a project or milestone is <br>complete-
+                                then your payment is released!
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -249,7 +253,7 @@
 <section class="section section-demo freelancer" id="features" style="padding-bottom:10px;">
     <div class="container">
         <div class="section-heading text-center">
-            <h2>Advantages for freelancers</h2>
+            <h2 class="text-muted">Advantages</h2>
 
             <hr>
         </div>
@@ -259,20 +263,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-3 text-center">
+                                <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-file-invoice-dollar advantages-icon"></i> <br>
                                     <span class="advantages-txt">No more chasing payment</span>
                                 </div>
-                                <div class="col-md-3 text-center">
+                                <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-meteor advantages-icon"></i> <br>
                                     <span class="advantages-txt"> Get paid much faster</span>
                                 </div>
-                                <div class="col-md-3 text-center">
+                                <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-money-bill-alt advantages-icon"></i><br>
                                     <span class="advantages-txt">Confidence in cash flow</span>
 
                                 </div>
-                                <div class="col-md-3 text-center">
+                                <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-lock advantages-icon"></i><br>
                                     <span class="advantages-txt">Protection from unresponsive clients</span>
                                 </div>
@@ -289,8 +293,9 @@
 <section class="features" id="features">
     <div class="container">
         <div class="section-heading text-center">
-            <h2>All for a fair fee</h2>
-            <p class="text-muted">Trustfy takes a fair fee of 3%. <br>No hidden extra costs. The costs are only due when the freelancer gets their money.</p>
+            <h3 class="text-muted">All for a fair fee of 3%</h3>
+            <p class="text-muted">You only pay when you get paid.</p>
+            <p class="text-muted">No complex pricing. No sign-up fees. No hidden costs. </p>
             <hr>
             <p><br>
                 <a href="#contact" class="btn btn-start btn-xl js-scroll-trigger">GET STARTED</a>
@@ -366,7 +371,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto" style="text-align: center; ">
-                <h4>Sign up for the news!</h4>
+                <h4 class="text-muted">Sign up for the news!</h4>
                 <div class="badges">
 
                     <form class="form-inline" method="POST" action="/newsletter-sign-up">
