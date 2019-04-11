@@ -74,8 +74,8 @@
                     @endif
                     <h1 class="mb-5" style="text-transform: uppercase;text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700">Get paid on time</h1>
                     <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Are you regularly chasing payments?</h2>
-                        <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We get you paid when your work is done.</h2>
-                        <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Payment protection for freelancers and their clients</h4>
+                        <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We get you paid on time.</h2>
+                        <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Payment protection for freelance work</h4>
 
                     <a href="/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">Sign up for free</a>
                 </div>
@@ -128,7 +128,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">1</span>
-                           <p class="how-text pt-0"> <br>Click together a payment plan<br> and send it to your client.</p>
+                           <p class="how-text pt-0"> <br>Select how an when you'd like to <br>get paid and share it with your client.</p>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
-                            <p class="how-text pt-0"> <br>Your client receives the plan and <br>makes a secure payment into escrow.</p>
+                            <p class="how-text pt-0"> <br>Your client receives the request <br>and makes a payment into a secure account.</p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
-                            <p class="how-text pt-0"> <br>Your client receives the plan and <br>makes a secure payment into escrow.</p>
+                            <p class="how-text pt-0"> <br>Your client receives the request and  <br> makes a payment into a secure account.</p>
                         </div>
                     </div>
                 </div>
@@ -222,8 +222,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center" style="padding-top: 85px;">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">3</span>
-                            <p class="how-text pt-0"> <br>The money is held until a project or milestone is <br>complete-
-                                then your payment is released!
+                            <p class="how-text pt-0"> <br>The money is held securely until a project  <br>or milestone iscomplete - then your payment is released!
                             </p>
                         </div>
                     </div>
