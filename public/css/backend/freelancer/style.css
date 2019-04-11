@@ -33,6 +33,12 @@ h5{
     font-size: 12px;
 }
 
+.btn-success:hover {
+    color: #fff;
+    background-color: #949494;
+    border-color: #949494;
+}
+
 a:hover {
     color: #16150f;
     text-decoration: underline;
