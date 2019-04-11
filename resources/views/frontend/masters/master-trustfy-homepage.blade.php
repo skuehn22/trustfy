@@ -222,7 +222,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center" style="padding-top: 85px;">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">3</span>
-                            <p class="how-text pt-0"> <br>3.	The money is held until a project or milestone is <br>complete-
+                            <p class="how-text pt-0"> <br>The money is held until a project or milestone is <br>complete-
                                 then your payment is released!
                             </p>
                         </div>
