@@ -15,6 +15,12 @@ a:hover {
     min-height: 680px;
 }
 
+.btn-success:hover {
+    color: #fff;
+    background-color: #949494;
+    border-color: #949494;
+}
+
 .card {
     position: relative;
     display: -webkit-box;
