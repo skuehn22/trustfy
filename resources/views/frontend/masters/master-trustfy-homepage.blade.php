@@ -119,13 +119,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 class="text-muted">An easy to use freelance escrow system</h2>
+                <h2 class="text-muted">An easy to use escrow payment system<br>that builds trust between you and your client.</h2>
                 <p class="homepage-txt text-center text-muted" style="margin-top:0px; padding-top: 14px; font-size: 19px;">
-                    It’s never been easier to ask a client for a secure deposit!
-                </p>
-                <p class="text-muted" style="font-size: 19px;">Trustfy builds trust between you and your client</p>
-                   <p class="text-muted" style="font-size: 19px;">
-                       Your customer can make payments with peace of mind and you can work with confidence, knowing the money is there for you.
+                    Your client makes a payment into a secure Trustfy account and<br>you can work with confidence knowing your money is there.
                 </p>
                 <hr>
             </div>
