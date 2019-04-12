@@ -3,6 +3,7 @@
 <div class="cd-nugget-info d-none">
     <h1>Welcome to Trustfy</h1>
     <h2>We’re glad you’re here!</h2>
+    <br>
     <button id="cd-tour-trigger-step1" class="cd-btn">Get Started</button>
     <button id="cd-tour-trigger-step2" class="cd-btn d-none">Step 1 of ? </button>
     <button id="cd-tour-trigger-step3" class="cd-btn d-none">Step 2 of ? </button>

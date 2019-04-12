@@ -34,7 +34,7 @@ xnugget info
     appearance: none;
     border: none;
     border-radius: 50em;
-    background: #ff962c;
+    background: #fdcc52;
     padding: 1em 2em;
     color: #fefffb;
     font-weight: bold;
@@ -180,7 +180,7 @@ Main Components
     width: 10px;
     height: 10px;
     border-radius: inherit;
-    background: #ff962c;
+    background: #fdcc52;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
@@ -343,7 +343,7 @@ Main Components
 
 @-webkit-keyframes cd-pulse {
     0% {
-        box-shadow: 0 0 0 0 #ff962c;
+        box-shadow: 0 0 0 0 #fdcc52;
     }
     100% {
         box-shadow: 0 0 0 20px rgba(255, 150, 44, 0);
@@ -351,7 +351,7 @@ Main Components
 }
 @-moz-keyframes cd-pulse {
     0% {
-        box-shadow: 0 0 0 0 #ff962c;
+        box-shadow: 0 0 0 0 #fdcc52;
     }
     100% {
         box-shadow: 0 0 0 20px rgba(255, 150, 44, 0);
@@ -359,7 +359,7 @@ Main Components
 }
 @keyframes cd-pulse {
     0% {
-        box-shadow: 0 0 0 0 #ff962c;
+        box-shadow: 0 0 0 0 #fdcc52;
     }
     100% {
         box-shadow: 0 0 0 20px rgba(255, 150, 44, 0);
@@ -778,7 +778,7 @@ xapp prototype - no need to import this in production
     appearance: none;
     border: none;
     border-radius: 50em;
-    background: #ff962c;
+    background: #fdcc52;
     padding: 1em 2em;
     color: #fefffb;
     font-weight: bold;
@@ -818,7 +818,7 @@ xapp prototype - no need to import this in production
     appearance: none;
     border: none;
     border-radius: 50em;
-    background: #ff962c;
+    background: #fdcc52;
     padding: 1em 2em;
     color: #fefffb;
     font-weight: bold;
@@ -884,7 +884,7 @@ xapp prototype - no need to import this in production
     appearance: none;
     border: none;
     border-radius: 50em;
-    background: #ff962c;
+    background: #fdcc52;
     padding: 1em 2em;
     color: #fefffb;
     font-weight: bold;
@@ -933,7 +933,7 @@ xapp prototype - no need to import this in production
     appearance: none;
     border: none;
     border-radius: 50em;
-    background: #ff962c;
+    background: #fdcc52;
     padding: 1em 2em;
     color: #fefffb;
     font-weight: bold;
