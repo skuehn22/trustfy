@@ -778,7 +778,7 @@ class MangoClass extends Controller
 
 
 
-    public function createPayOut($author, $milestone, $bank, $wallet){
+    public function createPayOut($author, $milestone, $bank, $wallet, $user){
         try {
 
             //$wallet = "61451381";
@@ -794,7 +794,13 @@ class MangoClass extends Controller
             $PayOut->DebitedFunds->Amount = $milestone->amount*100;
             $PayOut->Fees = new \MangoPay\Money();
             $PayOut->Fees->Currency = $milestone->currency;
-            $PayOut->Fees->Amount = $milestone->amount*0.03*100;
+
+            if($user->free==1){
+                $PayOut->Fees->Amount = 0;
+            }else{
+                $PayOut->Fees->Amount = $milestone->amount*0.03*100;
+            }
+            
             $PayOut->PaymentType = "BANK_WIRE";
             $PayOut->MeanOfPaymentDetails = new \MangoPay\PayOutPaymentDetailsBankWire();
             $PayOut->MeanOfPaymentDetails->BankAccountId = $bank->mango_bank_id;

@@ -277,6 +277,17 @@ class LoginController extends Controller
     }
 
 
+    public function betaRegisterNewFree() {
+
+
+        $status = 2203;
+
+
+        return view('auth.register', compact('status'));
+
+    }
+
+
     public function betaRegisterSave() {
 
         $ll = App::getLocale();
@@ -311,18 +322,39 @@ class LoginController extends Controller
 
                 $user = Users::where("email", "=", $_POST['email'])->first();
                 $user->active = 1;
+                $user->free = 0;
                 $user->save();
                 self::login();
 
             }else{
 
-                $subject = "Register - Trustfy";
-                $data['content'] = $_POST['email'];
+                if(isset($_POST['status']) && ($_POST['status'] == 2203)){
 
-                $msg_obj = new MessagesClass();
-                $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null, null);
+                    $subject = "Free Trial Register";
+                    $data['content'] = $_POST['email'];
 
-                return back()->withInput()->with('success', 'Thank you for registering. <br> We will get back to you as soon as possible.');
+                    $msg_obj = new MessagesClass();
+                    $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null, null);
+
+                    $user = Users::where("email", "=", $_POST['email'])->first();
+                    $user->active = 1;
+                    $user->free = 1;
+                    $user->save();
+                    self::login();
+
+
+                }else{
+
+                    $subject = "Register - Trustfy";
+                    $data['content'] = $_POST['email'];
+
+                    $msg_obj = new MessagesClass();
+                    $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null, null);
+
+                    return back()->withInput()->with('success', 'Thank you for registering. <br> We will get back to you as soon as possible.');
+
+                }
+
             }
 
 
