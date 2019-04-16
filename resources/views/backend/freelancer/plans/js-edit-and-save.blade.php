@@ -84,8 +84,7 @@
 
 
                     var temp = $('#clients').val();
-
-                    alert(temp);
+                    
 
                     if(temp == "0"){
                         $('#clients').focus();
