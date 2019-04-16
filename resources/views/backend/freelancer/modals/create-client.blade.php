@@ -6,39 +6,68 @@
                 <div class="clients">
                     <div class="row section-heading">
                         <div class="col-md-6">
-                            <h4>New Client</h4>
+                            <h4>New Client</h4> create a client or <a href="#" id="load-demo-client">load demo client</a>
                         </div>
                     </div>
                     <form id="#client-data">
                         <div class="row">
                             <div class="col-md-6">
+                                <h5 class="pb-3">General Information</h5>
                                 <div class="form-row py-2">
-                                    <label class="col-md-4 col-form-label" for="client-firstname">First name</label>
+                                    <label class="col-md-4 col-form-label" for="firstname">First name</label>
                                     <input type="text" class="form-control col-md-7" id="client-firstname" name="client-firstname" required>
                                 </div>
                                 <div class="form-row py-2">
-                                    <label class="col-md-4 col-form-label"  for="client-lastname">Last name</label>
+                                    <label class="col-md-4 col-form-label"  for="lastname">Last name</label>
                                     <input type="text" class="form-control col-md-7" id="client-lastname" name="client-lastname" required>
                                 </div>
                                 <div class="form-row py-2">
                                     <label class="col-md-4 col-form-label"  for="client-mail">Email address</label>
                                     <input type="email" class="form-control col-md-7" id="client-mail" name="client-mail" aria-describedby="emailHelp" required>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-row py-2">
                                     <label class="col-md-4 col-form-label"  for="client-phone">Phone</label>
-                                    <input type="text" class="form-control col-md-7" id="client-phone" name="client-phone" required>
+                                    <input type="text" class="form-control col-md-7" id="client-phone" name="client-phone">
                                 </div>
                                 <div class="form-row py-2">
                                     <label class="col-md-4 col-form-label"  for="client-mobile">Mobile</label>
-                                    <input type="text" class="form-control col-md-7" id="client-mobile" name="client-mobile" required>
+                                    <input type="text" class="form-control col-md-7" id="client-mobile" name="client-mobile">
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="pb-3">Billing</h5>
+                                <div class="form-row py-2">
+                                    <label class="col-md-4 col-form-label" for="currency">Currency</label>
+                                    <select id="currency" name="currency" class="col-md-7 col-form-label">
+                                        <option value="eur">EUR</option>
+                                        <option value="gbp">GBP</option>
+                                        <option value="us">US</option>
+                                    </select>
                                 </div>
                                 <div class="form-row py-2">
-                                    <div class="col-md-11 float-right text-right">
-                                        <button type="button" class="btn btn-classic-no-width save-client">Save Client</button>
-                                    </div>
+                                    <label class="col-md-4 col-form-label"  for="client-address1">Address 1</label>
+                                    <input type="text" class="form-control col-md-7" id="client-address1" name="client-address1">
                                 </div>
+                                <div class="form-row py-2">
+                                    <label class="col-md-4 col-form-label"  for="client-address2">Address 2</label>
+                                    <input type="text" class="form-control col-md-7" id="client-address2" name="client-address2">
+                                </div>
+                                <div class="form-row py-2">
+                                    <label class="col-md-4 col-form-label"  for="city">City</label>
+                                    <input type="text" class="form-control col-md-7" id="client-city" name="client-city">
+                                </div>
+                                <div class="form-row py-2">
+                                    <label class="col-md-4 col-form-label" for="country">Country</label>
+
+                                    {!! Form::select('country', $countries, null, ['id' => 'country', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
+
+                                </div>
+                                <div class="form-row pt-3 py-2 pt-5">
+                                    <button type="button" class="btn btn-classic-no-width save-client">Save Client</button>
+                                </div>
+
                             </div>
                         </div>
                     </form>
@@ -62,6 +91,11 @@
                     "phone" : $("#client-phone").val(),
                     "mobile" : $("#client-mobile").val(),
                     "mail" : $("#client-mail").val(),
+                    "currency" : $("#currency").val(),
+                    "address1" : $("#client-address1").val(),
+                    "address2" : $("#client-address2").val(),
+                    "city" : $("#client-city").val(),
+                    "country" : $("#country").val(),
                 };
 
                 data["clients"] = JSON.stringify(obj);
