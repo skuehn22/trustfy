@@ -48,11 +48,11 @@
         </div>
     </div>
 
+    @if(count($clients)>0)
 
     <div class="form-group">
         <div class="form-inline">
         <label class="col-md-2 pl-0 col-form-label" for="clients">Client*</label>
-        @if(count($clients)>0)
             <select name="clients" id="clients" class="col-md-3" required>
                 <option></option>
                 @foreach($clients as $client)
@@ -64,19 +64,20 @@
                 @endforeach
             </select>
             <div class="help-block with-errors"></div>
-        @else
-                <div class="form-group">
-                    <div class="form-inline">
-            <span id="client-list"></span>
-                    </div></div>
-
-            <div class="pt-2">
-                <div  id="no-client"> No clients saved. <a href="/{{$blade["ll"]}}/freelancer/clients/new">Create Client</a></div>
-            </div>
-
-        @endif
         </div>
     </div>
+
+    @else
+
+       <div class="form-group" id="client-list">
+           <div class="form-inline">
+           <label class="col-md-2 pl-0 col-form-label" for="clients" id="client-lable">Client*</label>
+           <div class="col-md-3" id="no-client"> No clients saved. <a href="#" id="create-client-fly">Create Client</a></div>
+           </div>
+       </div>
+
+    @endif
+
 
 <div class="form-row py-2">
     <div class="col-md-5 pt-1 text-right float-right">

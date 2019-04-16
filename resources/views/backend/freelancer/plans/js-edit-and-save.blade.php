@@ -77,7 +77,30 @@
                     return false;
                 }
 
+                alert(stepNumber);
 
+                if(stepNumber == 0){
+
+
+
+                    var temp = $('#clients').val();
+
+                    alert(temp);
+
+                    if(temp == "0"){
+                        $('#clients').focus();
+                        return false;
+                    }
+
+
+                    if(temp = "undefined"){
+                        $("#client-lable").css({ "color":"red" });
+                        //$('#no-client').focus();
+                        return false;
+                    }
+
+
+                }
 
                 if(stepNumber == 1 ){
 
@@ -158,6 +181,23 @@
         $("#create-client-fly").on("click", function() {
             $('#create-client-modal').modal('show');
         });
+
+        // External Button Events
+        $("#load-demo-client").on("click", function() {
+
+            $('#client-firstname').val('John');
+            $('#client-lastname').val('Doe');
+            $('#client-mail').val('info@trustfy.io');
+            $('#client-phone').val('');
+            $('#client-mobile').val('');
+            $('#client-address1').val('Mainstreet 1');
+            $('#client-address2').val('');
+            $('#client-city').val('Dublin');
+            $("#country option[value=IE]").attr('selected', 'selected');
+
+        });
+
+
 
         // External Button Events
         $(".close-saved").on("click", function() {

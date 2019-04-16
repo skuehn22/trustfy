@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Backend\Freelancer;
 
 // Libraries
-use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash, Session;
+use App, Auth, Request, Redirect, Form, DB, MangoPay, Mail, Hash, Session, Lang;
 
 use App\Http\Controllers\Controller;
 use App\DatabaseModels\Projects;
@@ -20,6 +20,7 @@ use App\Classes\StateClass;
 use App\DatabaseModels\PlanDocs;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Companies;
+use App\DatabaseModels\Countries;
 
 use App\Classes\MessagesClass;
 use Faker\Provider\Company;
@@ -68,6 +69,8 @@ class PlansManagementController extends Controller
 
             Session::flash('success', 'The plan was sent successfully.');
         }
+
+
 
 
         return view('backend.freelancer.plans.overview', compact('blade', 'plans', 'company'));
@@ -120,7 +123,10 @@ class PlansManagementController extends Controller
             $company = App\DatabaseModels\Companies::where("users_fk", "=", $blade["user"]->id)
                 ->first();
 
-            return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects', 'company'));
+            $countries= Countries::lists('country_name', 'alpha2_code');
+            $countries->prepend(Lang::get('freelancer_backend.please_select'), 0);
+
+            return view('backend.freelancer.plans.new', compact('blade', 'clients', 'plan', 'types', 'selected_project', 'projects', 'company', 'countries'));
 
         }else {
 

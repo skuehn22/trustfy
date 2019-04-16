@@ -216,7 +216,7 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>Name</th>
+                <th style="width: 20%;">Name</th>
                 <th>E-Mail</th>
                 <th></th>
             </tr>
