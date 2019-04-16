@@ -68,7 +68,7 @@
     <nav class="cd-side-nav">
         <ul class="navbar-nav">
             <li class="cd-label">Main</li>
-            <li class="has-children dashboard-sidebar">
+            <li class="dashboard-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i> <span class="pl-2">Dashboard</span>
                 </a>
@@ -127,12 +127,12 @@
         </ul>
         <ul>
             <li class="cd-label">Information</li>
-            <li class="has-children settings-sidebar">
+            <li class="settings-sidebar">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/settings') }}">
                     <i class="fas fa-cog"></i><span class="pl-2"> Settings</span>
                 </a>
             </li>
-            <li class="has-children tour-sidebar">
+            <li class="has-children tour-sidebar d-none d-sm-block d-md-block d-lg-block d-xl-block">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard?tour=activate') }}">
                     <i class="fas fa-eye"></i> <span class="pl-2">Start Tour</span>
                 </a>
