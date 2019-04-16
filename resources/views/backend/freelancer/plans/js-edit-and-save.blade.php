@@ -77,14 +77,13 @@
                     return false;
                 }
 
-                alert(stepNumber);
 
                 if(stepNumber == 0){
 
 
 
                     var temp = $('#clients').val();
-                    
+                  
 
                     if(temp == "0"){
                         $('#clients').focus();
@@ -92,7 +91,9 @@
                     }
 
 
-                    if(temp = "undefined"){
+                    if(temp == "undefined"){
+
+
                         $("#client-lable").css({ "color":"red" });
                         //$('#no-client').focus();
                         return false;
