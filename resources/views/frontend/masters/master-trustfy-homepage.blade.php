@@ -37,19 +37,19 @@
                     <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#home">Home</a>
+                    <a class="nav-link js-scroll-trigger" href="#home">{{ trans('index.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/about">About Us</a>
+                    <a class="nav-link js-scroll-trigger" href="/about">{{ trans('index.about_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    <a class="nav-link js-scroll-trigger" href="#contact">{{ trans('index.contact') }}</a>
                 </li>
                 <li class="nav-item">
                    <a class="nav-link" href="/faq">FAQ</a>
                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Sign in</a>
+                    <a class="nav-link" href="/login">{{ trans('index.sign_in') }}</a>
                </li>
                 <!--
                 <li class="nav-item">
@@ -74,12 +74,12 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                    <h1 class="mb-5" style="text-transform: uppercase;text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700">Get paid on time</h1>
-                    <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Are you regularly chasing payments?</h2>
-                        <h2 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">We get you paid on time.</h2>
-                        <h4 style="text-shadow: 1px 1px 1px #7b7b7b; font-weight: 700; padding-bottom: 15px;">Payment protection for freelance work</h4>
+                    <h1 class="mb-2">{{ trans('index.heading_1') }}</h1>
+                    <h2>{{ trans('index.heading_2') }}</h2>
+                    <h2>{{ trans('index.heading_3') }}</h2>
+                    <h4>{{ trans('index.heading_4') }}</h4>
 
-                    <a href="/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">Sign up for free</a>
+                    <a href="/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">{{ trans('index.sign_up') }}</a>
                 </div>
                 <!--
                 <div class="device-container">
@@ -104,9 +104,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2 class="text-muted">An easy to use escrow payment system<br>that builds trust between you and your client.</h2>
+                <h2 class="text-muted">    {!! trans('index.escrow') !!}</h2>
                 <p class="homepage-txt text-center text-muted" style="margin-top:0px; padding-top: 14px; font-size: 19px;">
-                    Your client makes a payment into a secure Trustfy account and<br>you can work with confidence knowing your money is there.
+                    {!! trans('index.escrow_sub') !!}
                 </p>
                 <hr>
             </div>
@@ -118,7 +118,7 @@
 <div class="section section-demo">
     <div class="container">
         <div class="section-heading text-center pb-5">
-            <h2 class="text-muted">How it works</h2>
+            <h2 class="text-muted">{!! trans('index.how') !!}</h2>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -126,7 +126,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">1</span>
-                           <p class="how-text pt-0"> <br>Select how an when you'd like to <br>get paid and share it with your client.</p>
+                           <p class="how-text pt-0"> {!! trans('index.how1') !!}</p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
-                            <p class="how-text pt-0"> <br>Your client receives the request <br>and makes a payment into a secure account.</p>
+                            <p class="how-text pt-0"> {!! trans('index.how2') !!}</p>
                         </div>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">2</span>
-                            <p class="how-text pt-0"> <br>Your client receives the request and  <br> makes a payment into a secure account.</p>
+                            <p class="how-text pt-0"> {!! trans('index.how2') !!}</p>
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
                     <div class="row how-text">
                         <div class="offset-md-2 col-md-10 how-text text-center" style="padding-top: 85px;">
                             <span class="bg-dark text-white rounded-circle px-3 py-2 mx-2 h3">3</span>
-                            <p class="how-text pt-0"> <br>The money is held securely until a project  <br>or milestone iscomplete - then your payment is released!
+                            <p class="how-text pt-0">{!! trans('index.how3') !!}
                             </p>
                         </div>
                     </div>
@@ -250,7 +250,7 @@
 <section class="section section-demo freelancer" id="features" style="padding-bottom:10px;">
     <div class="container">
         <div class="section-heading text-center">
-            <h2 class="text-muted">Advantages</h2>
+            <h2 class="text-muted">{!! trans('index.advantages') !!}</h2>
 
             <hr>
         </div>
@@ -262,20 +262,20 @@
                             <div class="row">
                                 <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-file-invoice-dollar advantages-icon"></i> <br>
-                                    <span class="advantages-txt">No more chasing payment</span>
+                                    <span class="advantages-txt">{!! trans('index.advantage1') !!}</span>
                                 </div>
                                 <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-meteor advantages-icon"></i> <br>
-                                    <span class="advantages-txt"> Get paid much faster</span>
+                                    <span class="advantages-txt"> {!! trans('index.advantage2') !!}</span>
                                 </div>
                                 <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-money-bill-alt advantages-icon"></i><br>
-                                    <span class="advantages-txt">Confidence in cash flow</span>
+                                    <span class="advantages-txt">{!! trans('index.advantage3') !!}</span>
 
                                 </div>
                                 <div class="col-md-3 text-center" style="padding-bottom: 50px;">
                                     <i class="fas fa-lock advantages-icon"></i><br>
-                                    <span class="advantages-txt">Protection from unresponsive clients</span>
+                                    <span class="advantages-txt">{!! trans('index.advantage4') !!}</span>
                                 </div>
                             </div>
                         </div>
@@ -290,12 +290,12 @@
 <section class="features" id="features">
     <div class="container">
         <div class="section-heading text-center">
-            <h3 class="text-muted">All for a fair fee of 3%</h3>
-            <p class="text-muted" style="font-size: 20px;">You only pay when you get paid.</p>
-            <p class="text-muted" style="font-size: 20px;">No complex pricing. No sign-up fees. No hidden costs. </p>
+            <h3 class="text-muted">{!! trans('index.fee') !!}</h3>
+            <p class="text-muted" style="font-size: 20px;">{!! trans('index.fee1') !!}</p>
+            <p class="text-muted" style="font-size: 20px;">{!! trans('index.fee2') !!}</p>
             <hr>
             <p><br>
-                <a href="/beta-register" class="btn btn-start btn-xl js-scroll-trigger">GET STARTED</a>
+                <a href="/beta-register" class="btn btn-start btn-xl js-scroll-trigger">{!! trans('index.get_started') !!}</a>
             </p>
         </div>
     </div>
@@ -368,14 +368,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto" style="text-align: center; ">
-                <h4 class="text-muted">Sign up for the news!</h4>
+                <h4 class="text-muted">{!! trans('index.news') !!}</h4>
                 <div class="badges">
 
                     <form class="form-inline" method="POST" action="/newsletter-sign-up">
                         <div class="input-group" style="width: 100%;">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input class="btn btn-lg" name="email-newsletter" id="email-newsletter" type="email" placeholder="Your Email" required>
-                            <button class="btn btn-info btn-lg" type="submit">Sign Up!</button>
+                            <input class="btn btn-lg" name="email-newsletter" id="email-newsletter" type="email" placeholder="{!! trans('index.your_mail') !!}" required>
+                            <button class="btn btn-info btn-lg" type="submit">{!! trans('index.sign_up2') !!}</button>
                         </div>
                     </form>
 
@@ -396,31 +396,31 @@
             <div class="offset-md-3 col-md-5">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h3>Get in Contact</h3>
-                        <h5>Give us a shout! We'd love to hear from you.</h5>
+                        <h3>{!! trans('index.contact_form') !!}</h3>
+                        <h5>{!! trans('index.contact1') !!}</h5>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="{!! trans('index.contactname') !!}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="E-Mail">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="{!! trans('index.contactmail') !!}">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <div class="form-group">
-                            <textarea class="form-control" rows="4" id="message" name="message" placeholder="Message" required></textarea>
+                            <textarea class="form-control" rows="4" id="message" name="message" placeholder="{!! trans('index.contactmsg') !!}" required></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <div class="form-group">
-                            <input class="btn btn-info" type="submit" value="Send">
+                            <input class="btn btn-info" type="submit" value="{!! trans('index.send') !!}">
                         </div>
                     </div>
                 </div>
@@ -431,12 +431,12 @@
             <div class="col-md-3">
                 <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
                 <p>
-                    We build trust between<br> freelancers and their clients
+                    {!! trans('index.claim') !!}
                 </p>
             </div>
             <div class="col-md-2">
-                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;">Terms</a></p>
-                <p style="padding-bottom: 10px;"><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
+                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;"> {!! trans('index.terms') !!}</a></p>
+                <p style="padding-bottom: 10px;"><a href="/en/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
                 <p><a href="/en/faq" style="color:#fff;">FAQ</a></p>
             </div>
             <div class="col-md-7">

@@ -27,6 +27,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{ asset('css/backend/freelancer/tour.css')}}" rel="stylesheet">
 
+    @if (env('APP_ENV')=='live')
+        @include('frontend.masters.elements.tracking')
+    @endif
+
+
     @yield('css')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

@@ -735,12 +735,39 @@ header.masthead .device-container .screen img {
     text-align: left;
   }
   header.masthead .header-content h1 {
-    font-size: 50px;
+    font-size: 47px;
   }
   header.masthead .device-container {
     max-width: 325px;
   }
 }
+
+.header-content h1{
+
+  text-shadow: 1px 1px 1px #7b7b7b;
+  font-weight: 700;
+  padding-bottom: 15px;
+  font-size: 35px;
+}
+
+.header-content h2{
+
+  text-shadow: 1px 1px 1px #7b7b7b;
+  font-weight: 700;
+  padding-bottom: 15px;
+  font-size: 27px;
+
+}
+
+.header-content h4{
+
+  text-shadow: 1px 1px 1px #7b7b7b;
+  font-weight: 700;
+  padding-bottom: 15px;
+  font-size: 20px;
+
+}
+
 
 section.download {
   position: relative;
