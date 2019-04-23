@@ -345,7 +345,7 @@
                                 <tr>
                                     <td style="text-align: center">
 
-                                        <hr style="height:1px; border:none; color:#767676; background-color:#767676; width:60%; text-align:center; margin: 0 auto 0 0;">
+                                        <br><br><br>
 
                                         <p style="font-size: 13px;"><strong>Need some help? We’re here for you!</strong></p>
 
