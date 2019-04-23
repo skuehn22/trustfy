@@ -26,7 +26,7 @@ return [
     'how' => 'How it works',
     'how1' => '<br>Select how an when you\'d like to <br>get paid and share it with your client.',
     'how2' => '<br>Your client receives the request <br>and makes a payment into a secure account.',
-    'how3' => '<br>The money is held securely until a project  <br>or milestone iscomplete - then your payment is released!',
+    'how3' => '<br>The money is held securely until a project  <br>or milestone is complete - then your payment is released!',
 
     'advantages' => 'Advantages',
     'advantage1' => 'No more chasing payment',
