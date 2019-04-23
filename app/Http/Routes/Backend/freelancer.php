@@ -78,6 +78,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer/settings/kyc-check', 'Backend\Freelancer\SettingsController@kycCheck') ;
     Route::any('/freelancer/settings/email-pref', 'Backend\Freelancer\SettingsController@saveMailPref') ;
 
+    Route::any('/freelancer/unsubscribe/{id}', 'Backend\Freelancer\SettingsController@unsubscribe') ;
 
 
     Route::any('/payment-plan/{hash}', 'Frontend\PaymentPlanController@index') ;

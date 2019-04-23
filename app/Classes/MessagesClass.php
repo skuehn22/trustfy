@@ -23,7 +23,7 @@ class MessagesClass  extends Controller
     public function send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements){
 
         Mail::send('emails.'.$mailTemplate, compact('data', 'logo', 'requirements'), function ($message) use ($recipient, $subject) {
-            $message->from('plan@trustfy.io', 'Trustfy - Payment Plans');
+            $message->from('anika@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->bcc('bcc@trustfy.io');
             $message->subject($subject);
@@ -120,5 +120,25 @@ class MessagesClass  extends Controller
         return $msg;
 
     }
+
+
+    public function welcome($user, $subject) {
+
+
+        $mailTemplate = "welcome";
+        $typ = 3;
+
+        $data['urlUnsubscribe'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/unsubscribe/".$user->id;
+        $data['content']="";
+
+        $this->send($mailTemplate, $user->email, $subject,  $data, null, null);
+        //$this->save($typ, null, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
+
+
+        $msg="";
+        return $msg;
+
+    }
+
 
 }

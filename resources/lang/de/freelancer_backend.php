@@ -12,7 +12,7 @@ return [
 
     /* Company Types */
     'company_types_1' => 'Freelancer',
-    'company_types_2' => 'Unternemen',
+    'company_types_2' => 'Unternehmen',
     'company_types_3' => 'Organisation',
 
 

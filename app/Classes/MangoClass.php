@@ -800,7 +800,7 @@ class MangoClass extends Controller
             }else{
                 $PayOut->Fees->Amount = $milestone->amount*0.03*100;
             }
-            
+
             $PayOut->PaymentType = "BANK_WIRE";
             $PayOut->MeanOfPaymentDetails = new \MangoPay\PayOutPaymentDetailsBankWire();
             $PayOut->MeanOfPaymentDetails->BankAccountId = $bank->mango_bank_id;

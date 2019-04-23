@@ -1,9 +1,8 @@
 @extends('frontend.masters.master-trustfy')
 
 @section('seo')
-    <title>Trustfy FAQ</title>
+    <title>Trustfy</title>
     <meta name="description" content="Here you will find the most frequently asked questions">
-
 @endsection
 @section('css')
     <style>
@@ -15,9 +14,9 @@
         <br><br>
         <div class="row">
             <div class="col-md-12 content">
-                <h1>{!! trans('index.faq') !!}</h1>
-                {!! trans('index.faq1') !!}
+                <h3> {!! $msg !!}</h3>
             </div>
         </div>
+        <br><br>
     </div>
 @endsection

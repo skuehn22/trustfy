@@ -23,7 +23,7 @@ use App\DatabaseModels\Plans;
 use App\DatabaseModels\Countries;
 use App\DatabaseModels\MangoKyc;
 use App\Classes\MangoClass;
-use App\Classes\CompanyClass;
+use App\Classes\MessagesClass;
 
 class SettingsController extends Controller
 {
@@ -60,9 +60,6 @@ class SettingsController extends Controller
             ->first();
 
         $company = $this->getCompany($blade["user"]);
-
-
-
 
 
         if(isset($company)){
@@ -609,6 +606,36 @@ class SettingsController extends Controller
     }
 
 
+    public function unsubscribe($id) {
+
+        $userPref = UsersEmailPref::where("users_fk_id", "=",  $id)
+            ->first();
+
+        if(!$userPref){
+            $userPref = new UsersEmailPref();
+            $userPref->users_fk_id = $id;
+        }
+
+        $userPref->general = 0;
+        $userPref->save();
+
+        $user = Users::where("id", "=",  $id)
+            ->first();
+
+        $subject = "Unsubscribe User ".$user->email;
+        $data['content'] = $user->email;
+
+        $msg_obj = new MessagesClass();
+        $msg_obj->sendStandardMail($subject, $data, 'sebastian@trustfy.io', null, null);
+
+        $blade["locale"] = App::getLocale();
+
+        $msg = "We unsubscribed ".$user->email;
+
+        return view('frontend.msg', compact('blade', 'msg'));
+
+    }
+
     public function kycCheck(Request $request) {
 
         // Step1: create a document
@@ -688,7 +715,7 @@ class SettingsController extends Controller
                 $kyc_doc_obj->save();
 
 
-                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', '<i class="fas fa-check"></i> Settings saved');
+                return Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('success', '<i class="fas fa-check"></i> Document sent');
             }else{
                 Redirect::to($blade["ll"]."/freelancer/settings")->withInput()->with('error', "Error sending the document");
             }

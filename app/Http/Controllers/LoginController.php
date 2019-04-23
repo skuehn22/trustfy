@@ -326,6 +326,10 @@ class LoginController extends Controller
                 $user->save();
                 self::login();
 
+                $subject = "Welcome to Trustfy";
+                $msg_obj = new MessagesClass();
+                $msg_obj->welcome($user, $subject);
+
             }else{
 
                 if(isset($_POST['status']) && ($_POST['status'] == 2203)){
@@ -341,6 +345,11 @@ class LoginController extends Controller
                     $user->free = 1;
                     $user->save();
                     self::login();
+
+                    $subject = "Welcome to Trustfy";
+                    $msg_obj = new MessagesClass();
+                    $msg_obj->welcome($user, $subject);
+
 
 
                 }else{
