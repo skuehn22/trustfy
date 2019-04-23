@@ -52,7 +52,7 @@
     <div class="form-group">
         <div class="col-md-12 register pt-5">
             <p style="font-size: 18px; padding-bottom: 0px;">New to Trustfy?</p>
-            <a class="btn btn-secondary btn-register" href="/beta-register" role="button">Create an Account</a>
+            <a class="btn btn-secondary btn-register" href="/{{$blade["locale"]}}/beta-register" role="button">Create an Account</a>
             <br><br>
         </div>
 

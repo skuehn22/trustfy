@@ -40,16 +40,16 @@
                     <a class="nav-link js-scroll-trigger" href="#home">{{ trans('index.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/about">{{ trans('index.about_us') }}</a>
+                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/about">{{ trans('index.about_us') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">{{ trans('index.contact') }}</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="/faq">FAQ</a>
+                   <a class="nav-link" href="/{{$blade["locale"]}}/faq">FAQ</a>
                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">{{ trans('index.sign_in') }}</a>
+                    <a class="nav-link" href="/{{$blade["locale"]}}/login">{{ trans('index.sign_in') }}</a>
                </li>
                 <!--
                 <li class="nav-item">
@@ -79,7 +79,7 @@
                     <h2>{{ trans('index.heading_3') }}</h2>
                     <h4>{{ trans('index.heading_4') }}</h4>
 
-                    <a href="/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">{{ trans('index.sign_up') }}</a>
+                    <a href="/{{$blade["locale"]}}/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">{{ trans('index.sign_up') }}</a>
                 </div>
                 <!--
                 <div class="device-container">
@@ -133,7 +133,7 @@
             </div>
             <div class="col-md-6">
                 <div class="demo-image">
-                    <img src="{{ asset('img/solution12.png') }}" alt="Late Payment Protection">
+                    <img src="{{ asset('img/solution12.png') }}" alt="Escrow Late Payment Protection">
                 </div>
             </div>
         </div>
@@ -295,7 +295,7 @@
             <p class="text-muted" style="font-size: 20px;">{!! trans('index.fee2') !!}</p>
             <hr>
             <p><br>
-                <a href="/beta-register" class="btn btn-start btn-xl js-scroll-trigger">{!! trans('index.get_started') !!}</a>
+                <a href="/{{$blade["locale"]}}/beta-register" class="btn btn-start btn-xl js-scroll-trigger">{!! trans('index.get_started') !!}</a>
             </p>
         </div>
     </div>
@@ -435,9 +435,9 @@
                 </p>
             </div>
             <div class="col-md-2">
-                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;"> {!! trans('index.terms') !!}</a></p>
-                <p style="padding-bottom: 10px;"><a href="/en/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
-                <p><a href="/en/faq" style="color:#fff;">FAQ</a></p>
+                <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/terms" style="color:#fff;"> {!! trans('index.terms') !!}</a></p>
+                <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
+                <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
             </div>
             <div class="col-md-7">
                 <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">

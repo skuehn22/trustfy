@@ -120,19 +120,19 @@
                     <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/">Home</a>
+                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/about">About Us</a>
+                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/about">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/faq">FAQ</a>
+                    <a class="nav-link" href="/{{$blade["locale"]}}/faq">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Sign in</a>
+                    <a class="nav-link" href="/{{$blade["locale"]}}/login">Sign in</a>
                 </li>
                 <!--
                 <li class="nav-item">
@@ -205,9 +205,9 @@
                 </p>
             </div>
             <div class="col-md-2">
-                <p style="padding-bottom: 10px;"><a href="/en/terms" style="color:#fff;">Terms</a></p>
-                <p style="padding-bottom: 10px;"><a href="/en/privacy" style="color:#fff;">Privacy</a></p>
-                <p><a href="/en/faq" style="color:#fff;">FAQ</a></p>
+                <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/terms" style="color:#fff;">Terms</a></p>
+                <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;">Privacy</a></p>
+                <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
             </div>
             <div class="col-md-7">
                 <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">

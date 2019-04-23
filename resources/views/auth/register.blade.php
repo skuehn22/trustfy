@@ -76,10 +76,8 @@
                         <div class="form-group">
                             <div class="col-md-12 register pt-5 text-center">
                                 <p style="font-size: 18px; padding-bottom: 0px;">or
-                                    <a href="/login" style="background: none; color: #19A3B8">log</a> in if you already have an account</p>
-
+                                    <a href="/{{$ll}}/login" style="background: none; color: #19A3B8">log</a> in if you already have an account</p>
                             </div>
-
                         </div>
                     </form>
                 </div>

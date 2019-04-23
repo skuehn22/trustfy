@@ -270,9 +270,9 @@ class LoginController extends Controller
 
 
         $status = 2202;
+        $ll = App::getLocale();
 
-
-        return view('auth.register', compact('status'));
+        return view('auth.register', compact('status', 'll'));
 
     }
 
@@ -281,9 +281,9 @@ class LoginController extends Controller
 
 
         $status = 2203;
+        $ll = App::getLocale();
 
-
-        return view('auth.register', compact('status'));
+        return view('auth.register', compact('status', 'll'));
 
     }
 
