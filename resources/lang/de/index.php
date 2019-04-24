@@ -54,7 +54,7 @@ return [
     'login-footer1' => 'wenn du bereits ein Konto hast',
     'login-footer2' => 'melde dich an',
     'login-footer3' => 'oder',
-    'login-btn' => 'Sign Up',
+    'login-btn' => 'Anmelden',
 
 
     'fee' => 'Alles gegen eine faire Gebühr von 3%.',

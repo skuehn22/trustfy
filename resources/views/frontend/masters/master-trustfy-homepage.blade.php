@@ -65,6 +65,11 @@
     <div class="container h-100">
         <div class="row h-100">
 
+            <div class="d-lg-none d-md-none d-xl-none my-auto">
+                <img src="{{ asset('img/men.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
+            </div>
+
+
             <div class="col-lg-8 my-auto">
                 <div class="header-content mx-auto">
                     @if(session()->has('message'))
@@ -80,7 +85,7 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url($blade["locale"].'/free-register') }}">
                         {{ csrf_field() }}
                     <div class="row">
-                        <div class="col-md-4 pr-0">
+                        <div class="col-md-4  pl-0 pr-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" id="inputlg" name="freelancer" type="text">
                                     <option>{{ trans('index.header-form1') }}</option>
@@ -101,7 +106,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-4 pr-0">
+                        <div class="col-md-4 pl-0 pr-0">
                             <div class="form-group">
                                 <input class="form-control input-lg header-form" id="inputlg" name="amount" type="text" value="{{ trans('index.header-form4') }} 1100">
                             </div>
@@ -125,7 +130,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-4 my-auto">
+            <div class=" d-none d-lg-block d-md-block d-xl-block col-lg-4 my-auto">
                 <img src="{{ asset('img/men.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
             </div>
         </div>
