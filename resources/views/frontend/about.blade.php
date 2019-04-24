@@ -31,7 +31,7 @@
                         <p><strong>Sebastian<br>{!! trans('index.about4') !!}</strong></p>
                     </div>
                   <div class="col-xs-12 col-md-4">
-                      <img src="img/sebastian.jpg" class="img-responsive rounded-circle" style="width:250px;" alt="Sebastian - Trustfy">
+                      <img src="/img/sebastian.jpg" class="img-responsive rounded-circle" style="width:250px;" alt="Sebastian - Trustfy">
                   </div>
                 </div>
             </div>
