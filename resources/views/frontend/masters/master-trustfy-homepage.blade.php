@@ -77,13 +77,20 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                    <h1 class="mb-2">{{ trans('index.heading_1') }}</h1>
-                    <h2>{{ trans('index.heading_2') }}</h2>
-                    <h2>{{ trans('index.heading_3') }}</h2>
-                    <!--<h4>{{ trans('index.heading_4') }}</h4>-->
+
+                    <div class="row">
+                        <div class="col-md-12  pl-0 pr-0">
+
+                        <h1 class="mb-2">{{ trans('index.heading_1') }}</h1>
+                        <h2>{{ trans('index.heading_2') }}</h2>
+                        <h2>{{ trans('index.heading_3') }}</h2>
+                        <!--<h4>{{ trans('index.heading_4') }}</h4>-->
+
+                        </div>
+                    </div>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url($blade["locale"].'/free-register') }}">
-                        {{ csrf_field() }}
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-4  pl-0 pr-0">
                             <div class="form-group">
