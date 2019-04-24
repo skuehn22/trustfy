@@ -327,7 +327,7 @@ class LoginController extends Controller
             $msg->save();
 
 
-            if(isset($_POST['status']) && ($_POST['status'] == 2202)){
+            if(isset($_POST['status']) && ($_POST['status'] == 2202) || ($_POST['status'] == 2204)){
 
                 $subject = "Direct Beta Version Register";
                 $data['content'] = $_POST['email'];

@@ -28,7 +28,7 @@
 
                                 <div class="col-md-12">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
+                                    <input id="status" type="hidden" class="form-control" name="status" value=" {{ $status or  '' }}">
                                     @if ($errors->has('email'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
