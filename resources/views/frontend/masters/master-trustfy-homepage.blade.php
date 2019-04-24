@@ -83,8 +83,8 @@
                         <div class="col-md-4 pr-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" id="inputlg" type="text">
-                                    <option>I'm a Freelancer</option>
-                                    <option>I'm a Client</option>
+                                    <option>{{ trans('index.header-form1') }}</option>
+                                    <!--<option>I'm a Client</option>-->
                                 </select>
                             </div>
                         </div>
@@ -92,8 +92,8 @@
                         <div class="col-md-5 pr-0 pl-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" id="inputlg" type="text">
-                                    <option>and want take a Deposit</option>
-                                    <option>and work with Milestones</option>
+                                    <option>{{ trans('index.header-form2') }}</option>
+                                    <option>{{ trans('index.header-form3') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
 
                         <div class="col-md-4 pr-0">
                             <div class="form-group">
-                                <input class="form-control input-lg header-form" id="inputlg" type="text" placeholder="of 1100">
+                                <input class="form-control input-lg header-form" id="inputlg" type="text" placeholder="{{ trans('index.header-form4') }} 1100">
                             </div>
                         </div>
 
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="col-md-2 float-right  pl-1">
-                            <input type="submit" class="btn btn-create" value="Let's Go!">
+                            <input type="submit" class="btn btn-create" value="{{ trans('index.header-form5') }}">
                         </div>
 
                     </div>

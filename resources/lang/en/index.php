@@ -24,7 +24,7 @@ return [
     'sign_up' => 'Sign up for free',
 
     'how' => 'How it works',
-    'how1' => '<br>Select how an when you\'d like to <br>get paid and share it with your client.',
+    'how1' => '<br>Select how and when you\'d like to <br>get paid and share it with your client.',
     'how2' => '<br>Your client receives the request <br>and makes a payment into a secure account.',
     'how3' => '<br>The money is held securely until a project  <br>or milestone is complete - then your payment is released!',
 
@@ -36,7 +36,7 @@ return [
 
     'fee' => 'All for a fair fee of 3%',
     'fee1' => 'You only pay when you get paid.',
-    'fee2' => 'Advantages',
+    'fee2' => 'No complex pricing. No sign-up fees. No hidden costs.',
 
     'get_started' => 'GET STARTED',
 
@@ -68,6 +68,12 @@ return [
     'about9' => 'As a client, you’re asked to pay a good chunk of the bill up front- then you cross your fingers that everything works out.',
     'about10' => 'As a freelancer, you do the work and cross your fingers that you won’t be chasing payments later.',
     'about11' => 'It’s stressful for everyone involved. And it’s unnecessary. That\'s why we\'re making the system fairer, so that everyone involved can have the peace of mind they deserve.',
+
+    'header-form1' => 'I\'m a Freelancer',
+    'header-form2' => 'and want take a Deposit',
+    'header-form3' => 'and work with Milestones',
+    'header-form4' => 'of',
+    'header-form5' => 'Let\'s Go!',
 
     'faq' => 'FAQ - General',
     'faq1' => '<p>&nbsp;</p>
