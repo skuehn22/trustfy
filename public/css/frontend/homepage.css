@@ -1073,6 +1073,15 @@ section.contact ul.list-social li.social-google-plus a:hover {
   color: white;
   border: 1px solid #fdcc52;
   background-color: #fdcc52;
+
+}
+
+
+.btn-create {
+  color: white;
+  border: 1px solid #fdcc52;
+  background-color: #fdcc52;
+  border-radius: 1px!important;
 }
 
 .btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active {
@@ -1093,7 +1102,22 @@ section.contact ul.list-social li.social-google-plus a:hover {
   padding: 15px 45px;
 }
 
+.header-form{
+  color: #767676;
+  border-radius: 0;
+}
 
+.terms-login{
+  color: #1f1b1b;
+  font-size: 10px;
+  padding-top: 10px;
+}
+
+.terms-login a{
+  color: #1f1b1b;
+  text-decoration: underline;
+  font-size: 10px;
+}
 
 .input-group {
   margin: 20px auto;

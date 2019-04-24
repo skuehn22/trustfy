@@ -20,7 +20,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/beta-register', 'LoginController@betaRegisterNew') ;
     Route::any('/free-trial', 'LoginController@betaRegisterNewFree') ;
     Route::any('/register', 'LoginController@betaRegister') ;
+    Route::any('/free-register', 'LoginController@betaRegisterSimple') ;
     Route::any('/beta-register-save', 'LoginController@betaRegisterSave') ;
+    Route::any('/header-register-save', 'LoginController@betaRegisterSave') ;
     Route::get('/home', 'HomeController@login') ;
 
 

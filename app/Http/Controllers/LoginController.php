@@ -266,6 +266,7 @@ class LoginController extends Controller
     }
 
 
+
     public function betaRegisterNew() {
 
 
@@ -273,6 +274,17 @@ class LoginController extends Controller
         $ll = App::getLocale();
 
         return view('auth.register', compact('status', 'll'));
+
+    }
+
+
+    public function betaRegisterSimple() {
+
+
+        $status = 2204;
+        $ll = App::getLocale();
+
+        return view('auth.register-simple', compact('status', 'll'));
 
     }
 
@@ -295,9 +307,12 @@ class LoginController extends Controller
         $usersObj = new UsersClass();
         $response = $usersObj->saveUser($_POST);
 
-        if(self::pwCheck($_POST)== false){
-            return back()->withInput()->with('error', 'Passwords do not match.');
+        if($_POST['status']!="2204"){
+            if(self::pwCheck($_POST)== false){
+                return back()->withInput()->with('error', 'Passwords do not match.');
+            }
         }
+
 
         if($response == false){
             return back()->withInput()->with('error', 'E-Mail already taken.');

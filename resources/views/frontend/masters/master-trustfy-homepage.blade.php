@@ -64,9 +64,7 @@
 <header class="masthead" id="home">
     <div class="container h-100">
         <div class="row h-100">
-            <div class="col-lg-4 my-auto">
-                <img src="{{ asset('img/men.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
-            </div>
+
             <div class="col-lg-8 my-auto">
                 <div class="header-content mx-auto">
                     @if(session()->has('message'))
@@ -77,24 +75,58 @@
                     <h1 class="mb-2">{{ trans('index.heading_1') }}</h1>
                     <h2>{{ trans('index.heading_2') }}</h2>
                     <h2>{{ trans('index.heading_3') }}</h2>
-                    <h4>{{ trans('index.heading_4') }}</h4>
+                    <!--<h4>{{ trans('index.heading_4') }}</h4>-->
 
-                    <a href="/{{$blade["locale"]}}/beta-register" class="btn btn-sign btn-xl js-scroll-trigger">{{ trans('index.sign_up') }}</a>
-                </div>
-                <!--
-                <div class="device-container">
-                    <div class="device-mockup iphone6_plus portrait white">
-                        <div class="device">
-                            <div class="screen">
-
-                                <img src="{{ asset('img/trustyfy-screenshot20.png') }}" class="img-fluid logo-desktop" alt="Get paid on time">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url($blade["locale"].'/free-register') }}">
+                        {{ csrf_field() }}
+                    <div class="row">
+                        <div class="col-md-4 pr-0">
+                            <div class="form-group">
+                                <select class="form-control input-lg header-form" id="inputlg" type="text">
+                                    <option>I'm a Freelancer</option>
+                                    <option>I'm a Client</option>
+                                </select>
                             </div>
-                            <div class="button">
+                        </div>
 
-                  </div>
+                        <div class="col-md-5 pr-0 pl-0">
+                            <div class="form-group">
+                                <select class="form-control input-lg header-form" id="inputlg" type="text">
+                                    <option>and want take a Deposit</option>
+                                    <option>and work with Milestones</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>-->
+
+                    <div class="row">
+
+                        <div class="col-md-4 pr-0">
+                            <div class="form-group">
+                                <input class="form-control input-lg header-form" id="inputlg" type="text" placeholder="of 1100">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 pr-0 pl-0">
+                            <div class="form-group">
+                                <select class="form-control input-lg header-form" id="inputlg" type="text">
+                                    <option>EUR</option>
+                                    <option>GBP</option>
+                                    <option>USD</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 float-right  pl-1">
+                            <input type="submit" class="btn btn-create" value="Let's Go!">
+                        </div>
+
+                    </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 my-auto">
+                <img src="{{ asset('img/men.jpg') }}" class="img-fluid logo-desktop" alt="Get paid on time">
             </div>
         </div>
     </div>
