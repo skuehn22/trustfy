@@ -23,38 +23,52 @@ return [
     'sign_in' => 'Anmelden',
 
 
-    'heading_1' => 'Zahlen Ihre Kunden spät?',
-    'heading_2' => 'Musst du immer deinem Geld nachrennen?',
+    'heading_1' => 'Zahlen deine Kunden spät?',
+    'heading_2' => 'Musst du deinem Geld nachrennen?',
     'heading_3' => 'Wir sorgen dafür, dass du pünktlich bezahlt wirst.',
     'heading_4' => 'Zahlungssicherheit für Freelancer und deren Kunden',
     'sign_up' => 'Kostenlos anmelden',
 
-    'escrow' => 'Schaffe Vertrauen zu deinem Kunden und <br>lasse dich durch ein sicheres Treuhandsystem bezahlen. ',
-    'escrow_sub' => 'Dein Kunde macht eine Zahlung in ein sicheres Trustfy Konto und<br> du kannst beruhigt arbeiten, mit dem Wissen das Geld ist vorhanden.',
+    'escrow' => 'Schaffe Vertrauen zu deinem Kunden und lasse <br>dich durch ein sicheres Treuhandsystem bezahlen.',
+    'escrow_sub' => 'Dein Kunde macht eine Zahlung in ein sicheres Trustfy Konto und <br>du kannst beruhigt arbeiten, mit dem Wissen das Geld ist vorhanden.',
 
-    'how' => 'Wie es funktioniert',
-    'how1' => '<br>Wählen Sie aus wie und wann Sie gern bezahlt werden würden und teile es mit deinem Kunden.',
-    'how2' => '<br>Dein Kunde erhält eine Anfrage <br>und zahlt das Geld in ein sicheres Konto.',
-    'how3' => '<br>Das geld wird dort für die Dauer des Projektes gehalten oder ein Meilenstein erreicht ist - dann erhälst du dein Geld!',
+    'how' => 'So funktioniert‘s',
+    'how1' => '<br>Wähle aus wie und wann du gerne bezahlt werden möchtest und teile es mit deinem Kunden.',
+    'how2' => '<br>Dein Kunde erhält eine Anfrage <br>und zahlt das Geld in ein sicheres Treuhandkonto.',
+    'how3' => '<br>Das Geld wird sicher gehalten bis das Projekt oder ein Meilenstein beendet ist - <br>dann erhälst du dein Geld!',
 
     'advantages' => 'Vorteile',
-    'advantage1' => 'Kein Geld mehr <br>hinterher rennen',
-    'advantage2' => 'Werde schneller<br> bezahlt',
+    'advantage1' => 'Keine Rechnungen hinterher rennen',
+    'advantage2' => 'Schnelle<br> Bezahlung',
     'advantage3' => 'Sicherer <br>Geldfluss',
-    'advantage4' => 'Schütze dich vor unverantwortlichen Kunden',
+    'advantage4' => 'Schutz vor <br>unzuverlässigen Kunden',
+
+    'register' => 'Anmelden',
+    'login-mail' => 'Bitte gib deine E-Mail Adresse ein',
+    'login-password' => 'Bitte leg ein Passwort fest',
+    'login-terms1' => 'Mit der Anmeldung stimmst du den',
+    'login-terms2' => 'und den',
+    'login-terms3' => 'Datenschutzbestimmungen',
+    'login-terms4' => 'AGBs',
+    'login-terms5' => 'von Trustfy zu.',
+    'login-footer1' => 'wenn du bereits ein Konto hast',
+    'login-footer2' => 'melde dich an',
+    'login-footer3' => 'oder',
+    'login-btn' => 'Sign Up',
+
 
     'fee' => 'Alles gegen eine faire Gebühr von 3%.',
     'fee1' => 'Du bezahlst nur, wenn du bezahlt wirst.',
-    'fee2' => 'Keine aufwendige Preisgestaltung. Keine Anmeldegebühren. Keine versteckten Kosten.',
+    'fee2' => 'Keine Anmeldegebühren. Transparente Preise. Keine versteckten Kosten.',
 
     'get_started' => 'Los gehts',
 
-    'news' => 'Melde dich für die News an!',
+    'news' => 'Bleibe auf dem Laufenden!',
     'your_mail' => 'Deine E-MAIL',
     'sign_up2' => 'anmelden',
 
     'contact_form' => 'Kontakt',
-    'contact1' => 'Schreib uns. Wir würden gern von dir hören.',
+    'contact1' => 'Melde dich! Wir freuen uns auf jeden Kontakt.',
     'contactname' => 'Name',
     'contactmail' => 'E-Mail',
     'contactmsg' => 'Nachricht',
@@ -83,7 +97,7 @@ return [
     'header-form2' => 'und möchte folgende Anzahlung',
     'header-form3' => 'und arbeite mit Meilensteinen',
     'header-form4' => '',
-    'header-form5' => 'Los gehts!',
+    'header-form5' => 'Los gehts',
 
     'faq' => 'FAQ - General',
     'faq1' => '<p>&nbsp;</p>

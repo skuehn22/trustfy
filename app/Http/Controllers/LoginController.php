@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
 use App\DatabaseModels\Users;
+use App\DatabaseModels\TrackingHeader;
 use App\Classes\UsersClass;
 use App\Classes\MessagesClass;
 use App\DatabaseModels\MessagesCompanies;
@@ -279,6 +280,16 @@ class LoginController extends Controller
 
 
     public function betaRegisterSimple() {
+
+        if(isset($_POST['freelancer'])){
+            $track = new TrackingHeader();
+            $track->val1 = $_POST['freelancer'];
+            $track->val2 = $_POST['type'];
+            $track->val3 = $_POST['amount'];
+            $track->val4 = $_POST['cur'];
+            $track->save();
+        }
+
 
 
         $status = 2204;

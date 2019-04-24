@@ -329,15 +329,15 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
-                                        <h2>Welcome to Trustfy</h2>
-                                        <p style="font-size: 13px;">We’re so happy you’re here!</p>
-                                        <p style="font-size: 13px;">The concept is simple: Trustfy helps you to get paid on time.</p>
+                                        <h2>Welcome to Trustfy!</h2>
+                                        <p style="font-size: 13px;">We’re so glad you’re here.</p>
+                                        <p style="font-size: 13px;">Ready to get paid on time?</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: center">
                                         <p>
-                                            <a href="https://www.trustfy.io/en/freelancer/dashboard" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 16px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Go To My Dashboard</a>
+                                            <a href="https://www.trustfy.io/en/freelancer/dashboard" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 16px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">Get Started!</a>
                                             <br><br>
                                         </p>
                                     </td>
@@ -349,9 +349,9 @@
 
                                         <p style="font-size: 13px;"><strong>Need some help? We’re here for you!</strong></p>
 
-                                        <p style="font-size: 13px;">Log in to Trustfy and click the button in the bottom right corner to connect with our friendly customer support team.</p>
+                                        <p style="font-size: 13px;">Log in to your Trustfy account and use the live chat to connect with our friendly customer support team.</p>
 
-                                        <p style="font-size: 13px;">Access our  <a href="https://www.trustfy.io/en/faq" style="text-decoration: underline;"  target="_blank">FAQs</a> to get the most important and frequently asked questions answered.</p>
+                                        <p style="font-size: 13px;">Access our  <a href="https://www.trustfy.io/en/faq" style="text-decoration: underline;"  target="_blank">FAQs</a> to get our most pressing and frequently asked questions answered.</p>
 
                                     </td>
                                 </tr>

@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-4 pr-0">
                             <div class="form-group">
-                                <select class="form-control input-lg header-form" id="inputlg" type="text">
+                                <select class="form-control input-lg header-form" id="inputlg" name="freelancer" type="text">
                                     <option>{{ trans('index.header-form1') }}</option>
                                     <!--<option>I'm a Client</option>-->
                                 </select>
@@ -91,7 +91,7 @@
 
                         <div class="col-md-5 pr-0 pl-0">
                             <div class="form-group">
-                                <select class="form-control input-lg header-form" id="inputlg" type="text">
+                                <select class="form-control input-lg header-form" id="inputlg" name="type" type="text">
                                     <option>{{ trans('index.header-form2') }}</option>
                                     <option>{{ trans('index.header-form3') }}</option>
                                 </select>
@@ -103,13 +103,13 @@
 
                         <div class="col-md-4 pr-0">
                             <div class="form-group">
-                                <input class="form-control input-lg header-form" id="inputlg" type="text" placeholder="{{ trans('index.header-form4') }} 1100">
+                                <input class="form-control input-lg header-form" id="inputlg" name="amount" type="text" value="{{ trans('index.header-form4') }} 1100">
                             </div>
                         </div>
 
                         <div class="col-md-3 pr-0 pl-0">
                             <div class="form-group">
-                                <select class="form-control input-lg header-form" id="inputlg" type="text">
+                                <select class="form-control input-lg header-form" name="cur" id="inputlg" type="text">
                                     <option>EUR</option>
                                     <option>GBP</option>
                                     <option>USD</option>
