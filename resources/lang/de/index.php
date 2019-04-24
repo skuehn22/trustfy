@@ -34,11 +34,11 @@ return [
 
     'how' => 'So funktioniert‘s',
     'how1' => '<br>Wähle aus wie und wann du gerne bezahlt werden möchtest und teile es mit deinem Kunden.',
-    'how2' => '<br>Dein Kunde erhält eine Anfrage <br>und zahlt das Geld in ein sicheres Treuhandkonto.',
+    'how2' => '<br>Dein Kunde erhält eine Anfrage von uns <br>und zahlt das Geld in ein sicheres Treuhandkonto.',
     'how3' => '<br>Das Geld wird sicher gehalten bis das Projekt oder ein Meilenstein beendet ist - <br>dann erhälst du dein Geld!',
 
     'advantages' => 'Vorteile',
-    'advantage1' => 'Keine Rechnungen hinterher rennen',
+    'advantage1' => 'Keinen Rechnungen hinterher rennen',
     'advantage2' => 'Schnelle<br> Bezahlung',
     'advantage3' => 'Sicherer <br>Geldfluss',
     'advantage4' => 'Schutz vor <br>unzuverlässigen Kunden',
@@ -68,12 +68,12 @@ return [
     'sign_up2' => 'anmelden',
 
     'contact_form' => 'Kontakt',
-    'contact1' => 'Melde dich! Wir freuen uns auf jeden Kontakt.',
+    'contact1' => 'Melde dich! Wir freuen uns über jeden Kontakt.',
     'contactname' => 'Name',
     'contactmail' => 'E-Mail',
     'contactmsg' => 'Nachricht',
 
-    'send' => 'send',
+    'send' => 'senden',
 
     'claim' => 'Wir schaffen vertrauen zwischen Selbstständigen und deren Kunden',
     'terms' => 'AGBs',
