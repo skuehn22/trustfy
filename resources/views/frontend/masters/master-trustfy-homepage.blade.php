@@ -5,6 +5,7 @@
 <title>Trustfy - An Escrow Service for Freelancers and their Clients</title>
 <meta name="description" content="Create easy payment plans based on escrow for freelancer and your clients pay at a press of a button during the ongoing project. No more payment delays in the future.">
 <meta name="keywords" content="Trustfy, Freelancer, Payment, Escrow, Reminder, Milestone">
+<link rel="canonical" href="{{ URL::current() }}" />
 @include('frontend.masters.elements.meta')
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">

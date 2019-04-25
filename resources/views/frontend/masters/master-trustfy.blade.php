@@ -4,6 +4,7 @@
 <head>
 
     @yield('seo')
+    <link rel="canonical" href="{{ URL::current() }}" />
     @include('frontend.masters.elements.meta')
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">

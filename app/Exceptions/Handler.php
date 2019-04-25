@@ -75,10 +75,12 @@ class Handler extends ExceptionHandler
                             $message->subject("trustfy Error");
                             $message->to('sebastian@trustfy.io');
                         });
+                        
 
+                        $data=array();
 
-                        $content="An error has occurred. The administrator of the page has been informed.";
-                        return Response::view('errors.404',compact('content', 'blade'));
+                        return response()->view('errors.404', $data)->setStatusCode(404); //for example
+                        break;
 
                         break;
                     // internal error
@@ -99,13 +101,13 @@ class Handler extends ExceptionHandler
                         $content.= "Fehler";
                         $content.="Fehler";
                         $content.="Fehler";
-                        return Response::view('errors.404',compact('content', 'blade'));
+                        return Response::view('errors.503',compact('content', 'blade'));
 
                         break;
 
                     default:
                         $content="An error has occurred. The administrator of the page has been informed.";
-                        return Response::view('errors.404',compact('content', 'blade'));
+                        return Response::view('errors.503',compact('content', 'blade'));
                         break;
                 }
             }
