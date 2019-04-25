@@ -2,11 +2,11 @@
 
 @section('seo')
 
-@endsection
+    <title>What is Escrow for? How does Escrow works for Freelancers? - Trustfy.io</title>
+    <meta name="description" content="Trustfy is an Escrow System built for Freelancer and their Clients. Payments are securely held during a project and released on completion.">
+    <meta name="keywords" content="escrow, freelancer, client, milestone payment, deposit">
 
-<title>What is Escrow for? How does Escrow works for Freelancers? - Trustfy.io</title>
-<meta name="description" content="Trustfy is an Escrow System built for Freelancer and their Clients. Payments are securely held during a project and released on completion.">
-<meta name="keywords" content="escrow, freelancer, client, milestone payment, deposit">
+@endsection
 
 
 @section('css')

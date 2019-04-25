@@ -2,7 +2,7 @@
 
 @section('seo')
 <title>Trustfy Terms and Conditions</title>
-<meta name="description" content="Here you find trustfy.io terms and conditions">
+<meta name="description" content="Here is where you can find the Trustfy.io Terms and Conditions.">
 @endsection
 
 @section('content')

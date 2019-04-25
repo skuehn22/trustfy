@@ -2,7 +2,7 @@
 
 @section('seo')
     <title>Trustfy About Us</title>
-    <meta name="description" content="Here you will find the most frequently asked questions">
+    <meta name="description" content="Why we founded Trustfy and what drives us. Our inspiration to found Trustfy and why we get up in the morning.">
 @endsection
 
 @section('css')
