@@ -152,6 +152,10 @@
                 <p class="homepage-txt text-center text-muted" style="margin-top:0px; padding-top: 14px; font-size: 19px;">
                     {!! trans('index.escrow_sub') !!}
                 </p>
+                <p>
+                    <a href="/{{$blade["locale"]}}/what-is-escrow" class="btn btn-start btn-xl js-scroll-trigger">{!! trans('index.learn_more') !!}</a>
+                    <br><br>
+                </p>
                 <hr>
             </div>
         </div>

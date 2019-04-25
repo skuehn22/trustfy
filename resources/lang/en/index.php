@@ -14,6 +14,9 @@ return [
     'contact' => 'contact',
     'sign_in' => 'sign in',
 
+    'learn_more' => 'Learn more',
+
+
     'escrow' => 'An easy to use escrow payment system <br>that builds trust between you and your client.',
     'escrow_sub' => 'Your client makes a payment into a secure Trustfy account and <br> you can work with confidence knowing your money is there.',
 

@@ -142,5 +142,11 @@ class HomeController extends Controller
         return view('frontend.about', compact('blade'));
     }
 
+    public function escrow() {
+        $blade["locale"] = App::getLocale();
+        return view('frontend.escrow', compact('blade'));
+    }
+
+
 
 }

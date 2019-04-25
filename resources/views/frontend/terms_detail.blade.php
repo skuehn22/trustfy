@@ -256,7 +256,7 @@
                 <p>&nbsp;</p>
                 <h2><a name="_Toc535245100"></a><strong>Force Majeure</strong>&nbsp;</h2>
                 <p>Trustfy will not be liable or responsible for any delays in service, for failing to provide its services or to operate the Platform or provide the Services as a result of any event beyond its reasonable control, including, without limitation, adverse weather conditions, internet outage or interruption of service, power or telecommunications outage, fire, flood, civil disobedience, labor disruptions, strikes, lockouts, freight embargoes, terrorism, natural disaster, war or acts of God.</p>
-
+                    <br><br><br><br><br><br><br><br>
             </div>
         </div>
     </div>

@@ -61,9 +61,9 @@
 
 
         .content{
-            padding-left: 110px;
+            padding-left: 65px;
             padding-right: 110px;
-            padding-top: 45px;
+            padding-top: 85px;
 
         }
 
@@ -87,14 +87,24 @@
                 left: 0;
             }
 
+        }
+
+        #mainNav {
+            border-color: #19A3B8!important;
+            background-color: #19A3B8!important;
 
         }
 
-        .content-container{
-            box-shadow: 6px 6px 6px rgba(0,0,0,0.16), 6px 6px 6px rgba(0,0,0,0.23);
-            background-color: #fff;
-
+        #mainNav.navbar-shrink {
+            border-color: rgba(34, 34, 34, 0.1);
+            background-color: #19A3B8!important;
+            opacity: 0.8;
         }
+
+        #mainNav.navbar-shrink .navbar-brand {
+            color: #222222;
+        }
+
 
     </style>
 
@@ -102,7 +112,7 @@
 
 </head>
 
-<body id="page-top" class="landing-page landing-page1">
+<body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -144,7 +154,7 @@
     </div>
 </nav>
 
-<header class="masthead" id="home">
+<header class="" id="home">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -197,7 +207,7 @@
                 </div>
             </div>
         </form>-->
-        <div class="row">
+        <div class="row p-3">
             <div class="col-md-3">
                 <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
                 <p>

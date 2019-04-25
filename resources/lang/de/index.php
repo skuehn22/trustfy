@@ -22,6 +22,7 @@ return [
     'contact' => 'Kontakt',
     'sign_in' => 'Anmelden',
 
+    'learn_more' => 'Mehr erfahren',
 
     'heading_1' => 'Zahlen deine Kunden spät?',
     'heading_2' => 'Musst du deinem Geld nachrennen?',
@@ -168,7 +169,7 @@ return [
                 <p>&nbsp;</p>
                 <h3>My client is refusing to release a payment, what do I do?</h3>
                 <p>First things first, talk to them! What are they unhappy about? Are you both sticking to the terms of your contract? Chances are, your client would prefer a friendly conversation with you than an email from us asking what&rsquo;s going on.</p>
-                <p>If your client isn&rsquo;t responding to you and you&rsquo;ve marked a milestone as complete, don&rsquo;t panic. Unless your client opens a dispute with us, that money will be automatically released to you at the 2 week mark.</p>',
+                <p>If your client isn&rsquo;t responding to you and you&rsquo;ve marked a milestone as complete, don&rsquo;t panic. Unless your client opens a dispute with us, that money will be automatically released to you at the 2 week mark.</p><br><br><br><br><br><br>',
 
 
 

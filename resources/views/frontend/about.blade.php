@@ -3,20 +3,20 @@
 @section('seo')
     <title>Trustfy About Us</title>
     <meta name="description" content="Here you will find the most frequently asked questions">
-
+@endsection
 
 @section('css')
 
 @endsection
 
 @section('content')
-    <div class="container content-container" style="background-color: #fff;">
+    <div class="container content-container" style="background-color: #fff; padding-bottom: 40px;">
         <br><br>
         <div class="row">
             <div class="col-xs-12 col-md-12 content">
                 <div class="row">
                     <div class="col-xs-12 col-md-8">
-                        <h1>{!! trans('index.about_us2') !!}</h1>
+                        <h1 style="padding-top: 40px;">{!! trans('index.about_us2') !!}</h1>
                         <p>&nbsp;</p>
 
                     </div>

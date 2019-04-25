@@ -8,7 +8,7 @@
 @section('content')
     <div class="container content-container">
         <br><br>
-        <div class="row terms-container" style="padding-top:70px; padding-bottom: 70px;">
+        <div class="row terms-container" style="padding-top:70px; padding-bottom: 60px;">
             <div class="col-md-12">
                <h1>Terms and Conditions</h1>
                 <p style="padding-top: 15px;">
