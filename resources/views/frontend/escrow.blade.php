@@ -90,10 +90,10 @@
                             If Seller Sandy is selling her house to Buyer Bob, she wants to know the money is there before she signs away her rights. Buyer Bob, on the other hand, isn’t going to hand over the money until all is said, done and signed.
                         </p>
                         <p>
-                            That’s why the Escrow Agent or Broker holds on to Buyer Bob’s money until Seller Sandy hands over the deed to the house, then he releases it to John.
+                            That’s why the Escrow Agent or Broker holds on to Buyer Bob’s money until Seller Sandy hands over the deed to the house, then he releases it to Bob.
                         </p>
 
-                        <h3>What else is escrow used for?</h3>
+                        <h3>What Else is Escrow Used For?</h3>
                         <p>
                             If you can sell it, chances are someone has used escrow to pay for it. Art, tickets, houses, lamp shades. The list is endless.
                         </p>
@@ -103,7 +103,7 @@
 
                         <h2>How Does Escrow Work for Freelancers?</h2>
                         <p>
-                            Maybe it was called something else. Escrow sounds intimidating and a lot of business talk around the term and call it “buyer and seller protection” or some variation on “secure payment system.” At the end of the day, it’s all about getting buyer and seller a fair deal.
+                            If you’re buying or selling work, you should have the same right to payment protection than if you’re buying or selling CDs. Or renting out your spare room.
                         </p>
                         <p>
                             That’s where Trustfy comes in.
@@ -115,17 +115,13 @@
                         <p>
                             <img src="/img/escrow.png" alt="freelancer escrow system">
                         </p>
-
-                        <p>
-                            Say this time, Sally is creating a promotional video for John’s bakery. John doesn’t want to pay Sally until he’s seen the video. But Sally doesn‘t want to create a gorgeous video for John and then hope he’ll pay her once he has it.
-                        </p>
                         <p>
                             With Trustfy, John pays in to a secure account and the money is held while Sally works. Once the video is complete, John authorizes the release to Sally.
                         </p>
                         <p>
                             John doesn’t have to blindly trust Sally, and Sally can work with confidence knowing she’ll be paid!
                         </p>
-                        <h3>Advantages of Using Trustfy.io</h3>
+                        <h3>Advantages of Using Trustfy</h3>
                         <p>
                             For John, that means he has: Quality of work protection, late work protection and payment protection- so there’s no chance Sally will just run off to Bali with his money.
                         </p>
