@@ -75,7 +75,7 @@ class Handler extends ExceptionHandler
                             $message->subject("trustfy Error");
                             $message->to('sebastian@trustfy.io');
                         });
-                        
+
 
                         $data=array();
 

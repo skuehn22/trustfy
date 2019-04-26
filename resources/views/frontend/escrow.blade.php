@@ -113,7 +113,7 @@
                         </p>
 
                         <p>
-                            <img src="/img/escrow.png" alt="freelancer escrow system">
+                            <img src="/img/escrow.png" class="img-responsive" style="width:100%;" alt="freelancer escrow system">
                         </p>
                         <p>
                             With Trustfy, John pays in to a secure account and the money is held while Sally works. Once the video is complete, John authorizes the release to Sally.

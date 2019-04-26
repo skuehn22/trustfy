@@ -350,69 +350,6 @@
     </div>
 </section>
 
-<!--
-<section class="features" id="features">
-    <div class="container">
-        <div class="section-heading text-center">
-            <h2>Client Protection</h2>
-            <p class="text-muted">A secure payment system that puts you in control.</p>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 my-auto">
-                <div class="device-container">
-                    <div class="device-mockup iphone6_plus portrait black">
-                        <div class="device">
-                            <div class="screen">
-                                <img src="{{ asset('img/trustyfy-screenshot.png') }}" class="img-fluid" alt="No more deposits in blind faith">
-                            </div>
-                            <div class="button">
-                  </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 my-auto">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p class="check-container"> <i class="fas fa-check"></i> No deposits in blind faith</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> No direct up front payment</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Freelancer no-show protection</p>
-                            <p class="check-container"> <i class="fas fa-check"></i> Peace of mind</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
--->
-<!--
-<section class="section why section-gray">
-    <div class="container">
-
-        <div class="col-md-12">
-            <h2 class="header-text">Why we care</h2>
-            <p class="homepage-txt"> Freelancing is the future of work and more and more people are working as or hiring freelancers.
-                To make sure this shift benefits everyone involved, this future must be built on security, transparency and fairness for both freelancers and their clients.
-                We’re dedicated to making that happen.</p>
-        </div>
-        <div class="col-md-12">
-            <div class="demo-image">
-                <br><br><img src="{{ asset('img/why-we-care.png') }}" style="width:100%;" class="img-responsive" alt="Freelancing Economy">
-            </div>
-        </div>
-        <div class="col-md-12 pb-5">
-            <p class="homepage-txt" style="margin-top:0px;"><br><br> We founded Trustfy because we know how difficult it is to go at it alone: We've worked with and as freelancers, and so have many of our friends and family.
-                Whether you’re a client or a freelancer, you should be able to focus on what matters most: the project at hand. You shouldn’t be worrying about deposits or payments.
-                That’s why we’re here. To provide payment security that brings clients and freelancers to eye level and makes sure both sides get a fair deal.<br><br></p>
-        </div>
-
-
-    </div>
-</section>
--->
 <section class="contact bg-primary" id="contact">
     <div class="container">
         <div class="row">
@@ -434,8 +371,6 @@
         </div>
     </div>
 </section>
-
-
 
 <footer id="contact">
     <div class="container pt-3">
@@ -488,9 +423,12 @@
                 <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
                 <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-5">
                 <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">
-
+            </div>
+            <div class="col-md-2">
+                <a href="https://ie.linkedin.com/company/work-smarter-payment?trk=public_profile_topcard_current_company" target="_blank"><img src="{{ asset('img/linkedin.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
+                <a href="https://www.facebook.com/trustfy/" target="_blank"><img src="{{ asset('img/facebook.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
             </div>
         </div>
         <div class="row" style="padding-top:25px;">
@@ -502,7 +440,6 @@
 </footer>
 
 <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/homepage.min.js') }}"></script>
 <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'efdb2cb1-6f9b-48a2-ba23-add187956429', f: true }); done = true; } }; })();</script>
