@@ -29,7 +29,7 @@ return [
     'escrow' => 'An easy to use escrow service <br>that builds trust between you and your client.',
     'escrow_sub' => 'Your client makes a payment into a secure Trustfy account and <br> you can work with confidence knowing your money is there.',
 
-    'heading_1' => 'GET PAID ON TIME',
+    'heading_1' => 'HOW TO GET PAID ON TIME',
     'heading_2' => 'Are you regularly chasing payments?',
     'heading_3' => 'We get you paid on time.',
     'heading_4' => 'For self employed and freelancers',
