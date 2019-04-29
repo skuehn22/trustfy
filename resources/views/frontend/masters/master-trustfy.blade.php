@@ -133,7 +133,7 @@
                     <a class="nav-link js-scroll-trigger" href="#home">{{ trans('index.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/about">{{ trans('index.about_us') }}</a>
+                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/{{ trans('index.about_url') }}">{{ trans('index.about_us') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">{{ trans('index.contact') }}</a>
