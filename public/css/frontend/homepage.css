@@ -497,7 +497,14 @@ p {
   text-align: justify;
 }
 
+.switcher{
+  padding-top: 5px;
+  color: #fff;
+}
 
+.switcher span{
+  font-size: 12px;
+}
 
 
 /*           Font Smoothing      */

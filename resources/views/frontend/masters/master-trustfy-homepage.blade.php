@@ -52,6 +52,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/{{$blade["locale"]}}/login">{{ trans('index.sign_in') }}</a>
                </li>
+                <li class="switcher"><a href="/de">DE</a> <span>|</span> <a href="/en">EN</a></li>
                 <!--
                 <li class="nav-item">
                     <a class="nav-link" href="/beta-register">Sign up for free</a>
