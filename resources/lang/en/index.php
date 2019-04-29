@@ -32,7 +32,7 @@ return [
     'heading_1' => 'GET PAID ON TIME',
     'heading_2' => 'Are you regularly chasing payments?',
     'heading_3' => 'We get you paid on time.',
-    'heading_4' => 'For self employed and freelancer',
+    'heading_4' => 'For self employed and freelancers',
     'sign_up' => 'Sign up for free',
 
     'how' => 'How it works',
