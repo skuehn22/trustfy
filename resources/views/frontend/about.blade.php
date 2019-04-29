@@ -1,5 +1,10 @@
 @extends('frontend.masters.master-trustfy')
+@section('seo')
+    <title>{!! trans('seo.title_about') !!}</title>
+    <meta name="description" content="{!! trans('seo.desc_about') !!}">
+    <meta name="keywords" content="{!! trans('seo.keywords_about') !!}">
 
+@endsection
 @section('seo')
     <title>Trustfy About Us</title>
     <meta name="description" content="Why we founded Trustfy and what drives us. Our inspiration to found Trustfy and why we get up in the morning.">

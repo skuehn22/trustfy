@@ -28,5 +28,8 @@ return [
     'desc_register' => 'Lege ein Konto an und arbeite ab heute sicher und bequem mit Anzahlungen und Meilensteine.',
     'keywords_register' => 'Treuhandkonto erstellen, Zahlungsplan, Anzahlung, Bezahlung, Selbstständige',
 
+    'title_about' => 'Trustfy.io - Über Uns',
+    'desc_about' => 'Warum wir Trustfy gegründet haben und was uns antreibt. Unsere Inspiration und Motivation.',
+
 
 ];

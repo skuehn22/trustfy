@@ -29,6 +29,9 @@ return [
 
     'title_register' => 'Trustfy.io - Register',
     'desc_register' => 'Create an account and start working securely and comfortably with down payments and milestones today.',
-    'keywords_register' => 'Treuhandkonto erstellen, Zahlungsplan, Anzahlung, Bezahlung, Selbstständige',
+    'keywords_register' => 'escrow, freelancer, client, milestone payment, deposit',
+
+    'title_about' => 'Trustfy.io - About Us',
+    'desc_about' => 'Why we founded Trustfy and what drives us. Our inspiration to found Trustfy and why we get up in the morning.',
 
 ];
