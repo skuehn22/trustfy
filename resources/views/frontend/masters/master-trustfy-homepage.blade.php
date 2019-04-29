@@ -2,9 +2,9 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-<title>Trustfy - An Escrow Service for Freelancers and their Clients</title>
-<meta name="description" content="Create easy payment plans based on escrow for freelancer and your clients pay at a press of a button during the ongoing project. No more payment delays in the future.">
-<meta name="keywords" content="Trustfy, Freelancer, Payment, Escrow, Reminder, Milestone">
+<title>{{ trans('seo.title_home') }}</title>
+<meta name="description" content="{{ trans('seo.desc_home') }}">
+<meta name="keywords" content="{{ trans('seo.keywords_home') }}">
 <link rel="canonical" href="{{ URL::current() }}" />
 @include('frontend.masters.elements.meta')
 
@@ -201,7 +201,7 @@
                         <div class="device-mockup iphone6_plus portrait black">
                             <div class="device">
                                 <div class="screen">
-                                    <img src="{{ asset('img/cc-payment.png') }}" class="img-fluid" alt="No more deposits in blind faith">
+                                    <img src="{{ asset('img/cc-payment.png') }}" class="img-fluid" alt="{{ trans('seo.alt1_home') }}">
                                 </div>
                                 <div class="button">
                                 </div>
@@ -245,7 +245,7 @@
                             <div class="device-mockup iphone6_plus portrait black">
                                 <div class="device">
                                     <div class="screen">
-                                        <img src="{{ asset('img/cc-payment.png') }}" class="img-fluid" alt="No more deposits in blind faith">
+                                        <img src="{{ asset('img/cc-payment.png') }}" class="img-fluid" alt="{{ trans('seo.alt2_home') }}">
                                     </div>
                                     <div class="button">
                                     </div>
@@ -282,7 +282,7 @@
                             <div class="device-mockup iphone6_plus portrait black">
                                 <div class="device">
                                     <div class="screen">
-                                        <img src="{{ asset('img/trustyfy-screenshot.png') }}" class="img-fluid" alt="No more deposits in blind faith">
+                                        <img src="{{ asset('img/trustyfy-screenshot.png') }}" class="img-fluid" alt="{{ trans('seo.alt3_home') }}">
                                     </div>
                                     <div class="button">
                                     </div>
