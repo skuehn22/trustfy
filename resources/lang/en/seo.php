@@ -23,7 +23,7 @@ return [
     'desc_faq' => 'Here you get an overview of how the escrow service of Trustfy.io works. We have answered the most important questions for you.',
     'keywords_faq' => 'Escrow, Freelancer, Deposit, Payment',
 
-    'title_logn' => 'Trustfy.io - Sign In',
+    'title_login' => 'Trustfy.io - Sign In',
     'desc_login' => 'Sign up and create a payment plan quickly and easily and send it to your customer. We\'ll do the rest for you!',
     'keywords_login' => 'Escrow, Freelancer, Deposit, Payment, Sign In',
 
