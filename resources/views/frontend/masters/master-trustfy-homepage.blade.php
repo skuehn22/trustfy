@@ -335,8 +335,34 @@
     </div>
 </section>
 
-
 <section class="features" id="features">
+    <div class="container">
+        <div class="section-heading">
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-5 text-muted">
+                    <i class="fas fa-user-lock explain-icon"></i><h3>{!! trans('index.deposit1') !!}</h3>
+                    <p>{!! trans('index.deposit2') !!}</p>
+                    <p>{!! trans('index.deposit3') !!}</p>
+                    <p>{!! trans('index.deposit4') !!}</p>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-5 text-muted">
+                    <i class="fas fa-file-alt explain-icon"></i><h3>{!! trans('index.deposit5') !!}</h3>
+                    <p>{!! trans('index.deposit6') !!}</p>
+                    <p>{!! trans('index.deposit7') !!}</p>
+                    <p>{!! trans('index.deposit8') !!}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features freelancer" id="features">
     <div class="container">
         <div class="section-heading text-center">
             <h3 class="text-muted">{!! trans('index.fee') !!}</h3>
