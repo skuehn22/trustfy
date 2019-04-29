@@ -1,8 +1,9 @@
 @extends('frontend.masters.master-trustfy')
 
 @section('seo')
-    <title>Trustfy FAQ</title>
-    <meta name="description" content="Here you will find the most frequently asked questions">
+    <title>{!! trans('seo.title_faq') !!}</title>
+    <meta name="description" content="{!! trans('seo.desc_faq') !!}">
+    <meta name="keywords" content="{!! trans('seo.keywords_faq') !!}">
 
 @endsection
 @section('css')

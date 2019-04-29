@@ -130,19 +130,19 @@
                     <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}">Home</a>
+                    <a class="nav-link js-scroll-trigger" href="#home">{{ trans('index.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/about">About Us</a>
+                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/about">{{ trans('index.about_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/#contact">Contact</a>
+                    <a class="nav-link js-scroll-trigger" href="#contact">{{ trans('index.contact') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/{{$blade["locale"]}}/faq">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/{{$blade["locale"]}}/login">Sign in</a>
+                    <a class="nav-link" href="/{{$blade["locale"]}}/login">{{ trans('index.sign_in') }}</a>
                 </li>
                 <!--
                 <li class="nav-item">
@@ -207,23 +207,26 @@
                 </div>
             </div>
         </form>-->
-        <div class="row p-3">
-            <div class="col-md-3">
-                <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
-                <p>
-                    We build trust between<br> freelancers and their clients
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/terms" style="color:#fff;">Terms</a></p>
-                <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;">Privacy</a></p>
-                <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
-            </div>
-            <div class="col-md-7">
-                <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">
-
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
+                        <p>
+                            {!! trans('index.claim') !!}
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/terms" style="color:#fff;"> {!! trans('index.terms') !!}</a></p>
+                        <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
+                        <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">
+                    </div>
+                    <div class="col-md-2">
+                        <a href="https://ie.linkedin.com/company/work-smarter-payment?trk=public_profile_topcard_current_company" target="_blank"><img src="{{ asset('img/linkedin.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
+                        <a href="https://www.facebook.com/trustfy/" target="_blank"><img src="{{ asset('img/facebook.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
+                    </div>
+                </div>
         <div class="row" style="padding-top:25px;">
             <div class="col-md-12">
 
