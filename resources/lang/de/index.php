@@ -57,6 +57,14 @@ return [
     'login-footer3' => 'oder',
     'login-btn' => 'Anmelden',
 
+    'deposit1' => 'Anzahlungen',
+    'deposit2' => 'Fühlst du dich unwohl dabei, nach Anzahlungen zu fragen?',
+    'deposit3' => 'Nutze Trustfy um die Zahlungsbedingungen zu verhandeln, die du gern hättest!',
+    'deposit4' => 'Anzahlunegn die über Trustfy gemacht werden, sind zu 100% sicher. Sicherheit für Selbständige und deren Kunden.',
+    'deposit5' => 'Meilensteine',
+    'deposit6' => 'Erstelle passende Zahlungspläne für alle Projekte!',
+    'deposit7' => 'Teile das Projekt in verschiedene Meilensteine auf und lasse dich während des Projektes bezahlen,',
+    'deposit8' => 'Dein Kunde muss nicht 100% vor Beginn des Projektes direkt zu dir geben, dennoch weiß du, dass das ganze Geld für das Projekt vorhanden ist.',
 
     'fee' => 'Alles gegen eine faire Gebühr von 3%.',
     'fee1' => 'Du bezahlst nur, wenn du bezahlt wirst.',

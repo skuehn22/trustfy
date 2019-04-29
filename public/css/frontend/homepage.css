@@ -821,6 +821,13 @@ hr  {
   padding-bottom: 10px;
 }
 
+
+.explain-icon{
+  color: #676767 !important;
+  font-size: 60px;
+  padding-bottom: 10px;
+}
+
 .btn-start {
   color: white;
   border: 1px solid #19A3B8;

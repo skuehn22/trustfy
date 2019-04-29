@@ -16,6 +16,15 @@ return [
 
     'learn_more' => 'Learn more',
 
+    'deposit1' => 'Deposits',
+    'deposit2' => 'Feel uncomfortable asking for deposits? Want to start taking higher deposits?',
+    'deposit3' => 'Use Trustfy to negotiate the payment terms you want!',
+    'deposit4' => 'Deposits made with Trustfy are 100% secure so you can get your clients making deposits with confidence.',
+    'deposit5' => 'Milestones',
+    'deposit6' => 'Create payment plans to fit any project!',
+    'deposit7' => 'Break up the project into multiple milestones that your client can fund separately.',
+    'deposit8' => 'Your client doesn’t pay 100% up front and you can feel good about starting work on funded milestones.',
+
 
     'escrow' => 'An easy to use escrow payment system <br>that builds trust between you and your client.',
     'escrow_sub' => 'Your client makes a payment into a secure Trustfy account and <br> you can work with confidence knowing your money is there.',
@@ -30,6 +39,8 @@ return [
     'how1' => '<br>Select how and when you\'d like to <br>get paid and share it with your client.',
     'how2' => '<br>Your client receives the request <br>and makes a payment into a secure account.',
     'how3' => '<br>The money is held securely until a project  <br>or milestone is complete - then your payment is released!',
+
+
 
     'advantages' => 'Advantages',
     'advantage1' => 'No more chasing payment',
