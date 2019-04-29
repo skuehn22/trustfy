@@ -262,7 +262,9 @@ class LoginController extends Controller
             $status = 0;
         }
 
-        return view('auth.register', compact('status'));
+        $ll = App::getLocale();
+
+        return view('auth.register', compact('status', 'll'));
 
     }
 

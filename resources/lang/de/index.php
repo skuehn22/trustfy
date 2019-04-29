@@ -56,6 +56,7 @@ return [
     'login-footer2' => 'melde dich an',
     'login-footer3' => 'oder',
     'login-btn' => 'Anmelden',
+    'login-confirm' => 'Bitte Passwort bestätigen',
 
     'deposit1' => 'Anzahlungen',
     'deposit2' => 'Fühlst du dich unwohl dabei, nach Anzahlungen zu fragen?',

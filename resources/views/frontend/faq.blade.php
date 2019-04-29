@@ -16,7 +16,7 @@
         <br><br>
         <div class="row">
             <div class="col-md-12 content">
-                <h1 style="padding-top: 40px;">{!! trans('index.faq') !!}</h1>
+                <h1>{!! trans('index.faq') !!}</h1>
                 {!! trans('index.faq1') !!}
             </div>
         </div>

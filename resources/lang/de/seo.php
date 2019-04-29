@@ -24,5 +24,9 @@ return [
     'desc_login' => 'Melde dich an und erstelle schnell und einfach einen Zahlungsplan und sende ihn deinem Kunden. Wir übernehmen den Rest für dich!',
     'keywords_login' => 'Treuhandkonto erstellen, Zahlungsplan, Anzahlung, Bezahlung, Selbstständige',
 
+    'title_register' => 'Trustfy.io - Anmelden',
+    'desc_register' => 'Lege ein Konto an und arbeite ab heute sicher und bequem mit Anzahlungen und Meilensteine.',
+    'keywords_register' => 'Treuhandkonto erstellen, Zahlungsplan, Anzahlung, Bezahlung, Selbstständige',
+
 
 ];

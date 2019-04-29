@@ -27,4 +27,8 @@ return [
     'desc_login' => 'Sign up and create a payment plan quickly and easily and send it to your customer. We\'ll do the rest for you!',
     'keywords_login' => 'Escrow, Freelancer, Deposit, Payment, Sign In',
 
+    'title_register' => 'Trustfy.io - Register',
+    'desc_register' => 'Create an account and start working securely and comfortably with down payments and milestones today.',
+    'keywords_register' => 'Treuhandkonto erstellen, Zahlungsplan, Anzahlung, Bezahlung, Selbstständige',
+
 ];

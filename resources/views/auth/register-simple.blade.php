@@ -1,5 +1,9 @@
 @extends('frontend.masters.sign')
-
+@section('seo')
+    <title>{!! trans('seo.title_register') !!}</title>
+    <meta name="description" content="{!! trans('seo.desc_register') !!}">
+    <meta name="keywords" content="{!! trans('seo.keywords_register') !!}">
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
