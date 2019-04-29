@@ -764,6 +764,15 @@ header.masthead .device-container .screen img {
 
 }
 
+.header-content h3{
+
+  text-shadow: 1px 1px 1px #7b7b7b;
+  font-weight: 700;
+  padding-bottom: 15px;
+  font-size: 22px;
+
+}
+
 .header-content h4{
 
   text-shadow: 1px 1px 1px #7b7b7b;

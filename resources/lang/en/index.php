@@ -26,13 +26,13 @@ return [
     'deposit8' => 'Your client doesn’t pay 100% up front and you can feel good about starting work on funded milestones.',
 
 
-    'escrow' => 'An easy to use escrow payment system <br>that builds trust between you and your client.',
+    'escrow' => 'An easy to use escrow service <br>that builds trust between you and your client.',
     'escrow_sub' => 'Your client makes a payment into a secure Trustfy account and <br> you can work with confidence knowing your money is there.',
 
     'heading_1' => 'GET PAID ON TIME',
     'heading_2' => 'Are you regularly chasing payments?',
     'heading_3' => 'We get you paid on time.',
-    'heading_4' => 'Payment protection for freelance work',
+    'heading_4' => 'For self employed and freelancer',
     'sign_up' => 'Sign up for free',
 
     'how' => 'How it works',
