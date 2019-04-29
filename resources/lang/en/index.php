@@ -66,7 +66,7 @@ return [
 
     'send' => 'send',
 
-    'claim' => 'We build trust between<br> freelancers and their clients',
+    'claim' => 'Payment Protection for<br>Freelancers and Clients',
     'terms' => 'Terms',
     'privacy' => 'Privacy',
 
