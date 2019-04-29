@@ -22,6 +22,10 @@ return [
     'contact' => 'Kontakt',
     'sign_in' => 'Anmelden',
 
+    'about_url' => 'ueber-uns',
+
+
+    'escrow_url' => 'was-ist-ein-treuhand-service',
     'learn_more' => 'Mehr erfahren',
 
     'heading_1' => 'Zahlen deine Kunden spät?',

@@ -9,6 +9,9 @@ return [
     'greetings' => 'Kind Regards',
     'no_messages' => 'No messages so far',
 
+    'about_url' => 'about',
+    'escrow_url' => 'what-is-escrow',
+
     'home' => 'home',
     'about_us' => 'about us',
     'contact' => 'contact',

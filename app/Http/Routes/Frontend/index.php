@@ -46,7 +46,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/send-message', 'HomeController@contact');
     Route::any('/terms', 'HomeController@terms');
     Route::any('/about', 'HomeController@about');
+    Route::any('/ueber-uns', 'HomeController@about');
     Route::any('/what-is-escrow', 'HomeController@escrow');
+    Route::any('/was-ist-ein-treuhand-service', 'HomeController@escrow');
     Route::any('/terms-detail', 'HomeController@termsDetail');
     Route::any('/privacy', 'HomeController@privacy');
 
