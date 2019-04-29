@@ -7,7 +7,18 @@
 @endsection
 
 @section('content')
-
+    @if(Session::has('error'))
+        <div class="alert alert-danger error_message">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {{ Session::get('error') }}
+        </div>
+    @endif
+    @if(Session::has('success'))
+        <div class="alert alert-success error_message">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {!!  Session::get('success') !!}
+        </div>
+    @endif
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/login-review') }}">
     {{ csrf_field() }}
 
@@ -54,7 +65,7 @@
     <div class="form-group">
         <div class="col-md-12 register pt-5">
             <p style="font-size: 18px; padding-bottom: 0px;">{!! trans('index.login-form1') !!}</p>
-            <a class="btn btn-secondary btn-register" href="/{{$blade["locale"]}}/beta-register" role="button">{!! trans('index.login-form4') !!}</a>
+            <a class="btn btn-secondary btn-register" href="/{{$blade["locale"]}}/free-register" role="button">{!! trans('index.login-form4') !!}</a>
             <br><br>
         </div>
 

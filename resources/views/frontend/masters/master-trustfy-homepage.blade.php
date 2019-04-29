@@ -370,7 +370,7 @@
             <p class="text-muted" style="font-size: 20px;">{!! trans('index.fee2') !!}</p>
             <hr>
             <p><br>
-                <a href="/{{$blade["locale"]}}/beta-register" class="btn btn-start btn-xl js-scroll-trigger">{!! trans('index.get_started') !!}</a>
+                <a href="/{{$blade["locale"]}}/free-register" class="btn btn-start btn-xl js-scroll-trigger">{!! trans('index.get_started') !!}</a>
             </p>
         </div>
     </div>

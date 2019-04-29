@@ -28,7 +28,7 @@ return [
     'keywords_login' => 'Escrow, Freelancer, Deposit, Payment, Sign In',
 
     'title_register' => 'Trustfy.io - Register',
-    'desc_register' => 'Create an account and start working securely and comfortably with down payments and milestones today.',
+    'desc_register' => 'Create an account and start working securely with down payments and milestones today.',
     'keywords_register' => 'escrow, freelancer, client, milestone payment, deposit',
 
     'title_about' => 'Trustfy.io - About Us',
