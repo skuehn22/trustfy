@@ -15,7 +15,7 @@ return [
     'alt2_home' => 'Escrow via credit card',
     'alt3_home' => 'Payment Plans Client',
 
-    'title_escrow' => 'What is Escrow? How does Escrow works for Freelancers? - Trustfy.io',
+    'title_escrow' => 'What is Escrow? How does Escrow works for Freelancers?',
     'desc_escrow' => 'Trustfy is an escrow system built for freelancers and their clients. Payments are securely held during a project and released on completion.',
     'keywords_escrow' => 'escrow, freelancers, client, milestone payment, deposit',
 
