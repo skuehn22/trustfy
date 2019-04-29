@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
     <link href="{{ asset('css/frontend/homepage.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/device-mockups/device-mockups.min.css') }}" rel="stylesheet" >
+
 
     @if (env('APP_ENV')=='live')
         @include('frontend.masters.elements.tracking')
