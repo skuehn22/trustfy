@@ -2,7 +2,7 @@
 
 return [
 
-    'title_home' => 'Trustfy - Ein Treuhandservice für Selbständige und ihren Kunden',
+    'title_home' => 'Trustfy.io | Ein Treuhandservice für Selbständige und ihren Kunden',
 
     'desc_home' => 'Wir ermöglichen dir als Selbstständigen auf einfache Weise Anzahlungen oder Zwischenzahlungen für Projekte anzunehmen. Wir bieten ein sicheres Treuhandkonto für Freiberufler.',
 
