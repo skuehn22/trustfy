@@ -1,7 +1,7 @@
 @extends('frontend.masters.master-trustfy')
 @section('seo')
-    <title>Trustfy Privacy</title>
-    <meta name="description" content="Here you find trustfy.io privacy conditions">
+    <title>{!! trans('seo.title_privacy') !!}</title>
+    <meta name="description" content="{!! trans('seo.desc_privacy') !!}">
 @endsection
 @section('content')
     <div class="container  content-container pb-5">

@@ -1,10 +1,9 @@
 @extends('frontend.masters.master-trustfy')
 
 @section('seo')
-<title>Trustfy Terms and Conditions</title>
-<meta name="description" content="Here is where you can find the Trustfy.io Terms and Conditions.">
+    <title>{!! trans('seo.title_terms') !!}</title>
+    <meta name="description" content="{!! trans('seo.desc_terms') !!}">
 @endsection
-
 @section('content')
     <div class="container content-container">
         <br><br>

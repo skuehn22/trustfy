@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
-    <link href="{{ asset('css/frontend/homepage.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/frontend/homepage.min.css') }}" rel="stylesheet">
 
 
     @if (env('APP_ENV')=='live')

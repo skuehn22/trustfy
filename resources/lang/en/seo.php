@@ -30,4 +30,13 @@ return [
     'title_about' => 'Trustfy.io - About Us',
     'desc_about' => 'Why we founded Trustfy and what drives us. Our inspiration to found Trustfy and why we get up in the morning.',
 
+    'title_privacy' => 'Trustfy.io - Privacy',
+    'desc_privacy' => 'Sign up and create a payment plan quickly and easily and send it to your customer. We\'ll do the rest for you!',
+
+    'title_terms' => 'Trustfy.io - Terms and Conditions',
+    'desc_terms' => 'Sign up and create a payment plan quickly and easily and send it to your customer. We\'ll do the rest for you!',
+
+    'title_reset' => 'Trustfy.io - Reset Your Password',
+    'desc_reset' => 'Here you can reset your password',
+
 ];

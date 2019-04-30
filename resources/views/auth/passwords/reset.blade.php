@@ -1,5 +1,8 @@
 @extends('frontend.masters.sign')
-
+@section('seo')
+    <title>{!! trans('seo.reset') !!}</title>
+    <meta name="description" content="{!! trans('seo.desc_reset') !!}">
+@endsection
 @section('content')
 <div class="container sign-up">
     <div class="row">
