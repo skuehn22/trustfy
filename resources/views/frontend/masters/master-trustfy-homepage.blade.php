@@ -83,8 +83,8 @@
                     <div class="row">
                         <div class="col-md-12  pl-0 pr-0">
 
-                        <h1 class="mb-2">{{ trans('index.heading_1') }}</h1>
-                        <h2>{{ trans('index.heading_2') }}</h2>
+                        <!--<h1 class="mb-2">{{ trans('index.heading_1') }}</h1>-->
+                        <h1>{{ trans('index.heading_2') }}</h1>
                         <h2>{{ trans('index.heading_3') }}</h2>
                         <h3>{{ trans('index.heading_4') }}</h3>
                         <!--<h4>{{ trans('index.heading_4') }}</h4>-->
