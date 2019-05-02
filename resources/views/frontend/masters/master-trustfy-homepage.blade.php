@@ -345,10 +345,15 @@
 
                 </div>
                 <div class="col-md-5 text-muted">
-                    <i class="fas fa-user-lock explain-icon"></i><h3>{!! trans('index.deposit1') !!}</h3>
-                    <p>{!! trans('index.deposit2') !!}</p>
-                    <p>{!! trans('index.deposit3') !!}</p>
-                    <p>{!! trans('index.deposit4') !!}</p>
+                    <div class="col-md-12p-0">
+                        <i class="fas fa-user-lock explain-icon"></i>
+                        <h3>{!! trans('index.deposit1') !!}</h3>
+                    </div>
+                    <div class="col-md-12 p-0">
+                        <p>{!! trans('index.deposit2') !!}</p>
+                        <p>{!! trans('index.deposit3') !!}</p>
+                        <p>{!! trans('index.deposit4') !!}</p>
+                    </div>
                 </div>
                 <div class="col-md-1">
 
@@ -368,7 +373,7 @@
     <div class="container">
         <div class="section-heading text-center">
             <h3 class="text-muted">{!! trans('index.fee') !!}</h3>
-            <p class="text-muted" style="font-size: 20px;">{!! trans('index.fee1') !!}</p>
+            <p class="text-muted" style="padding-top:15px; font-size: 20px;">{!! trans('index.fee1') !!}</p>
             <p class="text-muted" style="font-size: 20px;">{!! trans('index.fee2') !!}</p>
             <hr>
             <p><br>
@@ -382,7 +387,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto" style="text-align: center; ">
-                <h4 class="text-muted">{!! trans('index.news') !!}</h4>
+                <h3 class="text-muted">{!! trans('index.news') !!}</h3>
                 <div class="badges">
 
                     <form class="form-inline" method="POST" action="/newsletter-sign-up">

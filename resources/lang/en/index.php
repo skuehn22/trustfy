@@ -20,7 +20,7 @@ return [
     'learn_more' => 'Learn more',
 
     'deposit1' => 'Deposits',
-    'deposit2' => 'Feel uncomfortable asking for deposits? Want to start taking higher deposits?',
+    'deposit2' => 'Feel uncomfortable asking for deposits? <br>Want to start taking higher deposits?',
     'deposit3' => 'Use Trustfy to negotiate the payment terms you want!',
     'deposit4' => 'Deposits made with Trustfy are 100% secure so you can get your clients making deposits with confidence.',
     'deposit5' => 'Milestones',
@@ -40,8 +40,8 @@ return [
 
     'how' => 'How it works',
     'how1' => '<br>Select how and when you\'d like to <br>get paid and share it with your client.',
-    'how2' => '<br>Your client receives the request <br>and makes a payment into a secure account.',
-    'how3' => '<br>The money is held securely until a project  <br>or milestone is complete - then your payment is released!',
+    'how2' => '<br>Your client receives the request and  <br> makes a payment into a secure account.',
+    'how3' => '<br>The money is held securely until a project  or <br> milestone is complete - then your payment is released!',
 
 
 

@@ -26,7 +26,7 @@ return [
 
 
     'escrow_url' => 'was-ist-ein-treuhand-service',
-    'learn_more' => 'Mehr erfahren',
+    'learn_more' => 'Erfahre mehr',
 
     'heading_1' => 'Zahlen deine Kunden spät?',
     'heading_2' => 'Musst du deinem Geld nachrennen?',
@@ -34,8 +34,8 @@ return [
     'heading_4' => 'Zahlungssicherheit für Freelancer und deren Kunden',
     'sign_up' => 'Kostenlos anmelden',
 
-    'escrow' => 'Schaffe Vertrauen zu deinem Kunden und lasse <br>dich durch ein sicheres Treuhandsystem bezahlen.',
-    'escrow_sub' => 'Dein Kunde macht eine Zahlung in ein sicheres Trustfy Konto und <br>du kannst beruhigt arbeiten, mit dem Wissen das Geld ist vorhanden.',
+    'escrow' => 'Schaffe Vertrauen zu deinen Kunden und lasse <br>dich durch ein sicheres Treuhandsystem bezahlen.',
+    'escrow_sub' => 'Dein Kunde zahlt in ein sicheres Trustfy Konto ein, <br>und du kannst beruhigt arbeiten mit dem Wissen das Geld ist vorhanden.',
 
     'how' => 'So funktioniert‘s',
     'how1' => '<br>Wähle aus wie und wann du gerne bezahlt werden möchtest und teile es mit deinem Kunden.',
