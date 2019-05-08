@@ -47,7 +47,7 @@
 
 
                         @if($blade["locale"] == "en")
-                            <span style="color: #19a3b8"><i>Read more: <a style="color: #19a3b8; text-decoration: underline; font-size: 14px;" href="/en/what-is-escrow">Stop calling it the gig economy, it’s the future of work.</a></i></span>
+                            <span style="color: #19a3b8"><i>Read more: <a style="color: #19a3b8; text-decoration: underline; font-size: 14px;" href="/en/freelancer-not-gig-economy">Stop calling it the gig economy, it’s the future of work.</a></i></span>
                             <br><br><br><br><br><br><br>
                         @else
                             <br><br><br><br><br><br><br>
