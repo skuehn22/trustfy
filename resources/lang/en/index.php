@@ -197,7 +197,7 @@ return [
                         <p>
                             For Sally, that means she has: Late payment protection, cancellation protection and payment protection- so there’s no chance John will just use her video and pay *later*
                         </p>
-                        <br><br><br><br><br><br><br><br><br>',
+                       ',
 
     'faq' => 'FAQ - General',
     'faq1' => '<p>&nbsp;</p>

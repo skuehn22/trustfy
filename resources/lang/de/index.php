@@ -201,7 +201,7 @@ return [
                         <p>
                             Für Laura bedeutet das anderseits Säumnisschutz, Stornierungsschutz und Zahlungsschutz. Sie geht kein Risiko ein dass John ihr Video nutzt und *später* bezahlt.
                         </p>
-                        <br><br><br><br><br><br><br><br><br>',
+                        ',
 
 
     'faq' => 'FAQ - Allgemein',
