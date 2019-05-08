@@ -45,7 +45,7 @@
                 <div class="col-xs-12 col-md-12 pt-4">
                     <h1>Stop calling it the gig economy, it’s the future of work.</h1>
                     <br><br>
-                    <img src="img/gig.jpg" style="width: 100%" class="img-responsive" alt="Freelancer not gig economy"> Photo by: Wenni Zhou
+                    <img src="/img/gig.jpg" style="width: 100%" class="img-responsive" alt="Freelancer not gig economy"> Photo by: Wenni Zhou
                     <br><br>
                     <p>We’re not a huge fan of the term “Gig Economy.” Firstly, the Gig Economy makes freelancing sound niche, somehow separate from the larger economy. Freelancers turned over 121 billion dollars in the UK and 1.4 trillion in the US last year- those numbers don’t qualify as niche in our book.  36% of the US workforce is already freelancing today, and that number will be over 50% by 2027. <strong>That means that every second person will be working for themselves within the next 10 years. </strong></p>
 
