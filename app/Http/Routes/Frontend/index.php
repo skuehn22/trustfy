@@ -51,6 +51,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/was-ist-ein-treuhand-service', 'HomeController@escrow');
     Route::any('/terms-detail', 'HomeController@termsDetail');
     Route::any('/privacy', 'HomeController@privacy');
+    Route::any('/freelancer-not-gig-economy', 'HomeController@blog1');
 
 
 

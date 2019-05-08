@@ -148,5 +148,11 @@ class HomeController extends Controller
     }
 
 
+    public function blog1() {
+        $blade["locale"] = App::getLocale();
+        return view('frontend.blog_post1', compact('blade'));
+    }
+
+
 
 }
