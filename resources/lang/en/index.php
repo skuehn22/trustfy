@@ -29,8 +29,8 @@ return [
     'deposit8' => 'Your client doesn’t pay 100% up front and you can feel good about starting work on funded milestones.',
 
 
-    'escrow' => 'An easy to use escrow service <br>that builds trust between you and your client.',
-    'escrow_sub' => 'Your client makes a payment into a secure Trustfy account and <br> you can work with confidence knowing your money is there.',
+    'escrow' => 'An easy to use escrow service that builds trust  <br>between you and your client.',
+    'escrow_sub' => 'Your client makes a payment into a secure Trustfy account <br> and you can work with confidence knowing your money is there!',
 
     'heading_1' => 'HOW TO GET PAID ON TIME',
     'heading_2' => 'Are you regularly chasing payments?',
@@ -38,7 +38,7 @@ return [
     'heading_4' => 'For freelancers and the self employed',
     'sign_up' => 'Sign up for free',
 
-    'how' => 'How it works',
+    'how' => 'How It Works',
     'how1' => '<br>Select how and when you\'d like to <br>get paid and share it with your client.',
     'how2' => '<br>Your client receives the request and  <br> makes a payment into a secure account.',
     'how3' => '<br>The money is held securely until a project  or <br> milestone is complete - then your payment is released!',
@@ -237,6 +237,13 @@ return [
                 <p>That depends on the contract or terms of service you&rsquo;ve agreed to with your freelancer. If there&rsquo;s a termination clause of some sort, we respect your agreement and release the money accordingly.</p>
                 <p>&nbsp;</p>
                 <p>If you&rsquo;re not sure about what your contract or agreement says, check your inbox or log in to your Trustfy account. It was attached to the payment plan you received from your freelancer at the start of the project and we&rsquo;ve got it saved for you. Just register using the email that your freelancer is using to communicate with you and it will be right there anytime you need it.</p>
+                <p>&nbsp;</p>
+                <h3>What happens to my money when I pay into Trustfy?</h3>
+                <p>To put it simply: your money is held in a separate client account that we do not have direct access to.</p>
+             
+                <p>Any customer funds are held in what is called a “ring-fenced client account,” which means they’re separate (both physically and legally) from the business account. This is to protect client funds and is in line with EU regulations for payment services.</p>
+             
+                <p>When you pay in to Trustfy, that money does NOT become Trustfy property. Ownership is retained by you until you authorize a pay out to a freelancer, at which point the money becomes their property.</p>
                 <p>&nbsp;</p>
                 <h1>FAQ - For Freelancers</h1>
                 <p>&nbsp;</p>
