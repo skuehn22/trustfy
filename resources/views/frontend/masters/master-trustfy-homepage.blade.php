@@ -38,13 +38,13 @@
                     <a class="nav-link js-scroll-trigger" href="#download">Create a review</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#home">{{ trans('index.home') }}</a>
+                    <a class="nav-link" href="#home">{{ trans('index.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="/{{$blade["locale"]}}/{{ trans('index.about_url') }}">{{ trans('index.about_us') }}</a>
+                    <a class="nav-link" href="/{{$blade["locale"]}}/{{ trans('index.about_url') }}">{{ trans('index.about_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">{{ trans('index.contact') }}</a>
+                    <a class="nav-link" href="#contact">{{ trans('index.contact') }}</a>
                 </li>
                 <li class="nav-item">
                    <a class="nav-link" href="/{{$blade["locale"]}}/faq">FAQ</a>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url($blade["locale"].'/free-register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url($blade["locale"].'/create-plan') }}">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-4  pl-0 pr-0">

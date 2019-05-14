@@ -76,7 +76,7 @@ class HomeController extends Controller
         $blade["user"] = Auth::user();
 
         Auth::logout();
-        Session::flash('success',"logout");
+        Session::flash('success',"Logout successful");
         return Redirect::to($blade["locale"]."/reviews");
 
     }

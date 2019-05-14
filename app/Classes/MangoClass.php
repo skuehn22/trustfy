@@ -338,10 +338,14 @@ class MangoClass extends Controller
                 $user->FirstName = $person->firstname;
                 $user->LastName = $person->lastname;
             }else{
-                $user->FirstName = $account->firstname;
-                $user->LastName = $account->lastname;
+                if($account->firstname){
+                    $user->FirstName = $account->firstname;
+                    $user->LastName = $account->lastname;
+                }else{
+                    $user->FirstName = "John";
+                    $user->LastName = "Doe";
+                }
             }
-
 
 
             if(isset($person->birthday)){

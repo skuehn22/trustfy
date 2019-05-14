@@ -54,6 +54,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::any('/freelancer-not-gig-economy', 'HomeController@blog1');
 
 
+    Route::any('/create-plan', 'Frontend\FreePlanController@create');
+    Route::any('/get-plan-typ', 'Frontend\FreePlanController@getPlanByTyp');
+    Route::any('/save-plan', 'Frontend\FreePlanController@save');
+
+
 
 });
 

@@ -12,37 +12,37 @@
         .invoice header {
             padding: 10px 0;
             margin-bottom: 20px;
-            border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
         }
 
         .invoice main .notices {
             padding-left: 6px;
-            border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
         }
 
         .invoice table td h3 {
             margin: 0;
             font-weight: 400;
-            color: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            color: @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
             font-size: 1.2em
         }
 
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
-            background: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            background: @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
             width: 25px;
         }
 
         .invoice table .total {
-            background:@if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            background:@if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
             color: #fff
         }
 
         .invoice table tfoot tr:last-child td {
             color: #19A3B8;
             font-size: 1.4em;
-            border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
         }
 
         .pay-now{
@@ -154,16 +154,23 @@
                             @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
                                 <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
                             @endif
+                        @else
+                            <img src="https://www.trustfy.io/img/trustfy-green.png" data-holder-rendered="true" style="width: 200px;" />
                         @endif
                     </div>
                     <div class="col company-details">
                         <h3 class="name">
-                                {!! $company->name or '<i>please fill in</i>' !!}
+                                {!! $company->name or '' !!}
                         </h3>
                         <div>
                             {{$company->address1 or ''}}<br>
-                            @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
-                            @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, <br>@endif
+                            @if(isset($company->address2))
+                                @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
+                            @endif
+                            @if(isset($company->postcode))
+                                @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, <br>@endif
+                            @endif
+
                             {{$company->city or ''}}
                         </div>
                         <div>  {{$user->email or ''}}</div>
@@ -181,12 +188,17 @@
 
                             <h5 class="to">{{$plan->firstname}} {{$plan->lastname}}</h5>
                             {{$plan->address1 or ''}}<br>
-                            @if(strlen($plan->address2)>1){{$plan->address2 or ''}}<br> @endif
-                            @if(isset($plan->postcode) && strlen($plan->postcode)>1) {{$plan->postcode or ''}}@endif
-                            {{$plan->city}}
+                            @if(isset($company->address2))
+                                @if(strlen($plan->address2)>1){{$plan->address2 or ''}}<br> @endif
+                            @endif
+                            @if(isset($company->postcode))
+                                @if(isset($plan->postcode) && strlen($plan->postcode)>1) {{$plan->postcode or ''}}@endif
+                            @endif
+
+                            {{$plan->city or ''}}
                             <div class="email">{{$plan->email}}</div>
                         @else
-                            <i>please fill in</i>
+
                         @endif
                     </div>
                     <div class="col invoice-details">
@@ -216,7 +228,7 @@
                     <tr>
                         <td class="no">0{{ $milestone->order }}</td>
                         <td class="text-left" style="width:25%;">
-                           <strong>{!!  $milestone->name or '<i>please fill in</i>'!!} </strong><br>
+                           <strong>{!!  $milestone->name or ''!!} </strong><br>
                             <input type="hidden" value="{{$milestone->name or ''}}" id="name_{{$milestone->id or ''}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") {{$milestone->desc}} @endif
                         </td>
