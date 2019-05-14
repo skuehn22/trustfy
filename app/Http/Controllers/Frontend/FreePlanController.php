@@ -40,10 +40,13 @@ class FreePlanController extends Controller
         $blade["locale"] = App::getLocale();
         $types = PlansTypes::lists("name", "id");
 
-        $type = $_POST['freelancer'];
-        $amount = $_POST['amount'];
-        $cur = $_POST['cur'];
-        $plantype = $_POST['type'];
+        if(isset($_POST['freelancer'])){
+            $type = $_POST['freelancer'];
+            $amount = $_POST['amount'];
+            $cur = $_POST['cur'];
+            $plantype = $_POST['type'];
+        }
+
 
 
         return view('frontend.plan', compact('blade', 'types', 'company', 'plan', 'type', 'amount', 'cur', 'plantype'));

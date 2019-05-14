@@ -118,7 +118,7 @@
 
                         <div class="col-md-4 pl-0 pr-0">
                             <div class="form-group">
-                                <input class="form-control input-lg header-form" id="inputlg" name="amount" type="text" value="{{ trans('index.header-form4') }} 1100">
+                                <input class="form-control input-lg header-form" id="inputlg" name="amount" type="number" value="1100">
                             </div>
                         </div>
 
