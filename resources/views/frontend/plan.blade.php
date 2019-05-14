@@ -156,13 +156,13 @@
 
 
                         <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="radio-type-freelancer" name="radio-type" value="0"  @if($type==0) checked @endif>
+                            <input type="radio" class="custom-control-input" id="radio-type-freelancer" name="radio-type" value="0"  @if(isset($type) && $type==0) checked @endif>
                             <label class="custom-control-label" for="radio-type-freelancer">Freelancer</label>
                         </div>
 
 
                         <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="radio-type-client" name="radio-type" value="1"  @if($type==1) checked @endif>
+                            <input type="radio" class="custom-control-input" id="radio-type-client" name="radio-type" value="1"  @if(isset($type) && $type==1) checked @endif>
                             <label class="custom-control-label" for="radio-type-client">Client</label>
                         </div>
 
@@ -202,10 +202,10 @@
                     <div class="col-md-12">
                         <h5 class="pt-4">Payment Typ</h5>
                         <select id="typ" name="typ" class="form-control col-md-12">
-                            <option value="1" @if($plantype==0) selected @endif>
+                            <option value="1" @if(isset($plantype) && $plantype==0) selected @endif>
                                 Deposit / Single Payment
                             </option>
-                            <option value="2" @if($plantype==1) selected @endif>
+                            <option value="2" @if(isset($plantype) && $plantype==1) selected @endif>
                                 Milestone Payment
                             </option>
                         </select>
@@ -355,8 +355,10 @@
 
 
 
+            @if(isset($amount))
+                $( "#single-amount" ).val({{$amount}});
+            @endif
 
-            $( "#single-amount" ).val({{$amount}});
 
             //initalize datepicker
             $( function() {
