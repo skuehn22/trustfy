@@ -202,9 +202,6 @@
                     <div class="col-md-12">
                         <h5 class="pt-4">Payment Typ</h5>
                         <select id="typ" name="typ" class="form-control col-md-12">
-                            <option value="3">
-                                select
-                            </option>
                             <option value="1" @if($plantype==0) selected @endif>
                                 Deposit / Single Payment
                             </option>
