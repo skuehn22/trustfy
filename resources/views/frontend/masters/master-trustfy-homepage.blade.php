@@ -98,7 +98,7 @@
                         <div class="col-md-4  pl-0 pr-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" id="inputlg" name="freelancer" type="text">
-                                    <option>{{ trans('index.header-form1') }}</option>
+                                    <option value="0">{{ trans('index.header-form1') }}</option>
                                     <!--<option>I'm a Client</option>-->
                                 </select>
                             </div>
@@ -107,8 +107,8 @@
                         <div class="col-md-5 pr-0 pl-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" id="inputlg" name="type" type="text">
-                                    <option>{{ trans('index.header-form2') }}</option>
-                                    <option>{{ trans('index.header-form3') }}</option>
+                                    <option value="0">{{ trans('index.header-form2') }}</option>
+                                    <option value="1">{{ trans('index.header-form3') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -125,9 +125,9 @@
                         <div class="col-md-3 pr-0 pl-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" name="cur" id="inputlg" type="text">
-                                    <option>EUR</option>
-                                    <option>GBP</option>
-                                    <option>USD</option>
+                                    <option value="0">EUR</option>
+                                    <option value="1">GBP</option>
+                                    <option value="2">USD</option>
                                 </select>
                             </div>
                         </div>

@@ -156,13 +156,13 @@
 
 
                         <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="radio-type-freelancer" name="radio-type" value="0" checked>
+                            <input type="radio" class="custom-control-input" id="radio-type-freelancer" name="radio-type" value="0"  @if($type==0) checked @endif>
                             <label class="custom-control-label" for="radio-type-freelancer">Freelancer</label>
                         </div>
 
 
                         <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="radio-type-client" name="radio-type" value="1">
+                            <input type="radio" class="custom-control-input" id="radio-type-client" name="radio-type" value="1"  @if($type==1) checked @endif>
                             <label class="custom-control-label" for="radio-type-client">Client</label>
                         </div>
 
@@ -201,7 +201,19 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h5 class="pt-4">Payment Typ</h5>
-                        {!! Form::select('typ', $types, null , ['class' => 'form-control col-md-12', 'id' => 'typ', 'placeholder' => 'select']) !!}
+                        <select id="typ" name="typ" class="form-control col-md-12">
+                            <option value="3">
+                                select
+                            </option>
+                            <option value="1" @if($plantype==0) selected @endif>
+                                Deposit / Single Payment
+                            </option>
+                            <option value="2" @if($plantype==1) selected @endif>
+                                Milestone Payment
+                            </option>
+                        </select>
+
+
                     </div>
 
                 </div>
@@ -254,6 +266,18 @@
             }
 
         });
+
+
+        $(document).ready(function () {
+
+            //alert($("#typ").val());
+
+            if($("#typ").val() == 1 || $("#typ").val() == 2){
+                getPlanTyp($("#typ").val());
+            }
+
+        });
+
 
         function getPlanTyp(id) {
 
@@ -331,11 +355,17 @@
                 $('[data-toggle="tooltip"]').tooltip()
             })
 
+
+
+
+
+            $( "#single-amount" ).val({{$amount}});
+
             //initalize datepicker
             $( function() {
-                $( "#due-date" ).datepicker( );
-                $( "#due-date" ).datepicker( "option", "dateFormat", "mm/dd/yy" );
-                $('#due-date').datepicker('setDate', new Date());
+                $( "#due_date" ).datepicker( );
+                $( "#due_date" ).datepicker( "option", "dateFormat", "mm/dd/yy" );
+                $('#due_date').datepicker('setDate', new Date());
             } );
 
             $(document).ready(function () {

@@ -44,9 +44,9 @@
     <label class="col-md-4 col-form-label" for="due-date">Due Date*</label>
 
     @if(isset($milestones) && $milestones->due_at)
-        <input type="text" id="due-date" name="due-date" class="form-control col-md-6" value="{{$milestones->due_at}}">
+        <input type="text" id="due_date" name="due-date" class="form-control col-md-6" value="{{$milestones->due_at}}">
     @else
-        <input type="text" id="due-date" name="due-date" class="form-control col-md-6">
+        <input type="text" id="due_date" name="due-date" class="form-control col-md-6">
     @endif
 
 

@@ -40,7 +40,13 @@ class FreePlanController extends Controller
         $blade["locale"] = App::getLocale();
         $types = PlansTypes::lists("name", "id");
 
-        return view('frontend.plan', compact('blade', 'types', 'company', 'plan'));
+        $type = $_POST['freelancer'];
+        $amount = $_POST['amount'];
+        $cur = $_POST['cur'];
+        $plantype = $_POST['type'];
+
+
+        return view('frontend.plan', compact('blade', 'types', 'company', 'plan', 'type', 'amount', 'cur', 'plantype'));
     }
 
 
@@ -76,17 +82,25 @@ class FreePlanController extends Controller
         $blade["ll"] = App::getLocale();
         $input = Request::all();
 
-        $usersObj = new UsersClass();
-        $response = $usersObj->saveUser($_POST);
+        if($_POST['radio-new'] == 1){
 
-        if($response == false){
-            return back()->withInput()->with('error', 'E-Mail already taken.');
         }else{
-            $user = Users::where("email", "=", $response['email'])->first();
-            $company = new Companies();
-            $company->users_fk = $user->id;
-            $company->save();
+
+            $usersObj = new UsersClass();
+            $response = $usersObj->saveUser($_POST);
+
+            if($response == false){
+                return back()->withInput()->with('error', 'E-Mail already taken.');
+            }else{
+                $user = Users::where("email", "=", $response['email'])->first();
+                $company = new Companies();
+                $company->users_fk = $user->id;
+                $company->save();
+            }
+
         }
+
+
 
 
         $clients = new Clients();
@@ -202,6 +216,8 @@ class FreePlanController extends Controller
                 $milestone->desc = $input['description'][$key];
                 $milestone->due_at = $input['due_date'][$key];
 
+
+                /*
                 if(isset($input['cc']) && $input['cc']=="true"){
                     $milestone->credit_card = 1;
                 }else{
@@ -213,6 +229,10 @@ class FreePlanController extends Controller
                 }else{
                     $milestone->bank_transfer = 0;
                 }
+                */
+
+                $milestone->credit_card = 1;
+                $milestone->bank_transfer = 1;
 
                 $milestone->save();
             }

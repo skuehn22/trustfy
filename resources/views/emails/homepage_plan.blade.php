@@ -326,10 +326,13 @@
                         </tr>
                         <tr>
                             <td>
+
+                                <!--
                                Project Title: {{$plan->name}}<br><br>
 
                                Item: {{$milestones->name}}<br>
                                Price: {{$milestones->amount}}<br>
+                                -->
 
                             </td>
                         </tr>
