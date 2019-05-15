@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr id="firstline">
         <td class="col-sm-3 col-lg-3" style="width: 20%">
             <input type="text" name="name[]" class="form-control" />
         </td>

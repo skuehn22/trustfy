@@ -55,8 +55,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
     Route::any('/create-plan', 'Frontend\FreePlanController@create');
+    Route::any('/edit-plan', 'Frontend\FreePlanController@edit');
     Route::any('/get-plan-typ', 'Frontend\FreePlanController@getPlanByTyp');
     Route::any('/save-plan', 'Frontend\FreePlanController@save');
+    Route::any('/send-plan', 'Frontend\FreePlanController@send');
+    Route::any('/plan-preview', 'Frontend\FreePlanController@save');
+    Route::any('/check-email', 'Frontend\FreePlanController@checkEmail');
 
 
 

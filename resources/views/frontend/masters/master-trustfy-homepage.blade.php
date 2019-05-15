@@ -125,9 +125,9 @@
                         <div class="col-md-3 pr-0 pl-0">
                             <div class="form-group">
                                 <select class="form-control input-lg header-form" name="cur" id="inputlg" type="text">
-                                    <option value="0">EUR</option>
-                                    <option value="1">GBP</option>
-                                    <option value="2">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="USD">USD</option>
                                 </select>
                             </div>
                         </div>
