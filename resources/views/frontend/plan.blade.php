@@ -96,8 +96,7 @@
                     <div class="col-md-12">
 
                         <h2>Create your Escrow</h2>
-                        <img src="https://www.trustfy.io/img/trustfy-green.png" id="logo" data-holder-rendered="true" class="tooltip1 hover" title="Another tooltip" style="width: 200px;" />
-                        <span class="tooltip123" title="This is my span's tooltip message!">Some text</span>
+
                     </div>
                 </div>
 
