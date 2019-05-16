@@ -144,13 +144,13 @@ class FreePlanController extends Controller
 
 
                     $user = Users::where("email", "=", $_POST['email'])->first();
-                //$user = Users::where("email", "=", "sebastian@trustfy.io")->first();
+                $user = Users::where("email", "=", "sebastian@trustfy.io")->first();
                     $company = new Companies();
                     $company->users_fk = $user->id;
                     $company->firstname = $input['name_freelancer'];
                     $company->name = $input['business'];
                     $company->save();
-                //}
+                }
 
                 $clients = new Clients();
                 $clients->email = $input['client-email'];
