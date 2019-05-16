@@ -11,7 +11,14 @@
     <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
     <link href="{{ asset('css/frontend/homepage.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/backend/freelancer/bootstrap_4_0.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/backend/freelancer/paymentPlan.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="/css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tooltipster-sideTip-shadow.min.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="/js/tooltipster.bundle.min.js"></script>
 
     @if (env('APP_ENV')=='live')
         @include('frontend.masters.elements.tracking')
@@ -109,7 +116,31 @@
     </style>
 
     @yield('css')
+    <script>
+        $(document).ready(function() {
 
+            $('.tooltip1').tooltipster({
+                animation: 'fade',
+                delay: 200,
+                theme: 'tooltipster-shadow',
+                trigger: 'click',
+                side: 'right',
+                interactive: 'true'
+            });
+
+            $(".tooltip1").click();
+
+            $('.tooltip2').tooltipster();
+
+        });
+
+        /*
+        $( document ).ready(function() {
+            $(".tooltip1").click();
+        });
+        */
+
+    </script>
 </head>
 
 <body>
@@ -169,8 +200,8 @@
 
 <footer id="contact">
     <div class="container pt-3">
-        <form id="ratingForm" method="POST" action="/send-message">
-        <!--
+    <!--<form id="ratingForm" method="POST" action="/send-message">
+
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row" style="padding-bottom:25px;">
                 <div class="offset-md-3 col-md-5">
@@ -235,11 +266,8 @@
     </div>
 </footer>
 
-<script src="{{ asset('/js/jquery/jquery.min.js') }}"></script>
-
-<script src="{{ asset('/js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('/js/homepage.min.js') }}"></script>
 <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'efdb2cb1-6f9b-48a2-ba23-add187956429', f: true }); done = true; } }; })();</script>
+
 @yield('javascript')
 </body>
 

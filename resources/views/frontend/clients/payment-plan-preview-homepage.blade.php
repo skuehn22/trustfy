@@ -12,37 +12,37 @@
         .invoice header {
             padding: 10px 0;
             margin-bottom: 20px;
-            border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            border-bottom: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
         }
 
         .invoice main .notices {
             padding-left: 6px;
-            border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            border-left: 6px solid @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
         }
 
         .invoice table td h3 {
             margin: 0;
             font-weight: 400;
-            color: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            color: @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
             font-size: 1.2em
         }
 
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
-            background: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            background: @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
             width: 25px;
         }
 
         .invoice table .total {
-            background:@if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            background:@if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
             color: #fff
         }
 
         .invoice table tfoot tr:last-child td {
             color: #19A3B8;
             font-size: 1.4em;
-            border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
+            border-top: 1px solid @if(isset($company->color) ) {{ $company->color }} @else #19A3B8 @endif;
         }
 
         .name{
@@ -55,12 +55,32 @@
             font-weight: 300;
         }
 
+        .action-btn-paymentplan {
+            width: 100px;
+            font-size: 12px;
+        }
+
+        .btn-success{
+            color: #fff;
+            background-color: #19A3B8;
+            border-color: #19A3B8;
+            width: 100px;
+            font-size: 12px;
+            height: 30px;
+        }
+
     </style>
 
 
 @endsection
 
 @section('content')
+
+    <div class="tooltip_templates">
+        <span id="tooltip_content">
+            <strong>Want to personalize your plan?<br>Creat an account to add your logo, <br>color and business information! <br><a href="/free-register" target="_blank">Sign up for free</a></strong>
+        </span>
+    </div>
 
     <div class="row" id="invoice" style="padding-bottom: 30px;">
         <!--
@@ -72,7 +92,7 @@
                 <hr>
             </div>-->
 
-        <div class="col col-lg-10 invoice">
+        <div class="col col-lg-11 invoice">
             <header>
                 @if(isset($protect) && $protect == true)
                     <div class="alert alert-success success_message">
@@ -82,11 +102,8 @@
                 @endif
                 <div class="row">
                     <div class="col">
-                        @if(isset($company->logo) && $company->logo!="3.png")
-                            @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
-                                <img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" />
-                            @endif
-                        @endif
+                        <img src="https://www.trustfy.io/img/trustfy-green.png" id="logo" data-holder-rendered="true"  data-tooltip-content="#tooltip_content" class="tooltip1 hover" title="Another tooltip" style="width: 200px;" />
+
                     </div>
                     <div class="col company-details">
                         <h3 class="name">
@@ -120,7 +137,7 @@
                                 {{$plan->city}}</div>
                             <div class="email">{{$plan->email}}</div>
                         @else
-                            <i>please fill in</i>
+                            <!--<i>please fill in</i>-->
                         @endif
                     </div>
                     <div class="col invoice-details">
@@ -191,7 +208,7 @@
                                                 </div>
                                                 <div class="col-md-5"  style="text-align: right; width: 16%">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <button class="btn btn-success pay-now" disabled data-toggle="tooltip" data-placement="top" title="In Preview deactivated">Pay now</button><br>
+                                                    <input class="btn btn-success pay-now tooltip2" title="In Preview deactivated" value="Pay now"><br>
                                                 </span>
                                                 </div>
                                             </div>
@@ -257,22 +274,32 @@
                 <div class="thanks">Thank you!</div>
                 @if($plan->comment!=null)
                     <div class="notices">
-                        <div>NOTICE:</div>
-                        <div class="notice">{{$plan->comment}}</div>
+                        <div style="font-size: 14px;">NOTICE:</div>
+                        <div class="notice" style="font-size: 14px;">{{$plan->comment}}</div>
                     </div>
                 @endif
 
-                <a class="btn" href="/edit-plan?hash={{$plan->hash}}">Edit</a>
-                <a class="btn" href="/send-plan?hash={{$plan->hash}}">Send</a>
+
 
             </main>
-            <footer>
+
+            <footer style="    background-color: #eee;">
                 Payment Plan was created on a computer and is valid without the signature and seal.
                 <p class="more"><a href="https://www.trustfy.io" target="_blank">Learn more about trustfy.io</a></p>
             </footer>
 
             <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
             <div></div>
+
+
+        </div>
+
+    </div>
+    <div class="row text-right">
+        <div class="col col-lg-11 float-right text-right">
+            <a class="btn btn-secondary btn-sign" style="background-color: #fdcc52;" href="/edit-plan?hash={{$plan->hash}}">Edit</a>
+            <a class="btn btn-secondary btn-sign" style="background-color: #19A3B8;"  href="/send-plan?hash={{$plan->hash}}">Send</a>
+<br><br><br>
         </div>
     </div>
 @endsection

@@ -80,6 +80,12 @@
                         {{ Session::get('error') }}
                     </div>
                 @endif
+                    @if(isset($msg_success))
+                        <div class="alert alert-success error_message">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            {!!  $msg_success !!}
+                        </div>
+                    @endif
                 @if(Session::has('success'))
                     <div class="alert alert-success error_message">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -90,8 +96,8 @@
                     <div class="col-md-12">
 
                         <h2>Create your Escrow</h2>
-
-
+                        <img src="https://www.trustfy.io/img/trustfy-green.png" id="logo" data-holder-rendered="true" class="tooltip1 hover" title="Another tooltip" style="width: 200px;" />
+                        <span class="tooltip123" title="This is my span's tooltip message!">Some text</span>
                     </div>
                 </div>
 
@@ -206,7 +212,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h5 class="pt-4">The <span class="email-txt">Clients</span> Email Address</h5>
+                                <h5 class="pt-1">The <span class="email-txt">Clients</span> Email Address</h5>
 
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
@@ -265,7 +271,7 @@
                 </div>
                <div class="row">
                    <div class="col-md-2 pt-4">
-                       <input type="submit" class="btn btn-create" value="{{ trans('index.header-form5') }}">
+                       <input type="submit" class="btn btn-create" value="Preview ">
                    </div>
                </div>
 
@@ -273,7 +279,7 @@
         </div>
         </form>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br>
 
 @endsection
 @section("javascript")
@@ -290,8 +296,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
     <script src="/js/freelancer/jquery.smartWizard.min.js"></script>
 
-    
+
     <script>
+
+
 
         //loads projects for selected client
         $("#typ").on('change', function() {
@@ -359,8 +367,13 @@
                         @if(isset($cur))
                             $('#currency').val('{{$cur}}');
                         @endif
+                        @if(isset($milestones))
+                        $('#title-milestone').val('{{$milestones[0]->name}}');
+                        $('#desc-milestone').val('{{$milestones[0]->desc}}');
 
-
+                        $('#single-amount').val('{{$milestones[0]->amount}}');
+                        $('#due_date').val('{{$milestones[0]->due_at}}');
+                        @endif
                     }else{
                         $(".button-bar-footer").removeClass("col-md-5").addClass("col-md-12");
 

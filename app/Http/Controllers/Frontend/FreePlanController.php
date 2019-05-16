@@ -28,7 +28,6 @@ use App\DatabaseModels\Users;
 use App\Classes\MangoClass;
 use App\Classes\MessagesClass;
 use App\Classes\StateClass;
-use App\Classes\CompanyClass;
 
 
 
@@ -142,13 +141,16 @@ class FreePlanController extends Controller
                 if($response == false){
                     return back()->withInput()->with('error', 'E-Mail already taken.');
                 }else{
+
+
                     $user = Users::where("email", "=", $_POST['email'])->first();
+                //$user = Users::where("email", "=", "sebastian@trustfy.io")->first();
                     $company = new Companies();
                     $company->users_fk = $user->id;
                     $company->firstname = $input['name_freelancer'];
                     $company->name = $input['business'];
                     $company->save();
-                }
+                //}
 
                 $clients = new Clients();
                 $clients->email = $input['client-email'];
@@ -370,7 +372,15 @@ class FreePlanController extends Controller
                 $message->to('bcc@trustfy.io');
             });
 
-            return back()->withInput()->with('success', 'The Payment Pan has been sent to your customer. You can log in <a href="/login" style="font-size: 12px; text-decoration: underline;">here</a> and manage the plan.');
+
+            $subject = "Welcome to Trustfy";
+            $msg_obj = new MessagesClass();
+            $msg_obj->welcome($user, $subject);
+            $blade["locale"] = App::getLocale();
+            $types = PlansTypes::lists("name", "id");
+            $msg_success = "The Payment Pan has been sent to your customer. You can log in <a href=\"/login\" style=\"font-size: 12px; text-decoration: underline;\">here</a> and manage the plan.";
+
+            return view('frontend.plan', compact('blade', 'types', 'company', 'plan', 'type', 'amount', 'cur', 'plantype', 'msg_success'));
 
         }
 
@@ -381,8 +391,6 @@ class FreePlanController extends Controller
 
 
         $plan = self::save();
-
-
 
         $blade["locale"] = App::getLocale();
 
