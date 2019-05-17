@@ -1,4 +1,4 @@
-@extends('frontend.masters.master-trustfy')
+@extends('frontend.masters.masters-trustfy-plan-tool')
 @section('seo')
     <title>{!! trans('seo.title_about') !!}</title>
     <meta name="description" content="{!! trans('seo.desc_about') !!}">

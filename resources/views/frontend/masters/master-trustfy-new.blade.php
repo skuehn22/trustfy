@@ -117,13 +117,6 @@
 
     @yield('css')
     <script>
-
-        $(window).bind("pageshow", function(event) {
-            if (event.originalEvent.persisted) {
-                Alert("User clicked on back button!");
-            }
-        });
-
         $(document).ready(function() {
 
             $('.tooltip1').tooltipster({

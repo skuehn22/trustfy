@@ -115,7 +115,7 @@
 
 </head>
 
-<body>
+<body  style="background-image: url('/img/bg-tool3.jpg');">
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -173,7 +173,7 @@
 <footer id="contact">
     <div class="container pt-3">
         <form id="ratingForm" method="POST" action="/send-message">
-            <!--
+        <!--
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row" style="padding-bottom:25px;">
                 <div class="offset-md-3 col-md-5">
@@ -210,31 +210,31 @@
                 </div>
             </div>
         </form>-->
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
-                        <p>
-                            {!! trans('index.claim') !!}
-                        </p>
-                    </div>
-                    <div class="col-md-2">
-                        <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/terms" style="color:#fff;"> {!! trans('index.terms') !!}</a></p>
-                        <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
-                        <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
-                    </div>
-                    <div class="col-md-5">
-                        <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">
-                    </div>
-                    <div class="col-md-2">
-                        <a href="https://ie.linkedin.com/company/work-smarter-payment?trk=public_profile_topcard_current_company" target="_blank"><img src="{{ asset('img/linkedin.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
-                        <a href="https://www.facebook.com/trustfy/" target="_blank"><img src="{{ asset('img/facebook.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
-                    </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{{ asset('img/trustfy-new-mixed.png') }}" style="max-width: 200px;" class="img-fluid logo-desktop" alt="Trustfy Freelancer Payment">
+                    <p>
+                        {!! trans('index.claim') !!}
+                    </p>
                 </div>
-        <div class="row" style="padding-top:25px;">
-            <div class="col-md-12">
-
+                <div class="col-md-2">
+                    <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/terms" style="color:#fff;"> {!! trans('index.terms') !!}</a></p>
+                    <p style="padding-bottom: 10px;"><a href="/{{$blade["locale"]}}/privacy" style="color:#fff;"> {!! trans('index.privacy') !!}</a></p>
+                    <p><a href="/{{$blade["locale"]}}/faq" style="color:#fff;">FAQ</a></p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ asset('img/powered-by-mangopay.png') }}" alt="mangopay" class="img-responsive img-fluid">
+                </div>
+                <div class="col-md-2">
+                    <a href="https://ie.linkedin.com/company/work-smarter-payment?trk=public_profile_topcard_current_company" target="_blank"><img src="{{ asset('img/linkedin.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
+                    <a href="https://www.facebook.com/trustfy/" target="_blank"><img src="{{ asset('img/facebook.png') }}" alt="mangopay" class="img-responsive img-fluid"></a>
+                </div>
             </div>
-        </div>
+            <div class="row" style="padding-top:25px;">
+                <div class="col-md-12">
+
+                </div>
+            </div>
     </div>
 </footer>
 <!--
