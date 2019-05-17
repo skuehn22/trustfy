@@ -131,11 +131,13 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="far fa-envelope"></i></div>
                             </div>
-                            @if($user->tmp_mail==0)
-                                <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->email or ''}}">
-                            @else
-                                <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->tmp_mail or ''}}">
-                            @endif
+
+
+                                @if(isset($user) && $user->tmp_mail==0)
+                                    <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->email or ''}}">
+                                @else
+                                    <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->tmp_mail or ''}}">
+                                @endif
 
 
                         </div>
@@ -341,16 +343,17 @@
 
         $(document).ready(function () {
 
-            @if($user->tmp_mail==0)
-                $( "#radio-type-returning" ).attr('checked', true);
-                $('#tmp').val("1");
-                $('.naming').hide();
-            @else
-                $( "#radio-type-new" ).attr('checked', true);
-                $('#tmp').val("0");
-                $('.naming').show();
+            @if(isset($user))
+                @if($user->tmp_mail==0)
+                    $( "#radio-type-returning" ).attr('checked', true);
+                    $('#tmp').val("1");
+                    $('.naming').hide();
+                @else
+                    $( "#radio-type-new" ).attr('checked', true);
+                    $('#tmp').val("0");
+                    $('.naming').show();
+                @endif
             @endif
-
 
 
 
