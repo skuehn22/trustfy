@@ -78,7 +78,7 @@
 
     <div class="tooltip_templates">
         <span id="tooltip_content">
-            <strong>Want to personalize your plan?<br>Creat an account to add your logo, <br>color and business information! <br><a href="/free-register" style="color:#19A3B8;" target="_blank">Sign up for free</a></strong>
+            <strong>Want to personalize your plan?<br>Creat an account to add your logo, <br>color and business information! <br><a href="/free-register" style="color:#19A3B8;" target="_blank">Create a Free Account</a></strong>
         </span>
     </div>
 
@@ -197,7 +197,7 @@
                                                 </div>
                                                 <div class="col-md-5"  style="text-align: right; width: 16%">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <input class="btn btn-success pay-now tooltip2" title="In Preview deactivated" value="Pay now"><br>
+                                                    <input class="btn btn-success pay-now tooltip2" style="border: 0px; border-color: #19A3B8; cursor: context-menu;" title="Deactivated in Preview" value="Pay now"><br>
                                                 </span>
                                                 </div>
                                             </div>
@@ -264,7 +264,7 @@
                 @if($plan->comment!=null)
                     <div class="notices">
                         <div style="font-size: 14px;">NOTICE:</div>
-                        <div class="notice" style="font-size: 14px;">{{$plan->comment}}</div>
+                        <div class="notice" style="font-size: 14px;">{!! $plan->comment !!}}</div>
                     </div>
                 @endif
 
