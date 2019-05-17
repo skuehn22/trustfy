@@ -163,7 +163,7 @@
                                 @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                             </td>
 
-                            <td class="qty">@if(isset($milestone->due_at))  {{ $milestone->due_at }}   @else  <i>please fill in</i> @endif </td>
+                            <td class="qty">@if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}}  @else  <i>please fill in</i> @endif </td>
                             <td class="qty"  style="width:16%;"> @if(isset($milestone->amount)){{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                             <td>
 
@@ -264,7 +264,7 @@
                 @if($plan->comment!=null)
                     <div class="notices">
                         <div style="font-size: 14px;">NOTICE:</div>
-                        <div class="notice" style="font-size: 14px;">{!! $plan->comment !!}}</div>
+                        <div class="notice" style="font-size: 14px;">{!! $plan->comment !!}</div>
                     </div>
                 @endif
 

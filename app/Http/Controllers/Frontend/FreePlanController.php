@@ -272,17 +272,15 @@ class FreePlanController extends Controller
                 $milestone->currency = $input['currency'];
             }
 
-            if(isset($input['pay-due'])){
-                $milestone->due_typ = $input['pay-due'];
-            }
+
 
             $milestone->typ = $input['typ'];
 
             if(isset($input['pay-due']) && $input['pay-due'] == 3){
 
-                $plan->date = date("Y-m-d");
+                $pieces = explode("/", $input['due-date']);
 
-                $milestone->due_at = $input['due-date'];
+                $milestone->due_at = $pieces['1']."/".$pieces['0']."/".$pieces['2'];
             }
 
 
@@ -318,7 +316,8 @@ class FreePlanController extends Controller
                 $milestone->amount = $input['amount'][$key];
                 $milestone->currency = $input['currency'][$key];
                 $milestone->desc = $input['description'][$key];
-                $milestone->due_at = $input['due_date'][$key];
+                $pieces = explode("/", $input['due_date'][$key]);
+                $milestone->due_at = $pieces['1']."/".$pieces['0']."/".$pieces['2'];
 
 
                 /*
