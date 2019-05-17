@@ -100,7 +100,7 @@
                     </div>
                 </div>
 
-                @if(!isset($plan))
+
 
                     <div class="row">
                         <div class="col-md-12 pb-4 pt-4">
@@ -131,7 +131,12 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="far fa-envelope"></i></div>
                             </div>
-                            <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ old('email') }}">
+                            @if($user->tmp_mail==0)
+                                <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->email or ''}}">
+                            @else
+                                <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->tmp_mail or ''}}">
+                            @endif
+
 
                         </div>
 
@@ -162,11 +167,11 @@
 
                 </div>
 
-                @else
-                    <input type="hidden" name="hash" value="{{$plan->hash}}">
-                @endif
 
-                    <div class="row pt-1">
+                    <input type="hidden" name="hash" value="{{$plan->hash or ''}}">
+                    <input type="hidden" name="tmp" id="tmp" value="0">
+
+                    <div class="row pt-1 naming">
 
                         <div class="col-md-6">
                             <h5>Your Name</h5>
@@ -298,8 +303,6 @@
 
     <script>
 
-
-
         //loads projects for selected client
         $("#typ").on('change', function() {
 
@@ -309,33 +312,51 @@
 
         });
 
+        function checkMail() {
+
+            if($('#tmp').val() == 0){
+                var email = $("#email").val();
+                $.ajax({
+
+                    type: 'GET',
+                    url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/check-email/?email='+email,
+                    data: { variable: 'value' },
+                    dataType: 'json',
+                    success:function(data)
+                    {
+                        $('#mailCheck').html(data.message);
+                    }
+                })
+
+                $('#mailCheck').show();
+            }
+
+        }
+
 
         $("#email").focusout(function(){
-
-            var email = $("#email").val();
-            $.ajax({
-
-                type: 'GET',
-                url: '{{env("MYHTTP")}}/{{$blade["locale"]}}/check-email/?email='+email,
-                data: { variable: 'value' },
-                dataType: 'json',
-                success:function(data)
-                {
-                    $('#mailCheck').html(data.message);
-                }
-            })
-
-
+            checkMail();
         });
 
 
         $(document).ready(function () {
 
-            @if(isset($plan))
-                $( "#typ" ).val({{$plan->typ}});
+            @if($user->tmp_mail==0)
+                $( "#radio-type-returning" ).attr('checked', true);
+                $('#tmp').val("1");
+                $('.naming').hide();
+            @else
+                $( "#radio-type-new" ).attr('checked', true);
+                $('#tmp').val("0");
+                $('.naming').show();
             @endif
 
 
+
+
+            @if(isset($plan))
+                $( "#typ" ).val({{$plan->typ}});
+            @endif
 
             if($("#typ").val() == 1 || $("#typ").val() == 2){
                 getPlanTyp($("#typ").val());
@@ -440,8 +461,14 @@
 
             if($(this).val() == 0){
                 $('#password').html("Please enter a new password");
+                $('#tmp').val("0");
+                $('.naming').show();
+                checkMail();
             }else{
                 $('#password').html("Please enter your password");
+                $('#tmp').val("1");
+                $('#mailCheck').hide();
+                $('.naming').hide();
             }
 
         });
@@ -502,6 +529,9 @@
             });
 
         }
+
+
+
 
     </script>
 

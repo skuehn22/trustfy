@@ -58,6 +58,39 @@ class UsersClass
 
     }
 
+    public function saveTmpUser($data, $tmpmail) {
+
+
+        if(isset($data["email"])){
+            $checkUser = Users::where("email", "=", $data["email"])->first();
+        }
+
+        if(empty($checkUser)) {
+
+            $users = new Users();
+            $users->email = $tmpmail;
+            $users->password =  bcrypt(  $data["password"]);
+            $users->active = "0";
+            $users->tmp_mail = $data["email"];
+            $users->role = 3;
+            $users->remember_token = $data["_token"];
+            $users->save();
+
+            $data['email'] = $users->email;
+            $data['password'] = $users->password;
+
+
+            return $data;
+
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
     public function createCompany($data) {
 
     }

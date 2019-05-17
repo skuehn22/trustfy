@@ -78,19 +78,16 @@
 
     <div class="tooltip_templates">
         <span id="tooltip_content">
-            <strong>Want to personalize your plan?<br>Creat an account to add your logo, <br>color and business information! <br><a href="/free-register" target="_blank">Sign up for free</a></strong>
+            <strong>Want to personalize your plan?<br>Creat an account to add your logo, <br>color and business information! <br><a href="/free-register" style="color:#19A3B8;" target="_blank">Sign up for free</a></strong>
         </span>
     </div>
 
     <div class="row" id="invoice" style="padding-bottom: 30px;">
-        <!--
-            <div class="toolbar hidden-print">
-                <div class="text-right">
-                    <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
-                    <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
-                </div>
-                <hr>
-            </div>-->
+        <div class="col col-lg-11 text-right pb-2">
+            <a class="btn btn-secondary btn-sign" style="background-color: #fdcc52;" href="/edit-plan?hash={{$plan->hash}}">Edit</a>
+            <a class="btn btn-secondary btn-sign" style="background-color: #19A3B8;"  href="/send-plan?hash={{$plan->hash}}">Send</a>
+        </div>
+
 
         <div class="col col-lg-11 invoice">
             <header>
@@ -107,23 +104,15 @@
                     </div>
                     <div class="col company-details">
                         <h3 class="name">
-                            {!! $company->name or '<i>please fill in</i>' !!}
+                            {!! $company->name or '<i>please fill in</i>' !!}<br>
+                            @if(isset($user) && $user->tmp_mail==0)
+                                {{$user->email or ''}}
+                            @else
+                                {{$user->tmp_mail or ''}}
+                            @endif
+
                         </h3>
-                        <div>
-                            {{$company->address1 or ''}}<br>
 
-                            @if(isset($address2))
-                                @if(strlen($company->address2)>1){{$company->address2 or ''}}<br> @endif
-                            @endif
-                            @if(isset($postcode))
-                                @if(strlen($company->postcode)>1) {{$company->postcode or ''}}, @endif
-                            @endif
-
-
-                            {{$company->city or ''}}
-                        </div>
-                        <div>  {{$user->email or ''}}</div>
-                        <div>  {{$user->phone or ''}}</div>
                     </div>
                 </div>
             </header>

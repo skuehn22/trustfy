@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Frontend;
 
 // Libraries
-use App, Redirect, Auth, DB, Input, Validator, Hash, Session, Request, Mail;
+use App, Redirect, Auth, DB, Input, Validator, Hash, Session, Request, Mail, DateTime;
 
 use App\Http\Controllers\Controller;
 
@@ -61,10 +61,15 @@ class FreePlanController extends Controller
         $client = Clients::where("id", "=", $plan->clients_id_fk)->first();
 
         $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->where('delete', '=', '0')
             ->OrderBy('order', 'asc')
             ->get();
 
-        return view('frontend.plan', compact('client', 'blade', 'types', 'company', 'plan', 'type', 'amount', 'cur', 'plantype', 'milestones'));
+
+        $user = Users::where("service_provider_fk", "=", $company->id)->first();
+
+
+        return view('frontend.plan', compact('client', 'blade', 'types', 'company', 'plan', 'type', 'amount', 'cur', 'plantype', 'milestones', 'user'));
 
     }
 
@@ -100,7 +105,7 @@ class FreePlanController extends Controller
         $blade["locale"] = App::getLocale();
         $input = Request::all();
 
-        if(isset($_POST["hash"])){
+        if(isset($_POST["hash"]) && $_POST["hash"]!=''){
 
             $plan = Plans::where("hash", "=", $_POST['hash'])->first();
 
@@ -108,6 +113,8 @@ class FreePlanController extends Controller
             $company->firstname = $input['name_freelancer'];
             $company->name = $input['business'];
             $company->save();
+
+            $user = Users::where("service_provider_fk", "=", $company->id)->first();
 
             $clients = new Clients();
             $clients->email = $input['client-email'];
@@ -131,21 +138,67 @@ class FreePlanController extends Controller
             if(isset($_POST['radio-new']) && $_POST['radio-new'] == 1){
 
 
+                $user = Users::where("email", "=", $_POST['email'])->first();
+                $hasher = app('hash');
+
+                if ($hasher->check($_POST['password'], $user->password)) {
+
+                    $user = Users::where("email", "=", $_POST['email'])->first();
+                    $company = Companies::where("id", "=", $user->service_provider_fk)->first();
+
+                    $clients = new Clients();
+                    $clients->email = $input['client-email'];
+                    $clients->save();
+
+                    $plan = new Plans();
+                    $plan->clients_id_fk = $clients->id;
+
+                    $plan->service_provider_fk = $company->id;
+
+                    if(isset($input['title']))
+                        $plan->name = $input['title'];
+
+
+                    $plan->date = date("Y-m-d");
+
+                    if(isset($input['typ']))
+                        $plan->typ = $input['typ'];
+
+                    if(isset($input['comment']))
+                        $plan->comment = $input['comment'];
+
+                    if($plan->state < 2){
+                        $plan->state = 0;
+                    }
+
+                    $plan->hidden = 0;
+                    //$plan->hash = Hash::make(time());
+                    $plan->hash = time();
+                    $plan->save();
+
+
+                }else{
+                    return back()->withInput()->with('error', 'Email and password do not match');
+                }
+
             }else{
 
-                $user = Users::where("email", "=", $_POST['email'])->first();
+                //$user = Users::where("email", "=", $_POST['email'])->first();
+
+                $tmp = rand(100, 10000);
+                $tmp.='@trustfy.io';
 
                 $usersObj = new UsersClass();
-                $response = $usersObj->saveUser($_POST);
+                $response = $usersObj->saveTmpUser($_POST, $tmp);
 
                 if($response == false){
                     return back()->withInput()->with('error', 'E-Mail already taken.');
                 }else{
 
 
-                    $user = Users::where("email", "=", $_POST['email'])->first();
+                    $user = Users::where("email", "=", $tmp)->first();
                     //$user = Users::where("email", "=", "sebastian@trustfy.io")->first();
-                    $user->active=1;
+                    //$user->active=1;
 
                     $company = new Companies();
                     $company->users_fk = $user->id;
@@ -169,19 +222,8 @@ class FreePlanController extends Controller
                 if(isset($input['title']))
                     $plan->name = $input['title'];
 
-                //if(isset($input['reference']))
-                //    $plan->reference = $input['reference'];
-
-                //if(isset($input['projects-dropdown']))
-                //    $plan->projects_id_fk = $input['projects-dropdown'];
-
 
                 $plan->date = date("Y-m-d");
-
-                //if(isset($input['creation-date']) && $input['creation-date']!=""){
-                //    $creation = date("Y-m-d", strtotime($input['creation-date']) );
-                //    $plan->date = $creation;
-                //}
 
                 if(isset($input['typ']))
                     $plan->typ = $input['typ'];
@@ -202,45 +244,82 @@ class FreePlanController extends Controller
 
             }
 
-            //1 = Single Deposit
-            if($input['typ'] == 1){
+
+
+        }
+
+
+        //1 = Single Deposit
+        if($input['typ'] == 1){
+
+            $milestone = new PlansMilestone();
+            $milestone->projects_plans_id_fk = $plan->id;
+
+
+            if(isset($input['title-milestone'])){
+                $milestone->name = $input['title-milestone'];
+            }
+
+            if(isset($input['desc-milestone'])){
+                $milestone->desc = $input['desc-milestone'];
+            }
+
+            if(isset($input['single-amount'])){
+                $milestone->amount = str_replace(',', '', $input['single-amount']);
+            }
+
+            if(isset($input['currency'])){
+                $milestone->currency = $input['currency'];
+            }
+
+            if(isset($input['pay-due'])){
+                $milestone->due_typ = $input['pay-due'];
+            }
+
+            $milestone->typ = $input['typ'];
+
+            if(isset($input['pay-due']) && $input['pay-due'] == 3){
+
+                $plan->date = date("Y-m-d");
+
+                $milestone->due_at = $input['due-date'];
+            }
+
+
+            $milestone->credit_card = 1;
+            $milestone->bank_transfer = 1;
+
+            /*
+            if(isset($input['cc']) && $input['cc']=="true"){
+                $milestone->credit_card = 1;
+            }else{
+                $milestone->credit_card = 0;
+            }
+
+            if(isset($input['bt']) && $input['bt']=="true"){
+                $milestone->bank_transfer = 1;
+            }else{
+                $milestone->bank_transfer = 0;
+            }
+            */
+
+            $milestone->save();
+
+
+        }else{
+
+            foreach($input['name'] as $key => $value){
 
                 $milestone = new PlansMilestone();
                 $milestone->projects_plans_id_fk = $plan->id;
+                $milestone->order = $key+1;
+                $milestone->typ = 2;
+                $milestone->name = $value;
+                $milestone->amount = $input['amount'][$key];
+                $milestone->currency = $input['currency'][$key];
+                $milestone->desc = $input['description'][$key];
+                $milestone->due_at = $input['due_date'][$key];
 
-
-                if(isset($input['title-milestone'])){
-                    $milestone->name = $input['title-milestone'];
-                }
-
-                if(isset($input['desc-milestone'])){
-                    $milestone->desc = $input['desc-milestone'];
-                }
-
-                if(isset($input['single-amount'])){
-                    $milestone->amount = str_replace(',', '', $input['single-amount']);
-                }
-
-                if(isset($input['currency'])){
-                    $milestone->currency = $input['currency'];
-                }
-
-                if(isset($input['pay-due'])){
-                    $milestone->due_typ = $input['pay-due'];
-                }
-
-                $milestone->typ = $input['typ'];
-
-                if(isset($input['pay-due']) && $input['pay-due'] == 3){
-
-                    $plan->date = date("Y-m-d");
-
-                    $milestone->due_at = $input['due-date'];
-                }
-
-
-                $milestone->credit_card = 1;
-                $milestone->bank_transfer = 1;
 
                 /*
                 if(isset($input['cc']) && $input['cc']=="true"){
@@ -256,53 +335,17 @@ class FreePlanController extends Controller
                 }
                 */
 
+                $milestone->credit_card = 1;
+                $milestone->bank_transfer = 1;
+
                 $milestone->save();
-
-
-            }else{
-
-                foreach($input['name'] as $key => $value){
-
-                    $milestone = new PlansMilestone();
-                    $milestone->projects_plans_id_fk = $plan->id;
-                    $milestone->order = $key+1;
-                    $milestone->typ = 2;
-                    $milestone->name = $value;
-                    $milestone->amount = $input['amount'][$key];
-                    $milestone->currency = $input['currency'][$key];
-                    $milestone->desc = $input['description'][$key];
-                    $milestone->due_at = $input['due_date'][$key];
-
-
-                    /*
-                    if(isset($input['cc']) && $input['cc']=="true"){
-                        $milestone->credit_card = 1;
-                    }else{
-                        $milestone->credit_card = 0;
-                    }
-
-                    if(isset($input['bt']) && $input['bt']=="true"){
-                        $milestone->bank_transfer = 1;
-                    }else{
-                        $milestone->bank_transfer = 0;
-                    }
-                    */
-
-                    $milestone->credit_card = 1;
-                    $milestone->bank_transfer = 1;
-
-                    $milestone->save();
-                }
             }
-
         }
 
 
 
-
-
-
         $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
+            ->where('delete', '=', '0')
             ->OrderBy('order', 'asc')
             ->get();
 
@@ -327,9 +370,15 @@ class FreePlanController extends Controller
         $clients = Clients::where("id", "=", $plan->clients_id_fk)->first();
         $user = App\DatabaseModels\Users::where("id", "=", $company->users_fk)
             ->first();
+
+        $user->email=$user->tmp_mail;
+        $user->active=1;
+        $user->save();
+
         $milestones = PlansMilestone::where("projects_plans_id_fk", "=", $plan->id)
             ->OrderBy('order', 'asc')
             ->get();
+
         $lang = App::getLocale();
         $input = Request::all();
 
