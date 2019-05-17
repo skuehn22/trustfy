@@ -70,7 +70,7 @@ class UsersClass
             $users = new Users();
             $users->email = $tmpmail;
             $users->password =  bcrypt(  $data["password"]);
-            $users->active = "0";
+            //$users->active = "0";
             $users->tmp_mail = $data["email"];
             $users->role = 3;
             $users->remember_token = $data["_token"];

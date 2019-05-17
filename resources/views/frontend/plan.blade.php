@@ -133,7 +133,7 @@
                             </div>
 
 
-                                @if(isset($user) && $user->tmp_mail==0)
+                                @if(isset($user) && $user->tmp_mail==0 && $user->active==1)
                                     <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->email or ''}}">
                                 @else
                                     <input id="email" type="email" class="form-control col-md-12" name="email" value="{{ $user->tmp_mail or ''}}">
@@ -351,7 +351,7 @@
         $(document).ready(function () {
 
             @if(isset($user))
-                @if($user->tmp_mail==0)
+                @if($user->tmp_mail==0 && $user->active==1)
                     $( "#radio-type-returning" ).attr('checked', true);
                     $('#tmp').val("1");
                     $('.naming').hide();

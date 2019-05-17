@@ -105,7 +105,7 @@
                     <div class="col company-details">
                         <h3 class="name">
                             {!! $company->name or '<i>please fill in</i>' !!}<br>
-                            @if(isset($user) && $user->tmp_mail==0)
+                            @if(isset($user) && $user->tmp_mail==0 && $user->active==1)
                                 {{$user->email or ''}}
                             @else
                                 {{$user->tmp_mail or ''}}
