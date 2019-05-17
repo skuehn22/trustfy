@@ -272,7 +272,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h5 class="pt-4">Personal Message</h5>
-                        <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment">{{$plan->comment or 'Hi John, I am really looking forward to working together! Best, Jane'}}</textarea>
+@if(isset($plan->comment))
+                            <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment" placeholder="Hi John, I am really looking forward to working together! Best, Jane"> {{$plan->comment}}</textarea>
+@else
+                            <textarea class="form-control col-md-12" rows="4"  name="comment" id="comment" placeholder="Hi John, I am really looking forward to working together! Best, Jane"></textarea>
+
+@endif
+
+
                     </div>
                 </div>
                <div class="row">
