@@ -108,12 +108,12 @@
                             <div class="form-inline">
                                 <div class="custom-control custom-radio pr-5">
                                     <input type="radio" class="custom-control-input" id="radio-type-new" name="radio-new" value="0" checked>
-                                    <label class="custom-control-label" for="radio-type-new">I am a new user</label>
+                                    <label class="custom-control-label" for="radio-type-new">I'm new here!</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="radio-type-returning" name="radio-new" value="1">
-                                    <label class="custom-control-label" for="radio-type-returning">I am a returning user</label>
+                                    <label class="custom-control-label" for="radio-type-returning">I have an account!</label>
                                 </div>
 
                             </div>
@@ -218,7 +218,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h5 class="pt-1">The <span class="email-txt">Clients</span> Email Address</h5>
+                                <h5 class="pt-1">The Client's Email</h5>
 
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
@@ -238,7 +238,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="pt-4">What is the Project about?</h5>
+                        <h5 class="pt-4">What is the Project About?</h5>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">   <i class="fas fa-pen"></i></div>
@@ -250,7 +250,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h5 class="pt-4">Payment Typ</h5>
+                        <h5 class="pt-4">Payment Type</h5>
                         <select id="typ" name="typ" class="form-control col-md-12">
                             <option value="1" @if(isset($plantype) && $plantype==0) selected @endif>
                                 Deposit / Single Payment
@@ -496,7 +496,7 @@
             //initalize datepicker
             $( function() {
                 $( "#due_date" ).datepicker( );
-                $( "#due_date" ).datepicker( "option", "dateFormat", "mm/dd/yy" );
+                $( "#due_date" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
                 $('#due_date').datepicker('setDate', new Date());
             } );
 

@@ -131,7 +131,7 @@
                     </div>
                     <div class="col invoice-details">
                         <h1 class="invoice-id" style="text-align: right;">Payment Plan</h1>
-                        <div class="date">Invoice Date: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}} </div>
+                        <div class="date">Invoice Date: {{ \Carbon\Carbon::parse($plan->date)->format('d/m/Y')}}  </div>
                         @if($plan->reference != null) <div class="date">Reference: {{ $plan->reference }} </div> @endif
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                                 @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                             </td>
 
-                            <td class="qty">@if(isset($milestone->due_at)) {{ \Carbon\Carbon::parse($milestone->due_at)->format('d/m/Y')}} @else  <i>please fill in</i> @endif </td>
+                            <td class="qty">@if(isset($milestone->due_at))  {{ $milestone->due_at }}   @else  <i>please fill in</i> @endif </td>
                             <td class="qty"  style="width:16%;"> @if(isset($milestone->amount)){{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }} @else  <i>please fill in</i> @endif</td>
                             <td>
 
