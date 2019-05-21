@@ -331,8 +331,8 @@
                                     <td style="text-align: center; padding-bottom: 35px;">
                                         <h2>Welcome to Trustfy!</h2>
 
-                                        @if(isset($user->firstname) && $user->firstname != ""))
-                                            <p style="font-size: 13px;">Hi {{$user->firstname}},</p>
+                                        @if(isset($company->firstname) && $company->firstname != "")
+                                            <p style="font-size: 13px;">Hi {{$company->firstname}},</p>
                                         @else
                                             Hi,
                                         @endif

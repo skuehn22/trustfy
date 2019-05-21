@@ -14,15 +14,16 @@ use App\DatabaseModels\MessagesCompanies;
 use App\DatabaseModels\Plans;
 use App\DatabaseModels\PlansMilestone;
 use App\DatabaseModels\Clients;
+use App\DatabaseModels\Companies;
 
 
 class MessagesClass  extends Controller
 {
 
     //global sender function
-    public function send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements, $client){
+    public function send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements, $client, $company){
 
-        Mail::send('emails.'.$mailTemplate, compact('data', 'logo', 'requirements', 'client'), function ($message) use ($recipient, $subject) {
+        Mail::send('emails.'.$mailTemplate, compact('data', 'logo', 'requirements', 'client', 'company'), function ($message) use ($recipient, $subject) {
             $message->from('info@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->bcc('bcc@trustfy.io');
@@ -62,7 +63,7 @@ class MessagesClass  extends Controller
     public function sendStandardMail($subject, $data, $recipient, $logo, $requirements) {
 
         $mailTemplate = "default";
-        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements, null);
+        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements, null, null);
 
     }
 
@@ -85,7 +86,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, null, $requirements, null);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null, $requirements, null, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -112,7 +113,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, null, null, null);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null, null, null, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -128,10 +129,12 @@ class MessagesClass  extends Controller
         $mailTemplate = "welcome";
         $typ = 3;
 
+
+
         $data['urlUnsubscribe'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/unsubscribe/".$user->id;
         $data['content']="";
 
-        $this->send($mailTemplate, $user->email, $subject,  $data, null, null, null);
+        $this->send($mailTemplate, $user->email, $subject,  $data, null, null, null, null);
         //$this->save($typ, null, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
 
 
@@ -146,13 +149,11 @@ class MessagesClass  extends Controller
 
         $mailTemplate = "welcomeFreePlan";
         $typ = 3;
-
-
-
+        $company = Companies::where("id", "=", $user->service_provider_fk)->first();
         $data['urlUnsubscribe'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/unsubscribe/".$user->id;
         $data['content']="";
 
-        $this->send($mailTemplate, $user->email, $subject,  $data, null, null, $client);
+        $this->send($mailTemplate, $user->email, $subject,  $data, null, null, $client, $company);
         //$this->save($typ, null, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
 
 

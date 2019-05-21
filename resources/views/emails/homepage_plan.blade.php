@@ -350,24 +350,20 @@
 
                     <div class="text-left">
                         <p>
-                        <strong>About Escrow.com</strong><br>
-                        Escrow.com is the world’s most secure payments method from a counterparty risk perspective- safeguarding both buyer and seller as all funds transacted using escrow are kept in trust. As a winner of multiple awards such as the BBB Torch Award for Ethics, Escrow.com helps you to buy and sell anything safely without the risk of fraud or chargebacks.
+                        <strong>Welcome to the most secure way to pay or get paid as a freelancer. </strong><br>
+                            Our freelance escrow system builds trust between you and your freelancer and makes sure your payments are protected!
                         </p>
                         <p>
-                            <strong>How it works</strong><br>
-                        Escrow.com provides an escrow service that protects both the buyer and the seller in a transaction. Transactions take place in the following order:
+                            This is not a direct payment to your freelancer- your money will be held securely until you decide to release it.
                         </p>
                         <p>
-                        The buyer deposits funds into Escrow.com’s trust account<br>
-                        Escrow.com notifies the seller that the funds are secured, the seller can now safely provide the goods or service to the buyer<br>
-                        The buyer is satisfied with the goods or service and instructs Escrow.com to release the funds to the seller
+                            Because you’re paying through Trustfy, your payments are protected. Only you decide when to release a payment, so rest assured that your money is safe!
                         </p>
                         <p>
-                        If the buyer or seller are not 100% satisfied with the transaction it will go into arbitration with a neutral 3rd party arbitrator. Escrow.com will disburse the funds according to the arbitrators decision.
-                        </p>
-                        <p>
-                        Sincerely,<br>
-                        Escrow.com
+                            <strong>Here's how it works:</strong><br><br>
+                            1. First, you fund the project via card or bank transfer.<br>
+                            2. Your money is held in a secure account until you're satisfied the work is done.<br>
+                            3. You press "release payment" and your freelancer gets paid!
                         </p>
                     </div>
 
