@@ -119,7 +119,7 @@
                 <div class="alert alert-success success_message reminder-alert">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
 
-                    <a style="color: #19A3B8;" class="more" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a style="color: #676767;" class="more" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <i class="fas fa-info-circle"></i> You've just received a Trustfy payment plan: <span style="text-decoration: underline; font-weight: 600;" >more information</span>
                     </a>
 

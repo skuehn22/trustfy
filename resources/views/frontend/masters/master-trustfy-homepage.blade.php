@@ -345,7 +345,7 @@
 
                 </div>
                 <div class="col-md-5 text-muted">
-                    <div class="col-md-12p-0">
+                    <div class="col-md-12 p-0 text-center">
                         <i class="fas fa-user-lock explain-icon"></i>
                         <h3>{!! trans('index.deposit1') !!}</h3>
                     </div>
