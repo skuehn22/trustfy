@@ -20,9 +20,9 @@ class MessagesClass  extends Controller
 {
 
     //global sender function
-    public function send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements){
+    public function send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements, $client){
 
-        Mail::send('emails.'.$mailTemplate, compact('data', 'logo', 'requirements'), function ($message) use ($recipient, $subject) {
+        Mail::send('emails.'.$mailTemplate, compact('data', 'logo', 'requirements', 'client'), function ($message) use ($recipient, $subject) {
             $message->from('info@trustfy.io', 'Trustfy - Payment Plans');
             $message->to($recipient);
             $message->bcc('bcc@trustfy.io');
@@ -62,7 +62,7 @@ class MessagesClass  extends Controller
     public function sendStandardMail($subject, $data, $recipient, $logo, $requirements) {
 
         $mailTemplate = "default";
-        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements);
+        $this->send($mailTemplate, $recipient, $subject,  $data, $logo, $requirements, null);
 
     }
 
@@ -85,7 +85,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, null, $requirements);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null, $requirements, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -112,7 +112,7 @@ class MessagesClass  extends Controller
         $exists = $this->check($typ, $id, $plan->service_provider_fk);
 
         if(!$exists){
-            $this->send($mailTemplate, $recipient, $subject,  $data, null, null);
+            $this->send($mailTemplate, $recipient, $subject,  $data, null, null, null);
             $this->save($typ, $id, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
         }
 
@@ -131,7 +131,7 @@ class MessagesClass  extends Controller
         $data['urlUnsubscribe'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/unsubscribe/".$user->id;
         $data['content']="";
 
-        $this->send($mailTemplate, $user->email, $subject,  $data, null, null);
+        $this->send($mailTemplate, $user->email, $subject,  $data, null, null, null);
         //$this->save($typ, null, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
 
 
@@ -139,6 +139,28 @@ class MessagesClass  extends Controller
         return $msg;
 
     }
+
+
+    public function welcomeFreePlan($user, $subject, $client) {
+
+
+        $mailTemplate = "welcomeFreePlan";
+        $typ = 3;
+
+
+
+        $data['urlUnsubscribe'] = env("APP_URL") . "/" . App::getLocale() . "/freelancer/unsubscribe/".$user->id;
+        $data['content']="";
+
+        $this->send($mailTemplate, $user->email, $subject,  $data, null, null, $client);
+        //$this->save($typ, null, $plan->service_provider_fk, $data['content'], $plan->projects_id_fk);
+
+
+        $msg="";
+        return $msg;
+
+    }
+
 
 
 }

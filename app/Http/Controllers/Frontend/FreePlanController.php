@@ -431,7 +431,7 @@ class FreePlanController extends Controller
 
             $subject = "Welcome to Trustfy";
             $msg_obj = new MessagesClass();
-            $msg_obj->welcome($user, $subject);
+            $msg_obj->welcomeFreePlan($user, $subject, $client);
             $blade["locale"] = App::getLocale();
             $types = PlansTypes::lists("name", "id");
             $msg_success = "The Payment Pan has been sent to your customer. You can log in <a href=\"/login\" style=\"font-size: 12px; text-decoration: underline;\">here</a> and manage the plan.";
