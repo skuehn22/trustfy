@@ -127,7 +127,7 @@
 }
 
 .sw-theme-default > ul.step-anchor > li.done > a::after {
-    background: #5cb85c;
+    background: #7f7f7f;
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
