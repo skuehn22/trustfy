@@ -1,4 +1,4 @@
-<div class="p-5">
+<div class="p-sm-5 p-md-5 p-lg-5 p-xl-5">
 <div class="form-row py-2">
     <label class="col-md-4 col-form-label" for="creation-date">
         Title* <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="e.g. Deposit, Booking Fee"></i>

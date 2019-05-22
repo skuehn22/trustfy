@@ -418,11 +418,9 @@
                         var newRow = $("<tr>");
                         var cols = "";
 
-                        cols += '<td><input type="text" class="form-control" name="name[]" value="{{$milestone->name}}"/></td>';
-                        cols += '<td><input type="number" class="form-control" name="amount[]" value="{{$milestone->amount}}"/></td>';
+                        cols += '<td><input type="text" class="form-control" name="name[]" value="{{$milestone->name}}"/><br>Description <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Tell your client what this payment is for."></i><br><br><textarea class="form-control" rows="3" name="description[]">{{$milestone->desc}}</textarea></td>';
+                        cols += '<td><input type="number" class="form-control" name="amount[]" value="{{$milestone->amount}}"/><br>Due Date <br><br><input type="text" class="form-control" id="due_date\' + counter + \'" name="due_date[]"  value="{{$milestone->due_at}}"/></td>';
                         cols += '<td class="col-sm-1 col-lg-1"  style="width: 15%"><select name="currency[]" id="currency[]" class="form-control"><option value="EUR" @if($milestone->currency == "EUR") selected @endif>EUR</option><option value="GBP" @if($milestone->currency == "GBP") selected @endif>GBP</option><option value="USD" @if($milestone->currency == "USD") selected @endif>USD</option></select></td>';
-                        cols += '<td><input type="text" class="form-control" id="due_date' + counter + '" name="due_date[]"  value="{{$milestone->due_at}}"/></td>';
-                        cols += '<td><textarea class="form-control" rows="3" name="description[]">{{$milestone->desc}}</textarea></td>';
                         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="-"></td>';
 
                         newRow.append(cols);
@@ -517,12 +515,13 @@
                     var newRow = $("<tr>");
                     var cols = "";
 
-                    cols += '<td><input type="text" class="form-control" name="name[]"/></td>';
-                    cols += '<td><input type="number" class="form-control" name="amount[]"/></td>';
+                    cols += '<td><input type="text" class="form-control" name="name[]"/><br>Description <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Tell your client what this payment is for."></i><br><br><textarea class="form-control" rows="3" name="description[]"></textarea></td>';
+                    cols += '<td><input type="number" class="form-control" name="amount[]"/><br>Due Date <br><br><input type="text" class="form-control" id="due_date' + counter + '" name="due_date[]"/></td>';
                     cols += '<td class="col-sm-1 col-lg-1"  style="width: 9%"><select name="currency[]" id="currency[]" class="form-control"><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="USD">USD</option></select></td>';
-                    cols += '<td><input type="text" class="form-control" id="due_date' + counter + '" name="due_date[]"/></td>';
-                    cols += '<td><textarea class="form-control" rows="3" name="description[]"></textarea></td>';
                     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="-"></td>';
+
+
+
 
                     newRow.append(cols);
                     $("table.order-list").append(newRow);
