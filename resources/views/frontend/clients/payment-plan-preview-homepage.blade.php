@@ -197,7 +197,7 @@
                                                 </div>
                                                 <div class="col-md-5"  style="text-align: right; width: 16%">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <input class="btn btn-success pay-now tooltip2" style="border: 0px; border-color: #19A3B8; cursor: context-menu;" title="Deactivated in Preview" value="Pay now"><br>
+                                                    <input class="btn btn-success pay-now tooltip2" style="border: 0px; border-color: #19A3B8; cursor: context-menu;" title="Deactivated in Preview" readonly value="Pay now"><br>
                                                 </span>
                                                 </div>
                                             </div>
@@ -263,8 +263,8 @@
                 <div class="thanks">Thank you!</div>
                 @if($plan->comment!=null)
                     <div class="notices">
-                        <div style="font-size: 14px;">NOTICE:</div>
-                        <div class="notice" style="font-size: 14px;">{!! $plan->comment !!}</div>
+                        <div style="font-size: 16px;">NOTICE:</div>
+                        <div class="notice" style="font-size: 16px;">{!! $plan->comment !!}</div>
                     </div>
                 @endif
 

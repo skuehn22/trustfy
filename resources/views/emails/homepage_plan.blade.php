@@ -20,7 +20,7 @@
             background-color: #f6f6f6;
             font-family: sans-serif;
             -webkit-font-smoothing: antialiased;
-            font-size: 18px;
+            font-size: 14px;
             line-height: 1.4;
             margin: 0;
             padding: 0;
@@ -34,7 +34,7 @@
             width: 100%; }
         table td {
             font-family: sans-serif;
-            font-size: 16px;
+            font-size: 14px;
             vertical-align: top;
         }
         /* -------------------------------------
@@ -154,7 +154,7 @@
             color: @if(isset($company->color) ) {{ $company->color }} @else #28a745 @endif;
             cursor: pointer;
             display: inline-block;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             margin: 0;
             padding: 12px 25px;
@@ -265,6 +265,8 @@
                 max-width: 100% !important;
                 width: auto !important;
             }
+
+
         }
         /* -------------------------------------
             PRESERVE THESE STYLES IN THE HEAD
@@ -300,9 +302,9 @@
     </style>
 </head>
 
-<body style=" background-color: #f6f6f6; font-family: sans-serif;-webkit-font-smoothing: antialiased;font-size: 14px;line-height: 1.4; margin: 0;padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;width: 100%;">
+<body style=" background-color: #f6f6f6; font-family: sans-serif;-webkit-font-smoothing: antialiased;font-size: 16px;line-height: 1.4; margin: 0;padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;width: 100%;">
 
-<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style=" border-collapse: separate;  mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body" style=" border-collapse: separate;  background-color:#ffffff; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
     <tr>
         <td>&nbsp;</td>
         <td class="container" style="display: block; margin: 0 auto !important;  /* makes it centered */max-width: 580px; padding: 10px;width: 580px;">
@@ -340,7 +342,7 @@
                             <td>
                                 <p>
                                     <br><br><br><br>
-                                    <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 12px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">View & Pay</a>
+                                    <a href="{{ asset('/'.$lang.'/payment-plan/'.$plan->hash) }}" style="background-color: #19A3B8; text-decoration: none; border-color: #19A3B8; padding: 10px; color:#fff; font-size: 16px; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out" class="btn btn-primary" target="_blank">View & Pay</a>
                                 </p>
 
                             </td>

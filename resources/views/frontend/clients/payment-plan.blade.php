@@ -244,7 +244,9 @@
                             @if(isset($milestone->amount)){{$milestone->currency}} {{ number_format($milestone->amount, 2, '.', ',') }}@else  <i>please fill in</i> @endif
                         </td>
                         <td style="text-align: right;">
-                            <span style="font-weight:600; color: {{$milestone->color}}">{{$milestone->statusTxt}}
+                            <span style="font-weight:600; color: {{$milestone->color}}">
+
+                                {{$milestone->statusTxt}}
                                 @if($milestone->info)
                                 <i class="fas fa-info-circle green" style="color: #7f7f7f;" data-toggle="tooltip" data-placement="top" title="{{$milestone->info}}"></i>
                                 @endif

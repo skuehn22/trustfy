@@ -1,7 +1,7 @@
 <div class="p-5">
 <div class="form-row py-2">
     <label class="col-md-4 col-form-label" for="creation-date">
-        Title Position* <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="For example Deposit / Down payment"></i>
+        Title* <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="e.g. Deposit, Booking Fee"></i>
     </label>
 
     @if(isset($milestones) && $milestones->name)
@@ -15,14 +15,14 @@
 <div class="form-row py-2">
 
     <label class="col-md-4 col-form-label" for="creation-date">
-        Description <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Explain your client what is the milestone about."></i>
+        Description <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Tell your client what this payment is for."></i>
     </label>
 
 
     @if(isset($milestones) && $milestones->desc)
         <textarea class="form-control col-md-6" rows="4"  name="desc-milestone" id="desc-milestone">{{$milestones->desc}}</textarea>
     @else
-        <textarea class="form-control col-md-6" rows="4"  name="desc-milestone" id="desc-milestone" placeholder="I take 50% before project start"></textarea>
+        <textarea class="form-control col-md-6" rows="4"  name="desc-milestone" id="desc-milestone" placeholder="This deposit confirms your booking"></textarea>
     @endif
 
 </div>

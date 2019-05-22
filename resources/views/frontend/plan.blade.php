@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h2>Create your Escrow</h2>
+                        <h2>Set up Your Payment Plan!</h2>
 
                     </div>
                 </div>

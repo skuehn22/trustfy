@@ -165,7 +165,7 @@ class FreePlanController extends Controller
                         $plan->typ = $input['typ'];
 
                     if(isset($input['comment']))
-                        $plan->comment = $input['comment'];
+                        $plan->comment = nl2br($input['comment']);
 
                     if($plan->state < 2){
                         $plan->state = 0;
@@ -229,7 +229,7 @@ class FreePlanController extends Controller
                     $plan->typ = $input['typ'];
 
                 if(isset($input['comment']))
-                    $plan->comment = $input['comment'];
+                    $plan->comment = nl2br($input['comment']);
 
                 if($plan->state < 2){
                     $plan->state = 0;
