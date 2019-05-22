@@ -161,8 +161,10 @@ class PlansManagementController extends Controller
             $milestones_edit = PlansMilestone::where("projects_plans_id_fk", "=", $id)
                 ->first();
 
+            $countries= Countries::lists('country_name', 'alpha2_code');
+            $countries->prepend(Lang::get('freelancer_backend.please_select'), 0);
 
-            return view('backend.freelancer.plans.edit', compact('blade', 'clients', 'plan', 'types', 'milestones_edit'));
+            return view('backend.freelancer.plans.edit', compact('countries', 'blade', 'clients', 'plan', 'types', 'milestones_edit'));
 
         }
     }
