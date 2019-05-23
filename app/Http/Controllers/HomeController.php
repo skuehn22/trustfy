@@ -101,8 +101,12 @@ class HomeController extends Controller
 
         $blade["locale"] = App::getLocale();
 
-
-        $data['name'] = $_POST['name'];
+        if(isset($_POST['name'])){
+            $data['name'] = $_POST['name'];
+        }else{
+            $data['name'] = "";
+        }
+        
         $data['mail'] = $_POST['email'];
         $data['desc'] = $_POST['message'];
 
