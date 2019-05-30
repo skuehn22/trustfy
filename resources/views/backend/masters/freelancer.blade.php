@@ -136,11 +136,13 @@
                     <i class="fas fa-cog"></i><span class="pl-2"> Settings</span>
                 </a>
             </li>
+            <!--
             <li class="has-children tour-sidebar d-none d-sm-block d-md-block d-lg-block d-xl-block">
                 <a href="{{ URL::to($blade["ll"].'/freelancer/dashboard?tour=activate') }}">
                     <i class="fas fa-eye"></i> <span class="pl-2">Start Tour</span>
                 </a>
             </li>
+            -->
         </ul>
         <ul>
 

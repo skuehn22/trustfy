@@ -192,7 +192,12 @@ class PlansManagementController extends Controller
             $plan->projects_id_fk = $input['projects-dropdown'];
 
         if(isset($input['creation-date']) && $input['creation-date']!=""){
-            $creation = date("Y-m-d", strtotime($input['creation-date']) );
+            //$creation = date("Y-m-d", strtotime($input['creation-date']) );
+
+            $teile = explode("/", $input['creation-date']);
+            $creation =  $teile[2]."-".$teile[1]."-".$teile[0]; // Teil1
+
+
             $plan->date = $creation;
         }
 

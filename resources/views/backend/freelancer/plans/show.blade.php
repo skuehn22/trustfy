@@ -176,7 +176,7 @@
                     <tr>
                         <td class="no">0{{ $milestone->order }}</td>
                         <td class="text-left" style="width:30%;">
-                            <strong>{!!  $milestone->name or '<i>please fill in</i>'!!}</strong>
+                            <strong>{!!  $milestone->name or '<i>please fill in</i>'!!}</strong><br>
                             <input type="hidden" value="{{$milestone->name}}" id="name_{{$milestone->id}}">
                             @if(isset($milestone->desc) && $milestone->desc!="") -  {{$milestone->desc}} @endif
                         </td>

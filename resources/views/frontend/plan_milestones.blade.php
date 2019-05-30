@@ -32,7 +32,7 @@
     <tfoot>
     <tr>
         <td colspan="5" style="text-align: left;">
-            <input type="button" class="btn btn-lg add-row btn-block " id="addrow" value="Add Row" />
+            <input type="button" class="btn btn-lg add-row btn-block " id="addrow" value="Add Milestone" />
         </td>
     </tr>
     <tr>

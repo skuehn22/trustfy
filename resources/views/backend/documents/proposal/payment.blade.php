@@ -33,7 +33,7 @@
                                 <div class="row">
                                 <div class="col-md-3"> <input type="text" id="name" placeholder="Milestone" class="form-control"></div>
                                 <div class="col-md-3"> <input type="text" id="percentages" placeholder="Percentage" class="form-control"></div>
-                                <div class="col-md-6"> <input type="button" class="add-row btn btn-orange" value="Add Row">  <button type="button" class="delete-row btn btn-orange">Delete Row</button></div>
+                                <div class="col-md-6"> <input type="button" class="add-row btn btn-orange" value="Add Milestone">  <button type="button" class="delete-row btn btn-orange">Delete Row</button></div>
                                 </div>
                             </form>
                             <div class="row">
