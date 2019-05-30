@@ -167,7 +167,7 @@
 <footer class="sticky-footer">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright © trustfy.io 2019</span> | <span class="terms"><a href="https://www.trustfy.io/en/terms" target="_blank">Terms and Conditions</a></span>
+            <span>Copyright © trustfy.io 2019</span> | <span class="terms"><a href="https://www.trustfy.io/en/terms" target="_blank" style="color: #19A3B8;">Terms and Conditions</a></span>
         </div>
     </div>
 </footer>

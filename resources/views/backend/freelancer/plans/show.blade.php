@@ -43,7 +43,7 @@
 
 
         a:hover {
-            color: #878787;
+            color: #fff;
             text-decoration: underline;
         }
 
@@ -235,9 +235,9 @@
                             @foreach($docs as $doc)
 
                                 <p class="{{$doc->id}}">
-                                    <a target="_blank" href="/uploads/companies/contracts/{{$plan->id}}/{{$doc->filename}}">{{$doc->name}}</a>
-                                    <a href="#" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
-                                        <i class="fas fa-trash green"></i>
+                                    <a target="_blank" href="/uploads/companies/contracts/{{$plan->id}}/{{$doc->filename}}" style="color: #19A3B8;">{{$doc->name}}</a>
+                                    <a href="#"  style="color: #19A3B8;" data-id="{{$doc->id}}" data-toggle="tooltip" data-placement="top" title="" class="delete-doc" data-original-title="Delete">
+                                        <i  style="color: #19A3B8;" class="fas fa-trash green"></i>
                                     </a>
                                 </p>
 
