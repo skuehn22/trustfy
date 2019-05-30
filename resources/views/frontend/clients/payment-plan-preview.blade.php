@@ -183,7 +183,7 @@
                                                         </div>
                                                         <div class="col-md-5"  style="text-align: right; width: 16%">
                                                 <span class="input-group-btn" style="padding-left: 5px;">
-                                                    <button class="btn btn-success pay-now" disabled data-toggle="tooltip" data-placement="top" title="In Preview deactivated">Pay now</button><br>
+                                                    <button style="background-color: #19A3B8; border-color: #19A3B8;" class="btn btn-success pay-now" disabled data-toggle="tooltip" data-placement="top" title="In Preview deactivated">Pay now</button><br>
                                                 </span>
                                                         </div>
                                                     </div>

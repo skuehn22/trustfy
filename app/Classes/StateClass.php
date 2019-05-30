@@ -90,7 +90,7 @@ class StateClass
                 break;
             case 4:
                 $state['color'] = "#19A3B8";
-                $state['state'] = "payout succeded";
+                $state['state'] = "payout succeeded";
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 5:
@@ -164,7 +164,7 @@ class StateClass
                 break;
             case 4:
                 $state['color'] = "#19A3B8";
-                $state['state'] = "payout succeded";
+                $state['state'] = "payout succeeded";
                 $state['info'] = "Waiting for the freelancer to finish the work.";
                 break;
             case 5:
