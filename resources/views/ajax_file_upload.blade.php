@@ -22,10 +22,13 @@
             <div class="form-row py-2 pl-0">
                 <div class="col-md-2">
                 </div>
-                <div class="col-md-5 pl-0">
+                <div class="col-md-7 pl-0">
                     <input type="file" name="select_file" id="select_file" /><br>
-                    <span class="logo-hint">*pdf, jpg, png, gif</span>
-                    <input type="submit" name="upload" id="upload" class="btn btn-secondary" value="Upload">
+                    <p style="float: right;">
+                        <br><br>
+                        <span class="logo-hint">*pdf, jpg, png, gif</span>
+                        <input type="submit" name="upload" id="upload" class="btn btn-secondary" value="Upload">
+                    </p>
                 </div>
             </div>
 
