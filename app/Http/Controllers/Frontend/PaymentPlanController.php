@@ -681,7 +681,7 @@ class PaymentPlanController extends Controller
         $subject= "Payment reminder for ".$milestone->name;
         $data['content'] = "<p>Hello ".$client->firstname." ".$client->lastname.",</p>";
         $data['content'] .= "<p>This is a friendly reminder to make a payment for: \"".$milestone->name."\".</p>";
-        $data['content'] .= "<p>If you have not made the transfer yet, please transfer". $milestone->currency ." ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
+        $data['content'] .= "<p>If you have not made the transfer yet, please transfer ". $milestone->currency ." ".number_format($milestone->amount, 2, '.', ',')." to the following account:</p>";
 
         $data['content'] .=
 
