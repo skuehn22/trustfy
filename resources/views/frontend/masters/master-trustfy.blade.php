@@ -139,7 +139,7 @@
                     <a class="nav-link" href="/{{$blade["locale"]}}/{{ trans('index.about_url') }}">{{ trans('index.about_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">{{ trans('index.contact') }}</a>
+                    <a class="nav-link" href="/#contact">{{ trans('index.contact') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/{{$blade["locale"]}}/faq">FAQ</a>
