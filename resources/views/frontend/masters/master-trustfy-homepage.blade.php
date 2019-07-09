@@ -127,7 +127,6 @@
                                 <select class="form-control input-lg header-form" name="cur" id="inputlg" type="text">
                                     <option value="EUR">EUR</option>
                                     <option value="GBP">GBP</option>
-                                    <option value="USD">USD</option>
                                 </select>
                             </div>
                         </div>

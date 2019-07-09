@@ -21,7 +21,6 @@
             <select name="currency[]" id="currency[]" class="form-control">
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
-                <option value="USD">USD</option>
             </select>
         </td>
         <td class="col-sm-2" style="width: 5%;"><a class="deleteRow"></a>
