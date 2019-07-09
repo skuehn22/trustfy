@@ -63,7 +63,6 @@
     <select name="currency" id="currency" class="form-control col-md-1">
         <option value="EUR">EUR</option>
         <option value="GBP">GBP</option>
-        <option value="USD">USD</option>
     </select>
 
 

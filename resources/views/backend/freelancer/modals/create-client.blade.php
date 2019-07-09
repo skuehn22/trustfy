@@ -43,7 +43,6 @@
                                     <select id="currency" name="currency" class="col-md-7 col-form-label">
                                         <option value="eur">EUR</option>
                                         <option value="gbp">GBP</option>
-                                        <option value="us">US</option>
                                     </select>
                                 </div>
                                 <div class="form-row py-2">
