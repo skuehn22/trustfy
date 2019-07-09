@@ -6,11 +6,11 @@
 
 
 @section('content')
-    <div class="col-md-offset-2 col-md-10" style="padding-top:25px; padding-bottom:25px;">
+    <div class="col-md-12" style="padding-top:25px; padding-bottom:25px;">
 
         <p>Oops! Looks like some wires got crossed!</p>
         <p>Our tech team has been notified and will get this cleared up shortly.</p>
-<p>{{ URL::previous() }}</p>
+        <p><a href="{{ URL::previous() }}">back</a></p>
 
     </div>
 @stop
