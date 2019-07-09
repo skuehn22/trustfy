@@ -318,7 +318,7 @@
                         <tr>
                             <td class="content-block">
                                 <br><br>
-                                <p><img src="https://www.trustfy.io/img/trustfy-green.png" data-holder-rendered="true" style="width: 200px;" /></p>
+                                <p><img src="https://www.trustfy.io/img/trustfy-green.png" data-holder-rendered="true" style="width: 200px; max-width: 200px;" /></p>
                                 <br><br>
                                 <span>Hi {{$client->firstname}} {{$client->lastname}},</span><br>
                                 <span>{{$user->email}} has created a payment plan for you. </span>

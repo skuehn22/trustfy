@@ -316,7 +316,7 @@
 
                                 <tr>
                                     <td style="text-align: center; padding-bottom: 35px;">
-                                        <img src="https://www.trustfy.io/img/trustfy-green.png" width="200px;">
+                                        <img src="https://www.trustfy.io/img/trustfy-green.png" style="width: 200px; max-width: 200px;">
                                     </td>
                                 </tr>
                                 <tr>

@@ -320,10 +320,10 @@
                                     <td style="text-align: center; padding-bottom: 35px;">
                                         @if(isset($logo) && !empty($logo))
                                             @if( file_exists(public_path('uploads/companies/logo/'.$logo)))
-                                                <img src="{{ asset('uploads/companies/logo/'.$logo)}}" data-holder-rendered="true" style="width: 200px;" />
+                                                <img src="{{ asset('uploads/companies/logo/'.$logo)}}" data-holder-rendered="true"style="width: 200px; max-width: 200px;" />
                                             @endif
                                         @else
-                                            <img src="https://www.trustfy.io/img/trustfy-green.png" width="200px;">
+                                            <img src="https://www.trustfy.io/img/trustfy-green.png" style="width: 200px; max-width: 200px;">
                                         @endif
                                     </td>
                                 </tr>

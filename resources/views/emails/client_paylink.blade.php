@@ -318,7 +318,7 @@
                                 <br><br>
                                 @if(isset($company->logo) && $company->logo!="3.png")
                                     @if( file_exists(public_path('uploads/companies/logo/'.$company->logo)))
-                                        <p><img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px;" /></p>
+                                        <p><img src="{{ asset('uploads/companies/logo/'.$company->logo)}}" data-holder-rendered="true" style="width: 200px; max-width: 200px;" /></p>
                                     @endif
                                 @endif
                                 <br><br>
