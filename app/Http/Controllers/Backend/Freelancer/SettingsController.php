@@ -180,6 +180,9 @@ class SettingsController extends Controller
         $company->users_fk =  $blade["user"]->id;
         $company->color =  $_POST["color"];
 
+
+        $this->saveLegalUser();
+
         $user = Users::find($blade["user"]->id);
 
         if(env("APP_ENV") == "live") {
@@ -412,7 +415,6 @@ class SettingsController extends Controller
 
     }
 
-
     public function resetPw() {
 
         $ll = App::getLocale();
@@ -456,7 +458,6 @@ class SettingsController extends Controller
 
     }
 
-
     public function pwCheck($data) {
         if($data['password'] != $data['password_confirmation']) {
 
@@ -466,7 +467,6 @@ class SettingsController extends Controller
             return true;
         }
     }
-
 
     public function createMangoLegalUser($company, $freelancer) {
         try {
@@ -580,7 +580,6 @@ class SettingsController extends Controller
 
     }
 
-
     public function iban($check)
     {
         if (!preg_match('/^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/', $check)) {
@@ -606,7 +605,6 @@ class SettingsController extends Controller
 
         return ((98 - $checksum) === $checkInt);
     }
-
 
     public function unsubscribe($id) {
 

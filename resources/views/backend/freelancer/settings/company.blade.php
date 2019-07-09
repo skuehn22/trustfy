@@ -63,11 +63,48 @@
                     </div>
                 </div>
             </div>
+            <h4>Legal Representative
+                <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="This information is required for a payment out."></i>
+            </h4>
+
+            <div class="form-row py-2">
+                <label class="col-md-3 col-form-label" for="firstname">
+                    First name*
+                    <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Name of company’s legal representative person"></i>
+                </label>
+                <input id="firstname" type="text" class="form-control col-md-7" name="firstname" value="{{ $company->firstname or "" }}"required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="form-row py-2">
+                <label class="col-md-3 col-form-label" for="address">Last name*</label>
+                <input id="lastname" type="text" class="form-control col-md-7" name="lastname" value="{{ $company->lastname or "" }}" required>
+            </div>
+            <div class="form-row py-2">
+                <label class="col-md-3 col-form-label" for="birthday">
+                    Birthday*
+                    <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="Birthday of company’s legal representative person"></i>
+                </label>
+                <input type="date" name="birthday" min="1000-01-01" max="3000-12-31" class="form-control col-md-7" value="{{  $company->birthday or "" }}" required>
+            </div>
+            <div class="form-row py-2">
+                <label class="col-md-3 col-form-label" for="nationality">Nationality*</label>
+
+                @if(isset($company->country_nationality))
+                    {!! Form::select('nationality', $countries, $company->country_nationality, ['id' => 'nationality', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
+                @else
+                    {!! Form::select('nationality', $countries, null, ['id' => 'nationality', 'required' => 'true', 'class' => 'form-control col-md-7']) !!}
+                @endif
+
+            </div>
             <div class="form-row py-2 pt-5">
                 <button type="submit" class="btn btn-classic">
                     <i class="fas fa-save"></i> Save Settings
                 </button>
             </div>
+
         </form>
     </div>
 

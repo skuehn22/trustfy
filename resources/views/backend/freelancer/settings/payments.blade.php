@@ -30,6 +30,8 @@
     </div>
 
     <div class="col-md-6">
+
+
         <h4>Address <i class="fas fa-info-circle green" data-toggle="tooltip" data-placement="top" title="The address of the owner of the bank account"></i>
         </h4>
 
