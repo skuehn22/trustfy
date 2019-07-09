@@ -10,7 +10,7 @@
 
         <p>Oops! Looks like some wires got crossed!</p>
         <p>Our tech team has been notified and will get this cleared up shortly.</p>
-        <p><a href="{{ URL::previous() }}">back</a></p>
+        <p><a style="text-decoration: underline;" href="{{ URL::previous() }}">back</a></p>
 
     </div>
 @stop
