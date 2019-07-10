@@ -353,6 +353,7 @@ class PaymentPlanController extends Controller
 
             $wallet = new CompaniesMangowallets();
             $wallet->id = $mangoWallet->Id;
+            $wallet->mango_id = $mangoWallet->Id;
             $wallet->performer_id_fk = $company->id;
             $wallet->currency = $milestone->currency;
             $wallet->save();

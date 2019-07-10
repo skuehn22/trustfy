@@ -839,7 +839,7 @@ class MangoClass extends Controller
             $Transfer->Fees->Currency = $milestone->currency;
             $Transfer->Fees->Amount = 0;
             $Transfer->DebitedWalletId = $client_wallet->id;
-            $Transfer->CreditedWalletId = $freelancer_wallet->id;
+            $Transfer->CreditedWalletId = $freelancer_wallet->mango_id;
 
             $result = $this->mangopay->Transfers->Create($Transfer);
 
